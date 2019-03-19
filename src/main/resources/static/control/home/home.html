@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>我的工作台</title>
+    <link rel="stylesheet" type="text/css" href="../../static/layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/admin.css"/>
+    <script src="../../static/js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <!--[if IE 8]>
+    <script type="text/javascript" src="../../static/js/jquery-1.11.3.min.js"></script>
+    <![endif]-->
+    <script src="../../static/js/basic.js"></script>
+    <script src="../../static/layui/layui.js"></script>
+</head>
+<body>
+<div class="layui-row">
+    <div class="col-xs-12">
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title">
+                <li class="layui-this">检测任务清单</li>
+                <li>检测任务预警<span id="noPassNum" class="layui-badge"></span></li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <fieldset class="layui-elem-field layui-field-title">
+                        <legend style="font-weight: bold;color: red;">我的年度检测计划</legend>
+                    </fieldset>
+                    <table class="layui-hide" id="noHandle" lay-filter="handle1"></table>
+                    <fieldset class="layui-elem-field layui-field-title">
+                        <legend style="font-weight: bold;color: #000000;">待上传检测任务</legend>
+                    </fieldset>
+                    <table class="layui-hide" id="waitHandle" lay-filter="handle2"></table>
+                    <fieldset class="layui-elem-field layui-field-title">
+                        <legend style="font-weight: bold;color: orange;">待审核检测任务</legend>
+                    </fieldset>
+                    <table class="layui-hide" id="onHandle"></table>
+                    <fieldset class="layui-elem-field layui-field-title">
+                        <legend style="font-weight: bold;color: #000000;">已检测成功任务</legend>
+                    </fieldset>
+                    <table class="layui-hide" id="isHandle" lay-filter="handle3"></table>
+                </div>
+                <div class="layui-tab-item">
+                    <fieldset class="layui-elem-field layui-field-title">
+                        <legend style="font-weight: bold;color: red;">审核不通过提醒</legend>
+                    </fieldset>
+                    <table class="layui-hide" id="nopass" lay-filter="handle4"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="noHandles">
+    <a class="layui-btn layui-btn-xs" lay-event="hands">处理</a>
+</script>
+<script type="text/html" id="waitHandles">
+    <a class="layui-btn layui-btn-xs" lay-event="check">查看数据</a>
+    <a class="layui-btn layui-btn-xs" lay-event="up">上传</a>
+</script>
+<script type="text/html" id="isHandles">
+    <a class="layui-btn layui-btn-xs" lay-event="more">查看详情</a>
+</script>
+<script type="text/html" id="agHandles">
+    <a class="layui-btn layui-btn-xs" lay-event="again">重新检测</a>
+    <a class="layui-btn layui-btn-xs" lay-event="againup">上传</a>
+</script>
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+    </div>
+</script>
+<script>
+    $(function () {
+        $.ajax({
+            url:"/userEq/findShEqsByUserIdState",
+            method:"GET",
+            dataType:"JSON",
+            success:function(res){
+                if(res.data != null && res.data != ""){
+                    $("#noPassNum").append(res.data);
+                }else{
+                    $("#noPassNum").css("display","none");
+                }
+            },
+            error:function () {
+                alert("服务器故障")
+            }
+        })
+    })
+    //Demo
+    layui.use(['layer','jquery','upload','table','element'], function(){
+        var layer = layui.layer
+            ,   $ = layui.jquery
+            ,   table = layui.table
+            ,   element = layer.element;
+        // 待检测
+        table.render({
+            elem:"#noHandle",
+            url:"/ndjh/selectByUserId",
+            cellMinWidth: 120,
+            toolbar:"#toolbarDemo",
+            method:"GET",
+            response: {
+                statusName: 'status' //规定数据状态的字段名称，默认：code
+                ,statusCode: 200 //规定成功的状态码，默认：0
+                ,msgName: 'hint' //规定状态信息的字段名称，默认：msg
+                ,countName: 'total' //规定数据总数的字段名称，默认：count
+                ,dataName: 'data' //规定数据列表的字段名称，默认：data
+            },
+            parseData:function(res){
+                console.log(res);
+                return{
+                    "status":200
+                    ,"msg":res.message
+                    ,"count":res.total
+                    ,"data":res.data
+                }
+            },
+            cols:[[
+                {field:'eqPmName', title:'设备品名名称',align:'center'},
+                {field:'ndjhSbsl', title:'设备总数量',align:'center'},
+                {field:'ndjhJhl', title:'总计划量',align:'center'},
+                {field:'ndjhDtsj', title:'单台用时',align:'center'},
+                {field:'ndjh1yfjh', title:'1月计划',align:'center'},
+                {field:'ndjh1sj', title:'1月实际',align:'center'},
+                {field:'ndjh2yfjh', title:'2月计划',align:'center'},
+                {field:'ndjh2sj', title:'2月实际',align:'center'},
+                {field:'ndjh3yfjh', title:'3月计划',align:'center'},
+                {field:'ndjh3sj', title:'3月实际',align:'center'},
+                {field:'ndjh4yfjh', title:'4月计划',align:'center'},
+                {field:'ndjh4sj', title:'4月实际',align:'center'},
+                {field:'ndjh5yfjh', title:'5月计划',align:'center'},
+                {field:'ndjh5sj', title:'5月实际',align:'center'},
+                {field:'ndjh6yfjh', title:'6月计划',align:'center'},
+                {field:'ndjh6sj', title:'6月实际',align:'center'},
+                {field:'ndjh7yfjh', title:'7月计划',align:'center'},
+                {field:'ndjh7sj', title:'7月实际',align:'center'},
+                {field:'ndjh8yfjh', title:'8月计划',align:'center'},
+                {field:'ndjh8sj', title:'8月实际',align:'center'},
+                {field:'ndjh9yfjh', title:'9月计划',align:'center'},
+                {field:'ndjh9sj', title:'9月实际',align:'center'},
+                {field:'ndjh10yfjh', title:'10月计划',align:'center'},
+                {field:'ndjh10sj', title:'10月实际',align:'center'},
+                {field:'ndjh11yfjh', title:'11月计划',align:'center'},
+                {field:'ndjh11sj', title:'11月实际',align:'center'},
+                {field:'ndjh12yfjh', title:'12月计划',align:'center'},
+                {field:'ndjh12sj', title:'12月实际',align:'center'},
+                {field:'userName', title:'上报人',align:'center'},
+                {field:'ndjhSbsj', title:'上报时间',align:'center'},
+                {fixed: 'right', title:'操作',toolbar: '#noHandles',align:'center'}
+            ]]
+        });
+        // 待上传
+        table.render({
+            elem:"#waitHandle",
+            url:"/userEq/findEqDsc",
+            toolbar:"#toolbarDemo",
+            cellMinWidth: 120,
+            method:"GET",
+            response: {
+                statusName: 'status' //规定数据状态的字段名称，默认：code
+                ,statusCode: 200 //规定成功的状态码，默认：0
+                ,msgName: 'hint' //规定状态信息的字段名称，默认：msg
+                ,countName: 'total' //规定数据总数的字段名称，默认：count
+                ,dataName: 'data' //规定数据列表的字段名称，默认：data
+            },
+            parseData:function(res){
+                console.log(res);
+                return{
+                    "status":200
+                    ,"msg":res.message
+                    ,"count":res.total
+                    ,"data":res.data
+                }
+            },
+            cols:[[
+                {field:'eqMc', title:'设备名称',align:'center'},
+                {field:'eqDah', title:'档案号',align:'center'},
+                {field:'eqScbh', title:'出厂编号',align:'center'},
+                {field:'eqNum', title:'设备数量',align:'center'},
+                {field:'eqCcdate', title:'出厂日期',align:'center'},
+                {field:'eqCscs', title:'生产厂商',align:'center'},
+                {field:'eqSyks', title:'使用科室',align:'center'},
+                {field:'eqJx', title:'设备机型',align:'center'},
+                {field:'eqQyrq', title:'启用日期',align:'center'},
+                {field:'eqCfdd', title:'设备存放地点',align:'center'},
+                {field:'state', title:'状态',align:'center'},
+                {fixed: 'right', title:'操作',minWidth: 150,toolbar: '#waitHandles',align:'center'}
+            ]]
+        });
+        // 待审核
+        table.render({
+            elem:"#onHandle",
+            url:"/userEq/findJcDsh",
+            toolbar:"#toolbarDemo",
+            cellMinWidth: 120,
+            method:"GET",
+            response: {
+                statusName: 'status' //规定数据状态的字段名称，默认：code
+                ,statusCode: 200 //规定成功的状态码，默认：0
+                ,msgName: 'hint' //规定状态信息的字段名称，默认：msg
+                ,countName: 'total' //规定数据总数的字段名称，默认：count
+                ,dataName: 'data' //规定数据列表的字段名称，默认：data
+            },
+            parseData:function(res){
+                console.log(res);
+                return{
+                    "status":200
+                    ,"msg":res.message
+                    ,"count":res.total
+                    ,"data":res.data
+                }
+            },
+            cols:[[
+            	{field:'eqMc', title:'设备名称',align:'center'},
+                {field:'eqDah', title:'档案号',align:'center'},
+                {field:'eqScbh', title:'出厂编号',align:'center'},
+                {field:'eqNum', title:'设备数量',align:'center'},
+                {field:'eqCcdate', title:'出厂日期',align:'center'},
+                {field:'eqCscs', title:'生产厂商',align:'center'},
+                {field:'eqSyks', title:'使用科室',align:'center'},
+                {field:'eqJx', title:'设备机型',align:'center'},
+                {field:'eqQyrq', title:'启用日期',align:'center'},
+                {field:'eqCfdd', title:'设备存放地点',align:'center'},
+                {field:'state', title:'状态',align:'center'}
+            ]]
+        });
+        // 检测审核成功
+        table.render({
+            elem:"#isHandle",
+            url:"/userEq/findJcShCg",
+            toolbar:"#toolbarDemo",
+            cellMinWidth: 120,
+            method:"GET",
+            response: {
+                statusName: 'status' //规定数据状态的字段名称，默认：code
+                ,statusCode: 200 //规定成功的状态码，默认：0
+                ,msgName: 'hint' //规定状态信息的字段名称，默认：msg
+                ,countName: 'total' //规定数据总数的字段名称，默认：count
+                ,dataName: 'data' //规定数据列表的字段名称，默认：data
+            },
+            parseData:function(res){
+                console.log(res);
+                return{
+                    "status":200
+                    ,"msg":res.message
+                    ,"count":res.total
+                    ,"data":res.data
+                }
+            },
+            cols:[[
+            	{field:'eqMc', title:'设备名称',align:'center'},
+                {field:'eqDah', title:'档案号',align:'center'},
+                {field:'eqScbh', title:'出厂编号',align:'center'},
+                {field:'eqNum', title:'设备数量',align:'center'},
+                {field:'eqCcdate', title:'出厂日期',align:'center'},
+                {field:'eqCscs', title:'生产厂商',align:'center'},
+                {field:'eqSyks', title:'使用科室',align:'center'},
+                {field:'eqJx', title:'设备机型',align:'center'},
+                {field:'eqQyrq', title:'启用日期',align:'center'},
+                {field:'eqCfdd', title:'设备存放地点',align:'center'},
+                {field:'state', title:'状态',align:'center'},
+                {fixed: 'right', title:'操作',toolbar: '#isHandles',align:'center'}
+            ]]
+        });
+        // 审核不通过
+        table.render({
+            elem:"#nopass",
+            url:"/userEq/findJcShBcg",
+            toolbar:"#toolbarDemo",
+            cellMinWidth: 120,
+            method:"GET",
+            response: {
+                statusName: 'status' //规定数据状态的字段名称，默认：code
+                ,statusCode: 200 //规定成功的状态码，默认：0
+                ,msgName: 'hint' //规定状态信息的字段名称，默认：msg
+                ,countName: 'total' //规定数据总数的字段名称，默认：count
+                ,dataName: 'data' //规定数据列表的字段名称，默认：data
+            },
+            parseData:function(res){
+                console.log(res);
+                return{
+                    "status":200
+                    ,"msg":res.message
+                    ,"count":res.total
+                    ,"data":res.data
+                }
+            },
+            cols:[[
+                {field:'eqMc', title:'设备名称',align:'center'},
+                {field:'eqDah', title:'档案号',align:'center'},
+                {field:'eqScbh', title:'出厂编号',align:'center'},
+                {field:'eqNum', title:'设备数量',align:'center'},
+                {field:'eqCcdate', title:'出厂日期',align:'center'},
+                {field:'eqCscs', title:'生产厂商',align:'center'},
+                {field:'eqSyks', title:'使用科室',align:'center'},
+                {field:'eqJx', title:'设备机型',align:'center'},
+                {field:'eqQyrq', title:'启用日期',align:'center'},
+                {field:'eqCfdd', title:'设备存放地点',align:'center'},
+                {field:'state', title:'状态',align:'center'},
+                {fixed: 'right', title:'操作',minWidth: 150,toolbar: '#agHandles',align:'center'}
+            ]]
+        });
+        table.on('tool(handle1)', function(obj){
+            var data = obj.data;
+            sessionStorage["ndjhId"]=obj.data.ndjhId;
+            //console.log(obj)
+            if(obj.event === 'hands'){
+                location.href="/control/home/waiting/fix_info.html?id="+obj.data.eqPmId;
+            }
+        });
+        table.on('tool(handle2)', function(obj){
+            var data = obj.data;
+            //console.log(obj)
+            if(obj.event === "check"){
+                location.href="/control/home/upload/up_info.html?id="+obj.data.eqId;
+            }else if(obj.event === "up"){
+                $.ajax({
+                    url:"/userEq/setEqTypeNotIs?jceqId="+obj.data.eqId,
+                    method:"POST",
+                    success:function(res){
+                        if(res.state === 200){
+                            layer.msg("上传成功");
+                            setTimeout(function(){
+                                window.location.reload();
+                            },1000);
+                        }else{
+                            layer.msg("上传失败");
+                        }
+                    },
+                    error:function(data){
+                        layer.msg("请稍后再试");
+                    }
+                })
+            }
+        });
+        table.on('tool(handle3)', function(obj){
+            var data = obj.data;
+            //console.log(obj)
+            if(obj.event === "more"){
+                location.href="/control/home/success/this_info.html?id="+obj.data.eqId;
+            }
+        });
+        table.on('tool(handle4)', function(obj){
+            var data = obj.data;
+            //console.log(obj)
+            if(obj.event === "again"){
+                location.href="/control/home/nopass/nopass_info.html?id="+obj.data.eqId;
+            }else if(obj.event === "againup"){
+                $.ajax({
+                    url:"/userEq/setEqTypeNotIs?jceqId="+obj.data.eqId,
+                    method:"POST",
+                    success:function(res){
+                        if(res.state === 200){
+                            layer.msg("上传成功");
+                            setTimeout(function(){
+                                window.location.reload();
+                            },1000);
+                        }else{
+                            layer.msg("上传失败");
+                        }
+                    },
+                    error:function(data){
+                        layer.msg("请稍后再试");
+                    }
+                })
+            }
+        });
+    });
+</script>
+</body>
+
+</html>
