@@ -259,13 +259,24 @@
                     // 泄露率测量值
                     $("#wcxyqmXll").append(res.data.wcxyqmXll);
                     $("#wcxyqmXlls").append("<p style='color:red;'>不符合</p>");
-
                     // 声光警报
-                    $("#sgbjResult").append("<p style='color:green;'>"+res.data.sgbjResult+"</p>");
+                    if(res.data.sgbjResult == 1){
+                        $("#sgbjResult").append("<p style='color:green;'>符合</p>");
+                    }else{
+                        $("#sgbjResult").append("<p style='color:red;'>不符合</p>");
+                    }
                     // 报警限检查
-                    $("#bjxjcResult").append("<p style='color:green;'>"+res.data.bjxjcResult+"</p>");
+                    if(res.data.bjxjcResult == 1){
+                        $("#bjxjcResult").append("<p style='color:green;'>符合</p>");
+                    }else{
+                        $("#bjxjcResult").append("<p style='color:red;'>不符合</p>");
+                    }
                     // 静音检查
-                    $("#jyjcResult").append("<p style='color:green;'>"+res.data.jyjcResult+"</p>");
+                    if(res.data.jyjcResult == 1){
+                        $("#jyjcResult").append("<p style='color:green;'>符合</p>");
+                    }else{
+                        $("#jyjcResult").append("<p style='color:red;'>不符合</p>");
+                    }
                 }
             }
         })
