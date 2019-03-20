@@ -9,6 +9,10 @@
     <link rel="stylesheet" type="text/css" href="../../../static/layui/css/layui.css"/>
     <link rel="stylesheet" type="text/css" href="../../../static/css/admin.css"/>
     <link rel="stylesheet" href="../../../static/css/all.min.css"/>
+    <script src="../../../static/js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <!--[if IE 8]>
+    <script type="text/javascript" src="../../../static/js/jquery-1.11.3.min.js"></script>
+    <![endif]-->
     <script src="../../../static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
     <style>
         .inp{
@@ -38,31 +42,31 @@
                     <div class="layui-form-item col-md-5">
                         <label class="layui-form-label">代理商全称</label>
                         <div class="layui-input-block">
-                            <input type="text" name="sbcsName" class="layui-input" autocomplete="off" lay-verify="required">
+                            <input id="sbcsName" type="text" name="sbcsName" class="layui-input" autocomplete="off" lay-verify="required">
                         </div>
                     </div>
                     <div class="layui-form-item col-md-5">
                         <label class="layui-form-label">办公地址</label>
                         <div class="layui-input-block">
-                            <input type="text" name="sbcsAddress" class="layui-input" autocomplete="off" lay-verify="required">
+                            <input id="sbcsAddress" type="text" name="sbcsAddress" class="layui-input" autocomplete="off" lay-verify="required">
                         </div>
                     </div>
                     <div class="layui-form-item col-md-5">
                         <label class="layui-form-label">固定电话</label>
                         <div class="layui-input-block">
-                            <input type="text" name="sbcsLxdh1" class="layui-input" autocomplete="off" lay-verify="required">
+                            <input id="sbcsLxdh1" type="text" name="sbcsLxdh1" class="layui-input" autocomplete="off" lay-verify="required">
                         </div>
                     </div>
                     <div class="layui-form-item col-md-5">
                         <label class="layui-form-label">医疗器械经营许可证号</label>
                         <div class="layui-input-block">
-                            <input type="text" name="sbcsCertificate" placeholder="医疗器械经营许可证号" class="layui-input" autocomplete="off">
+                            <input id="sbcsCertificate" type="text" name="sbcsCertificate" placeholder="医疗器械经营许可证号" class="layui-input" autocomplete="off">
                         </div>
                     </div>
                     <div class="layui-form-item col-md-5">
                         <label class="layui-form-label">营业执照(统一社会信用代码)</label>
                         <div class="layui-input-block">
-                            <input type="text" name="sbcsCreditcode" placeholder="营业执照(统一社会信用代码)" class="layui-input" autocomplete="off" lay-verify="required">
+                            <input id="sbcsCreditcode" type="text" name="sbcsCreditcode" placeholder="营业执照(统一社会信用代码)" class="layui-input" autocomplete="off" lay-verify="required">
                         </div>
                     </div>
                     <fieldset class="layui-elem-field layui-field-title">
@@ -109,6 +113,29 @@
         </div>
     </div>
     <script>
+        $(function(){
+            $.ajax({
+                url:"",
+                method:"GET",
+                dataType:"JSON",
+                success:function(res){
+                    console.log(res.data);
+                    if(res.data != null && res.data != ""){
+                        $("#sbcsName").val(res.data.sbcsName);
+                        $("#sbcsAddress").val(res.data.sbcsAddress);
+                        $("#sbcsLxdh1").val(res.data.sbcsLxdh1);
+                        $("#sbcsCertificate").val(res.data.sbcsCertificate);
+                        $("#sbcsCreditcode").val(res.data.sbcsCreditcode);
+                    }else{
+                        layer.msg("无数据");
+                    }
+                },
+                error:function (data) {
+                    layer.msg("请稍后再试");
+                    console.log(data);
+                }
+            })
+        });
         //Demo
         layui.use(['element','upload','jquery','form'], function(){
             var element = layui.element
