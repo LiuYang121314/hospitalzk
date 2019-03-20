@@ -62,7 +62,7 @@
             </tbody>
         </table>
       <div class="btn col-xs-12">
-          <button class="layui-btn layui-btn-normal">修改</button>
+          <button id="update" class="layui-btn layui-btn-normal">修改</button>
       </div>
     </div>
   </div>
@@ -115,14 +115,17 @@
           // {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
       ]]
     });
+      $("#update").click(function(){
+          location.href="/supplier/update/update_supplierinfo/update_myinfo.html";
+      })
     //监听行工具事件
-    table.on('tool(test)', function(obj){
-      var data = obj.data;
-      //console.log(obj)
-      if(obj.event === 'edit'){
-        location.href="/supplier/update/update_supplierinfo/update_myinfo.html";
-      }
-    });
+    // table.on('tool(test)', function(obj){
+    //   var data = obj.data;
+    //   //console.log(obj)
+    //   if(obj.event === 'edit'){
+    //
+    //   }
+    // });
   });
 </script>
 </body>
