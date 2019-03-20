@@ -127,7 +127,20 @@ public class YqController extends BaseController{
 		List<Yq> data=yqService.selectEqYqByEqid(eqId);
 		return new ResponseResult<List<Yq>>(SUCCESS,data);
 	}
-	//通过eqId和状态查询
+	//管理员查看通过设备ID查询设备检测仪器
+	//查看非电气仪器表
+	@RequestMapping("/selectYqNotDqByEqId")
+	public ResponseResult<List<Yq>> selectYqNotDqByEqId(@RequestParam("eqId") Integer eqId){
+		List<Yq> data=yqService.selectYqNotDqByEqId(eqId,"电气安全分析仪");
+		return new ResponseResult<List<Yq>>(SUCCESS,data);
+	}
+	//查看电气仪器表
+	@RequestMapping("/selectYqDqByEqId")
+	public ResponseResult<List<Yq>> selectYqDqByEqId(@RequestParam("eqId") Integer eqId){
+		List<Yq> data=yqService.selectYqDqByEqId(eqId,"电气安全分析仪");
+		return new ResponseResult<List<Yq>>(SUCCESS,data);
+	}
+	/*//通过eqId和状态查询
 	@RequestMapping("/selectYqByEqId")
 	public ResponseResult<List<Yq>> selectYqByEqId0(@RequestParam("eqId") Integer eqId){
 		List<Yq> data=yqService.selectYqByEqId(eqId);
@@ -137,7 +150,7 @@ public class YqController extends BaseController{
 	public ResponseResult<List<Yq>> selectYqByEqId1(@RequestParam("eqId") Integer eqId){
 		List<Yq> data=yqService.selectYqByEqId(eqId);
 		return new ResponseResult<List<Yq>>(SUCCESS,data);
-	}
+	}*/
 	/*@RequestMapping("/selectYqByEqId")
 	public ResponseResult<List<Yq>> selectYqByEqId(@RequestParam("eqId") Integer eqId){
 		List<Yq> data=yqService.selectYqByEqId(eqId);

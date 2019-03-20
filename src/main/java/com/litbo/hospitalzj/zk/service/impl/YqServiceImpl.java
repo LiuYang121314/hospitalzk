@@ -7,6 +7,7 @@ import java.util.Calendar;
 import com.litbo.hospitalzj.supplier.service.exception.InsertException;
 import com.litbo.hospitalzj.supplier.service.exception.NotFoundException;
 import javafx.scene.input.DataFormat;
+import org.apache.ibatis.annotations.Param;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,16 +78,17 @@ public class YqServiceImpl implements YqService{
         public List<Yq> selectEqYq(String eqDah) {
             return yqMapper.selectEqYq(eqDah);
         }*/
-	   //电器数据
-        @Override
-        public List<Yq> selectEqYqByEqId(Integer eqId, String jcyqName) {
-            return yqMapper.selectEqYqByEqId(eqId, jcyqName);
-        }
-        //除电器意外的数据
-        @Override
-        public List<Yq> selectEqYqNotDqByEqId(Integer eqId, String jcyqName) {
-            return yqMapper.selectEqYqNotDqByEqId(eqId, jcyqName);
-        }
+	//用户查看仪器表数据
+	//电器数据
+	@Override
+	public List<Yq> selectEqYqByEqId(Integer eqId, String jcyqName) {
+		return yqMapper.selectEqYqByEqId(eqId, jcyqName);
+	}
+	//除电器意外的数据
+	@Override
+	public List<Yq> selectEqYqNotDqByEqId(Integer eqId, String jcyqName) {
+		return yqMapper.selectEqYqNotDqByEqId(eqId, jcyqName);
+	}
 
 
 	//根据设备Id查询出设备以及仪器
@@ -99,14 +101,16 @@ public class YqServiceImpl implements YqService{
 		return yqMapper.selectEqYqByEqid(eqId);
 	}
 
+	//管理员查看通过设备ID查询设备检测仪器
+	//查看非电气仪器表
 	@Override
-	public List<Yq> selectYqNotDqByEqId(Integer eqId) {
-		return null;
+	public List<Yq> selectYqNotDqByEqId(Integer eqId,String jcyqName) {
+		return yqMapper.selectYqNotDqByEqId(eqId,jcyqName);
 	}
-
+	//查看电气仪器表
 	@Override
-	public List<Yq> selectYqDqByEqId(Integer eqId) {
-		return null;
+	public List<Yq> selectYqDqByEqId(Integer eqId,String jcyqName) {
+		return yqMapper.selectYqDqByEqId(eqId,jcyqName);
 	}
 
 	/*@Override

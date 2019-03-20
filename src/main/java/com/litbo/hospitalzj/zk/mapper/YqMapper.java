@@ -79,11 +79,11 @@ public interface YqMapper {
 	//查看非电气仪器表
 	/*@Select("SELECT yq.* FROM yq_eq y left join yq on y.jcyq_id=yq.jcyq_id where eq_id=#{eqId}")
 	List<Yq> selectYqByEqId(@Param("eqId") Integer eqId);*/
-	@Select("SELECT yq.* FROM yq_eq y left join yq on y.jcyq_id=yq.jcyq_id where  yq.jcyq_name <> #{jcyqName} and e.eq_id=#{eqId}")
-	List<Yq> selectYqNotDqByEqId(@Param("eqId") Integer eqId);
+	@Select("SELECT yq.* FROM yq_eq y left join yq on y.jcyq_id=yq.jcyq_id where  yq.jcyq_name <> #{jcyqName} and eq_id=#{eqId}")
+	List<Yq> selectYqNotDqByEqId(@Param("eqId") Integer eqId,@Param("jcyqName") String jcyqName);
 	//查看电气仪器表
-	@Select("SELECT yq.* FROM yq_eq y left join yq on y.jcyq_id=yq.jcyq_id where  yq.jcyq_name=#{jcyqName} and e.eq_id=#{eqId}")
-	List<Yq> selectYqDqByEqId(@Param("eqId") Integer eqId);
+	@Select("SELECT yq.* FROM yq_eq y left join yq on y.jcyq_id=yq.jcyq_id where  yq.jcyq_name=#{jcyqName} and eq_id=#{eqId}")
+	List<Yq> selectYqDqByEqId(@Param("eqId") Integer eqId,@Param("jcyqName") String jcyqName);
 	@Select("select * from yq")
 	List<Yq> selectTime();
 }
