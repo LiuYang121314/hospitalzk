@@ -24,16 +24,23 @@
 <div class="layui-row">
     <div class="col-xs-12">
         <fieldset class="layui-elem-field layui-field-title">
-            <legend style="color: red;">检测仪器数据</legend>
+            <legend style="color: red;">性能检测</legend>
         </fieldset>
-        <table class="layui-hide" id="testInfo" lay-filter="handle"></table>
+        <table class="layui-hide" id="xnInfo" lay-filter="handle1"></table>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend style="color: red;">电气安全检测</legend>
+        </fieldset>
+        <table class="layui-hide" id="dqaqInfo" lay-filter="handle2"></table>
         <div class="btn col-xs-12">
             <button id="sbumitUp" class="layui-btn layui-btn-normal">提交</button>
         </div>
     </div>
 </div>
-<script type="text/html" id="testHandles">
-  <a class="layui-btn layui-btn-xs" lay-event="more">查看数据</a>
+<script type="text/html" id="xnJump">
+    <a class="layui-btn layui-btn-xs" lay-event="hands">录入数据</a>
+</script>
+<script type="text/html" id="dqJump">
+    <a class="layui-btn layui-btn-xs" lay-event="hands">录入数据</a>
 </script>
 <script>
 	//获取上个页面传递的类型
@@ -48,11 +55,12 @@
             ,   table = layui.table
             ,   form = layui.form;
      // 检测仪器信息
-		table.render({
-            elem:"#testInfo",
+        // 性能检测
+        table.render({
+            elem:"#xnInfo",
             cellMinWidth:100,
             toolbar: '#toolbarDemo',
-            url:"/yq/selectYqByEqId1?eqId="+ids,
+            url:"?eqId="+ids,
             method:"GET",
             response: {
                 statusName: 'status'
@@ -76,21 +84,57 @@
                 {field:'jcyqDah', title:'档案号',align:'center'},
                 {field:'jcyqBh', title:'机身编码',align:'center'},
                 {field:'jcyqJzTime', title:'校准日期',align:'center'},
-                {fixed: 'right', title:'操作',toolbar: '#testHandles',align:'center'}
+                {fixed: 'right', title:'操作',toolbar: '#xnJump',align:'center'}
             ]]
         });
+        // 电气安全检测
+        table.render({
+            elem:"#dqaqInfo",
+            cellMinWidth:100,
+            toolbar: '#toolbarDemo',
+            url:"?eqId="+ids,
+            method:"GET",
+            response: {
+                statusName: 'status'
+                ,statusCode: 200
+                ,msgName: 'hint'
+                ,countName: 'total'
+                ,dataName: 'data'
+            },
+            parseData:function(res){
+                console.log(res);
+                return{
+                    "status":200
+                    ,"msg":res.message
+                    ,"count":res.total
+                    ,"data":res.data
+                }
+            },
+            cols:[[
+                {field:'jcyqName', title:'仪器名称',align:'center'},
+                {field:'jcyqXh', title:'型号',align:'center'},
+                {field:'jcyqDah', title:'档案号',align:'center'},
+                {field:'jcyqBh', title:'机身编码',align:'center'},
+                {field:'jcyqJzTime', title:'校准日期',align:'center'},
+                {fixed: 'right', title:'操作',toolbar: '#dqJump',align:'center'}
+            ]]
+        });
+
 		//监听行工具事件
-		  table.on('tool(handle)', function(obj){
-		    var data = obj.data;
-		    //console.log(obj)
-              if(obj.event === "more"){
-                  if(obj.data.jcyqName == "电气安全分析仪"){
-                      location.href="/admin/home/apply/electric_info.html?id="+obj.data.jcyqId;
-                  }else{
-                      location.href="/admin/home/apply/man_life_table.html?id="+obj.data.jcyqId;
-                  }
-              }
-		  });
+        table.on('tool(handle1)', function(obj){
+            var data = obj.data;
+            //console.log(obj)
+            if(obj.event === "hands"){
+                location.href="/admin/home/apply/man_life_table.html?id="+obj.data.jcyqId;
+            }
+        });
+        table.on('tool(handle2)', function(obj){
+            var data = obj.data;
+            //console.log(obj)
+            if(obj.event === "hands"){
+                location.href="/admin/home/apply/electric_info.html?id="+obj.data.jcyqId;
+            }
+        });
 		  $("#sbumitUp").click(function(){
               $.ajax({
                   url:"/userEq/setEqStateNotIs?jceqId="+ids+"&userId="+userId,
