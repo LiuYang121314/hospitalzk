@@ -77,9 +77,11 @@
             method:"GET",
             dataType:"JSON",
             success:function (res) {
+                var ylqxSrc = serverPath+res.data.sbcsCertificatep.replace(/\s*/g,"");
+                var yyzzSrc = serverPath+res.data.sbcsCreditcodep.replace(/\s*/g,"");
                 if(res.data != null && res.data != ""){
-                    $("#ylqx").attr("src",serverPath+res.data.sbcsCertificatep);
-                    $("#yyzz").attr("src",serverPath+res.data.sbcsCreditcodep);
+                    $("#ylqx").attr("src",ylqxSrc);
+                    $("#yyzz").attr("src",yyzzSrc);
                 }
             }
         })
