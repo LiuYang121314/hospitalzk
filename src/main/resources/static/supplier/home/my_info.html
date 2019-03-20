@@ -50,13 +50,13 @@
             <tr>
                 <td>医疗器械经营许可证影印件</td>
                 <td>
-                    <img id="ylqx" alt="">
+                    <img id="ylqx" src="">
                 </td>
             </tr>
             <tr>
                 <td>营业执照影印件</td>
                 <td>
-                    <img id="yyzz">
+                    <img id="yyzz" src="">
                 </td>
             </tr>
             </tbody>
@@ -71,17 +71,16 @@
   <!--</script>-->
 <script>
     $(function () {
-        var serverPath = window.location.host;
+        // var serverPath = window.location.host;
+        // console.log(serverPath);
         $.ajax({
             url:"/supplier/one",
             method:"GET",
             dataType:"JSON",
             success:function (res) {
-                var ylqxSrc = serverPath+res.data.sbcsCertificatep.replace(/\s*/g,"");
-                var yyzzSrc = serverPath+res.data.sbcsCreditcodep.replace(/\s*/g,"");
                 if(res.data != null && res.data != ""){
-                    $("#ylqx").attr("src",ylqxSrc);
-                    $("#yyzz").attr("src",yyzzSrc);
+                    $("#ylqx").attr("src",res.data.sbcsCertificatep);
+                    $("#yyzz").attr("src",res.data.sbcsCreditcodep);
                 }
             }
         })
