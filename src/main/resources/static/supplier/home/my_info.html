@@ -72,24 +72,10 @@
       var data = obj.data;
       //console.log(obj)
       if(obj.event === 'edit'){
-        layer.open({
-          type:2,
-          title:"修改信息",
-          content:"/supplier/update/update_supplierinfo/update_myinfo.html",
-          area:["90%","80%"],
-          maxmin:true,
-          btn:["确定"],
-          yes:function(){
-            setTimeout(function(){
-              layer.closeAll();
-            },1000)
-            self.location.href="./my_info.html";
-          }
-        })
+        location.href="/supplier/update/update_supplierinfo/update_myinfo.html";
       }
     });
   });
 </script>
 </body>
-
 </html>
