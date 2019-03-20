@@ -20,6 +20,13 @@
         margin-top: 20px;
         color: red;
       }
+        .btn{
+            margin-top: 40px;
+            text-align: center;
+        }
+        td{
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -28,14 +35,55 @@
       <fieldset class="layui-elem-field layui-field-title">
           <legend>供应商基本信息</legend>
       </fieldset>
-      <table class="layui-table" id="supplierInfo" lay-filter="test">
-      </table>
+      <table class="layui-table" id="supplierInfo"></table>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>资质凭证</legend>
+        </fieldset>
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th style="width: 50%;">文件名称</th>
+                <th>图片</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>医疗器械经营许可证影印件</td>
+                <td>
+                    <img id="ylqx" alt="">
+                </td>
+            </tr>
+            <tr>
+                <td>营业执照影印件</td>
+                <td>
+                    <img id="yyzz">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+      <div class="btn col-xs-12">
+          <button class="layui-btn layui-btn-normal">修改</button>
+      </div>
     </div>
   </div>
-  <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>
-  </script>
+  <!--<script type="text/html" id="barDemo">-->
+    <!--<a class="layui-btn layui-btn-xs" lay-event="edit">修改</a>-->
+  <!--</script>-->
 <script>
+    $(function () {
+        var serverPath = curWwwPath.substring(0, index);
+        $.ajax({
+            url:"/supplier/one",
+            method:"GET",
+            dataType:"JSON",
+            success:function (res) {
+                if(res.data != null && res.data != ""){
+                    $("#ylqx").attr("src",serverPath+res.data.sbcsCertificatep);
+                    $("#yyzz").attr("src",serverPath+res.data.sbcsCreditcodep);
+                }
+            }
+        })
+    })
   //Demo
   layui.use(['layer','jquery','upload','table'], function(){
       var layer = layui.layer
@@ -64,7 +112,7 @@
           {field:'sbcsLxdh1', title:'固定电话',align:'center'},
           {field:'sbcsCertificate', title:'医疗器械经营许可证号',sort: true,align:'center'},
           {field:'sbcsCreditcode', title:'营业执照(统一社会信用代码)',align:'center'},
-          {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
+          // {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
       ]]
     });
     //监听行工具事件
