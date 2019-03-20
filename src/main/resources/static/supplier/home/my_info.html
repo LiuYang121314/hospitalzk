@@ -71,7 +71,7 @@
   <!--</script>-->
 <script>
     $(function () {
-        var serverPath = curWwwPath.substring(0, index);
+        var serverPath = window.location.host;
         $.ajax({
             url:"/supplier/one",
             method:"GET",
