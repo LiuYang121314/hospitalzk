@@ -55,15 +55,11 @@
         <fieldset class="layui-elem-field layui-field-title">
             <legend style="color: red;">被检设备基础信息</legend>
         </fieldset>
-        <table class="layui-hide" id="fixInfo"></table>
-        <fieldset class="layui-elem-field layui-field-title">
-            <legend style="color: red;">所用检测仪器信息</legend>
-        </fieldset>
-        <table class="layui-hide" id="testInfo" lay-filter="handle"></table>
+        <table class="layui-hide" id="fixInfo" lay-filter="handle"></table>
     </div>
 </div>
 <script type="text/html" id="testHandles">
-    <a class="layui-btn layui-btn-xs" lay-event="hands">录入数据</a>
+    <a class="layui-btn layui-btn-xs" lay-event="hands">检测仪器</a>
 </script>
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
@@ -82,87 +78,67 @@
             ,   table = layui.table
             ,   element = layui.element;
         form.on("submit(searchSub)",function(data){
-        	// 设备信息
-			table.render({
-	            elem:"#fixInfo",
-	            cellMinWidth:100,
-	            toolbar: '#toolbarDemo',
-	            url:"/yq/selectEqInfo?eqDah="+data.field.dah+"&eqPmId="+ids+"&ndjhId="+ndjhId,
-	            method:"GET",
-	            response: {
-	                statusName: 'status'
-	                ,statusCode: 200
-	                ,msgName: 'hint'
-	                ,countName: 'total'
-	                ,dataName: 'data'
-	            },
-	            parseData:function(res){
-	                console.log(res.data);
-	                sessionStorage['thiseqId'] = res.data.eqId;
-	                return{
-	                    "status":200
-	                    ,"msg":res.message
-	                    ,"count":res.total
-	                    ,"data":[res.data]
-	                }
-	            },
-	            cols:[[
-	                {field:'eqMc', title:'设备名称',align:'center'},
-	                {field:'eqDah', title:'档案号',align:'center'},
-	                {field:'eqScbh', title:'出厂编号',align:'center'},
-	                {field:'eqNum', title:'设备数量',align:'center'},
-	                {field:'eqCcdate', title:'出厂日期',align:'center'},
-	                {field:'eqCscs', title:'生产厂商',align:'center'},
-	                {field:'eqSyks', title:'使用科室',align:'center'},
-	                {field:'eqJx', title:'设备机型',align:'center'},
-	                {field:'eqQyrq', title:'启用日期',align:'center'},
-	                {field:'eqCfdd', title:'设备存放地点',align:'center'}
-	            ]]
-	        });
-			// 检测仪器信息
-			table.render({
-	            elem:"#testInfo",
-	            cellMinWidth:100,
-	            toolbar: '#toolbarDemo',
-	            url:"/yq/selectEqYq?eqDah="+data.field.dah,
-	            method:"GET",
-	            response: {
-	                statusName: 'status'
-	                ,statusCode: 200
-	                ,msgName: 'hint'
-	                ,countName: 'total'
-	                ,dataName: 'data'
-	            },
-	            parseData:function(res){
-	                console.log(res);
-	                return{
-	                    "status":200
-	                    ,"msg":res.message
-	                    ,"count":res.total
-	                    ,"data":res.data
-	                }
-	            },
-	            cols:[[
-	                {field:'jcyqName', title:'仪器名称',align:'center'},
-	                {field:'jcyqXh', title:'型号',align:'center'},
-	                {field:'jcyqDah', title:'档案号',align:'center'},
-	                {field:'jcyqBh', title:'机身编码',align:'center'},
-	                {field:'jcyqJzTime', title:'校准日期',align:'center'},
-	                {fixed: 'right', title:'操作',toolbar: '#testHandles',align:'center'}
-	            ]]
-	        });
-        	
+            $.ajax({
+                url:"/yq/selectEqInfo?eqDah="+data.field.dah+"&eqPmId="+ids+"&ndjhId="+ndjhId,
+                method:"POST",
+                dataType:"JSON",
+                success:function(res){
+                    if(res.state === 200){
+                        layer.msg("查询成功");
+                        // 设备信息
+                        table.render({
+                            elem:"#fixInfo",
+                            cellMinWidth:100,
+                            toolbar: '#toolbarDemo',
+                            url:"/yq/selectEqInfo?eqDah="+data.field.dah+"&eqPmId="+ids+"&ndjhId="+ndjhId,
+                            method:"GET",
+                            response: {
+                                statusName: 'status'
+                                ,statusCode: 200
+                                ,msgName: 'hint'
+                                ,countName: 'total'
+                                ,dataName: 'data'
+                            },
+                            parseData:function(res){
+                                console.log(res.data);
+                                return{
+                                    "status":200
+                                    ,"msg":res.message
+                                    ,"count":res.total
+                                    ,"data":[res.data]
+                                }
+                            },
+                            cols:[[
+                                {field:'eqMc', title:'设备名称',align:'center'},
+                                {field:'eqDah', title:'档案号',align:'center'},
+                                {field:'eqScbh', title:'出厂编号',align:'center'},
+                                {field:'eqNum', title:'设备数量',align:'center'},
+                                {field:'eqCcdate', title:'出厂日期',align:'center'},
+                                {field:'eqCscs', title:'生产厂商',align:'center'},
+                                {field:'eqSyks', title:'使用科室',align:'center'},
+                                {field:'eqJx', title:'设备机型',align:'center'},
+                                {field:'eqQyrq', title:'启用日期',align:'center'},
+                                {field:'eqCfdd', title:'设备存放地点',align:'center'},
+                                {fixed: 'right', title:'操作',toolbar: '#testHandles',align:'center'}
+                            ]]
+                        });
+                    }else if(res.state === 503){
+                        layer.msg("该档案号不存在，请重新查询");
+                    }
+                },
+                error:function(data){
+                    layer.msg("请稍后再试");
+                    console.log(data);
+                }
+            })
+
         	return false;
         });
         table.on('tool(handle)', function(obj){
             var data = obj.data;
             //console.log(obj)
             if(obj.event === "hands"){
-            	if(obj.data.jcyqName == "电气安全分析仪"){
-            		location.href="/control/home/waiting/write_info/write_electric_info.html?id="+obj.data.jcyqId;
-            	}else{
-            		location.href="/control/home/waiting/write_info/write_life_info.html?id="+obj.data.jcyqId;
-            	}
+            	location.href="/control/home/waiting/check_info.html?id="+obj.data.eqId;
             }
         });
     });

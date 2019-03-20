@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.litbo.hospitalzj.supplier.service.exception.*;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -17,15 +18,6 @@ import com.litbo.hospitalzj.supplier.controller.ex.FileUploadException;
 import com.litbo.hospitalzj.supplier.controller.ex.HtInfoIsNullException;
 import com.litbo.hospitalzj.supplier.controller.ex.RequestException;
 import com.litbo.hospitalzj.supplier.controller.ex.UserYanzhengException;
-import com.litbo.hospitalzj.supplier.service.exception.AccessDeniedException;
-import com.litbo.hospitalzj.supplier.service.exception.AddressNotFoundException;
-import com.litbo.hospitalzj.supplier.service.exception.DeleteException;
-import com.litbo.hospitalzj.supplier.service.exception.DuplicateKeyException;
-import com.litbo.hospitalzj.supplier.service.exception.InsertException;
-import com.litbo.hospitalzj.supplier.service.exception.PasswordNotMatchException;
-import com.litbo.hospitalzj.supplier.service.exception.ServiceException;
-import com.litbo.hospitalzj.supplier.service.exception.UpdateException;
-import com.litbo.hospitalzj.supplier.service.exception.UserNotFoundException;
 import com.litbo.hospitalzj.util.ResponseResult;
 
 
@@ -89,6 +81,9 @@ public abstract class BaseController {
 		} else if (e instanceof DeleteException) {
 			// 502-删除数据异常
 			state = 502;
+		} else if (e instanceof NotFoundException) {
+			// 503-查看数据异常
+			state = 503;
 		} else if (e instanceof FileEmptyException) {
 			// 600-上传的文件为空的异常
 			state = 600;

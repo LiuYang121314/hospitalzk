@@ -112,11 +112,7 @@ public class HtInfoController extends BaseController{
 		htLcService.InsertHtLc(htId,EnumProcess.WAIT_ACCEPT.getMessage(),new Date());
 		return new ResponseResult<Void>(SUCCESS);
 	}
-	/*@RequestMapping("/selectEqHt")
-	public ResponseResult<Void> selectEqHtVo(String htYzm){
-		htinfoService.selectEqHtVo(htYzm);
-		return new ResponseResult<Void>(SUCCESS);
-	}*/
+
 	@RequestMapping("/selectHtInfo")
 	public ResponseResult<List<HtInfo>> selectHtInfo(HttpSession session){
 		Integer sbcsId=getUidFromSession(session);

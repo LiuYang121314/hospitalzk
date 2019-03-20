@@ -3,7 +3,7 @@ package com.litbo.hospitalzj.quality.service.impl;
 import com.litbo.hospitalzj.quality.entity.YqPm;
 import com.litbo.hospitalzj.quality.mapper.YqPmMapper;
 import com.litbo.hospitalzj.quality.service.YqPmService;
-import com.litbo.hospitalzj.service.exception.InsertException;
+import com.litbo.hospitalzj.supplier.service.exception.InsertException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>检测设备</title>
+    <link rel="stylesheet" type="text/css" href="../../../static/layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../static/css/admin.css"/>
+    <script src="../../../static/js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <!--[if IE 8]>
+    <script type="text/javascript" src="../../../static/js/jquery-1.11.3.min.js"></script>
+    <![endif]-->
+    <script src="../../../static/js/basic.js"></script>
+    <script src="../../../static/layui/layui.js"></script>
+    <style>
+        .layui-elem-field{
+            width: 100%;
+            margin-top: 20px;
+            color: red;
+        }
+        .basicInfo{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .btn{
+            width: 100%;
+            margin-top: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-row">
+    <div class="col-xs-12">
+    	<fieldset class="layui-elem-field layui-field-title">
+            <legend style="color: #000000;font-weight: bold">检测仪器</legend>
+        </fieldset>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend style="color: red;">性能检测</legend>
+        </fieldset>
+        <table class="layui-hide" id="xnInfo" lay-filter="handle1"></table>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend style="color: red;">电气安全检测</legend>
+        </fieldset>
+        <table class="layui-hide" id="dqaqInfo" lay-filter="handle2"></table>
+    </div>
+</div>
+<script type="text/html" id="xnJump">
+    <a class="layui-btn layui-btn-xs" lay-event="hands">录入数据</a>
+</script>
+<script type="text/html" id="dqJump">
+    <a class="layui-btn layui-btn-xs" lay-event="hands">录入数据</a>
+</script>
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+    </div>
+</script>
+<script>
+    // 获取上个页面传递的类型
+    var type = window.location.search;
+    var ids = parseInt(type.split("=")[1]);
+    sessionStorage['thiseqId'] = ids;
+    //Demo
+    layui.use(['form','layer','jquery','table','element'], function(){
+        var form = layui.form
+            ,   layer = layui.layer
+            ,   $ = layui.jquery
+            ,   table = layui.table
+            ,   element = layui.element;
+		// 性能检测
+		table.render({
+            elem:"#xnInfo",
+            cellMinWidth:100,
+            toolbar: '#toolbarDemo',
+            url:"/yq/selectEqYqNotDqByEqId?eqId="+ids,
+            method:"GET",
+            response: {
+                statusName: 'status'
+                ,statusCode: 200
+                ,msgName: 'hint'
+                ,countName: 'total'
+                ,dataName: 'data'
+            },
+            parseData:function(res){
+                console.log(res);
+                return{
+                    "status":200
+                    ,"msg":res.message
+                    ,"count":res.total
+                    ,"data":res.data
+                }
+            },
+            cols:[[
+                {field:'jcyqName', title:'仪器名称',align:'center'},
+                {field:'jcyqXh', title:'型号',align:'center'},
+                {field:'jcyqDah', title:'档案号',align:'center'},
+                {field:'jcyqBh', title:'机身编码',align:'center'},
+                {field:'jcyqJzTime', title:'校准日期',align:'center'},
+                {fixed: 'right', title:'操作',toolbar: '#xnJump',align:'center'}
+            ]]
+        });
+        // 电气安全检测
+		table.render({
+            elem:"#dqaqInfo",
+            cellMinWidth:100,
+            toolbar: '#toolbarDemo',
+            url:"/yq/selectEqYqByEqId?eqId="+ids,
+            method:"GET",
+            response: {
+                statusName: 'status'
+                ,statusCode: 200
+                ,msgName: 'hint'
+                ,countName: 'total'
+                ,dataName: 'data'
+            },
+            parseData:function(res){
+                console.log(res);
+                return{
+                    "status":200
+                    ,"msg":res.message
+                    ,"count":res.total
+                    ,"data":res.data
+                }
+            },
+            cols:[[
+                {field:'jcyqName', title:'仪器名称',align:'center'},
+                {field:'jcyqXh', title:'型号',align:'center'},
+                {field:'jcyqDah', title:'档案号',align:'center'},
+                {field:'jcyqBh', title:'机身编码',align:'center'},
+                {field:'jcyqJzTime', title:'校准日期',align:'center'},
+                {fixed: 'right', title:'操作',toolbar: '#dqJump',align:'center'}
+            ]]
+        });
+        table.on('tool(handle1)', function(obj){
+            var data = obj.data;
+            //console.log(obj)
+            if(obj.event === "hands"){
+            	location.href="/control/home/waiting/write_info/write_life_info.html?id="+obj.data.jcyqId;
+            }
+        });
+        table.on('tool(handle2)', function(obj){
+            var data = obj.data;
+            //console.log(obj)
+            if(obj.event === "hands"){
+            	location.href="/control/home/waiting/write_info/write_electric_info.html?id="+obj.data.jcyqId;
+            }
+        });
+    });
+</script>
+</body>
+</html>

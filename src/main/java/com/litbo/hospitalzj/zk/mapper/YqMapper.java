@@ -61,17 +61,29 @@ public interface YqMapper {
 	//根据档案号查询出设备以及仪器
 	@Select("SELECT * FROM eq_info where eq_dah=#{eqDah}")
 	EqInfo selectEqInfo(String eqDah);
-	@Select("SELECT yq.* FROM eq_info e left join yq_pm y on e.eq_pm_id=y.eq_pm_id left join yq on y.yq_id=yq.jcyq_id where e.eq_dah=#{eqDah}")
-	List<Yq> selectEqYq(String eqDah);
-
+	/*@Select("SELECT yq.* FROM eq_info e left join yq_pm y on e.eq_pm_id=y.eq_pm_id left join yq on y.yq_id=yq.jcyq_id where e.eq_dah=#{eqDah}")
+	List<Yq> selectEqYq(String eqDah);*/
+    //用户查看仪器表
+	//除电器意外的数据
+	@Select("SELECT yq.* FROM eq_info e left join yq_pm y on e.eq_pm_id=y.eq_pm_id left join yq on y.yq_id=yq.jcyq_id where yq.jcyq_name <> #{jcyqName} and e.eq_id=#{eqId}")
+	List<Yq> selectEqYqNotDqByEqId(@Param("eqId") Integer eqId,@Param("jcyqName") String jcyqName);
+	//电器数据
+	@Select("SELECT yq.* FROM eq_info e left join yq_pm y on e.eq_pm_id=y.eq_pm_id left join yq on y.yq_id=yq.jcyq_id where yq.jcyq_name = #{jcyqName} and e.eq_id=#{eqId}")
+	List<Yq> selectEqYqByEqId(@Param("eqId") Integer eqId,@Param("jcyqName") String jcyqName);
 	//根据设备Id查询出设备以及仪器
 	@Select("SELECT * FROM eq_info where eq_id=#{eqId}")
 	EqInfo selectEqInfoByEqid(Integer eqId);
 	@Select("SELECT yq.* FROM eq_info e left join yq_pm y on e.eq_pm_id=y.eq_pm_id left join yq on y.yq_id=yq.jcyq_id where eq_id=#{eqId}")
 	List<Yq> selectEqYqByEqid(Integer eqId);
-
-	@Select("SELECT yq.* FROM yq_eq y left join yq on y.jcyq_id=yq.jcyq_id where eq_id=#{eqId}")
-	List<Yq> selectYqByEqId(@Param("eqId") Integer eqId);
+	//管理员查看通过设备ID查询设备检测仪器
+	//查看非电气仪器表
+	/*@Select("SELECT yq.* FROM yq_eq y left join yq on y.jcyq_id=yq.jcyq_id where eq_id=#{eqId}")
+	List<Yq> selectYqByEqId(@Param("eqId") Integer eqId);*/
+	@Select("SELECT yq.* FROM yq_eq y left join yq on y.jcyq_id=yq.jcyq_id where  yq.jcyq_name <> #{jcyqName} and e.eq_id=#{eqId}")
+	List<Yq> selectYqNotDqByEqId(@Param("eqId") Integer eqId);
+	//查看电气仪器表
+	@Select("SELECT yq.* FROM yq_eq y left join yq on y.jcyq_id=yq.jcyq_id where  yq.jcyq_name=#{jcyqName} and e.eq_id=#{eqId}")
+	List<Yq> selectYqDqByEqId(@Param("eqId") Integer eqId);
 	@Select("select * from yq")
 	List<Yq> selectTime();
 }

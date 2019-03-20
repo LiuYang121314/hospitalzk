@@ -42,15 +42,15 @@ public class UserEqController extends BaseController{
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	
-	//测试通过
+	/*//测试通过
 	//为用户添加审核设备
 	@RequestMapping("/insertBatchByShEqid")
 	public ResponseResult<Void> insertBatchByShEqid(String userId,String[] shEqid){
 		userEqService.insertBatchByShEqid(userId,shEqid);
 		return new ResponseResult<Void>(SUCCESS);
-	}
+	}*/
 	
-	//测试通过
+	/*//测试通过
 	//为用户删除审核设备
 	@RequestMapping("/deleteBatchByShEqid")
 	public ResponseResult<Void> deleteBatchByShEqid(String userId,String[] shEqid){
@@ -58,7 +58,7 @@ public class UserEqController extends BaseController{
 		userEqService.deleteBatchByShEqid(userId,shEqid);
 		
 		return new ResponseResult<Void>(SUCCESS);
-	}
+	}*/
 	
 	//测试通过
 	//为用户删除检测设备
@@ -75,7 +75,7 @@ public class UserEqController extends BaseController{
 		List<EqInfo> yqList=eqInfoService.findJcEqByUserId(userId);
 		return new ResponseResult<List<EqInfo>>(SUCCESS,yqList);
 	}
-	//查询用户分配的检测设备
+	//用户通过id查询用户分配的检测设备
 	@RequestMapping("/findJcEqByMyUserId")
 	public ResponseResult<List<EqInfo>> findJcEqByMyUserId(HttpSession session){
 		String userId =getUserIdFromSession(session);
@@ -89,13 +89,13 @@ public class UserEqController extends BaseController{
 		List<EqInfo> yqList=eqInfoService.findEqInfo(userId);
 		return new ResponseResult<List<EqInfo>>(SUCCESS,yqList);
 	}
-	//测试通过
+	/*//测试通过
 	//查询用户分配的审核设备
 	@RequestMapping("/findShEqByUserId")
 	public ResponseResult<List<EqInfo>> findShEqByUserId(String userId){
 		List<EqInfo> yqList=eqInfoService.findShEqByUserId(userId);
 		return new ResponseResult<List<EqInfo>>(SUCCESS,yqList);
-	}
+	}*/
 
 	//用户检测设备完毕、设置状态为2:待审核
 	@RequestMapping("/setEqState2/{userId}/{eqId}")
@@ -183,21 +183,21 @@ public class UserEqController extends BaseController{
 		List<UserEqVo> eqList=userEqService.findUserEqVo(userId, EnumProcess2.DETECTION_OF_AUDIT_IS.getMessage());
 		return new ResponseResult<List<UserEqVo>>(SUCCESS,eqList);
 	}
-	//2:检测审核不成功
+	//3:检测审核不成功
 	@RequestMapping("/findJcShBcg")
 	public ResponseResult<List<UserEqVo>> findJcShBcg(HttpSession session){
 		String userId=getUserIdFromSession(session);
 		List<UserEqVo> eqList=userEqService.findUserEqVo(userId, EnumProcess2.DETECTION_OF_AUDIT_NOT.getMessage());
 		return new ResponseResult<List<UserEqVo>>(SUCCESS,eqList);
 	}
-	//3:审核不通过
+	//4:审核不通过
 	@RequestMapping("/findJcShbtg")
 	public ResponseResult<List<UserEqVo>> findJcShbtg(HttpSession session){
 		String userId=getUserIdFromSession(session);
 		List<UserEqVo> eqList=userEqService.findUserEqVo(userId, EnumProcess2.AUTID_NOT.getMessage());
 		return new ResponseResult<List<UserEqVo>>(SUCCESS,eqList);
 	}
-	//待上传
+	//5：待上传
 	@RequestMapping("/findEqDsc")
 	public ResponseResult<List<UserEqVo>> findEqDsc(HttpSession session){
 		String userId=getUserIdFromSession(session);
@@ -212,13 +212,13 @@ public class UserEqController extends BaseController{
 		return new ResponseResult<List<UserEqVo>>(SUCCESS,eqList);
 	}
 
-	//待上报/审核上报不通过
+	/*//待上报/审核上报不通过
 	@RequestMapping("/findJcShdsbAndNot")
 	public ResponseResult<List<UserEqVo>> findJcShdsbAndNot(HttpSession session){
 		String userId=getUserIdFromSession(session);
 		List<UserEqVo> eqList=userEqService.findUserEq(userId, EnumProcess2.TO_AUDIT.getMessage(),EnumProcess2.SHANG_AUTID_NOT.getMessage());
 		return new ResponseResult<List<UserEqVo>>(SUCCESS,eqList);
-	}
+	}*/
 	//检测审核不通过
 	@RequestMapping("/findShEqsByUserIdAndStateNot")
 	public ResponseResult<List<EqInfo>> findShEqsByUserIdAndState(HttpSession session){
@@ -232,5 +232,12 @@ public class UserEqController extends BaseController{
 		String userId=getUserIdFromSession(session);
 		List<EqInfo> eqList=eqInfoService.findShEqsByUserIdAndState(userId, EnumProcess2.DETECTION_OF_AUDIT_IS.getMessage());
 		return new ResponseResult<List<EqInfo>>(SUCCESS,eqList);
+	}
+	//查询审核不成功的个数
+	@RequestMapping("/findByUserIdStateCount")
+	public ResponseResult<Integer> findByUserIdStateCount(HttpSession session){
+		String userId=getUserIdFromSession(session);
+		Integer eqList=userEqService.findByUserIdState(userId, EnumProcess2.DETECTION_OF_AUDIT_NOT.getMessage());
+		return new ResponseResult<Integer>(SUCCESS,eqList);
 	}
 }

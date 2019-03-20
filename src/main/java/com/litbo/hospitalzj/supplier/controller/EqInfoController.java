@@ -26,8 +26,6 @@ public class EqInfoController extends BaseController{
 	private EqInfoService eqinfoService;
 	@RequestMapping("/insert")
 	public ResponseResult<Integer> insertEqInfo(EqInfo eqInfo,HttpSession session){
-		/*Integer id=(Integer) session.getAttribute("htId");
-		eqInfo.setHtIds(id);*/
 		eqinfoService.InsertEqInfo(eqInfo);
 		session.setAttribute("eqId", eqInfo.getEqId());
 		System.out.println(eqInfo.getEqId());

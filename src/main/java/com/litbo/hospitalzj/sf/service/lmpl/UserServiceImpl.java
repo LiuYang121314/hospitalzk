@@ -1,13 +1,9 @@
 package com.litbo.hospitalzj.sf.service.lmpl;
 
-import com.litbo.hospitalzj.service.exception.InsertException;
 import com.litbo.hospitalzj.sf.entity.User;
 import com.litbo.hospitalzj.sf.mapper.UserMapper;
 import com.litbo.hospitalzj.sf.service.UserService;
-import com.litbo.hospitalzj.supplier.service.exception.DeleteException;
-import com.litbo.hospitalzj.supplier.service.exception.PasswordNotMatchException;
-import com.litbo.hospitalzj.supplier.service.exception.UpdateException;
-import com.litbo.hospitalzj.supplier.service.exception.UserNotFoundException;
+import com.litbo.hospitalzj.supplier.service.exception.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

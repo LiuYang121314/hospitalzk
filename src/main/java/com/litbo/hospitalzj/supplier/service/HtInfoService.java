@@ -9,11 +9,10 @@ import com.litbo.hospitalzj.supplier.entity.HtInfo;
 import com.litbo.hospitalzj.supplier.vo.EqHtVo;
 
 public interface HtInfoService {
+	//插入合同
 	Integer InsertHtInfo(HtInfo htinfo);
 	
 	void updateYzm(@Param("htId") Integer htId, @Param("htYzm") String htYzm, @Param("htState") String htState);
-	
-/*	void updateState(@Param("htState") Integer htState);*/
 
 	HtInfo updateInfo(HtInfo htinfo);
 	
@@ -26,15 +25,12 @@ public interface HtInfoService {
 	List<EqHtVo> selectEqHtVo(String htYzm);
 	
 	HtInfo selectHtInfo(String htYzm);
-	
+
+	//上传合同文件
 	void updateOne(@Param("htId") Integer htId, @Param("htFile1") String htFile1);
-	
 	void updateTwo(@Param("htId") Integer htId, @Param("htFile2") String htFile2);
-	
 	void updateThree(@Param("htId") Integer htId, @Param("htFile3") String htFile3);
-	
 	void updateFour(@Param("htId") Integer htId, @Param("htFile4") String htFile4);
-	
 	void updateFive(@Param("htId") Integer htId, @Param("htFile5") String htFile5);
 
 	int agreeHtInfoById(Integer htId, String yy, String date);

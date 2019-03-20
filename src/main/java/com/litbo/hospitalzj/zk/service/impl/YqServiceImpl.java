@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Calendar;
 
+import com.litbo.hospitalzj.supplier.service.exception.InsertException;
+import com.litbo.hospitalzj.supplier.service.exception.NotFoundException;
 import javafx.scene.input.DataFormat;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
@@ -65,13 +67,28 @@ public class YqServiceImpl implements YqService{
 
 	@Override
 	public EqInfo selectEqInfo(String eqDah) {
+		EqInfo data=yqMapper.selectEqInfo(eqDah);
+		if(data==null){
+			throw new NotFoundException("您查询的设备不存在");
+		}
 		return yqMapper.selectEqInfo(eqDah);
 	}
+	/*@Override
+        public List<Yq> selectEqYq(String eqDah) {
+            return yqMapper.selectEqYq(eqDah);
+        }*/
+	   //电器数据
+        @Override
+        public List<Yq> selectEqYqByEqId(Integer eqId, String jcyqName) {
+            return yqMapper.selectEqYqByEqId(eqId, jcyqName);
+        }
+        //除电器意外的数据
+        @Override
+        public List<Yq> selectEqYqNotDqByEqId(Integer eqId, String jcyqName) {
+            return yqMapper.selectEqYqNotDqByEqId(eqId, jcyqName);
+        }
 
-	@Override
-	public List<Yq> selectEqYq(String eqDah) {
-		return yqMapper.selectEqYq(eqDah);
-	}
+
 	//根据设备Id查询出设备以及仪器
 	@Override
 	public EqInfo selectEqInfoByEqid(Integer eqId) {
@@ -83,9 +100,19 @@ public class YqServiceImpl implements YqService{
 	}
 
 	@Override
+	public List<Yq> selectYqNotDqByEqId(Integer eqId) {
+		return null;
+	}
+
+	@Override
+	public List<Yq> selectYqDqByEqId(Integer eqId) {
+		return null;
+	}
+
+	/*@Override
 	public List<Yq> selectYqByEqId(Integer eqId) {
 		return yqMapper.selectYqByEqId(eqId);
-	}
+	}*/
 
 	@Override
 	public List<Yq>  selectTime(){

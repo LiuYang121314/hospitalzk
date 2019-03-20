@@ -98,9 +98,21 @@ public class YqController extends BaseController{
 		return new ResponseResult<EqInfo>(SUCCESS,data);
 	}
 
-	@RequestMapping("/selectEqYq")
+	/*@RequestMapping("/selectEqYq")
 	public ResponseResult<List<Yq>> selectEqYq(String eqDah){
 		List<Yq> data=yqService.selectEqYq(eqDah);
+		return new ResponseResult<List<Yq>>(SUCCESS,data);
+	}*/
+	//电器的数据
+	@RequestMapping("/selectEqYqByEqId")
+	public ResponseResult<List<Yq>> selectEqYqByEqId(@RequestParam("eqId") Integer eqId){
+		List<Yq> data=yqService.selectEqYqByEqId(eqId,"电气安全分析仪");
+		return new ResponseResult<List<Yq>>(SUCCESS,data);
+	}
+	//除电器意外的数据
+	@RequestMapping("/selectEqYqNotDqByEqId")
+	public ResponseResult<List<Yq>> selectEqYqNotDqByEqId(@RequestParam("eqId") Integer eqId){
+		List<Yq> data=yqService.selectEqYqNotDqByEqId(eqId,"电气安全分析仪");
 		return new ResponseResult<List<Yq>>(SUCCESS,data);
 	}
 	//根据设备Id查询出设备以及仪器

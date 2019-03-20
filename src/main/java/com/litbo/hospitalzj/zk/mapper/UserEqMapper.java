@@ -68,9 +68,7 @@ public interface UserEqMapper {
 			"from user_eq where ndjh_id=#{ndjhId} group by month")
 	List<MonthCount> count(@Param("ndjhId") Integer ndjhId);
 
-	/*
-	查询审核不成功个数
-	 */
+	//查询审核不成功个数
 	@Select("select count(*) from user_eq\n" +
 			"where user_id=#{userId} and state=#{state}")
 	Integer findByUserIdState(@Param("userId")String userId, @Param("state")String state);

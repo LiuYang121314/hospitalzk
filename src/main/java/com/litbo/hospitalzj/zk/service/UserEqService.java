@@ -37,5 +37,6 @@ public interface UserEqService {
 
 	List<UserEqVo> findUserEqVo(@Param("userId")String userId,@Param("state")String state);
 
+	//查询审核不成功个数
 	Integer findByUserIdState(@Param("userId")String userId, @Param("state")String state);
 }
