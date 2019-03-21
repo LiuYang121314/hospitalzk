@@ -235,9 +235,9 @@
                             <div class="layui-input-block">
                                 <select name="htLy" lay-verify="required">
                                     <option value=""></option>
-                                    <!--<option value="0">1</option>-->
-                                    <!--<option value="1">2</option>-->
-                                    <!--<option value="2">3</option>-->
+                                    <option value="0">1</option>
+                                    <option value="1">2</option>
+                                    <option value="2">3</option>
                                 </select>
                             </div>
                         </div>
@@ -393,7 +393,7 @@
                     success:function(res){
                         if(res.state === 200){
                             setTimeout(function(){
-                                location.href="/user/apply/fixing_table.html?htId="+res.data;
+                                location.href="/supplier/apply/fixing_table.html?htId="+res.data;
                             },1000);
                             layer.msg("提交成功");
                         }else{

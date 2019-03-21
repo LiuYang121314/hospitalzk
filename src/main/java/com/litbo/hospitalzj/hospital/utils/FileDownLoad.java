@@ -5,12 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 public class FileDownLoad {
-    public static String upload(String filePath, String fileName, HttpServletResponse response) {
+    public static Integer download(String filePath, String fileName, HttpServletResponse response) {
         File file = new File(filePath);
         if (file.exists()) {
             response.setContentType("application/force-download");// 设置强制下载不打开
             response.addHeader("Content-Disposition", "attachment;fileName=" + fileName);
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[1024 * 5];
             FileInputStream fis = null;
             BufferedInputStream bis = null;
             try {
@@ -22,8 +22,7 @@ public class FileDownLoad {
                     outputStream.write(buffer, 0, i);
                     i = bis.read(buffer);
                 }
-
-                return "下载成功";
+                return 1;
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
@@ -43,7 +42,7 @@ public class FileDownLoad {
                 }
             }
         }
-        return "下载失败";
+        return 0;
     }
 }
         /*String newFileName = null;
