@@ -104,7 +104,11 @@
           var data = obj.data;
           //console.log(obj);
           if(obj.event === 'handle'){
-              location.href="/supplier/apply/update_ht_info.html?id="+ids;
+              if(obj.data.htGzspd == "无"){
+                  location.href="/supplier/apply/update_ht_info.html?id="+ids;
+              }else{
+                  location.href="/supplier/apply/update_gzsp_info.html?id="+ids;
+              }
           }
       });
       // 设备信息

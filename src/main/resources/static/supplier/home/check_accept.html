@@ -76,7 +76,7 @@
                         <div class="layui-form-item col-md-5">
                             <label class="layui-form-label">签约日期</label>
                             <div class="layui-input-block">
-                                <input id="date" type="text" name="htQytime" class="layui-input" autocomplete="off" lay-verify="required">
+                                <input id="date1" type="text" name="htQytime" class="layui-input" autocomplete="off" lay-verify="required">
                             </div>
                         </div>
                         <div class="layui-form-item col-md-5">
@@ -203,7 +203,7 @@
                         <div class="layui-form-item col-md-5">
                             <label class="layui-form-label">签约日期</label>
                             <div class="layui-input-block">
-                                <input type="text" name="htQytime" class="layui-input" autocomplete="off" lay-verify="required">
+                                <input id="date2" type="text" name="htQytime" class="layui-input" autocomplete="off" lay-verify="required">
                             </div>
                         </div>
                         <div class="layui-form-item col-md-5">
@@ -352,7 +352,10 @@
             ,   layer = layui.layer
             ,   $ = layui.jquery;
             laydate.render({
-                elem: '#date' //指定元素
+                elem: '#date1' //指定元素
+            });
+            laydate.render({
+                elem: '#date2' //指定元素
             });
             var form = layui.form;
             //监听提交
