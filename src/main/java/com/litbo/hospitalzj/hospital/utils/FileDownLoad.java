@@ -22,7 +22,6 @@ public class FileDownLoad {
                     outputStream.write(buffer, 0, i);
                     i = bis.read(buffer);
                 }
-
                 return 1;
             } catch (Exception e) {
                 e.printStackTrace();

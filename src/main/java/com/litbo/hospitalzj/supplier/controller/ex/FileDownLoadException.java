@@ -1,6 +1,7 @@
 package com.litbo.hospitalzj.supplier.controller.ex;
 
 public class FileDownLoadException extends RequestException {
+
     public FileDownLoadException() {
         super();
     }
@@ -20,4 +21,5 @@ public class FileDownLoadException extends RequestException {
     public FileDownLoadException(Throwable cause) {
         super(cause);
     }
+
 }

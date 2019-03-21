@@ -14,6 +14,7 @@ import com.litbo.hospitalzj.hospital.utils.FileUpload;
 import com.litbo.hospitalzj.supplier.controller.ex.FileDownLoadException;
 import com.litbo.hospitalzj.supplier.mapper.EqInfoMapper;
 import com.litbo.hospitalzj.supplier.service.HtLcService;
+import com.litbo.hospitalzj.supplier.service.exception.InsertException;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -210,7 +211,7 @@ public class HtInfoController extends BaseController {
         if(data==1){
             return new ResponseResult<Void>(SUCCESS);
         }else{
-            throw new FileDownLoadException("文件下载失败！！！请重新下载");
+            throw new InsertException("文件下载失败！！！请重新下载");
         }
     }
 }
