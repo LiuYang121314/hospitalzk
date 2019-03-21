@@ -54,7 +54,12 @@ public interface HtInfoMapper {
 			+ "ht_ysbz htYsbz from ht_info where sbcs_id=#{sbcsId}")
 	List<HtInfo> findBySbcsId(Integer sbcsId);
 	//通过合同id查询合同信息
-	@Select("select * from ht_info where ht_id=#{htId}")
+	@Select("select ht_id htId,ht_ghsn htGhsn,ht_ghslxr htGhslxr,ht_ghsdh htGhsdh,ht_ghsdh htGhsdh,IFNULL(ht_hthao,'无') htHthao,IFNULL(ht_gzspd,'无') htGzspd,"
+			+ "ht_zhbhao htZhbhao,ht_bz htBz,ht_qytime htQytime,ht_dhtime htDhtime,ht_bxtime htBxtime,"
+			+ "ht_syks htSyks,ht_azdd htAzdd,ht_ly htLy,ht_cgfs htCgfs,ht_sglb htSglb,ht_sbyt htSbyt,"
+			+ "ht_jfly htJfly,ht_file1 htFile1,ht_file2 htFile2,ht_file3 htFile3,ht_file4 htFile4,"
+			+ "ht_file5 htFile5,ht_state htState,ht_yzm htYzm,sbcs_id sbcdId,ht_yssj htYssj,"
+			+ "ht_ysbz htYsbz from ht_info where ht_id=#{htId}")
 	HtInfo findByHtId(Integer htId);
 	//通过验证码查询合同
 	@Select("select ht_id htId,ht_ghsn htGhsn,ht_ghslxr htGhslxr,ht_ghsdh htGhsdh,IFNULL(ht_hthao,'无')  htHthao,IFNULL(ht_gzspd,'无') htGzspd,ht_zhbhao htZhbhao,"
