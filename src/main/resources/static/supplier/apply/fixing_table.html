@@ -49,7 +49,7 @@
   // 获取上个页面传递的类型
   var type = window.location.search;
   var ids = parseInt(type.split("=")[1]);
-  var rate;
+  var rate = "";
   //Demo
   layui.use(['layer','jquery','table'], function(){
       var layer = layui.layer
@@ -69,6 +69,7 @@
           }
           ,parseData:function(res){
               console.log(res);
+              rate = res.data.htGzspd;
               return{
                   "status":200
                   ,"msg":res.message
@@ -150,8 +151,7 @@
     });
     //监听行工具事件
     table.on('tool(sb)', function(obj){
-      var data = obj.data
-      ,  rate = obj.data.htGzspd;
+      var data = obj.data;
       console.log(obj);
       if(rate == "无"){
         if(obj.event === 'adds'){
@@ -165,15 +165,13 @@
       $("#addcheck").click(function(){
           location.href="/supplier/apply/fixing_info.html?htIds="+ids;
       });
-    if(rate == "无"){
         $("#nextap").click(function(){
-            location.href="/supplier/apply/hh_upload_enclosure.html?htIds="+ids;
+            if(rate == "无"){
+                location.href="/supplier/apply/hh_upload_enclosure.html?htIds="+ids;
+            }else{
+                location.href="/supplier/apply/hg_upload_enclosure.html?htIds="+ids;
+            }
         })
-    }else{
-        $("#nextap").click(function(){
-            location.href="/supplier/apply/hg_upload_enclosure.html?htIds="+ids;
-        })
-    }
   });
 </script>
 </body>

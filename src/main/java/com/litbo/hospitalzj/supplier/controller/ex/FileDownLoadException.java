@@ -2,6 +2,8 @@ package com.litbo.hospitalzj.supplier.controller.ex;
 
 public class FileDownLoadException extends RequestException {
 
+    private static final long serialVersionUID = -9094756497477494598L;
+
     public FileDownLoadException() {
         super();
     }

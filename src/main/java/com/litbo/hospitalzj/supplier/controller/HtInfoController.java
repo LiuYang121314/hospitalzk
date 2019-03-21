@@ -207,12 +207,8 @@ public class HtInfoController extends BaseController {
     @RequestMapping("/downloadFile")
     private ResponseResult<Void> downloadFile(String filePath, HttpServletResponse response) {
         String fileName = "1111.jpg";//被下载文件的名称
-        Integer data=FileDownLoad.download(filePath, fileName,response);
-        if(data==1){
+        FileDownLoad.downloadFile(response,filePath);
             return new ResponseResult<Void>(SUCCESS);
-        }else{
-            throw new InsertException("文件下载失败！！！请重新下载");
-        }
     }
 }
 

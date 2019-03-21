@@ -5,19 +5,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.litbo.hospitalzj.supplier.controller.ex.*;
 import com.litbo.hospitalzj.supplier.service.exception.*;
+import com.litbo.hospitalzj.supplier.service.exception.PasswordNotMatchException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.litbo.hospitalzj.supplier.controller.ex.EqFjIsNullException;
-import com.litbo.hospitalzj.supplier.controller.ex.EqInfoIsNullException;
-import com.litbo.hospitalzj.supplier.controller.ex.FileEmptyException;
-import com.litbo.hospitalzj.supplier.controller.ex.FileSizeOutOfLimitException;
-import com.litbo.hospitalzj.supplier.controller.ex.FileTypeNotSupportException;
-import com.litbo.hospitalzj.supplier.controller.ex.FileUploadException;
-import com.litbo.hospitalzj.supplier.controller.ex.HtInfoIsNullException;
-import com.litbo.hospitalzj.supplier.controller.ex.RequestException;
-import com.litbo.hospitalzj.supplier.controller.ex.UserYanzhengException;
 import com.litbo.hospitalzj.util.ResponseResult;
 
 
@@ -96,6 +89,9 @@ public abstract class BaseController {
 		} else if (e instanceof FileUploadException) {
 			// 610-文件上传异常
 			state = 610;
+		} else if (e instanceof FileDownLoadException) {
+			// 610-文件上下载存在异常
+			state = 603;
 		} else if (e instanceof UserYanzhengException) {
 			// 603-用户验证失败
 			state = 603;
