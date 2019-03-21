@@ -165,15 +165,15 @@
       $("#addcheck").click(function(){
           location.href="/supplier/apply/fixing_info.html?htIds="+ids;
       });
-    // if(rate == "无"){
-    //     $("#nextap").click(function(){
-    //         location.href="/supplier/apply/hh_upload_enclosure.html?htIds="+ids;
-    //     })
-    // }else{
-    //     $("#nextap").click(function(){
-    //         location.href="/supplier/apply/hg_upload_enclosure.html?htIds="+ids;
-    //     })
-    // }
+    if(rate == "无"){
+        $("#nextap").click(function(){
+            location.href="/supplier/apply/hh_upload_enclosure.html?htIds="+ids;
+        })
+    }else{
+        $("#nextap").click(function(){
+            location.href="/supplier/apply/hg_upload_enclosure.html?htIds="+ids;
+        })
+    }
   });
 </script>
 </body>
