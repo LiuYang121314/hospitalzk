@@ -108,9 +108,9 @@
                             <div class="layui-input-block">
                                 <select id="ly" name="htLy" lay-verify="required">
                                     <option value=""></option>
-                                    <option value="0">1</option>
-                                    <option value="1">2</option>
-                                    <option value="2">3</option>
+                                    <!--<option value="0">1</option>-->
+                                    <!--<option value="1">2</option>-->
+                                    <!--<option value="2">3</option>-->
                                 </select>
                             </div>
                         </div>
@@ -297,34 +297,36 @@
         </div>
     </div>
     <script>
-        function lyList(){
-            // 清空当前列表
-            $("#ly").empty();
-            // 添加默认选项
-            var op = '<option value=""></option>';
-            $("#ly").append(op);
-            // 发出ajax请求，并处理结果
-            $.ajax({
-                url:"/eqly/all",
-                method: "GET",
-                dataType: "JSON",
-                "success": function(json) {
-                    // 遍历加载新列表项
-                    var list = json.data;
-                    for (var i = 0; i < list.length; i++) {
-                        console.log(list[i].eqlyId + " - " + list[i].eqlyName);
-                        op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
-                        $("#ly").append(op);
-                        // <select>
-                        // 		<option value="1">第1项</option>
-                        // 		<option value="2">第2项</option>
-                        // 		<option value="3">第3项</option>
-                        // </select>
-                    }
-                }
-            });
-        }
+
         $(function(){
+            function lyList(){
+                // 清空当前列表
+                //$("#ly").empty();
+                // 添加默认选项
+                var op = '<option value=""></option>';
+                $("#ly").append(op);
+                // 发出ajax请求，并处理结果
+                $.ajax({
+                    url:"/eqly/all",
+                    method: "GET",
+                    dataType: "JSON",
+                    async:false,
+                    "success": function(json) {
+                        // 遍历加载新列表项
+                        var list = json.data;
+                        for (var i = 0; i < list.length; i++) {
+                            console.log(list[i].eqlyId + " - " + list[i].eqlyName);
+                            op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
+                            $("#ly").append(op);
+                            // <select>
+                            // 		<option value="1">第1项</option>
+                            // 		<option value="2">第2项</option>
+                            // 		<option value="3">第3项</option>
+                            // </select>
+                        }
+                    }
+                });
+            }
             lyList();
             $.ajax({
                 url:"/supplier/one",

@@ -14,7 +14,7 @@ public interface HtInfoService {
 	
 	void updateYzm(@Param("htId") Integer htId, @Param("htYzm") String htYzm, @Param("htState") String htState);
 
-	HtInfo updateInfo(HtInfo htinfo);
+	void updateInfo(HtInfo htinfo);
 	
 	HtInfo select(Integer htId);
 	

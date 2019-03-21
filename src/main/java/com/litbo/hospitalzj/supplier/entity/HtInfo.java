@@ -26,8 +26,6 @@ public class HtInfo {
 	private String htSglb;
 	private String htSbyt;
 	private String htJfly;
-	private String htJlsb;
-	private String htFssb;
 	private String htFile1;
 	private String htFile2;
 	private String htFile3;
@@ -189,18 +187,6 @@ public class HtInfo {
 	public void setHtJfly(String htJfly) {
 		this.htJfly = htJfly;
 	}
-	public String getHtJlsb() {
-		return htJlsb;
-	}
-	public void setHtJlsb(String htJlsb) {
-		this.htJlsb = htJlsb;
-	}
-	public String getHtFssb() {
-		return htFssb;
-	}
-	public void setHtFssb(String htFssb) {
-		this.htFssb = htFssb;
-	}
 	public String getHtFile1() {
 		return htFile1;
 	}
@@ -231,7 +217,7 @@ public class HtInfo {
 				+ ", htHthao=" + htHthao + ", htGzspd=" + htGzspd + ", htZhbhao=" + htZhbhao + ", htBz=" + htBz
 				+ ", htQytime=" + htQytime + ", htDhtime=" + htDhtime + ", htBxtime=" + htBxtime + ", htSyks=" + htSyks
 				+ ", htAzdd=" + htAzdd + ", htLy=" + htLy + ", htCgfs=" + htCgfs + ", htSglb=" + htSglb + ", htSbyt="
-				+ htSbyt + ", htJfly=" + htJfly + ", htJlsb=" + htJlsb + ", htFssb=" + htFssb + ", htFile1=" + htFile1
+				+ htSbyt + ", htJfly=" + htJfly + ", htFile1=" + htFile1
 				+ ", htFile2=" + htFile2 + ", htFile3=" + htFile3 + ", htFile4=" + htFile4 + ", htState=" + htState
 				+ ", htYzm=" + htYzm + ", htYssj=" + htYssj + ", htYsbz=" + htYsbz + ", sbcsId=" + sbcsId + "]";
 	}

@@ -78,9 +78,8 @@ public class HtInfoServiceImpl implements HtInfoService {
 	}
 	
 	@Override
-	public HtInfo updateInfo(HtInfo htinfo) {
-		HtInfo data=htInfoMapper.updateInfo(htinfo);
-		return data;
+	public void updateInfo(HtInfo htinfo) {
+		htInfoMapper.updateInfo(htinfo);
 	}
 	@Override
 	public List<HtInfo> selectHtinfo(Integer sbcsId) {

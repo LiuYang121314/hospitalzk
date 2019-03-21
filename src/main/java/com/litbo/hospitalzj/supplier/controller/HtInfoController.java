@@ -1,11 +1,11 @@
 package com.litbo.hospitalzj.supplier.controller;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.litbo.hospitalzj.hospital.enums.EnumProcess;
@@ -38,6 +38,7 @@ public class HtInfoController extends BaseController{
 	public HtLcService htLcService;
 	@Autowired
 	private EqInfoMapper eqInfoMapper;
+	//增加合同
 	@RequestMapping("/insert")
 	public ResponseResult<Integer> insertHtInfo(HtInfo htInfo,HttpSession session){
 		htInfo.setSbcsId(getUidFromSession(session));
@@ -48,7 +49,7 @@ public class HtInfoController extends BaseController{
 		htLcService.InsertHtLc(htId,EnumProcess.CONTRACT_ENTRY.getMessage(),new Date());
 		return new ResponseResult<Integer>(SUCCESS,htInfo.getHtId());
 	}
-
+	//设置状态
 	@RequestMapping("/yyys")
 	public ResponseResult<Void> updataStatePerfect(String view,Integer htId){
 		if("同意".equals(view)){
@@ -86,39 +87,44 @@ public class HtInfoController extends BaseController{
 	}
 
 	@RequestMapping("/updateInfo")
-	public ResponseResult<HtInfo> updateInfo(HtInfo htInfo){
-		HtInfo data=htinfoService.updateInfo(htInfo);
-		htLcService.InsertHtLc(data.getHtId(),EnumProcess.REVISE_A_CONTRACT.getMessage(),new Date());
-		return new ResponseResult<HtInfo>(SUCCESS);
+	public ResponseResult<Void> updateInfo(HtInfo htInfo){
+		htinfoService.updateInfo(htInfo);
+		htLcService.InsertHtLc(htInfo.getHtId(),EnumProcess.REVISE_A_CONTRACT.getMessage(),new Date());
+		return new ResponseResult<Void>(SUCCESS);
 	}
+	//通过验证码查询全部合同设备信息
 	@RequestMapping("/select")
 	public ResponseResult<List<EqHtVo>> selectEqHtVo(String htYzm){
 		List<EqHtVo> data=htinfoService.selectEqHtVo(htYzm);
 		return new ResponseResult<List<EqHtVo>>(SUCCESS,data);
 	}
+	//通过验证码查询合同信息
 	@RequestMapping("/yzm")
 	public ResponseResult<HtInfo> selectHtInfo(String htYzm){
 		HtInfo data=htinfoService.selectHtInfo(htYzm);
 		return new ResponseResult<HtInfo>(SUCCESS,data);
 	}
+	//通过合同id查询一条合同的信息
 	@RequestMapping("/selectOne")
 	public ResponseResult<HtInfo> selectOne(Integer htId){
 		HtInfo data=htinfoService.select(htId);
 		return new ResponseResult<HtInfo>(SUCCESS,data);
 	}
+	//生成验证码，并修改
 	@RequestMapping("/updateYzm")
 	public ResponseResult<Void> updataYzm(@RequestParam("htId")Integer htId,@RequestParam("htYzm")String htYzm,HttpSession session){
 		htinfoService.updateYzm(htId, htYzm,EnumProcess.WAIT_ACCEPT.getMessage());
 		htLcService.InsertHtLc(htId,EnumProcess.WAIT_ACCEPT.getMessage(),new Date());
 		return new ResponseResult<Void>(SUCCESS);
 	}
-
+	//通过供货商id查询在供货商下的所有的合同信息
 	@RequestMapping("/selectHtInfo")
 	public ResponseResult<List<HtInfo>> selectHtInfo(HttpSession session){
 		Integer sbcsId=getUidFromSession(session);
 		List<HtInfo> htInfos=htinfoService.selectHtinfo(sbcsId);
 		return new ResponseResult<List<HtInfo>>(SUCCESS,htInfos);
 	}
+	//上传文件图片
 	@PostMapping("/uploadOne")
 	public ResponseResult<String> uploadOne(
 			@RequestParam("htId") Integer htId,
@@ -134,8 +140,7 @@ public class HtInfoController extends BaseController{
 	@PostMapping("/uploadTwo")
 	public ResponseResult<String> uploadTwo(
 			@RequestParam("htId") Integer htId,
-			@RequestParam("file")MultipartFile file,
-			HttpSession session){
+			@RequestParam("file")MultipartFile file){
 		String htFile2 = FileUpload.upload("images/upload/",file);
 		htinfoService.updateTwo(htId, htFile2);
 		// 返回
@@ -147,8 +152,7 @@ public class HtInfoController extends BaseController{
 	@PostMapping("/uploadThree")
 	public ResponseResult<String> uploadThree(
 			@RequestParam("htId") Integer htId,
-			@RequestParam("file")MultipartFile file,
-			HttpSession session){
+			@RequestParam("file")MultipartFile file){
 		String htFile3 = FileUpload.upload("images/upload/",file);
 		htinfoService.updateThree(htId,htFile3);
 		// 返回
@@ -160,8 +164,7 @@ public class HtInfoController extends BaseController{
 	@PostMapping("/uploadFour")
 	public ResponseResult<String> uploadFour(
 			@RequestParam("htId") Integer htId,
-			@RequestParam("file")MultipartFile file,
-			HttpSession session){
+			@RequestParam("file")MultipartFile file){
 		String htFile4 = FileUpload.upload("images/upload/",file);
 		htinfoService.updateFour(htId,htFile4);
 		// 返回
@@ -173,14 +176,60 @@ public class HtInfoController extends BaseController{
 	@PostMapping("/uploadFive")
 	public ResponseResult<String> uploadFive(
 			@RequestParam("htId") Integer htId,
-			@RequestParam("file")MultipartFile file,
-			HttpSession session){
+			@RequestParam("file")MultipartFile file){
 		String htFile5 = FileUpload.upload("images/upload/",file);
 		htinfoService.updateFive(htId,htFile5);
-		// 返回
+		//返回
 		ResponseResult<String> rr = new ResponseResult<>();
 		rr.setState(SUCCESS);
 		rr.setData(htFile5);
 		return rr;
 	}
+/*	@RequestMapping("/downloadFile")
+ private ResponseResult<List<String>> downloadFile(HttpServletResponse response){
+         String downloadFilePath = "/root/fileSavePath/";//被下载的文件在服务器中的路径,
+         String fileName = "demo.xml";//被下载文件的名称
+         
+        */
+
+
+	/*private String zipFile(String zipBasePath, String zipName, String zipFilePath, List<String> filePaths,ZipOutputStream zos) throws IOException {
+
+		//循环读取文件路径集合，获取每一个文件的路径
+		for(String filePath : filePaths){
+			File inputFile = new File(filePath);  //根据文件路径创建文件
+			if(inputFile.exists()) { //判断文件是否存在
+				if (inputFile.isFile()) {  //判断是否属于文件，还是文件夹
+					//创建输入流读取文件
+					BufferedInputStream bis = new BufferedInputStream(new FileInputStream(inputFile));
+
+					//将文件写入zip内，即将文件进行打包
+					zos.putNextEntry(new ZipEntry(inputFile.getName()));
+
+					//写入文件的方法，同上
+					int size = 0;
+					byte[] buffer = new byte[1024];  //设置读取数据缓存大小
+					while ((size = bis.read(buffer)) > 0) {
+						zos.write(buffer, 0, size);
+					}
+					//关闭输入输出流
+					zos.closeEntry();
+					bis.close();
+
+				} else {  //如果是文件夹，则使用穷举的方法获取文件，写入zip
+					try {
+						File[] files = inputFile.listFiles();
+						List<String> filePathsTem = new ArrayList<String>();
+						for (File fileTem:files) {
+							filePathsTem.add(fileTem.toString());
+						}
+						return zipFile(zipBasePath, zipName, zipFilePath, filePathsTem,zos);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		return null;
+	}*/
 }
