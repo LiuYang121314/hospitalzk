@@ -53,7 +53,7 @@
   </script>
   <script>
      // 定义全局对象
-     var rate;
+     var rate = "";
     //Demo
     layui.use(['form','table','jquery','layer'], function(){
       var form = layui.form
@@ -83,6 +83,7 @@
                           },
                           parseData:function(res){
                               console.log(res);
+                              rate = res.data.htState;
                               return{
                                   "status":200,
                                   "msg":res.message,
@@ -115,8 +116,7 @@
       });
       //监听行工具事件
       table.on('tool(handle)', function(obj){
-        var data = obj.data
-        ,   rate = obj.data.state;
+        var data = obj.data;
         console.log(obj);
         if(obj.event === 'lookinfo'){
             location.href="/supplier/checked/look_all_info.html?htId="+obj.data.htId;
@@ -129,7 +129,7 @@
         }
       });
     });
-    // alert(rate);
+    alert(rate);
     $(function () {
         var handle = $("#handle");
         if(rate == "待预约验收"){
