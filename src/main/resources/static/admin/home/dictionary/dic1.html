@@ -151,64 +151,68 @@
         // 查询
         form.on("submit(search)",function (data){
             console.log(data.field);
-            $.ajax({
-                url:"/eqpm/selectByEqPmNameLike?eqPmName="+data.field.eqPmName,
-                method:"POST",
-                data:data.field,
-                dataType:"JSON",
-                success:function (res){
-                    if(res.state === 200){
-                        layer.msg("查询成功");
-                        layer.open({
-                            type:1,
-                            content:$("#search"),
-                            area:["90%","90%"],
-                            maxmin:true,
-                            btn:"确定",
-                            yes:function(){
-                                location.href="./dic1.html";
-                                layer.closeAll();
-                            }
-                        });
-                        table.render({
-                            elem:"#searchInfo"
-                            ,cellMinWidth: 80
-                            ,url:""
-                            ,method:"GET"
-                            ,response: {
-                                statusName: 'status' //规定数据状态的字段名称，默认：code
-                                ,statusCode: 200 //规定成功的状态码，默认：0
-                                ,msgName: 'hint' //规定状态信息的字段名称，默认：msg
-                                ,countName: 'total' //规定数据总数的字段名称，默认：count
-                                ,dataName: 'data' //规定数据列表的字段名称，默认：data
-                            }
-                            ,parseData:function(res){
-                                console.log(res);
-                                return{
-                                    "status":200
-                                    ,"msg":res.message
-                                    ,"count":res.total
-                                    ,"data":res.data
+            if(data.field.eqPmName=="" || data.field.eqPmName==null){
+                layer.msg("设备品名不能为空");
+            }else{
+                $.ajax({
+                    url:"/eqpm/selectByEqPmNameLike?eqPmName="+data.field.eqPmName,
+                    method:"POST",
+                    data:data.field,
+                    dataType:"JSON",
+                    success:function (res){
+                        if(res.state === 200){
+                            layer.msg("查询成功");
+                            layer.open({
+                                type:1,
+                                content:$("#search"),
+                                area:["90%","90%"],
+                                maxmin:true,
+                                btn:"确定",
+                                yes:function(){
+                                    location.href="./dic1.html";
+                                    layer.closeAll();
                                 }
-                            },
-                            // page:true,
-                            cols:[[
-                                {field:'eqPmId', title:'设备品名序列',align:'center',sort: true},
-                                {field:'eqPmName', title:'设备品名名称',align:'center'},
-                                {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
-                            ]]
-                        });
-                    }else if(res.state === 500){
-                        layer.msg("查询失败");
-                    }else{
-                        layer.msg("查询失败");
+                            });
+                            table.render({
+                                elem:"#searchInfo"
+                                ,cellMinWidth: 80
+                                ,url:""
+                                ,method:"GET"
+                                ,response: {
+                                    statusName: 'status' //规定数据状态的字段名称，默认：code
+                                    ,statusCode: 200 //规定成功的状态码，默认：0
+                                    ,msgName: 'hint' //规定状态信息的字段名称，默认：msg
+                                    ,countName: 'total' //规定数据总数的字段名称，默认：count
+                                    ,dataName: 'data' //规定数据列表的字段名称，默认：data
+                                }
+                                ,parseData:function(res){
+                                    console.log(res);
+                                    return{
+                                        "status":200
+                                        ,"msg":res.message
+                                        ,"count":res.total
+                                        ,"data":res.data
+                                    }
+                                },
+                                // page:true,
+                                cols:[[
+                                    {field:'eqPmId', title:'设备品名序列',align:'center',sort: true},
+                                    {field:'eqPmName', title:'设备品名名称',align:'center'},
+                                    {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
+                                ]]
+                            });
+                        }else if(res.state === 500){
+                            layer.msg("查询失败");
+                        }else{
+                            layer.msg("查询失败");
+                        }
+                    },
+                    error:function (data){
+                        console.log(data);
+                        layer.msg("请稍后再试");
                     }
-                },
-                error:function (data){
-                    console.log(data);
-                    layer.msg("请稍后再试");
-                }
-            })
+                })
+            }
          });
         //监听行工具事件
         table.on('tool(handle)', function(obj){
