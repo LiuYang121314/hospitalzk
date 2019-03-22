@@ -15,6 +15,11 @@
             text-align: center;
             margin-bottom: 50px;
         }
+        .layui-form-pane{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
@@ -23,10 +28,25 @@
         <fieldset class="layui-elem-field layui-field-title">
             <legend style="color: #000000;font-weight: bold;">设备品名字典</legend>
         </fieldset>
-        <table class="layui-table" id="sbpmdic" lay-filter="handle"></table>
+        <form class="layui-form-pane" action="">
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">品名查询</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" required  lay-verify="required" placeholder="请输入设备品名" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-4">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="search">
+                        <i class="layui-icon">&#xe615;</i>查询
+                    </button>
+                </div>
+            </div>
+        </form>
         <div class="col-xs-12 btn">
             <button id="btn" class="layui-btn layui-btn-normal">添加字典</button>
         </div>
+        <table class="layui-table" id="sbpmdic" lay-filter="handle"></table>
         <div id="create" style="display: none;">
             <from class="layui-form layui-form-pane" action="">
                 <fieldset class="layui-elem-field layui-field-title">
@@ -50,6 +70,12 @@
                     </div>
                 </div>
             </from>
+        </div>
+        <div id="search" style="display: none;">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #000000;font-weight: bold;">查询结果为</legend>
+                <table class="layui-table" id="searchInfo" lay-filter="handle"></table>
+            </fieldset>
         </div>
         <!--<div id="update" style="display: none;">-->
             <!--<fieldset class="layui-elem-field layui-field-title">-->
@@ -108,6 +134,105 @@
                 {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
             ]]
         });
+
+        $("#btn").click(function(){
+            layer.open({
+                type:1,
+                content:$("#create"),
+                area:["90%","90%"],
+                maxmin:true,
+                btn:"确定",
+                yes:function(){
+                    location.href="./dic1.html";
+                    layer.closeAll();
+                }
+            })
+        });
+        // 创建
+        form.on("submit(create)",function (data){
+            console.log(data.field);
+            $.ajax({
+                url:"/eqpm/insert",
+                method:"POST",
+                data:data.field,
+                dataType:"JSON",
+                success:function (res){
+                    if(res.state === 200){
+                        layer.msg("创建成功");
+                    }else if(res.state === 500){
+                        layer.msg("该序列号或字段已重复，请重新插入");
+                    }else{
+                        layer.msg("创建失败");
+                    }
+                },
+                error:function (data) {
+                    console.log(data);
+                    layer.msg("请稍后再试");
+                }
+            })
+        });
+        // 查询
+        form.on("submit(search)",function (data){
+            console.log(data.field);
+            $.ajax({
+                url:"",
+                method:"POST",
+                data:data.field,
+                dataType:"JSON",
+                success:function (res) {
+                    if(res.state === 200){
+                        layer.msg("查询成功");
+                        layer.open({
+                            type:1,
+                            content:$("#search"),
+                            area:["90%","90%"],
+                            maxmin:true,
+                            btn:"确定",
+                            yes:function(){
+                                location.href="./dic1.html";
+                                layer.closeAll();
+                            }
+                        });
+                        table.render({
+                            elem:"#searchInfo"
+                            ,cellMinWidth: 80
+                            ,url:""
+                            ,method:"GET"
+                            ,response: {
+                                statusName: 'status' //规定数据状态的字段名称，默认：code
+                                ,statusCode: 200 //规定成功的状态码，默认：0
+                                ,msgName: 'hint' //规定状态信息的字段名称，默认：msg
+                                ,countName: 'total' //规定数据总数的字段名称，默认：count
+                                ,dataName: 'data' //规定数据列表的字段名称，默认：data
+                            }
+                            ,parseData:function(res){
+                                console.log(res);
+                                return{
+                                    "status":200
+                                    ,"msg":res.message
+                                    ,"count":res.total
+                                    ,"data":res.data
+                                }
+                            },
+                            // page:true,
+                            cols:[[
+                                {field:'eqPmId', title:'设备品名序列',align:'center',sort: true},
+                                {field:'eqPmName', title:'设备品名名称',align:'center'},
+                                {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
+                            ]]
+                        });
+                    }else if(res.state === 500){
+                        layer.msg("查询失败");
+                    }else{
+                        layer.msg("查询失败");
+                    }
+                },
+                error:function (data){
+                    console.log(data);
+                    layer.msg("请稍后再试");
+                }
+            })
+        });
         //监听行工具事件
         table.on('tool(handle)', function(obj){
             var data = obj.data;
@@ -145,64 +270,6 @@
                 });
             }
         });
-        $("#btn").click(function(){
-            layer.open({
-                type:1,
-                content:$("#create"),
-                area:["90%","90%"],
-                maxmin:true,
-                btn:"确定",
-                yes:function(){
-                    location.href="./dic1.html";
-                    layer.closeAll();
-                }
-            })
-        });
-        form.on("submit(create)",function (data) {
-            console.log(data.field);
-            $.ajax({
-                url:"/eqpm/insert",
-                method:"POST",
-                data:data.field,
-                dataType:"JSON",
-                success:function (res) {
-                    if(res.state === 200){
-                        layer.msg("创建成功");
-                    }else if(res.state === 500){
-                        layer.msg("该序列号或字段已重复，请重新插入");
-                    }else{
-                        layer.msg("创建失败");
-                    }
-                },
-                error:function (data) {
-                    console.log(data);
-                    layer.msg("请稍后再试");
-                }
-            })
-        });
-        form.on("submit(update)",function (data) {
-            console.log(data.field);
-            $.ajax({
-                url:"/eqpm/update?eqPmId="+eqPmId,
-                method:"POST",
-                data:data.field,
-                dataType:"JSON",
-                success:function (res) {
-                    if(res.state === 200){
-                        layer.msg("修改成功");
-                    }else if(res.state === 500){
-                        layer.msg("该序列号或字段已重复，请重新插入");
-                    }else{
-                        layer.msg("修改失败");
-                    }
-                },
-                error:function (data) {
-                    console.log(data);
-                    layer.msg("请稍后再试");
-                }
-            })
-        });
-
     });
 </script>
 </body>
