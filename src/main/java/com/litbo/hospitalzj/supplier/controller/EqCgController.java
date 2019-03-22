@@ -25,7 +25,7 @@ public class EqCgController extends BaseController{
 	public EqCgService eqCgService;
 	
 	@RequestMapping("/{eqcgId}")
-	public ResponseResult<EqCgfs> getByCode(@PathVariable("eqcgId") String eqcgId) {
+	public ResponseResult<EqCgfs> getByCode(@PathVariable("eqcgId") Integer eqcgId) {
 		EqCgfs data=eqCgService.getById(eqcgId);
 		return new ResponseResult<EqCgfs>(SUCCESS,data);
 	}
@@ -40,13 +40,18 @@ public class EqCgController extends BaseController{
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	@RequestMapping("/delete")
-	public ResponseResult<Void> delete(String eqcgId) {
-		eqCgService.delete(eqcgId);
+	public ResponseResult<Void> delete(Integer eqcgId) {
+		eqCgService.delete(eqcgId,0);
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	@RequestMapping("/update")
 	public ResponseResult<EqCgfs> update(EqCgfs eqCgfs) {
 		EqCgfs data=eqCgService.update(eqCgfs);
 		return new ResponseResult<EqCgfs>(SUCCESS,data);
+	}
+	@RequestMapping("/findByEqcgNameLike")
+	public ResponseResult<List<EqCgfs>> findByEqcgNameLike(String eqcgName) {
+		List<EqCgfs> data=eqCgService.findByEqcgNameLike(eqcgName);
+		return new ResponseResult<List<EqCgfs>>(SUCCESS,data);
 	}
 }

@@ -27,4 +27,7 @@ public interface EqJfMapper {
 	int insert(EqJfly eqJfly);
 	@Update(("update eq_jfly set eqjf_name = #{eqjfName,jdbcType=VARCHAR} where eqjf_id = #{eqjfId,jdbcType=INTEGER}"))
 	Integer update(EqJfly eqJfly);
+	//模糊查询
+	@Select("SELECT * FROM eq_jfly WHERE eqjf_name LIKE '%${eqjfName}%'")
+	List<EqJfly> findEqJflyLike(@Param("eqjfName")String eqjfName);
 }

@@ -26,24 +26,32 @@ public class EqCgServiceImpl implements EqCgService{
 	private EqCgMapper eqCgMapper;
 
 	@Override
-	public EqCgfs getById(String eqcgId) {
+	public EqCgfs getById(Integer eqcgId) {
 		return findById(eqcgId);
 	}
-	private EqCgfs findById(String eqcgId) {
+
+	private EqCgfs findById(Integer eqcgId) {
 		return eqCgMapper.findById(eqcgId);
 	}
+
+	/*@Override
+	public EqCgfs getById(Integer eqcgId) {
+		return null;
+	}*/
+
 	@Override
 	public List<EqCgfs> getAll() {
 		return eqCgMapper.findAll();
 	}
 
+
 	@Override
-	public void delete(String eqcgId) {
+	public void delete(Integer eqcgId,Integer isDelete) {
 		EqCgfs data=eqCgMapper.findById(eqcgId);
 		if(data==null){
 			throw new DeleteException("采购方式不已存在");
 		}
-		eqCgMapper.delete(eqcgId);
+		eqCgMapper.delete(eqcgId,isDelete);
 	}
 
 	@Override
@@ -59,5 +67,10 @@ public class EqCgServiceImpl implements EqCgService{
 	public EqCgfs update(EqCgfs eqCgfs) {
 		eqCgMapper.update(eqCgfs);
 		return eqCgfs;
+	}
+
+	@Override
+	public List<EqCgfs> findByEqcgNameLike(String eqcgName) {
+		return eqCgMapper.findByEqcgNameLike(eqcgName);
 	}
 }

@@ -39,7 +39,7 @@ public class EqPmController extends BaseController{
 	}
 	@RequestMapping("/delete")
 	public ResponseResult<Void> delete(Integer eqPmId) {
-		eqPmService.delete(eqPmId);
+		eqPmService.delete(eqPmId,1);
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	@RequestMapping("/update")

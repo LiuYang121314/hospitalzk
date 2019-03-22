@@ -8,14 +8,15 @@ package com.litbo.hospitalzj.quality.service;
 import java.util.List;
 
 import com.litbo.hospitalzj.quality.entity.EqPm;
+import org.apache.ibatis.annotations.Param;
 
 public interface EqPmService {
 
 	EqPm getById(Integer eqPmId);
 
 	List<EqPm> getAll();
-
-	void delete(Integer eqPmId);
+	//删除，修改状态
+	void delete(@Param("eqPmId")Integer eqPmId, @Param("isDelete")Integer isDelete);
 
 	void insert(EqPm eqPm);
 

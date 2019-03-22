@@ -2,6 +2,7 @@ package com.litbo.hospitalzj.supplier.mapper;
 
 import java.util.List;
 
+import com.litbo.hospitalzj.quality.entity.EqPm;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -30,4 +31,5 @@ public interface EqFjMapper {
 	@Update("update eq_fj set eq_fjxh=#{eqFjxh},eq_fjsl=#{eqFjsl},eq_fjdw=#{eqFjdw},"
 			+ "eq_fjsccs=#{eqFjsccs},eq_fjccbh=#{eqFjccbh},bz=#{bz} where eq_fjmc=#{eqFjmc}")
 	Integer updataInfo(EqFj eqfj);
+
 }

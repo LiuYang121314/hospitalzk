@@ -34,13 +34,14 @@ public class EqPmServiceImpl implements EqPmService{
 	}
 
 	@Override
-	public void delete(Integer eqPmId) {
+	public void delete(Integer eqPmId, Integer isDelete) {
 		EqPm data=findById(eqPmId);
 		if(data==null){
 			throw new DeleteException("设备品名不存在");
 		}
-		eqPmMapper.delete(eqPmId);
+		eqPmMapper.delete(eqPmId,isDelete);
 	}
+
 
 	@Override
 	public void insert(EqPm eqPm) {
