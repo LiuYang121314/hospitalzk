@@ -22,10 +22,10 @@ public class EqPmServiceImpl implements EqPmService{
 	private EqPmMapper eqPmMapper;
 
 	@Override
-	public EqPm getById(String eqPmId) {
+	public EqPm getById(Integer eqPmId) {
 		return findById(eqPmId);
 	}
-	private EqPm findById(String eqPmId) {
+	private EqPm findById(Integer eqPmId) {
 		return eqPmMapper.findById(eqPmId);
 	}
 	@Override
@@ -34,7 +34,7 @@ public class EqPmServiceImpl implements EqPmService{
 	}
 
 	@Override
-	public void delete(String eqPmId) {
+	public void delete(Integer eqPmId) {
 		EqPm data=findById(eqPmId);
 		if(data==null){
 			throw new DeleteException("设备品名不存在");

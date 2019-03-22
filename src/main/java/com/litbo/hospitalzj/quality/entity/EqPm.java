@@ -8,7 +8,7 @@ public class EqPm {
 	private Integer eqPmId;
 	private String eqPmName;
 	private String eqPmLx;
-	private String isDelete;
+	private Integer isDelete;
 	public Integer getEqPmId() {
 		return eqPmId;
 	}
@@ -25,11 +25,11 @@ public class EqPm {
 		return eqPmLx;
 	}
 
-	public String getIsDelete() {
+	public Integer getIsDelete() {
 		return isDelete;
 	}
 
-	public void setIsDelete(String isDelete) {
+	public void setIsDelete(Integer isDelete) {
 		this.isDelete = isDelete;
 	}
 

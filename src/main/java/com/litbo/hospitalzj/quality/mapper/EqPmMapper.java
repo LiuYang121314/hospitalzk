@@ -14,13 +14,15 @@ import com.litbo.hospitalzj.quality.entity.EqPm;
 public interface EqPmMapper {
 	//通过Id查询设备品名
 	@Select("SELECT eq_pm_id eqPmId,eq_pm_name eqPmName,eq_pm_lx eqPmLx FROM eq_pm WHERE eq_pm_id=#{eqPmId}")
-	EqPm findById(@Param("eqPmId") String eqPmsd);
-	@Select("SELECT eq_pm_id eqPmId,eq_pm_name FROM eq_pm")
+	EqPm findById(@Param("eqPmId") Integer eqPmId);
+	@Select("SELECT eq_pm_id eqPmId,eq_pm_name FROM eq_pm where is_delete=0")
 	List<EqPm> findAll();
 	//删除设备pm
-	@Delete("delete from eq_pm\n" +
-			"    where eq_pm_id = #{eqPmId}")
-	int delete(Integer eqPmId);
+	/*@Delete("delete from eq_pm\n" +
+			"    where eq_pm_id = #{eqPmId}")*/
+	@Update("update eq_pm set is_delete = #{isDelete} where eq_pm_id = #{eqPmId}")
+	int delete(@Param("eqPmId")Integer eqPmId,@Param("isDelete")Integer isDelete);
+
 	@Insert("insert into eq_pm (eq_pm_id, eq_pm_name, eq_pm_lx\n" +
 			"      )\n" +
 			"    values (#{eqPmId,jdbcType=VARCHAR}, #{eqPmName,jdbcType=VARCHAR}, #{eqPmLx,jdbcType=VARCHAR}\n" +

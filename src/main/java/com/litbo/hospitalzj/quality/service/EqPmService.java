@@ -11,11 +11,11 @@ import com.litbo.hospitalzj.quality.entity.EqPm;
 
 public interface EqPmService {
 
-	EqPm getById(String eqPmId);
+	EqPm getById(Integer eqPmId);
 
 	List<EqPm> getAll();
 
-	void delete(String eqPmId);
+	void delete(Integer eqPmId);
 
 	void insert(EqPm eqPm);
 

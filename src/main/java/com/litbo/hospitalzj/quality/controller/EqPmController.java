@@ -23,7 +23,7 @@ public class EqPmController extends BaseController{
 	public EqPmService eqPmService;
 	
 	@RequestMapping("/{eqPmId}")
-	public ResponseResult<EqPm> getByCode(@PathVariable("eqPmId") String eqPmId) {
+	public ResponseResult<EqPm> getByCode(@PathVariable("eqPmId") Integer eqPmId) {
 		EqPm data= eqPmService.getById(eqPmId);
 		return new ResponseResult<EqPm>(SUCCESS,data);
 	}
@@ -38,7 +38,7 @@ public class EqPmController extends BaseController{
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	@RequestMapping("/delete")
-	public ResponseResult<Void> delete(String eqPmId) {
+	public ResponseResult<Void> delete(Integer eqPmId) {
 		eqPmService.delete(eqPmId);
 		return new ResponseResult<Void>(SUCCESS);
 	}
