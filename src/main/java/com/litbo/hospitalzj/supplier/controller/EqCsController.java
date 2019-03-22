@@ -117,7 +117,7 @@ public class EqCsController extends BaseController{
 		// 确定上传文件夹 > session.getServletContext.getRealPath(UPLOAD_DIR_NAME) > exists() > mkdirs()
 		String parentPath = session
 				.getServletContext().getRealPath(UPLOAD_DIR_NAME);
-		System.out.println(parentPath);
+		System.out.println("@@@@@@@@@@@"+parentPath);
 		File parent = new File(parentPath);
 		if (!parent.exists()) {
 			parent.mkdirs();

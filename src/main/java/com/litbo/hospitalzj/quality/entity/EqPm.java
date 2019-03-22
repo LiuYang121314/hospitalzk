@@ -5,13 +5,14 @@ package com.litbo.hospitalzj.quality.entity;
  *
  */
 public class EqPm {
-	private String eqPmId;
+	private Integer eqPmId;
 	private String eqPmName;
 	private String eqPmLx;
-	public String getEqPmId() {
+	private String isDelete;
+	public Integer getEqPmId() {
 		return eqPmId;
 	}
-	public void setEqPmId(String eqPmId) {
+	public void setEqPmId(Integer eqPmId) {
 		this.eqPmId = eqPmId;
 	}
 	public String getEqPmName() {
@@ -20,9 +21,16 @@ public class EqPm {
 	public void setEqPmName(String eqPmName) {
 		this.eqPmName = eqPmName;
 	}
-
 	public String getEqPmLx() {
 		return eqPmLx;
+	}
+
+	public String getIsDelete() {
+		return isDelete;
+	}
+
+	public void setIsDelete(String isDelete) {
+		this.isDelete = isDelete;
 	}
 
 	public void setEqPmLx(String eqPmLx) {

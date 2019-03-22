@@ -18,6 +18,9 @@ public interface EqCgMapper {
 	@Select("SELECT eqcg_id eqcgId, eqcg_name eqcgName FROM eq_cgfs WHERE eqcg_name=#{eqcgName}")
 	EqCgfs findByName(@Param("eqcgName") String eqcgName);
 
+	@Select("SELECT * FROM eq_cgfs WHERE eqcg_name LIKE '%#{eqcgName}%'")
+	EqCgfs findByEqcgNameLike(@Param("eqcgName") String eqcgName);
+
 	@Select("SELECT eqcg_id eqcgId, eqcg_name eqcgName FROM eq_cgfs")
 	List<EqCgfs> findAll();
 

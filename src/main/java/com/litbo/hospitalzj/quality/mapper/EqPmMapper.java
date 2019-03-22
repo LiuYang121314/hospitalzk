@@ -17,9 +17,10 @@ public interface EqPmMapper {
 	EqPm findById(@Param("eqPmId") String eqPmsd);
 	@Select("SELECT eq_pm_id eqPmId,eq_pm_name FROM eq_pm")
 	List<EqPm> findAll();
+	//删除设备pm
 	@Delete("delete from eq_pm\n" +
-			"    where eq_pm_id = #{eqPmId,jdbcType=VARCHAR}")
-	int delete(String eqPmId);
+			"    where eq_pm_id = #{eqPmId}")
+	int delete(Integer eqPmId);
 	@Insert("insert into eq_pm (eq_pm_id, eq_pm_name, eq_pm_lx\n" +
 			"      )\n" +
 			"    values (#{eqPmId,jdbcType=VARCHAR}, #{eqPmName,jdbcType=VARCHAR}, #{eqPmLx,jdbcType=VARCHAR}\n" +
@@ -40,4 +41,7 @@ public interface EqPmMapper {
 	//未分配
 	@Select("SELECT * FROM eq_pm WHERE eq_pm_id NOT IN(SELECT eq_pm_id FROM yq_pm WHERE eq_pm_id IS NOT NULL AND yq_id=#{yqId})")
 	List<EqPm> findYqPmNotByYqId(String yqId);
+	//模糊查询
+	@Select("SELECT * FROM eq_pm WHERE eq_pm_name LIKE '%${eqPmName}%'")
+	List<EqPm> findPmLike(@Param("eqPmName")String eqPmName);
 }

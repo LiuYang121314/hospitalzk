@@ -205,9 +205,10 @@ public class HtInfoController extends BaseController {
     }
 
     @RequestMapping("/downloadFile")
-    private ResponseResult<Void> downloadFile(String filePath, HttpServletResponse response) {
-        String fileName = "1111.jpg";//被下载文件的名称
-        FileDownLoad.downloadFile(response,filePath);
+    private ResponseResult<Void> downloadFile(String filePath, HttpServletResponse response,HttpSession session) {
+        String parentPath = session.getServletContext().getRealPath(UPLOAD_DIR_NAME);
+        System.out.println(parentPath+filePath);
+        FileDownLoad.downloadFile1(response,filePath,"111.jpg");
             return new ResponseResult<Void>(SUCCESS);
     }
 }

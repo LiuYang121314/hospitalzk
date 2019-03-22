@@ -77,4 +77,9 @@ public class EqPmServiceImpl implements EqPmService{
 	public List<EqPm> findYqPmNotByYqId(String yqId) {
 		return eqPmMapper.findYqPmNotByYqId(yqId);
 	}
+	//模糊查询名称
+	@Override
+	public List<EqPm> findPmLike(String eqPmName) {
+		return eqPmMapper.findPmLike(eqPmName);
+	}
 }

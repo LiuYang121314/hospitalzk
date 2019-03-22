@@ -47,4 +47,9 @@ public class EqPmController extends BaseController{
 		EqPm data=eqPmService.update(eqPm);
 		return new ResponseResult<EqPm>(SUCCESS,data);
 	}
+	@RequestMapping("/selectByEqPmNameLike")
+	public ResponseResult<List<EqPm>> selectByEqPmNameLike(String eqPmName) {
+		List<EqPm> data=eqPmService.findPmLike(eqPmName);
+		return new ResponseResult<List<EqPm> >(SUCCESS,data);
+	}
 }

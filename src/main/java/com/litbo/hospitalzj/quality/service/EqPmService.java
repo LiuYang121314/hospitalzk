@@ -28,4 +28,6 @@ public interface EqPmService {
 	List<EqPm> findYqPmByYqId(String yqId);
 
 	List<EqPm> findYqPmNotByYqId(String yqId);
+	//模糊查询名称
+	List<EqPm> findPmLike(String eqPmName);
 }
