@@ -48,7 +48,7 @@
                 <a href="?p=control"><i class="fas fa-fas fa-home"></i>主页</a>
             </li>
             <li class="layui-nav-item" shiro:haspermission="" name="a">
-                <a href="javascript:void(0);" data-url="./home/home.html" data-id="3" data-text="我的工作台"><i class="fas fa-star"></i>我的工作台</a>
+                <a href="javascript:void(0);" data-url="./home/home.html" data-id="3" data-text="我的工作台"><i class="fas fa-star"></i>我的工作台<span id="noPass" class="layui-badge"></span></a>
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;"><i class="fas fa-clipboard"></i>待检设备管理</a>
@@ -184,6 +184,22 @@
 <script src="../static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
 <script src="../static/js/main.js" type="text/javascript" charset="utf-8"></script>
 <script>
+    // 检测不通过数量
+    $.ajax({
+        url:"/userEq/findByUserIdStateCount",
+        method:"GET",
+        dataType:"JSON",
+        success:function(res){
+            if(res.data != null && res.data != ""){
+                $("#noPass").append(res.data);
+            }else{
+                $("#noPass").css("display","none");
+            }
+        },
+        error:function () {
+            alert("服务器故障")
+        }
+    })
     layui.use('element',function(){
         var element = layui.element;
     });

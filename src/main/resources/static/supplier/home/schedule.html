@@ -107,7 +107,7 @@
                       layer.msg("该验证码不存在，查询失败");
                   }
               },
-              error:function(data){
+              error:function(data){n
                   layer.msg("请稍后再试");
               }
           })
@@ -117,7 +117,6 @@
       table.on('tool(handle)', function(obj){
         var data = obj.data
         ,   rate = obj.data.state;
-
         console.log(obj);
         if(obj.event === 'lookinfo'){
             location.href="/supplier/checked/look_all_info.html?htId="+obj.data.htId;

@@ -71,7 +71,8 @@
     </div>
 </script>
 <script>
-    $(function () {
+    $(function (){
+        // 检测不通过数量
         $.ajax({
             url:"/userEq/findByUserIdStateCount",
             method:"GET",
@@ -87,7 +88,7 @@
                 alert("服务器故障")
             }
         })
-    })
+    });
     //Demo
     layui.use(['layer','jquery','upload','table','element'], function(){
         var layer = layui.layer

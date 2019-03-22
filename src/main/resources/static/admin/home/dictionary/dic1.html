@@ -78,7 +78,7 @@
 </script>
 <script>
     // 获取上个页面传递的类型
-    layui.use(['layer','jquery','table','form'],function () {
+    layui.use(['layer','jquery','table','form'],function (){
         var layer = layui.layer
             ,   $ = layui.jquery
             ,   table = layui.table
@@ -126,7 +126,7 @@
             })
         });
         // 创建
-        form.on("submit(create)",function (data){
+        form.on("submit(create)",function(data){
             console.log(data.field);
             $.ajax({
                 url:"/eqpm/insert",
