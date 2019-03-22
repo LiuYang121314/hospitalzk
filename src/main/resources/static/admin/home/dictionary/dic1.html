@@ -44,7 +44,7 @@
             </div>
         </form>
         <div class="col-xs-12 btn">
-            <button id="btn" class="layui-btn layui-btn-normal">添加字典</button>
+            <a id="btn" class="layui-btn layui-btn-normal">添加字典</a>
         </div>
         <table class="layui-table" id="sbpmdic" lay-filter="handle"></table>
         <div id="create" style="display: none;">
@@ -232,7 +232,7 @@
                     layer.msg("请稍后再试");
                 }
             })
-        });
+         });
         //监听行工具事件
         table.on('tool(handle)', function(obj){
             var data = obj.data;
