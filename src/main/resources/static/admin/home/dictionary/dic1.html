@@ -53,6 +53,12 @@
                     <legend style="color: #000000;font-weight: bold;">添加字典</legend>
                 </fieldset>
                 <div class="layui-form-item col-md-4">
+                    <label class="layui-form-label">字典序列号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="eqPmId" required  lay-verify="required" placeholder="请输入字典序列号" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label">字典名</label>
                     <div class="layui-input-block">
                         <input type="text" name="eqPmName" required  lay-verify="required" placeholder="请输入字典名" autocomplete="off" class="layui-input">
@@ -159,8 +165,17 @@
                 success:function (res){
                     if(res.state === 200){
                         layer.msg("查询成功");
-                        $("#sbpmdic").css("display","none");
-                        $("#search").css("display","block");
+                        layer.open({
+                            type:1,
+                            content:$("#search"),
+                            area:["90%","90%"],
+                            maxmin:true,
+                            btn:"确定",
+                            yes:function(){
+                                location.href="./dic1.html";
+                                layer.closeAll();
+                            }
+                        });
                         table.render({
                             elem:"#searchInfo"
                             ,cellMinWidth: 80
@@ -192,7 +207,7 @@
                     }else if(res.state === 500){
                         layer.msg("查询失败");
                     }else{
-                        layer.msg("请稍后再试");
+                        layer.msg("查询失败");
                     }
                 },
                 error:function (data){
