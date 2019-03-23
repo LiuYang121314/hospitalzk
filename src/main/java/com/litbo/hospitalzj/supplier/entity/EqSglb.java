@@ -5,14 +5,26 @@ package com.litbo.hospitalzj.supplier.entity;
  *
  */
 public class EqSglb {
-	private String eqsgId;
+	private Integer eqsgId;
 	private String eqsgName;
-	public String getEqsgId() {
+	private Integer isDelete;
+
+	public Integer getEqsgId() {
 		return eqsgId;
 	}
-	public void setEqsgId(String eqsgId) {
+
+	public void setEqsgId(Integer eqsgId) {
 		this.eqsgId = eqsgId;
 	}
+
+	public Integer getIsDelete() {
+		return isDelete;
+	}
+
+	public void setIsDelete(Integer isDelete) {
+		this.isDelete = isDelete;
+	}
+
 	public String getEqsgName() {
 		return eqsgName;
 	}

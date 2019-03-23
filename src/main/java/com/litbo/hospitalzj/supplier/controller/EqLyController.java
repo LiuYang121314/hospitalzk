@@ -26,13 +26,13 @@ public class EqLyController extends BaseController{
 	public EqLyService eqLyService;
 	
 	@RequestMapping("/{eqlyId}")
-	public ResponseResult<EqLy> getByCode(@PathVariable("eqlyId") String eqlyId) {
+	public ResponseResult<EqLy> getByCode(@PathVariable("eqlyId") Integer eqlyId) {
 		EqLy data=eqLyService.getById(eqlyId);
 		return new ResponseResult<EqLy>(SUCCESS,data);
 	}
 	@RequestMapping("/all")
 	public ResponseResult<List<EqLy>> getAll() {
-		List<EqLy> data=eqLyService.getAll();
+		List<EqLy> data=eqLyService.getAll(0,10);
 		return new ResponseResult<List<EqLy>>(SUCCESS,data);
 	}
 	@RequestMapping("/insert")
@@ -41,14 +41,19 @@ public class EqLyController extends BaseController{
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	@RequestMapping("/delete")
-	public ResponseResult<Void> delete(String eqlyId) {
-		eqLyService.delete(eqlyId);
+	public ResponseResult<Void> delete(Integer eqlyId) {
+		eqLyService.delete(eqlyId,1);
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	@RequestMapping("/update")
 	public ResponseResult<EqLy> update(EqLy eqLy) {
 		EqLy data=eqLyService.update(eqLy);
 		return new ResponseResult<EqLy>(SUCCESS,data);
+	}
+	@RequestMapping("/findEqLyLike")
+	public ResponseResult<List<EqLy>> findEqLyLike(String eqlyName) {
+		List<EqLy> data=eqLyService.findEqLyLike(eqlyName);
+		return new ResponseResult<List<EqLy>>(SUCCESS,data);
 	}
 
 }

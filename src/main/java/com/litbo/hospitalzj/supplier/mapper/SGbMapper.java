@@ -17,4 +17,7 @@ import java.util.List;
 public interface SGbMapper {
 	@Select("SELECT * from s_gb")
 	List<SGb> select();
+	//模糊查询
+	@Select("SELECT * FROM s_gb WHERE eqyt_name LIKE '%${gb}%'")
+	List<SGb> findGbLike(@Param("gb")String gb);
 }

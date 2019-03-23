@@ -28,4 +28,9 @@ public class SGbController extends BaseController{
 		List<SGb> data=sGbService.Select();
 		return new ResponseResult<List<SGb>>(SUCCESS,data);
 	}
+	@RequestMapping("/findGbLike")
+	public ResponseResult<List<SGb>> findGbLike(String gb) {
+		List<SGb> data=sGbService.findGbLike(gb);
+		return new ResponseResult<List<SGb>>(SUCCESS,data);
+	}
 }

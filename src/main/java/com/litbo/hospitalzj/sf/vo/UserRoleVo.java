@@ -1,10 +1,9 @@
-package com.litbo.hospitalzj.sf.entity;
+package com.litbo.hospitalzj.sf.vo;
 
 /**
- * user实体类
+ * 用户角色全部信息实体类
  */
-
-public class User {
+public class UserRoleVo {
     private String userId;
 
     private String userName;
@@ -25,20 +24,14 @@ public class User {
 
     private String bz;
 
-    public Integer getIsDelete() {
-        return isDelete;
-    }
-
-    public void setIsDelete(Integer isDelete) {
-        this.isDelete = isDelete;
-    }
+    private String roleName;
 
     public String getUserId() {
         return userId;
     }
 
     public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+        this.userId = userId;
     }
 
     public String getUserName() {
@@ -46,7 +39,7 @@ public class User {
     }
 
     public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+        this.userName = userName;
     }
 
     public String getUserPwd() {
@@ -54,7 +47,7 @@ public class User {
     }
 
     public void setUserPwd(String userPwd) {
-        this.userPwd = userPwd == null ? null : userPwd.trim();
+        this.userPwd = userPwd;
     }
 
     public String getPhone() {
@@ -62,7 +55,7 @@ public class User {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+        this.phone = phone;
     }
 
     public String getBumen() {
@@ -70,7 +63,7 @@ public class User {
     }
 
     public void setBumen(String bumen) {
-        this.bumen = bumen == null ? null : bumen.trim();
+        this.bumen = bumen;
     }
 
     public String getAddress() {
@@ -78,7 +71,7 @@ public class User {
     }
 
     public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
+        this.address = address;
     }
 
     public Integer getStatus() {
@@ -94,7 +87,15 @@ public class User {
     }
 
     public void setRoleId(String roleId) {
-        this.roleId = roleId == null ? null : roleId.trim();
+        this.roleId = roleId;
+    }
+
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
     }
 
     public String getBz() {
@@ -102,6 +103,14 @@ public class User {
     }
 
     public void setBz(String bz) {
-        this.bz = bz == null ? null : bz.trim();
+        this.bz = bz;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 }

@@ -15,8 +15,10 @@ public interface EqPmMapper {
 	//通过Id查询设备品名
 	@Select("SELECT eq_pm_id eqPmId,eq_pm_name eqPmName,eq_pm_lx eqPmLx FROM eq_pm WHERE eq_pm_id=#{eqPmId}")
 	EqPm findById(@Param("eqPmId") Integer eqPmId);
-	@Select("SELECT eq_pm_id eqPmId,eq_pm_name FROM eq_pm where is_delete=0")
-	List<EqPm> findAll();
+	@Select("SELECT eq_pm_id eqPmId,eq_pm_name eqPmName,eq_pm_lx eqPmLx FROM eq_pm WHERE eq_pm_name=#{eqPmName} and is_delete=0")
+	EqPm findByName(@Param("eqPmName") String eqPmName);
+	@Select("SELECT eq_pm_id eqPmId,eq_pm_name FROM eq_pm where is_delete=0 ORDER BY eqcg_id ASC LIMIT #{offset},#{count}")
+	List<EqPm> findAll(@Param("offset")Integer offset, @Param("count") Integer count);
 	//删除设备pm
 	/*@Delete("delete from eq_pm\n" +
 			"    where eq_pm_id = #{eqPmId}")*/

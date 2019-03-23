@@ -27,13 +27,13 @@ public class EqJfController extends BaseController{
 	public EqJfService eqJfService;
 	
 	@RequestMapping("/{eqjfId}")
-	public ResponseResult<EqJfly> getByCode(@PathVariable("eqjfId") String eqjfId) {
+	public ResponseResult<EqJfly> getByCode(@PathVariable("eqjfId") Integer eqjfId) {
 		EqJfly data=eqJfService.getById(eqjfId);
 		return new ResponseResult<EqJfly>(SUCCESS,data);
 	}
 	@RequestMapping("/all")
 	public ResponseResult<List<EqJfly>> getAll() {
-		List<EqJfly> data=eqJfService.getAll();
+		List<EqJfly> data=eqJfService.getAll(1,10);
 		return new ResponseResult<List<EqJfly>>(SUCCESS,data);
 	}
 	@RequestMapping("/insert")
@@ -42,13 +42,18 @@ public class EqJfController extends BaseController{
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	@RequestMapping("/delete")
-	public ResponseResult<Void> delete(@RequestParam("eqjfId")String eqjfId) {
-		eqJfService.delete(eqjfId);
+	public ResponseResult<Void> delete(@RequestParam("eqjfId")Integer eqjfId) {
+		eqJfService.delete(eqjfId,1);
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	@RequestMapping("/update")
 	public ResponseResult<EqJfly> update(EqJfly eqJfly) {
 		EqJfly data=eqJfService.update(eqJfly);
 		return new ResponseResult<EqJfly>(SUCCESS,data);
+	}
+	@RequestMapping("/findEqJflyLike")
+	public ResponseResult<List<EqJfly>> findEqJflyLike(String eqjfName) {
+		List<EqJfly> data=eqJfService.findEqJflyLike(eqjfName);
+		return new ResponseResult<List<EqJfly>>(SUCCESS,data);
 	}
 }

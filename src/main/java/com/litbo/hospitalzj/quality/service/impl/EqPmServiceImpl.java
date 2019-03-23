@@ -9,6 +9,7 @@ package com.litbo.hospitalzj.quality.service.impl;
 
         import com.litbo.hospitalzj.supplier.service.exception.DeleteException;
 		import com.litbo.hospitalzj.supplier.service.exception.InsertException;
+		import org.apache.ibatis.annotations.Param;
 		import org.springframework.beans.factory.annotation.Autowired;
 		import org.springframework.stereotype.Service;
 
@@ -25,12 +26,18 @@ public class EqPmServiceImpl implements EqPmService{
 	public EqPm getById(Integer eqPmId) {
 		return findById(eqPmId);
 	}
+
+
+	public EqPm findByName(String eqPmName) {
+		return eqPmMapper.findByName(eqPmName);
+	}
+
 	private EqPm findById(Integer eqPmId) {
 		return eqPmMapper.findById(eqPmId);
 	}
 	@Override
-	public List<EqPm> getAll() {
-		return eqPmMapper.findAll();
+	public List<EqPm> getAll(@Param("offset")Integer offset, @Param("count") Integer count) {
+		return eqPmMapper.findAll(offset,count);
 	}
 
 	@Override
@@ -42,11 +49,9 @@ public class EqPmServiceImpl implements EqPmService{
 		eqPmMapper.delete(eqPmId,isDelete);
 	}
 
-
 	@Override
-	public void insert(EqPm eqPm) {
-		System.out.println(eqPm);
-		EqPm data=findById(eqPm.getEqPmId());
+	public void insert(EqPm eqPm) {;
+		EqPm data=findByName(eqPm.getEqPmName());
 		if(data!=null){
 			throw new InsertException("设备品名或名称已存在");
 		}

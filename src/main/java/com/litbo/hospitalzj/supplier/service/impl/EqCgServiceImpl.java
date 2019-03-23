@@ -10,6 +10,7 @@ import java.util.List;
 import com.litbo.hospitalzj.supplier.service.exception.DeleteException;
 import com.litbo.hospitalzj.supplier.service.exception.InsertException;
 import com.litbo.hospitalzj.supplier.service.exception.UpdateException;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,8 +41,8 @@ public class EqCgServiceImpl implements EqCgService{
 	}*/
 
 	@Override
-	public List<EqCgfs> getAll() {
-		return eqCgMapper.findAll();
+	public List<EqCgfs> getAll(@Param("offset")Integer offset, @Param("count") Integer count) {
+		return eqCgMapper.findAll(offset,count);
 	}
 
 
@@ -56,7 +57,7 @@ public class EqCgServiceImpl implements EqCgService{
 
 	@Override
 	public void insert(EqCgfs eqCgfs) {
-		EqCgfs data=eqCgMapper.findById(eqCgfs.getEqcgId());
+		EqCgfs data=eqCgMapper.findByName(eqCgfs.getEqcgName());
 		if(data!=null){
 			throw new InsertException("采购方式或名称已存在");
 		}

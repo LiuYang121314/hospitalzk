@@ -10,16 +10,17 @@ import java.util.List;
 import com.litbo.hospitalzj.supplier.entity.EqJfly;
 import com.litbo.hospitalzj.supplier.entity.EqLy;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 
 public interface EqLyService {
 
-	EqLy getById(String eqlyId);
-	
+	EqLy getById(Integer eqlyId);
 
-	List<EqLy> getAll();
+	List<EqLy> getAll(@Param("offset")Integer offset, @Param("count") Integer count);
 
-	void delete(String eqlyId);
+	void delete(@Param("eqlyId")Integer eqlyId,@Param("isDelete")Integer isDelete);
 
 	void insert(EqLy eqLy);
 	EqLy update(EqLy eqLy);
+	List<EqLy> findEqLyLike(@Param("eqlyName")String eqlyName);
 }
