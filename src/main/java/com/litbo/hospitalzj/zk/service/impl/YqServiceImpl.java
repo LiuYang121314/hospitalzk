@@ -113,10 +113,10 @@ public class YqServiceImpl implements YqService{
 		return yqMapper.selectYqDqByEqId(eqId,jcyqName);
 	}
 
-	/*@Override
+	@Override
 	public List<Yq> selectYqByEqId(Integer eqId) {
 		return yqMapper.selectYqByEqId(eqId);
-	}*/
+	}
 
 	@Override
 	public List<Yq>  selectTime(){

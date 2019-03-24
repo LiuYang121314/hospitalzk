@@ -3,6 +3,7 @@ package com.litbo.hospitalzj.sf.controller;
 import com.litbo.hospitalzj.controller.BaseController;
 import com.litbo.hospitalzj.sf.entity.User;
 import com.litbo.hospitalzj.sf.service.UserService;
+import com.litbo.hospitalzj.sf.vo.UserRoleVo;
 import com.litbo.hospitalzj.util.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,21 +24,22 @@ public class UserController extends BaseController {
             (@RequestParam("userName") String userName,
              @RequestParam("userPwd") String userPwd,
              HttpSession session) {
-        User data=userService.login(userName,userPwd);
+        UserRoleVo data=userService.login(userName,userPwd);
         // 将相关信息存入到Session
         session.setAttribute("uid", data.getUserId());
         session.setAttribute("userName", data.getUserName());
         return new ResponseResult<User>(SUCCESS,data.getRoleName());
     }
     @RequestMapping("/{userId}")
-    public ResponseResult<User> getByCode(@PathVariable("userId") String userId) {
-        User data=userService.select(userId);
-        return new ResponseResult<User>(SUCCESS,data);
+    public ResponseResult<UserRoleVo> getByCode(@PathVariable("userId") String userId) {
+        UserRoleVo data=userService.select(userId);
+        return new ResponseResult<UserRoleVo>(SUCCESS,data);
     }
-    @RequestMapping("all")
-    public ResponseResult<List<User>> getAll() {
-        List<User> data=userService.findAll();
-        return new ResponseResult<List<User>>(SUCCESS,data);
+
+    @RequestMapping("/all")
+    public ResponseResult<List<UserRoleVo>> getAll() {
+        List<UserRoleVo> data=userService.findAll(0,10);
+        return new ResponseResult<List<UserRoleVo>>(SUCCESS,data);
     }
     @RequestMapping("/insert")
     public ResponseResult<Void> insert(User user) {
@@ -46,7 +48,7 @@ public class UserController extends BaseController {
     }
     @RequestMapping("/delete")
     public ResponseResult<Void> delete(String userId) {
-        userService.delete(userId);
+        userService.delete(userId,1);
         return new ResponseResult<Void>(SUCCESS);
     }
     @RequestMapping("/update")
@@ -54,5 +56,14 @@ public class UserController extends BaseController {
         userService.update(user);
         return new ResponseResult<User>(SUCCESS);
     }
-
+    @RequestMapping("/findByLike")
+    public ResponseResult<List<UserRoleVo>> getAll(String userName) {
+        List<UserRoleVo> data=userService.findByNameLike(userName);
+        return new ResponseResult<List<UserRoleVo>>(SUCCESS,data);
+    }
+    @RequestMapping("/updateRole")
+    public ResponseResult<Void> updateRole(@RequestParam("roleId") String roleId,@RequestParam("userId")String userId) {
+        userService.updateRole(roleId,userId);
+        return new ResponseResult<Void>(SUCCESS);
+    }
 }

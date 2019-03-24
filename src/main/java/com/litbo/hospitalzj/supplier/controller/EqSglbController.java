@@ -23,13 +23,13 @@ public class EqSglbController extends BaseController{
 	public EqSglbService eqSglbService;
 	
 	@RequestMapping("/{eqsgId}")
-	public ResponseResult<EqSglb> getByCode(@PathVariable("eqsgId") String eqsgId) {
+	public ResponseResult<EqSglb> getByCode(@PathVariable("eqsgId") Integer eqsgId) {
 		EqSglb data=eqSglbService.getById(eqsgId);
 		return new ResponseResult<EqSglb>(SUCCESS,data);
 	}
 	@RequestMapping("/all")
 	public ResponseResult<List<EqSglb>> getAll() {
-		List<EqSglb> data=eqSglbService.getAll();
+		List<EqSglb> data=eqSglbService.getAll(0,10);
 		return new ResponseResult<List<EqSglb>>(SUCCESS,data);
 	}
 	@RequestMapping("/insert")
@@ -38,13 +38,18 @@ public class EqSglbController extends BaseController{
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	@RequestMapping("/delete")
-	public ResponseResult<Void> idelete(String eqsgId) {
-		eqSglbService.delete(eqsgId);
+	public ResponseResult<Void> idelete(Integer eqsgId) {
+		eqSglbService.delete(eqsgId,1);
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	@RequestMapping("/update")
 	public ResponseResult<EqSglb> update(EqSglb eqSglb) {
 		EqSglb data=eqSglbService.update(eqSglb);
 		return new ResponseResult<EqSglb>(SUCCESS,data);
+	}
+	@RequestMapping("/findEqSglbLike")
+	public ResponseResult<List<EqSglb>> findEqSglbLike(String eqSgName) {
+		List<EqSglb> data=eqSglbService.findEqSglbLike(eqSgName);
+		return new ResponseResult<List<EqSglb>>(SUCCESS,data);
 	}
 }

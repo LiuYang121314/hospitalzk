@@ -2,6 +2,7 @@ package com.litbo.hospitalzj.supplier.mapper;
 
 import java.util.List;
 
+import com.litbo.hospitalzj.supplier.entity.EqSglb;
 import org.apache.ibatis.annotations.*;
 import com.litbo.hospitalzj.supplier.entity.EqYt;
 /**
@@ -12,12 +13,17 @@ import com.litbo.hospitalzj.supplier.entity.EqYt;
 @Mapper
 public interface EqYtMapper {
 	@Select("SELECT eqyt_id eqytId, eqyt_name eqytName FROM eq_sbyt WHERE eqyt_id=#{eqytId}")
-	EqYt findById(@Param("eqytId") String eqytId);
-	@Select("SELECT eqyt_id eqytId, eqyt_name eqytName FROM eq_sbyt")
-	List<EqYt> findAll();
-	@Delete(" delete from eq_sbyt\n" +
-			"    where eqyt_id = #{eqytId,jdbcType=VARCHAR}")
-	int delete(String eqytId);
+	EqYt findById(@Param("eqytId") Integer eqytId);
+	@Select("SELECT eqyt_id eqytId, eqyt_name eqytName FROM eq_sbyt where isDelete=0 ORDER BY eqyt_id ASC LIMIT #{offset}, #{count}")
+	List<EqYt> findAll(@Param("offset")Integer offset, @Param("count") Integer count);
+	/*@Delete(" delete from eq_sbyt\n" +
+			"    where eqyt_id = #{eqytId,jdbcType=VARCHAR}")*/
+	//删除，修改状态
+	/*@Delete("delete from eq_sglb\n" +
+			"    where eqsg_id = #{eqsgId,jdbcType=VARCHAR}")*/
+	@Update("update eq_sbyt set is_delete = #{isDelete} where eqyt_id = #{eqytId}")
+	int delete(@Param("eqytId")Integer eqytId,@Param("isDelete")Integer isDelete);
+
 	@Insert(" insert into eq_sbyt (eqyt_id, eqyt_name)\n" +
 			"    values (#{eqytId,jdbcType=VARCHAR}, #{eqytName,jdbcType=VARCHAR})")
 	int insert(EqYt eqYt);
@@ -25,4 +31,7 @@ public interface EqYtMapper {
 			"    set eqyt_name = #{eqytName,jdbcType=VARCHAR}\n" +
 			"    where eqyt_id = #{eqytId,jdbcType=VARCHAR}"))
 	Integer update(EqYt eqYt);
+	//模糊查询
+	@Select("SELECT * FROM eq_sbyt WHERE eqyt_name LIKE '%${eqytName}%' where is_delete=0")
+	List<EqYt> findEqYtLike(@Param("eqytName")String eqytName);
 }

@@ -1,6 +1,5 @@
 package com.litbo.hospitalzj.user.service.impl;
 
-import com.litbo.hospitalzj.service.exception.NotFoundException;
 import com.litbo.hospitalzj.supplier.service.exception.DeleteException;
 import com.litbo.hospitalzj.supplier.service.exception.InsertException;
 import com.litbo.hospitalzj.supplier.service.exception.UpdateException;

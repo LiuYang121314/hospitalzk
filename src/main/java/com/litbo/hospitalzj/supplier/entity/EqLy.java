@@ -5,14 +5,26 @@ package com.litbo.hospitalzj.supplier.entity;
  *
  */
 public class EqLy {
-	private String eqlyId;
+	private Integer eqlyId;
 	private String eqlyName;
-	public String getEqlyId() {
+	private Integer isDelete;
+
+	public Integer getEqlyId() {
 		return eqlyId;
 	}
-	public void setEqlyId(String eqlyId) {
+
+	public void setEqlyId(Integer eqlyId) {
 		this.eqlyId = eqlyId;
 	}
+
+	public Integer getIsDelete() {
+		return isDelete;
+	}
+
+	public void setIsDelete(Integer isDelete) {
+		this.isDelete = isDelete;
+	}
+
 	public String getEqlyName() {
 		return eqlyName;
 	}

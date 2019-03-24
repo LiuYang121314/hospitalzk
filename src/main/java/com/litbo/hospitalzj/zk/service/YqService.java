@@ -36,9 +36,12 @@ public interface YqService {
 	EqInfo selectEqInfoByEqid(Integer eqId);
 
 	List<Yq> selectEqYqByEqid(Integer eqId);
+
+	//根据设备id查询设备所关联的仪器
+	List<Yq> selectYqByEqId(@Param("eqId") Integer eqId);
+
 	//管理员查看通过设备ID查询设备检测仪器
 	//查看非电气仪器表
-	/*List<Yq> selectYqByEqId(@Param("eqId") Integer eqId);*/
 	List<Yq> selectYqNotDqByEqId(@Param("eqId") Integer eqId,@Param("jcyqName") String jcyqName);
 	//查看电气仪器表
 	List<Yq> selectYqDqByEqId(@Param("eqId") Integer eqId,@Param("jcyqName") String jcyqName);

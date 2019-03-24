@@ -25,4 +25,9 @@ public class SGbServiceImpl implements SGbService {
 		List<SGb> data =sGbMapper.select();
 		return data;
 	}
+
+	@Override
+	public List<SGb> findGbLike(String gb) {
+		return sGbMapper.findGbLike(gb);
+	}
 }

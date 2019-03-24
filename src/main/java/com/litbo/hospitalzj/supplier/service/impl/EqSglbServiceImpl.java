@@ -10,6 +10,7 @@ import java.util.List;
 import com.litbo.hospitalzj.supplier.entity.EqLy;
 import com.litbo.hospitalzj.supplier.service.exception.DeleteException;
 import com.litbo.hospitalzj.supplier.service.exception.InsertException;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.litbo.hospitalzj.supplier.entity.EqSglb;
@@ -22,24 +23,24 @@ public class EqSglbServiceImpl implements EqSglbService{
 	private EqSglbMapper eqSglbMapper;
 
 	@Override
-	public EqSglb getById(String eqsgId) {
+	public EqSglb getById(Integer eqsgId) {
 		return findById(eqsgId);
 	}
-	private EqSglb findById(String eqsgId) {
+	private EqSglb findById(Integer eqsgId) {
 		return eqSglbMapper.findById(eqsgId);
 	}
 	@Override
-	public List<EqSglb> getAll() {
-		return eqSglbMapper.findAll();
+	public List<EqSglb> getAll(@Param("offset")Integer offset, @Param("count") Integer count) {
+		return eqSglbMapper.findAll(offset,count);
 	}
 
 	@Override
-	public void delete(String eqsgId) {
+	public void delete(Integer eqsgId,Integer isDelete) {
 		EqSglb data=eqSglbMapper.findById(eqsgId);
 		if(data==null){
 			throw new DeleteException("设备申购来源不存在");
 		}
-		eqSglbMapper.delete(eqsgId);
+		eqSglbMapper.delete(eqsgId,isDelete);
 	}
 
 	@Override
@@ -54,5 +55,10 @@ public class EqSglbServiceImpl implements EqSglbService{
 	public EqSglb update(EqSglb eqSglb) {
 		eqSglbMapper.update(eqSglb);
 		return eqSglb;
+	}
+	//模糊查询
+	@Override
+	public List<EqSglb> findEqSglbLike(String eqsgName) {
+		return eqSglbMapper.findEqSglbLike(eqsgName);
 	}
 }

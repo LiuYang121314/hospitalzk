@@ -18,8 +18,8 @@ public interface EqCgMapper {
 	@Select("SELECT eqcg_id eqcgId, eqcg_name eqcgName FROM eq_cgfs WHERE eqcg_name=#{eqcgName}")
 	EqCgfs findByName(@Param("eqcgName") String eqcgName);
 
-	@Select("SELECT eqcg_id eqcgId, eqcg_name eqcgName FROM eq_cgfs where is_delete=0")
-	List<EqCgfs> findAll();
+	@Select("SELECT eqcg_id eqcgId, eqcg_name eqcgName FROM eq_cgfs where is_delete=0 ORDER BY eqcg_id ASC LIMIT #{offset}, #{count}")
+	List<EqCgfs> findAll(@Param("offset")Integer offset, @Param("count") Integer count);
 	//删除记录
 	/*@Delete("delete from eq_cgfs where eqcg_id = #{eqcgId,jdbcType=VARCHAR}")*/
 	@Update("update eq_cgfs set is_delete = #{isDelete} where eqcg_id = #{eqcgId}")
@@ -32,6 +32,6 @@ public interface EqCgMapper {
 			"    where eqcg_id = #{eqcgId,jdbcType=VARCHAR}")
 	Integer update(EqCgfs eqCgfs);
 	//模糊查询
-	@Select("SELECT * FROM eq_cgfs WHERE eqcg_name LIKE '%${eqcgName}%'")
+	@Select("SELECT * FROM eq_cgfs WHERE eqcg_name LIKE '%${eqcgName}%' where is_delete=0")
 	List<EqCgfs> findByEqcgNameLike(@Param("eqcgName") String eqcgName);
 }

@@ -29,7 +29,7 @@ public class EqPmController extends BaseController{
 	}
 	@RequestMapping("/all")
 	public ResponseResult<List<EqPm>> getAll() {
-		List<EqPm> data= eqPmService.getAll();
+		List<EqPm> data= eqPmService.getAll(0,10);
 		return new ResponseResult<List<EqPm>>(SUCCESS,data);
 	}
 	@RequestMapping("/insert")

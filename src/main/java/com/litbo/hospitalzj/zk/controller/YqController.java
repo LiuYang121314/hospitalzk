@@ -140,13 +140,13 @@ public class YqController extends BaseController{
 		List<Yq> data=yqService.selectYqDqByEqId(eqId,"电气安全分析仪");
 		return new ResponseResult<List<Yq>>(SUCCESS,data);
 	}
-	/*//通过eqId和状态查询
+	//根据设备id查询设备所关联的仪器
 	@RequestMapping("/selectYqByEqId")
 	public ResponseResult<List<Yq>> selectYqByEqId0(@RequestParam("eqId") Integer eqId){
 		List<Yq> data=yqService.selectYqByEqId(eqId);
 		return new ResponseResult<List<Yq>>(SUCCESS,data);
 	}
-	@RequestMapping("/selectYqByEqId1")
+	/*@RequestMapping("/selectYqByEqId1")
 	public ResponseResult<List<Yq>> selectYqByEqId1(@RequestParam("eqId") Integer eqId){
 		List<Yq> data=yqService.selectYqByEqId(eqId);
 		return new ResponseResult<List<Yq>>(SUCCESS,data);

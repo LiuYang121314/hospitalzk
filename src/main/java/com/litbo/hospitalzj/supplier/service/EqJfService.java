@@ -8,15 +8,17 @@ package com.litbo.hospitalzj.supplier.service;
 import java.util.List;
 
 import com.litbo.hospitalzj.supplier.entity.EqJfly;
+import org.apache.ibatis.annotations.Param;
 
 public interface EqJfService {
 
-	EqJfly getById(String eqjfId);
+	EqJfly getById(Integer eqjfId);
 
-	List<EqJfly> getAll();
+	List<EqJfly> getAll(@Param("offset")Integer offset, @Param("count") Integer count);
 
-	void delete(String eqjfId);
+	void delete(@Param("eqjfId")Integer eqjfId, @Param("isDelete")Integer isDelete);
 
 	void insert(EqJfly eqJfly);
 	EqJfly update(EqJfly eqJfly);
+	List<EqJfly> findEqJflyLike(@Param("eqjfName")String eqjfName);
 }

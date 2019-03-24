@@ -5,12 +5,13 @@ package com.litbo.hospitalzj.supplier.entity;
  *
  */
 public class EqJfly {
-	private String eqjfId;
+	private Integer eqjfId;
 	private String eqjfName;
-	public String getEqjfId() {
+	private Integer isDelete;
+	public Integer getEqjfId() {
 		return eqjfId;
 	}
-	public void setEqjfId(String eqjfId) {
+	public void setEqjfId(Integer eqjfId) {
 		this.eqjfId = eqjfId;
 	}
 	public String getEqjfName() {
@@ -19,6 +20,15 @@ public class EqJfly {
 	public void setEqjfName(String eqjfName) {
 		this.eqjfName = eqjfName;
 	}
+
+	public Integer getIsDelete() {
+		return isDelete;
+	}
+
+	public void setIsDelete(Integer isDelete) {
+		this.isDelete = isDelete;
+	}
+
 	@Override
 	public String toString() {
 		return "EqJfly [eqjfId=" + eqjfId + ", eqjfName=" + eqjfName + "]";

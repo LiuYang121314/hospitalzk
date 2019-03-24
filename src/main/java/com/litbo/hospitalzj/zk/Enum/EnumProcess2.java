@@ -1,8 +1,6 @@
 package com.litbo.hospitalzj.zk.Enum;
 
 
-import sun.plugin2.message.Message;
-
 public enum EnumProcess2 {
     UNDER_DETECTIO(1,"待检测"),
     UNDER_REVIEW(2,"待审核"),

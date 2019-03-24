@@ -7,10 +7,13 @@ package com.litbo.hospitalzj.supplier.service;
 
 import com.litbo.hospitalzj.supplier.entity.HtLc;
 import com.litbo.hospitalzj.supplier.entity.SGb;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
 
 public interface SGbService {
 	List<SGb> Select();
+	List<SGb> findGbLike(@Param("gb")String gb);
 }
