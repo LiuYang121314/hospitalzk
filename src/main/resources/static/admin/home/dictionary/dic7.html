@@ -185,7 +185,7 @@
         form.on("submit(search)",function (data){
             console.log(data.field);
             if(data.field.eqPmName=="" || data.field.eqPmName==null){
-                layer.msg("设备品名不能为空");
+                layer.msg("查询内容不能为空");
             }else{
                 $.ajax({
                     url:"/eqpm/selectByEqPmNameLike?eqPmName="+data.field.eqPmName,
