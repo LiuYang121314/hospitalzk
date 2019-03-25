@@ -78,7 +78,7 @@
             <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">权限</label>
                 <div class="layui-input-block">
-                    <select id="roleName" name="roleName" lay-verify="required">
+                    <select id="roleId" name="roleName" lay-verify="required">
                         <option value=""></option>
                         <option value="3">超级管理员</option>
                         <option value="2">管理员&检测员</option>
@@ -100,6 +100,7 @@
     // 获取上个页面传递的类型
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
+    alert(ids);
     $(function () {
         $.ajax({
             url:"/user/"+ids,
@@ -135,7 +136,7 @@
         form.on("submit(create)",function (data) {
             console.log(data.field);
             $.ajax({
-                url:"/user/update?userId="+ids,
+                url:"/user/update",
                 method:"POST",
                 data:data.field,
                 dataType:"JSON",

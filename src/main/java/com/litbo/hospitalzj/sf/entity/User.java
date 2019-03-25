@@ -104,4 +104,20 @@ public class User {
     public void setBz(String bz) {
         this.bz = bz == null ? null : bz.trim();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", userName='" + userName + '\'' +
+                ", userPwd='" + userPwd + '\'' +
+                ", phone='" + phone + '\'' +
+                ", bumen='" + bumen + '\'' +
+                ", address='" + address + '\'' +
+                ", status=" + status +
+                ", roleId='" + roleId + '\'' +
+                ", isDelete=" + isDelete +
+                ", bz='" + bz + '\'' +
+                '}';
+    }
 }
