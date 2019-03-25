@@ -86,7 +86,7 @@
             <div class="layui-form-item btn">
                 <div class="layui-input-block">
                     <button class="layui-btn layui-btn-normal" lay-submit lay-filter="create">创建</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    <a id="back" class="layui-btn layui-btn-primary">返回</a>
                 </div>
             </div>
         </form>
@@ -99,7 +99,7 @@
             ,   table = layui.table
             ,   form = layui.form;
         // 创建新角色
-        form.on("submit(create)",function (data) {
+        form.on("submit(create)",function(data){
             console.log(data.field);
             $.ajax({
                 url:"",
@@ -122,8 +122,12 @@
                     layer.msg("请稍后再试");
                     console.log(data);
                 }
-            })
+            });
+            return false;
         });
+        $("#back").click(function(){
+            location.href="/admin/home/powers.html"
+        })
     })
 </script>
 </body>
