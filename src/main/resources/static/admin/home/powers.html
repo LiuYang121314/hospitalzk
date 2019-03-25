@@ -26,70 +26,10 @@
         <div class="col-xs-12 btn">
             <button id="btn" class="layui-btn layui-btn-normal">添加角色</button>
         </div>
-        <div id="createUser" style="display: none;">
-            <fieldset class="layui-elem-field layui-field-title">
-                <legend style="color: #000000;font-weight: bold;">添加角色</legend>
-            </fieldset>
-            <form class="layui-form" action="">
-                <div class="layui-form-item col-md-6">
-                    <label class="layui-form-label">员工号</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="userId" required  lay-verify="required" placeholder="请输入员工号" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item col-md-6">
-                    <label class="layui-form-label">用户名</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="userName" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item col-md-6">
-                    <label class="layui-form-label">密码</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="userPwd" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item col-md-6">
-                    <label class="layui-form-label">部门</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="bumen" required  lay-verify="required" placeholder="请输入科室" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item col-md-6">
-                    <label class="layui-form-label">电话</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="phone" required  lay-verify="required" placeholder="请输入员电话" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item col-md-6">
-                    <label class="layui-form-label">地址</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="address" required  lay-verify="required" placeholder="请输入地址" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item col-md-6">
-                    <label class="layui-form-label">备注</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="bz" required  lay-verify="required" placeholder="请输入备注" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item col-md-6">
-                    <label class="layui-form-label">权限</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="roleName" required  lay-verify="required" placeholder="请输入权限" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-input-block">
-                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="create">创建</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                    </div>
-                </div>
-            </form>
-        </div>
     </div>
 </div>
-<script type="text/html" id="del">
+<script type="text/html" id="handles">
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="update">添加</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="dels">删除</a>
 </script>
 <script>
@@ -102,7 +42,7 @@
         // 已存在
         table.render({
             elem:"#userInfo"
-            ,cellMinWidth: 80
+            ,cellMinWidth: 120
             ,url:"/user/all"
             ,method:"GET"
             ,response: {
@@ -131,15 +71,16 @@
                 {field:'address', title:'地址',align:'center'},
                 {field:'bz', title:'备注',align:'center'},
                 {field:'roleName', title:'权限',align:'center'},
-                {fixed: 'right', title:'操作',minWidth:"130", toolbar: '#del',align:'center'}
+                {fixed: 'right', title:'操作',minWidth:"130", toolbar: '#handles',align:'center'}
             ]]
         });
         //监听行工具事件
-        // 删除
         table.on('tool(handle)', function(obj){
             var data = obj.data;
             console.log(obj);
-                if(obj.event === 'dels'){
+            if(obj.event === 'update'){
+                location.href="/admin/home/powers/update_user.html?id="+obj.data.userId;
+            }else if(obj.event === 'dels'){
                 layer.confirm('确定删除该用户么', function(index){
                     obj.del();
                     $.ajax({
@@ -161,41 +102,19 @@
             }
         });
         $("#btn").click(function(){
-            layer.open({
-                type:1,
-                content:$("#createUser"),
-                area:["90%","90%"],
-                maxmin:true,
-                btn:"保存",
-                yes:function(){
-                    location.href="./powers.html";
-                    layer.closeAll();
-                }
-            });
+            // layer.open({
+            //     type:1,
+            //     content:$("#createUser"),
+            //     area:["90%","90%"],
+            //     maxmin:true,
+            //     btn:"保存",
+            //     yes:function(){
+            //         location.href="./powers.html";
+            //         layer.closeAll();
+            //     }
+            // });
+            location.href="/admin/home/powers/create_user.html";
         });
-        // 创建新角色
-        form.on("submit(create)",function (data) {
-            console.log(data.field);
-            $.ajax({
-                url:"",
-                method:"POST",
-                data:data.field,
-                dataType:"JSON",
-                success:function(res){
-                    if(res.state === 200){
-                        layer.msg("创建成功");
-                    }else if(res.state === 400){
-                        layer.msg("该用户已存在！");
-                    }else{
-                        layer.msg("创建失败");
-                    }
-                },
-                error:function(data){
-                    layer.msg("请稍后再试");
-                    console.log(data);
-                }
-            })
-        })
     });
 </script>
 </body>
