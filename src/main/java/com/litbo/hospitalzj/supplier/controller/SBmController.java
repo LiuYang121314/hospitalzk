@@ -26,12 +26,12 @@ public class SBmController extends BaseController {
 		sBmService.update(sBm);
 		return new ResponseResult<Void>(SUCCESS);
 	}
-	@RequestMapping("selectAll")
+	@RequestMapping("/selectAll")
 	public ResponseResult<List<SBm>> getAll() {
 		List<SBm> data=sBmService.findAll(0,10);
 		return new ResponseResult<List<SBm>>(SUCCESS,data);
 	}
-	@RequestMapping("select")
+	@RequestMapping("/select")
 	public ResponseResult<SBm> getone(Integer bmId) {
 		SBm data=sBmService.findById(bmId);
 		return new ResponseResult<SBm>(SUCCESS,data);
@@ -46,8 +46,8 @@ public class SBmController extends BaseController {
 		sBmService.delete(bmId);
 		return new ResponseResult<Void>(SUCCESS);
 	}
-	@RequestMapping("/delete")
-	public ResponseResult<List<SBm>> delete(String bmname) {
+	@RequestMapping("/findByBmNameLike")
+	public ResponseResult<List<SBm>> findByBmNameLike(String bmname) {
 		List<SBm> data=sBmService.findByBmNameLike(bmname);
 		return new ResponseResult<List<SBm>>(SUCCESS,data);
 	}
