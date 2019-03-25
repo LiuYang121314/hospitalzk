@@ -72,11 +72,13 @@
             // page:true,
             cols:[[
                 {field:'userId', title:'员工号',align:'center'},
-                {field:'userId', title:'用户名',align:'center'},
-                {field:'userId', title:'密码',align:'center'},
-                {field:'userName', title:'电话',align:'center'},
-                {field:'roleName', title:'地址',align:'center'},
-                {field:'userId', title:'备注',align:'center'},
+                {field:'userName', title:'用户名',align:'center'},
+                {field:'userPwd', title:'密码',align:'center'},
+                {field:'bumen', title:'部门',align:'center'},
+                {field:'phone', title:'电话',align:'center'},
+                {field:'address', title:'地址',align:'center'},
+                {field:'bz', title:'备注',align:'center'},
+                {field:'roleName', title:'权限',align:'center'},
                 {fixed: 'right', title:'操作',minWidth:"130", toolbar: '#del',align:'center'}
             ]]
         });
@@ -143,12 +145,14 @@
                 // page:true,
                 cols:[[
                     {field:'userId', title:'员工号',align:'center'},
-                    {field:'userId', title:'用户名',align:'center'},
-                    {field:'userId', title:'密码',align:'center'},
-                    {field:'userName', title:'电话',align:'center'},
-                    {field:'roleName', title:'地址',align:'center'},
-                    {field:'userId', title:'备注',align:'center'},
-                    {fixed: 'right', title:'操作',minWidth:"130", toolbar: '#add',align:'center'}
+                    {field:'userName', title:'用户名',align:'center'},
+                    {field:'userPwd', title:'密码',align:'center'},
+                    {field:'bumen', title:'部门',align:'center'},
+                    {field:'phone', title:'电话',align:'center'},
+                    {field:'address', title:'地址',align:'center'},
+                    {field:'bz', title:'备注',align:'center'},
+                    {field:'roleName', title:'权限',align:'center'},
+                    {fixed: 'right', title:'操作',minWidth:"130", toolbar: '#del',align:'center'}
                 ]]
             });
         });

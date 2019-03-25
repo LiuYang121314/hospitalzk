@@ -17,7 +17,7 @@ public interface EqYtMapper {
 	@Select("SELECT eqyt_id eqytId, eqyt_name eqytName FROM eq_sbyt WHERE eqyt_name=#{eqytName} and is_delete=0")
 	EqYt findByName(@Param("eqytName") String eqytName);
 
-	@Select("SELECT eqyt_id eqytId, eqyt_name eqytName FROM eq_sbyt where isDelete=0 ORDER BY eqyt_id ASC LIMIT #{offset}, #{count}")
+	@Select("SELECT eqyt_id eqytId, eqyt_name eqytName FROM eq_sbyt where is_delete=0 ORDER BY eqyt_id ASC LIMIT #{offset}, #{count}")
 	List<EqYt> findAll(@Param("offset")Integer offset, @Param("count") Integer count);
 	/*@Delete(" delete from eq_sbyt\n" +
 			"    where eqyt_id = #{eqytId,jdbcType=VARCHAR}")*/

@@ -37,8 +37,6 @@ public class SgdjHwServiceImpl implements SgdjHwService{
 	@Transactional
 	@Override
 	public int updateURL(Integer htIds, String path) {
-
-
 		if(SgdjHwMapper.selectSgdjHwByHtIds(htIds)==null){
 			SgdjHw sgdjHw = new SgdjHw();
 			sgdjHw.setHtIds(htIds);

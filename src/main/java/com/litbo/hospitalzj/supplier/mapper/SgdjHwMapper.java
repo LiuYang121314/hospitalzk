@@ -38,6 +38,9 @@ public interface SgdjHwMapper {
 	@Update("update sg_djhw set djhw_url = CONCAT(djhw_url,#{path}) where ht_ids = #{htIds}")
     int updateURL(@Param("htIds") Integer htIds, @Param("path") String path);
 
+	@Update("update sg_djhw set djhw_bz1 = CONCAT(djhw_bz1,#{path}) where ht_ids = #{htIds}")
+	int updateWjURL(@Param("htIds") Integer htIds, @Param("path") String path);
+
 	@Select("select djhw_id djhwId,ht_ids htIds,djhw_wbz djhwWbz,djhw_ysbs djhwYsbs,"
 			+ "djhw_sbwg djhwSbwg,djhw_sxwj djhwSxwj,djhw_bz1 djhwBz1,djhw_bz2 djhwBz2,djhw_bz3 djhwBz3,djhw_bz4 djhwBz4,"
 			+ "djhw_bz5 djhwBz5,djhw_bz6 djhwBz6,djhw_bz7 djhwBz7,djhw_bz8 djhwBz8,djhw_bz9 djhwBz9,djhw_bz10 djhwBz10,"
