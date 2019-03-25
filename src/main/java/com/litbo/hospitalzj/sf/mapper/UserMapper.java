@@ -29,7 +29,7 @@ public interface UserMapper {
     UserRoleVo findByName(String userName);
     //查找全部用户信息
     @Select("select s.*,r.role_name from " +
-            "s_user s left join s_role r on s.role_id=r.role_id where is_delete=0 and ORDER BY user_id ASC\n" +
+            "s_user s left join s_role r on s.role_id=r.role_id where is_delete=0 ORDER BY user_id ASC\n" +
             "LIMIT #{offset}, #{count}")
     List<UserRoleVo> findAll(@Param("offset")Integer offset, @Param("count") Integer count);
     //模糊查询用户信息
