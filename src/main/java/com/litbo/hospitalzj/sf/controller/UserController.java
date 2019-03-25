@@ -54,6 +54,8 @@ public class UserController extends BaseController {
     }
     @RequestMapping("/update")
     public ResponseResult<User> update(User user) {
+        System.out.println(user.getUserId());
+        System.out.println(user);
         userService.update(user);
         return new ResponseResult<User>(SUCCESS);
     }

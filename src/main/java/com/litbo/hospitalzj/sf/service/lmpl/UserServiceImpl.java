@@ -59,10 +59,11 @@ private UserMapper userMapper;
     //修改用户信息
     @Override
     public void update(User user) {
-        UserRoleVo data=userMapper.select(user.getUserId());
+        /*UserRoleVo data=userMapper.select(user.getUserId());
         if(data==null){
             throw new UpdateException("用户不存在");
-        }
+        }*/
+        user.setIsDelete(0);
         userMapper.update(user);
     }
     //修改用户角色

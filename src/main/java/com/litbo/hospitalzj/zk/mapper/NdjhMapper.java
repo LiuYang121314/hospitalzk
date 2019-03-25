@@ -56,7 +56,7 @@ public interface NdjhMapper {
     @Select("select count(*) from ndjh where user_id=#{userId} and state=#{state}")
     Integer jhCount(@Param("userId")String userId,@Param("state")String state);
     //管理员根据用户品名关联表和年度计划表查询待审核数量
-    @Select("select count(*) from user_pm u left join ndjh n on u.user_id=n.user_id where u.shr_id=#{shrId} and n.state=#{state}")
+    @Select("select count(*) from ndjh where state=#{state} and user_id IN(SELECT user_id FROM user_pm WHERE shr_id=#{shrId})")
     Integer dshCount(@Param("shrId")String shrId,@Param("state")String state);
 
     @Update("update ndjh set state=#{state} where ndjh_id=#{ndjhId}")
