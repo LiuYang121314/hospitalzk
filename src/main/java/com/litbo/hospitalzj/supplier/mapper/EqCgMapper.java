@@ -15,7 +15,7 @@ public interface EqCgMapper {
 	@Select("SELECT eqcg_id eqcgId, eqcg_name eqcgName FROM eq_cgfs WHERE eqcg_id=#{eqcgId}")
 	EqCgfs findById(@Param("eqcgId") Integer eqcgId);
 
-	@Select("SELECT eqcg_id eqcgId, eqcg_name eqcgName FROM eq_cgfs WHERE eqcg_name=#{eqcgName}")
+	@Select("SELECT eqcg_id eqcgId, eqcg_name eqcgName FROM eq_cgfs WHERE eqcg_name=#{eqcgName} and is_delete=0")
 	EqCgfs findByName(@Param("eqcgName") String eqcgName);
 
 	@Select("SELECT eqcg_id eqcgId, eqcg_name eqcgName FROM eq_cgfs where is_delete=0 ORDER BY eqcg_id ASC LIMIT #{offset}, #{count}")

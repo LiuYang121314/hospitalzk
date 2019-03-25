@@ -25,7 +25,7 @@ public interface UserMapper {
     @Select("select s.*,r.role_name from s_user s left join s_role r on s.role_id=r.role_id where s.user_id=#{userId}")
     UserRoleVo select(String userId);
     //查询用户信息通过用户名
-    @Select("select s.*,r.role_name from s_user s left join s_role r on s.role_id=r.role_id where s.user_name=#{userName}")
+    @Select("select s.*,r.role_name from s_user s left join s_role r on s.role_id=r.role_id where s.user_name=#{userName} and is_delete=0")
     UserRoleVo findByName(String userName);
     //查找全部用户信息
     @Select("select s.*,r.role_name from " +

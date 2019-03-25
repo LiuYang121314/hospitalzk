@@ -35,7 +35,7 @@ public class UserEqServiceImpl implements UserEqService{
 		userEq.setUserId(userId);
 		for(int i=0;i<shEqid.length;i++){
 			User data=userEqMapper.findUserRole(userId);
-			if("管理员&检测员"!=data.getRoleName()){
+			if("管理员&检测员"!=data.getRoleId()){
 				throw new InsertException("请给管理员&检测员添加审核设备");
 			}
 			userEq.setShEqid(shEqid[i]);

@@ -75,11 +75,11 @@ public class YqRoleController extends BaseController{
 		return new ResponseResult<List<Yq>>(SUCCESS,yqList);
 	}
 	
-	@RequestMapping("/userList")
+	/*@RequestMapping("/userList")
 	public ResponseResult<List<User>> findAll(){
 		List<User> userList=suserService.findAll();
 		return new ResponseResult<List<User>>(SUCCESS,userList);
-	}
+	}*/
 	
 	
 }

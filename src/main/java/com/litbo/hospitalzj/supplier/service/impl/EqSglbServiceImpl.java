@@ -45,7 +45,7 @@ public class EqSglbServiceImpl implements EqSglbService{
 
 	@Override
 	public void insert(EqSglb eqSglb) {
-		EqSglb data=eqSglbMapper.findById(eqSglb.getEqsgId());
+		EqSglb data=eqSglbMapper.findByName(eqSglb.getEqsgName());
 		if(data!=null){
 			throw new InsertException("设备申购来源或名称已存在");
 		}

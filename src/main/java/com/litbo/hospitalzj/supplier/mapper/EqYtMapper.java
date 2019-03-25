@@ -14,6 +14,9 @@ import com.litbo.hospitalzj.supplier.entity.EqYt;
 public interface EqYtMapper {
 	@Select("SELECT eqyt_id eqytId, eqyt_name eqytName FROM eq_sbyt WHERE eqyt_id=#{eqytId}")
 	EqYt findById(@Param("eqytId") Integer eqytId);
+	@Select("SELECT eqyt_id eqytId, eqyt_name eqytName FROM eq_sbyt WHERE eqyt_name=#{eqytName} and is_delete=0")
+	EqYt findByName(@Param("eqytName") String eqytName);
+
 	@Select("SELECT eqyt_id eqytId, eqyt_name eqytName FROM eq_sbyt where isDelete=0 ORDER BY eqyt_id ASC LIMIT #{offset}, #{count}")
 	List<EqYt> findAll(@Param("offset")Integer offset, @Param("count") Integer count);
 	/*@Delete(" delete from eq_sbyt\n" +

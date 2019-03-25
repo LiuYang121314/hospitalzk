@@ -10,7 +10,7 @@ import com.litbo.hospitalzj.supplier.entity.EqLy;
 /**
  * 设备来源持久层接口
  * @author 刘洋
- *
+， *
  */
 @Mapper
 public interface EqLyMapper {

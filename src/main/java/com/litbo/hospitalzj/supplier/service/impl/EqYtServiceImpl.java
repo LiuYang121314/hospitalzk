@@ -47,8 +47,7 @@ public class EqYtServiceImpl implements EqYtService{
 
 	@Override
 	public void insert(EqYt eqYt) {
-		System.out.println(eqYt);
-		EqYt data=eqYtMapper.findById(eqYt.getEqytId());
+		EqYt data=eqYtMapper.findByName(eqYt.getEqytName());
 		if(data!=null){
 			throw new InsertException("设备用途方式或名称已存在");
 		}

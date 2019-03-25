@@ -15,6 +15,9 @@ public interface EqSglbMapper {
 	@Select("SELECT eqsg_id eqsgId, eqsg_name eqsgName FROM eq_sglb WHERE eqsg_id=#{eqsgId}")
 	EqSglb findById(@Param("eqsgId") Integer eqsgId);
 
+	@Select("SELECT eqsg_id eqsgId, eqsg_name eqsgName FROM eq_sglb WHERE eqsg_name=#{eqsgName} and is_delete=0")
+	EqSglb findByName(@Param("eqsgName") String eqsgName);
+
 	@Select("SELECT eqsg_id eqsgId, eqsg_name eqsgName FROM eq_sglb where is_delete=0 ORDER BY eqsg_id ASC LIMIT #{offset}, #{count}")
 	List<EqSglb> findAll(@Param("offset")Integer offset, @Param("count") Integer count);
 
