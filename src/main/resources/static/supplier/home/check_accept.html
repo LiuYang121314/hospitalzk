@@ -313,10 +313,10 @@
                     method: "GET",
                     dataType: "JSON",
                     async:false,
-                    "success": function(json) {
+                    "success": function(json){
                         // 遍历加载新列表项
                         var list = json.data;
-                        for (var i = 0; i < list.length; i++) {
+                        for (var i = 0; i < list.length; i++){
                             console.log(list[i].eqlyId + " - " + list[i].eqlyName);
                             op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
                             $("#htLy1").append(op);
@@ -475,10 +475,10 @@
                         console.log("isGml");
                     }
                 },
-                error:function (data) {
+                error:function(data){
                     alert("请稍后再试");
                 }
-            })
+            });
         });
         //Demo
         layui.use(['element','laydate','layer','form','jquery'], function(){
