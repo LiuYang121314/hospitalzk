@@ -24,7 +24,7 @@
 </script>
 <script>
     //Demo
-    layui.use(['layer','jquery','table','form'], function(){
+    layui.use(['layer','jquery','table','form'],function(){
         var layer = layui.layer
             ,   $ = layui.jquery
             ,   table = layui.table
@@ -74,23 +74,6 @@
             if(obj.event === 'more'){
                 location.href="/admin/home/apply/check_fix.html?id="+obj.data.eqId;
             }
-            // else if(obj.event === 'submit'){
-            //     $.ajax({
-            //         url:"/userEq/setEqStateNotIs?jceqId="+obj.data.eqId+"&userId="+obj.data.userId,
-            //         method:"POST",
-            //         success:function(res){
-            //             if(res.state === 200){
-            //                 layer.msg("审核结果保存成功");
-            //             }else{
-            //                 layer.msg("保存失败");
-            //             }
-            //         },
-            //         error:function(data){
-            //             layer.msg("请稍后再试");
-            //             console.log(data);
-            //         }
-            //     })
-            // }
         });
     });
 </script>

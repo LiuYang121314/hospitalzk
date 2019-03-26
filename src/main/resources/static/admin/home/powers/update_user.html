@@ -131,7 +131,7 @@
             ,   table = layui.table
             ,   form = layui.form;
         // 修改
-        form.on("submit(create)",function (data){
+        form.on("submit(create)",function(data){
             console.log(data.field);
             $.ajax({
                 url:"/user/update",
