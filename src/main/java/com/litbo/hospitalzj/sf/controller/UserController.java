@@ -56,6 +56,7 @@ public class UserController extends BaseController {
     public ResponseResult<User> update(User user) {
         System.out.println(user.getUserId());
         System.out.println(user);
+        System.out.println(user.getRoleId());
         userService.update(user);
         return new ResponseResult<User>(SUCCESS);
     }

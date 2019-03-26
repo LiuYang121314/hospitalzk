@@ -19,6 +19,39 @@ public interface DqjcMapper {
 	@Select("select dqjc_templateid, dydy, jdzk, jyzk, ddldl_zc, ddldl_dy, wkldl_zc, wkldl_dy, hzldl_zc_bf, hzldl_zc_cf, hzldl_dy_bf, hzldl_dy_cf,"
 			+ " hzfzldl_zc_bf, hzfzldl_zc_cf, hzfzldl_dy_bf, hzfzldl_dy_cf from dqjc_template order by dqjc_templateid desc limit 1")
 	public DqjcTemplate findTemplate();
+	//修改模板表数据
+	@Update(" update dqjc_template\n" +
+			"    set dydy = #{dydy,jdbcType=DOUBLE},\n" +
+			"      jdzk = #{jdzk,jdbcType=DOUBLE},\n" +
+			"      jyzk = #{jyzk,jdbcType=VARCHAR},\n" +
+			"      ddldl_zc = #{ddldlZc,jdbcType=DOUBLE},\n" +
+			"      ddldl_dy = #{ddldlDy,jdbcType=DOUBLE},\n" +
+			"      wkldl_zc = #{wkldlZc,jdbcType=DOUBLE},\n" +
+			"      wkldl_dy = #{wkldlDy,jdbcType=DOUBLE},\n" +
+			"      hzldl_zc_bf = #{hzldlZcBf,jdbcType=DOUBLE},\n" +
+			"      hzldl_zc_cf = #{hzldlZcCf,jdbcType=DOUBLE},\n" +
+			"      hzldl_dy_bf = #{hzldlDyBf,jdbcType=DOUBLE},\n" +
+			"      hzldl_dy_cf = #{hzldlDyCf,jdbcType=DOUBLE},\n" +
+			"      hzfzldl_zc_bf = #{hzfzldlZcBf,jdbcType=DOUBLE},\n" +
+			"      hzfzldl_zc_cf = #{hzfzldlZcCf,jdbcType=DOUBLE},\n" +
+			"      hzfzldl_dy_bf = #{hzfzldlDyBf,jdbcType=DOUBLE},\n" +
+			"      hzfzldl_dy_cf = #{hzfzldlDyCf,jdbcType=DOUBLE}\n" +
+			"    where dqjc_templateid = #{dqjcTemplateid,jdbcType=INTEGER}")
+	public DqjcTemplate updateTemplate(DqjcTemplate dqjcTemplate);
+	//插入模板表数据
+	@Insert(" insert into dqjc_template (dqjc_templateid, dydy, jdzk, \n" +
+			"      jyzk, ddldl_zc, ddldl_dy, \n" +
+			"      wkldl_zc, wkldl_dy, hzldl_zc_bf, \n" +
+			"      hzldl_zc_cf, hzldl_dy_bf, hzldl_dy_cf, \n" +
+			"      hzfzldl_zc_bf, hzfzldl_zc_cf, hzfzldl_dy_bf, \n" +
+			"      hzfzldl_dy_cf)\n" +
+			"    values (#{dqjcTemplateid,jdbcType=INTEGER}, #{dydy,jdbcType=DOUBLE}, #{jdzk,jdbcType=DOUBLE}, \n" +
+			"      #{jyzk,jdbcType=VARCHAR}, #{ddldlZc,jdbcType=DOUBLE}, #{ddldlDy,jdbcType=DOUBLE}, \n" +
+			"      #{wkldlZc,jdbcType=DOUBLE}, #{wkldlDy,jdbcType=DOUBLE}, #{hzldlZcBf,jdbcType=DOUBLE}, \n" +
+			"      #{hzldlZcCf,jdbcType=DOUBLE}, #{hzldlDyBf,jdbcType=DOUBLE}, #{hzldlDyCf,jdbcType=DOUBLE}, \n" +
+			"      #{hzfzldlZcBf,jdbcType=DOUBLE}, #{hzfzldlZcCf,jdbcType=DOUBLE}, #{hzfzldlDyBf,jdbcType=DOUBLE}, \n" +
+			"      #{hzfzldlDyCf,jdbcType=DOUBLE})")
+	void insertTemplate(DqjcTemplate dqjcTemplate);
 
 	//保存电气检测数据
 	@Insert("insert into dqjc (dqjcid, jcyq_id, eq_id, \n" +

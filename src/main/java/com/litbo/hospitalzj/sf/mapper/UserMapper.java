@@ -48,7 +48,8 @@ public interface UserMapper {
             "      address = #{address,jdbcType=VARCHAR},\n" +
             "      is_delete = #{isDelete,jdbcType=INTEGER},\n" +
             "      status = #{status,jdbcType=INTEGER},\n" +
-            "      bz = #{bz,jdbcType=LONGVARCHAR}\n" +
+            "      bz = #{bz,jdbcType=LONGVARCHAR},\n" +
+            "       role_id = #{roleId}\n" +
             "    where user_id = #{userId,jdbcType=VARCHAR}")
     int update(User user);
     //修改用户角色

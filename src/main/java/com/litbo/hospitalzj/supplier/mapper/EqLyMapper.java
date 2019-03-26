@@ -22,6 +22,8 @@ public interface EqLyMapper {
 
 	@Select("SELECT eqly_id eqlyId, eqly_name eqlyName FROM eq_ly where is_delete=0 ORDER BY eqly_id ASC LIMIT #{offset}, #{count}" )
 	List<EqLy> findAll(@Param("offset")Integer offset, @Param("count") Integer count);
+
+
 	@Delete(" delete from eq_ly" +
 			"    where eqly_id = #{eqlyId,jdbcType=VARCHAR}")
 	//删除，修改状态

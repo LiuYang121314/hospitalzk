@@ -33,7 +33,12 @@ public class EqJfController extends BaseController{
 	}
 	@RequestMapping("/all")
 	public ResponseResult<List<EqJfly>> getAll() {
-		List<EqJfly> data=eqJfService.getAll(1,10);
+		List<EqJfly> data=eqJfService.getAll(0,10);
+		return new ResponseResult<List<EqJfly>>(SUCCESS,data);
+	}
+	@RequestMapping("/allEqJfly")
+	public ResponseResult<List<EqJfly>> All() {
+		List<EqJfly> data=eqJfService.getAll(0,200);
 		return new ResponseResult<List<EqJfly>>(SUCCESS,data);
 	}
 	@RequestMapping("/insert")

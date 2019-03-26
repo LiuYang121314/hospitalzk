@@ -64,6 +64,7 @@ private UserMapper userMapper;
             throw new UpdateException("用户不存在");
         }*/
         user.setIsDelete(0);
+        System.out.println(user);
         userMapper.update(user);
     }
     //修改用户角色

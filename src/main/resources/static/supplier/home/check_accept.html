@@ -309,13 +309,14 @@
                 $("#htLy2").append(op);
                 // 发出ajax请求，并处理结果
                 $.ajax({
-                    url:"/eqly/all",
+                    url:"/eqly/allEqly",
                     method: "GET",
                     dataType: "JSON",
                     async:false,
                     "success": function(json) {
                         // 遍历加载新列表项
                         var list = json.data;
+                        console.log(list);
                         for (var i = 0; i < list.length; i++) {
                             console.log(list[i].eqlyId + " - " + list[i].eqlyName);
                             op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
@@ -342,16 +343,17 @@
                 $("#htCgfs2").append(op);
                 // 发出ajax请求，并处理结果
                 $.ajax({
-                    url:"",
+                    url:"/eqcg/allEqCgfs",
                     method: "GET",
                     dataType: "JSON",
                     async:false,
                     "success": function(json) {
                         // 遍历加载新列表项
                         var list = json.data;
+                        console.log(list);
                         for (var i = 0; i < list.length; i++) {
-                            console.log(list[i].eqlyId + " - " + list[i].eqlyName);
-                            op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
+                            console.log(list[i].eqcgId + " - " + list[i].eqcgName);
+                            op = '<option value="' + list[i].eqcgId + '">' + list[i].eqcgName + '</option>';
                             $("#htCgfs1").append(op);
                             $("#htCgfs2").append(op);
                             // <select>
@@ -375,16 +377,17 @@
                 $("#htSglb2").append(op);
                 // 发出ajax请求，并处理结果
                 $.ajax({
-                    url:"",
+                    url:"/eqsglb/allEqSglb",
                     method: "GET",
                     dataType: "JSON",
                     async:false,
                     "success": function(json) {
                         // 遍历加载新列表项
                         var list = json.data;
+                        console.log(list);
                         for (var i = 0; i < list.length; i++) {
-                            console.log(list[i].eqlyId + " - " + list[i].eqlyName);
-                            op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
+                            console.log(list[i].eqsgId + " - " + list[i].eqsgName);
+                            op = '<option value="' + list[i].eqsgId + '">' + list[i].eqsgName + '</option>';
                             $("#htSglb1").append(op);
                             $("#htSglb2").append(op);
                             // <select>
@@ -408,16 +411,17 @@
                 $("#htSbyt2").append(op);
                 // 发出ajax请求，并处理结果
                 $.ajax({
-                    url:"",
+                    url:"/eqyt/allEqYt",
                     method: "GET",
                     dataType: "JSON",
                     async:false,
                     "success": function(json) {
                         // 遍历加载新列表项
                         var list = json.data;
+                        console.log(list);
                         for (var i = 0; i < list.length; i++) {
-                            console.log(list[i].eqlyId + " - " + list[i].eqlyName);
-                            op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
+                            console.log(list[i].eqytId + " - " + list[i].eqytName);
+                            op = '<option value="' + list[i].eqytId + '">' + list[i].eqytName + '</option>';
                             $("#htSbyt1").append(op);
                             $("#htSbyt2").append(op);
                             // <select>
@@ -441,16 +445,17 @@
                 $("#htJfly2").append(op);
                 // 发出ajax请求，并处理结果
                 $.ajax({
-                    url:"",
+                    url:"/eqjf/allEqJfly",
                     method: "GET",
                     dataType: "JSON",
                     async:false,
                     "success": function(json) {
                         // 遍历加载新列表项
                         var list = json.data;
+                        console.log(list);
                         for (var i = 0; i < list.length; i++) {
-                            console.log(list[i].eqlyId + " - " + list[i].eqlyName);
-                            op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
+                            console.log(list[i].eqjfId + " - " + list[i].eqjfName);
+                            op = '<option value="' + list[i].eqjfId + '">' + list[i].eqjfName + '</option>';
                             $("#htJfly1").append(op);
                             $("#htJfly2").append(op);
                             // <select>

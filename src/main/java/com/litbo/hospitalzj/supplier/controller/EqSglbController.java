@@ -32,6 +32,11 @@ public class EqSglbController extends BaseController{
 		List<EqSglb> data=eqSglbService.getAll(0,10);
 		return new ResponseResult<List<EqSglb>>(SUCCESS,data);
 	}
+	@RequestMapping("/allEqSglb")
+	public ResponseResult<List<EqSglb>> All() {
+		List<EqSglb> data=eqSglbService.getAll(0,200);
+		return new ResponseResult<List<EqSglb>>(SUCCESS,data);
+	}
 	@RequestMapping("/insert")
 	public ResponseResult<Void> insert(EqSglb eqSglb) {
 		eqSglbService.insert(eqSglb);

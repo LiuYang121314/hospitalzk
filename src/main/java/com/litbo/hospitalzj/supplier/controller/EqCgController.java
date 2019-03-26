@@ -34,6 +34,11 @@ public class EqCgController extends BaseController{
 		List<EqCgfs> data=eqCgService.getAll(0,10);
 		return new ResponseResult<List<EqCgfs>>(SUCCESS,data);
 	}
+	@RequestMapping("/allEqCgfs")
+	public ResponseResult<List<EqCgfs>> All() {
+		List<EqCgfs> data=eqCgService.getAll(0,200);
+		return new ResponseResult<List<EqCgfs>>(SUCCESS,data);
+	}
 	@RequestMapping("/insert")
 	public ResponseResult<Void> insert(EqCgfs eqCgfs) {
 		eqCgService.insert(eqCgfs);

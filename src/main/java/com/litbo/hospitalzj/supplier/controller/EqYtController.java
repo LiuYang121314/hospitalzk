@@ -35,6 +35,11 @@ public class EqYtController extends BaseController{
 		List<EqYt> data=eqYtService.getAll(0,10);
 		return new ResponseResult<List<EqYt>>(SUCCESS,data);
 	}
+	@RequestMapping("/allEqYt")
+	public ResponseResult<List<EqYt>> All() {
+		List<EqYt> data=eqYtService.getAll(0,200);
+		return new ResponseResult<List<EqYt>>(SUCCESS,data);
+	}
 	@RequestMapping("/insert")
 	public ResponseResult<Void> insert(EqYt eqYt) {
 		System.out.println(eqYt);

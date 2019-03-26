@@ -1,6 +1,7 @@
 package com.litbo.hospitalzj.checklist.controller;
 
 import com.litbo.hospitalzj.checklist.domain.Dqjc;
+import com.litbo.hospitalzj.checklist.domain.DqjcTemplate;
 import com.litbo.hospitalzj.checklist.service.DqjcService;
 import com.litbo.hospitalzj.checklist.utils.commons.CommonUtils;
 import com.litbo.hospitalzj.checklist.vo.DqjcUser;
@@ -44,8 +45,24 @@ public class DqjcController extends BaseController {
         Dqjc dqjc = dqjcService.findTemplate();
         return new ResponseResult<Dqjc>(200, dqjc);
     }
-
-
+    /**
+     * 修改模板表数据
+     * @return
+     */
+    @RequestMapping("/updateTemplate")
+    public ResponseResult<DqjcTemplate> updateTemplate(DqjcTemplate dqjcTemplate){
+        DqjcTemplate data = dqjcService.updateTemplate(dqjcTemplate);
+        return new ResponseResult<DqjcTemplate>(200, data);
+    }
+    /**
+     * 插入模板表数据
+     * @return
+     */
+    @RequestMapping("/insertTemplate")
+    public ResponseResult<Void> insertTemplate(DqjcTemplate dqjcTemplate){
+        dqjcService.insertTemplate(dqjcTemplate);
+        return new ResponseResult<Void>(200);
+    }
 
     /**
      * 保存电器检测数据
