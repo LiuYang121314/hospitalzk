@@ -19,9 +19,9 @@
 <div class="layui-row">
     <div class="col-xs-12">
         <fieldset class="layui-elem-field layui-field-title">
-            <legend style="font-weight: bold;color: #000000;">检测仪器模板</legend>
+            <legend style="font-weight: bold;color: #000000;">检测仪器模板表</legend>
         </fieldset>
-        <table class="layui-table" id="allInfo" lay-filter="test"></table>
+        <table class="layui-table" id="modelInfo" lay-filter="test"></table>
     </div>
 </div>
 <script type="text/html" id="toolbarDemo">
@@ -34,16 +34,16 @@
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">更新</a>
 </script>
 <script>
-    layui.use(['table','jquery','layer'],function () {
+    layui.use(['table','jquery','layer'],function(){
         var table = layui.table
             ,   $ = layui.jquery
             ,   layer = layui.layer;
         table.render({
-            elem:"#allInfo",
+            elem:"#modelInfo",
             url:"ss",
             method:"GET",
             toolbar: '#toolbarDemo',
-            response: {
+            response:{
                 statusName: 'status' //规定数据状态的字段名称，默认：code
                 ,statusCode: 200 //规定成功的状态码，默认：0
                 ,msgName: 'hint' //规定状态信息的字段名称，默认：msg
@@ -78,7 +78,7 @@
                     layer.close(index);
                 });
             } else if(obj.event === 'edit'){
-                location.href="/";
+                location.href="";
             }
         });
     })
