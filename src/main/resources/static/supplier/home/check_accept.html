@@ -316,10 +316,9 @@
                     "success": function(json) {
                         // 遍历加载新列表项
                         var list = json.data;
-                        console.log(list);
                         for (var i = 0; i < list.length; i++) {
-                            console.log(list[i].eqlyId + " - " + list[i].eqlyName);
-                            op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
+                            // console.log(list[i].eqlyId + " - " + list[i].eqlyName);
+                            op = '<option value="' + list[i].eqlyName + '">' + list[i].eqlyName + '</option>';
                             $("#htLy1").append(op);
                             $("#htLy2").append(op);
                             // <select>
@@ -352,8 +351,8 @@
                         var list = json.data;
                         console.log(list);
                         for (var i = 0; i < list.length; i++) {
-                            console.log(list[i].eqcgId + " - " + list[i].eqcgName);
-                            op = '<option value="' + list[i].eqcgId + '">' + list[i].eqcgName + '</option>';
+                            // console.log(list[i].eqcgId + " - " + list[i].eqcgName);
+                            op = '<option value="' + list[i].eqcgName + '">' + list[i].eqcgName + '</option>';
                             $("#htCgfs1").append(op);
                             $("#htCgfs2").append(op);
                             // <select>
@@ -387,7 +386,7 @@
                         console.log(list);
                         for (var i = 0; i < list.length; i++) {
                             console.log(list[i].eqsgId + " - " + list[i].eqsgName);
-                            op = '<option value="' + list[i].eqsgId + '">' + list[i].eqsgName + '</option>';
+                            op = '<option value="' + list[i].eqsgName + '">' + list[i].eqsgName + '</option>';
                             $("#htSglb1").append(op);
                             $("#htSglb2").append(op);
                             // <select>
@@ -421,7 +420,7 @@
                         console.log(list);
                         for (var i = 0; i < list.length; i++) {
                             console.log(list[i].eqytId + " - " + list[i].eqytName);
-                            op = '<option value="' + list[i].eqytId + '">' + list[i].eqytName + '</option>';
+                            op = '<option value="' + list[i].eqytName + '">' + list[i].eqytName + '</option>';
                             $("#htSbyt1").append(op);
                             $("#htSbyt2").append(op);
                             // <select>
@@ -455,7 +454,7 @@
                         console.log(list);
                         for (var i = 0; i < list.length; i++) {
                             console.log(list[i].eqjfId + " - " + list[i].eqjfName);
-                            op = '<option value="' + list[i].eqjfId + '">' + list[i].eqjfName + '</option>';
+                            op = '<option value="' + list[i].eqjfName + '">' + list[i].eqjfName + '</option>';
                             $("#htJfly1").append(op);
                             $("#htJfly2").append(op);
                             // <select>

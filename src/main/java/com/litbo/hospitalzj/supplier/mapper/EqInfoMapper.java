@@ -31,25 +31,29 @@ public interface EqInfoMapper {
 		})
 		int insertEqInfoList(@Param(value="eqInfos") List<EqInfo>  eqInfo);*/
 	
-	@Insert (" insert into eq_info (eq_id, eq_mc, eq_dah, \n" +
-			"      eq_pm_id, eq_gg, eq_xh, eq_jldw_id, \n" +
-			"      eq_price, eq_zczbh, eq_scbh, \n" +
-			"      eq_num, eq_totalprice, eq_ccdate, \n" +
-			"      eq_cscs, eq_gb, eq_bgbh, \n" +
-			"      eq_sh_fws, eq_sh_qddh, eq_sh_shjl, \n" +
-			"      eq_sh_jldh, eq_sh_fwr, eq_sh_lxr, \n" +
-			"      eq_sh_lxrdh, eq_state, eq_yzm, \n" +
-			"      eq_sh_jlsb, eq_sh_fssb, ht_ids\n" +
+	@Insert ("insert into eq_info (eq_id, eq_mc, eq_dah, \n" +
+			"      eq_pm_id, eq_gg, eq_xh, \n" +
+			"      eq_jldw_id, eq_price, eq_zczbh, \n" +
+			"      eq_scbh, eq_num, eq_totalprice, \n" +
+			"      eq_ccdate, eq_cscs, eq_gb, \n" +
+			"      eq_bgbh, eq_sh_fws, eq_sh_qddh, \n" +
+			"      eq_sh_shjl, eq_sh_jldh, eq_sh_fwr, \n" +
+			"      eq_sh_lxr, eq_sh_lxrdh, eq_state, \n" +
+			"      eq_yzm, eq_sh_jlsb, eq_sh_fssb, \n" +
+			"      ht_ids, eq_syks, eq_jx, \n" +
+			"      eq_qyrq, eq_cfdd, eq_bfjd\n" +
 			"      )\n" +
 			"    values (#{eqId,jdbcType=INTEGER}, #{eqMc,jdbcType=VARCHAR}, #{eqDah,jdbcType=VARCHAR}, \n" +
-			"      #{eqPmId,jdbcType=VARCHAR}, #{eqGg,jdbcType=VARCHAR}, #{eqXh,jdbcType=VARCHAR}, #{eqJldwId,jdbcType=VARCHAR}, \n" +
-			"      #{eqPrice,jdbcType=DECIMAL}, #{eqZczbh,jdbcType=VARCHAR}, #{eqScbh,jdbcType=VARCHAR}, \n" +
-			"      #{eqNum,jdbcType=VARCHAR}, #{eqTotalprice,jdbcType=VARCHAR}, #{eqCcdate,jdbcType=VARCHAR}, \n" +
-			"      #{eqCscs,jdbcType=VARCHAR}, #{eqGb,jdbcType=VARCHAR}, #{eqBgbh,jdbcType=VARCHAR}, \n" +
-			"      #{eqShFws,jdbcType=VARCHAR}, #{eqShQddh,jdbcType=VARCHAR}, #{eqShShjl,jdbcType=VARCHAR}, \n" +
-			"      #{eqShJldh,jdbcType=VARCHAR}, #{eqShFwr,jdbcType=VARCHAR}, #{eqShLxr,jdbcType=VARCHAR}, \n" +
-			"      #{eqShLxrdh,jdbcType=VARCHAR}, #{eqState,jdbcType=INTEGER}, #{eqYzm,jdbcType=VARCHAR}, \n" +
-			"      #{eqShJlsb,jdbcType=VARCHAR}, #{eqShFssb,jdbcType=VARCHAR}, #{htIds,jdbcType=INTEGER}\n" +
+			"      #{eqPmId,jdbcType=VARCHAR}, #{eqGg,jdbcType=VARCHAR}, #{eqXh,jdbcType=VARCHAR}, \n" +
+			"      #{eqJldwId,jdbcType=VARCHAR}, #{eqPrice,jdbcType=DECIMAL}, #{eqZczbh,jdbcType=VARCHAR}, \n" +
+			"      #{eqScbh,jdbcType=VARCHAR}, #{eqNum,jdbcType=VARCHAR}, #{eqTotalprice,jdbcType=VARCHAR}, \n" +
+			"      #{eqCcdate,jdbcType=VARCHAR}, #{eqCscs,jdbcType=VARCHAR}, #{eqGb,jdbcType=VARCHAR}, \n" +
+			"      #{eqBgbh,jdbcType=VARCHAR}, #{eqShFws,jdbcType=VARCHAR}, #{eqShQddh,jdbcType=VARCHAR}, \n" +
+			"      #{eqShShjl,jdbcType=VARCHAR}, #{eqShJldh,jdbcType=VARCHAR}, #{eqShFwr,jdbcType=VARCHAR}, \n" +
+			"      #{eqShLxr,jdbcType=VARCHAR}, #{eqShLxrdh,jdbcType=VARCHAR}, #{eqState,jdbcType=INTEGER}, \n" +
+			"      #{eqYzm,jdbcType=VARCHAR}, #{eqShJlsb,jdbcType=VARCHAR}, #{eqShFssb,jdbcType=VARCHAR}, \n" +
+			"      #{htIds,jdbcType=INTEGER}, #{eqSyks,jdbcType=VARCHAR}, #{eqJx,jdbcType=VARCHAR}, \n" +
+			"      #{eqQyrq,jdbcType=VARCHAR}, #{eqCfdd,jdbcType=VARCHAR}, #{eqBfjd,jdbcType=VARCHAR}\n" +
 			"      )")
 	@Options(useGeneratedKeys = true, keyProperty = "eqId", keyColumn = "eq_id")
 	Integer insertEqInfo(EqInfo eqInfo);
@@ -91,7 +95,12 @@ public interface EqInfoMapper {
 			"      eq_yzm = #{eqYzm,jdbcType=VARCHAR},\n" +
 			"      eq_sh_jlsb = #{eqShJlsb,jdbcType=VARCHAR},\n" +
 			"      eq_sh_fssb = #{eqShFssb,jdbcType=VARCHAR},\n" +
-			"      ht_ids = #{htIds,jdbcType=INTEGER}\n" +
+			"      ht_ids = #{htIds,jdbcType=INTEGER},\n" +
+			"      eq_syks = #{eqSyks,jdbcType=VARCHAR},\n" +
+			"      eq_jx = #{eqJx,jdbcType=VARCHAR},\n" +
+			"      eq_qyrq = #{eqQyrq,jdbcType=VARCHAR},\n" +
+			"      eq_cfdd = #{eqCfdd,jdbcType=VARCHAR},\n" +
+			"      eq_bfjd = #{eqBfjd,jdbcType=VARCHAR}\n" +
 			"    where eq_id = #{eqId,jdbcType=INTEGER}")
 	Integer updateInfo(EqInfo eqinfo);
 

@@ -1,292 +1,335 @@
 package com.litbo.hospitalzj.supplier.entity;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
-/**
- * 设备信息实体类
- * @author 刘洋
- *
- */
 public class EqInfo {
+    private Integer eqId;
 
-	private Integer eqId;
+    private String eqMc;
 
-	private String eqMc;
+    private String eqDah;
 
-	private String eqDah;
+    private String eqPmId;
 
-	private String eqPmId;
+    private String eqGg;
 
-	private String eqGg;
+    private String eqXh;
 
-	private String eqXh;
+    private String eqJldwId;
 
-	private String eqJldwId;
+    private BigDecimal eqPrice;
 
-	private BigDecimal eqPrice;
+    private String eqZczbh;
 
-	private String eqZczbh;
+    private String eqScbh;
 
-	private String eqScbh;
+    private String eqNum;
 
-	private String eqNum;
+    private String eqTotalprice;
 
-	private String eqTotalprice;
+    private String eqCcdate;
 
-	private String eqCcdate;
+    private String eqCscs;
 
-	private String eqCscs;
+    private String eqGb;
 
-	private String eqGb;
+    private String eqBgbh;
 
-	private String eqBgbh;
+    private String eqShFws;
 
-	private String eqShFws;
+    private String eqShQddh;
 
-	private String eqShQddh;
+    private String eqShShjl;
 
-	private String eqShShjl;
+    private String eqShJldh;
 
-	private String eqShJldh;
+    private String eqShFwr;
 
-	private String eqShFwr;
+    private String eqShLxr;
 
-	private String eqShLxr;
+    private String eqShLxrdh;
 
-	private String eqShLxrdh;
+    private Integer eqState;
 
-	private Integer eqState;
+    private String eqYzm;
 
-	private String eqYzm;
+    private String eqShJlsb;
 
-	private String eqShJlsb;
+    private String eqShFssb;
 
-	private String eqShFssb;
+    private Integer htIds;
 
-	private Integer htIds;
+    private String eqSyks;
 
-	public Integer getEqId() {
-		return eqId;
-	}
+    private String eqJx;
 
-	public void setEqId(Integer eqId) {
-		this.eqId = eqId;
-	}
+    private String eqQyrq;
 
-	public String getEqMc() {
-		return eqMc;
-	}
+    private String eqCfdd;
 
-	public void setEqMc(String eqMc) {
-		this.eqMc = eqMc;
-	}
+    private String eqBfjd;
 
-	public String getEqDah() {
-		return eqDah;
-	}
+    public Integer getEqId() {
+        return eqId;
+    }
 
-	public void setEqDah(String eqDah) {
-		this.eqDah = eqDah;
-	}
+    public void setEqId(Integer eqId) {
+        this.eqId = eqId;
+    }
 
-	public String getEqPmId() {
-		return eqPmId;
-	}
+    public String getEqMc() {
+        return eqMc;
+    }
 
-	public void setEqPmId(String eqPmId) {
-		this.eqPmId = eqPmId;
-	}
+    public void setEqMc(String eqMc) {
+        this.eqMc = eqMc == null ? null : eqMc.trim();
+    }
 
-	public String getEqGg() {
-		return eqGg;
-	}
+    public String getEqDah() {
+        return eqDah;
+    }
 
-	public void setEqGg(String eqGg) {
-		this.eqGg = eqGg;
-	}
+    public void setEqDah(String eqDah) {
+        this.eqDah = eqDah == null ? null : eqDah.trim();
+    }
 
-	public String getEqXh() {
-		return eqXh;
-	}
+    public String getEqPmId() {
+        return eqPmId;
+    }
 
-	public void setEqXh(String eqXh) {
-		this.eqXh = eqXh;
-	}
+    public void setEqPmId(String eqPmId) {
+        this.eqPmId = eqPmId == null ? null : eqPmId.trim();
+    }
 
-	public String getEqJldwId() {
-		return eqJldwId;
-	}
-
-	public void setEqJldwId(String eqJldwId) {
-		this.eqJldwId = eqJldwId;
-	}
-
-	public BigDecimal getEqPrice() {
-		return eqPrice;
-	}
-
-	public void setEqPrice(BigDecimal eqPrice) {
-		this.eqPrice = eqPrice;
-	}
-
-	public String getEqZczbh() {
-		return eqZczbh;
-	}
-
-	public void setEqZczbh(String eqZczbh) {
-		this.eqZczbh = eqZczbh;
-	}
-
-	public String getEqScbh() {
-		return eqScbh;
-	}
-
-	public void setEqScbh(String eqScbh) {
-		this.eqScbh = eqScbh;
-	}
-
-	public String getEqNum() {
-		return eqNum;
-	}
-
-	public void setEqNum(String eqNum) {
-		this.eqNum = eqNum;
-	}
-
-	public String getEqTotalprice() {
-		return eqTotalprice;
-	}
-
-	public void setEqTotalprice(String eqTotalprice) {
-		this.eqTotalprice = eqTotalprice;
-	}
-
-	public String getEqCcdate() {
-		return eqCcdate;
-	}
-
-	public void setEqCcdate(String eqCcdate) {
-		this.eqCcdate = eqCcdate;
-	}
-
-	public String getEqCscs() {
-		return eqCscs;
-	}
-
-	public void setEqCscs(String eqCscs) {
-		this.eqCscs = eqCscs;
-	}
-
-	public String getEqGb() {
-		return eqGb;
-	}
-
-	public void setEqGb(String eqGb) {
-		this.eqGb = eqGb;
-	}
-
-	public String getEqBgbh() {
-		return eqBgbh;
-	}
-
-	public void setEqBgbh(String eqBgbh) {
-		this.eqBgbh = eqBgbh;
-	}
-
-	public String getEqShFws() {
-		return eqShFws;
-	}
-
-	public void setEqShFws(String eqShFws) {
-		this.eqShFws = eqShFws;
-	}
-
-	public String getEqShQddh() {
-		return eqShQddh;
-	}
-
-	public void setEqShQddh(String eqShQddh) {
-		this.eqShQddh = eqShQddh;
-	}
-
-	public String getEqShShjl() {
-		return eqShShjl;
-	}
-
-	public void setEqShShjl(String eqShShjl) {
-		this.eqShShjl = eqShShjl;
-	}
-
-	public String getEqShJldh() {
-		return eqShJldh;
-	}
-
-	public void setEqShJldh(String eqShJldh) {
-		this.eqShJldh = eqShJldh;
-	}
-
-	public String getEqShFwr() {
-		return eqShFwr;
-	}
-
-	public void setEqShFwr(String eqShFwr) {
-		this.eqShFwr = eqShFwr;
-	}
-
-	public String getEqShLxr() {
-		return eqShLxr;
-	}
-
-	public void setEqShLxr(String eqShLxr) {
-		this.eqShLxr = eqShLxr;
-	}
-
-	public String getEqShLxrdh() {
-		return eqShLxrdh;
-	}
-
-	public void setEqShLxrdh(String eqShLxrdh) {
-		this.eqShLxrdh = eqShLxrdh;
-	}
-
-	public Integer getEqState() {
-		return eqState;
-	}
-
-	public void setEqState(Integer eqState) {
-		this.eqState = eqState;
-	}
-
-	public String getEqYzm() {
-		return eqYzm;
-	}
-
-	public void setEqYzm(String eqYzm) {
-		this.eqYzm = eqYzm;
-	}
-
-	public String getEqShJlsb() {
-		return eqShJlsb;
-	}
-
-	public void setEqShJlsb(String eqShJlsb) {
-		this.eqShJlsb = eqShJlsb;
-	}
-
-	public String getEqShFssb() {
-		return eqShFssb;
-	}
-
-	public void setEqShFssb(String eqShFssb) {
-		this.eqShFssb = eqShFssb;
-	}
-
-	public Integer getHtIds() {
-		return htIds;
-	}
-
-	public void setHtIds(Integer htIds) {
-		this.htIds = htIds;
-	}
+    public String getEqGg() {
+        return eqGg;
+    }
+
+    public void setEqGg(String eqGg) {
+        this.eqGg = eqGg == null ? null : eqGg.trim();
+    }
+
+    public String getEqXh() {
+        return eqXh;
+    }
+
+    public void setEqXh(String eqXh) {
+        this.eqXh = eqXh == null ? null : eqXh.trim();
+    }
+
+    public String getEqJldwId() {
+        return eqJldwId;
+    }
+
+    public void setEqJldwId(String eqJldwId) {
+        this.eqJldwId = eqJldwId == null ? null : eqJldwId.trim();
+    }
+
+    public BigDecimal getEqPrice() {
+        return eqPrice;
+    }
+
+    public void setEqPrice(BigDecimal eqPrice) {
+        this.eqPrice = eqPrice;
+    }
+
+    public String getEqZczbh() {
+        return eqZczbh;
+    }
+
+    public void setEqZczbh(String eqZczbh) {
+        this.eqZczbh = eqZczbh == null ? null : eqZczbh.trim();
+    }
+
+    public String getEqScbh() {
+        return eqScbh;
+    }
+
+    public void setEqScbh(String eqScbh) {
+        this.eqScbh = eqScbh == null ? null : eqScbh.trim();
+    }
+
+    public String getEqNum() {
+        return eqNum;
+    }
+
+    public void setEqNum(String eqNum) {
+        this.eqNum = eqNum == null ? null : eqNum.trim();
+    }
+
+    public String getEqTotalprice() {
+        return eqTotalprice;
+    }
+
+    public void setEqTotalprice(String eqTotalprice) {
+        this.eqTotalprice = eqTotalprice == null ? null : eqTotalprice.trim();
+    }
+
+    public String getEqCcdate() {
+        return eqCcdate;
+    }
+
+    public void setEqCcdate(String eqCcdate) {
+        this.eqCcdate = eqCcdate == null ? null : eqCcdate.trim();
+    }
+
+    public String getEqCscs() {
+        return eqCscs;
+    }
+
+    public void setEqCscs(String eqCscs) {
+        this.eqCscs = eqCscs == null ? null : eqCscs.trim();
+    }
+
+    public String getEqGb() {
+        return eqGb;
+    }
+
+    public void setEqGb(String eqGb) {
+        this.eqGb = eqGb == null ? null : eqGb.trim();
+    }
+
+    public String getEqBgbh() {
+        return eqBgbh;
+    }
+
+    public void setEqBgbh(String eqBgbh) {
+        this.eqBgbh = eqBgbh == null ? null : eqBgbh.trim();
+    }
+
+    public String getEqShFws() {
+        return eqShFws;
+    }
+
+    public void setEqShFws(String eqShFws) {
+        this.eqShFws = eqShFws == null ? null : eqShFws.trim();
+    }
+
+    public String getEqShQddh() {
+        return eqShQddh;
+    }
+
+    public void setEqShQddh(String eqShQddh) {
+        this.eqShQddh = eqShQddh == null ? null : eqShQddh.trim();
+    }
+
+    public String getEqShShjl() {
+        return eqShShjl;
+    }
+
+    public void setEqShShjl(String eqShShjl) {
+        this.eqShShjl = eqShShjl == null ? null : eqShShjl.trim();
+    }
+
+    public String getEqShJldh() {
+        return eqShJldh;
+    }
+
+    public void setEqShJldh(String eqShJldh) {
+        this.eqShJldh = eqShJldh == null ? null : eqShJldh.trim();
+    }
+
+    public String getEqShFwr() {
+        return eqShFwr;
+    }
+
+    public void setEqShFwr(String eqShFwr) {
+        this.eqShFwr = eqShFwr == null ? null : eqShFwr.trim();
+    }
+
+    public String getEqShLxr() {
+        return eqShLxr;
+    }
+
+    public void setEqShLxr(String eqShLxr) {
+        this.eqShLxr = eqShLxr == null ? null : eqShLxr.trim();
+    }
+
+    public String getEqShLxrdh() {
+        return eqShLxrdh;
+    }
+
+    public void setEqShLxrdh(String eqShLxrdh) {
+        this.eqShLxrdh = eqShLxrdh == null ? null : eqShLxrdh.trim();
+    }
+
+    public Integer getEqState() {
+        return eqState;
+    }
+
+    public void setEqState(Integer eqState) {
+        this.eqState = eqState;
+    }
+
+    public String getEqYzm() {
+        return eqYzm;
+    }
+
+    public void setEqYzm(String eqYzm) {
+        this.eqYzm = eqYzm == null ? null : eqYzm.trim();
+    }
+
+    public String getEqShJlsb() {
+        return eqShJlsb;
+    }
+
+    public void setEqShJlsb(String eqShJlsb) {
+        this.eqShJlsb = eqShJlsb == null ? null : eqShJlsb.trim();
+    }
+
+    public String getEqShFssb() {
+        return eqShFssb;
+    }
+
+    public void setEqShFssb(String eqShFssb) {
+        this.eqShFssb = eqShFssb == null ? null : eqShFssb.trim();
+    }
+
+    public Integer getHtIds() {
+        return htIds;
+    }
+
+    public void setHtIds(Integer htIds) {
+        this.htIds = htIds;
+    }
+
+    public String getEqSyks() {
+        return eqSyks;
+    }
+
+    public void setEqSyks(String eqSyks) {
+        this.eqSyks = eqSyks == null ? null : eqSyks.trim();
+    }
+
+    public String getEqJx() {
+        return eqJx;
+    }
+
+    public void setEqJx(String eqJx) {
+        this.eqJx = eqJx == null ? null : eqJx.trim();
+    }
+
+    public String getEqQyrq() {
+        return eqQyrq;
+    }
+
+    public void setEqQyrq(String eqQyrq) {
+        this.eqQyrq = eqQyrq == null ? null : eqQyrq.trim();
+    }
+
+    public String getEqCfdd() {
+        return eqCfdd;
+    }
+
+    public void setEqCfdd(String eqCfdd) {
+        this.eqCfdd = eqCfdd == null ? null : eqCfdd.trim();
+    }
+
+    public String getEqBfjd() {
+        return eqBfjd;
+    }
+
+    public void setEqBfjd(String eqBfjd) {
+        this.eqBfjd = eqBfjd == null ? null : eqBfjd.trim();
+    }
 }

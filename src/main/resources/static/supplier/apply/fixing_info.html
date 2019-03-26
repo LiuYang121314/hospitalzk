@@ -211,7 +211,7 @@
                 $("#eqPmId").append(op);
                 // 发出ajax请求，并处理结果
                 $.ajax({
-                    url:"",
+                    url:"/eqpm/allEqPm",
                     method: "GET",
                     dataType: "JSON",
                     async:false,
@@ -220,8 +220,8 @@
                         var list = json.data;
                         console.log(list);
                         for (var i = 0; i < list.length; i++) {
-                            console.log(list[i].eqlyId + " - " + list[i].eqlyName);
-                            op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
+                            console.log(list[i].eqPmId + " - " + list[i].eqPmName);
+                            op = '<option value="' + list[i].eqPmId + '">' + list[i].eqPmName + '</option>';
                             $("#eqPmId").append(op);
                             // <select>
                             // 		<option value="1">第1项</option>
@@ -242,7 +242,7 @@
                 $("#eqSyks").append(op);
                 // 发出ajax请求，并处理结果
                 $.ajax({
-                    url:"",
+                    url:"/sbm/selectAll",
                     method: "GET",
                     dataType: "JSON",
                     async:false,
@@ -251,8 +251,8 @@
                         var list = json.data;
                         console.log(list);
                         for (var i = 0; i < list.length; i++) {
-                            console.log(list[i].eqlyId + " - " + list[i].eqlyName);
-                            op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
+                            console.log(list[i].bmId + " - " + list[i].bmName);
+                            op = '<option value="' + list[i].bmId + '">' + list[i].bmName + '</option>';
                             $("#eqSyks").append(op);
                             // <select>
                             // 		<option value="1">第1项</option>

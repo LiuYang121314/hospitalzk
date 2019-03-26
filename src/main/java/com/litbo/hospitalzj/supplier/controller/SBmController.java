@@ -28,7 +28,7 @@ public class SBmController extends BaseController {
 	}
 	@RequestMapping("/selectAll")
 	public ResponseResult<List<SBm>> getAll() {
-		List<SBm> data=sBmService.findAll(0,10);
+		List<SBm> data=sBmService.findAll(0,200);
 		return new ResponseResult<List<SBm>>(SUCCESS,data);
 	}
 	@RequestMapping("/select")
