@@ -176,7 +176,7 @@
             // 合同文件上传
             upload.render({
                 elem: '#htwj'
-                ,url: ''
+                ,url: '?htId='+ids
                 ,multiple: true
                 ,accept:"file"
                 ,before: function(obj){
@@ -191,7 +191,7 @@
                         // 中标通知书上传
                         upload.render({
                             elem: '#zbtz'
-                            ,url: ''
+                            ,url: '?htId='+ids
                             ,multiple: true
                             ,accept:"file"
                             ,before: function(obj){
@@ -206,7 +206,7 @@
                                     // 医疗器械注册登记证上传
                                     upload.render({
                                         elem: '#ylqx'
-                                        , url: ''
+                                        , url: '?htId='+ids
                                         , multiple: true
                                         , accept: "file"
                                         , before: function (obj) {
@@ -221,7 +221,7 @@
                                                 // 厂家授权证明书上传
                                                 upload.render({
                                                     elem: '#cjsq'
-                                                    , url: ''
+                                                    , url: '?htId='+ids
                                                     , multiple: true
                                                     , accept: "file"
                                                     , before: function (obj) {
@@ -236,7 +236,7 @@
                                                             // 海关进口货物报关单上传
                                                             upload.render({
                                                                 elem: '#cjsq'
-                                                                , url: ''
+                                                                , url: '?htId='+ids
                                                                 , multiple: true
                                                                 , accept: "file"
                                                                 , before: function (obj) {
