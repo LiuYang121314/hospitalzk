@@ -90,10 +90,10 @@
                         <td>
                             <div class="layui-upload">
                                 <button type="button" name="file" class="layui-btn" id="zbtz">上传文件</button>
-                                <div class="layui-upload-list">
-                                    <img class="layui-upload-img" id="zbtzimg">
-                                    <p id="zbtztry"></p>
-                                </div>
+                                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                    预览图：
+                                    <div class="layui-upload-list" id="zbtzImg"></div>
+                                </blockquote>
                             </div>
                         </td>
                     </tr>
@@ -102,10 +102,10 @@
                         <td>
                             <div class="layui-upload">
                                 <button type="button" name="file" class="layui-btn" id="ylqx">上传文件</button>
-                                <div class="layui-upload-list">
-                                    <img class="layui-upload-img" id="ylqximg">
-                                    <p id="ylqxtry"></p>
-                                </div>
+                                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                    预览图：
+                                    <div class="layui-upload-list" id="ylqxImg"></div>
+                                </blockquote>
                             </div>
                         </td>
                     </tr>
@@ -114,10 +114,10 @@
                         <td>
                             <div class="layui-upload">
                                 <button type="button" name="file" class="layui-btn" id="cjsq">上传文件</button>
-                                <div class="layui-upload-list">
-                                    <img class="layui-upload-img" id="cjsqimg">
-                                    <p id="cjsqtry"></p>
-                                </div>
+                                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                    预览图：
+                                    <div class="layui-upload-list" id="cjsqImg"></div>
+                                </blockquote>
                             </div>
                         </td>
                     </tr>
@@ -126,10 +126,10 @@
                         <td>
                             <div class="layui-upload">
                                 <button type="button" name="file" class="layui-btn" id="hgjk">上传文件</button>
-                                <div class="layui-upload-list">
-                                    <img class="layui-upload-img" id="hgjkimg">
-                                    <p id="hgjktry"></p>
-                                </div>
+                                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                    预览图：
+                                    <div class="layui-upload-list" id="hgjkImg"></div>
+                                </blockquote>
                             </div>
                         </td>
                     </tr>
@@ -429,6 +429,7 @@
             //         });
             //     }
             // })
+            // 合同文件上传
             upload.render({
                 elem: '#htwj'
                 ,url: ''
@@ -440,15 +441,134 @@
                         $('#htwjImg').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
                     });
                 }
-                ,done: function(res){
-                    //上传完毕
+                ,done:function(res){
                     if(res.state === 200){
                         layer.msg("上传成功");
+                        // 中标通知书上传
+                        upload.render({
+                            elem: '#zbtz'
+                            ,url: ''
+                            ,multiple: true
+                            ,accept:"file"
+                            ,before: function(obj){
+                                //预读本地文件示例，不支持ie8
+                                obj.preview(function(index, file, result){
+                                    $('#zbtzImg').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+                                });
+                            }
+                            ,done:function(res){
+                                if(res.state === 200){
+                                    layer.msg("上传成功");
+                                    // 医疗器械注册登记证上传
+                                    upload.render({
+                                        elem: '#ylqx'
+                                        , url: ''
+                                        , multiple: true
+                                        , accept: "file"
+                                        , before: function (obj) {
+                                            //预读本地文件示例，不支持ie8
+                                            obj.preview(function (index, file, result) {
+                                                $('#ylqxImg').append('<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
+                                            });
+                                        }
+                                        , done: function (res) {
+                                            if (res.state === 200) {
+                                                layer.msg("上传成功");
+                                                // 厂家授权证明书上传
+                                                upload.render({
+                                                    elem: '#cjsq'
+                                                    , url: ''
+                                                    , multiple: true
+                                                    , accept: "file"
+                                                    , before: function (obj) {
+                                                        //预读本地文件示例，不支持ie8
+                                                        obj.preview(function (index, file, result) {
+                                                            $('#cjsqImg').append('<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
+                                                        });
+                                                    }
+                                                    ,done:function(res){
+                                                        if(res.state === 200){
+                                                            layer.msg("上传成功");
+                                                            // 海关进口货物报关单上传
+                                                            upload.render({
+                                                                elem: '#cjsq'
+                                                                , url: ''
+                                                                , multiple: true
+                                                                , accept: "file"
+                                                                , before: function (obj) {
+                                                                    //预读本地文件示例，不支持ie8
+                                                                    obj.preview(function (index, file, result) {
+                                                                        $('#cjsqImg').append('<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
+                                                                    });
+                                                                }
+                                                                ,done:function(res){
+                                                                    if(res.state === 200){
+                                                                        layer.msg("上传成功");
+                                                                        layer.open({
+                                                                            type:1,
+                                                                            title:"验证码信息",
+                                                                            content:$("#codeBody"),
+                                                                            area:["300px","400px"],
+                                                                            maxmin:true,
+                                                                            btn:["确认"],
+                                                                            yes:function(){
+                                                                                $.ajax({
+                                                                                    url:"/htInfo/updateYzm?htId="+ids,
+                                                                                    method:"POST",
+                                                                                    data:{"htYzm":code},
+                                                                                    dataType:"JSON",
+                                                                                    success:function(res){
+                                                                                        location.href = "/supplier/home/schedule.html";
+                                                                                    },
+                                                                                    error:function(data){
+                                                                                        layer.msg("服务器错误");
+                                                                                        console.log(data);
+                                                                                    }
+                                                                                });
+                                                                                layer.closeAll();
+                                                                            }
+                                                                        });
+                                                                    }else{
+                                                                        layer.msg(res.message);
+                                                                    }
+                                                                }
+                                                                ,error:function(data){
+                                                                    layer.msg("上传失败,请稍后再试");
+                                                                    console.log(data);
+                                                                }
+                                                            });
+                                                        }else{
+                                                            layer.msg(res.message);
+                                                        }
+                                                    }
+                                                    ,error:function(data){
+                                                        layer.msg("上传失败,请稍后再试");
+                                                        console.log(data);
+                                                    }
+                                                });
+                                            }else{
+                                                layer.msg(res.message);
+                                            }
+                                        }
+                                        , error: function (data) {
+                                            layer.msg("上传失败,请稍后再试");
+                                            console.log(data);
+                                        }
+                                    });
+                                }else{
+                                    layer.msg(res.message);
+                                }
+                            },
+                            error:function(data){
+                                layer.msg("上传失败,请稍后再试");
+                                console.log(data);
+                            }
+                        })
                     }else{
                         layer.msg(res.message);
                     }
                 },
-                error:function (data) {
+                error:function(data){
                     layer.msg("上传失败,请稍后再试");
                     console.log(data);
                 }
