@@ -37,37 +37,6 @@
             ,   table = layui.table
             ,   $ = layui.jquery
             ,   form = layui.form;
-        // table.render({
-        //     elem:"#noHandle",
-        //     url:"/userEq/findJcEq",
-        //     method:"GET",
-        //     toolbar:"#toolbarDemo",
-        //     response: {
-        //         statusName: 'status' //规定数据状态的字段名称，默认：code
-        //         ,statusCode: 200 //规定成功的状态码，默认：0
-        //         ,msgName: 'hint' //规定状态信息的字段名称，默认：msg
-        //         ,countName: 'total' //规定数据总数的字段名称，默认：count
-        //         ,dataName: 'data' //规定数据列表的字段名称，默认：data
-        //     },
-        //     parseData:function(res){
-        //         console.log(res);
-        //         return{
-        //             "status":200
-        //             ,"msg":res.message
-        //             ,"count":res.total
-        //             ,"data":res.data
-        //         }
-        //     },
-        //     cols:[[
-        //         {field:'eqMc', title:'设备名称',align:'center'},
-        //         {field:'eqXh', title:'型号',align:'center'},
-        //         {field:'eqGg', title:'数量',align:'center',sort: true,},
-        //         {field:'eqPrice', title:'品牌',align:'center'},
-        //         {field:'eqJldwId', title:'科室',align:'center'},
-        //         {fixed: 'right', title:'操作',toolbar: '#noTest',align:'center'}
-        //     ]]
-        // });
-        //监听行工具事件
         table.render({
             elem:"#noHandle",
             url:"/ndjh/selectByUserIdAndState",
@@ -124,9 +93,10 @@
         });
         table.on('tool(handle)', function(obj){
             var data = obj.data;
+            sessionStorage["ndjhId"]=obj.data.ndjhId;
             //console.log(obj)
             if(obj.event === 'handle'){
-                location.href="/control/home/waiting/fix_info.html";
+                location.href="/control/home/waiting/fix_info.html?id="+obj.data.eqPmId;
             }
         });
     });
