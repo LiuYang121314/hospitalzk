@@ -9,6 +9,10 @@
     <link rel="stylesheet" type="text/css" href="../../static/layui/css/layui.css"/>
     <link rel="stylesheet" type="text/css" href="../../static/css/admin.css"/>
     <link rel="stylesheet" href="../../static/css/all.min.css"/>
+    <script src="../../static/js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <!--[if IE 8]>
+    <script type="text/javascript" src="../../static/js/jquery-1.11.3.min.js"></script>
+    <![endif]-->
     <script src="../../static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
     <style>
         .inp{
@@ -35,13 +39,31 @@
                 <div class="layui-form-item col-md-5">
                     <label class="layui-form-label">设备品名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="eqPmId" class="layui-input" autocomplete="off" lay-verify="required">
+                        <!--<input type="text" name="eqPmId" class="layui-input" autocomplete="off" lay-verify="required">-->
+                        <select id="eqPmId" name="eqPmId" lay-verify="" lay-search>
+                            <option value="">请选择</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
                     </div>
                 </div>
                 <div class="layui-form-item col-md-5">
                     <label class="layui-form-label">设备名称</label>
                     <div class="layui-input-block">
                         <input type="text" name="eqMc" class="layui-input" autocomplete="off" lay-verify="required">
+                    </div>
+                </div>
+                <div class="layui-form-item col-md-5">
+                    <label class="layui-form-label">使用科室</label>
+                    <div class="layui-input-block">
+                        <!--<input type="text" name="eqSyks" class="layui-input" autocomplete="off" lay-verify="required">-->
+                        <select id="eqSyks" name="eqSyks" lay-verify="" lay-search>
+                            <option value="">请选择</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
                     </div>
                 </div>
                 <div class="layui-form-item col-md-5">
@@ -179,6 +201,70 @@
 	 	// 获取上个页面传递的类型
 	    var type = window.location.search;
 	    var ids = parseInt(type.split("=")[1]);
+	    $(function () {
+            // 设备品名字典数据
+            function sbpmList(){
+                // 清空当前列表
+                $("#eqPmId").empty();
+                // 添加默认选项
+                var op = '<option value=""></option>';
+                $("#eqPmId").append(op);
+                // 发出ajax请求，并处理结果
+                $.ajax({
+                    url:"",
+                    method: "GET",
+                    dataType: "JSON",
+                    async:false,
+                    "success": function(json) {
+                        // 遍历加载新列表项
+                        var list = json.data;
+                        console.log(list);
+                        for (var i = 0; i < list.length; i++) {
+                            console.log(list[i].eqlyId + " - " + list[i].eqlyName);
+                            op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
+                            $("#eqPmId").append(op);
+                            // <select>
+                            // 		<option value="1">第1项</option>
+                            // 		<option value="2">第2项</option>
+                            // 		<option value="3">第3项</option>
+                            // </select>
+                        }
+                    }
+                });
+            }
+            sbpmList();
+            // 使用科室字典数据
+            function syksList(){
+                // 清空当前列表
+                $("#eqSyks").empty();
+                // 添加默认选项
+                var op = '<option value=""></option>';
+                $("#eqSyks").append(op);
+                // 发出ajax请求，并处理结果
+                $.ajax({
+                    url:"",
+                    method: "GET",
+                    dataType: "JSON",
+                    async:false,
+                    "success": function(json) {
+                        // 遍历加载新列表项
+                        var list = json.data;
+                        console.log(list);
+                        for (var i = 0; i < list.length; i++) {
+                            console.log(list[i].eqlyId + " - " + list[i].eqlyName);
+                            op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
+                            $("#eqSyks").append(op);
+                            // <select>
+                            // 		<option value="1">第1项</option>
+                            // 		<option value="2">第2项</option>
+                            // 		<option value="3">第3项</option>
+                            // </select>
+                        }
+                    }
+                });
+            }
+            syksList();
+        })
         //Demo
         layui.use(['element','laydate','form','layer','jquery'], function(){
             var element = layui.element

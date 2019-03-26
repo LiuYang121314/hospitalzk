@@ -50,6 +50,7 @@
   var type = window.location.search;
   var ids = parseInt(type.split("=")[1]);
   var rate = "";
+
   //Demo
   layui.use(['layer','jquery','table'], function(){
       var layer = layui.layer
@@ -139,6 +140,7 @@
         cols:[[
           {field:'eqPmId', title:'设备品名',align:'center'},
           {field:'eqMc', title:'设备名称',align:'center'},
+          {field:'eqSyks', title:'使用科室',align:'center'},
           {field:'eqXh', title:'型号',align:'center'},
           {field:'eqGg', title:'规格',align:'center'},
           {field:'eqPrice', title:'单价',sort: true,align:'center'},
