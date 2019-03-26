@@ -145,6 +145,7 @@
                 elem:"#upload",
                 url:"/accept/uploadFile?htIds="+ids,
                 multiple: true,
+                accept:"file",
                 before: function(obj){
                     //预读本地文件示例，不支持ie8
                     obj.preview(function(index, file, result){
