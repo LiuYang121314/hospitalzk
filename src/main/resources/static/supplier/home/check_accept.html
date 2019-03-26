@@ -106,7 +106,7 @@
                         <div class="layui-form-item col-md-5">
                             <label class="layui-form-label">来源</label>
                             <div class="layui-input-block">
-                                <select id="ly" name="htLy" lay-verify="required">
+                                <select id="htLy1" name="htLy" lay-verify="required">
                                     <option value=""></option>
                                     <!--<option value="0">1</option>-->
                                     <!--<option value="1">2</option>-->
@@ -117,7 +117,7 @@
                         <div class="layui-form-item col-md-5">
                             <label class="layui-form-label">采购方式</label>
                             <div class="layui-input-block">
-                                <select name="htCgfs" lay-verify="required">
+                                <select id="htCgfs1" name="htCgfs" lay-verify="required">
                                     <option value=""></option>
                                     <option value="0">1</option>
                                     <option value="1">2</option>
@@ -128,7 +128,7 @@
                         <div class="layui-form-item col-md-5">
                             <label class="layui-form-label">申购类别</label>
                             <div class="layui-input-block">
-                                <select name="htSglb" lay-verify="required">
+                                <select id="htSglb1" name="htSglb" lay-verify="required">
                                     <option value=""></option>
                                     <option value="0">1</option>
                                     <option value="1">2</option>
@@ -139,7 +139,7 @@
                         <div class="layui-form-item col-md-5">
                             <label class="layui-form-label">设备用途</label>
                             <div class="layui-input-block">
-                                <select name="htSbyt" lay-verify="required">
+                                <select id="htSbyt1" name="htSbyt" lay-verify="required">
                                     <option value=""></option>
                                     <option value="0">1</option>
                                     <option value="1">2</option>
@@ -150,7 +150,7 @@
                         <div class="layui-form-item col-md-5">
                             <label class="layui-form-label">经费来源</label>
                             <div class="layui-input-block">
-                                <select name="htJfly" lay-verify="required">
+                                <select id="htJfly1" name="htJfly" lay-verify="required">
                                     <option value=""></option>
                                     <option value="0">1</option>
                                     <option value="1">2</option>
@@ -233,7 +233,7 @@
                         <div class="layui-form-item col-md-5">
                             <label class="layui-form-label">来源</label>
                             <div class="layui-input-block">
-                                <select name="htLy" lay-verify="required">
+                                <select id="htLy2" name="htLy" lay-verify="required">
                                     <option value=""></option>
                                     <option value="0">1</option>
                                     <option value="1">2</option>
@@ -244,7 +244,7 @@
                         <div class="layui-form-item col-md-5">
                             <label class="layui-form-label">采购方式</label>
                             <div class="layui-input-block">
-                                <select name="htCgfs" lay-verify="required">
+                                <select id="htCgfs2" name="htCgfs" lay-verify="required">
                                     <option value=""></option>
                                     <option value="0">1</option>
                                     <option value="1">2</option>
@@ -255,7 +255,7 @@
                         <div class="layui-form-item col-md-5">
                             <label class="layui-form-label">申购类别</label>
                             <div class="layui-input-block">
-                                <select name="htSglb" lay-verify="required">
+                                <select id="htSglb2" name="htSglb" lay-verify="required">
                                     <option value=""></option>
                                     <option value="0">1</option>
                                     <option value="1">2</option>
@@ -266,7 +266,7 @@
                         <div class="layui-form-item col-md-5">
                             <label class="layui-form-label">设备用途</label>
                             <div class="layui-input-block">
-                                <select name="htSbyt" lay-verify="required">
+                                <select id="htSbyt2" name="htSbyt" lay-verify="required">
                                     <option value=""></option>
                                     <option value="0">1</option>
                                     <option value="1">2</option>
@@ -277,7 +277,7 @@
                         <div class="layui-form-item col-md-5">
                             <label class="layui-form-label">经费来源</label>
                             <div class="layui-input-block">
-                                <select name="htJfly" lay-verify="required">
+                                <select id="htJfly2" name="htJfly" lay-verify="required">
                                     <option value=""></option>
                                     <option value="0">1</option>
                                     <option value="1">2</option>
@@ -297,14 +297,16 @@
         </div>
     </div>
     <script>
-
         $(function(){
+            // 来源字典
             function lyList(){
                 // 清空当前列表
-                //$("#ly").empty();
+                $("#htLy1").empty();
+                $("#htLy2").empty();
                 // 添加默认选项
                 var op = '<option value=""></option>';
-                $("#ly").append(op);
+                $("#htLy1").append(op);
+                $("#htLy2").append(op);
                 // 发出ajax请求，并处理结果
                 $.ajax({
                     url:"/eqly/all",
@@ -317,7 +319,8 @@
                         for (var i = 0; i < list.length; i++) {
                             console.log(list[i].eqlyId + " - " + list[i].eqlyName);
                             op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
-                            $("#ly").append(op);
+                            $("#htLy1").append(op);
+                            $("#htLy2").append(op);
                             // <select>
                             // 		<option value="1">第1项</option>
                             // 		<option value="2">第2项</option>
@@ -328,6 +331,138 @@
                 });
             }
             lyList();
+            // 采购方式字典
+            function cgfsList(){
+                // 清空当前列表
+                $("#htCgfs1").empty();
+                $("#htCgfs2").empty();
+                // 添加默认选项
+                var op = '<option value=""></option>';
+                $("#htCgfs1").append(op);
+                $("#htCgfs2").append(op);
+                // 发出ajax请求，并处理结果
+                $.ajax({
+                    url:"",
+                    method: "GET",
+                    dataType: "JSON",
+                    async:false,
+                    "success": function(json) {
+                        // 遍历加载新列表项
+                        var list = json.data;
+                        for (var i = 0; i < list.length; i++) {
+                            console.log(list[i].eqlyId + " - " + list[i].eqlyName);
+                            op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
+                            $("#htCgfs1").append(op);
+                            $("#htCgfs2").append(op);
+                            // <select>
+                            // 		<option value="1">第1项</option>
+                            // 		<option value="2">第2项</option>
+                            // 		<option value="3">第3项</option>
+                            // </select>
+                        }
+                    }
+                });
+            }
+            cgfsList();
+            // 申购类别字典
+            function sglbList(){
+                // 清空当前列表
+                $("#htSglb1").empty();
+                $("#htSglb2").empty();
+                // 添加默认选项
+                var op = '<option value=""></option>';
+                $("#htSglb1").append(op);
+                $("#htSglb2").append(op);
+                // 发出ajax请求，并处理结果
+                $.ajax({
+                    url:"",
+                    method: "GET",
+                    dataType: "JSON",
+                    async:false,
+                    "success": function(json) {
+                        // 遍历加载新列表项
+                        var list = json.data;
+                        for (var i = 0; i < list.length; i++) {
+                            console.log(list[i].eqlyId + " - " + list[i].eqlyName);
+                            op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
+                            $("#htSglb1").append(op);
+                            $("#htSglb2").append(op);
+                            // <select>
+                            // 		<option value="1">第1项</option>
+                            // 		<option value="2">第2项</option>
+                            // 		<option value="3">第3项</option>
+                            // </select>
+                        }
+                    }
+                });
+            }
+            sglbList();
+            // 设备用途字典
+            function sbytList(){
+                // 清空当前列表
+                $("#htSbyt1").empty();
+                $("#htSbyt2").empty();
+                // 添加默认选项
+                var op = '<option value=""></option>';
+                $("#htSbyt1").append(op);
+                $("#htSbyt2").append(op);
+                // 发出ajax请求，并处理结果
+                $.ajax({
+                    url:"",
+                    method: "GET",
+                    dataType: "JSON",
+                    async:false,
+                    "success": function(json) {
+                        // 遍历加载新列表项
+                        var list = json.data;
+                        for (var i = 0; i < list.length; i++) {
+                            console.log(list[i].eqlyId + " - " + list[i].eqlyName);
+                            op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
+                            $("#htSbyt1").append(op);
+                            $("#htSbyt2").append(op);
+                            // <select>
+                            // 		<option value="1">第1项</option>
+                            // 		<option value="2">第2项</option>
+                            // 		<option value="3">第3项</option>
+                            // </select>
+                        }
+                    }
+                });
+            }
+            sbytList();
+            // 经费来源字典
+            function jflyList(){
+                // 清空当前列表
+                $("#htJfly1").empty();
+                $("#htJfly2").empty();
+                // 添加默认选项
+                var op = '<option value=""></option>';
+                $("#htJfly1").append(op);
+                $("#htJfly2").append(op);
+                // 发出ajax请求，并处理结果
+                $.ajax({
+                    url:"",
+                    method: "GET",
+                    dataType: "JSON",
+                    async:false,
+                    "success": function(json) {
+                        // 遍历加载新列表项
+                        var list = json.data;
+                        for (var i = 0; i < list.length; i++) {
+                            console.log(list[i].eqlyId + " - " + list[i].eqlyName);
+                            op = '<option value="' + list[i].eqlyId + '">' + list[i].eqlyName + '</option>';
+                            $("#htJfly1").append(op);
+                            $("#htJfly2").append(op);
+                            // <select>
+                            // 		<option value="1">第1项</option>
+                            // 		<option value="2">第2项</option>
+                            // 		<option value="3">第3项</option>
+                            // </select>
+                        }
+                    }
+                });
+            }
+            jflyList();
             $.ajax({
                 url:"/supplier/one",
                 method:"GET",
