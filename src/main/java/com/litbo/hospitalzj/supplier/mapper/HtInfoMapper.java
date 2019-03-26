@@ -24,15 +24,18 @@ public interface HtInfoMapper {
 	@Options(useGeneratedKeys = true, keyProperty = "htId", keyColumn = "ht_id")
 	Integer insertHt(HtInfo htInfo);
 	//上传合同文件
-	@Update("UPDATE ht_info SET ht_file1=#{htFile1} where ht_id=#{htId}")
+	@Update("update ht_info set ht_file1 = CONCAT(ht_file1,#{path}) where ht_id=#{htId}")
+	int updateURL(@Param("htId") Integer htId, @Param("path") String path);
+
+	@Update("update ht_info set ht_file1 = CONCAT(ht_file1,#{htFile1}) where ht_id=#{htId}")
 	Integer updateOne(@Param("htId") Integer htId, @Param("htFile1") String htFile1);
-	@Update("UPDATE ht_info SET ht_file2=#{htFile2} where ht_id=#{htId}")
+	@Update("update ht_info set ht_file2 = CONCAT(ht_file2,#{htFile2}) where ht_id=#{htId}")
 	Integer updateTwo(@Param("htId") Integer htId, @Param("htFile2") String htFile2);
-	@Update("UPDATE ht_info SET ht_file3=#{htFile3} where ht_id=#{htId}")
+	@Update("update ht_info set ht_file3 = CONCAT(ht_file3,#{htFile3}) where ht_id=#{htId}")
 	Integer updateThree(@Param("htId") Integer htId, @Param("htFile3") String htFile3);
-	@Update("UPDATE ht_info SET ht_file4=#{htFile4} where ht_id=#{htId}")
+	@Update("update ht_info set ht_file4 = CONCAT(ht_file4,#{htFile4}) where ht_id=#{htId}")
 	Integer updateFour(@Param("htId") Integer htId, @Param("htFile4") String htFile4);
-	@Update("UPDATE ht_info SET ht_file5=#{htFile5} where ht_id=#{htId}")
+	@Update("update ht_info set ht_file5 = CONCAT(ht_file5,#{htFile5}) where ht_id=#{htId}")
 	Integer updateFive(@Param("htId") Integer htId, @Param("htFile5") String htFile5);
 	//修改合同状态
 	@Update("UPDATE ht_info SET ht_yzm=#{htYzm},ht_state=#{htState} where ht_id=#{htId}")

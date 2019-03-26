@@ -12,15 +12,13 @@ import com.litbo.hospitalzj.hospital.enums.EnumProcess;
 import com.litbo.hospitalzj.hospital.utils.FileDownLoad;
 import com.litbo.hospitalzj.hospital.utils.FileUpload;
 import com.litbo.hospitalzj.supplier.controller.ex.FileDownLoadException;
+import com.litbo.hospitalzj.supplier.entity.SgdjHw;
 import com.litbo.hospitalzj.supplier.mapper.EqInfoMapper;
 import com.litbo.hospitalzj.supplier.service.HtLcService;
 import com.litbo.hospitalzj.supplier.service.exception.InsertException;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.litbo.hospitalzj.controller.BaseController;
@@ -137,71 +135,156 @@ public class HtInfoController extends BaseController {
         List<HtInfo> htInfos = htinfoService.selectHtinfo(sbcsId);
         return new ResponseResult<List<HtInfo>>(SUCCESS, htInfos);
     }
+    @RequestMapping(value = "uploadFile2",method = RequestMethod.POST)
+    public ResponseResult uploadFile2(Integer htId, MultipartFile file){
 
+        String path = FileUpload.upload("images/upload/",file);
+        System.out.println(path);
+        HtInfo data = htinfoService.select(htId);
+        if(data!=null&&data.getHtFile2().split(" ").length>7){
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@2"+data.getHtFile2());
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@2"+data);
+            ResponseResult responseResult = new ResponseResult();
+            responseResult.setMessage("图片过多");
+            return responseResult;
+        }
+        int res  = htinfoService.updateURL(htId,path);
+        return new ResponseResult(SUCCESS);
+    }
+    @RequestMapping(value = "uploadFile",method = RequestMethod.POST)
+    public ResponseResult uploadFile(Integer htId, MultipartFile file){
+        if(htinfoService.select(htId)==null){
+            ResponseResult responseResult = new ResponseResult();
+            responseResult.setMessage("找不到合同号");
+            return responseResult;
+        }
+        String path = FileUpload.upload("images/upload/",file);
+        System.out.println(path);
+        HtInfo data = htinfoService.select(htId);
+        System.out.println(data);
+        System.out.println(htId);
+        if(data!=null&&data.getHtFile1().split(" ").length>7){
+            ResponseResult responseResult = new ResponseResult();
+            responseResult.setMessage("图片过多");
+            return responseResult;
+        }
+        int res  = htinfoService.updateURL(htId,path);
+        return new ResponseResult(SUCCESS);
+    }
     //上传文件图片
     @PostMapping("/uploadOne")
     public ResponseResult<String> uploadOne(
             @RequestParam("htId") Integer htId,
             @RequestParam("file") MultipartFile file) {
-        String htFile1 = FileUpload.upload("images/upload/", file);
-        htinfoService.updateOne(htId, htFile1);
-        // 返回
-        ResponseResult<String> rr = new ResponseResult<>();
-        rr.setState(SUCCESS);
-        rr.setData(htFile1);
-        return rr;
+        if(htinfoService.select(htId)==null){
+            ResponseResult responseResult = new ResponseResult();
+            responseResult.setMessage("找不到合同号");
+            return responseResult;
+        }
+        String path = FileUpload.upload("images/upload/",file);
+        System.out.println(path);
+        HtInfo data = htinfoService.select(htId);
+        System.out.println(data);
+        System.out.println(htId);
+        if(data!=null&&data.getHtFile1().split(" ").length>7){
+            ResponseResult responseResult = new ResponseResult();
+            responseResult.setMessage("图片过多");
+            return responseResult;
+        }
+        int res  = htinfoService.updateOne(htId,path);
+        return new ResponseResult(SUCCESS);
     }
 
     @PostMapping("/uploadTwo")
     public ResponseResult<String> uploadTwo(
             @RequestParam("htId") Integer htId,
             @RequestParam("file") MultipartFile file) {
-        String htFile2 = FileUpload.upload("images/upload/", file);
-        htinfoService.updateTwo(htId, htFile2);
-        // 返回
-        ResponseResult<String> rr = new ResponseResult<>();
-        rr.setState(SUCCESS);
-        rr.setData(htFile2);
-        return rr;
+        if(htinfoService.select(htId)==null){
+            ResponseResult responseResult = new ResponseResult();
+            responseResult.setMessage("找不到合同号");
+            return responseResult;
+        }
+        String path = FileUpload.upload("images/upload/",file);
+        System.out.println(path);
+        HtInfo data = htinfoService.select(htId);
+        System.out.println(data);
+        System.out.println(htId);
+        if(data!=null&&data.getHtFile1().split(" ").length>7){
+            ResponseResult responseResult = new ResponseResult();
+            responseResult.setMessage("图片过多");
+            return responseResult;
+        }
+        int res  = htinfoService.updateTwo(htId,path);
+        return new ResponseResult(SUCCESS);
     }
 
     @PostMapping("/uploadThree")
     public ResponseResult<String> uploadThree(
             @RequestParam("htId") Integer htId,
             @RequestParam("file") MultipartFile file) {
-        String htFile3 = FileUpload.upload("images/upload/", file);
-        htinfoService.updateThree(htId, htFile3);
-        // 返回
-        ResponseResult<String> rr = new ResponseResult<>();
-        rr.setState(SUCCESS);
-        rr.setData(htFile3);
-        return rr;
+        if(htinfoService.select(htId)==null){
+            ResponseResult responseResult = new ResponseResult();
+            responseResult.setMessage("找不到合同号");
+            return responseResult;
+        }
+        String path = FileUpload.upload("images/upload/",file);
+        System.out.println(path);
+        HtInfo data = htinfoService.select(htId);
+        System.out.println(data);
+        System.out.println(htId);
+        if(data!=null&&data.getHtFile1().split(" ").length>7){
+            ResponseResult responseResult = new ResponseResult();
+            responseResult.setMessage("图片过多");
+            return responseResult;
+        }
+        int res  = htinfoService.updateThree(htId,path);
+        return new ResponseResult(SUCCESS);
     }
 
     @PostMapping("/uploadFour")
     public ResponseResult<String> uploadFour(
             @RequestParam("htId") Integer htId,
             @RequestParam("file") MultipartFile file) {
-        String htFile4 = FileUpload.upload("images/upload/", file);
-        htinfoService.updateFour(htId, htFile4);
-        // 返回
-        ResponseResult<String> rr = new ResponseResult<>();
-        rr.setState(SUCCESS);
-        rr.setData(htFile4);
-        return rr;
+        if(htinfoService.select(htId)==null){
+            ResponseResult responseResult = new ResponseResult();
+            responseResult.setMessage("找不到合同号");
+            return responseResult;
+        }
+        String path = FileUpload.upload("images/upload/",file);
+        System.out.println(path);
+        HtInfo data = htinfoService.select(htId);
+        System.out.println(data);
+        System.out.println(htId);
+        if(data!=null&&data.getHtFile1().split(" ").length>7){
+            ResponseResult responseResult = new ResponseResult();
+            responseResult.setMessage("图片过多");
+            return responseResult;
+        }
+        int res  = htinfoService.updateFour(htId,path);
+        return new ResponseResult(SUCCESS);
     }
 
     @PostMapping("/uploadFive")
     public ResponseResult<String> uploadFive(
             @RequestParam("htId") Integer htId,
             @RequestParam("file") MultipartFile file) {
-        String htFile5 = FileUpload.upload("images/upload/", file);
-        htinfoService.updateFive(htId, htFile5);
-        //返回
-        ResponseResult<String> rr = new ResponseResult<>();
-        rr.setState(SUCCESS);
-        rr.setData(htFile5);
-        return rr;
+        if(htinfoService.select(htId)==null){
+            ResponseResult responseResult = new ResponseResult();
+            responseResult.setMessage("找不到合同号");
+            return responseResult;
+        }
+        String path = FileUpload.upload("images/upload/",file);
+        System.out.println(path);
+        HtInfo data = htinfoService.select(htId);
+        System.out.println(data);
+        System.out.println(htId);
+        if(data!=null&&data.getHtFile1().split(" ").length>7){
+            ResponseResult responseResult = new ResponseResult();
+            responseResult.setMessage("图片过多");
+            return responseResult;
+        }
+        int res  = htinfoService.updateFive(htId,path);
+        return new ResponseResult(SUCCESS);
     }
 
     @RequestMapping("/downloadFile")

@@ -75,7 +75,10 @@ public class AcceptController {
         String path = FileUpload.upload("images/upload/",file);
         System.out.println(path);
         SgdjHw sgdjHw = sgdjHwService.selectSgdjHw(htIds);
+
         if(sgdjHw!=null&&sgdjHw.getDjhwUrl().split(" ").length>7){
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@2"+sgdjHw.getDjhwUrl());
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@2"+sgdjHw);
             ResponseResult responseResult = new ResponseResult();
             responseResult.setMessage("图片过多");
             return responseResult;

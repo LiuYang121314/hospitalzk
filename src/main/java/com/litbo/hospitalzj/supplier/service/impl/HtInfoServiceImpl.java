@@ -3,6 +3,7 @@ package com.litbo.hospitalzj.supplier.service.impl;
 import java.util.List;
 
 import com.litbo.hospitalzj.hospital.enums.EnumProcess;
+import com.litbo.hospitalzj.supplier.service.exception.InsertException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import com.litbo.hospitalzj.supplier.mapper.EqHtFjVoMapper;
 import com.litbo.hospitalzj.supplier.mapper.HtInfoMapper;
 import com.litbo.hospitalzj.supplier.service.HtInfoService;
 import com.litbo.hospitalzj.supplier.vo.EqHtVo;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class HtInfoServiceImpl implements HtInfoService {
@@ -52,29 +54,36 @@ public class HtInfoServiceImpl implements HtInfoService {
 	public void updateState(Integer htId, String htState) {
 		htInfoMapper.updateState(htId, htState);
 	}*/
+	@Transactional
 	@Override
-	public void updateOne(Integer htId, String htFile1) {
-		htInfoMapper.updateOne(htId, htFile1);
+	public int updateURL(Integer htId, String path) {
+		if(htInfoMapper.findByHtId(htId)==null){
+			throw new InsertException("合同不存在");
+		}
+		return htInfoMapper.updateURL(htId,path+" ");
 	}
 	@Override
-	public void updateTwo(Integer htId, String htFile2) {
-		htInfoMapper.updateTwo(htId, htFile2);
+	public int updateOne(Integer htId, String htFile1) {
+		return htInfoMapper.updateOne(htId,htFile1+" ");
+	}
+	@Override
+	public int updateTwo(Integer htId, String htFile2) {
+		return htInfoMapper.updateTwo(htId, htFile2+" ");
 		
 	}
 	@Override
-	public void updateThree(Integer htId, String htFile3) {
-		htInfoMapper.updateThree(htId, htFile3);
+	public int updateThree(Integer htId, String htFile3) {
+		return htInfoMapper.updateThree(htId, htFile3+" ");
 		
 	}
 	@Override
-	public void updateFour(Integer htId, String htFile4) {
-		htInfoMapper.updateFour(htId, htFile4);
+	public int updateFour(Integer htId, String htFile4) {
+		return htInfoMapper.updateFour(htId, htFile4+" ");
 		
 	}
-	
 	@Override
-	public void updateFive(Integer htId, String htFile5) {
-		htInfoMapper.updateFive(htId, htFile5);
+	public int updateFive(Integer htId, String htFile5) {
+		return htInfoMapper.updateFive(htId, htFile5+" ");
 	}
 	
 	@Override
@@ -106,6 +115,8 @@ public class HtInfoServiceImpl implements HtInfoService {
 		}
 		return data;
 	}
+
+
 
 	@Override
 	public int agreeHtInfoById(Integer htId, String yy, String date) {

@@ -28,7 +28,6 @@ public class SgdjHwController extends BaseController{
 	}
 	@RequestMapping(value = "/insert",method = RequestMethod.POST)
 	public ResponseResult<Void> insert(SgdjHw sgdjHw, MultipartFile file[]) {
-
 		int res  = sgdjHwService.InsertSgdjHw(sgdjHw);
 		return new ResponseResult<Void>(SUCCESS);
 	}
