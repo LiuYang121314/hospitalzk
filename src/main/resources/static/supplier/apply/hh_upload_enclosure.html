@@ -69,12 +69,19 @@
                     <tr>
                         <td>合同文件</td>
                         <td>
+                            <!--<div class="layui-upload">-->
+                                <!--<button type="button" name="file" class="layui-btn" id="htwj">上传文件</button>-->
+                                <!--<div class="layui-upload-list">-->
+                                    <!--<img class="layui-upload-img" id="htwjimg">-->
+                                    <!--<p id="htwjtry"></p>-->
+                                <!--</div>-->
+                            <!--</div>-->
                             <div class="layui-upload">
-                                <button type="button" name="file" class="layui-btn" id="htwj">上传文件</button>
-                                <div class="layui-upload-list">
-                                    <img class="layui-upload-img" id="htwjimg">
-                                    <p id="htwjtry"></p>
-                                </div>
+                                <button type="button" class="layui-btn" id="htwj">上传文件</button>
+                                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                    预览图：
+                                    <div class="layui-upload-list" id="htwjImg"></div>
+                                </blockquote>
                             </div>
                         </td>
                     </tr>
@@ -268,160 +275,184 @@
             //       layer.msg("上传失败,请稍后再试");
             //     }
             //   });
-            var uploadInst = upload.render({
+            // var uploadInst = upload.render({
+            //     elem: '#htwj'
+            //     ,url: "/htInfo/uploadOne?htId="+ids
+            //     ,accept: 'file' //普通文件
+            //     ,before: function(obj){
+            //         //预读本地文件示例，不支持ie8
+            //         obj.preview(function(index, file, result){
+            //             $('#htwjimg').attr('src', result); //图片链接（base64）
+            //         });
+            //     }
+            //     ,done: function(res){
+            //         if(res.state === 200){
+            //             layer.msg("上传成功");
+            //             upload.render({
+            //                 elem: '#zbtz'
+            //                 ,url: "/htInfo/uploadTwo?htId="+ids
+            //                 ,accept: 'file' //普通文件
+            //                 ,before: function(obj){
+            //                     //预读本地文件示例，不支持ie8
+            //                     obj.preview(function(index, file, result){
+            //                         $('#zbtzimg').attr('src', result); //图片链接（base64）
+            //                     });
+            //                 }
+            //                 ,done: function(res){
+            //                     if(res.state === 200){
+            //                         layer.msg("上传成功");
+            //                         upload.render({
+            //                             elem: '#ylqx'
+            //                             ,url: "/htInfo/uploadThree?htId="+ids
+            //                             ,accept: 'file' //普通文件
+            //                             ,before: function(obj){
+            //                                 //预读本地文件示例，不支持ie8
+            //                                 obj.preview(function(index, file, result){
+            //                                     $('#ylqximg').attr('src', result); //图片链接（base64）
+            //                                 });
+            //                             }
+            //                             ,done: function(res){
+            //                                 if(res.state === 200){
+            //                                     layer.msg("上传成功");
+            //                                     upload.render({
+            //                                         elem: '#cjsq'
+            //                                         ,url: "/htInfo/uploadFour?htId="+ids
+            //                                         ,accept: 'file' //普通文件
+            //                                         ,before: function(obj){
+            //                                             //预读本地文件示例，不支持ie8
+            //                                             obj.preview(function(index, file, result){
+            //                                                 $('#cjsqimg').attr('src', result); //图片链接（base64）
+            //                                             });
+            //                                         }
+            //                                         ,done: function(res){
+            //                                             if(res.state === 200){
+            //                                                 layer.msg("上传成功");
+            //                                                 upload.render({
+            //                                                     elem: '#hgjk'
+            //                                                     ,url: "/htInfo/uploadFive?htId="+ids
+            //                                                     ,accept: 'file' //普通文件
+            //                                                     ,before: function(obj){
+            //                                                         //预读本地文件示例，不支持ie8
+            //                                                         obj.preview(function(index, file, result){
+            //                                                             $('#hgjkimg').attr('src', result); //图片链接（base64）
+            //                                                         });
+            //                                                     }
+            //                                                     ,done: function(res){
+            //                                                         if(res.state === 200){
+            //                                                             layer.msg("上传成功");
+            //                                                             layer.open({
+            //                                                                 type:1,
+            //                                                                 title:"验证码信息",
+            //                                                                 content:$("#codeBody"),
+            //                                                                 area:["300px","400px"],
+            //                                                                 maxmin:true,
+            //                                                                 btn:["确认"],
+            //                                                                 yes:function(){
+            //                                                                     $.ajax({
+            //                                                                         url:"/htInfo/updateYzm?htId="+ids,
+            //                                                                         method:"POST",
+            //                                                                         data:{"htYzm":code},
+            //                                                                         dataType:"JSON",
+            //                                                                         success:function(res){
+            //                                                                             location.href = "/supplier/home/schedule.html";
+            //                                                                         },
+            //                                                                         error:function(data){
+            //                                                                             layer.msg("服务器错误");
+            //                                                                             console.log(data);
+            //                                                                         }
+            //                                                                     })
+            //                                                                     layer.closeAll();
+            //                                                                 }
+            //                                                             });
+            //                                                         }else{
+            //                                                             layer.msg("上传失败");
+            //                                                         }
+            //                                                     }
+            //                                                     ,error: function(){
+            //                                                         //演示失败状态，并实现重传
+            //                                                         var demoText = $('#hgjktry');
+            //                                                         demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+            //                                                         demoText.find('.demo-reload').on('click', function(){
+            //                                                             uploadInst.upload();
+            //                                                         });
+            //                                                     }
+            //                                                 })
+            //                                             }else{
+            //                                                 layer.msg("上传失败");
+            //                                             }
+            //                                         }
+            //                                         ,error: function(){
+            //                                             //演示失败状态，并实现重传
+            //                                             var demoText = $('#cjsqtry');
+            //                                             demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+            //                                             demoText.find('.demo-reload').on('click', function(){
+            //                                                 uploadInst.upload();
+            //                                             });
+            //                                         }
+            //                                     })
+            //                                 }else{
+            //                                     layer.msg("上传失败");
+            //                                 }
+            //                             }
+            //                             ,error: function(){
+            //                                 //演示失败状态，并实现重传
+            //                                 var demoText = $('#ylqxtry');
+            //                                 demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+            //                                 demoText.find('.demo-reload').on('click', function(){
+            //                                     uploadInst.upload();
+            //                                 });
+            //                             }
+            //                         })
+            //                     }else{
+            //                         layer.msg("上传失败");
+            //                     }
+            //                 }
+            //                 ,error: function(){
+            //                     //演示失败状态，并实现重传
+            //                     var demoText = $('#zbtztry');
+            //                     demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+            //                     demoText.find('.demo-reload').on('click', function(){
+            //                         uploadInst.upload();
+            //                     });
+            //                 }
+            //             })
+            //         }else{
+            //             layer.msg("上传失败");
+            //         }
+            //     }
+            //     ,error: function(){
+            //         //演示失败状态，并实现重传
+            //         var demoText = $('#htwjtry');
+            //         demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+            //         demoText.find('.demo-reload').on('click', function(){
+            //             uploadInst.upload();
+            //         });
+            //     }
+            // })
+            upload.render({
                 elem: '#htwj'
-                ,url: "/htInfo/uploadOne?htId="+ids
-                ,accept: 'file' //普通文件
+                ,url: ''
+                ,multiple: true
+                ,accept:"file"
                 ,before: function(obj){
                     //预读本地文件示例，不支持ie8
                     obj.preview(function(index, file, result){
-                        $('#htwjimg').attr('src', result); //图片链接（base64）
+                        $('#htwjImg').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
                     });
                 }
                 ,done: function(res){
+                    //上传完毕
                     if(res.state === 200){
                         layer.msg("上传成功");
-                        upload.render({
-                            elem: '#zbtz'
-                            ,url: "/htInfo/uploadTwo?htId="+ids
-                            ,accept: 'file' //普通文件
-                            ,before: function(obj){
-                                //预读本地文件示例，不支持ie8
-                                obj.preview(function(index, file, result){
-                                    $('#zbtzimg').attr('src', result); //图片链接（base64）
-                                });
-                            }
-                            ,done: function(res){
-                                if(res.state === 200){
-                                    layer.msg("上传成功");
-                                    upload.render({
-                                        elem: '#ylqx'
-                                        ,url: "/htInfo/uploadThree?htId="+ids
-                                        ,accept: 'file' //普通文件
-                                        ,before: function(obj){
-                                            //预读本地文件示例，不支持ie8
-                                            obj.preview(function(index, file, result){
-                                                $('#ylqximg').attr('src', result); //图片链接（base64）
-                                            });
-                                        }
-                                        ,done: function(res){
-                                            if(res.state === 200){
-                                                layer.msg("上传成功");
-                                                upload.render({
-                                                    elem: '#cjsq'
-                                                    ,url: "/htInfo/uploadFour?htId="+ids
-                                                    ,accept: 'file' //普通文件
-                                                    ,before: function(obj){
-                                                        //预读本地文件示例，不支持ie8
-                                                        obj.preview(function(index, file, result){
-                                                            $('#cjsqimg').attr('src', result); //图片链接（base64）
-                                                        });
-                                                    }
-                                                    ,done: function(res){
-                                                        if(res.state === 200){
-                                                            layer.msg("上传成功");
-                                                            upload.render({
-                                                                elem: '#hgjk'
-                                                                ,url: "/htInfo/uploadFive?htId="+ids
-                                                                ,accept: 'file' //普通文件
-                                                                ,before: function(obj){
-                                                                    //预读本地文件示例，不支持ie8
-                                                                    obj.preview(function(index, file, result){
-                                                                        $('#hgjkimg').attr('src', result); //图片链接（base64）
-                                                                    });
-                                                                }
-                                                                ,done: function(res){
-                                                                    if(res.state === 200){
-                                                                        layer.msg("上传成功");
-                                                                        layer.open({
-                                                                            type:1,
-                                                                            title:"验证码信息",
-                                                                            content:$("#codeBody"),
-                                                                            area:["300px","400px"],
-                                                                            maxmin:true,
-                                                                            btn:["确认"],
-                                                                            yes:function(){
-                                                                                $.ajax({
-                                                                                    url:"/htInfo/updateYzm?htId="+ids,
-                                                                                    method:"POST",
-                                                                                    data:{"htYzm":code},
-                                                                                    dataType:"JSON",
-                                                                                    success:function(res){
-                                                                                        location.href = "/supplier/home/schedule.html";
-                                                                                    },
-                                                                                    error:function(data){
-                                                                                        layer.msg("服务器错误");
-                                                                                        console.log(data);
-                                                                                    }
-                                                                                })
-                                                                                layer.closeAll();
-                                                                            }
-                                                                        });
-                                                                    }else{
-                                                                        layer.msg("上传失败");
-                                                                    }
-                                                                }
-                                                                ,error: function(){
-                                                                    //演示失败状态，并实现重传
-                                                                    var demoText = $('#hgjktry');
-                                                                    demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                                                                    demoText.find('.demo-reload').on('click', function(){
-                                                                        uploadInst.upload();
-                                                                    });
-                                                                }
-                                                            })
-                                                        }else{
-                                                            layer.msg("上传失败");
-                                                        }
-                                                    }
-                                                    ,error: function(){
-                                                        //演示失败状态，并实现重传
-                                                        var demoText = $('#cjsqtry');
-                                                        demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                                                        demoText.find('.demo-reload').on('click', function(){
-                                                            uploadInst.upload();
-                                                        });
-                                                    }
-                                                })
-                                            }else{
-                                                layer.msg("上传失败");
-                                            }
-                                        }
-                                        ,error: function(){
-                                            //演示失败状态，并实现重传
-                                            var demoText = $('#ylqxtry');
-                                            demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                                            demoText.find('.demo-reload').on('click', function(){
-                                                uploadInst.upload();
-                                            });
-                                        }
-                                    })
-                                }else{
-                                    layer.msg("上传失败");
-                                }
-                            }
-                            ,error: function(){
-                                //演示失败状态，并实现重传
-                                var demoText = $('#zbtztry');
-                                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                                demoText.find('.demo-reload').on('click', function(){
-                                    uploadInst.upload();
-                                });
-                            }
-                        })
                     }else{
-                        layer.msg("上传失败");
+                        layer.msg(res.message);
                     }
+                },
+                error:function (data) {
+                    layer.msg("上传失败,请稍后再试");
+                    console.log(data);
                 }
-                ,error: function(){
-                    //演示失败状态，并实现重传
-                    var demoText = $('#htwjtry');
-                    demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-                    demoText.find('.demo-reload').on('click', function(){
-                        uploadInst.upload();
-                    });
-                }
-            })
+            });
         })
             
     </script>
