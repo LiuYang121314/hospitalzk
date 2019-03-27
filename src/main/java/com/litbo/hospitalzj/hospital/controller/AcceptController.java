@@ -1,5 +1,6 @@
 package com.litbo.hospitalzj.hospital.controller;
 
+import com.litbo.hospitalzj.hospital.enums.EnumProcess;
 import com.litbo.hospitalzj.hospital.service.AcceptService;
 import com.litbo.hospitalzj.hospital.utils.FileUpload;
 import com.litbo.hospitalzj.supplier.entity.HtInfo;
@@ -51,6 +52,11 @@ public class AcceptController {
         List<HtInfo> htInfos=htInfoService.selectAllHtAccept();
         return new ResponseResult<List<HtInfo>>(SUCCESS,htInfos);
     }
+    @RequestMapping(value = "selectAllHtYfh",method = RequestMethod.GET)
+    public ResponseResult selectAllHtYfh(){
+        List<HtInfo> htInfos=htInfoService.selectAllHtByhtState(EnumProcess.YI_FA_HUO.getMessage());
+        return new ResponseResult<List<HtInfo>>(SUCCESS,htInfos);
+    }
     @RequestMapping(value = "selectHtInfoById",method = RequestMethod.POST)
     public ResponseResult selectAllHt(Integer htId){
         HtInfo htInfo=htInfoService.select(htId);
@@ -61,6 +67,7 @@ public class AcceptController {
         if("同意".equals(view)){
             int res = htInfoService.agreeHtInfoById(htId,yy,date);
         }else {
+
             int res = htInfoService.refuseHtInfoById(htId,yy,null);
         }
         return new ResponseResult<>(SUCCESS);
@@ -75,10 +82,7 @@ public class AcceptController {
         String path = FileUpload.upload("images/upload/",file);
         System.out.println(path);
         SgdjHw sgdjHw = sgdjHwService.selectSgdjHw(htIds);
-
         if(sgdjHw!=null&&sgdjHw.getDjhwUrl().split(" ").length>7){
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@2"+sgdjHw.getDjhwUrl());
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@2"+sgdjHw);
             ResponseResult responseResult = new ResponseResult();
             responseResult.setMessage("图片过多");
             return responseResult;

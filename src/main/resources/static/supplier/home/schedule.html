@@ -49,7 +49,6 @@
     </div>
   </div>
   <script type="text/html" id="handle">
-      <a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='lookinfo'>查看详情</a>
   </script>
   <script>
      // 定义全局对象
@@ -66,6 +65,7 @@
               url:"/htInfo/yzm?htYzm="+data.field.htYzm,
               method:"POST",
               dataType:"JSON",
+              async:false,
               success:function(res){
                   if(res.state === 200){
                       layer.msg("查询成功");
@@ -84,6 +84,20 @@
                           parseData:function(res){
                               console.log(res);
                               rate = res.data.htState;
+                              var handle = $("#handle");
+                              if(rate == "待预约验收" || rate == "已发货"){
+                                  handle.append("<p style='color:red;'>当前无操作</p>")
+                              }else if(rate == "预约验收"){
+                                  handle.append("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='lookinfo'>查看详情</a>");
+                              }else if(rate == "信息未完善"){
+                                  handle.append("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='lookinfo'>查看详情</a><a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='update'>重新提交</a>");
+                              }else if(rate == "完善资料"){
+                                  handle.append("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='uploads'>查看到货登记</a>");
+                              }else if(rate == "等待审核"){
+                                  handle.append("<p style='color:red;'>正在审核电子资料，请耐心等待...</p>");
+                              }else if(rate == "验收通过"){
+                                  handle.append("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='stamp'>打印</a>");
+                              }
                               return{
                                   "status":200,
                                   "msg":res.message,
@@ -108,10 +122,10 @@
                       layer.msg("该验证码不存在，查询失败");
                   }
               },
-              error:function(data){n
+              error:function(data){
                   layer.msg("请稍后再试");
               }
-          })
+          });
         return false;
       });
       //监听行工具事件
@@ -129,22 +143,8 @@
         }
       });
     });
-    alert(rate);
     $(function () {
-        var handle = $("#handle");
-        if(rate == "待预约验收"){
-            handle.innerHTML("<p style='color:red;'>正在验收，请耐心等待...</p>")
-        }else if(rate == "预约验收"){
-            handle.innerHTML("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='lookinfo'>查看详情</a>");
-        }else if(rate == "信息未完善"){
-            handle.innerHTML("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='lookinfo'>查看详情</a><a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='update'>重新提交</a>");
-        }else if(rate == "完善资料"){
-            handle.innerHTML("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='uploads'>查看到货登记</a>");
-        }else if(rate == "等待审核"){
-            handle.innerHTML("<p style='color:red;'>正在审核电子资料，请耐心等待...</p>");
-        }else if(rate == "验收通过"){
-            handle.innerHTML("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='stamp'>打印</a>");
-        }
+
     })
   </script>
 </body>

@@ -77,7 +77,7 @@ public class EqCsController extends BaseController{
 	public ResponseResult<String> uploadOne(
 			@RequestParam("file")MultipartFile file,
 			HttpSession session){
-		Upload.upload(file, session);
+		Upload.upload(file);
 		// 确定上传文件夹 > session.getServletContext.getRealPath(UPLOAD_DIR_NAME) > exists() > mkdirs()
 		String parentPath = session.getServletContext().getRealPath(UPLOAD_DIR_NAME);
 		File parent = new File(parentPath);
@@ -113,7 +113,7 @@ public class EqCsController extends BaseController{
 	public ResponseResult<String> uploadTwo(
 			@RequestParam("file")MultipartFile file,
 			HttpSession session){
-		Upload.upload(file, session);
+		Upload.upload(file);
 		// 确定上传文件夹 > session.getServletContext.getRealPath(UPLOAD_DIR_NAME) > exists() > mkdirs()
 		String parentPath = session
 				.getServletContext().getRealPath(UPLOAD_DIR_NAME);

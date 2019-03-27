@@ -9,7 +9,8 @@ public enum EnumProcess{
     WAIT_ACCEPT_YS(5,"等待审核验收"),
     ACCEPT_OVER(6,"验收完成"),
     CONTRACT_ENTRY( 7, "合同录入"),
-    REVISE_A_CONTRACT(8, "合同修改")
+    REVISE_A_CONTRACT(8, "合同修改"),
+    YI_FA_HUO(9,"已发货")
             ;
 
     public Integer getCode() {

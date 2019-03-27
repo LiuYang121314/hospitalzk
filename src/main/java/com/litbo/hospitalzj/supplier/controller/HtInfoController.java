@@ -66,7 +66,13 @@ public class HtInfoController extends BaseController {
         }
         return new ResponseResult<Void>(SUCCESS);
     }
-
+    //修改合同状态为已发货
+    @RequestMapping("/yfh")
+    public ResponseResult<Void> updataState(Integer htId) {
+        htinfoService.updateHtInfoState(htId, EnumProcess.YI_FA_HUO.getMessage());
+        htLcService.InsertHtLc(htId, EnumProcess.YI_FA_HUO.getMessage(), new Date());
+        return new ResponseResult<Void>(SUCCESS);
+    }
     //完善资料
     @RequestMapping("/wszl")
     public ResponseResult<Void> updataStatePerfectOne(Integer htId) {
@@ -128,6 +134,7 @@ public class HtInfoController extends BaseController {
         return new ResponseResult<Void>(SUCCESS);
     }
 
+
     //通过供货商id查询在供货商下的所有的合同信息
     @RequestMapping("/selectHtInfo")
     public ResponseResult<List<HtInfo>> selectHtInfo(HttpSession session) {
@@ -135,62 +142,26 @@ public class HtInfoController extends BaseController {
         List<HtInfo> htInfos = htinfoService.selectHtinfo(sbcsId);
         return new ResponseResult<List<HtInfo>>(SUCCESS, htInfos);
     }
-    @RequestMapping(value = "uploadFile2",method = RequestMethod.POST)
-    public ResponseResult uploadFile2(Integer htId, MultipartFile file){
 
-        String path = FileUpload.upload("images/upload/",file);
-        System.out.println(path);
-        HtInfo data = htinfoService.select(htId);
-        if(data!=null&&data.getHtFile2().split(" ").length>7){
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@2"+data.getHtFile2());
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@2"+data);
-            ResponseResult responseResult = new ResponseResult();
-            responseResult.setMessage("图片过多");
-            return responseResult;
-        }
-        int res  = htinfoService.updateURL(htId,path);
-        return new ResponseResult(SUCCESS);
-    }
-    @RequestMapping(value = "uploadFile",method = RequestMethod.POST)
-    public ResponseResult uploadFile(Integer htId, MultipartFile file){
-        if(htinfoService.select(htId)==null){
-            ResponseResult responseResult = new ResponseResult();
-            responseResult.setMessage("找不到合同号");
-            return responseResult;
-        }
-        String path = FileUpload.upload("images/upload/",file);
-        System.out.println(path);
-        HtInfo data = htinfoService.select(htId);
-        System.out.println(data);
-        System.out.println(htId);
-        if(data!=null&&data.getHtFile1().split(" ").length>7){
-            ResponseResult responseResult = new ResponseResult();
-            responseResult.setMessage("图片过多");
-            return responseResult;
-        }
-        int res  = htinfoService.updateURL(htId,path);
-        return new ResponseResult(SUCCESS);
-    }
     //上传文件图片
     @PostMapping("/uploadOne")
     public ResponseResult<String> uploadOne(
             @RequestParam("htId") Integer htId,
-            @RequestParam("file") MultipartFile file) {
+            @RequestParam("file") MultipartFile file,
+            HttpSession session) {
         if(htinfoService.select(htId)==null){
             ResponseResult responseResult = new ResponseResult();
             responseResult.setMessage("找不到合同号");
             return responseResult;
         }
-        String path = FileUpload.upload("images/upload/",file);
+        String path = FileUpload.uploadOne(file,session);
         System.out.println(path);
         HtInfo data = htinfoService.select(htId);
-        System.out.println(data);
-        System.out.println(htId);
-        if(data!=null&&data.getHtFile1().split(" ").length>7){
+       /* if(data!=null&&data.getHtFile1().split(" ").length>7){
             ResponseResult responseResult = new ResponseResult();
             responseResult.setMessage("图片过多");
             return responseResult;
-        }
+        }*/
         int res  = htinfoService.updateOne(htId,path);
         return new ResponseResult(SUCCESS);
     }
@@ -209,11 +180,11 @@ public class HtInfoController extends BaseController {
         HtInfo data = htinfoService.select(htId);
         System.out.println(data);
         System.out.println(htId);
-        if(data!=null&&data.getHtFile1().split(" ").length>7){
+       /* if(data!=null&&data.getHtFile1().split(" ").length>7){
             ResponseResult responseResult = new ResponseResult();
             responseResult.setMessage("图片过多");
             return responseResult;
-        }
+        }*/
         int res  = htinfoService.updateTwo(htId,path);
         return new ResponseResult(SUCCESS);
     }
@@ -232,11 +203,11 @@ public class HtInfoController extends BaseController {
         HtInfo data = htinfoService.select(htId);
         System.out.println(data);
         System.out.println(htId);
-        if(data!=null&&data.getHtFile1().split(" ").length>7){
+       /* if(data!=null&&data.getHtFile1().split(" ").length>7){
             ResponseResult responseResult = new ResponseResult();
             responseResult.setMessage("图片过多");
             return responseResult;
-        }
+        }*/
         int res  = htinfoService.updateThree(htId,path);
         return new ResponseResult(SUCCESS);
     }
@@ -255,11 +226,11 @@ public class HtInfoController extends BaseController {
         HtInfo data = htinfoService.select(htId);
         System.out.println(data);
         System.out.println(htId);
-        if(data!=null&&data.getHtFile1().split(" ").length>7){
+       /* if(data!=null&&data.getHtFile1().split(" ").length>7){
             ResponseResult responseResult = new ResponseResult();
             responseResult.setMessage("图片过多");
             return responseResult;
-        }
+        }*/
         int res  = htinfoService.updateFour(htId,path);
         return new ResponseResult(SUCCESS);
     }
@@ -278,21 +249,31 @@ public class HtInfoController extends BaseController {
         HtInfo data = htinfoService.select(htId);
         System.out.println(data);
         System.out.println(htId);
-        if(data!=null&&data.getHtFile1().split(" ").length>7){
+       /* if(data!=null&&data.getHtFile1().split(" ").length>7){
             ResponseResult responseResult = new ResponseResult();
             responseResult.setMessage("图片过多");
             return responseResult;
-        }
+        }*/
         int res  = htinfoService.updateFive(htId,path);
         return new ResponseResult(SUCCESS);
     }
 
-    @RequestMapping("/downloadFile")
+   /* @RequestMapping("/downloadFile")
     private ResponseResult<Void> downloadFile(String filePath, HttpServletResponse response,HttpSession session) {
         String parentPath = session.getServletContext().getRealPath(UPLOAD_DIR_NAME);
         System.out.println(parentPath+filePath);
         FileDownLoad.downloadFile1(response,filePath,"111.jpg");
             return new ResponseResult<Void>(SUCCESS);
+    }*/
+    @RequestMapping("/showFile1")
+    public ResponseResult showFile1(Integer htId){
+        String[] imgs = htinfoService.showFile1(htId);
+        return new ResponseResult(SUCCESS,imgs);
+    }
+    @RequestMapping("/showFile2")
+    public ResponseResult showFile2(Integer htId){
+        String[] imgs = htinfoService.showFile2(htId);
+        return new ResponseResult(SUCCESS,imgs);
     }
 }
 

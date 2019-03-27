@@ -1,14 +1,43 @@
 package com.litbo.hospitalzj.hospital.utils;
 
+import com.litbo.hospitalzj.supplier.controller.ex.FileEmptyException;
+import com.litbo.hospitalzj.supplier.controller.ex.FileSizeOutOfLimitException;
+import com.litbo.hospitalzj.supplier.controller.ex.FileTypeNotSupportException;
+import com.litbo.hospitalzj.supplier.controller.ex.FileUploadException;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 public class FileUpload {
+    /**
+     * 上传文件夹的名称
+     */
+    private static final String UPLOAD_DIR_NAME = "upload";
+    /**
+     * 上传文件的最大大小
+     */
+    private static final long FILE_MAX_SIZE = 5 * 1024 * 1024;
+    /**
+     * 允许上传的文件类型
+     */
+    private static final List<String> FILE_CONTENT_TYPES = new ArrayList<>();
+    /**
+     * 初始化允许上传的文件类型的集合
+     */
+    static {
+        FILE_CONTENT_TYPES.add("image/jpeg");
+        FILE_CONTENT_TYPES.add("image/png");
+        FILE_CONTENT_TYPES.add("image/jpg");
+    }
     public static String upload(String filePath, MultipartFile file){
         String newFileName = null;
         String insertPath = null;
@@ -30,8 +59,46 @@ public class FileUpload {
             e.printStackTrace();
         }
         return filePath+insertPath;
-
-
-
+    }
+    public static String uploadOne(MultipartFile file, HttpSession session) {
+        // 检查是否存在上传文件 > file.isEmpty()
+        if (file.isEmpty()) {
+            // 抛出异常：文件不允许为空
+            throw new FileEmptyException(
+                    "上传失败！没有选择上传的文件，或选中的文件为空！");
+        }
+        // TODO 检查文件大小 > file.getSize()
+        if (file.getSize() > FILE_MAX_SIZE) {
+            // 抛出异常：文件大小超出限制
+            throw new FileSizeOutOfLimitException("上传失败！文件过大");
+        }
+        // TODO 检查文件类型 > file.getContentType()
+        if (!FILE_CONTENT_TYPES.contains(
+                file.getContentType())) {
+            // 抛出异常：文件类型限制
+            throw new FileTypeNotSupportException("文件类型不符");
+        }
+        // 确定上传文件夹 > session.getServletContext.getRealPath(UPLOAD_DIR_NAME) > exists() > mkdirs()
+        String parentPath = session.getServletContext().getRealPath(UPLOAD_DIR_NAME);
+        File parent = new File(parentPath);
+        if (!parent.exists()) {
+            parent.mkdirs();
+        }
+        // 确定文件名 > getOriginalFileName()
+        String originalFileName = file.getOriginalFilename();
+        int beginIndex = originalFileName.lastIndexOf(".");
+        String suffix = originalFileName.substring(beginIndex);
+        String fileName = UUID.randomUUID().toString()+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+        // 确定文件
+        File dest = new File(parent, fileName);
+        // 执行保存文件
+        try {
+            file.transferTo(dest);
+            System.err.println("上传完成！");
+        } catch (IllegalStateException | IOException e) {
+            throw new FileUploadException("文件上传异常");
+        }
+        String path = "/" + UPLOAD_DIR_NAME + "/" + fileName;
+        return path;
     }
 }

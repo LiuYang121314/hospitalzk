@@ -33,7 +33,7 @@ public  abstract class Upload {
 		FILE_CONTENT_TYPES.add("image/png");
 		FILE_CONTENT_TYPES.add("image/jpg");
 	}
-	public static void upload(MultipartFile file,HttpSession session) {
+	public static void upload(MultipartFile file) {
 		// 检查是否存在上传文件 > file.isEmpty()
 				if (file.isEmpty()) {
 					// 抛出异常：文件不允许为空

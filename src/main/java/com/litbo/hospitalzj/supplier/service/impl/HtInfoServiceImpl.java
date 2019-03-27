@@ -54,38 +54,75 @@ public class HtInfoServiceImpl implements HtInfoService {
 	public void updateState(Integer htId, String htState) {
 		htInfoMapper.updateState(htId, htState);
 	}*/
-	@Transactional
-	@Override
+	/*@Override
 	public int updateURL(Integer htId, String path) {
 		if(htInfoMapper.findByHtId(htId)==null){
 			throw new InsertException("合同不存在");
 		}
-		return htInfoMapper.updateURL(htId,path+" ");
-	}
+		return htInfoMapper.updateURL(htId,path+"%");
+	}*/
+	@Transactional
 	@Override
 	public int updateOne(Integer htId, String htFile1) {
-		return htInfoMapper.updateOne(htId,htFile1+" ");
+		return htInfoMapper.updateOne(htId, htFile1+"%");
 	}
 	@Override
 	public int updateTwo(Integer htId, String htFile2) {
-		return htInfoMapper.updateTwo(htId, htFile2+" ");
+		return htInfoMapper.updateTwo(htId, htFile2+"%");
 		
 	}
 	@Override
 	public int updateThree(Integer htId, String htFile3) {
-		return htInfoMapper.updateThree(htId, htFile3+" ");
+		return htInfoMapper.updateThree(htId, htFile3+"%");
 		
 	}
 	@Override
 	public int updateFour(Integer htId, String htFile4) {
-		return htInfoMapper.updateFour(htId, htFile4+" ");
+		return htInfoMapper.updateFour(htId, htFile4+"%");
 		
 	}
 	@Override
 	public int updateFive(Integer htId, String htFile5) {
-		return htInfoMapper.updateFive(htId, htFile5+" ");
+		return htInfoMapper.updateFive(htId, htFile5+"%");
 	}
-	
+
+	@Override
+	public String[] showFile1(Integer htId) {
+		String File1 =htInfoMapper.showFile1(htId);
+		if(File1!=null)
+			return File1.split("%");
+		else
+			return null;
+	}
+	@Override
+	public String[] showFile2(Integer htId) {
+		String File1 =htInfoMapper.showFile2(htId);
+		if(File1!=null)
+			return File1.split("%");
+		else
+			return null;
+	}@Override
+	public String[] showFile3(Integer htId) {
+		String File1 =htInfoMapper.showFile3(htId);
+		if(File1!=null)
+			return File1.split("%");
+		else
+			return null;
+	}@Override
+	public String[] showFile4(Integer htId) {
+		String File1 =htInfoMapper.showFile4(htId);
+		if(File1!=null)
+			return File1.split("%");
+		else
+			return null;
+	}@Override
+	public String[] showFile5(Integer htId) {
+		String File1 =htInfoMapper.showFile5(htId);
+		if(File1!=null)
+			return File1.split("%");
+		else
+			return null;
+	}
 	@Override
 	public void updateInfo(HtInfo htinfo) {
 		htInfoMapper.updateInfo(htinfo);
@@ -115,7 +152,6 @@ public class HtInfoServiceImpl implements HtInfoService {
 		}
 		return data;
 	}
-
 
 
 	@Override
@@ -151,5 +187,9 @@ public class HtInfoServiceImpl implements HtInfoService {
 		List<HtInfo> data=htInfoMapper.findAll(EnumProcess.ACCEPT_OVER.getMessage());
 		return data;
 	}
-	
+	@Override
+	public List<HtInfo> selectAllHtByhtState(String htState) {
+		List<HtInfo> data=htInfoMapper.findAll(htState);
+		return data;
+	}
 }

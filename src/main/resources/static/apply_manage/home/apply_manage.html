@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../../static/layui/css/layui.css"/>
     <link rel="stylesheet" type="text/css" href="../../static/css/admin.css"/>
     <!--[if IE 8]>
-    <script type="text/javascript" src="../../../../static/admin/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../../static/admin/js/jquery-1.11.3.min.js"></script>
     <![endif]-->
     <script src="../../static/js/jquery-3.3.1.min.js"></script>
     <script src="../../static/js/basic.js"></script>
@@ -28,12 +28,11 @@
       <fieldset class="layui-elem-field layui-field-title">
           <legend>待到货验收列表</legend>
       </fieldset>
-      <table class="layui-table" id="manageTable" lay-filter="handle"></table>
-
+      <table class="layui-table" id="waitArrive" lay-filter="handle1"></table>
       <fieldset class="layui-elem-field layui-field-title">
           <legend>待完善资料列表</legend>
       </fieldset>
-      <table class="layui-table" id="overTable" lay-filter="handle"></table>
+      <table class="layui-table" id="waitInfo" lay-filter="handle2"></table>
     </div>
   </div>
   <script type="text/html" id="toolbarDemo">
@@ -41,7 +40,7 @@
   </div>
 </script>
 <script type="text/html" id="barDemo1">
-    <a class="layui-btn layui-btn-xs" lay-event="manage">完善到货信息</a>
+    <a class="layui-btn layui-btn-xs" lay-event="manage">到货登记</a>
 </script>
 <script type="text/html" id="barDemo2">
     <a class="layui-btn layui-btn-xs" lay-event="over">查看电子资料</a>
@@ -50,14 +49,14 @@
   // 获取上个页面传递的类型
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
-  
   //Demo
   layui.use(['table','layer','jquery'],function(){
     var table = layui.table
     , layer = layui.layer
     , $ = layui.jquery;
+    // 已发货列表
     var tableIns = table.render({
-      elem:"#manageTable",
+      elem:"#waitArrive",
       cellMinWidth:100,
       toolbar: '#toolbarDemo',
       url:"/accept/selectAllHtWaitRegister",
@@ -90,8 +89,9 @@
           {fixed: 'right', title:'操作', toolbar: '#barDemo1',align:'center'}
         ]]
     });
+    // 待完善资料列表
     table.render({
-        elem:"#overTable",
+        elem:"#waitInfo",
         cellMinWidth:100,
         toolbar: '#toolbarDemo',
         url:"/accept/selectAllHtWaitRegister",
@@ -124,17 +124,21 @@
             {fixed: 'right', title:'操作', toolbar: '#barDemo2',align:'center'}
         ]]
     });
-  
     //监听行工具事件
-    table.on('tool(handle)', function(obj){
+    table.on('tool(handle1)', function(obj){
       var data = obj.data;
       //console.log(obj)
       if(obj.event === 'manage'){
         location.href="/apply_manage/apply_manage/arrival_info.html?htIds="+obj.data.htId;
-      }else if(obj.event === 'over'){
-        location.href="/apply_manage/apply_manage/electron_info.html?htIds="+obj.data.htId;
       }
     });
+      table.on('tool(handle2)', function(obj){
+          var data = obj.data;
+          //console.log(obj)
+          if(obj.event === 'over'){
+              location.href="/apply_manage/apply_manage/electron_info.html?htIds="+obj.data.htId;
+          }
+      });
   })
 </script>
 </body>
