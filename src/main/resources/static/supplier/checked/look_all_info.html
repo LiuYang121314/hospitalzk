@@ -15,10 +15,13 @@
         margin-top: 20px;
         color: red;
       }
-      #sureSend{
+      .btn{
         margin-top: 40px;
         margin-bottom: 30px;
         text-align: center;
+      }
+      th,td{
+          text-align: center;
       }
     </style>
 </head>
@@ -42,8 +45,8 @@
           <legend>验收信息</legend>
       </fieldset>
       <table class="layui-table" id="checkInfo"></table>
-      <div class="col-xs-12">
-          <button id="sureSend" class="layui-btn">确认发货</button>
+      <div class="col-xs-12 btn">
+          <button id="sureSend" class="layui-btn layui-btn-normal">确认发货</button>
       </div>
     </div>
   </div>
@@ -63,7 +66,7 @@
       // 合同信息
       var tableIns = table.render({
         elem:"#htInfo"
-        ,cellMinWidth: 80
+        ,cellMinWidth: 100
         ,url:"/htInfo/selectOne?htId="+ids
         ,method:"GET"
         ,response: {
@@ -108,7 +111,7 @@
       // 设备信息
       table.render({
         elem:"#sbInfo"
-        ,cellMinWidth: 80
+        ,cellMinWidth: 120
         ,url:"/eqInfo/selectEqHt?htIds="+ids
         ,method:"GET"
         ,response: {
@@ -180,7 +183,7 @@
           // page:true,
           cols:[[
               {field:'fname', title:'文件名',align:'center'},
-              {field:'file', title:'文件'}
+              {field:'file', title:'文件',align:'center'}
           ]]
       });
       // 验收信息
@@ -208,7 +211,7 @@
           // page:true,
           cols:[[
               {field:'htYssj', title:'预约验收时间',align:'center'},
-              {field:'htBz', title:'验收要求'}
+              {field:'htBz', title:'验收要求',align:'center'}
           ]]
       });
     //监听行工具事件

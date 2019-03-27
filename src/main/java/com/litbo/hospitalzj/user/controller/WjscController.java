@@ -28,9 +28,20 @@ public class WjscController extends BaseController {
     @Autowired
     private WjscService wjscService;
     @RequestMapping("/insertHtwj")
-    public ResponseResult<Void> insert(Wjsc wjsc, @RequestParam("file") MultipartFile file,HttpSession session) {
+    public ResponseResult<Void> insertHtwj(Wjsc wjsc, @RequestParam("file") MultipartFile file,HttpSession session) {
         String path = FileUpload.uploadOne(file,session);
         System.out.println(path);
+        wjsc.setSourceType(0);
+        wjsc.setPath(path);
+        wjsc.setScTime(new Date());
+        wjscService.insert(wjsc);
+        return new ResponseResult<Void>(SUCCESS);
+    }
+    @RequestMapping("/insertDhdj")
+    public ResponseResult<Void> insertDhdj(Wjsc wjsc, @RequestParam("file") MultipartFile file,HttpSession session) {
+        String path = FileUpload.uploadOne(file,session);
+        System.out.println(path);
+        wjsc.setSourceType(1);
         wjsc.setPath(path);
         wjsc.setScTime(new Date());
         wjscService.insert(wjsc);

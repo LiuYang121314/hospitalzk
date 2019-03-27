@@ -168,25 +168,27 @@
                 });
                 return false;
             });
-            var uploadIns = upload.render({
-                elem:"#upload",
-                url:"/accept/uploadFile?htIds="+ids,
-                multiple: true,
-                before: function(obj){
+            upload.render({
+                elem: '#upload'
+                , url: '/wjsc/insertDhdj?=sourceId='+ids+'&type='+1
+                , multiple: true
+                , accept: "file"
+                , before: function (obj){
                     //预读本地文件示例，不支持ie8
-                    obj.preview(function(index, file, result){
-                        $('#img').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+                    obj.preview(function (index, file, result){
+                        $('#img').append('<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
                     });
-                },
-                done: function(res){
+                }
+                ,done:function(res){
                     if(res.state === 200){
                         layer.msg("上传成功");
                     }else{
                         layer.msg(res.message);
                     }
-                },
-                error:function(){
+                }
+                ,error:function(data){
                     layer.msg("上传失败,请稍后再试");
+                    console.log(data);
                 }
             });
         });
