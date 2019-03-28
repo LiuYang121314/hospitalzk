@@ -63,7 +63,7 @@
             <div class="layui-form-item col-md-5">
                 <label class="layui-form-label">合同总金额</label>
                 <div class="layui-input-block">
-                    <input id="s" type="text" name="htDhtime" placeholder="合同总金额" class="layui-input" autocomplete="off" lay-verify="required">
+                    <input id="s" type="text" name="htZje" placeholder="合同总金额" class="layui-input" autocomplete="off">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
@@ -117,17 +117,17 @@
                     </select>
                 </div>
             </div>
-            <!--<div class="layui-form-item col-md-5">-->
-                <!--<label class="layui-form-label">设备用途</label>-->
-                <!--<div class="layui-input-block">-->
-                    <!--<select id="htSbyt" name="htSbyt" lay-verify="required">-->
-                        <!--<option value=""></option>-->
-                        <!--<option value="0">1</option>-->
-                        <!--<option value="1">2</option>-->
-                        <!--<option value="2">3</option>-->
-                    <!--</select>-->
-                <!--</div>-->
-            <!--</div>-->
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设备用途</label>
+                <div class="layui-input-block">
+                    <select id="htSbyt" name="htSbyt" lay-verify="required">
+                        <option value=""></option>
+                        <option value="0">1</option>
+                        <option value="1">2</option>
+                        <option value="2">3</option>
+                    </select>
+                </div>
+            </div>
             <div class="layui-form-item col-md-5">
                 <label class="layui-form-label">经费来源</label>
                 <div class="layui-input-block">
@@ -226,32 +226,32 @@
             });
         }
         sglbList();
-        // // 设备用途字典
-        // function sbytList(){
-        //     // 清空当前列表
-        //     $("#htSbyt").empty();
-        //     // 添加默认选项
-        //     var op = '<option value=""></option>';
-        //     $("#htSbyt").append(op);
-        //     // 发出ajax请求，并处理结果
-        //     $.ajax({
-        //         url:"/eqyt/allEqYt",
-        //         method: "GET",
-        //         dataType: "JSON",
-        //         async:false,
-        //         "success": function(json) {
-        //             // 遍历加载新列表项
-        //             var list = json.data;
-        //             console.log(list);
-        //             for (var i = 0; i < list.length; i++) {
-        //                 console.log(list[i].eqytId + " - " + list[i].eqytName);
-        //                 op = '<option value="' + list[i].eqytName + '">' + list[i].eqytName + '</option>';
-        //                 $("#htSbyt").append(op);
-        //             }
-        //         }
-        //     });
-        // }
-        // sbytList();
+        // 设备用途字典
+        function sbytList(){
+            // 清空当前列表
+            $("#htSbyt").empty();
+            // 添加默认选项
+            var op = '<option value=""></option>';
+            $("#htSbyt").append(op);
+            // 发出ajax请求，并处理结果
+            $.ajax({
+                url:"/eqyt/allEqYt",
+                method: "GET",
+                dataType: "JSON",
+                async:false,
+                "success": function(json) {
+                    // 遍历加载新列表项
+                    var list = json.data;
+                    console.log(list);
+                    for (var i = 0; i < list.length; i++) {
+                        console.log(list[i].eqytId + " - " + list[i].eqytName);
+                        op = '<option value="' + list[i].eqytName + '">' + list[i].eqytName + '</option>';
+                        $("#htSbyt").append(op);
+                    }
+                }
+            });
+        }
+        sbytList();
         // 经费来源字典
         function jflyList(){
             // 清空当前列表
@@ -289,12 +289,12 @@
                     console.log("isGml");
                 }
             },
-            error:function(data){
+            error:function (data) {
                 alert("请稍后再试");
             }
         })
     });
-    layui.use(['element','laydate','layer','form','jquery'],function(){
+    layui.use(['element','laydate','layer','form','jquery'], function() {
         var element = layui.element
             , laydate = layui.laydate
             , layer = layui.layer

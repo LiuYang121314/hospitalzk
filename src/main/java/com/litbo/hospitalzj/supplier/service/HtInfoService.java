@@ -27,8 +27,8 @@ public interface HtInfoService {
 	
 	HtInfo selectHtInfo(String htYzm);
 
-	//上传合同文件
-	/*int updateURL(Integer htId, String path);*/
+	/*//上传合同文件
+	*//*int updateURL(Integer htId, String path);*//*
 
 	int updateOne(@Param("htId") Integer htId, @Param("htFile1") String htFile1);
 	int updateTwo(@Param("htId") Integer htId, @Param("htFile2") String htFile2);
@@ -40,7 +40,7 @@ public interface HtInfoService {
 	String[] showFile2(Integer htId);
 	String[] showFile3(Integer htId);
 	String[] showFile4(Integer htId);
-	String[] showFile5(Integer htId);
+	String[] showFile5(Integer htId);*/
 	int agreeHtInfoById(Integer htId, String yy, String date);
 
 	int refuseHtInfoById(Integer htId, String yy, String date);

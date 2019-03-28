@@ -61,7 +61,7 @@ public class HtInfoServiceImpl implements HtInfoService {
 		}
 		return htInfoMapper.updateURL(htId,path+"%");
 	}*/
-	@Transactional
+	/*@Transactional
 	@Override
 	public int updateOne(Integer htId, String htFile1) {
 		return htInfoMapper.updateOne(htId, htFile1+"%");
@@ -122,7 +122,7 @@ public class HtInfoServiceImpl implements HtInfoService {
 			return File1.split("%");
 		else
 			return null;
-	}
+	}*/
 	@Override
 	public void updateInfo(HtInfo htinfo) {
 		htInfoMapper.updateInfo(htinfo);

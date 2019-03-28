@@ -26,7 +26,7 @@ public class HtInfo {
 	private String htSglb;
 	private String htSbyt;
 	private String htJfly;
-	private String htFile1;
+	private String htZje;
 	private String htFile2;
 	private String htFile3;
 	private String htFile4;
@@ -187,12 +187,15 @@ public class HtInfo {
 	public void setHtJfly(String htJfly) {
 		this.htJfly = htJfly;
 	}
-	public String getHtFile1() {
-		return htFile1;
+
+	public String getHtZje() {
+		return htZje;
 	}
-	public void setHtFile1(String htFile1) {
-		this.htFile1 = htFile1;
+
+	public void setHtZje(String htZje) {
+		this.htZje = htZje;
 	}
+
 	public String getHtFile2() {
 		return htFile2;
 	}
@@ -211,17 +214,38 @@ public class HtInfo {
 	public void setHtFile4(String htFile4) {
 		this.htFile4 = htFile4;
 	}
+
 	@Override
 	public String toString() {
-		return "HtInfo [htId=" + htId + ", htGhsn=" + htGhsn + ", htGhsdh=" + htGhsdh + ", htGhslxr=" + htGhslxr
-				+ ", htHthao=" + htHthao + ", htGzspd=" + htGzspd + ", htZhbhao=" + htZhbhao + ", htBz=" + htBz
-				+ ", htQytime=" + htQytime + ", htDhtime=" + htDhtime + ", htBxtime=" + htBxtime + ", htSyks=" + htSyks
-				+ ", htAzdd=" + htAzdd + ", htLy=" + htLy + ", htCgfs=" + htCgfs + ", htSglb=" + htSglb + ", htSbyt="
-				+ htSbyt + ", htJfly=" + htJfly + ", htFile1=" + htFile1
-				+ ", htFile2=" + htFile2 + ", htFile3=" + htFile3 + ", htFile4=" + htFile4 + ", htState=" + htState
-				+ ", htYzm=" + htYzm + ", htYssj=" + htYssj + ", htYsbz=" + htYsbz + ", sbcsId=" + sbcsId + "]";
+		return "HtInfo{" +
+				"htId=" + htId +
+				", htGhsn='" + htGhsn + '\'' +
+				", htGhsdh='" + htGhsdh + '\'' +
+				", htGhslxr='" + htGhslxr + '\'' +
+				", htHthao='" + htHthao + '\'' +
+				", htGzspd='" + htGzspd + '\'' +
+				", htZhbhao='" + htZhbhao + '\'' +
+				", htBz='" + htBz + '\'' +
+				", htQytime='" + htQytime + '\'' +
+				", htDhtime='" + htDhtime + '\'' +
+				", htBxtime='" + htBxtime + '\'' +
+				", htSyks='" + htSyks + '\'' +
+				", htAzdd='" + htAzdd + '\'' +
+				", htLy='" + htLy + '\'' +
+				", htCgfs='" + htCgfs + '\'' +
+				", htSglb='" + htSglb + '\'' +
+				", htSbyt='" + htSbyt + '\'' +
+				", htJfly='" + htJfly + '\'' +
+				", htZje='" + htZje + '\'' +
+				", htFile2='" + htFile2 + '\'' +
+				", htFile3='" + htFile3 + '\'' +
+				", htFile4='" + htFile4 + '\'' +
+				", htFile5='" + htFile5 + '\'' +
+				", htState='" + htState + '\'' +
+				", htYzm='" + htYzm + '\'' +
+				", htYssj='" + htYssj + '\'' +
+				", htYsbz='" + htYsbz + '\'' +
+				", sbcsId=" + sbcsId +
+				'}';
 	}
-	
-	
-	
 }

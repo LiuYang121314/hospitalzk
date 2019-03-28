@@ -12,8 +12,8 @@ public class SgdjHw {
 	private Integer htIds;
 	private String djhwWbz;//
 	private String djhwYsbs;
-	private List<String> djhwSbwg;
-	private List<String>  djhwSxwj;
+	private String djhwSbwg;
+	private String  djhwSxwj;
 	private String djhwBz1;
 	private String djhwBz2;
 	private String djhwBz3;
@@ -65,19 +65,19 @@ public class SgdjHw {
 		this.djhwYsbs = djhwYsbs;
 	}
 
-	public List<String> getDjhwSbwg() {
+	public String getDjhwSbwg() {
 		return djhwSbwg;
 	}
 
-	public void setDjhwSbwg(List<String> djhwSbwg) {
+	public void setDjhwSbwg(String djhwSbwg) {
 		this.djhwSbwg = djhwSbwg;
 	}
 
-	public List<String> getDjhwSxwj() {
+	public String getDjhwSxwj() {
 		return djhwSxwj;
 	}
 
-	public void setDjhwSxwj(List<String> djhwSxwj) {
+	public void setDjhwSxwj(String djhwSxwj) {
 		this.djhwSxwj = djhwSxwj;
 	}
 

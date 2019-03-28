@@ -143,7 +143,7 @@ public class HtInfoController extends BaseController {
         return new ResponseResult<List<HtInfo>>(SUCCESS, htInfos);
     }
 
-    //上传文件图片
+   /* //上传文件图片
     @PostMapping("/uploadOne")
     public ResponseResult<String> uploadOne(
             @RequestParam("htId") Integer htId,
@@ -157,11 +157,11 @@ public class HtInfoController extends BaseController {
         String path = FileUpload.uploadOne(file,session);
         System.out.println(path);
         HtInfo data = htinfoService.select(htId);
-       /* if(data!=null&&data.getHtFile1().split(" ").length>7){
+       *//* if(data!=null&&data.getHtFile1().split(" ").length>7){
             ResponseResult responseResult = new ResponseResult();
             responseResult.setMessage("图片过多");
             return responseResult;
-        }*/
+        }*//*
         int res  = htinfoService.updateOne(htId,path);
         return new ResponseResult(SUCCESS);
     }
@@ -180,11 +180,11 @@ public class HtInfoController extends BaseController {
         HtInfo data = htinfoService.select(htId);
         System.out.println(data);
         System.out.println(htId);
-       /* if(data!=null&&data.getHtFile1().split(" ").length>7){
+       *//* if(data!=null&&data.getHtFile1().split(" ").length>7){
             ResponseResult responseResult = new ResponseResult();
             responseResult.setMessage("图片过多");
             return responseResult;
-        }*/
+        }*//*
         int res  = htinfoService.updateTwo(htId,path);
         return new ResponseResult(SUCCESS);
     }
@@ -203,11 +203,11 @@ public class HtInfoController extends BaseController {
         HtInfo data = htinfoService.select(htId);
         System.out.println(data);
         System.out.println(htId);
-       /* if(data!=null&&data.getHtFile1().split(" ").length>7){
+       *//* if(data!=null&&data.getHtFile1().split(" ").length>7){
             ResponseResult responseResult = new ResponseResult();
             responseResult.setMessage("图片过多");
             return responseResult;
-        }*/
+        }*//*
         int res  = htinfoService.updateThree(htId,path);
         return new ResponseResult(SUCCESS);
     }
@@ -226,11 +226,11 @@ public class HtInfoController extends BaseController {
         HtInfo data = htinfoService.select(htId);
         System.out.println(data);
         System.out.println(htId);
-       /* if(data!=null&&data.getHtFile1().split(" ").length>7){
+       *//* if(data!=null&&data.getHtFile1().split(" ").length>7){
             ResponseResult responseResult = new ResponseResult();
             responseResult.setMessage("图片过多");
             return responseResult;
-        }*/
+        }*//*
         int res  = htinfoService.updateFour(htId,path);
         return new ResponseResult(SUCCESS);
     }
@@ -249,22 +249,22 @@ public class HtInfoController extends BaseController {
         HtInfo data = htinfoService.select(htId);
         System.out.println(data);
         System.out.println(htId);
-       /* if(data!=null&&data.getHtFile1().split(" ").length>7){
+       *//* if(data!=null&&data.getHtFile1().split(" ").length>7){
             ResponseResult responseResult = new ResponseResult();
             responseResult.setMessage("图片过多");
             return responseResult;
-        }*/
+        }*//*
         int res  = htinfoService.updateFive(htId,path);
         return new ResponseResult(SUCCESS);
     }
 
-   /* @RequestMapping("/downloadFile")
+   *//* @RequestMapping("/downloadFile")
     private ResponseResult<Void> downloadFile(String filePath, HttpServletResponse response,HttpSession session) {
         String parentPath = session.getServletContext().getRealPath(UPLOAD_DIR_NAME);
         System.out.println(parentPath+filePath);
         FileDownLoad.downloadFile1(response,filePath,"111.jpg");
             return new ResponseResult<Void>(SUCCESS);
-    }*/
+    }*//*
     @RequestMapping("/showFile1")
     public ResponseResult showFile1(Integer htId){
         String[] imgs = htinfoService.showFile1(htId);
@@ -274,6 +274,6 @@ public class HtInfoController extends BaseController {
     public ResponseResult showFile2(Integer htId){
         String[] imgs = htinfoService.showFile2(htId);
         return new ResponseResult(SUCCESS,imgs);
-    }
+    }*/
 }
 
