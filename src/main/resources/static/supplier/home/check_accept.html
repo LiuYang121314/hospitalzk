@@ -76,33 +76,33 @@
                         <div class="layui-form-item col-md-5">
                             <label class="layui-form-label">合同签约期</label>
                             <div class="layui-input-block">
-                                <input id="qyDate" type="text" placeholder="合同签约期" name="htQytime" class="layui-input" autocomplete="off">
+                                <input id="date1" type="text"  name="htQytime" class="layui-input" autocomplete="off">
                             </div>
                         </div>
                         <div class="layui-form-item col-md-5">
                             <label class="layui-form-label">合同到货期</label>
                             <div class="layui-input-block">
-                                <input id="dhDate" type="text" name="htDhtime" placeholder="合同到货期" class="layui-input" autocomplete="off">
+                                <input type="text" name="htDhtime" class="layui-input" autocomplete="off">
                             </div>
                         </div>
-                        <!--<div class="layui-form-item col-md-5">-->
-                            <!--<label class="layui-form-label">保修期(月)</label>-->
-                            <!--<div class="layui-input-block">-->
-                                <!--<input type="text" name="htBxtime" class="layui-input" autocomplete="off" lay-verify="required">-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="layui-form-item col-md-5">-->
-                            <!--<label class="layui-form-label">使用科室</label>-->
-                            <!--<div class="layui-input-block">-->
-                                <!--<input type="text" name="htSyks" class="layui-input" autocomplete="off" lay-verify="required">-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="layui-form-item col-md-5">-->
-                            <!--<label class="layui-form-label">安装地点</label>-->
-                            <!--<div class="layui-input-block">-->
-                                <!--<input type="text" name="htAzdd" class="layui-input" autocomplete="off" lay-verify="required">-->
-                            <!--</div>-->
-                        <!--</div>-->
+                        <div class="layui-form-item col-md-5">
+                            <label class="layui-form-label">保修期(月)</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="htBxtime" class="layui-input" autocomplete="off" lay-verify="required">
+                            </div>
+                        </div>
+                        <div class="layui-form-item col-md-5">
+                            <label class="layui-form-label">使用科室</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="htSyks" class="layui-input" autocomplete="off" lay-verify="required">
+                            </div>
+                        </div>
+                        <div class="layui-form-item col-md-5">
+                            <label class="layui-form-label">安装地点</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="htAzdd" class="layui-input" autocomplete="off" lay-verify="required">
+                            </div>
+                        </div>
                         <div class="layui-form-item col-md-5">
                             <label class="layui-form-label">来源</label>
                             <div class="layui-input-block">
@@ -491,10 +491,10 @@
             ,   layer = layui.layer
             ,   $ = layui.jquery;
             laydate.render({
-                elem: '#qyDate'
+                elem: '#date1'
             });
             laydate.render({
-                elem: '#dhDate'
+                elem: '#date2'
             });
             var form = layui.form;
             //监听提交
