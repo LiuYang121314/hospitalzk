@@ -24,7 +24,7 @@
 </head>
 <body>
     <div class="layui-row">
-        <p style="height: 34px;width: 100%;line-height: 34px;background-color: lightyellow; text-align: center;"><span class="sign">***</span>请注意红色标识,认真填写<span class="sign">***</span></p>
+        <p style="height: 34px;width: 100%;line-height: 34px;background-color: lightyellow; text-align: center;">红色标识<span class="sign">* </span>为必填项,请认真填写</p>
         <div class="col-xs-12">
             <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
               <ul class="layui-tab-title">
@@ -38,71 +38,71 @@
                             <legend>合同编号申请信息录入</legend>
                         </fieldset>
                         <div class="layui-form-item col-md-5">
-                            <label class="layui-form-label">供应商</label>
+                            <label class="layui-form-label"><span style="color: red;">*</span>供应商</label>
                             <div class="layui-input-block">
-                                <input id="htHtGhsn" type="text" disabled="disabled" name="htGhsn" class="layui-input" autocomplete="off" lay-verify="required">
+                                <input id="htHtGhsn" type="text" placeholder="供应商" disabled="disabled" name="htGhsn" class="layui-input" autocomplete="off" lay-verify="required">
                             </div>
                         </div>
                         <div class="layui-form-item col-md-5">
-                            <label class="layui-form-label">供方联系人</label>
+                            <label class="layui-form-label"><span style="color: red;">*</span>供方联系人</label>
                             <div class="layui-input-block">
-                                <input type="text" name="htGhslxr" class="layui-input" autocomplete="off" lay-verify="required">
+                                <input type="text" name="htGhslxr" class="layui-input" placeholder="供方联系人" autocomplete="off" lay-verify="required">
                             </div>
                         </div>
                         <div class="layui-form-item col-md-5">
-                            <label class="layui-form-label">联系电话</label>
+                            <label class="layui-form-label"><span style="color: red;">*</span>供方联系电话</label>
                             <div class="layui-input-block">
-                                <input type="text" name="htGhsdh" class="layui-input" autocomplete="off" lay-verify="required">
+                                <input type="text" name="htGhsdh" class="layui-input" placeholder="供方联系电话" autocomplete="off" lay-verify="required">
                             </div>
                         </div>
                         <div class="layui-form-item col-md-5">
                             <label class="layui-form-label"><span style="color: red;">*</span>合同号</label>
                             <div class="layui-input-block">
-                                <input style="color: red" type="text" name="htHthao" class="layui-input" autocomplete="off">
+                                <input type="text" name="htHthao" placeholder="合同号" class="layui-input" autocomplete="off">
                             </div>
                         </div>
                         <div class="layui-form-item col-md-5">
-                            <label class="layui-form-label">招标号</label>
+                            <label class="layui-form-label"><span style="color: red;">*</span>招标编号</label>
                             <div class="layui-input-block">
-                                <input type="text" name="htZhbhao" class="layui-input" autocomplete="off" lay-verify="required">
+                                <input type="text" name="htZhbhao" class="layui-input" placeholder="招标编号" autocomplete="off" lay-verify="required">
+                            </div>
+                        </div>
+                        <!--<div class="layui-form-item col-md-5">-->
+                            <!--<label class="layui-form-label">备注</label>-->
+                            <!--<div class="layui-input-block">-->
+                                <!--<input type="text" name="htBz" class="layui-input" autocomplete="off" lay-verify="required">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <div class="layui-form-item col-md-5">
+                            <label class="layui-form-label">合同签约期</label>
+                            <div class="layui-input-block">
+                                <input id="qyDate" type="text" placeholder="合同签约期" name="htQytime" class="layui-input" autocomplete="off">
                             </div>
                         </div>
                         <div class="layui-form-item col-md-5">
-                            <label class="layui-form-label">备注</label>
+                            <label class="layui-form-label">合同到货期</label>
                             <div class="layui-input-block">
-                                <input type="text" name="htBz" class="layui-input" autocomplete="off" lay-verify="required">
+                                <input id="dhDate" type="text" name="htDhtime" placeholder="合同到货期" class="layui-input" autocomplete="off">
                             </div>
                         </div>
-                        <div class="layui-form-item col-md-5">
-                            <label class="layui-form-label">签约日期</label>
-                            <div class="layui-input-block">
-                                <input id="date1" type="text" name="htQytime" class="layui-input" autocomplete="off" lay-verify="required">
-                            </div>
-                        </div>
-                        <div class="layui-form-item col-md-5">
-                            <label class="layui-form-label">到货时间</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="htDhtime" class="layui-input" autocomplete="off" placeholder="/ 天" lay-verify="required">
-                            </div>
-                        </div>
-                        <div class="layui-form-item col-md-5">
-                            <label class="layui-form-label">保修期</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="htBxtime" class="layui-input" autocomplete="off" placeholder="/ 天" lay-verify="required">
-                            </div>
-                        </div>
-                        <div class="layui-form-item col-md-5">
-                            <label class="layui-form-label">使用科室</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="htSyks" class="layui-input" autocomplete="off" lay-verify="required">
-                            </div>
-                        </div>
-                        <div class="layui-form-item col-md-5">
-                            <label class="layui-form-label">安装地点</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="htAzdd" class="layui-input" autocomplete="off" lay-verify="required">
-                            </div>
-                        </div>
+                        <!--<div class="layui-form-item col-md-5">-->
+                            <!--<label class="layui-form-label">保修期(月)</label>-->
+                            <!--<div class="layui-input-block">-->
+                                <!--<input type="text" name="htBxtime" class="layui-input" autocomplete="off" lay-verify="required">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="layui-form-item col-md-5">-->
+                            <!--<label class="layui-form-label">使用科室</label>-->
+                            <!--<div class="layui-input-block">-->
+                                <!--<input type="text" name="htSyks" class="layui-input" autocomplete="off" lay-verify="required">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="layui-form-item col-md-5">-->
+                            <!--<label class="layui-form-label">安装地点</label>-->
+                            <!--<div class="layui-input-block">-->
+                                <!--<input type="text" name="htAzdd" class="layui-input" autocomplete="off" lay-verify="required">-->
+                            <!--</div>-->
+                        <!--</div>-->
                         <div class="layui-form-item col-md-5">
                             <label class="layui-form-label">来源</label>
                             <div class="layui-input-block">
@@ -313,7 +313,7 @@
                     method: "GET",
                     dataType: "JSON",
                     async:false,
-                    "success": function(json) {
+                    "success":function(json){
                         // 遍历加载新列表项
                         var list = json.data;
                         for (var i = 0; i < list.length; i++) {
@@ -491,10 +491,10 @@
             ,   layer = layui.layer
             ,   $ = layui.jquery;
             laydate.render({
-                elem: '#date1' //指定元素
+                elem: '#qyDate'
             });
             laydate.render({
-                elem: '#date2' //指定元素
+                elem: '#dhDate'
             });
             var form = layui.form;
             //监听提交
@@ -519,7 +519,7 @@
                         layer.msg("提交失败,请稍后再试");
                         console.log(data);
                     }
-                })
+                });
                 return false;
             });
             form.on("submit(hgsubmit)",function(data){

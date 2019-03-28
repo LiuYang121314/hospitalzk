@@ -50,11 +50,19 @@
             <li class="layui-nav-item" shiro:haspermission="a">
                 <a href="javascript:void(0);" data-url="./home/my_info.html" data-id="11" data-text="详细信息"><i class="fas fa-calendar-check"></i>基本信息</a>
             </li>
-            <li class="layui-nav-item" shiro:haspermission="a">
-                <a href="javascript:void(0);" data-url="./home/check_accept.html" data-id="12" data-text="验收申请"><i class="fas fa-clipboard"></i>验收申请</a>
+            <li class="layui-nav-item">
+                <a href="javascript:;"><i class="layui-icon layui-icon-tabs"></i>验收申请</a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="javascript:void(0);" data-url="./home/ht_accept.html" data-id="12" data-text="合同编号申请"><i class="layui-icon layui-icon-circle-dot"></i>合同编号申请</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:void(0);" data-url="./home/sg_accept.html" data-id="13" data-text="购置审批单号申请"><i class="layui-icon layui-icon-circle-dot"></i>购置审批单号申请</a>
+                    </dd>
+                </dl>
             </li>
             <li class="layui-nav-item" shiro:haspermission="a">
-                <a href="javascript:void(0);" data-url="./home/schedule.html" data-id="13" data-text="验收进度查询"><i class="fas fa-star"></i>验收进度查询</a>
+                <a href="javascript:void(0);" data-url="./home/schedule.html" data-id="14" data-text="验收进度查询"><i class="fas fa-star"></i>验收进度查询</a>
             </li>
         </ul>
     </div>
