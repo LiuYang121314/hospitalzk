@@ -56,7 +56,7 @@
                     <td id="htHthao"></td>
                 </tr>
                 <tr>
-                    <td>招标号</td>
+                    <td>招标编号</td>
                     <td id="htZhbhao"></td>
                 </tr>
                 <tr>
@@ -64,8 +64,8 @@
                     <td id="htGzspd"></td>
                 </tr>
                 <tr>
-                    <td>备注</td>
-                    <td id="htBz"></td>
+                    <td>合同总金额</td>
+                    <td id="htZje"></td>
                 </tr>
                 <tr>
                     <td>签约日期</td>
@@ -76,16 +76,8 @@
                     <td id="htDhtime"></td>
                 </tr>
                 <tr>
-                    <td>保修期</td>
-                    <td id="htBxtime"></td>
-                </tr>
-                <tr>
-                    <td>使用科室</td>
-                    <td id="htSyks"></td>
-                </tr>
-                <tr>
-                    <td>安装地点</td>
-                    <td id="htAzdd"></td>
+                    <td>备注</td>
+                    <td id="htBz"></td>
                 </tr>
                 <tr>
                     <td>来源</td>
@@ -98,10 +90,6 @@
                 <tr>
                     <td>申购类别</td>
                     <td id="htSglb"></td>
-                </tr>
-                <tr>
-                    <td>设备用途</td>
-                    <td id="htSbyt"></td>
                 </tr>
                 <tr>
                     <td>经费来源</td>
@@ -142,20 +130,22 @@
                  $("#htGhslxr").append(res.data.htGhslxr);
                  $("#htGhsdh").append(res.data.htGhsdh);
                  $("#htHthao").append(res.data.htHthao);
-                 $("#htGhsn").append(res.data.htGhsn);
-                 $("#htGhsn").append(res.data.htGhsn);
-                 $("#htGhsn").append(res.data.htGhsn);
-                 $("#htGhsn").append(res.data.htGhsn);
-                 $("#htGhsn").append(res.data.htGhsn);
-                 $("#htGhsn").append(res.data.htGhsn);
-                 $("#htGhsn").append(res.data.htGhsn);
-                 $("#htGhsn").append(res.data.htGhsn);
-                 $("#htGhsn").append(res.data.htGhsn);
-                 $("#htGhsn").append(res.data.htGhsn);
-                 $("#htGhsn").append(res.data.htGhsn);
-                 $("#htGhsn").append(res.data.htGhsn);
-                 $("#htGhsn").append(res.data.htGhsn);
+                 $("#htZhbhao").append(res.data.htZhbhao);
+                 $("#htGzspd").append(res.data.htGzspd);
+                 $("#htZje").append(res.data.htZje);
+                 $("#htQytime").append(res.data.htQytime);
+                 $("#htDhtime").append(res.data.htDhtime);
+                 $("#htBz").append(res.data.htBz);
+                 $("#htLy").append(res.data.htLy);
+                 $("#htCgfs").append(res.data.htCgfs);
+                 $("#htSglb").append(res.data.htSglb);
+                 $("#htJfly").append(res.data.htJfly);
+             }else{
+                 console.log("isGml");
              }
+         },
+         error:function(data){
+             alert("无数据");
          }
      })
   });
