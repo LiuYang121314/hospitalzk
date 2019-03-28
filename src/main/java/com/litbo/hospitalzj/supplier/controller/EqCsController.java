@@ -154,7 +154,6 @@ public class EqCsController extends BaseController{
 		return rr;
 	}
 
-
 	@GetMapping("/delete")
 	public ResponseResult<Void> delete(
 			@RequestParam("sbcsId")Integer sbcsId,

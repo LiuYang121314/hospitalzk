@@ -76,20 +76,13 @@
                         <div class="layui-form-item col-md-12">
                             <label class="layui-form-label">设备外观</label>
                             <div class="layui-input-block">
-                                <input type="checkbox" name="djhwSbwg[a]" value="全新完好" title="全新完好" checked>
-                                <input type="checkbox" name="djhwSbwg[b]" value="表面污渍" title="表面污渍">
-                                <input type="checkbox" name="djhwSbwg[d]" value="拆卸痕迹" title="拆卸痕迹">
-                                <input type="checkbox" name="djhwSbwg[e]" value="无铭牌标识" title="无铭牌标识">
-                                <input type="checkbox" name="djhwSbwg[f]" value="铭牌信息不全" title="铭牌信息不全">
-                                <input type="checkbox" name="djhwSbwg[g]" value="库存机" title="库存机">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">复选框</label>
-                            <div class="layui-input-block">
-                                <input type="checkbox" name="like[write]" title="写作">
-                                <input type="checkbox" name="like[read]" title="阅读">
-                                <input type="checkbox" name="like[daze]" title="发呆">
+                                <input type="checkbox" name="djhwSbwg" title="全新完好" checked>
+                                <input type="checkbox" name="djhwSbwg" title="表面污渍">
+                                <input type="checkbox" name="djhwSbwg" title="表面污渍">
+                                <input type="checkbox" name="djhwSbwg" title="拆卸痕迹">
+                                <input type="checkbox" name="djhwSbwg" title="无铭牌标识">
+                                <input type="checkbox" name="djhwSbwg" title="铭牌信息不全">
+                                <input type="checkbox" name="djhwSbwg" title="库存机">
                             </div>
                         </div>
                         <div class="layui-form-item col-md-12">
@@ -153,26 +146,26 @@
             //监听提交
             form.on('submit(submit)', function(data){
                 console.log(data.field);
-                // $.ajax({
-                //     url:"/sgdjhw/updateInfo?htIds="+ids,
-                //     method:"POST",
-                //     data:data.field,
-                //     dataType:"JSON",
-                //     success:function(res){
-                //         if(res.state === 200){
-                //             layer.msg("提交成功");
-                //             setTimeout(function(){
-                //                 location.href="/apply_manage/home/apply_manage.html";
-                //             },1000);
-                //         }else{
-                //             layer.msg("提交失败")
-                //         }
-                //     },
-                //     error:function(data){
-                //         layer.msg("提交失败，请稍后再试");
-                //         console.log(data);
-                //     }
-                // });
+                $.ajax({
+                    url:"/sgdjhw/updateInfo?htIds="+ids,
+                    method:"POST",
+                    data:data.field,
+                    dataType:"JSON",
+                    success:function(res){
+                        if(res.state === 200){
+                            layer.msg("提交成功");
+                            setTimeout(function(){
+                                location.href="/apply_manage/home/apply_manage.html";
+                            },1000);
+                        }else{
+                            layer.msg("提交失败")
+                        }
+                    },
+                    error:function(data){
+                        layer.msg("提交失败，请稍后再试");
+                        console.log(data);
+                    }
+                });
                 return false;
             });
             upload.render({
