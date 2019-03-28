@@ -68,13 +68,13 @@ public interface HtInfoMapper {
 	List<HtInfo> findBySbcsId(Integer sbcsId);
 	//通过合同id查询合同信息
 	@Select("select ht_id htId,ht_ghsn htGhsn,ht_ghslxr htGhslxr,ht_ghsdh htGhsdh,ht_ghsdh htGhsdh,IFNULL(ht_hthao,'无') htHthao,IFNULL(ht_gzspd,'无') htGzspd,"
-			+ "ht_zhbhao htZhbhao,ht_bz htBz,ht_qytime htQytime,ht_dhtime htDhtime,ht_bxtime htBxtime,"
+			+ "IFNULL(ht_zhbhao,'无') htZhbhao,ht_bz htBz,ht_qytime htQytime,ht_dhtime htDhtime,ht_bxtime htBxtime,"
 			+ "ht_syks htSyks,ht_azdd htAzdd,ht_ly htLy,ht_cgfs htCgfs,ht_sglb htSglb,ht_sbyt htSbyt,"
 			+ "ht_jfly htJfly,ht_zje htZje,ht_state htState,ht_yzm htYzm,sbcs_id sbcdId,ht_yssj htYssj,"
 			+ "ht_ysbz htYsbz from ht_info where ht_id=#{htId}")
 	HtInfo findByHtId(Integer htId);
 	//通过验证码查询合同
-	@Select("select ht_id htId,ht_ghsn htGhsn,ht_ghslxr htGhslxr,ht_ghsdh htGhsdh,IFNULL(ht_hthao,'无')  htHthao,IFNULL(ht_gzspd,'无') htGzspd,ht_zhbhao htZhbhao,"
+	@Select("select ht_id htId,ht_ghsn htGhsn,ht_ghslxr htGhslxr,ht_ghsdh htGhsdh,IFNULL(ht_hthao,'无')  htHthao,IFNULL(ht_gzspd,'无') htGzspd,IFNULL(ht_zhbhao,'无') htZhbhao,"
 			+ "ht_bz htBz,ht_qytime htQytime,ht_dhtime htDhtime,ht_bxtime htBxtime,ht_syks htSyks,ht_azdd htAzdd,ht_ly htLy,ht_cgfs htCgfs,ht_sglb htSglb,ht_sbyt htSbyt,"
 			+ "ht_jfly htJfly,ht_zje htZje,ht_state htState,ht_yzm htYzm,sbcs_id sbcdId,ht_yssj htYssj,ht_ysbz htYsbz from ht_info where ht_yzm=#{htYzm}")
 	HtInfo findByHtYzm(@Param("htYzm") String htYzm);
@@ -83,7 +83,7 @@ public interface HtInfoMapper {
 	List<EqHtVo> EqHtVo(String htYzm);
 	//通过状态查询合同信息
 	@Select("select ht_id ,ht_ghsn ,ht_ghslxr ,ht_ghsdh ,ht_ghsdh ,IFNULL(ht_hthao,'无') ht_hthao,IFNULL(ht_gzspd,'无') ht_gzspd,"
-			+ "ht_zhbhao ,ht_bz ,ht_qytime ,ht_dhtime ,ht_bxtime ,"
+			+ "IFNULL(ht_zhbhao,'无') htZhbhao,ht_bz ,ht_qytime ,ht_dhtime ,ht_bxtime ,"
 			+ "ht_syks ,ht_azdd ,ht_ly ,ht_cgfs ,ht_sglb ,ht_sbyt ,"
 			+ "ht_zje htZje,ht_state ,ht_yzm ,sbcs_id ,ht_yssj ,"
 			+ "ht_ysbz  from ht_info where ht_state=#{state}")

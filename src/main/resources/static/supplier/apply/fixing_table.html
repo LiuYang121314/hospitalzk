@@ -8,10 +8,6 @@
     <title>设备信息记录</title>
     <link rel="stylesheet" type="text/css" href="../../static/layui/css/layui.css"/>
     <link rel="stylesheet" type="text/css" href="../../static/css/admin.css"/>
-    <script src="../../static/js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
-    <!--[if IE 8]>
-    <script type="text/javascript" src="../../static/js/jquery-1.11.3.min.js"></script>
-    <![endif]-->
     <script src="../../static/layui/layui.js"></script>
     <style>
       .layui-elem-field{
@@ -35,7 +31,7 @@
         <fieldset class="layui-elem-field layui-field-title">
             <legend>合同信息</legend>
         </fieldset>
-        <table class="layui-table col-md-6">
+        <table class="layui-table">
             <thead>
                 <tr>
                     <th style="width: 50%;text-align: center;">字段名称</th>
@@ -123,41 +119,41 @@
   var type = window.location.search;
   var ids = parseInt(type.split("=")[1]);
   var rate = "";
-  $(function(){
-     $.ajax({
-         url:"/htInfo/selectOne?htId="+ids,
-         method:"GET",
-         dataType:"JSON",
-         success:function(res){
-             if(res.data != "" && res.data != ""){
-                 $("#htGhsn").append(res.data.htGhsn);
-                 $("#htGhslxr").append(res.data.htGhslxr);
-                 $("#htGhsdh").append(res.data.htGhsdh);
-                 $("#htHthao").append(res.data.htHthao);
-                 $("#htZhbhao").append(res.data.htZhbhao);
-                 $("#htGzspd").append(res.data.htGzspd);
-                 $("#htZje").append(res.data.htZje);
-                 $("#htQytime").append(res.data.htQytime);
-                 $("#htDhtime").append(res.data.htDhtime);
-                 $("#htBz").append(res.data.htBz);
-                 $("#htLy").append(res.data.htLy);
-                 $("#htCgfs").append(res.data.htCgfs);
-                 $("#htSglb").append(res.data.htSglb);
-                 $("#htJfly").append(res.data.htJfly);
-             }else{
-                 console.log("isGml");
-             }
-         },
-         error:function(data){
-             alert("无数据");
-         }
-     })
-  });
   //Demo
   layui.use(['layer','jquery','table'], function(){
       var layer = layui.layer
       ,   $ = layui.jquery
       ,   table = layui.table;
+      $(function(){
+          $.ajax({
+              url:"/htInfo/selectOne?htId="+ids,
+              method:"GET",
+              dataType:"JSON",
+              success:function(res){
+                  if(res.data != "" && res.data != ""){
+                      $("#htGhsn").append(res.data.htGhsn);
+                      $("#htGhslxr").append(res.data.htGhslxr);
+                      $("#htGhsdh").append(res.data.htGhsdh);
+                      $("#htHthao").append(res.data.htHthao);
+                      $("#htZhbhao").append(res.data.htZhbhao);
+                      $("#htGzspd").append(res.data.htGzspd);
+                      $("#htZje").append(res.data.htZje);
+                      $("#htQytime").append(res.data.htQytime);
+                      $("#htDhtime").append(res.data.htDhtime);
+                      $("#htBz").append(res.data.htBz);
+                      $("#htLy").append(res.data.htLy);
+                      $("#htCgfs").append(res.data.htCgfs);
+                      $("#htSglb").append(res.data.htSglb);
+                      $("#htJfly").append(res.data.htJfly);
+                  }else{
+                      console.log("isGml");
+                  }
+              },
+              error:function(data){
+                  alert("无数据");
+              }
+          })
+      });
       var tableIns = table.render({
           elem:"#htInfo"
           ,cellMinWidth: 80
