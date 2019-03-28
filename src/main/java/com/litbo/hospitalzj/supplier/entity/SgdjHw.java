@@ -1,4 +1,7 @@
 package com.litbo.hospitalzj.supplier.entity;
+
+import java.util.List;
+
 /**
  * 登记货物
  * @author 刘洋
@@ -9,8 +12,8 @@ public class SgdjHw {
 	private Integer htIds;
 	private String djhwWbz;//
 	private String djhwYsbs;
-	private String djhwSbwg;
-	private String djhwSxwj;
+	private List<String> djhwSbwg;
+	private List<String>  djhwSxwj;
 	private String djhwBz1;
 	private String djhwBz2;
 	private String djhwBz3;
@@ -61,18 +64,23 @@ public class SgdjHw {
 	public void setDjhwYsbs(String djhwYsbs) {
 		this.djhwYsbs = djhwYsbs;
 	}
-	public String getDjhwSbwg() {
+
+	public List<String> getDjhwSbwg() {
 		return djhwSbwg;
 	}
-	public void setDjhwSbwg(String djhwSbwg) {
+
+	public void setDjhwSbwg(List<String> djhwSbwg) {
 		this.djhwSbwg = djhwSbwg;
 	}
-	public String getDjhwSxwj() {
+
+	public List<String> getDjhwSxwj() {
 		return djhwSxwj;
 	}
-	public void setDjhwSxwj(String djhwSxwj) {
+
+	public void setDjhwSxwj(List<String> djhwSxwj) {
 		this.djhwSxwj = djhwSxwj;
 	}
+
 	public String getDjhwBz1() {
 		return djhwBz1;
 	}
@@ -178,6 +186,6 @@ public class SgdjHw {
 				+ ", djhwBz11=" + djhwBz11 + ", djhwBz12=" + djhwBz12 + ", djhwBz13=" + djhwBz13 + ", djhwBz14="
 				+ djhwBz14 + ", djhwBz15=" + djhwBz15 + ", djhwBz16=" + djhwBz16 + "]";
 	}
-	
-	
+
+
 }

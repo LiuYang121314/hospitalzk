@@ -76,24 +76,24 @@
                         <div class="layui-form-item col-md-12">
                             <label class="layui-form-label">设备外观</label>
                             <div class="layui-input-block">
-                                <input type="checkbox" name="djhwSbwg" title="全新完好" checked>
-                                <input type="checkbox" name="djhwSbwg" title="表面污渍">
-                                <input type="checkbox" name="djhwSbwg" title="表面污渍">
-                                <input type="checkbox" name="djhwSbwg" title="拆卸痕迹">
-                                <input type="checkbox" name="djhwSbwg" title="无铭牌标识">
-                                <input type="checkbox" name="djhwSbwg" title="铭牌信息不全">
-                                <input type="checkbox" name="djhwSbwg" title="库存机">
+                                <input type="checkbox" name="djhwBz1" title="全新完好" checked>
+                                <input type="checkbox" name="djhwBz2" title="表面污渍">
+                                <input type="checkbox" name="djhwBz3" title="表面污渍">
+                                <input type="checkbox" name="djhwBz4" title="拆卸痕迹">
+                                <input type="checkbox" name="djhwBz5" title="无铭牌标识">
+                                <input type="checkbox" name="djhwBz6" title="铭牌信息不全">
+                                <input type="checkbox" name="djhwBz7" title="库存机">
                             </div>
                         </div>
                         <div class="layui-form-item col-md-12">
                             <label class="layui-form-label">随箱文件</label>
                             <div class="layui-input-block">
-                                <input type="checkbox" name="djhwSxwj" title="合格证/进口设备出厂检测报告" checked>
-                                <input type="checkbox" name="djhwSxwj" title="电子光盘">
-                                <input type="checkbox" name="djhwSxwj" title="中文操作说明书">
-                                <input type="checkbox" name="djhwSxwj" title="中文维修手册">
-                                <input type="checkbox" name="djhwSxwj" title="设备原理线图">
-                                <input type="checkbox" name="djhwSxwj" title="备注">
+                                <input type="checkbox" name="djhwSxwj" value="1" title="合格证/进口设备出厂检测报告" checked>
+                                <input type="checkbox" name="djhwSxwj" value="2" title="电子光盘">
+                                <input type="checkbox" name="djhwSxwj" value="3" title="中文操作说明书">
+                                <input type="checkbox" name="djhwSxwj" value="4" title="中文维修手册">
+                                <input type="checkbox" name="djhwSxwj" value="5" title="设备原理线图">
+                                <input type="checkbox" name="djhwSxwj" value="6" title="备注">
                             </div>
                         </div>
                         <div class="layui-form-item col-md-9">
@@ -147,16 +147,16 @@
             form.on('submit(submit)', function(data){
                 console.log(data.field);
                 $.ajax({
-                    url:"/sgdjhw/updateInfo?htIds="+ids,
+                    url:"/sgdjhw/insert?htIds="+ids,
                     method:"POST",
                     data:data.field,
                     dataType:"JSON",
                     success:function(res){
                         if(res.state === 200){
                             layer.msg("提交成功");
-                            setTimeout(function(){
-                                location.href="/apply_manage/home/apply_manage.html";
-                            },1000);
+                            // setTimeout(function(){
+                            //     location.href="/apply_manage/home/apply_manage.html";
+                            // },1000);
                         }else{
                             layer.msg("提交失败")
                         }
@@ -170,7 +170,7 @@
             });
             upload.render({
                 elem: '#upload'
-                , url: '/wjsc/insertDhdj?=sourceId='+ids+'&type='+1
+                , url: '/wjsc/updateInfo?sourceId='+ids+'&type='+1
                 , multiple: true
                 , accept: "file"
                 , before: function (obj){
