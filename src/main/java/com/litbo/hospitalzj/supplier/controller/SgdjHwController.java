@@ -30,13 +30,15 @@ public class SgdjHwController extends BaseController{
 		return new ResponseResult<SgdjHw>(SUCCESS,all);
 	}
 	@RequestMapping(value = "/insert",method = RequestMethod.POST)
-	public ResponseResult<Void> insert(SgdjHw sgdjHw,HttpServletRequest request) {
+	public ResponseResult<Void> insert(SgdjHw sgdjHw) {
+		System.out.println(sgdjHw);
 		sgdjHwService.InsertSgdjHw(sgdjHw);
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	@RequestMapping("/updateInfo")
-	public ResponseResult<Void> updateInfo(SgdjHw sgdjHw,  HttpServletRequest request) {
-
+	public ResponseResult<Void> updateInfo(SgdjHw sgdjHw) {
+		System.out.println(sgdjHw.getDjhwSbwg());
+		System.out.println(sgdjHw.getDjhwSxwj());
 		sgdjHwService.updateInfo(sgdjHw);
 		htinfoService.updateHtInfoState(sgdjHw.getHtIds(), EnumProcess.PERFECT_INFORMATION.getMessage());
 		return new ResponseResult<Void>(SUCCESS);

@@ -76,24 +76,24 @@
                         <div class="layui-form-item col-md-12">
                             <label class="layui-form-label">设备外观</label>
                             <div class="layui-input-block">
-                                <input type="checkbox" name="djhwSbwg" title="全新完好" checked>
-                                <input type="checkbox" name="djhwSbwg" title="表面污渍">
-                                <input type="checkbox" name="djhwSbwg" title="表面污渍">
-                                <input type="checkbox" name="djhwSbwg" title="拆卸痕迹">
-                                <input type="checkbox" name="djhwSbwg" title="无铭牌标识">
-                                <input type="checkbox" name="djhwSbwg" title="铭牌信息不全">
-                                <input type="checkbox" name="djhwSbwg" title="库存机">
+                                <input type="checkbox" name="djhwSbwg" value="1" title="全新完好" checked>
+                                <input type="checkbox" name="djhwSbwg" value="2" title="表面污渍">
+                                <input type="checkbox" name="djhwSbwg" value="3" title="表面污渍">
+                                <input type="checkbox" name="djhwSbwg" value="4" title="拆卸痕迹">
+                                <input type="checkbox" name="djhwSbwg" value="5" title="无铭牌标识">
+                                <input type="checkbox" name="djhwSbwg" value="6" title="铭牌信息不全">
+                                <input type="checkbox" name="djhwSbwg" value="7" title="库存机">
                             </div>
                         </div>
                         <div class="layui-form-item col-md-12">
                             <label class="layui-form-label">随箱文件</label>
                             <div class="layui-input-block">
-                                <input type="checkbox" name="djhwSxwj" title="合格证/进口设备出厂检测报告" checked>
-                                <input type="checkbox" name="djhwSxwj" title="电子光盘">
-                                <input type="checkbox" name="djhwSxwj" title="中文操作说明书">
-                                <input type="checkbox" name="djhwSxwj" title="中文维修手册">
-                                <input type="checkbox" name="djhwSxwj" title="设备原理线图">
-                                <input type="checkbox" name="djhwSxwj" title="备注">
+                                <input type="checkbox" name="djhwSxwj" value="1" title="合格证/进口设备出厂检测报告" checked>
+                                <input type="checkbox" name="djhwSxwj" value="2" title="电子光盘">
+                                <input type="checkbox" name="djhwSxwj" value="3" title="中文操作说明书">
+                                <input type="checkbox" name="djhwSxwj" value="4" title="中文维修手册">
+                                <input type="checkbox" name="djhwSxwj" value="5" title="设备原理线图">
+                                <input type="checkbox" name="djhwSxwj" value="6" title="备注">
                             </div>
                         </div>
                         <div class="layui-form-item col-md-9">
@@ -132,12 +132,51 @@
             </form>
         </div>
     </div>
+<!--    <script>
+        var form;
+        layui.use(['laydate','form'], function(){
+            var laydate = layui.laydate;
+            form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+
+            //监听提交
+            form.on('submit(submit)', function(data){
+                //获取checkbox[name='djhwBz']的值，获取所有选中的复选框，并将其值放入数组中
+                var arr = new Array();
+                $("input:checkbox[name='djhwBz']:checked").each(function(i){
+                    arr[i] = $(this).val();
+                });
+                alert(arr);
+                //  替换 data.field.djhwBz的数据为拼接后的字符串
+                data.field.djhwBz=arr.join(",");
+                /*$.ajax({
+                    type:"post",
+                    url:"/Restaurant/order/add.do",
+                    data:data.field,
+                    dataType:"json",
+                    success:function(datas) {
+                        if (datas.code == 1) {
+                            alert("预订成功");
+                            window.location.href = "contact.html";
+                        } else {
+                            alert("网络异常，请重新预定");
+                        }
+                    },
+                    error:function() {
+                        alert("网络异常，请重新预定");
+                    }
+                })
+                return false;*/
+            });
+        });
+    </script>-->
+
     <script>
         // 获取上个页面传递的类型
         var type = window.location.search;
         var ids = parseInt(type.split("=")[1]);
         //Demo
         layui.use(['element','jquery','form','layer','upload'], function(){
+
             var element = layui.element
             ,   $ = layui.jquery
             ,   layer = layui.layer
@@ -145,7 +184,21 @@
             ,   upload = layui.upload;
             //监听提交
             form.on('submit(submit)', function(data){
-                console.log(data.field);
+                var arr = new Array();
+                $("input:checkbox[name='djhwSbwg']:checked").each(function(i){
+                    arr[i] = $(this).val();
+                });
+                alert(arr);
+                //  替换 data.field.djhwBz的数据为拼接后的字符串
+                data.field.djhwSbwg=arr.join(",");
+
+                var arr1 = new Array();
+                $("input:checkbox[name='djhwSxwj']:checked").each(function(i){
+                    arr1[i] = $(this).val();
+                });
+                alert(arr1);
+                //  替换 data.field.djhwBz的数据为拼接后的字符串
+                data.field.djhwSxwj=arr.join(",");
                 $.ajax({
                     url:"/sgdjhw/updateInfo?htIds="+ids,
                     method:"POST",
