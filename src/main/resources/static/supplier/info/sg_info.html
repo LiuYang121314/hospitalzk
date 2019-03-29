@@ -106,7 +106,6 @@
 </script>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="addChildFix">添加附属设备</a>
-    <a class="layui-btn layui-btn-xs" lay-event="addFile">添加设备附件</a>
     <a class="layui-btn layui-btn-xs" lay-event="update">修改</a>
     <a class="layui-btn layui-btn-xs" lay-event="delete">删除</a>
 </script>
@@ -150,7 +149,7 @@
         // 设备信息
         table.render({
             elem:"#sbInfo"
-            ,cellMinWidth: 80
+            ,cellMinWidth: 100
             ,url:"/eqInfo/selectEqInfo?htIds="+ids
             ,method:"GET"
             ,response: {
@@ -200,9 +199,7 @@
             var data = obj.data;
             // console.log(obj);
             if(obj.event === 'addChildFix'){
-                location.href="/supplier/apply/hhsbfj_table.html?eqIds="+obj.data.eqId;
-            }else if(obj.event === 'addFile'){
-                location.href="/supplier/apply/hhsbfj_table.html?eqIds="+obj.data.eqId;
+                location.href="/supplier/fixing/chind_fix.html?eqIds="+obj.data.eqId;
             }else if(obj.event === 'update'){
                 layer.msg("1111");
             }else if(obj.event === 'delete'){

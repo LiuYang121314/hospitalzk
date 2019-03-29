@@ -155,7 +155,7 @@
         // 设备信息
         table.render({
             elem:"#sbInfo"
-            ,cellMinWidth: 80
+            ,cellMinWidth: 100
             ,url:"/eqInfo/selectEqInfo?htIds="+ids
             ,method:"GET"
             ,response: {
@@ -205,9 +205,9 @@
             var data = obj.data;
             // console.log(obj);
             if(obj.event === 'addChildFix'){
-                location.href="/supplier/apply/hhsbfj_table.html?eqIds="+obj.data.eqId;
+                location.href="/supplier/fixing/chind_fix.html?id="+obj.data.eqId;
             }else if(obj.event === 'addFile'){
-                location.href="/supplier/apply/hhsbfj_table.html?eqIds="+obj.data.eqId;
+                location.href="/supplier/apply/hhsbfj_table.html?id="+obj.data.eqId;
             }else if(obj.event === 'update'){
                 layer.msg("1111")
             }else if(obj.event === 'delete'){
