@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>设备信息</title>
+    <link rel="stylesheet" type="text/css" href="../../static/layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/admin.css"/>
+    <link rel="stylesheet" href="../../static/css/all.min.css"/>
+    <script src="../../static/js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <!--[if IE 8]>
+    <script type="text/javascript" src="../../static/js/jquery-1.11.3.min.js"></script>
+    <![endif]-->
+    <script src="../../static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        .inp{
+            margin-top: 50px;
+            text-align: center;
+        }
+        .layui-elem-field{
+            width: 100%;
+            color: red;
+        }
+        .bor{
+            border: 1px solid #CCCCCC;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-row">
+    <p style="height: 34px;width: 100%;line-height: 34px;background-color: lightyellow; text-align: center;">红色标识<span class="sign">* </span>为必填项,请认真填写</p>
+    <div class="col-xs-12">
+        <form class="layui-form layui-form-pane" action="">
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <legend>设备信息录入</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label"><span style="color: red;">*</span>设备品名</label>
+                <div class="layui-input-block">
+                    <select id="eqPmId" name="eqPmId" lay-verify="" lay-search>
+                        <option value="">请选择</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label"><span style="color: red;">*</span>规格型号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="eqXh" class="layui-input" autocomplete="off" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label"><span style="color: red;">*</span>设备单价</label>
+                <div class="layui-input-block">
+                    <input type="text" name="eqPrice" class="layui-input" autocomplete="off" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label"><span style="color: red;">*</span>数量</label>
+                <div class="layui-input-block">
+                    <input type="text" name="eqNum" class="layui-input" autocomplete="off" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label"><span style="color: red;">*</span>使用科室</label>
+                <div class="layui-input-block">
+                    <select id="eqSyks" name="eqSyks" lay-verify="" lay-search>
+                        <option value="">请选择</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label"><span style="color: red;">*</span>设备用途</label>
+                <div class="layui-input-block">
+                    <select id="eqYt" name="eqYt" lay-verify="required">
+                        <option value=""></option>
+                        <option value="0">1</option>
+                        <option value="1">2</option>
+                        <option value="2">3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label"><span style="color: red;">*</span>安装地点</label>
+                <div class="layui-input-block">
+                    <input type="text" name="eqAzdd" class="layui-input" autocomplete="off" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label"><span style="color: red;">*</span>生产厂商</label>
+                <div class="layui-input-block">
+                    <input type="text" name="eqCscs" class="layui-input" autocomplete="off" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label"><span style="color: red;">*</span>国别</label>
+                <div class="layui-input-block">
+                    <input type="text" name="eqGb" class="layui-input" autocomplete="off" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label"><span style="color: red;">*</span>海关进口货物报关单号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="eqBgbh" class="layui-input" autocomplete="off" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label"><span style="color: red;">*</span>出厂编号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="eqScbh" class="layui-input" autocomplete="off" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label"><span style="color: red;">*</span>出厂日期</label>
+                <div class="layui-input-block">
+                    <input type="text" name="eqCcdate" class="layui-input" autocomplete="off" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label"><span style="color: red;">*</span>保修期(月)</label>
+                <div class="layui-input-block">
+                    <input type="text" name="eqBxq" class="layui-input" autocomplete="off" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label"><span style="color: red;">*</span>售后服务机构</label>
+                <div class="layui-input-block">
+                    <input type="text" name="eqShFws" class="layui-input" autocomplete="off" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label"><span style="color: red;">*</span>售后座机</label>
+                <div class="layui-input-block">
+                    <input type="text" name="eqShQddh" class="layui-input" autocomplete="off" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">售后经理</label>
+                <div class="layui-input-block">
+                    <input type="text" name="eqShShjl" class="layui-input" autocomplete="off">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">售后经理电话</label>
+                <div class="layui-input-block">
+                    <input type="text" name="eqShJldh" class="layui-input" autocomplete="off">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label"><span style="color: red;">*</span>售后联系人</label>
+                <div class="layui-input-block">
+                    <input type="text" name="eqShLxr" class="layui-input" autocomplete="off" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label"><span style="color: red;">*</span>售后联系电话</label>
+                <div class="layui-input-block">
+                    <input type="text" name="eqShLxrdh" class="layui-input" autocomplete="off" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">设备类别</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="eqShLb" value="计量设备" title="计量设备">
+                    <input type="radio" name="eqShLb" value="发射设备" title="发射设备">
+                    <input type="radio" name="eqShLb" value="无" title="无">
+                </div>
+            </div>
+            <div class="inp layui-form-item">
+                <div class="layui-input-block">
+                    <a id="back" class="layui-btn layui-btn-primary">返回</a>
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="addChildFix">添加</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    // 获取上个页面传递的类型
+    var type = window.location.search;
+    var ids = parseInt(type.split("=")[1]);
+    $(function () {
+        // 设备品名字典数据
+        function sbpmList(){
+            // 清空当前列表
+            $("#eqPmId").empty();
+            // 添加默认选项
+            var op = '<option value=""></option>';
+            $("#eqPmId").append(op);
+            // 发出ajax请求，并处理结果
+            $.ajax({
+                url:"/eqpm/allEqPm",
+                method: "GET",
+                dataType: "JSON",
+                async:false,
+                "success": function(json) {
+                    // 遍历加载新列表项
+                    var list = json.data;
+                    console.log(list);
+                    for (var i = 0; i < list.length; i++) {
+                        console.log(list[i].eqPmId + " - " + list[i].eqPmName);
+                        op = '<option value="' + list[i].eqPmName + '">' + list[i].eqPmName + '</option>';
+                        $("#eqPmId").append(op);
+                        // <select>
+                        // 		<option value="1">第1项</option>
+                        // 		<option value="2">第2项</option>
+                        // 		<option value="3">第3项</option>
+                        // </select>
+                    }
+                }
+            });
+        }
+        sbpmList();
+        // 使用科室字典数据
+        function syksList(){
+            // 清空当前列表
+            $("#eqSyks").empty();
+            // 添加默认选项
+            var op = '<option value=""></option>';
+            $("#eqSyks").append(op);
+            // 发出ajax请求，并处理结果
+            $.ajax({
+                url:"/sbm/selectAll",
+                method: "GET",
+                dataType: "JSON",
+                async:false,
+                "success": function(json) {
+                    // 遍历加载新列表项
+                    var list = json.data;
+                    console.log(list);
+                    for (var i = 0; i < list.length; i++) {
+                        console.log(list[i].bmId + " - " + list[i].bmName);
+                        op = '<option value="' + list[i].bmName + '">' + list[i].bmName + '</option>';
+                        $("#eqSyks").append(op);
+                        // <select>
+                        // 		<option value="1">第1项</option>
+                        // 		<option value="2">第2项</option>
+                        // 		<option value="3">第3项</option>
+                        // </select>
+                    }
+                }
+            });
+        }
+        syksList();
+        // 设备用途字典
+        function sbytList(){
+            // 清空当前列表
+            $("#htSbyt").empty();
+            // 添加默认选项
+            var op = '<option value=""></option>';
+            $("#htSbyt").append(op);
+            // 发出ajax请求，并处理结果
+            $.ajax({
+                url:"/eqyt/allEqYt",
+                method: "GET",
+                dataType: "JSON",
+                async:false,
+                "success": function(json) {
+                    // 遍历加载新列表项
+                    var list = json.data;
+                    console.log(list);
+                    for (var i = 0; i < list.length; i++) {
+                        console.log(list[i].eqytId + " - " + list[i].eqytName);
+                        op = '<option value="' + list[i].eqytName + '">' + list[i].eqytName + '</option>';
+                        $("#htSbyt").append(op);
+                    }
+                }
+            });
+        }
+        sbytList();
+    });
+    //Demo
+    layui.use(['element','laydate','form','layer','jquery'], function(){
+        var element = layui.element
+            ,   laydate = layui.laydate
+            ,   layer = layui.layer
+            ,   $ = layui.jquery;
+        laydate.render({
+            elem: '#date' //指定元素
+        });
+        var form = layui.form;
+        //监听提交
+        form.on('submit(addChildFix)',function(data){
+            $.ajax({
+                url:"?eqId="+ids,
+                method:"POST",
+                data:data.field,
+                dataType:"JSON",
+                success:function(res){
+                    if(res.state === 200){
+                        setTimeout(function(){
+                            location.href = "/supplier/fixing/chind_fix.html?id="+ids;
+                        }, 1000);
+                        layer.msg("添加成功");
+                    }else{
+                        layer.msg("添加失败");
+                    }
+                },
+                error:function(data){
+                    layer.msg("添加失败,请稍后再试");
+                    console.log(data);
+                }
+            });
+            return false;
+        });
+        $("#back").click(function(){
+            window.history.back();
+        })
+    });
+</script>
+</body>
+</html>

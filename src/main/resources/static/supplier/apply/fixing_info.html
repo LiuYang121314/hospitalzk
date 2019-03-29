@@ -176,7 +176,7 @@
                 <div class="inp layui-form-item">
                     <div class="layui-input-block">
                         <a id="back" class="layui-btn layui-btn-primary">返回</a>
-                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="nextTap">添加</button>
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="addFix">添加</button>
                     </div>
                 </div>
             </form>
@@ -275,7 +275,7 @@
                 });
             }
             sbytList();
-        })
+        });
         //Demo
         layui.use(['element','laydate','form','layer','jquery'], function(){
             var element = layui.element
@@ -287,7 +287,7 @@
             });
             var form = layui.form;
             //监听提交
-            form.on('submit(nextTap)', function(data){
+            form.on('submit(addFix)',function(data){
                 $.ajax({
                     url:"/eqInfo/insert?htIds="+ids,
                     method:"POST",
@@ -305,6 +305,7 @@
                     },
                     error:function(data){
                         layer.msg("提交失败,请稍后再试");
+                        console.log(data);
                     }
                 });
                 return false;

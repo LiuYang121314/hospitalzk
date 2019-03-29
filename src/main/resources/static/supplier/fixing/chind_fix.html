@@ -32,12 +32,15 @@
         </fieldset>
         <table class="layui-table" id="childFixInfo"></table>
         <div class="col-xs-12 btn">
-            <button id="addFix" class="layui-btn layui-btn-normal">添加设备附件</button>
-            <button id="makeSure" class="layui-btn">确认</button>
+            <a id="addChildFix" class="layui-btn layui-btn-normal">添加附属设备</a>
+            <a id="makeSure" class="layui-btn">确认</a>
         </div>
     </div>
 </div>
 <script>
+    // 获取上个页面传递的类型
+    var type = window.location.search;
+    var ids = parseInt(type.split("=")[1]);
     layui.use(['layer','jquery','table'],function(){
         var layer = layui.layer
             , $ = layui.jquery
@@ -46,7 +49,7 @@
         table.render({
             elem:"#childFixInfo"
             ,cellMinWidth: 100
-            ,url:""
+            ,url:"?eqId="+ids
             ,method:"GET"
             ,response: {
                 statusName: 'status' //规定数据状态的字段名称，默认：code
@@ -90,13 +93,13 @@
                 {fixed: 'right', title:'操作',minWidth:"200", toolbar: '#barDemo',align:'center'}
             ]]
         });
-        $("#addFix").click(function(){
-            location.href = "";
+        $("#addChildFix").click(function(){
+            location.href = "/supplier/fixing/add_child_fix.html?id="+ids;
         });
         $("#makeSure").click(function(){
             location.href = "";
         });
-    })
+    });
 </script>
 </body>
 </html>
