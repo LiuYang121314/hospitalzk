@@ -141,7 +141,7 @@
             </div>
             <div class="inp layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn layui-btn-lg layui-btn-normal" lay-submit lay-filter="htsbumit">下一步</button>
+                    <button class="layui-btn layui-btn-lg layui-btn-normal" lay-submit lay-filter="htsbumit">保存</button>
                 </div>
             </div>
         </form>
@@ -265,7 +265,7 @@
                 method: "GET",
                 dataType: "JSON",
                 async:false,
-                "success": function(json) {
+                "success": function(json){
                     // 遍历加载新列表项
                     var list = json.data;
                     console.log(list);
@@ -306,7 +306,7 @@
         laydate.render({
             elem: '#dhDate'
         });
-        form.on('submit(htsbumit)', function(data){
+        form.on('submit(htsbumit)',function(data){
             console.log(data.field);
             $.ajax({
                 url:"/htInfo/insert",
@@ -317,14 +317,14 @@
                     if(res.state === 200){
                         setTimeout(function(){
                             location.href="/supplier/apply/fixing_table.html?htId="+res.data;
-                        },1000)
-                        layer.msg("提交成功");
+                        },1000);
+                        layer.msg("保存成功");
                     }else{
-                        layer.msg("提交失败");
+                        layer.msg("保存失败");
                     }
                 },
                 error:function(data){
-                    layer.msg("提交失败,请稍后再试");
+                    layer.msg("保存失败,请稍后再试");
                     console.log(data);
                 }
             });
