@@ -60,10 +60,6 @@
                 <td id="htZhbhao"></td>
             </tr>
             <tr>
-                <td>购置审批申请单编号</td>
-                <td id="htGzspd"></td>
-            </tr>
-            <tr>
                 <td>合同总金额</td>
                 <td id="htZje"></td>
             </tr>
@@ -97,13 +93,15 @@
             </tr>
             </tbody>
         </table>
+        <div class="col-xs-12 btn">
+            <a id="updateHtInfo" class="layui-btn layui-btn-normal">修改合同信息</a>
+        </div>
         <fieldset class="layui-elem-field layui-field-title">
             <legend>设备信息记录表</legend>
         </fieldset>
         <table class="layui-table" id="sbInfo" lay-filter="sb"></table>
         <div class="col-xs-12 btn">
             <button id="addcheck" class="layui-btn layui-btn-normal">添加设备信息</button>
-            <button id="nextap" class="layui-btn">下一步</button>
         </div>
     </div>
 </div>
@@ -137,7 +135,6 @@
                         $("#htGhsdh").append(res.data.htGhsdh);
                         $("#htHthao").append(res.data.htHthao);
                         $("#htZhbhao").append(res.data.htZhbhao);
-                        $("#htGzspd").append(res.data.htGzspd);
                         $("#htZje").append(res.data.htZje);
                         $("#htQytime").append(res.data.htQytime);
                         $("#htDhtime").append(res.data.htDhtime);
@@ -151,22 +148,10 @@
                     }
                 },
                 error:function(data){
-                    alert("无数据");
+                    layer.msg("请稍后再试");
                 }
             })
         });
-        //监听行工具事件
-        // table.on('tool(update)',function(obj){
-        //     var data = obj.data;
-        //     //console.log(obj);
-        //     if(obj.event === 'handle'){
-        //         if(obj.data.htGzspd == "无"){
-        //             location.href="/supplier/apply/update_ht_info.html?id="+ids;
-        //         }else{
-        //             location.href="/supplier/apply/update_gzsp_info.html?id="+ids;
-        //         }
-        //     }
-        // });
         // 设备信息
         table.render({
             elem:"#sbInfo"
@@ -209,25 +194,33 @@
         //监听行工具事件
         table.on('tool(sb)', function(obj){
             var data = obj.data;
-            console.log(obj);
-            if(rate == "无"){
-                if(obj.event === 'adds'){
-                    location.href="/supplier/apply/hhsbfj_table.html?eqIds="+obj.data.eqId;
-                }else if(){
-
-                }
+            // console.log(obj);
+            if(obj.event === 'addFix'){
+                location.href="/supplier/apply/hhsbfj_table.html?eqIds="+obj.data.eqId;
+            }else if(obj.event === 'addFile'){
+                location.href="/supplier/apply/hhsbfj_table.html?eqIds="+obj.data.eqId;
+            }else if(obj.event === 'update'){
+                layer.msg("1111")
+            }else if(obj.event === 'delete'){
+                $.ajax({
+                    url:"",
+                    method:"POST",
+                    dataType:"JSON",
+                    success:function(res){
+                        if(res.state === 200){
+                            layer.msg("删除成功");
+                        }else{
+                            layer.msg("删除失败")
+                        }
+                    },
+                    error:function(data){
+                        layer.msg("请稍后再试");
+                    }
+                });
             }
         });
-
-        $("#addcheck").click(function(){
-            location.href="/supplier/apply/fixing_info.html?htIds="+ids;
-        });
-        $("#nextap").click(function(){
-            if(rate == "无"){
-                location.href="/supplier/apply/hh_upload_enclosure.html?htIds="+ids;
-            }else{
-                location.href="/supplier/apply/hg_upload_enclosure.html?htIds="+ids;
-            }
+        $("#updateHtInfo").click(function(){
+            location.href = "/supplier/update/update_ht_info.html?id="+ids;
         })
     });
 </script>
