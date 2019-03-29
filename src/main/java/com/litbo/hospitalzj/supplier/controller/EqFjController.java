@@ -38,5 +38,15 @@ public class EqFjController extends BaseController{
 		List<EqFj> eqFj=eqFjService.selectInfo(eqIds);
 		return new ResponseResult<List<EqFj>>(SUCCESS,eqFj);
 	}
+	@RequestMapping("/selectById")
+	public ResponseResult<EqFj> selectById(Integer eqFjId){
+		EqFj eqFj=eqFjService.selectById(eqFjId);
+		return new ResponseResult<EqFj>(SUCCESS,eqFj);
+	}
+	@RequestMapping("/delete")
+	public ResponseResult<Void> delete(Integer eqFjId){
+		eqFjService.delete(eqFjId);
+		return new ResponseResult<Void>(SUCCESS);
+	}
 	
 }

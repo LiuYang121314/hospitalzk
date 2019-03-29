@@ -76,6 +76,7 @@ public class DqjcController extends BaseController {
                                       HttpSession session, HttpServletRequest req){
        Dqjc dqjc = CommonUtils.toBean(req.getParameterMap(), Dqjc.class);
        String userId=String.valueOf(session.getAttribute("uid").toString());
+
        dqjcService.delete(eqId,jcyqId);
        dqjc.setState(0);
        yqEqService.insertBatch(eqId,jcyqId);

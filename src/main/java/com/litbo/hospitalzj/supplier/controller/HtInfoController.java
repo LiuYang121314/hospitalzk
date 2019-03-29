@@ -94,7 +94,7 @@ public class HtInfoController extends BaseController {
     public ResponseResult<Void> updataStatePerfectThree(Integer htId) {
         htinfoService.updateHtInfoState(htId, EnumProcess.ACCEPT_OVER.getMessage());
         htLcService.InsertHtLc(htId, EnumProcess.ACCEPT_OVER.getMessage(), new Date());
-        eqInfoMapper.update(htId, 1);
+        eqInfoMapper.update(htId,1);
         return new ResponseResult<Void>(SUCCESS);
     }
 

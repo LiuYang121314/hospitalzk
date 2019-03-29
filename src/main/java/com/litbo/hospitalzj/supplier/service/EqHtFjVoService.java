@@ -9,7 +9,7 @@ import com.litbo.hospitalzj.supplier.vo.InsertEqHtFiVo;
 
 public interface EqHtFjVoService {
 	
-	int insert(InsertEqHtFiVo insertEqHtFiVo);
+	/*int insert(InsertEqHtFiVo insertEqHtFiVo);*/
 	
 	List<EqHtFjVo> findEqHtFjVo(@Param("htYzm") String htYzm);
 

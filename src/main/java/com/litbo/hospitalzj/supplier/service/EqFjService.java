@@ -12,4 +12,9 @@ public interface EqFjService {
 	void updateInfo(EqFj eqfj);
 	
 	List<EqFj> selectInfo(@Param("eqIds") Integer eqIds);
+
+	Integer delete(Integer eqFjid);
+
+	EqFj selectById(Integer eqFjId);
+
 }

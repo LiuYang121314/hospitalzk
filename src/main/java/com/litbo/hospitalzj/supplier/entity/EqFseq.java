@@ -1,15 +1,19 @@
-package com.litbo.hospitalzj.zk.domian;
+package com.litbo.hospitalzj.supplier.entity;
 
 import java.math.BigDecimal;
 
-public class EqInfo {
-    private Integer eqId;
+public class EqFseq {
+    private Integer eqFsid;
+
+    private String eqIds;
 
     private String eqMc;
 
     private String eqDah;
 
     private String eqPmId;
+
+    private String eqGg;
 
     private String eqXh;
 
@@ -55,9 +59,9 @@ public class EqInfo {
 
     private String eqYzm;
 
-    private Integer htIds;
-
     private String eqShLb;
+
+    private Integer htIds;
 
     private String eqSyks;
 
@@ -69,12 +73,20 @@ public class EqInfo {
 
     private String eqBfjd;
 
-    public Integer getEqId() {
-        return eqId;
+    public Integer getEqFsid() {
+        return eqFsid;
     }
 
-    public void setEqId(Integer eqId) {
-        this.eqId = eqId;
+    public void setEqFsid(Integer eqFsid) {
+        this.eqFsid = eqFsid;
+    }
+
+    public String getEqIds() {
+        return eqIds;
+    }
+
+    public void setEqIds(String eqIds) {
+        this.eqIds = eqIds == null ? null : eqIds.trim();
     }
 
     public String getEqMc() {
@@ -99,6 +111,14 @@ public class EqInfo {
 
     public void setEqPmId(String eqPmId) {
         this.eqPmId = eqPmId == null ? null : eqPmId.trim();
+    }
+
+    public String getEqGg() {
+        return eqGg;
+    }
+
+    public void setEqGg(String eqGg) {
+        this.eqGg = eqGg == null ? null : eqGg.trim();
     }
 
     public String getEqXh() {
@@ -277,20 +297,20 @@ public class EqInfo {
         this.eqYzm = eqYzm == null ? null : eqYzm.trim();
     }
 
-    public Integer getHtIds() {
-        return htIds;
-    }
-
-    public void setHtIds(Integer htIds) {
-        this.htIds = htIds;
-    }
-
     public String getEqShLb() {
         return eqShLb;
     }
 
     public void setEqShLb(String eqShLb) {
         this.eqShLb = eqShLb == null ? null : eqShLb.trim();
+    }
+
+    public Integer getHtIds() {
+        return htIds;
+    }
+
+    public void setHtIds(Integer htIds) {
+        this.htIds = htIds;
     }
 
     public String getEqSyks() {

@@ -19,5 +19,6 @@ public interface EqInfoService {
 	List<EqInfo> selectByState();
 
 	void delete(Integer eqId);
+
 	EqInfo selectByEqId(Integer eqId);
 }

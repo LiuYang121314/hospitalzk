@@ -44,7 +44,7 @@ public class EqHtFjVoServiceImpl implements EqHtFjVoService {
 		return 0;
 
 	}*/
-	@Override
+	/*@Override
 	public int insert(InsertEqHtFiVo insertEqHtFiVo) {
 		HtInfo htInfo = insertEqHtFiVo.getHtinfo();
 		htInfoMapper.insertHt(htInfo);
@@ -62,5 +62,5 @@ public class EqHtFjVoServiceImpl implements EqHtFjVoService {
 			eqfjMapper.insertCollectList(eqFjs);
 		}
 		return 1;
-	}
+	}*/
 }

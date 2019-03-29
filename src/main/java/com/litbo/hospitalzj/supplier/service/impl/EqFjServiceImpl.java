@@ -35,4 +35,14 @@ public class EqFjServiceImpl implements EqFjService{
 		}
 		return data;
 	}
+
+	@Override
+	public Integer delete(Integer eqFjid) {
+		return eqFjMapper.delete(eqFjid);
+	}
+
+	@Override
+	public EqFj selectById(Integer eqFjId) {
+		return eqFjMapper.selectById(eqFjId);
+	}
 }

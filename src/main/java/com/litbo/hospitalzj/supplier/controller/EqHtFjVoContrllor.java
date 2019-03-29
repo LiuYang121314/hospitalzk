@@ -26,9 +26,9 @@ public class EqHtFjVoContrllor extends BaseController{
 		List<EqHtFjVo> data=eqHtFjService.findEqHtFjVo(htYzm);
 		return new ResponseResult<List<EqHtFjVo>>(SUCCESS,data);
 	}
-	@RequestMapping("insertEqHtFj")
+	/*@RequestMapping("insertEqHtFj")
 	public ResponseResult<Void> insertEqHtFj(@RequestBody InsertEqHtFiVo insertEqHtFiVo){
 		eqHtFjService.insert(insertEqHtFiVo);
 		return new ResponseResult<Void>(SUCCESS);
-	}
+	}*/
 }
