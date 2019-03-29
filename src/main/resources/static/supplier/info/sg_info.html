@@ -97,7 +97,7 @@
         </fieldset>
         <table class="layui-table" id="sbInfo" lay-filter="sb"></table>
         <div class="col-xs-12 btn">
-            <button id="addcheck" class="layui-btn layui-btn-normal">添加设备信息</button>
+            <a id="addFixInfo" class="layui-btn layui-btn-normal">添加设备信息</a>
         </div>
     </div>
 </div>
@@ -213,6 +213,9 @@
                     }
                 });
             }
+        });
+        $("#addFixInfo").click(function(){
+            location.href = "/supplier/apply/fixing_info.html?id="+ids;
         });
         $("#updateHtInfo").click(function () {
             location.href = "/supplier/update/update_sg_info.html?id="+ids;
