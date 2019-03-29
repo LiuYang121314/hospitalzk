@@ -109,7 +109,7 @@
     <a class="layui-btn layui-btn-xs" lay-event="handle">修改</a>
 </script>
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs" lay-event="addFix">添加附属设备</a>
+    <a class="layui-btn layui-btn-xs" lay-event="addChildFix">添加附属设备</a>
     <a class="layui-btn layui-btn-xs" lay-event="addFile">添加设备附件</a>
     <a class="layui-btn layui-btn-xs" lay-event="update">修改</a>
     <a class="layui-btn layui-btn-xs" lay-event="delete">删除</a>
@@ -204,7 +204,7 @@
         table.on('tool(sb)', function(obj){
             var data = obj.data;
             // console.log(obj);
-            if(obj.event === 'addFix'){
+            if(obj.event === 'addChildFix'){
                 location.href="/supplier/apply/hhsbfj_table.html?eqIds="+obj.data.eqId;
             }else if(obj.event === 'addFile'){
                 location.href="/supplier/apply/hhsbfj_table.html?eqIds="+obj.data.eqId;
