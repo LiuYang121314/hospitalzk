@@ -109,10 +109,10 @@
     <a class="layui-btn layui-btn-xs" lay-event="handle">修改</a>
 </script>
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs" lay-event="addChildFix">添加附属设备</a>
-    <a class="layui-btn layui-btn-xs" lay-event="addFile">添加设备附件</a>
-    <a class="layui-btn layui-btn-xs" lay-event="update">修改</a>
-    <a class="layui-btn layui-btn-xs" lay-event="delete">删除</a>
+    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="addChildFix">添加附属设备</a>
+    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="addFile">添加设备附件</a>
+    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="update">修改</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="delete">删除</a>
 </script>
 <script>
     // 获取上个页面传递的类型
@@ -155,7 +155,7 @@
         // 设备信息
         table.render({
             elem:"#sbInfo"
-            ,cellMinWidth: 100
+            ,cellMinWidth: 130
             ,url:"/eqInfo/selectEqInfo?htIds="+ids
             ,method:"GET"
             ,response: {
@@ -197,7 +197,7 @@
                 {field:'eqShLxr', title:'售后联系人',align:'center'},
                 {field:'eqShLxrdh', title:'售后联系电话',align:'center'},
                 {field:'eqShLb', title:'设备类别',align:'center'},
-                {fixed: 'right', title:'操作',minWidth:"200", toolbar: '#barDemo',align:'center'}
+                {fixed: 'right', title:'操作',minWidth:310, toolbar: '#barDemo',align:'center'}
             ]]
         });
         //监听行工具事件
@@ -212,7 +212,7 @@
                 layer.msg("1111")
             }else if(obj.event === 'delete'){
                 $.ajax({
-                    url:"",
+                    url:"/eqInfo/delete?eqId="+obj.data.eqId,
                     method:"POST",
                     dataType:"JSON",
                     success:function(res){

@@ -63,13 +63,13 @@
             <div class="layui-form-item col-md-5">
                 <label class="layui-form-label">合同签约期</label>
                 <div class="layui-input-block">
-                    <input id="qyDate" type="text" placeholder="合同签约期" name="htQytime" class="layui-input" autocomplete="off">
+                    <input id="htQytime" type="text" placeholder="合同签约期" name="htQytime" class="layui-input" autocomplete="off">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
                 <label class="layui-form-label">合同到货期</label>
                 <div class="layui-input-block">
-                    <input id="dhDate" type="text" name="htDhtime" placeholder="合同到货期" class="layui-input" autocomplete="off">
+                    <input id="htDhtime" type="text" name="htDhtime" placeholder="合同到货期" class="layui-input" autocomplete="off">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
@@ -118,6 +118,9 @@
     </div>
 </div>
 <script>
+    // 接收 ID
+    var type = window.location.search;
+    var ids = parseInt(type.split("=")[1]);
     var supplier = sessionStorage["supplierName"];
     $("#htGhsn").val(supplier);
     $(function(){
@@ -234,8 +237,9 @@
                     $("#htGhslxr").val(res.data.htGhslxr);
                     $("#htGhsdh").val(res.data.htGhsdh);
                     $("#htGzspd").val(res.data.htGzspd);
-                    $("#htZje").val(res.data.htZje);                    $("#qyDate").val(res.data.qyDate);
-                    $("#dhDate").val(res.data.dhDate);
+                    $("#htZje").val(res.data.htZje);
+                    $("#htQytime").val(res.data.htQytime);
+                    $("#htDhtime").val(res.data.htDhtime);
                     $("#htBz").val(res.data.htBz);
                     $("#htLy").val(res.data.htLy);
                     $("#htCgfs").val(res.data.htCgfs);
@@ -260,14 +264,14 @@
         form.on('submit(htUpdate)',function(data){
             console.log(data.field);
             $.ajax({
-                url:"/htInfo/update?htId="+ids,
+                url:"/htInfo/updateInfo?htId="+ids,
                 method:"POST",
                 data:data.field,
                 dataType:"JSON",
                 success:function(res){
                     if(res.state === 200){
                         setTimeout(function(){
-                            location.href="/supplier/info/sg_info.html?htId="+res.data;
+                            location.href="/supplier/info/sg_info.html?id="+ids;
                         },1000);
                         layer.msg("修改成功");
                     }else{

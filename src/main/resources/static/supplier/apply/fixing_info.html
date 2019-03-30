@@ -296,15 +296,15 @@
                     success:function(res){
                         if(res.state === 200){
                             setTimeout(function(){
-                                location.href = "/supplier/apply/fixing_table.html?htId="+ids;
+                                location.href = "/supplier/info/ht_info.html?id="+ids;
                             }, 1000);
-                            layer.msg("提交成功");
+                            layer.msg("添加成功");
                         }else{
-                            layer.msg("提交失败");
+                            layer.msg("添加失败");
                         }
                     },
                     error:function(data){
-                        layer.msg("提交失败,请稍后再试");
+                        layer.msg("添加失败,请稍后再试");
                         console.log(data);
                     }
                 });

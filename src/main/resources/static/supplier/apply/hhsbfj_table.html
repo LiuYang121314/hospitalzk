@@ -27,7 +27,7 @@
       <fieldset class="layui-elem-field layui-field-title">
           <legend>设备附件信息</legend>
       </fieldset>
-      <table class="layui-table" id="sbfjInfo"></table>
+      <table class="layui-table" id="sbfjInfo" ></table>
       <div class="col-xs-12 btn">
         <button id="addsbfj" class="layui-btn layui-btn-normal">添加设备附件</button>
         <button id="nextap" class="layui-btn">确认</button>
@@ -80,7 +80,7 @@
         dataType:"JSON",
         success:function(res){
           if(res.state === 200){
-            location.href="/supplier/apply/fixing_table.html?htIds="+res.data;
+            location.href="/supplier/info/ht_info.html?id="+res.data;
             layer.msg("成功");
           }else{
             layer.msg("失败");

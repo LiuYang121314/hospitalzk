@@ -63,13 +63,13 @@
             <div class="layui-form-item col-md-5">
                 <label class="layui-form-label">合同签约期</label>
                 <div class="layui-input-block">
-                    <input id="qyDate" type="text" placeholder="合同签约期" name="htQytime" class="layui-input" autocomplete="off">
+                    <input id="htQytime" type="text" placeholder="合同签约期" name="htQytime" class="layui-input" autocomplete="off">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
                 <label class="layui-form-label">合同到货期</label>
                 <div class="layui-input-block">
-                    <input id="dhDate" type="text" name="htDhtime" placeholder="合同到货期" class="layui-input" autocomplete="off">
+                    <input id="htDhtime" type="text" name="htDhtime" placeholder="合同到货期" class="layui-input" autocomplete="off">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
@@ -234,10 +234,10 @@
             , $ = layui.jquery
             , form = layui.form;
         laydate.render({
-            elem: '#qyDate'
+            elem: '#htQytime'
         });
         laydate.render({
-            elem: '#dhDate'
+            elem: '#htDhtime'
         });
         form.on('submit(sgSave)', function(data){
             console.log(data.field);

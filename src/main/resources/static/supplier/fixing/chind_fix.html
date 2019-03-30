@@ -5,7 +5,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
-    <title>设备信息记录</title>
+    <title>附属设备信息</title>
     <link rel="stylesheet" type="text/css" href="../../static/layui/css/layui.css"/>
     <link rel="stylesheet" type="text/css" href="../../static/css/admin.css"/>
     <script src="../../static/layui/layui.js"></script>
@@ -30,13 +30,16 @@
         <fieldset class="layui-elem-field layui-field-title">
             <legend>附属设备信息信息</legend>
         </fieldset>
-        <table class="layui-table" id="childFixInfo"></table>
+        <table class="layui-table" id="childFixInfo" lay-filter="handle"></table>
         <div class="col-xs-12 btn">
             <a id="addChildFix" class="layui-btn layui-btn-normal">添加附属设备</a>
             <a id="makeSure" class="layui-btn">确认</a>
         </div>
     </div>
 </div>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="update">删除</a>
+</script>
 <script>
     // 获取上个页面传递的类型
     var type = window.location.search;
@@ -49,7 +52,7 @@
         table.render({
             elem:"#childFixInfo"
             ,cellMinWidth: 100
-            ,url:"?eqId="+ids
+            ,url:"/eqfseq/selectInfo?eqIds="+ids
             ,method:"GET"
             ,response: {
                 statusName: 'status' //规定数据状态的字段名称，默认：code
@@ -67,7 +70,6 @@
                     ,"data":res.data
                 }
             },
-            title:"验收申请记录表",
             // page:true,
             cols:[[
                 {field:'eqPmId', title:'设备品名',align:'center'},
@@ -92,6 +94,27 @@
                 {field:'eqShLb', title:'设备类别',align:'center'},
                 {fixed: 'right', title:'操作',minWidth:"200", toolbar: '#barDemo',align:'center'}
             ]]
+        });
+        table.on('tool(handle)', function(obj){
+            var data = obj.data;
+            // console.log(obj);
+            if(obj.event === 'update'){
+                $.ajax({
+                    url:"/eqfseq/delete?eqFsid="+obj.data.eqFsid,
+                    method:"POST",
+                    dataType:"JSON",
+                    success:function(res){
+                        if(ress.state === 200){
+                            layer.msg("删除成功");
+                        }else{
+                            layer.msg("删除失败");
+                        }
+                    },
+                    error:function(data){
+                        layer.msg("请稍后再试");
+                    }
+                })
+            }
         });
         $("#addChildFix").click(function(){
             location.href = "/supplier/fixing/add_child_fix.html?id="+ids;
