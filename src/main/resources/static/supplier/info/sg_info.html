@@ -124,7 +124,7 @@
                 method:"GET",
                 dataType:"JSON",
                 success:function(res){
-                    if(res.data != "" && res.data != ""){
+                    if(res.data != null && res.data != ""){
                         $("#htGhsn").append(res.data.htGhsn);
                         $("#htGhslxr").append(res.data.htGhslxr);
                         $("#htGhsdh").append(res.data.htGhsdh);
@@ -199,7 +199,7 @@
             var data = obj.data;
             // console.log(obj);
             if(obj.event === 'addChildFix'){
-                location.href="/supplier/fixing/chind_fix.html?eqIds="+obj.data.eqId;
+                location.href="/supplier/fixing/chind_fix.html?id="+obj.data.eqId;
             }else if(obj.event === 'update'){
                 layer.msg("1111");
             }else if(obj.event === 'delete'){
@@ -211,7 +211,7 @@
                         if(res.state === 200){
                             layer.msg("删除成功");
                         }else{
-                            layer.msg("删除失败")
+                            layer.msg("删除失败");
                         }
                     },
                     error:function(data){
