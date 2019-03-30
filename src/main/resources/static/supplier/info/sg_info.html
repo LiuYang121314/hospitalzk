@@ -113,6 +113,7 @@
     // 获取上个页面传递的类型
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
+    sessionStorage["htId"] = ids;
     //Demo
     layui.use(['layer','jquery','table'], function(){
         var layer = layui.layer
@@ -203,20 +204,26 @@
             }else if(obj.event === 'update'){
                 layer.msg("1111");
             }else if(obj.event === 'delete'){
-                $.ajax({
-                    url:"",
-                    method:"POST",
-                    dataType:"JSON",
-                    success:function(res){
-                        if(res.state === 200){
-                            layer.msg("删除成功");
-                        }else{
-                            layer.msg("删除失败");
+            	layer.confirm('确定删除此条数据么', function(index){
+                    obj.del();
+                    // layer.close(index);
+                    $.ajax({
+                        url:"/eqInfo/delete?eqId="+obj.data.eqId,
+                        success:function(res){
+                            if(res.state === 200){
+                                layer.msg("删除成功");
+                                setTimeout(function(){
+                                	location.href = "/supplier/info/ht_info.html?id="+ids;
+                                },1000);
+                            }else{
+                                layer.msg("删除失败");
+                            }
+                        },
+                        error:function(data){
+                            layer.msg("删除失败,请稍后再试");
+                            console.log(data);
                         }
-                    },
-                    error:function(data){
-                        layer.msg("请稍后再试");
-                    }
+                    });
                 });
             }
         });

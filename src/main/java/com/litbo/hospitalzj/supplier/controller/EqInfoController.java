@@ -45,6 +45,7 @@ public class EqInfoController extends BaseController{
 	@RequestMapping("/selectEqInfo")
 	public ResponseResult<List<SelHtEqVo>> selectEqHt(Integer htIds,HttpSession session){
 		List<SelHtEqVo> eqInfo=eqinfoService.selectEqHtVo(htIds);
+		System.out.println(eqInfo);
 		return new ResponseResult<List<SelHtEqVo>>(SUCCESS,eqInfo);
 	}
 	@RequestMapping("/selectEqId")

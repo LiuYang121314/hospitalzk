@@ -16,7 +16,7 @@ public interface EqFseqMapper {
 		 + "</foreach>")
 		int insertCollectList(@Param(value = "eqFjs") List<EqFj> eqFjs);*/
 	@Insert("insert into eq_fseq (eq_fsid, eq_ids, eq_mc, \n" +
-			"      eq_dah, eq_pm_id, eq_gg, \n" +
+			"      eq_dah, eq_pm_id, \n" +
 			"      eq_xh, eq_jldw_id, eq_azdd, \n" +
 			"      eq_bxq, eq_yt, eq_price, \n" +
 			"      eq_zczbh, eq_scbh, eq_num, \n" +
@@ -28,7 +28,7 @@ public interface EqFseqMapper {
 			"      eq_syks, eq_jx, eq_qyrq, \n" +
 			"      eq_cfdd, eq_bfjd)\n" +
 			"    values (#{eqFsid,jdbcType=INTEGER}, #{eqIds,jdbcType=VARCHAR}, #{eqMc,jdbcType=VARCHAR}, \n" +
-			"      #{eqDah,jdbcType=VARCHAR}, #{eqPmId,jdbcType=VARCHAR}, #{eqGg,jdbcType=VARCHAR}, \n" +
+			"      #{eqDah,jdbcType=VARCHAR}, #{eqPmId,jdbcType=VARCHAR},\n" +
 			"      #{eqXh,jdbcType=VARCHAR}, #{eqJldwId,jdbcType=VARCHAR}, #{eqAzdd,jdbcType=VARCHAR}, \n" +
 			"      #{eqBxq,jdbcType=VARCHAR}, #{eqYt,jdbcType=VARCHAR}, #{eqPrice,jdbcType=DECIMAL}, \n" +
 			"      #{eqZczbh,jdbcType=VARCHAR}, #{eqScbh,jdbcType=VARCHAR}, #{eqNum,jdbcType=VARCHAR}, \n" +
@@ -41,15 +41,14 @@ public interface EqFseqMapper {
 			"      #{eqCfdd,jdbcType=VARCHAR}, #{eqBfjd,jdbcType=VARCHAR})")
 	Integer insertEqFseq(EqFseq eqFseq);
 	
-	@Select("select * from eq_fj where eq_ids=#{eqIds}")
-	List<EqFj> selectEqFseq(Integer eqIds);
+	@Select("select * from eq_fseq where eq_ids=#{eqIds}")
+	List<EqFseq> selectEqFseq(Integer eqIds);
 
 	@Update(" update eq_fseq\n" +
 			"    set eq_ids = #{eqIds,jdbcType=VARCHAR},\n" +
 			"      eq_mc = #{eqMc,jdbcType=VARCHAR},\n" +
 			"      eq_dah = #{eqDah,jdbcType=VARCHAR},\n" +
 			"      eq_pm_id = #{eqPmId,jdbcType=VARCHAR},\n" +
-			"      eq_gg = #{eqGg,jdbcType=VARCHAR},\n" +
 			"      eq_xh = #{eqXh,jdbcType=VARCHAR},\n" +
 			"      eq_jldw_id = #{eqJldwId,jdbcType=VARCHAR},\n" +
 			"      eq_azdd = #{eqAzdd,jdbcType=VARCHAR},\n" +
@@ -83,6 +82,6 @@ public interface EqFseqMapper {
 	Integer updateInfo(EqFseq eqFseq);
 	@Select("select * from eq_fseq where eq_fsid=#{eqFsid}")
 	EqFseq selectById(Integer eqFsid);
-	@Delete("delete form eq_fseq where eq_fsid=#{eqFsid}")
+	@Delete("delete from eq_fseq where eq_fsid=#{eqFsid}")
 	Integer delete(Integer eqFsid);
 }

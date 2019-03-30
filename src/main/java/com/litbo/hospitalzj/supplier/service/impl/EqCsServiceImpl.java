@@ -61,25 +61,25 @@ public class EqCsServiceImpl implements EqCsService{
 
 	
 	@Override
-	public EqCs login(String sbcsName, String sbcsPwd)
+	public EqCs login(String sbcsName, String sbcsCreditcode)
 			throws UserNotFoundException, PasswordNotMatchException {
 		// 根据参数username查询用户数据
 		EqCs data = findByUsername(sbcsName);
+		System.out.println(data);
+		System.out.println(data.getSbcsCreditcode());
 		// 判断用户数据是否为null
 		if (data == null) {
 			// 是：为null，用户名不存在，则抛出UserNotFoundException
 			throw new UserNotFoundException(
-					"登录失败！您尝试登录的用户名不存在！");
+					"登录失败！您尝试登录的企业或公司不存在！请注册");
 		}
-		// 	判断密码是否匹配
-		if (sbcsPwd.equals(data.getSbcsPwd())) {
-			System.out.println(data.getSbcsPwd());
-			//是：匹配，密码正确，则判断是否被删除
+		if (sbcsCreditcode.equals(data.getSbcsCreditcode())) {
+			System.out.println(data.getSbcsCreditcode());
 			return data;
 		}else {
 			// 否：不匹配，密码错误，则抛出PasswordNotMatchException
 			throw new PasswordNotMatchException(
-					"登录失败！密码错误！");
+					"登录失败！资格证号码错误！");
 		}
 	}
 	@Override

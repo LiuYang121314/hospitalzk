@@ -21,6 +21,7 @@ public class EqFseqController extends BaseController{
 	@RequestMapping("/insert")
 	public ResponseResult<Void> insertEqFj(EqFseq eqFseq){
 		eqFseqService.insertEqFseq(eqFseq);
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@"+eqFseq);
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	@RequestMapping("/updateInfo")
@@ -29,9 +30,9 @@ public class EqFseqController extends BaseController{
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	@RequestMapping("/selectInfo")
-	public ResponseResult<List<EqFj>> selectInfo(Integer eqIds){
-		List<EqFj> eqFj=eqFseqService.selectEqFseq(eqIds);
-		return new ResponseResult<List<EqFj>>(SUCCESS,eqFj);
+	public ResponseResult<List<EqFseq>> selectInfo(Integer eqIds){
+		List<EqFseq> eqFj=eqFseqService.selectEqFseq(eqIds);
+		return new ResponseResult<List<EqFseq>>(SUCCESS,eqFj);
 	}
 	@RequestMapping("/selectById")
 	public ResponseResult<EqFseq> selectById(Integer eqFsid){

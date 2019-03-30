@@ -11,6 +11,5 @@ public class HospitalzjApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HospitalzjApplication.class, args);
 	}
-
 }
 
