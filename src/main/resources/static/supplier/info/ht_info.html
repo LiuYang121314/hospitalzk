@@ -205,7 +205,7 @@
             var data = obj.data;
             // console.log(obj);
             if(obj.event === 'addChildFix'){
-                location.href="/supplier/fixing/chind_fix.html?id="+obj.data.eqId;
+                location.href="/supplier/fixing/ht_chind_fix.html?id="+obj.data.eqId;
             }else if(obj.event === 'addFile'){
                 location.href="/supplier/apply/hhsbfj_table.html?id="+obj.data.eqId;
             }else if(obj.event === 'update'){
@@ -224,12 +224,13 @@
                     },
                     error:function(data){
                         layer.msg("请稍后再试");
+                        console.log(data);
                     }
                 });
             }
         });
         $("#addFixInfo").click(function(){
-            location.href = "/supplier/apply/fixing_info.html?id="+ids;
+            location.href = "/supplier/apply/ht_fixing_info.html?id="+ids;
         });
         $("#updateHtInfo").click(function(){
             location.href = "/supplier/update/update_ht_info.html?id="+ids;
