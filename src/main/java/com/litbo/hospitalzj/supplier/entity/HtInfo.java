@@ -12,6 +12,7 @@ public class HtInfo {
 	private String htGhsn;
 	private String htGhsdh;
 	private String htGhslxr;
+	private String email;
 	private String htHthao;
 	private String htGzspd;
 	private String htZhbhao;
@@ -48,7 +49,14 @@ public class HtInfo {
 	public void setHtYssj(String htYssj) {
 		this.htYssj = htYssj;
 	}
-	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getHtYsbz() {
 		return htYsbz;
 	}

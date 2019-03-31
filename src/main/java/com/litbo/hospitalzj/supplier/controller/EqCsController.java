@@ -60,13 +60,13 @@ public class EqCsController extends BaseController{
 		session.setAttribute("sbcsName", eqcs.getSbcsName());
 		return new ResponseResult<Void>(SUCCESS);
 	}
-	@PostMapping("/login")
+	@RequestMapping("/login")
 	public ResponseResult<EqCs> handleLogin(
 			@RequestParam("username") String sbcsName,
-			@RequestParam("password") String sbcsPwd,
+			@RequestParam("password") String sbcsCreditcode,
 			HttpSession session) {
 		// 执行登录
-		EqCs user= eqcsService.login(sbcsName, sbcsPwd);
+		EqCs user= eqcsService.login(sbcsName, sbcsCreditcode);
 		session.setAttribute("sbcsName", user.getSbcsName());
 		session.setAttribute("sbcsId", user.getSbcsId());
 		System.out.println(user);

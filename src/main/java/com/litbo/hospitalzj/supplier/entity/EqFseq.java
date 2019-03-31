@@ -13,8 +13,6 @@ public class EqFseq {
 
     private String eqPmId;
 
-    private String eqGg;
-
     private String eqXh;
 
     private String eqJldwId;
@@ -113,13 +111,7 @@ public class EqFseq {
         this.eqPmId = eqPmId == null ? null : eqPmId.trim();
     }
 
-    public String getEqGg() {
-        return eqGg;
-    }
 
-    public void setEqGg(String eqGg) {
-        this.eqGg = eqGg == null ? null : eqGg.trim();
-    }
 
     public String getEqXh() {
         return eqXh;

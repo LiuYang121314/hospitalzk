@@ -20,7 +20,7 @@ public interface EqCsService {
 	
 	EqCs findOne(@Param("sbcsId") Integer sbcsId);
 	
-	EqCs login(@Param("sbcsName") String sbcsName, @Param("sbcsPwd") String sbcsPwd) throws UserNotFoundException, PasswordNotMatchException;
+	EqCs login(@Param("sbcsName") String sbcsName, @Param("sbcsCreditcode") String sbcsCreditcode) throws UserNotFoundException, PasswordNotMatchException;
 	
 	void updataInfo(EqCs eqcs);
 

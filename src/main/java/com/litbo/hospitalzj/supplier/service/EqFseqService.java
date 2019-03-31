@@ -9,7 +9,7 @@ import java.util.List;
 public interface EqFseqService {
 	void insertEqFseq(EqFseq eqFseq);
 
-	List<EqFj> selectEqFseq(Integer eqIds);
+	List<EqFseq> selectEqFseq(Integer eqIds);
 
 	void updateInfo(EqFseq eqFseq);
 

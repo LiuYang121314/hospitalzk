@@ -65,7 +65,20 @@ public interface EqInfoMapper {
 	Integer selectHtId(Integer eqId);
 	@Select("select ht_ids htIds from eq_info where eq_mc=#{eqMc}")
 	EqInfo selectByName(String eqMc);
-	@Select("select IFNULL(ht_hthao,'无') htHthao,IFNULL(ht_gzspd,'无') htGzspd,eq_id eqId,eq_mc eqMc,ht_ids htIds,eq_pm_id eqPmId,eq_xh eqXh,eq_jldw_id eqJlDwId,eq_price eqPrice,eq_zczbh eqZczbh,eq_scbh eqScbh,eq_num eqNum,eq_totalprice eqTotalprice,eq_ccdate eqCcdate,eq_cscs eqCscs,eq_gb eqGb,eq_bgbh eqBgbh,eq_sh_fws eqShFws,eq_sh_qddh eqShQddh,eq_sh_shjl eqShShjl,eq_sh_jldh eqShJldh,eq_sh_lxr eqShLxr,eq_sh_lxrdh eqShLxrdh,eq_state eqState,eq_yzm eqYzm,eq_sh_lb eqShLb,eq_syks eqSyks from eq_info e left join ht_info h on e.ht_ids=h.ht_id where ht_ids=#{htIds}")
+	@Select("select IFNULL(ht_hthao,'无') htHthao,IFNULL(ht_gzspd,'无') htGzspd," +
+			"eq_id, eq_mc, eq_dah, \n"+
+			"      eq_pm_id, eq_xh, eq_jldw_id, \n" +
+			"      eq_azdd, eq_bxq, eq_yt, \n" +
+			"      eq_price, eq_zczbh, eq_scbh, \n" +
+			"      eq_num, eq_totalprice, eq_ccdate, \n" +
+			"      eq_cscs, eq_gb, eq_bgbh, \n" +
+			"      eq_sh_fws, eq_sh_qddh, eq_sh_shjl, \n" +
+			"      eq_sh_jldh, eq_sh_lxr, eq_sh_lxrdh, \n" +
+			"      eq_state, eq_yzm, ht_ids, \n" +
+			"      eq_sh_lb, eq_syks, eq_jx, \n" +
+			"      eq_qyrq, eq_cfdd, eq_bfjd"+
+			" from eq_info e left join ht_info h on e.ht_ids=h.ht_id where ht_ids=#{htIds}"
+			)
 	List<SelHtEqVo> selectEqHtVo(Integer htIds);
 	@Update(" update eq_info\n" +
 			"    set eq_mc = #{eqMc,jdbcType=VARCHAR},\n" +
@@ -110,6 +123,6 @@ public interface EqInfoMapper {
 	List<EqInfo> selectByState();
 	@Select("select * from eq_info where eq_id=#{eqId}")
 	EqInfo selectByEqId(Integer eqId);
-	@Delete("delect from eq_info where eq_id=#{eqId}")
+	@Delete("delete from eq_info where eq_id=#{eqId}")
 	Integer delete(Integer eqId);
 }

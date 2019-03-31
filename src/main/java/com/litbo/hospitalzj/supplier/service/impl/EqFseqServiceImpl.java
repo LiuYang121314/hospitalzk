@@ -24,7 +24,7 @@ public class EqFseqServiceImpl implements EqFseqService {
 	}
 
 	@Override
-	public List<EqFj> selectEqFseq(Integer eqIds) {
+	public List<EqFseq> selectEqFseq(Integer eqIds) {
 		return eqFseqMapper.selectEqFseq(eqIds);
 	}
 

@@ -38,12 +38,13 @@
     </div>
 </div>
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="update">删除</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="delete">删除</a>
 </script>
 <script>
     // 获取上个页面传递的类型
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
+    var htId = parseInt(sessionStorage['htId']);
     layui.use(['layer','jquery','table'],function(){
         var layer = layui.layer
             , $ = layui.jquery
@@ -92,35 +93,41 @@
                 {field:'eqShLxr', title:'售后联系人',align:'center'},
                 {field:'eqShLxrdh', title:'售后联系电话',align:'center'},
                 {field:'eqShLb', title:'设备类别',align:'center'},
-                {fixed: 'right', title:'操作',minWidth:"200", toolbar: '#barDemo',align:'center'}
+                {fixed: 'right', title:'操作',minWidth:100, toolbar: '#barDemo',align:'center'}
             ]]
         });
         table.on('tool(handle)', function(obj){
             var data = obj.data;
             // console.log(obj);
-            if(obj.event === 'update'){
-                $.ajax({
-                    url:"/eqfseq/delete?eqFsid="+obj.data.eqFsid,
-                    method:"POST",
-                    dataType:"JSON",
-                    success:function(res){
-                        if(ress.state === 200){
-                            layer.msg("删除成功");
-                        }else{
-                            layer.msg("删除失败");
+            if(obj.event === 'delete'){
+            	layer.confirm('确定删除此条数据么', function(index){
+                    obj.del();
+                    // layer.close(index);
+                    $.ajax({
+                        url:"/eqfseq/delete?eqFsid="+obj.data.eqFsid,
+                        success:function(res){
+                            if(res.state === 200){
+                                layer.msg("删除成功");
+                                setTimeout(function(){
+                                	location.href = "/supplier/fixing/sg_chind_fix.html?id="+ids;
+                                },1000);
+                            }else{
+                                layer.msg("删除失败");
+                            }
+                        },
+                        error:function(data){
+                            layer.msg("删除失败,请稍后再试");
+                            console.log(data);
                         }
-                    },
-                    error:function(data){
-                        layer.msg("请稍后再试");
-                    }
-                })
+                    })
+                });
             }
         });
         $("#addChildFix").click(function(){
-            location.href = "/supplier/fixing/add_child_fix.html?id="+ids;
+            location.href = "/supplier/fixing/add_sg_child.html?id="+ids;
         });
         $("#makeSure").click(function(){
-            location.href = "";
+        	location.href = "/supplier/info/sg_info.html?id="+htId;
         });
     });
 </script>
