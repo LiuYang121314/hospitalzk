@@ -105,7 +105,7 @@
                     <div class="inp layui-form-item col-md-12 col-xs-12">
                         <div class="layui-input-block">
                             <button class="layui-btn layui-btn-normal" lay-submit lay-filter="update">保存</button>
-                            <button type="reset" class="layui-btn layui-btn-primary">返回</button>
+                            <button id="back" class="layui-btn layui-btn-primary">返回</button>
                         </div>
                     </div>
                 </div>
@@ -214,6 +214,9 @@
                     });
                 }
             });
+            $("#back").click(function(){
+                history.back(-1);
+            })
         });
     </script>
 </body>

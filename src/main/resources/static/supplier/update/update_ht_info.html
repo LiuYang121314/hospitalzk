@@ -118,6 +118,7 @@
             <div class="inp layui-form-item">
                 <div class="layui-input-block">
                     <button class="layui-btn layui-btn-lg layui-btn-normal" lay-submit lay-filter="htUpdate">确认修改</button>
+                    <a id="back" class="layui-btn layui-btn-primary">返回</a>
                 </div>
             </div>
         </form>
@@ -292,6 +293,9 @@
             });
             return false;
         });
+        $("#back").click(function(){
+            history.back(-1);
+        })
     });
 </script>
 </body>
