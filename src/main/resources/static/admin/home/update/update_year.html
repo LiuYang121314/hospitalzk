@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>修改年度计划</title>
+    <link rel="stylesheet" type="text/css" href="../../../static/layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../static/css/admin.css"/>
+    <script src="../../../static/js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <!--[if IE 8]>
+    <script type="text/javascript" src="../../../static/js/jquery-1.11.3.min.js"></script>
+    <![endif]-->
+    <script src="../../../static/js/basic.js"></script>
+    <script src="../../../static/layui/layui.js"></script>
+    <style>
+        .layui-elem-field{
+            width: 100%;
+            margin-top: 20px;
+            color: red;
+        }
+        .layui-input-block{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        p{
+            width: 70%;
+            font-weight: bold;
+            margin-left: 30px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-row">
+    <div class="col-xs-12">
+        <h1 style="text-align: center;margin-top: 30px;">2019年质控工作进度计划上报</h1>
+        <form class="layui-form layui-form-pane" action="">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">检测设备基础信息</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">设备名称</label>
+                <div class="layui-input-block">
+                    <input id="eqPmName" type="text" name="eqPmName" placeholder="请输入设备名称" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">设备总数量</label>
+                <div class="layui-input-block">
+                    <input id="ndjhSbsl" type="text" name="ndjhSbsl" placeholder="设备总体数量" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-9">
+                <label class="layui-form-label">总计划量</label>
+                <div class="layui-input-block">
+                    <input id="ndjhJhl" type="text" name="ndjhJhl" placeholder="总计划检测量" autocomplete="off" class="layui-input">
+                    <p id="p1"></p>
+                </div>
+            </div>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">单台用时</label>
+                <div class="layui-input-block">
+                    <input id="ndjhDtsj" type="text" name="ndjhDtsj" placeholder="单台设备平均检测用时 / 单位:min" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">每月计划检测量录入</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">1月计划</label>
+                <div class="layui-input-block">
+                    <input id="ndjh1yfjh" type="text" name="ndjh1yfjh" placeholder="请输入2月计划检测量" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">2月计划</label>
+                <div class="layui-input-block">
+                    <input id="ndjh2yfjh" type="text" name="ndjh2yfjh" placeholder="请输入2月计划检测量" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">3月计划</label>
+                <div class="layui-input-block">
+                    <input id="ndjh3yfjh" type="text" name="ndjh3yfjh" placeholder="请输入3月计划检测量" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">4月计划</label>
+                <div class="layui-input-block">
+                    <input id="ndjh4yfjh" type="text" name="ndjh4yfjh" placeholder="请输入4月计划检测量" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">5月计划</label>
+                <div class="layui-input-block">
+                    <input id="ndjh5yfjh" type="text" name="ndjh5yfjh" placeholder="请输入5月计划检测量" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">6月计划</label>
+                <div class="layui-input-block">
+                    <input id="ndjh6yfjh" type="text" name="ndjh6yfjh" placeholder="请输入6月计划检测量" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">7月计划</label>
+                <div class="layui-input-block">
+                    <input id="ndjh7yfjh" type="text" name="ndjh7yfjh" placeholder="请输入7月计划检测量" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">8月计划</label>
+                <div class="layui-input-block">
+                    <input id="ndjh8yfjh" type="text" name="ndjh8yfjh" placeholder="请输入8月计划检测量" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">9月计划</label>
+                <div class="layui-input-block">
+                    <input id="ndjh9yfjh" type="text" name="ndjh9yfjh" placeholder="请输入9月计划检测量" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">10月计划</label>
+                <div class="layui-input-block">
+                    <input id="ndjh10yfjh" type="text" name="ndjh10yfjh" placeholder="请输入10月计划检测量" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">11月计划</label>
+                <div class="layui-input-block">
+                    <input id="ndjh11yfjh" type="text" name="ndjh11yfjh" placeholder="请输入11月计划检测量" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">12月计划</label>
+                <div class="layui-input-block">
+                    <input id="ndjh12yfjh" type="text" name="ndjh12yfjh" placeholder="请输入12月计划检测量" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">上报人信息</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">上报人</label>
+                <div class="layui-input-block">
+                    <input id="userName" type="text" disabled name="userName" placeholder="请输入上报人名称" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">上报时间</label>
+                <div class="layui-input-block">
+                    <input id="date" type="text" name="ndjhSbsj" placeholder="请输入上报时间" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-6">
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="upSubmit">立即上报</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    // 获取上个页面传递的类型
+    var type = window.location.search;
+    var ids = parseInt(type.split("=")[1]);
+    var eqPmId = sessionStorage['eqPmId'];
+    $(function(){
+        $("#planAll").blur(function(){
+            $("#p1").text("抽检率为："+($("#planAll").val()/$("#mainAll").val())*100+"%");
+        });
+        $.ajax({
+            url:"/ndjh/select?ndjhId="+ids,
+            method:"GET",
+            dataType:"JSON",
+            success:function(res){
+                console.log(res);
+                $("#eqPmName").val(res.data.eqPmName);
+                $("#ndjhSbsl").val(res.data.ndjhSbsl);
+                $("#ndjhJhl").val(res.data.ndjhJhl);
+                $("#ndjhDtsj").val(res.data.ndjhDtsj);
+                $("#ndjh1yfjh").val(res.data.ndjh1yfjh);
+                $("#ndjh2yfjh").val(res.data.ndjh2yfjh);
+                $("#ndjh3yfjh").val(res.data.ndjh3yfjh);
+                $("#ndjh4yfjh").val(res.data.ndjh4yfjh);
+                $("#ndjh5yfjh").val(res.data.ndjh5yfjh);
+                $("#ndjh6yfjh").val(res.data.ndjh6yfjh);
+                $("#ndjh7yfjh").val(res.data.ndjh7yfjh);
+                $("#ndjh8yfjh").val(res.data.ndjh8yfjh);
+                $("#ndjh9yfjh").val(res.data.ndjh9yfjh);
+                $("#ndjh10yfjh").val(res.data.ndjh10yfjh);
+                $("#ndjh11yfjh").val(res.data.ndjh11yfjh);
+                $("#ndjh12yfjh").val(res.data.ndjh10yfjh);
+                $("#userName").val(res.data.userName);
+                $("#date").val(res.data.ndjhSbsj);
+            }
+        });
+    });
+    //Demo
+    layui.use(['layer','jquery','form','laydate'], function(){
+        var layer = layui.layer
+            ,   form = layui.form
+            ,   laydate = layui.laydate
+            ,   $ = layui.jquery;
+        laydate.render({
+            elem:"#date"
+        });
+        form.on("submit(upSubmit)",function(data){
+            console.log(data.field);
+            $.ajax({
+                url:""+ids,
+                method:"POST",
+                data:data.field,
+                dataType:"JSON",
+                success:function(res){
+                    console.log(res.state);
+                    if(res.state === 200){
+                        setTimeout(function(){
+                            location.href="/admin/home/check_up.html"
+                        },1000);
+                        layer.msg("修改成功");
+                    }else{
+                        layer.msg("修改失败");
+                    }
+                },
+                error:function(data){
+                    layer.msg("请稍后再试");
+                    console.log(data);
+                }
+            });
+            return false;
+        })
+    });
+</script>
+</body>
+
+</html>

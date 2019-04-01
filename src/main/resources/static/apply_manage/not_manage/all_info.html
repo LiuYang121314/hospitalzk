@@ -123,15 +123,9 @@
           <div class="layui-form-item col-md-5">
             <label class="layui-form-label">预约验收时间</label>
             <div class="layui-input-block">
-              <input type="text" id="date1" name="date" required  lay-verify="required" placeholder="预约验收时间" autocomplete="off" class="layui-input">
+              <input type="text" id="date" name="date" required  lay-verify="required" placeholder="预约验收时间" autocomplete="off" class="layui-input">
             </div>
           </div>
-        <div class="layui-form-item col-md-5">
-            <label class="layui-form-label">验收时间</label>
-            <div class="layui-input-block">
-                <input type="text" id="date2" name="date" required  lay-verify="required" placeholder="验收时间" autocomplete="off" class="layui-input">
-            </div>
-        </div>
           <div class="layui-form-item layui-form-text col-md-8">
             <label class="layui-form-label">验收要求</label>
             <div class="layui-input-block">
@@ -160,7 +154,6 @@
   // 获取上个页面传递的类型
   var type = window.location.search;
   var ids = parseInt(type.split("=")[1]);
-  alert(ids)
   //Demo
   layui.use(['table','layer','jquery','form','laydate'],function(){
     var table = layui.table
@@ -199,11 +192,10 @@
           })
       });
     laydate.render({
-      elem:"#date1"
+      elem:"#date",
+      type:"datetime",
+      range: true
     });
-      laydate.render({
-          elem:"#date2"
-      });
     // 设备信息
     table.render({
       elem:"#fixingInfo",
