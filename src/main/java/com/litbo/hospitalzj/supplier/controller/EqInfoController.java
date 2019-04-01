@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.litbo.hospitalzj.controller.BaseController;
@@ -67,5 +68,22 @@ public class EqInfoController extends BaseController{
 	public ResponseResult<EqInfo> selectByEqId(Integer eqId) {
 		EqInfo data=eqinfoService.selectByEqId(eqId);
 		return new ResponseResult<EqInfo>(SUCCESS,data);
+	}
+	@RequestMapping("/newEqInfo")
+	public ResponseResult<List<EqInfo>> newEqinfo() {
+		List<EqInfo> data=eqinfoService.newEqinfo();
+		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
+	}
+
+	@RequestMapping("/updateEqQk")
+	public ResponseResult<Void> updateEqQk(@RequestParam("eqId")Integer eqId,@RequestParam("eqQk")String eqQk) {
+		eqinfoService.updateEqQk(eqId,eqQk);
+		return new ResponseResult<Void>(SUCCESS);
+	}
+
+	@RequestMapping("/findByEqQk")
+	public ResponseResult<List<EqInfo>> findByEqQk(@RequestParam("eqQk")String eqQk) {
+		List<EqInfo> data=eqinfoService.findByEqQk(eqQk);
+		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
 	}
 }

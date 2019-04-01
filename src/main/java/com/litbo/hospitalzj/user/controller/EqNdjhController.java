@@ -22,7 +22,7 @@ import java.util.List;
 public class EqNdjhController extends BaseController {
     @Autowired
     private EqNdjhService eqNdjhService;
-    
+
     @RequestMapping("/{jcjhId}")
     public ResponseResult<EqNdjh> getByCode(@PathVariable("jcjhId")Integer jcjhId) {
         EqNdjh data=eqNdjhService.select(jcjhId);

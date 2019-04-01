@@ -17,9 +17,34 @@
         }
         .btn{
             margin-top: 30px;
+            margin-bottom: 30px;
             text-align: center;
         }
         td{
+            text-align: center;
+        }
+        #codeBody{
+            width: 300px;
+            height: 300px;
+            border: 1px solid #fff;
+            background-color: #000000;
+            color: white;
+            display: none;
+        }
+        #codeBody h1{
+            text-align: center;
+            margin-top: 30px;
+        }
+        #codeBody p{
+            margin: 0 auto;
+            width: 80%;
+            font-size: 18px;
+        }
+        #code{
+            display: block;
+            margin-top: 30px;
+            font-size: 44px;
+            color: red;
             text-align: center;
         }
     </style>
@@ -35,7 +60,7 @@
             <thead>
             <tr>
                 <th style="width: 50%;text-align: center;">字段名称</th>
-                <th style="width: 50%;text-align: center;">所填数据</th>
+                <th style="width: 50%;text-align: center;">数据</th>
             </tr>
             </thead>
             <tbody>
@@ -94,14 +119,100 @@
             </tbody>
         </table>
         <div class="col-xs-12 btn">
-            <a id="updateHtInfo" class="layui-btn layui-btn-normal">修改合同信息</a>
+            <a id="updateHtInfo" class="layui-btn">修改合同信息</a>
         </div>
         <fieldset class="layui-elem-field layui-field-title">
             <legend>所属设备信息</legend>
         </fieldset>
         <table class="layui-table" id="sbInfo" lay-filter="sb"></table>
         <div class="col-xs-12 btn">
-            <a id="addFixInfo" class="layui-btn layui-btn-normal">添加设备信息</a>
+            <a id="addFixInfo" class="layui-btn">添加设备信息</a>
+        </div>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>合同号附件上传</legend>
+        </fieldset>
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th style="width: 50%;">文件类型</th>
+                <th style="width: 50%;">上传</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>合同文件</td>
+                <td>
+                    <div class="layui-upload">
+                        <button type="button" name="file" class="layui-btn" id="htwj">上传文件</button>
+                        <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                            预览图：
+                            <div class="layui-upload-list" id="htwjImg"></div>
+                        </blockquote>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>中标通知书</td>
+                <td>
+                    <div class="layui-upload">
+                        <button type="button" name="file" class="layui-btn" id="zbtz">上传文件</button>
+                        <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                            预览图：
+                            <div class="layui-upload-list" id="zbtzImg"></div>
+                        </blockquote>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>医疗器械注册登记证</td>
+                <td>
+                    <div class="layui-upload">
+                        <button type="button" name="file" class="layui-btn" id="ylqx">上传文件</button>
+                        <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                            预览图：
+                            <div class="layui-upload-list" id="ylqxImg"></div>
+                        </blockquote>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>厂家授权证明书</td>
+                <td>
+                    <div class="layui-upload">
+                        <button type="button" name="file" class="layui-btn" id="cjsq">上传文件</button>
+                        <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                            预览图：
+                            <div class="layui-upload-list" id="cjsqImg"></div>
+                        </blockquote>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>海关进口货物报关单</td>
+                <td>
+                    <div class="layui-upload">
+                        <button type="button" name="file" class="layui-btn" id="hgjk">上传文件</button>
+                        <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                            预览图：
+                            <div class="layui-upload-list" id="hgjkImg"></div>
+                        </blockquote>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="col-xs-12 btn">
+            <a id="uploadInfo" class="layui-btn layui-btn-normal">提交</a>
+        </div>
+        <div id="codeBody">
+            <h1>验证码信息</h1>
+            <p>
+                恭喜您提交验收信息成功，系统生成的验证码为:
+                <br>
+                <span id="code"></span>
+                <br>
+                请妥善保存验证码，以方便您查看本次合同验收进度。
+            </p>
         </div>
     </div>
 </div>
@@ -111,7 +222,6 @@
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="addChildFix">添加附属设备</a>
     <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="addFile">添加设备附件</a>
-    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="update">修改</a>
     <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="delete">删除</a>
 </script>
 <script>
@@ -119,12 +229,29 @@
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
     sessionStorage["htId"] = ids;
+    // 随机四位验证码
+    var code;
+    function createCode(){
+        code = "";
+        var codeLength = 4;
+        var codeV = document.getElementById("code");
+        var random = new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+        for(var i=0;i<codeLength;i++){
+            var index = Math.floor(Math.random()*36);
+            code += random[index];
+        }
+        codeV.innerHTML = code;
+    }
     //Demo
-    layui.use(['layer','jquery','table'], function(){
+    layui.use(['layer','jquery','table','upload','form'], function(){
         var layer = layui.layer
             ,   $ = layui.jquery
-            ,   table = layui.table;
+            ,   table = layui.table
+            ,   upload = layui.upload
+            ,   form = layui.form;
         $(function(){
+            // 调用随机验证码
+            createCode();
             $.ajax({
                 url:"/htInfo/selectOne?htId="+ids,
                 method:"GET",
@@ -198,7 +325,7 @@
                 {field:'eqShLxr', title:'售后联系人',align:'center'},
                 {field:'eqShLxrdh', title:'售后联系电话',align:'center'},
                 {field:'eqShLb', title:'设备类别',align:'center'},
-                {fixed: 'right', title:'操作',minWidth:310, toolbar: '#barDemo',align:'center'}
+                {fixed: 'right', title:'操作',minWidth:230, toolbar: '#barDemo',align:'center'}
             ]]
         });
         //监听行工具事件
@@ -241,6 +368,153 @@
         $("#updateHtInfo").click(function(){
             location.href = "/supplier/update/update_ht_info.html?id="+ids;
         });
+        // 合同文件上传
+        upload.render({
+            elem: '#htwj'
+            ,url: '/wjsc/insertHtwj?sourceId='+ids+'&type='+1
+            ,multiple: true
+            ,accept:"file"
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+                    $('#htwjImg').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+                });
+            }
+            ,done:function(res){
+                if(res.state === 200){
+                    layer.msg("上传成功");
+                }else{
+                    layer.msg(res.message);
+                }
+            },
+            error:function(data){
+                layer.msg("上传失败,请稍后再试");
+                console.log(data);
+            }
+        });
+        // 中标通知书上传
+        upload.render({
+            elem: '#zbtz'
+            ,url: '/wjsc/insertHtwj?sourceId='+ids+'&type='+2
+            ,multiple: true
+            ,accept:"file"
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+                    $('#zbtzImg').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+                });
+            }
+            ,done:function(res){
+                if(res.state === 200){
+                    layer.msg("上传成功");
+                }else{
+                    layer.msg(res.message);
+                }
+            },
+            error:function(data){
+                layer.msg("上传失败,请稍后再试");
+                console.log(data);
+            }
+        });
+        // 医疗器械注册登记证上传
+        upload.render({
+            elem: '#ylqx'
+            , url: '/wjsc/insertHtwj?sourceId='+ids+'&type='+3
+            , multiple: true
+            , accept: "file"
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#ylqxImg').append('<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
+                });
+            }
+            , done: function (res) {
+                if (res.state === 200) {
+                    layer.msg("上传成功");
+                }else{
+                    layer.msg(res.message);
+                }
+            }
+            , error: function (data) {
+                layer.msg("上传失败,请稍后再试");
+                console.log(data);
+            }
+        });
+        // 厂家授权证明书上传
+        upload.render({
+            elem: '#cjsq'
+            , url:' /wjsc/insertHtwj?sourceId='+ids+'&type='+4
+            , multiple: true
+            , accept: "file"
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
+                    $('#cjsqImg').append('<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
+                });
+            }
+            ,done:function(res){
+                if(res.state === 200){
+                    layer.msg("上传成功");
+                }else{
+                    layer.msg(res.message);
+                }
+            }
+            ,error:function(data){
+                layer.msg("上传失败,请稍后再试");
+                console.log(data);
+            }
+        });
+        // 海关进口货物报关单上传
+        upload.render({
+            elem: '#hgjk'
+            , url: '/wjsc/insertHtwj?sourceId='+ids+'&type='+5
+            , multiple: true
+            , accept: "file"
+            , before: function (obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result){
+                    $('#hgjkImg').append('<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
+                });
+            }
+            ,done:function(res){
+                if(res.state === 200){
+                    layer.msg("上传成功");
+                }else{
+                    layer.msg(res.message);
+                }
+            }
+            ,error:function(data){
+                layer.msg("上传失败,请稍后再试");
+                console.log(data);
+            }
+        });
+        $("#uploadInfo").click(function(){
+            layer.msg("111");
+            layer.open({
+                type:1,
+                title:"验证码信息",
+                content:$("#codeBody"),
+                area:["300px","400px"],
+                maxmin:true,
+                btn:["确认"],
+                yes:function(){
+                    $.ajax({
+                        url:"/htInfo/updateYzm?htId="+ids,
+                        method:"POST",
+                        data:{"htYzm":code},
+                        dataType:"JSON",
+                        success:function(res){
+                            location.href = "/supplier/home/schedule.html";
+                        },
+                        error:function(data){
+                            layer.msg("服务器错误");
+                            console.log(data);
+                        }
+                    });
+                    layer.closeAll();
+                }
+            });
+        })
     });
 </script>
 </body>

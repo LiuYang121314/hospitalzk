@@ -145,34 +145,29 @@
                                 if(res.state === 200){
                                     layer.msg("上传成功");
                                     form.on('submit(register)', function(data){
-                                        // console.log(data.field.sbcsPwd.length);
-                                        if(data.field.sbcsPwd.length < 6){
-                                            layer.msg("密码不能少于6位!");
-                                        }else if(data.field.sbcsPwd !== data.field.resbcsPwd){
-                                            layer.msg("两次密码不一致,请确认!")
-                                        }else{
-                                            $.ajax({
-                                                url:"/supplier/gongReg",
-                                                method:"POST",
-                                                data:data.field,
-                                                dataType:"JSON",
-                                                success:function(res){
-                                                    console.log(res.state)
-                                                    if(res.state === 200){
-                                                        setTimeout(function(){
-                                                            location.href = "/userlogin.html";
-                                                        }, 1000);
-                                                        layer.msg("恭喜您注册成功，正为您跳转登录");
-                                                    }else if(res.state === 603){
-                                                        layer.msg("该代理商名称已存在");
-                                                    }
-                                                },
-                                                error:function(res){
-                                                    console.log(data);
-                                                    layer.msg("注册失败，请稍后再试");
-                                                }
-                                            })
-                                        }
+                                        console.log(data.field);
+                                        $.ajax({
+                                           url:"/supplier/gongReg",
+                                            method:"POST",
+                                            data:data.field,
+                                            dataType:"JSON",
+                                            success:function(res){
+                                               if(res.state === 200){
+                                                   setTimeout(function(){
+                                                           location.href = "/userlogin.html";
+                                                   }, 1000);
+                                                   layer.msg("恭喜您注册成功，正为您跳转登录");
+                                               }else if(res.state === 603){
+                                                   layer.msg("该代理商名称已存在");
+                                               }else{
+                                                   layer.msg("注册失败");
+                                               }
+                                            },
+                                            error:function(data){
+                                               layer.msg("请稍后再试");
+                                               console.log(data);
+                                            }
+                                        });
                                         return false;
                                     });
                                 }else{

@@ -3,6 +3,8 @@ package com.litbo.hospitalzj.supplier.service.impl;
 import java.util.List;
 
 import com.litbo.hospitalzj.hospital.enums.EnumProcess;
+import com.litbo.hospitalzj.supplier.entity.EqInfo;
+import com.litbo.hospitalzj.supplier.mapper.EqInfoMapper;
 import com.litbo.hospitalzj.supplier.service.exception.InsertException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,8 @@ public class HtInfoServiceImpl implements HtInfoService {
 	public HtInfoMapper htInfoMapper;
     @Autowired
     public EqHtFjVoMapper eqhtfjMapper;
+	@Autowired
+	public EqInfoMapper eqInfoMapper;
 	@Override
 	public Integer InsertHtInfo(HtInfo htInfo) {
 		htInfoMapper.insertHt(htInfo);
@@ -115,5 +119,19 @@ public class HtInfoServiceImpl implements HtInfoService {
 	public List<HtInfo> selectAllHtByhtState(String htState) {
 		List<HtInfo> data=htInfoMapper.findAll(htState);
 		return data;
+	}
+
+	@Override
+	public void HtJC(Integer htId) {
+		List<EqInfo> data=eqInfoMapper.selectEqinfo(htId);
+		for(EqInfo eqInfo:data){
+			String eqScbh=eqInfo.getEqScbh();
+			String[] eqScbhOne=eqScbh.split(",");
+			for(int j=0;j<eqScbhOne.length;j++){
+				eqInfo.setEqState(0);
+				eqInfo.setEqScbh(eqScbhOne[j]);
+				eqInfoMapper.insertEqInfo(eqInfo);
+			}
+		}
 	}
 }

@@ -42,24 +42,6 @@ public class UserEqController extends BaseController{
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	
-	/*//测试通过
-	//为用户添加审核设备
-	@RequestMapping("/insertBatchByShEqid")
-	public ResponseResult<Void> insertBatchByShEqid(String userId,String[] shEqid){
-		userEqService.insertBatchByShEqid(userId,shEqid);
-		return new ResponseResult<Void>(SUCCESS);
-	}*/
-	
-	/*//测试通过
-	//为用户删除审核设备
-	@RequestMapping("/deleteBatchByShEqid")
-	public ResponseResult<Void> deleteBatchByShEqid(String userId,String[] shEqid){
-		
-		userEqService.deleteBatchByShEqid(userId,shEqid);
-		
-		return new ResponseResult<Void>(SUCCESS);
-	}*/
-	
 	//测试通过
 	//为用户删除检测设备
 	@RequestMapping("/deleteBatchByJcEqid/{userId}/{jcEqid}")
@@ -89,13 +71,6 @@ public class UserEqController extends BaseController{
 		List<EqInfo> yqList=eqInfoService.findEqInfo(userId);
 		return new ResponseResult<List<EqInfo>>(SUCCESS,yqList);
 	}
-	/*//测试通过
-	//查询用户分配的审核设备
-	@RequestMapping("/findShEqByUserId")
-	public ResponseResult<List<EqInfo>> findShEqByUserId(String userId){
-		List<EqInfo> yqList=eqInfoService.findShEqByUserId(userId);
-		return new ResponseResult<List<EqInfo>>(SUCCESS,yqList);
-	}*/
 
 	//用户检测设备完毕、设置状态为2:待审核
 	@RequestMapping("/setEqState2/{userId}/{eqId}")
@@ -212,13 +187,6 @@ public class UserEqController extends BaseController{
 		return new ResponseResult<List<UserEqVo>>(SUCCESS,eqList);
 	}
 
-	/*//待上报/审核上报不通过
-	@RequestMapping("/findJcShdsbAndNot")
-	public ResponseResult<List<UserEqVo>> findJcShdsbAndNot(HttpSession session){
-		String userId=getUserIdFromSession(session);
-		List<UserEqVo> eqList=userEqService.findUserEq(userId, EnumProcess2.TO_AUDIT.getMessage(),EnumProcess2.SHANG_AUTID_NOT.getMessage());
-		return new ResponseResult<List<UserEqVo>>(SUCCESS,eqList);
-	}*/
 	//检测审核不通过
 	@RequestMapping("/findShEqsByUserIdAndStateNot")
 	public ResponseResult<List<EqInfo>> findShEqsByUserIdAndState(HttpSession session){
@@ -240,4 +208,5 @@ public class UserEqController extends BaseController{
 		Integer eqList=userEqService.findByUserIdState(userId, EnumProcess2.DETECTION_OF_AUDIT_NOT.getMessage());
 		return new ResponseResult<Integer>(SUCCESS,eqList);
 	}
+
 }

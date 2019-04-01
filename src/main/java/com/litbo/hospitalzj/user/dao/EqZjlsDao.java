@@ -31,4 +31,7 @@ public interface EqZjlsDao {
 
     @Select("select DATE_FORMAT(test_time,'%c')months,count(*)count  from eq_zjls where tester=#{tester} group by months")
     List<MonCount> count(String tester);
+    @Select("  select * from eq_zjls where eq_id = #{eqId}")
+    List<EqZjls> selectEq(Integer eqId);
+
 }

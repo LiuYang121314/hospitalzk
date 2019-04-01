@@ -11,4 +11,5 @@ public interface EqZjlsService {
     List<EqZjls> selectAll();
     EqZjls select(Integer dzId);
     List<MonCount> count(String tester);
+    List<EqZjls> selectEq(Integer eqId);
 }

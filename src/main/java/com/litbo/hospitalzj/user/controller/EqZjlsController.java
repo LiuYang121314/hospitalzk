@@ -5,6 +5,7 @@ import com.litbo.hospitalzj.user.bean.EqZjls;
 import com.litbo.hospitalzj.user.bean.MonCount;
 import com.litbo.hospitalzj.user.service.EqZjlsService;
 import com.litbo.hospitalzj.util.ResponseResult;
+import com.litbo.hospitalzj.zk.domian.EqInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,5 +46,11 @@ public class EqZjlsController extends BaseController {
     public ResponseResult<List<MonCount>> count(String tester) {
     	List<MonCount> data=eqZjlsService.count(tester);
         return new ResponseResult<List<MonCount>>(SUCCESS,data);
+    }
+
+    @RequestMapping("/selectEq")
+    public ResponseResult<List<EqZjls>> selectEq(Integer eqId) {
+        List<EqZjls> data=eqZjlsService.selectEq(eqId);
+        return new ResponseResult<List<EqZjls>>(SUCCESS,data);
     }
 }

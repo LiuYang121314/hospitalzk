@@ -69,6 +69,17 @@ public class EqInfo {
 
     private String eqBfjd;
 
+    private String eqQk;
+
+    public String getEqQk() {
+        return eqQk;
+    }
+
+    public void setEqQk(String eqQk) {
+        this.eqQk = eqQk;
+    }
+
+
     public Integer getEqId() {
         return eqId;
     }

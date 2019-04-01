@@ -41,7 +41,7 @@ public interface EqInfoMapper {
 			"      eq_sh_jldh, eq_sh_lxr, eq_sh_lxrdh, \n" +
 			"      eq_state, eq_yzm, ht_ids, \n" +
 			"      eq_sh_lb, eq_syks, eq_jx, \n" +
-			"      eq_qyrq, eq_cfdd, eq_bfjd\n" +
+			"      eq_qyrq, eq_cfdd, eq_bfjd,eq_qk\n" +
 			"      )\n" +
 			"    values (#{eqId,jdbcType=INTEGER}, #{eqMc,jdbcType=VARCHAR}, #{eqDah,jdbcType=VARCHAR}, \n" +
 			"      #{eqPmId,jdbcType=VARCHAR}, #{eqXh,jdbcType=VARCHAR}, #{eqJldwId,jdbcType=VARCHAR}, \n" +
@@ -54,7 +54,7 @@ public interface EqInfoMapper {
 			"      #{eqState,jdbcType=INTEGER}, #{eqYzm,jdbcType=VARCHAR}, #{htIds,jdbcType=INTEGER}, \n" +
 			"      #{eqShLb,jdbcType=VARCHAR}, #{eqSyks,jdbcType=VARCHAR}, #{eqJx,jdbcType=VARCHAR}, \n" +
 			"      #{eqQyrq,jdbcType=VARCHAR}, #{eqCfdd,jdbcType=VARCHAR}, #{eqBfjd,jdbcType=VARCHAR}\n" +
-			"      )")
+			"      #{eqQk})")
 	@Options(useGeneratedKeys = true, keyProperty = "eqId", keyColumn = "eq_id")
 	Integer insertEqInfo(EqInfo eqInfo);
 	
@@ -113,6 +113,7 @@ public interface EqInfoMapper {
 			"      eq_qyrq = #{eqQyrq,jdbcType=VARCHAR},\n" +
 			"      eq_cfdd = #{eqCfdd,jdbcType=VARCHAR},\n" +
 			"      eq_bfjd = #{eqBfjd,jdbcType=VARCHAR}\n" +
+			"	   eq_qk=#{eqQk}"+
 			"    where eq_id = #{eqId,jdbcType=INTEGER}")
 	Integer updateInfo(EqInfo eqinfo);
 
@@ -125,4 +126,10 @@ public interface EqInfoMapper {
 	EqInfo selectByEqId(Integer eqId);
 	@Delete("delete from eq_info where eq_id=#{eqId}")
 	Integer delete(Integer eqId);
+	@Select("select * from eq_info where eq_dah='' and eq_state=0")
+	List<EqInfo> newEqInfo();
+	@Update("update eq_info set eq_qk = #{eqQk} where eq_id=#{eqId}")
+	Integer updateEqQk(@Param("eqId") Integer eqId, @Param("eqQk")String eqQk);
+	@Select("select * from eq_info where eq_qk=#{eqQk}")
+	List<EqInfo> findByEqQk(String eqQk);
 }

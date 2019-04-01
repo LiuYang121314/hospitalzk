@@ -53,4 +53,22 @@ public class ExpireTask {
             yqTslsMapper.delete(calendar.getTime());
         }
     }
+    //每个月15号8,10,16推送
+    @Scheduled(cron = "0 0 8,10,16 10,15,20,25 1/1 ? ")
+    public void renWuTixing() {
+        jianceTx();
+    }
+    private void jianceTx(){
+        List<Yq> data=yqService.selectTime();
+        YqTsls yqTsls=new YqTsls();
+        for(Yq yq:data){
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(yq.getJcyqJzTime());
+            calendar.add(Calendar.MONTH, 12);
+            yqTsls.setYqExpireDate(calendar.getTime());
+            yqTsls.setYqName(yq.getJcyqName());
+            yqTsls.setPushMsg("您本月目前设备已检测台数：" + "未检测台数:" +"台数"+"，"+"本月检测完成率为:" +"，请您合理安排检测时间");
+            yqTslsMapper.insert(yqTsls);
+        }
+    }
 }

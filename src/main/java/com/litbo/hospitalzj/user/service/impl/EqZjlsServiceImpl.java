@@ -42,4 +42,9 @@ public class EqZjlsServiceImpl implements EqZjlsService {
     public List<MonCount> count(String tester){
         return eqZjlsDao.count(tester);
     }
+
+    @Override
+    public  List<EqZjls> selectEq(Integer eqId) {
+        return eqZjlsDao.selectEq(eqId);
+    }
 }

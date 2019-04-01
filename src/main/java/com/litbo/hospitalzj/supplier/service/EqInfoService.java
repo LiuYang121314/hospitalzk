@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.litbo.hospitalzj.supplier.entity.EqInfo;
 import com.litbo.hospitalzj.supplier.vo.SelHtEqVo;
+import org.apache.ibatis.annotations.Param;
 
 public interface EqInfoService {
 	Integer InsertEqInfo(EqInfo eqInfo);
@@ -21,4 +22,11 @@ public interface EqInfoService {
 	void delete(Integer eqId);
 
 	EqInfo selectByEqId(Integer eqId);
+
+	List<EqInfo> newEqinfo();
+
+	void updateEqQk(@Param("eqId") Integer eqId, @Param("eqQk")String eqQk);
+
+	List<EqInfo> findByEqQk(String eqQk);
+
 }
