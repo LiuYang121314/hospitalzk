@@ -24,6 +24,7 @@
     </div>
 </div>
 <script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="update">修改</a>
     <a class="layui-btn layui-btn-xs" lay-event="yes">同意</a>
     <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="no">不同意</a>
 </script>
@@ -144,7 +145,9 @@
         table.on('tool(handle)', function(obj){
             var data = obj.data;
             //console.log(obj)
-            if(obj.event === 'yes'){
+            if(obj.event === 'update'){
+                location.href = "/admin/home/update/update_year.html?id="+obj.data.ndjhId;
+            }else if(obj.event === 'yes'){
                 $.ajax({
                     url:"/ndjh/updateStateIs?ndjhId="+obj.data.ndjhId,
                     method:"POST",
