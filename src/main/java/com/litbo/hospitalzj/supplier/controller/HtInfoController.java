@@ -67,10 +67,10 @@ public class HtInfoController extends BaseController {
         return new ResponseResult<Void>(SUCCESS);
     }
     //修改合同状态为已发货
-    @RequestMapping("/yfh")
+    @RequestMapping("/tyys")
     public ResponseResult<Void> updataState(Integer htId) {
-        htinfoService.updateHtInfoState(htId, EnumProcess.YI_FA_HUO.getMessage());
-        htLcService.InsertHtLc(htId, EnumProcess.YI_FA_HUO.getMessage(), new Date());
+        htinfoService.updateHtInfoState(htId, EnumProcess.TONG_YI_YANSHOU.getMessage());
+        htLcService.InsertHtLc(htId, EnumProcess.TONG_YI_YANSHOU.getMessage(), new Date());
         return new ResponseResult<Void>(SUCCESS);
     }
     //完善资料

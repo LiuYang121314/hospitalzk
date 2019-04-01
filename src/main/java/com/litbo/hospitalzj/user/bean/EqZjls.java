@@ -12,10 +12,21 @@ public class EqZjls {
 
     private Integer eqId;
 
+
+    private String eqMc;
+
     private String tester;
 
     private String auditor;
 
+
+    public String getEqMc() {
+        return eqMc;
+    }
+
+    public void setEqMc(String eqMc) {
+        this.eqMc = eqMc;
+    }
     public Integer getDzId() {
         return dzId;
     }

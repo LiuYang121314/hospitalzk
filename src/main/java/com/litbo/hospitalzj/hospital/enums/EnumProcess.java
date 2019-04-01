@@ -10,7 +10,7 @@ public enum EnumProcess{
     ACCEPT_OVER(6,"验收完成"),
     CONTRACT_ENTRY( 7, "合同录入"),
     REVISE_A_CONTRACT(8, "合同修改"),
-    YI_FA_HUO(9,"已发货")
+    TONG_YI_YANSHOU(9,"同意验收")
             ;
 
     public Integer getCode() {

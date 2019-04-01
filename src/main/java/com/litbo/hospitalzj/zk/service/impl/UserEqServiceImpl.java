@@ -1,8 +1,15 @@
 package com.litbo.hospitalzj.zk.service.impl;
 
 import com.litbo.hospitalzj.sf.entity.User;
+import com.litbo.hospitalzj.sf.entity.UserRole;
+import com.litbo.hospitalzj.sf.mapper.UserMapper;
+import com.litbo.hospitalzj.sf.vo.UserRoleVo;
+import com.litbo.hospitalzj.supplier.entity.EqInfo;
+import com.litbo.hospitalzj.supplier.mapper.EqInfoMapper;
 import com.litbo.hospitalzj.supplier.service.exception.InsertException;
 import com.litbo.hospitalzj.supplier.service.exception.ServiceException;
+import com.litbo.hospitalzj.user.bean.EqZjls;
+import com.litbo.hospitalzj.user.dao.EqZjlsDao;
 import com.litbo.hospitalzj.zk.Enum.EnumProcess2;
 
 import com.litbo.hospitalzj.zk.mapper.YqEqMapper;
@@ -28,6 +35,12 @@ public class UserEqServiceImpl implements UserEqService{
 	UserEqMapper userEqMapper;
 	@Autowired
 	YqEqMapper yqEqMapper;
+	@Autowired
+	private EqZjlsDao eqZjlsDao;
+	@Autowired
+	public EqInfoMapper eqInfoMapper;
+	@Autowired
+	private UserMapper userMapper;
 
 	@Override
 	public void insertBatchByShEqid(String userId, String[] shEqid) {
@@ -83,7 +96,6 @@ public class UserEqServiceImpl implements UserEqService{
 
 	@Override
 	public void setEqState34(String State,String userId, String eqId) {
-		// TODO Auto-generated method stub
 		if(State.equals("1")){
 			userEqMapper.setEqState4(userId,eqId);
 		}else{
@@ -116,14 +128,31 @@ public class UserEqServiceImpl implements UserEqService{
 		return userEqMapper.findUserEq(userId,state,shState);
 	}
 	@Override
-	public void setEqStateNotIs(String jceqId,String userId) {
+	public void setEqStateNotIs(String jceqId,String userId,String shrId) {
+		EqInfo eqInfo= eqInfoMapper.selectByEqId(Integer.valueOf(jceqId));
+		UserRoleVo user=userMapper.select(jceqId);
+		UserRoleVo shr=userMapper.select(shrId);
 		if(yqEqMapper.selectStateNot(jceqId,0)>0){
 			throw new ServiceException("此设备，您还有数据没有验收！！！");
 		}
 		if(yqEqMapper.selectStateNot(jceqId,2)>0){
 			userEqMapper.setEqStateNotIs(jceqId,userId,EnumProcess2.DETECTION_OF_AUDIT_NOT.getMessage());
+			EqZjls data =new EqZjls();
+			data.setEqId(Integer.valueOf(jceqId));
+			data.setTestTime(new Date());
+			data.setEqMc(eqInfo.getEqMc());
+			data.setTester(user.getUserName());
+			data.setAuditor(shr.getUserName());
+			eqZjlsDao.insert(data);
 		}else{
 			userEqMapper.setEqStateNotIs(jceqId,userId,EnumProcess2.DETECTION_OF_AUDIT_IS.getMessage());
+			EqZjls data =new EqZjls();
+			data.setEqId(Integer.valueOf(jceqId));
+			data.setTestTime(new Date());
+			data.setEqMc(eqInfo.getEqMc());
+			data.setTester(user.getUserName());
+			data.setAuditor(shr.getUserName());
+			eqZjlsDao.insert(data);
 		}
 	}
 

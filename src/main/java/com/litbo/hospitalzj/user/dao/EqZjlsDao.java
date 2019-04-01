@@ -19,9 +19,9 @@ public interface EqZjlsDao {
             "    where dz_id = #{dzId,jdbcType=INTEGER}")
     int delete(Integer dzId);
     @Insert("insert into eq_zjls (dz_id, test_time, eq_id, \n" +
-            "      tester, auditor)\n" +
+            "      eq_mc,tester, auditor)\n" +
             "    values (#{dzId,jdbcType=INTEGER}, #{testTime,jdbcType=TIMESTAMP}, #{eqId,jdbcType=INTEGER}, \n" +
-            "      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR})")
+            "      #{eqMc},#{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR})")
     int insert(EqZjls eqZjls);
     @Select("select * from eq_zjls")
     List<EqZjls> selectAll();

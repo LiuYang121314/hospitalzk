@@ -27,7 +27,7 @@ public interface UserEqService {
 
 	void setEqState6(String userId, String eqId);
 
-	void setEqStateNotIs(@Param("jceqId")String jceqId,@Param("userId")String userId);
+	void setEqStateNotIs(@Param("jceqId")String jceqId,@Param("userId")String userId,@Param("shrId")String shrId);
 
 	void setEqTypeNotIs(@Param("jceqId")String jceqId,@Param("userId")String userId);
 
