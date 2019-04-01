@@ -46,7 +46,7 @@
       </fieldset>
       <table class="layui-table" id="checkInfo"></table>
       <div class="col-xs-12 btn">
-          <button id="sureSend" class="layui-btn layui-btn-normal">确认发货</button>
+          <button id="sureSend" class="layui-btn layui-btn-normal">开始验收</button>
       </div>
     </div>
   </div>
@@ -232,9 +232,9 @@
             dataType:"JSON",
             success:function(res){
                 if(res.state === 200){
-                    layer.msg("确认发货成功");
+                    layer.msg("开始验收成功");
                 }else{
-                    layer.msg("确认发货失败");
+                    layer.msg("开始验收失败");
                 }
             },
             error:function(data){
