@@ -120,8 +120,9 @@ public class UserEqController extends BaseController{
 	}
 	//同意不同意
 	@RequestMapping("/setEqStateNotIs")
-	public ResponseResult<Void> setEqStateNotIs(@RequestParam("jceqId")String jceqId,@RequestParam("userId")String userId){
-		userEqService.setEqStateNotIs(jceqId,userId);
+	public ResponseResult<Void> setEqStateNotIs(@RequestParam("jceqId")String jceqId,@RequestParam("userId")String userId,HttpSession session){
+		String shrId=getUserIdFromSession(session);
+		userEqService.setEqStateNotIs(jceqId,userId,shrId);
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	@RequestMapping("/setYqStateNotIs")
