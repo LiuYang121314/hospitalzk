@@ -28,7 +28,7 @@ public class HtInfo {
 	private String htSbyt;
 	private String htJfly;
 	private String htZje;
-	private String htFile2;
+	private String htYsyDh;
 	private String htFile3;
 	private String htFile4;
 	private String htFile5;
@@ -204,12 +204,14 @@ public class HtInfo {
 		this.htZje = htZje;
 	}
 
-	public String getHtFile2() {
-		return htFile2;
+	public String getHtYsyDh() {
+		return htYsyDh;
 	}
-	public void setHtFile2(String htFile2) {
-		this.htFile2 = htFile2;
+
+	public void setHtYsyDh(String htYsyDh) {
+		this.htYsyDh = htYsyDh;
 	}
+
 	public String getHtFile3() {
 		return htFile3;
 	}
@@ -230,6 +232,7 @@ public class HtInfo {
 				", htGhsn='" + htGhsn + '\'' +
 				", htGhsdh='" + htGhsdh + '\'' +
 				", htGhslxr='" + htGhslxr + '\'' +
+				", email='" + email + '\'' +
 				", htHthao='" + htHthao + '\'' +
 				", htGzspd='" + htGzspd + '\'' +
 				", htZhbhao='" + htZhbhao + '\'' +
@@ -245,7 +248,7 @@ public class HtInfo {
 				", htSbyt='" + htSbyt + '\'' +
 				", htJfly='" + htJfly + '\'' +
 				", htZje='" + htZje + '\'' +
-				", htFile2='" + htFile2 + '\'' +
+				", htYsyDh='" + htYsyDh + '\'' +
 				", htFile3='" + htFile3 + '\'' +
 				", htFile4='" + htFile4 + '\'' +
 				", htFile5='" + htFile5 + '\'' +

@@ -53,7 +53,7 @@ public interface EqInfoMapper {
 			"      #{eqShJldh,jdbcType=VARCHAR}, #{eqShLxr,jdbcType=VARCHAR}, #{eqShLxrdh,jdbcType=VARCHAR}, \n" +
 			"      #{eqState,jdbcType=INTEGER}, #{eqYzm,jdbcType=VARCHAR}, #{htIds,jdbcType=INTEGER}, \n" +
 			"      #{eqShLb,jdbcType=VARCHAR}, #{eqSyks,jdbcType=VARCHAR}, #{eqJx,jdbcType=VARCHAR}, \n" +
-			"      #{eqQyrq,jdbcType=VARCHAR}, #{eqCfdd,jdbcType=VARCHAR}, #{eqBfjd,jdbcType=VARCHAR}\n" +
+			"      #{eqQyrq,jdbcType=VARCHAR}, #{eqCfdd,jdbcType=VARCHAR}, #{eqBfjd,jdbcType=VARCHAR},\n" +
 			"      #{eqQk})")
 	@Options(useGeneratedKeys = true, keyProperty = "eqId", keyColumn = "eq_id")
 	Integer insertEqInfo(EqInfo eqInfo);

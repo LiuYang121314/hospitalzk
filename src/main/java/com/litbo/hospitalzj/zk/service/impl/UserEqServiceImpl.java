@@ -65,7 +65,10 @@ public class UserEqServiceImpl implements UserEqService{
 		userEq.setNdjhId(ndjhId);
 		userEq.setDate(new Date());
 		userEq.setState("待上传");
-		userEqMapper.deleteBatchByJcEqid(userId,jcEqid);
+		UserEq data=userEqMapper.findUserEqByUserIdAndJceqid(userId,jcEqid);
+		if(data!=null){
+			throw new InsertException("此设备已经分配给此人员");
+		}
 		userEqMapper.insertBatchByJcEqid(userEq);
 	}
 

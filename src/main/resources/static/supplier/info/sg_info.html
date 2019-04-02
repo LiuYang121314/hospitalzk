@@ -344,7 +344,7 @@
         // 购置审批申请单上传
         upload.render({
             elem: '#gzsp'
-            ,url: '?htId='+ids
+            ,url: '/wjsc/insertHtwj?sourceId='+ids+'&type='+1
             ,multiple: true
             ,accept:"file"
             ,before: function(obj){
@@ -368,7 +368,7 @@
         // 医疗器械注册登记证上传
         upload.render({
             elem: '#ylqx'
-            ,url: '?htId='+ids
+            ,url:'/wjsc/insertHtwj?sourceId='+ids+'&type='+2
             ,multiple: true
             ,accept:"file"
             ,before: function(obj){
@@ -392,7 +392,7 @@
         // 厂家授权证明书上传
         upload.render({
             elem: '#cjsq'
-            , url: '?htId='+ids
+            , url: '/wjsc/insertHtwj?sourceId='+ids+'&type='+3
             , multiple: true
             , accept: "file"
             , before: function (obj) {
@@ -416,7 +416,7 @@
         // 海关进口货物报关单上传
         upload.render({
             elem: '#hgjk'
-            , url: '?htId='+ids
+            , url: '/wjsc/insertHtwj?sourceId='+ids+'&type='+4
             , multiple: true
             , accept: "file"
             , before: function (obj) {

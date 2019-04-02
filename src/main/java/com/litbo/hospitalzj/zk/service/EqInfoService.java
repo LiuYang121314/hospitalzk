@@ -47,6 +47,6 @@ public interface EqInfoService {
 
 	public List<EqInfo> findShEqsByUserIdAndState(String userId, String state);
 	//通过设备Id查询分配用户
-	User findUserIdByEqId(String userId);
+	List<User> findUserIdByEqId(String userId);
 
 }

@@ -17,9 +17,9 @@ public interface HtInfoMapper {
 	//插入合同
 	@Insert("insert into ht_info(ht_id,ht_ghsn,ht_ghslxr,email,ht_ghsdh,ht_hthao,ht_gzspd,ht_zhbhao,ht_bz,ht_qytime,ht_dhtime,ht_bxtime,"
 			+ "ht_syks,ht_azdd,ht_ly,ht_cgfs,ht_sglb,ht_sbyt,ht_jfly"
-			+ ",ht_state,ht_yzm,sbcs_id,ht_yssj,ht_ysbz,ht_zje) value "
+			+ ",ht_state,ht_yzm,sbcs_id,ht_yssj,ht_ysbz,ht_zje,ht_ysy_dh) value "
 			+ "(#{htId},#{htGhsn},#{htGhslxr},#{email},#{htGhsdh},#{htHthao},#{htGzspd},#{htZhbhao},#{htBz},#{htQytime},#{htDhtime},#{htBxtime},"
-			+ "#{htSyks},#{htAzdd},#{htLy},#{htCgfs},#{htSglb},#{htSbyt},#{htJfly},#{htState},#{htYzm},#{sbcsId},#{htYssj},#{htYsbz},#{htZje})")
+			+ "#{htSyks},#{htAzdd},#{htLy},#{htCgfs},#{htSglb},#{htSbyt},#{htJfly},#{htState},#{htYzm},#{sbcsId},#{htYssj},#{htYsbz},#{htZje},#{htYsyDh})")
 	@Options(useGeneratedKeys = true, keyProperty = "htId", keyColumn = "ht_id")
 	Integer insertHt(HtInfo htInfo);
 	//修改合同状态
@@ -45,7 +45,7 @@ public interface HtInfoMapper {
 			+ "IFNULL(ht_zhbhao,'无') htZhbhao,ht_bz htBz,ht_qytime htQytime,ht_dhtime htDhtime,ht_bxtime htBxtime,"
 			+ "ht_syks htSyks,ht_azdd htAzdd,ht_ly htLy,ht_cgfs htCgfs,ht_sglb htSglb,ht_sbyt htSbyt,"
 			+ "ht_jfly htJfly,ht_zje htZje,ht_state htState,ht_yzm htYzm,sbcs_id sbcdId,ht_yssj htYssj,"
-			+ "ht_ysbz htYsbz from ht_info where ht_id=#{htId}")
+			+ "ht_ysbz htYsbz,ht_ysy_dh htYsyDh from ht_info where ht_id=#{htId}")
 	HtInfo findByHtId(Integer htId);
 	//通过验证码查询合同
 	@Select("select ht_id htId,ht_ghsn htGhsn,ht_ghslxr htGhslxr,email,ht_ghsdh htGhsdh,IFNULL(ht_hthao,'无')  htHthao,IFNULL(ht_gzspd,'无') htGzspd,IFNULL(ht_zhbhao,'无') htZhbhao,"
