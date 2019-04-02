@@ -20,5 +20,4 @@ public interface EqXeqService {
 
     List<EqXeq> findEqXeqLike(@Param("data")String data);
 
-
 }

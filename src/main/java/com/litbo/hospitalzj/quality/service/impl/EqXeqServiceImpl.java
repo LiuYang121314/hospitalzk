@@ -42,4 +42,6 @@ public class EqXeqServiceImpl implements EqXeqService {
     public List<EqXeq> findEqXeqLike(String data) {
         return eqXeqMapper.findEqXeqLike(data);
     }
+
+
 }

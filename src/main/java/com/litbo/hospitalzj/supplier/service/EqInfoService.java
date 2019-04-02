@@ -25,8 +25,13 @@ public interface EqInfoService {
 
 	List<EqInfo> newEqinfo();
 
+	List<EqInfo> eqInfoYfp();
+
+	List<EqInfo> eqInfoWfp();
+
 	void updateEqQk(@Param("eqId") Integer eqId, @Param("eqQk")String eqQk);
 
 	List<EqInfo> findByEqQk(String eqQk);
+
 
 }

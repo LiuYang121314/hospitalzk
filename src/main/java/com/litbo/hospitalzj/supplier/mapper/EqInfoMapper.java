@@ -128,6 +128,10 @@ public interface EqInfoMapper {
 	Integer delete(Integer eqId);
 	@Select("select * from eq_info where eq_dah='' and eq_state=0")
 	List<EqInfo> newEqInfo();
+	@Select("SELECT * FROM eq_info WHERE eq_dah='' and eq_id IN(SELECT jc_eqid FROM user_eq)")
+	List<EqInfo> eqInfoYfp();
+	@Select("SELECT * FROM eq_info WHERE eq_dah='' and eq_id not IN(SELECT jc_eqid FROM user_eq)")
+	List<EqInfo> eqInfoWfp();
 	@Update("update eq_info set eq_qk = #{eqQk} where eq_id=#{eqId}")
 	Integer updateEqQk(@Param("eqId") Integer eqId, @Param("eqQk")String eqQk);
 	@Select("select * from eq_info where eq_qk=#{eqQk}")

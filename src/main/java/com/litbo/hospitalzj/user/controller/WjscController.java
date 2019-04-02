@@ -47,6 +47,16 @@ public class WjscController extends BaseController {
         wjscService.insert(wjsc);
         return new ResponseResult<Void>(SUCCESS);
     }
+    @RequestMapping("/insertWszl")
+    public ResponseResult<Void> insertWszl(Wjsc wjsc, @RequestParam("file") MultipartFile file,HttpSession session) {
+        String path = FileUpload.uploadOne(file,session);
+        System.out.println(path);
+        wjsc.setSourceType(2);
+        wjsc.setPath(path);
+        wjsc.setScTime(new Date());
+        wjscService.insert(wjsc);
+        return new ResponseResult<Void>(SUCCESS);
+    }
     @RequestMapping("/delete")
     public ResponseResult<Void> delete(Integer htId) {
         wjscService.delete(htId);
@@ -65,7 +75,8 @@ public class WjscController extends BaseController {
     private ResponseResult<Void> downloadFile(String filePath, HttpServletResponse response, HttpSession session) {
         String parentPath = session.getServletContext().getRealPath(UPLOAD_DIR_NAME);
         System.out.println(parentPath+filePath);
-        FileDownLoad.downloadFile1(response,filePath,"111.jpg");
+        String path=filePath.substring(7);
+        FileDownLoad.downloadFile1(response,filePath,path);
         return new ResponseResult<Void>(SUCCESS);
     }
 }

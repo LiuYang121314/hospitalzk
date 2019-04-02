@@ -30,6 +30,7 @@ public class EqXeqController extends BaseController{
 		return new ResponseResult<List<EqXeq>>(SUCCESS,data);
 	}
 
+
 	@RequestMapping("/insert")
 	public ResponseResult<Void> insert(EqXeq eqXeq) {
 		eqXeqService.insert(eqXeq);

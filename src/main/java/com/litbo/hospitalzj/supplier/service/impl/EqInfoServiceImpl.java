@@ -80,6 +80,24 @@ public class EqInfoServiceImpl implements EqInfoService {
 	}
 
 	@Override
+	public List<EqInfo> eqInfoYfp() {
+		return eqInfoMapper.eqInfoYfp();
+	}
+
+	@Override
+	public List<EqInfo> eqInfoWfp() {
+		List<EqInfo> data=eqInfoMapper.eqInfoWfp();
+		List<EqInfo> newE=new ArrayList();
+		for(EqInfo eqInfo:data){
+			int isNull=eqXeqMapper.findByEqName(eqInfo.getEqPmId());
+			if(isNull==1){
+				newE.add(eqInfo);
+			}
+		}
+		return newE;
+	}
+
+	@Override
 	public void updateEqQk(Integer eqId, String eqQk) {
 		eqInfoMapper.updateEqQk(eqId,eqQk);
 	}

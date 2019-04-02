@@ -74,6 +74,16 @@ public class EqInfoController extends BaseController{
 		List<EqInfo> data=eqinfoService.newEqinfo();
 		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
 	}
+	@RequestMapping("/eqInfoYfp")
+	public ResponseResult<List<EqInfo>> eqInfoYfp() {
+		List<EqInfo> data=eqinfoService.eqInfoYfp();
+		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
+	}
+	@RequestMapping("/eqInfoWfp")
+	public ResponseResult<List<EqInfo>> eqInfoWfp() {
+		List<EqInfo> data=eqinfoService.eqInfoWfp();
+		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
+	}
 
 	@RequestMapping("/updateEqQk")
 	public ResponseResult<Void> updateEqQk(@RequestParam("eqId")Integer eqId,@RequestParam("eqQk")String eqQk) {
