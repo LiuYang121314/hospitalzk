@@ -16,6 +16,14 @@
             margin-top: 20px;
             color: red;
         }
+        .btn{
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+        td{
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -25,48 +33,67 @@
             <fieldset class="layui-elem-field layui-field-title">
                 <legend>上传电子资料</legend>
             </fieldset>
-            <table class="layui-table col-md-6">
+            <table class="layui-table">
                 <thead>
                     <tr>
-                        <th>文件类型</th>
-                        <th>上传</th>
+                        <th style="width: 50%;">文件类型</th>
+                        <th style="width: 50%;">上传</th>
                     </tr> 
                 </thead>
                 <tbody>
                     <tr>
                         <td>厂家安装报告</td>
                         <td>
-                            <button type="button" name="file" class="layui-btn" id="cjazbg">
-                                <i class="layui-icon">&#xe67c;</i>上传文件
-                            </button>
+                            <div class="layui-upload">
+                                <button type="button" class="layui-btn" id="cjazbg">上传文件</button>
+                                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                    预览图：
+                                    <div class="layui-upload-list" id="cjazbgImg"></div>
+                                </blockquote>
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td>延保协议、售后承诺</td>
                         <td>
-                            <button type="button" name="file" class="layui-btn" id="shcn">
-                                <i class="layui-icon">&#xe67c;</i>上传文件
-                            </button>
+                            <div class="layui-upload">
+                                <button type="button" class="layui-btn" id="shcn">上传文件</button>
+                                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                    预览图：
+                                    <div class="layui-upload-list" id="shcnImg"></div>
+                                </blockquote>
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td>技术资料</td>
                         <td>
-                            <button type="button" name="file" class="layui-btn" id="jszl">
-                                <i class="layui-icon">&#xe67c;</i>上传文件
-                            </button>
+                            <div class="layui-upload">
+                                <button type="button" class="layui-btn" id="jszl">上传文件</button>
+                                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                    预览图：
+                                    <div class="layui-upload-list" id="jszlImg"></div>
+                                </blockquote>
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td>合格证/检测报告</td>
                         <td>
-                            <button type="button" name="file" class="layui-btn" id="hgz">
-                                <i class="layui-icon">&#xe67c;</i>上传文件
-                            </button>
+                            <div class="layui-upload">
+                                <button type="button" class="layui-btn" id="hgz">上传文件</button>
+                                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                    预览图：
+                                    <div class="layui-upload-list" id="hgzImg"></div>
+                                </blockquote>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <div class="col-xs-12 btn">
+                <a id="upmit" class="layui-btn layui-btn-primary">提交</a>
+            </div>
         </div>
     </div>
     <script>
@@ -78,65 +105,179 @@
             var upload = layui.upload
             ,   layer = layui.layer
             ,   $ = layui.jquery;
-            var uploadInst = upload.render({
+            // var uploadInst = upload.render({
+            //     elem: '#cjazbg'
+            //     ,url: '?htId='+ids
+            //     ,done: function(res){
+            //       if(res.state === 200){
+            //           layer.msg("上传成功");
+            //           upload.render({
+            //               elem:"#shcn",
+            //               url:'?htId='+ids,
+            //               done:function (res) {
+            //                   if(res.state === 200){
+            //                       layer.msg("上传成功");
+            //                       upload.render({
+            //                           elem:"#jszl",
+            //                           url:'?htId='+ids,
+            //                           done:function (res) {
+            //                               if(res.state === 200){
+            //                                   layer.msg("上传成功");
+            //                                   upload.render({
+            //                                       elem:"#hgz",
+            //                                       url:'?htId='+ids,
+            //                                       done:function (res) {
+            //                                           if(res.state === 200){
+            //                                               layer.msg("上传成功,请耐心等待审核");
+            //                                               setTimeout(function(){
+            //                                                   location.href="/supplier/index.html";
+            //                                               },1000)
+            //                                           }else{
+            //                                               layer.msg("上传失败");
+            //                                           }
+            //                                       },
+            //                                       error:function () {
+            //                                           layer.msg("上传失败,请稍后再试");
+            //                                       }
+            //                                   })
+            //                               }else{
+            //                                   layer.msg("上传失败");
+            //                               }
+            //                           },
+            //                           error:function () {
+            //                               layer.msg("上传失败,请稍后再试");
+            //                           }
+            //                       })
+            //                   }else{
+            //                       layer.msg("上传失败");
+            //                   }
+            //               },
+            //               error:function(){
+            //                   layer.msg("上传失败,请稍后再试");
+            //               }
+            //           })
+            //       }else{
+            //           layer.msg("上传失败");
+            //       }
+            //     }
+            //     ,error: function(){
+            //       layer.msg("上传失败，请稍后再试");
+            //     }
+            //   });
+            // 厂家安装报告
+            upload.render({
                 elem: '#cjazbg'
                 ,url: '?htId='+ids
-                ,done: function(res){
-                  if(res.state === 200){
-                      layer.msg("上传成功");
-                      upload.render({
-                          elem:"#shcn",
-                          url:'?htId='+ids,
-                          done:function (res) {
-                              if(res.state === 200){
-                                  layer.msg("上传成功");
-                                  upload.render({
-                                      elem:"#jszl",
-                                      url:'?htId='+ids,
-                                      done:function (res) {
-                                          if(res.state === 200){
-                                              layer.msg("上传成功");
-                                              upload.render({
-                                                  elem:"#hgz",
-                                                  url:'?htId='+ids,
-                                                  done:function (res) {
-                                                      if(res.state === 200){
-                                                          layer.msg("上传成功,请耐心等待审核");
-                                                          setTimeout(function(){
-                                                              location.href="/supplier/index.html";
-                                                          },1000)
-                                                      }else{
-                                                          layer.msg("上传失败");
-                                                      }
-                                                  },
-                                                  error:function () {
-                                                      layer.msg("上传失败,请稍后再试");
-                                                  }
-                                              })
-                                          }else{
-                                              layer.msg("上传失败");
-                                          }
-                                      },
-                                      error:function () {
-                                          layer.msg("上传失败,请稍后再试");
-                                      }
-                                  })
-                              }else{
-                                  layer.msg("上传失败");
-                              }
-                          },
-                          error:function(){
-                              layer.msg("上传失败,请稍后再试");
-                          }
-                      })
-                  }else{
-                      layer.msg("上传失败");
-                  }
+                ,multiple: true
+                ,accept:"file"
+                ,before: function(obj){
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function(index, file, result){
+                        $('#cjazbgImg').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+                    });
                 }
-                ,error: function(){
-                  layer.msg("上传失败，请稍后再试");
+                ,done:function(res){
+                    if(res.state === 200){
+                        layer.msg("上传成功");
+                    }else{
+                        layer.msg(res.message);
+                    }
+                },
+                error:function(data){
+                    layer.msg("上传失败,请稍后再试");
+                    console.log(data);
                 }
-              });
+            });
+            // 延保协议、售后承诺
+            upload.render({
+                elem: '#shcn'
+                ,url: '?htId='+ids
+                ,multiple: true
+                ,accept:"file"
+                ,before: function(obj){
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function(index, file, result){
+                        $('#shcnImg').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+                    });
+                }
+                ,done:function(res){
+                    if(res.state === 200){
+                        layer.msg("上传成功");
+                    }else{
+                        layer.msg(res.message);
+                    }
+                },
+                error:function(data){
+                    layer.msg("上传失败,请稍后再试");
+                    console.log(data);
+                }
+            });
+            // 技术资料
+            upload.render({
+                elem: '#jszl'
+                ,url: '?htId='+ids
+                ,multiple: true
+                ,accept:"file"
+                ,before: function(obj){
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function(index, file, result){
+                        $('#jszlImg').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+                    });
+                }
+                ,done:function(res){
+                    if(res.state === 200){
+                        layer.msg("上传成功");
+                    }else{
+                        layer.msg(res.message);
+                    }
+                },
+                error:function(data){
+                    layer.msg("上传失败,请稍后再试");
+                    console.log(data);
+                }
+            });
+            // 合格证/检测报告
+            upload.render({
+                elem: '#hgz'
+                ,url: '?htId='+ids
+                ,multiple: true
+                ,accept:"file"
+                ,before: function(obj){
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function(index, file, result){
+                        $('#hgzImg').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+                    });
+                }
+                ,done:function(res){
+                    if(res.state === 200){
+                        layer.msg("上传成功");
+                    }else{
+                        layer.msg(res.message);
+                    }
+                },
+                error:function(data){
+                    layer.msg("上传失败,请稍后再试");
+                    console.log(data);
+                }
+            });
+            $("#hgz").click(function(){
+                $.ajax({
+                    url:""+ids,
+                    method:"POST",
+                    dataType:"JSON",
+                    success:function(res){
+                        if(res.state === 200){
+                            layer.msg("提交成功");
+                        }else{
+                            layer.msg("提交失败");
+                        }
+                    },
+                    error:function(data){
+                        layer.msg("请稍后再试");
+                        console.log(data);
+                    }
+                })
+            })
         })
     </script>
 </body>
