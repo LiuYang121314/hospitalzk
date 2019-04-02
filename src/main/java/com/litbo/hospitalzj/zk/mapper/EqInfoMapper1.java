@@ -59,7 +59,7 @@ public interface EqInfoMapper1 {
 	List<EqInfo> findJcEqByUserId(String userId);
 
 	@Select("SELECT * FROM S_user WHERE user_id IN(SELECT user_id FROM user_eq WHERE jc_eqid=#{jcEqid})")
-	User findUserIdByEqId(String userId);
+	List<User> findUserIdByEqId(String userId);
 
 	@Select("SELECT * FROM eq_info WHERE eq_id IN(SELECT sh_eqid FROM user_eq WHERE user_id=#{userId})")
 	List<EqInfo> findShEqByUserId(String userId);

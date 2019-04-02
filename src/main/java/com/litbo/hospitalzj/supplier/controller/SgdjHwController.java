@@ -31,7 +31,6 @@ public class SgdjHwController extends BaseController{
 	}
 	@RequestMapping(value = "/insert",method = RequestMethod.POST)
 	public ResponseResult<Void> insert(SgdjHw sgdjHw) {
-		System.out.println(sgdjHw);
 		sgdjHwService.InsertSgdjHw(sgdjHw);
 		return new ResponseResult<Void>(SUCCESS);
 	}

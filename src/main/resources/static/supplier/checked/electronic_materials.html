@@ -167,7 +167,7 @@
             // 厂家安装报告
             upload.render({
                 elem: '#cjazbg'
-                ,url: '?htId='+ids
+                ,url: '/wjsc/insertWszl?sourceId='+ids+'&type='+1
                 ,multiple: true
                 ,accept:"file"
                 ,before: function(obj){
@@ -191,7 +191,7 @@
             // 延保协议、售后承诺
             upload.render({
                 elem: '#shcn'
-                ,url: '?htId='+ids
+                ,url:  '/wjsc/insertWszl?sourceId='+ids+'&type='+2
                 ,multiple: true
                 ,accept:"file"
                 ,before: function(obj){
@@ -215,7 +215,7 @@
             // 技术资料
             upload.render({
                 elem: '#jszl'
-                ,url: '?htId='+ids
+                ,url:  '/wjsc/insertWszl?sourceId='+ids+'&type='+3
                 ,multiple: true
                 ,accept:"file"
                 ,before: function(obj){
@@ -262,7 +262,7 @@
             });
             $("#hgz").click(function(){
                 $.ajax({
-                    url:""+ids,
+                    url: "/htInfo/ddshjys?htId="+ids,
                     method:"POST",
                     dataType:"JSON",
                     success:function(res){

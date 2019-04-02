@@ -26,7 +26,6 @@ public class SgdjHwServiceImpl implements SgdjHwService{
 	@Override
 	@Transactional
 	public Integer InsertSgdjHw(SgdjHw sgdjhw) {
-		htInfoMapper.updateStateById(sgdjhw.getHtIds(),EnumProcess.PERFECT_INFORMATION.getMessage());
 		return SgdjHwMapper.insertSgdjHw(sgdjhw);
 	}
 

@@ -20,7 +20,9 @@ public interface UserEqMapper {
 	void insertBatchByShEqid(UserEq userEq);
 	@Select("select * from s_user where user_id=#{userId}")
 	User findUserRole(String userId);
-	
+
+	@Select("select * from user_eq where user_id=#{userId} and jc_eqid=#{jceqId}")
+	UserEq findUserEqByUserIdAndJceqid(@Param("userId") String userId,@Param("jceqId") String jceqId);
 	//检测设备成功与不成功
 	@Update("update user_eq set state=#{state} where jc_eqid=#{jceqId} and user_id=#{userId}")
 	void setEqStateNotIs(@Param("jceqId")String jceqId,@Param("userId")String userId,@Param("state")String state);

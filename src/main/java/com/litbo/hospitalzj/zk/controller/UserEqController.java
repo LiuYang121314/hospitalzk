@@ -37,7 +37,6 @@ public class UserEqController extends BaseController{
 	@RequestMapping("/insertBatchByJcEqid/{userId}/{jcEqid}/{ndjhId}")
 	public ResponseResult<Void> insertBatchByJcEqid(@PathVariable String userId,@PathVariable String jcEqid,@PathVariable String ndjhId,HttpSession session){
 		String shrId=getUserIdFromSession(session);
-		userEqService.deleteBatchByJcEqid(userId,jcEqid);
 		userEqService.insertBatchByJcEqid(userId,jcEqid,shrId,ndjhId);
 		return new ResponseResult<Void>(SUCCESS);
 	}
@@ -47,7 +46,6 @@ public class UserEqController extends BaseController{
 		String shrId=getUserIdFromSession(session);
 		String ndjhId=null;
 		for(int i=0;i<jcEqid.length;i++){
-			userEqService.deleteBatchByJcEqid(userId,jcEqid[i]);
 			userEqService.insertBatchByJcEqid(userId,jcEqid[i],shrId,ndjhId);
 		}
 		return new ResponseResult<Void>(SUCCESS);
@@ -70,9 +68,9 @@ public class UserEqController extends BaseController{
 	}
 	//通过设备Id查询分配用户
 	@RequestMapping("/findUserIdByEqId/{eqId}")
-	public ResponseResult<User> findUserIdByEqId(@PathVariable String eqId){
-		User data=eqInfoService.findUserIdByEqId(eqId);
-		return new ResponseResult<User>(SUCCESS,data);
+	public ResponseResult<List<User>> findUserIdByEqId(@PathVariable String eqId){
+		List<User> data=eqInfoService.findUserIdByEqId(eqId);
+		return new ResponseResult<List<User>>(SUCCESS,data);
 	}
 	//用户通过id查询用户分配的检测设备
 	@RequestMapping("/findJcEqByMyUserId")

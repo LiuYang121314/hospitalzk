@@ -128,7 +128,7 @@ public class EqInfoServiceImpl implements EqInfoService {
 	}
 
 	@Override
-	public User findUserIdByEqId(String userId) {
+	public List<User> findUserIdByEqId(String userId) {
 		return eqInfoMapper.findUserIdByEqId(userId);
 	}
 
