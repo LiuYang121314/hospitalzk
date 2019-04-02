@@ -211,6 +211,7 @@
           // page:true,
           cols:[[
               {field:'htYssj', title:'预约验收时间',align:'center'},
+              {field:'htYsyDh', title:'验收联系电话',align:'center'},
               {field:'htBz', title:'验收要求',align:'center'}
           ]]
       });
@@ -232,9 +233,12 @@
             dataType:"JSON",
             success:function(res){
                 if(res.state === 200){
-                    layer.msg("成功");
+                    layer.msg("同意验收成功");
+                    setTimeout(function(){
+                        location.href="/supplier/home/schedule.html"
+                    },1500);
                 }else{
-                    layer.msg("失败");
+                    layer.msg("同意验收失败");
                 }
             },
             error:function(data){
