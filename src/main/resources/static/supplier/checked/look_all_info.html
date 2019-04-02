@@ -40,7 +40,47 @@
       <fieldset class="layui-elem-field layui-field-title">
           <legend>设备文件信息</legend>
       </fieldset>
-      <table class="layui-table" id="fileInfo"></table>
+      <!--<table class="layui-table" id="fileInfo"></table>-->
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th>文件名称</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>合同文件</td>
+                <td>
+                    <a id="lookHt" class="layui-btn layui-btn-normal">查看</a>
+                </td>
+            </tr>
+            <tr>
+                <td>中标通知书</td>
+                <td>
+                    <a class="layui-btn layui-btn-normal">查看</a>
+                </td>
+            </tr>
+            <tr>
+                <td>医疗器械注册登记证</td>
+                <td>
+                    <a class="layui-btn layui-btn-normal">查看</a>
+                </td>
+            </tr>
+            <tr>
+                <td>厂家授权证明书</td>
+                <td>
+                    <a class="layui-btn layui-btn-normal">查看</a>
+                </td>
+            </tr>
+            <tr>
+                <td>海关进口货物报关单</td>
+                <td>
+                    <a class="layui-btn layui-btn-normal">查看</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
       <fieldset class="layui-elem-field layui-field-title">
           <legend>验收信息</legend>
       </fieldset>
@@ -57,6 +97,7 @@
   // 获取上个页面传递的类型
   var type = window.location.search;
   var ids = parseInt(type.split("=")[1]);
+  sessionStorage['htId'] = ids;
   //Demo
   layui.use(['layer','jquery','upload','table'], function(){
       var layer = layui.layer
@@ -158,34 +199,6 @@
           {fixed: 'right', title:'查看', toolbar: '#barDemo',align:'center'}
       ]]
       });
-      // 文件
-      table.render({
-          elem:"#fileInfo"
-          ,cellMinWidth: 80
-          ,url:"?htIds="+ids
-          ,method:"GET"
-          ,response: {
-              statusName: 'status' //规定数据状态的字段名称，默认：code
-              ,statusCode: 200 //规定成功的状态码，默认：0
-              ,msgName: 'hint' //规定状态信息的字段名称，默认：msg
-              ,countName: 'total' //规定数据总数的字段名称，默认：count
-              ,dataName: 'data' //规定数据列表的字段名称，默认：data
-          }
-          ,parseData:function(res){
-              console.log(res);
-              return{
-                  "status":200
-                  ,"msg":res.message
-                  ,"count":res.total
-                  ,"data":res.data
-              }
-          },
-          // page:true,
-          cols:[[
-              {field:'fname', title:'文件名',align:'center'},
-              {field:'file', title:'文件',align:'center'}
-          ]]
-      });
       // 验收信息
       table.render({
           elem:"#checkInfo"
@@ -225,7 +238,7 @@
     });
     $("#looksbimg").click(function(){
         location.href="/supplier/apply/check_accept.html";
-    })
+    });
     $("#sureSend").click(function(){
         $.ajax({
             url:"/htInfo/tyys?htId="+ids,
@@ -247,6 +260,10 @@
             }
         });
     });
+    // 查看文件
+    $("#lookHt").click(function(){
+        location.href="/supplier/file/ht_accept_file.html?id="+1;
+    })
   });
 </script>
 </body>
