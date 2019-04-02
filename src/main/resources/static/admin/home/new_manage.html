@@ -38,7 +38,8 @@
             <fieldset class="layui-elem-field layui-field-title">
                 <legend style="color: #000000;font-weight: bold;">人员信息</legend>
             </fieldset>
-            <table class="layui-table" id="isUsers" lay-filter="handle11"></table>
+            <h1 id="desc" style="text-align: center;margin-top: 50px;display: none;">无检测人员</h1>
+            <table class="layui-table" id="isUsers" lay-filter="handle22"></table>
         </div>
     </div>
 </div>
@@ -49,7 +50,7 @@
     <a class="layui-btn layui-btn-xs" lay-event='add'>选择</a>
 </script>
 <script type="text/html" id="barDemo2">
-    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event='look'>查看人员</a>
+    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event='look'>查看检测人员</a>
 </script>
 <script type="text/html" id="barDemo22">
     <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event='del'>删除</a>
@@ -62,7 +63,7 @@
         // 未分配的新设备
         table.render({
             elem:"#noNewInfo"
-            ,cellMinWidth: 80
+            ,cellMinWidth: 150
             ,url:"/eqInfo/newEqInfo"
             ,method:"GET"
             ,response:{
@@ -102,12 +103,14 @@
                 {field:'eqShLxr', title:'售后联系人',align:'center'},
                 {field:'eqShLxrdh', title:'售后联系电话',align:'center'},
                 {field:'eqShLb', title:'设备类别',align:'center'},
-                {fixed: 'right', title:'操作',minWidth:"130", toolbar: '#barDemo1',align:'center'}
+                {fixed: 'right', title:'操作',minWidth:"120", toolbar: '#barDemo1',align:'center'}
             ]]
         });
         //监听行工具事件
+        var eqIda = "";
         table.on('tool(handle1)',function(obj){
             var data = obj.data;
+            eqIda = obj.data.eqId;
             if(obj.event === 'manage'){
                 //location.href="/admin/home/new/new_fix_person.html?id="+obj.data.eqId;
                 layer.open({
@@ -117,7 +120,7 @@
                     maxmin:true,
                     btn:"保存",
                     yes:function(){
-                        location.href="./new_fix_person.html";
+                        location.href="./new_manage.html";
                         layer.closeAll();
                     }
                 });
@@ -125,7 +128,7 @@
                 table.render({
                     elem:"#allUsers"
                     ,cellMinWidth: 120
-                    ,url:""
+                    ,url:"/user/all"
                     ,method:"GET"
                     ,response: {
                         statusName: 'status' //规定数据状态的字段名称，默认：code
@@ -153,7 +156,7 @@
                         {field:'address', title:'地址',align:'center'},
                         {field:'bz', title:'备注',align:'center'},
                         {field:'roleName', title:'权限',align:'center'},
-                        {fixed: 'right', title:'操作',minWidth:"130", toolbar: '#barDemo11',align:'center'}
+                        {fixed: 'right', title:'操作',minWidth:"100", toolbar: '#barDemo11',align:'center'}
                     ]]
                 });
                 //监听行工具事件
@@ -162,14 +165,14 @@
                     console.log(obj);
                     if(obj.event === 'add'){
                         $.ajax({
-                            url:"",
+                            url:"/userEq/insertNewEqid/"+obj.data.userId+"/"+eqIda,
                             method:"POST",
                             dataType:"JSON",
                             success:function(res){
-                                if(res === 200){
-                                    layer.msg("添加成功");
+                                if(res.state === 200){
+                                    layer.msg("分配成功");
                                 }else{
-                                    layer.msg("添加失败");
+                                    layer.msg("分配失败");
                                 }
                             },
                             error:function(data){
@@ -184,8 +187,8 @@
         // 已分配的新设备
         table.render({
             elem:"#overNewInfo"
-            ,cellMinWidth: 80
-            ,url:""
+            ,cellMinWidth: 150
+            ,url:"/eqInfo/newEqInfo"
             ,method:"GET"
             ,response:{
                 statusName: 'status' //规定数据状态的字段名称，默认：code
@@ -224,22 +227,24 @@
                 {field:'eqShLxr', title:'售后联系人',align:'center'},
                 {field:'eqShLxrdh', title:'售后联系电话',align:'center'},
                 {field:'eqShLb', title:'设备类别',align:'center'},
-                {fixed: 'right', title:'操作',minWidth:"130", toolbar: '#barDemo2',align:'center'}
+                {fixed: 'right', title:'操作',minWidth:"120", toolbar: '#barDemo2',align:'center'}
             ]]
         });
         //监听行工具事件
+        var eqIdb = "";
         table.on('tool(handle2)',function(obj){
             var data = obj.data;
-            if(obj.event === 'manage'){
+            eqIdb = obj.data.eqId;
+            if(obj.event === 'look'){
                 //location.href="/admin/home/new/new_fix_person.html?id="+obj.data.eqId;
                 layer.open({
                     type:1,
                     content:$("#userInfo2"),
                     area:["90%","90%"],
                     maxmin:true,
-                    btn:"保存",
+                    btn:"确认",
                     yes:function(){
-                        location.href="./new_fix_person.html";
+                        location.href="./new_manage.html";
                         layer.closeAll();
                     }
                 });
@@ -247,7 +252,7 @@
                 table.render({
                     elem:"#isUsers"
                     ,cellMinWidth: 120
-                    ,url:""
+                    ,url:"/userEq/findUserIdByEqId/"+obj.data.eqId
                     ,method:"GET"
                     ,response: {
                         statusName: 'status' //规定数据状态的字段名称，默认：code
@@ -258,11 +263,18 @@
                     }
                     ,parseData:function(res){
                         console.log(res);
+                        if(res.data == "" || res.data == null){
+                            $("#isUsers").css("display","none");
+                            $("#desc").css("display","block");
+                        }else{
+                            $("#desc").css("display","none");
+                            $("#isUsers").css("display","block");
+                        }
                         return{
                             "status":200
                             ,"msg":res.message
                             ,"count":res.total
-                            ,"data":res.data
+                            ,"data":[res.data]
                         }
                     },
                     // page:true,
@@ -275,7 +287,7 @@
                         {field:'address', title:'地址',align:'center'},
                         {field:'bz', title:'备注',align:'center'},
                         {field:'roleName', title:'权限',align:'center'},
-                        {fixed: 'right', title:'操作',minWidth:"130", toolbar: '#barDemo11',align:'center'}
+                        {fixed: 'right', title:'操作',minWidth:"100", toolbar: '#barDemo22',align:'center'}
                     ]]
                 });
                 //监听行工具事件
@@ -284,11 +296,11 @@
                     console.log(obj);
                     if(obj.event === 'del'){
                         $.ajax({
-                            url:"",
+                            url:"/userEq/deleteBatchByJcEqid/"+obj.data.userId+"/"+eqIdb,
                             method:"POST",
                             dataType:"JSON",
                             success:function(res){
-                                if(res === 200){
+                                if(res.state === 200){
                                     layer.msg("删除成功");
                                 }else{
                                     layer.msg("删除失败");

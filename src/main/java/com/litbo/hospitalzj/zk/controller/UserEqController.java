@@ -46,7 +46,7 @@ public class UserEqController extends BaseController{
 	public ResponseResult<Void> insertNewEqid(@PathVariable String userId,@PathVariable String[] jcEqid,HttpSession session){
 		String shrId=getUserIdFromSession(session);
 		String ndjhId=null;
-		for(int i=0;i<=jcEqid.length;i++){
+		for(int i=0;i<jcEqid.length;i++){
 			userEqService.deleteBatchByJcEqid(userId,jcEqid[i]);
 			userEqService.insertBatchByJcEqid(userId,jcEqid[i],shrId,ndjhId);
 		}
