@@ -2,6 +2,7 @@ package com.litbo.hospitalzj.zk.service;
 
 import java.util.List;
 
+import com.litbo.hospitalzj.sf.entity.User;
 import com.litbo.hospitalzj.zk.domian.EqInfo;
 import com.litbo.hospitalzj.zk.domian.Yq;
 import com.litbo.hospitalzj.zk.vo.EqAndUname;
@@ -45,6 +46,7 @@ public interface EqInfoService {
 	public List<EqAndUname> findJcEqsByUserIdAndState(String userId, String state);
 
 	public List<EqInfo> findShEqsByUserIdAndState(String userId, String state);
-
+	//通过设备Id查询分配用户
+	User findUserIdByEqId(String userId);
 
 }

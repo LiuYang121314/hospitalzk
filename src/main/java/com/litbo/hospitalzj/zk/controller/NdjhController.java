@@ -53,9 +53,9 @@ public class NdjhController extends BaseController {
         Ndjh data=ndjhService.selectNdjh(ndjhId);
         return new ResponseResult<Ndjh>(SUCCESS,data);
     }
-    @RequestMapping("/update")
-    public ResponseResult<Ndjh> update(Ndjh ndjh){
-        ndjhService.update(ndjh);
+    @RequestMapping("/updateNdjh")
+    public ResponseResult<Ndjh> updateNdjh(Ndjh ndjh){
+        ndjhService.updateNdjh(ndjh);
         return new ResponseResult<Ndjh>(SUCCESS);
     }
     /**{

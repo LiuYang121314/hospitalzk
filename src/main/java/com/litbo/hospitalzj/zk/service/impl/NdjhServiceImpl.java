@@ -100,8 +100,8 @@ public class NdjhServiceImpl implements NdjhService {
     }
 
     @Override
-    public void update(Ndjh ndjh) {
-        ndjhMapper.update(ndjh);
+    public void updateNdjh(Ndjh ndjh) {
+        ndjhMapper.updateNdjh(ndjh);
     }
 
 }

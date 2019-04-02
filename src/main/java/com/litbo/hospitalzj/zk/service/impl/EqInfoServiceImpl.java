@@ -2,6 +2,7 @@ package com.litbo.hospitalzj.zk.service.impl;
 
 import java.util.List;
 
+import com.litbo.hospitalzj.sf.entity.User;
 import com.litbo.hospitalzj.zk.vo.EqAndUname;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -123,8 +124,12 @@ public class EqInfoServiceImpl implements EqInfoService {
 
 	@Override
 	public List<EqInfo> findShEqsByUserIdAndState(String userId, String state) {
-		// TODO Auto-generated method stub
 		return eqInfoMapper.findShEqsByUserIdAndState(userId,state);
+	}
+
+	@Override
+	public User findUserIdByEqId(String userId) {
+		return eqInfoMapper.findUserIdByEqId(userId);
 	}
 
 

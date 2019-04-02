@@ -41,21 +41,15 @@ public class YqJxjlServiceImpl implements YqJxjlService {
 
     @Override
     public List<YqJxjl> selectNew() {
-
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         List<YqJxjl> data=yqJxjlMapper.selectAll();
         List<YqJxjl> newYqJxjl=new ArrayList<YqJxjl>();
-
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+        System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
         for(YqJxjl yqJxjl:data){
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(yqJxjl.getYqJxtime());
             calendar.add(Calendar.MONTH, 10);
             Date time=calendar.getTime();
-            String a=df.format(new Date());
-          /*  date.getTime();
-            if(date.getTime()>calendar.getTime()){
-
-            }*/
         }
         return null;
     }

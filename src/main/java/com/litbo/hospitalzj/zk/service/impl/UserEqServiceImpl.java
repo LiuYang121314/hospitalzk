@@ -69,6 +69,7 @@ public class UserEqServiceImpl implements UserEqService{
 		userEqMapper.insertBatchByJcEqid(userEq);
 	}
 
+
 	@Override
 	public void deleteBatchByShEqid(String userId, String[] shEqId) {
 		for(int i=0;i<shEqId.length;i++){

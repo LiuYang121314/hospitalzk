@@ -34,7 +34,7 @@
         </div>
         <div id="userInfo" style="display: none;">
             <fieldset class="layui-elem-field layui-field-title">
-                <legend style="color: #000000;font-weight: bold;">人员信息</legend>
+                <legend style="color: #000000;font-weight: bold;">所负责检测人员信息</legend>
             </fieldset>
             <table class="layui-table" id="users" lay-filter="handle2"></table>
         </div>
@@ -55,11 +55,11 @@
             ,   $ = layui.jquery
             ,   table = layui.table
             ,   form = layui.form;
-        // 已分配的人员信息
+        // 所负责检测人员信息
         table.render({
             elem:"#hadUser"
             ,cellMinWidth: 120
-            ,url:"?eqId="+ids
+            ,url:"/user/all?eqId="+ids
             ,method:"GET"
             ,response: {
                 statusName: 'status' //规定数据状态的字段名称，默认：code

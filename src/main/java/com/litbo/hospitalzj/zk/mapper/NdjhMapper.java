@@ -102,6 +102,6 @@ public interface NdjhMapper {
             "      ndjh_12sj = #{ndjh12sj,jdbcType=INTEGER},\n"+
             "      state = #{state,jdbcType=VARCHAR}\n"+
             "    where ndjh_id = #{ndjhId,jdbcType=INTEGER}")
-    void update(Ndjh ndjh);
+    void updateNdjh(Ndjh ndjh);
 
 }

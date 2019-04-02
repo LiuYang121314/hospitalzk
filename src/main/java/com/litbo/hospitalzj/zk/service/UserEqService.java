@@ -12,7 +12,7 @@ public interface UserEqService {
 	void insertBatchByShEqid(String userId, String[] shEqid);
 	
 	void insertBatchByJcEqid(String userId, String jcEqId,String shrId,String ndjhId);
-	
+
 	void deleteBatchByShEqid(String userId, String[] shEqId);
 	
 	void deleteBatchByJcEqid(String userId, String jcEqId);

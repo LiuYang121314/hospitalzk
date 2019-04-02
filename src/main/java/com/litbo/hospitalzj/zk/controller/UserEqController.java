@@ -2,6 +2,7 @@ package com.litbo.hospitalzj.zk.controller;
 
 import java.util.List;
 
+import com.litbo.hospitalzj.sf.entity.User;
 import com.litbo.hospitalzj.zk.Enum.EnumProcess2;
 import com.litbo.hospitalzj.zk.service.YqEqService;
 import com.litbo.hospitalzj.zk.vo.EqAndUname;
@@ -36,12 +37,22 @@ public class UserEqController extends BaseController{
 	@RequestMapping("/insertBatchByJcEqid/{userId}/{jcEqid}/{ndjhId}")
 	public ResponseResult<Void> insertBatchByJcEqid(@PathVariable String userId,@PathVariable String jcEqid,@PathVariable String ndjhId,HttpSession session){
 		String shrId=getUserIdFromSession(session);
-		System.out.println(shrId);
 		userEqService.deleteBatchByJcEqid(userId,jcEqid);
 		userEqService.insertBatchByJcEqid(userId,jcEqid,shrId,ndjhId);
 		return new ResponseResult<Void>(SUCCESS);
 	}
-	
+	//为用户批量添加新设备
+	@RequestMapping("/insertNewEqid/{userId}/{jcEqid}")
+	public ResponseResult<Void> insertNewEqid(@PathVariable String userId,@PathVariable String[] jcEqid,HttpSession session){
+		String shrId=getUserIdFromSession(session);
+		String ndjhId=null;
+		for(int i=0;i<=jcEqid.length;i++){
+			userEqService.deleteBatchByJcEqid(userId,jcEqid[i]);
+			userEqService.insertBatchByJcEqid(userId,jcEqid[i],shrId,ndjhId);
+		}
+		return new ResponseResult<Void>(SUCCESS);
+	}
+
 	//测试通过
 	//为用户删除检测设备
 	@RequestMapping("/deleteBatchByJcEqid/{userId}/{jcEqid}")
@@ -56,6 +67,12 @@ public class UserEqController extends BaseController{
 	public ResponseResult<List<EqInfo>> findJcEqByUserId(@PathVariable String userId){
 		List<EqInfo> yqList=eqInfoService.findJcEqByUserId(userId);
 		return new ResponseResult<List<EqInfo>>(SUCCESS,yqList);
+	}
+	//通过设备Id查询分配用户
+	@RequestMapping("/findUserIdByEqId/{eqId}")
+	public ResponseResult<User> findUserIdByEqId(@PathVariable String eqId){
+		User data=eqInfoService.findUserIdByEqId(eqId);
+		return new ResponseResult<User>(SUCCESS,data);
 	}
 	//用户通过id查询用户分配的检测设备
 	@RequestMapping("/findJcEqByMyUserId")
