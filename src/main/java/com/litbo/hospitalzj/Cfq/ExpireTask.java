@@ -1,6 +1,7 @@
 package com.litbo.hospitalzj.Cfq;
 
 import com.litbo.hospitalzj.sf.service.UserService;
+import com.litbo.hospitalzj.zk.domian.NdjhTx;
 import com.litbo.hospitalzj.zk.domian.Yq;
 import com.litbo.hospitalzj.zk.domian.YqTsls;
 import com.litbo.hospitalzj.zk.mapper.YqTslsMapper;
@@ -8,6 +9,7 @@ import com.litbo.hospitalzj.zk.service.YqService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -53,22 +55,43 @@ public class ExpireTask {
             yqTslsMapper.delete(calendar.getTime());
         }
     }
-    //每个月15号8,10,16推送
-    @Scheduled(cron = "0 0 8,10,16 10,15,20,25 1/1 ? ")
-    public void renWuTixing() {
-        jianceTx();
+    //每个月20,25号8,10,16推送
+    @Scheduled(cron = "0 0 8,10,16 20,25 1/1 ? ")
+    public void renWuTixing(HttpSession session) {
+        jianceTx(session);
     }
-    private void jianceTx(){
-        List<Yq> data=yqService.selectTime();
-        YqTsls yqTsls=new YqTsls();
+    private void jianceTx(HttpSession session){
+ /*       String uid=String.valueOf(session.getAttribute("uid").toString());
+        NdjhTx data=new NdjhTx();
+        data.setUserId(Integer.valueOf(uid));
+        if() {
+
+        }
+
+
+    }
+
+        for (Map<String, Object> expireProductMap : expireProductMapList) {
+            ExpirePushMsg expirePushMsg = new ExpirePushMsg();
+            expirePushMsg.setNeedPushEntityId((int)expireProductMap.get("id"));
+            expirePushMsg.setNeedPushEntityNo((String)expireProductMap.get("insuranceNo"));
+            String productName = (String)expireProductMap.get("insuranceName");
+            expirePushMsg.setNeedPushEntityName(productName);
+            //设置此推送消息的到期时间
+            expirePushMsg.setExpireDate(DateUtil.stringToDate(DateUtil.addOneDay()));
+            expirePushMsg.setPushType(2);
+            StringBuffer needPushRoleIdString = new StringBuffer();
+            needPushRoleIds.forEach(e -> needPushRoleIdString.append(e + ";"));
+            expirePushMsg.setPushRoleId(needPushRoleIdString.toString().trim());
+            String productExpireDateString = DateUtil.dateToShotString((Date)expireProductMap.get("expiryDate"));
+            expirePushMsg.setPushMsg("您的产品：" + productName + "，将于" + productExpireDateString + "即将过期，请及时处理！");
+            expirePushMsgs.add(expirePushMsg);
+        }
+        expirePushMsgMapper.insertAll(expirePushMsgs);
         for(Yq yq:data){
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(yq.getJcyqJzTime());
-            calendar.add(Calendar.MONTH, 12);
-            yqTsls.setYqExpireDate(calendar.getTime());
-            yqTsls.setYqName(yq.getJcyqName());
+
             yqTsls.setPushMsg("您本月目前设备已检测台数：" + "未检测台数:" +"台数"+"，"+"本月检测完成率为:" +"，请您合理安排检测时间");
             yqTslsMapper.insert(yqTsls);
-        }
+        }*/
     }
 }

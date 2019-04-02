@@ -5,8 +5,10 @@ import java.util.List;
 import com.litbo.hospitalzj.quality.mapper.UserPmMapper;
 import com.litbo.hospitalzj.quality.service.UserPmService;
 import com.litbo.hospitalzj.zk.domian.UserEq;
+import com.litbo.hospitalzj.zk.domian.YqJxjl;
 import com.litbo.hospitalzj.zk.service.NdjhService;
 import com.litbo.hospitalzj.zk.service.UserEqService;
+import com.litbo.hospitalzj.zk.service.YqJxjlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,11 +35,16 @@ public class YqController extends BaseController{
 	private UserPmService userPmService;
 	@Autowired
 	private NdjhService ndjhService;
+	@Autowired
+	private YqJxjlService yqJxjlService;
 	//新增仪器
 	@RequestMapping("/insert")
 	public ResponseResult<Void> insert(Yq yq){
-		
 		yqService.insert(yq);
+		YqJxjl data=new YqJxjl();
+		data.setYqId(Integer.valueOf(yq.getJcyqId()));
+		data.setYqJxtime(yq.getJcyqQyTime());
+		yqJxjlService.insert(data);
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	

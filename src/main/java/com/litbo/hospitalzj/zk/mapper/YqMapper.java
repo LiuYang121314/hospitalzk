@@ -51,6 +51,7 @@ public interface YqMapper {
 	  +"#{jcyqCjId,jdbcType=INTEGER}, #{jcyqQyTime,jdbcType=TIMESTAMP}, #{jcyqKsId,jdbcType=INTEGER}," 
 	  +"#{jcyqCf,jdbcType=VARCHAR}, #{jcyqUrl,jdbcType=VARCHAR}, #{jcyqJzTime,jdbcType=TIMESTAMP}," 
 	  +"#{mbId,jdbcType=INTEGER})")
+	@Options(useGeneratedKeys = true, keyProperty = "jcyqId", keyColumn = "jcyq_id")
 	void insert(Yq yq);
 
 	@Select("select * from yq WHERE jcyq_id IN( SELECT jcyq_id FROM yq_eq WHERE eq_id=(SELECT eq_id FROM eq_info WHERE eq_dah=#{dah}))")

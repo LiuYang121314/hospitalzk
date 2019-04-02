@@ -53,6 +53,11 @@ public class NdjhController extends BaseController {
         Ndjh data=ndjhService.selectNdjh(ndjhId);
         return new ResponseResult<Ndjh>(SUCCESS,data);
     }
+    @RequestMapping("/update")
+    public ResponseResult<Ndjh> update(Ndjh ndjh){
+        ndjhService.update(ndjh);
+        return new ResponseResult<Ndjh>(SUCCESS);
+    }
     /**{
      * 根据审核人查询不同状态
      * @param session

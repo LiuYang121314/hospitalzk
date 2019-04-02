@@ -46,7 +46,7 @@
       </fieldset>
       <table class="layui-table" id="checkInfo"></table>
       <div class="col-xs-12 btn">
-          <button id="sureSend" class="layui-btn layui-btn-normal">开始验收</button>
+          <button id="sureSend" class="layui-btn layui-btn-normal">同意验收</button>
       </div>
     </div>
   </div>
@@ -227,14 +227,14 @@
     })
     $("#sureSend").click(function(){
         $.ajax({
-            url:"/htInfo/yfh?htId="+ids,
+            url:"/htInfo/tyys?htId="+ids,
             method:"POST",
             dataType:"JSON",
             success:function(res){
                 if(res.state === 200){
-                    layer.msg("开始验收成功");
+                    layer.msg("成功");
                 }else{
-                    layer.msg("开始验收失败");
+                    layer.msg("失败");
                 }
             },
             error:function(data){

@@ -52,10 +52,10 @@ public class AcceptController {
         List<HtInfo> htInfos=htInfoService.selectAllHtAccept();
         return new ResponseResult<List<HtInfo>>(SUCCESS,htInfos);
     }
-    //已发货
+    //同意验收
     @RequestMapping(value = "selectAllHtYfh",method = RequestMethod.GET)
     public ResponseResult selectAllHtYfh(){
-        List<HtInfo> htInfos=htInfoService.selectAllHtByhtState(EnumProcess.YI_FA_HUO.getMessage());
+        List<HtInfo> htInfos=htInfoService.selectAllHtByhtState(EnumProcess.TONG_YI_YANSHOU.getMessage());
         return new ResponseResult<List<HtInfo>>(SUCCESS,htInfos);
     }
     //完善资料
