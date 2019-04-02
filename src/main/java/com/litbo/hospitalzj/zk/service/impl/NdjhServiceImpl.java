@@ -99,4 +99,9 @@ public class NdjhServiceImpl implements NdjhService {
         return ndjhMapper.dshCount(shrId, state);
     }
 
+    @Override
+    public void update(Ndjh ndjh) {
+        ndjhMapper.update(ndjh);
+    }
+
 }

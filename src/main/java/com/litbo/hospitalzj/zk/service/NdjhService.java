@@ -21,4 +21,5 @@ public interface NdjhService {
     Integer jhCount(@Param("userId")String userId,@Param("state")String state);
     //管理员根据用户品名关联表和年度计划表查询待审核数量
     Integer dshCount(@Param("shrId")String shrId,@Param("state")String state);
+    void update(Ndjh ndjh);
 }

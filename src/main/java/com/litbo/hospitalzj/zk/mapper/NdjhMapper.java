@@ -67,5 +67,41 @@ public interface NdjhMapper {
     		"ndjh_7sj=#{ndjh7sj}, ndjh_8sj=#{ndjh8sj}, ndjh_9sj=#{ndjh9sj}," +
             "ndjh_10sj=#{ndjh10sj},ndjh_11sj=#{ndjh11sj}, ndjh_12sj=#{ndjh12sj} where ndjh_id=#{ndjhId}")
     void updateMonth(Ndjh ndjh);
+    @Update( "update ndjh\n"+
+            "    set eq_pm_id = #{eqPmId,jdbcType=VARCHAR},\n"+
+            "      eq_pm_name = #{eqPmName,jdbcType=VARCHAR},\n"+
+            "      user_id = #{userId,jdbcType=VARCHAR},\n"+
+            "      user_name = #{userName,jdbcType=VARCHAR},\n"+
+            "      ndjh_sbsj = #{ndjhSbsj,jdbcType=DATE},\n"+
+            "      ndjh_sbsl = #{ndjhSbsl,jdbcType=INTEGER},\n"+
+            "      ndjh_dtsj = #{ndjhDtsj,jdbcType=INTEGER},\n"+
+            "      ndjh_jhl = #{ndjhJhl,jdbcType=INTEGER},\n"+
+            "      ndjh_1yfjh = #{ndjh1yfjh,jdbcType=INTEGER},\n"+
+            "      ndjh_1sj = #{ndjh1sj,jdbcType=INTEGER},\n"+
+            "      ndjh_2yfjh = #{ndjh2yfjh,jdbcType=INTEGER},\n"+
+            "      ndjh_2sj = #{ndjh2sj,jdbcType=INTEGER},\n"+
+            "      ndjh_3yfjh = #{ndjh3yfjh,jdbcType=INTEGER},\n"+
+            "      ndjh_3sj = #{ndjh3sj,jdbcType=INTEGER},\n"+
+            "      ndjh_4yfjh = #{ndjh4yfjh,jdbcType=INTEGER},\n"+
+            "      ndjh_4sj = #{ndjh4sj,jdbcType=INTEGER},\n"+
+            "      ndjh_5yfjh = #{ndjh5yfjh,jdbcType=INTEGER},\n"+
+            "      ndjh_5sj = #{ndjh5sj,jdbcType=INTEGER},\n"+
+            "      ndjh_6yfjh = #{ndjh6yfjh,jdbcType=INTEGER},\n"+
+            "      ndjh_6sj = #{ndjh6sj,jdbcType=INTEGER},\n"+
+            "      ndjh_7yfjh = #{ndjh7yfjh,jdbcType=INTEGER},\n"+
+            "      ndjh_7sj = #{ndjh7sj,jdbcType=INTEGER},\n"+
+            "      ndjh_8yfjh = #{ndjh8yfjh,jdbcType=INTEGER},\n"+
+            "      ndjh_8sj = #{ndjh8sj,jdbcType=INTEGER},\n"+
+            "      ndjh_9yfjh = #{ndjh9yfjh,jdbcType=INTEGER},\n"+
+            "      ndjh_9sj = #{ndjh9sj,jdbcType=INTEGER},\n"+
+            "      ndjh_10yfjh = #{ndjh10yfjh,jdbcType=INTEGER},\n"+
+            "      ndjh_10sj = #{ndjh10sj,jdbcType=INTEGER},\n"+
+            "      ndjh_11yfjh = #{ndjh11yfjh,jdbcType=INTEGER},\n"+
+            "      ndjh_11sj = #{ndjh11sj,jdbcType=INTEGER},\n"+
+            "      ndjh_12yfjh = #{ndjh12yfjh,jdbcType=INTEGER},\n"+
+            "      ndjh_12sj = #{ndjh12sj,jdbcType=INTEGER},\n"+
+            "      state = #{state,jdbcType=VARCHAR}\n"+
+            "    where ndjh_id = #{ndjhId,jdbcType=INTEGER}")
+    void update(Ndjh ndjh);
 
 }
