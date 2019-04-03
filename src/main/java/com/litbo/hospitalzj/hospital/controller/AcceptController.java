@@ -93,7 +93,7 @@ public class AcceptController {
             return responseResult;
         }
         String path = FileUpload.upload("images/upload/",file);
-        System.out.println(path);
+        System.out.println("QQQQQQQQQQQQQQQQQQQQQq"+path);
         SgdjHw sgdjHw = sgdjHwService.selectSgdjHw(htIds);
         if(sgdjHw!=null&&sgdjHw.getDjhwUrl().split(" ").length>7){
             ResponseResult responseResult = new ResponseResult();

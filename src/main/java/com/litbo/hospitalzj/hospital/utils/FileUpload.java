@@ -48,6 +48,7 @@ public class FileUpload {
             File path = new File(ResourceUtils.getURL("classpath:").getPath());
             if(!path.exists()) path = new File("");
             File upload = new File(path.getAbsolutePath(),PATH);
+            System.out.println("EEEEEEEEEEEEEEE"+upload);
             if(!upload.exists()) upload.mkdirs();
             insertPath = UUID.randomUUID().toString()+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
             newFileName =upload.getAbsolutePath()+"\\" + insertPath;
@@ -78,27 +79,26 @@ public class FileUpload {
             // 抛出异常：文件类型限制
             throw new FileTypeNotSupportException("文件类型不符");
         }
-        // 确定上传文件夹 > session.getServletContext.getRealPath(UPLOAD_DIR_NAME) > exists() > mkdirs()
-        String parentPath = session.getServletContext().getRealPath(UPLOAD_DIR_NAME);
-        File parent = new File(parentPath);
-        if (!parent.exists()) {
-            parent.mkdirs();
-        }
-        // 确定文件名 > getOriginalFileName()
-        String originalFileName = file.getOriginalFilename();
-        int beginIndex = originalFileName.lastIndexOf(".");
-        String suffix = originalFileName.substring(beginIndex);
-        String fileName = UUID.randomUUID().toString()+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-        // 确定文件
-        File dest = new File(parent, fileName);
-        // 执行保存文件
+        String newFileName = null;
+        String insertPath = null;
+        String filePath="images/upload/";
+        String PATH = "static/"+filePath;
         try {
-            file.transferTo(dest);
-            System.err.println("上传完成！");
-        } catch (IllegalStateException | IOException e) {
-            throw new FileUploadException("文件上传异常");
+            //获取跟目录
+            File path = new File(ResourceUtils.getURL("classpath:").getPath());
+            if(!path.exists()) path = new File("");
+            File upload = new File(path.getAbsolutePath(),PATH);
+            System.out.println("EEEEEEEEEEEEEEE"+upload);
+            if(!upload.exists()) upload.mkdirs();
+            insertPath = UUID.randomUUID().toString()+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+            newFileName =upload.getAbsolutePath()+"\\" + insertPath;
+            BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(newFileName)));
+            out.write(file.getBytes());
+            out.flush();
+            out.close();
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        String path = "/" + UPLOAD_DIR_NAME + "/" + fileName;
-        return path;
+        return filePath+insertPath;
     }
 }

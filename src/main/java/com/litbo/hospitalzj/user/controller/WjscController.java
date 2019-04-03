@@ -10,6 +10,7 @@ import com.litbo.hospitalzj.user.service.WjscService;
 import com.litbo.hospitalzj.util.ResponseResult;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.Time;
 import java.util.Date;
 import java.util.List;
@@ -72,11 +75,14 @@ public class WjscController extends BaseController {
     }
     //文件下载
     @RequestMapping("/downloadFile")
-    private ResponseResult<Void> downloadFile(String filePath, HttpServletResponse response, HttpSession session) {
-        String parentPath = session.getServletContext().getRealPath(UPLOAD_DIR_NAME);
-        System.out.println(parentPath+filePath);
-        String path=filePath.substring(7);
-        FileDownLoad.downloadFile1(response,filePath,path);
+    private ResponseResult<Void> downloadFile(String filePath, HttpServletResponse response, HttpSession session) throws FileNotFoundException, IllegalStateException{
+        File path = new File(ResourceUtils.getURL("classpath:").getPath());
+        System.out.println(path);
+        if(!path.exists()) path = new File("");
+        File upload = new File(path.getAbsolutePath(),"static/images/");
+        if(!upload.exists()) upload.mkdirs();
+        String path1=upload.getAbsolutePath()+filePath;
+        FileDownLoad.downloadFile1(response,path1,"1.jpg");
         return new ResponseResult<Void>(SUCCESS);
     }
 }
