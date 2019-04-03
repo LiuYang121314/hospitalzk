@@ -12,105 +12,81 @@
     <![endif]-->
     <script src="../static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
     <style>
-        .layui-form{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 40px;
-        }
-        .layui-upload-img{
-            width: 150px;
-            height: 200px;
+        .layui-elem-field{
+            width: 100%;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <div class="layui-row">
         <div class="col-xs-12">
-            <div class="main">
-                <form class="layui-form layui-form-pane" action="">
-                    <div class="layui-row">
-                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                            <legend>代理商注册</legend>
-                        </fieldset>
-                        <div class="upinfo">
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">代理商全称</label>
-                                <div class="layui-input-block">
-                                    <input type="text" name="sbcsName" class="layui-input" autocomplete="off" lay-verify="required">
-                                </div>
-                            </div>
-                           <!-- <div class="layui-form-item">
-                                <label class="layui-form-label">密码</label>
-                                <div class="layui-input-block">
-                                    <input type="password" name="sbcsPwd" class="layui-input" autocomplete="off" lay-verify="required">
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">重复密码</label>
-                                <div class="layui-input-block">
-                                    <input type="password" name="resbcsPwd" class="layui-input" autocomplete="off" lay-verify="required">
-                                </div>
-                            </div>-->
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">办公地址</label>
-                                <div class="layui-input-block">
-                                    <input type="text" name="sbcsAddress" class="layui-input" autocomplete="off">
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">固定电话</label>
-                                <div class="layui-input-block">
-                                    <input type="text" name="sbcsLxdh1" class="layui-input" autocomplete="off" lay-verify="required">
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">Email</label>
-                                <div class="layui-input-block">
-                                    <input type="text" name="email" class="layui-input" autocomplete="off" lay-verify="required">
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">医疗器械经营许可证号</label>
-                                <div class="layui-input-block">
-                                    <input type="text" name="sbcsCertificate" class="layui-input" autocomplete="off" placeholder="医疗器械经营许可证号" lay-verify="required">
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">营业执照(统一社会信用代码)</label>
-                                <div class="layui-input-block">
-                                    <input type="text" class="layui-input" name="sbcsCreditcode" placeholder="营业执照(统一社会信用代码)" autocomplete="off" lay-verify="required">
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">医疗器械经营许可证影印件</label>
-                                <div class="layui-upload">
-                                    <button type="button" class="layui-btn" id="ylqx">上传图片</button>
-                                    <div class="layui-upload-list">
-                                        <img class="layui-upload-img" id="ylqximg">
-                                        <p id="ylqxtry"></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">营业执照影印件</label>
-                                <div class="layui-upload">
-                                    <button type="button" class="layui-btn" id="yyzz">上传图片</button>
-                                    <div class="layui-upload-list">
-                                        <img class="layui-upload-img" id="yyzzimg">
-                                        <p id="yyzztry"></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <div class="layui-input-block">
-                                    <button class="layui-btn layui-btn-normal layui-btn-lg" lay-submit lay-filter="register" id="check-btn">立即注册</button>
-                                </div>
-                            </div>
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <legend>代理商注册</legend>
+            </fieldset>
+            <form class="layui-form layui-form-pane" action="">
+                <div class="layui-form-item col-md-5">
+                    <label class="layui-form-label">代理商全称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="sbcsName" class="layui-input" autocomplete="off" lay-verify="required">
+                    </div>
+                </div>
+                <div class="layui-form-item col-md-5">
+                    <label class="layui-form-label">办公地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="sbcsAddress" class="layui-input" autocomplete="off">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">固定电话</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="sbcsLxdh1" class="layui-input" autocomplete="off" lay-verify="required">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">Email</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="email" class="layui-input" autocomplete="off" lay-verify="required">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">医疗器械经营许可证号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="sbcsCertificate" class="layui-input" autocomplete="off" placeholder="医疗器械经营许可证号" lay-verify="required">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">营业执照(统一社会信用代码)</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" name="sbcsCreditcode" placeholder="营业执照(统一社会信用代码)" autocomplete="off" lay-verify="required">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">医疗器械经营许可证影印件</label>
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn" id="ylqx">上传图片</button>
+                        <div class="layui-upload-list">
+                            <img class="layui-upload-img" id="ylqximg">
+                            <p id="ylqxtry"></p>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">营业执照影印件</label>
+                    <div class="layui-upload">
+                        <button type="button" class="layui-btn" id="yyzz">上传图片</button>
+                        <div class="layui-upload-list">
+                            <img class="layui-upload-img" id="yyzzimg">
+                            <p id="yyzztry"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn layui-btn-normal layui-btn-lg" lay-submit lay-filter="register" id="check-btn">立即注册</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <script>
