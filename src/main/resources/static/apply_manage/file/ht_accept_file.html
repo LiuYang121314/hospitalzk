@@ -47,7 +47,7 @@
                 url:"/wjsc/select?sourceType="+0+"&sourceId="+htId+"&type="+ids,
                 method:"GET",
                 dataType:"JSON",
-                success:function (res) {
+                success:function(res){
                     console.log(res.data[0].path);
                     $("#htFile").attr("src",res.data[0].path);
                 },
