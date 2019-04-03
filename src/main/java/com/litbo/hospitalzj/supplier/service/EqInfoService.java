@@ -5,6 +5,7 @@ import java.util.List;
 import com.litbo.hospitalzj.supplier.entity.EqInfo;
 import com.litbo.hospitalzj.supplier.vo.SelHtEqVo;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface EqInfoService {
 	Integer InsertEqInfo(EqInfo eqInfo);
@@ -32,6 +33,5 @@ public interface EqInfoService {
 	void updateEqQk(@Param("eqId") Integer eqId, @Param("eqQk")String eqQk);
 
 	List<EqInfo> findByEqQk(String eqQk);
-
 
 }

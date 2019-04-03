@@ -32,6 +32,6 @@ public interface EqCgMapper {
 			"    where eqcg_id = #{eqcgId,jdbcType=VARCHAR}")
 	Integer update(EqCgfs eqCgfs);
 	//模糊查询
-	@Select("SELECT * FROM eq_cgfs WHERE eqcg_name LIKE '%${eqcgName}%' where is_delete=0")
+	@Select("SELECT * FROM eq_cgfs WHERE eqcg_name LIKE '%${eqcgName}%' and is_delete=0")
 	List<EqCgfs> findByEqcgNameLike(@Param("eqcgName") String eqcgName);
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.litbo.hospitalzj.quality.mapper.EqXeqMapper;
 import com.litbo.hospitalzj.supplier.service.exception.InsertException;
+import org.apache.poi.ss.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import com.litbo.hospitalzj.supplier.entity.EqInfo;
 import com.litbo.hospitalzj.supplier.mapper.EqInfoMapper;
 import com.litbo.hospitalzj.supplier.service.EqInfoService;
 import com.litbo.hospitalzj.supplier.vo.SelHtEqVo;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class EqInfoServiceImpl implements EqInfoService {
@@ -107,6 +109,8 @@ public class EqInfoServiceImpl implements EqInfoService {
 		return eqInfoMapper.findByEqQk(eqQk);
 	}
 
+
+
 	@Override
 	public Integer findHtId(Integer eqId) {
 		Integer data=eqInfoMapper.selectHtId(eqId);
@@ -115,5 +119,4 @@ public class EqInfoServiceImpl implements EqInfoService {
 		}
 		return data;
 	};
-
 }

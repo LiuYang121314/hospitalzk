@@ -45,15 +45,15 @@
     layui.use(['layer','jquery'],function(){
         var layer = layui.layer
             , $ = layui.jquery;
-        var path = "";
+        var paths = "";
         $(function(){
             $.ajax({
                 url:"/wjsc/select?sourceType="+0+"&sourceId="+htId+"&type="+ids,
                 method:"GET",
                 dataType:"JSON",
                 success:function (res) {
-                    path = res.data[0].path;
-                    console.log(path);
+                    paths = res.data[0].path;
+                    console.log(paths);
                     $("#htFile").attr("src",res.data[0].path);
                 },
                 error:function(data){
@@ -63,9 +63,10 @@
             });
         });
         $("#updown").click(function(){
+            alert(paths);
             $.ajax({
-                url:"?path="+path,
-                method:"POST",
+                url:"/wjsc/downloadFile?filePath="+paths,
+                method:"GET",
                 dataType:"JSON",
                 success:function(res){
                     if(res.state === 200){
@@ -73,10 +74,6 @@
                     }else{
                         layer.msg("失败");
                     }
-                },
-                error:function(data){
-                    layer.msg("请稍后再试");
-                    console.log(data);
                 }
             })
         })

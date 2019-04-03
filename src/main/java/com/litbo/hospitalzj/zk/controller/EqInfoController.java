@@ -7,9 +7,8 @@ import com.litbo.hospitalzj.zk.domian.Yq;
 import com.litbo.hospitalzj.zk.service.EqInfoService;
 import com.litbo.hospitalzj.zk.vo.EqToYqs;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,4 +76,18 @@ public class EqInfoController extends BaseController{
 		List<EqInfo> data=eqInfoService.findNewEqInfo();
 		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
 	}
+	/*@PostMapping("/save")
+	public String addUser(@RequestParam("file") MultipartFile file) {
+		String fileName = file.getOriginalFilename();
+		try {
+			return sysService.batchImport(fileName, file);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return e.getMessage();
+		}catch(Exception e){
+			e.printStackTrace();
+			return "文件异常,导入失败";
+
+		}
+	}*/
 }
