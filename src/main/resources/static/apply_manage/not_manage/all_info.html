@@ -107,7 +107,47 @@
       <fieldset class="layui-elem-field layui-field-title">
           <legend>附件文件</legend>
       </fieldset>
-      <table class="layui-table" id="fixingFile" lay-filter="handle"></table>
+      <!--<table class="layui-table" id="fixingFile" lay-filter="handle"></table>-->
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th>文件名称</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>合同文件</td>
+                <td>
+                    <a id="lookHt" class="layui-btn layui-btn-normal">查看</a>
+                </td>
+            </tr>
+            <tr>
+                <td>中标通知书</td>
+                <td>
+                    <a class="layui-btn layui-btn-normal">查看</a>
+                </td>
+            </tr>
+            <tr>
+                <td>医疗器械注册登记证</td>
+                <td>
+                    <a class="layui-btn layui-btn-normal">查看</a>
+                </td>
+            </tr>
+            <tr>
+                <td>厂家授权证明书</td>
+                <td>
+                    <a class="layui-btn layui-btn-normal">查看</a>
+                </td>
+            </tr>
+            <tr>
+                <td>海关进口货物报关单</td>
+                <td>
+                    <a class="layui-btn layui-btn-normal">查看</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
       <div id="postMsg" class="col-xs-12">
         <fieldset class="layui-elem-field layui-field-title manage">
             <legend>验收审批</legend>
@@ -138,7 +178,6 @@
               <textarea name="yy" placeholder="请输入本次验收要求" class="layui-textarea"></textarea>
             </div>
           </div>
-
           <div class="layui-form-item btn">
             <div class="layui-input-block">
               <button class="layui-btn layui-btn-normal" lay-submit lay-filter="submit">立即提交</button>
@@ -161,6 +200,7 @@
   // 获取上个页面传递的类型
   var type = window.location.search;
   var ids = parseInt(type.split("=")[1]);
+  sessionStorage['htId'] = ids;
   //Demo
   layui.use(['table','layer','jquery','form','laydate'],function(){
     var table = layui.table
@@ -313,6 +353,10 @@
     });
     return false;
   });
+      // 查看合同文件
+      $("#lookHt").click(function(){
+          location.href="/apply_manage/file/ht_accept_file.html?id="+1;
+      });
   })
 </script>
 </body>
