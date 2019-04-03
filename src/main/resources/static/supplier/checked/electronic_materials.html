@@ -92,7 +92,7 @@
                 </tbody>
             </table>
             <div class="col-xs-12 btn">
-                <a id="upmit" class="layui-btn layui-btn-primary">提交</a>
+                <a id="upmit" class="layui-btn layui-btn-normal">提交</a>
             </div>
         </div>
     </div>
@@ -105,65 +105,6 @@
             var upload = layui.upload
             ,   layer = layui.layer
             ,   $ = layui.jquery;
-            // var uploadInst = upload.render({
-            //     elem: '#cjazbg'
-            //     ,url: '?htId='+ids
-            //     ,done: function(res){
-            //       if(res.state === 200){
-            //           layer.msg("上传成功");
-            //           upload.render({
-            //               elem:"#shcn",
-            //               url:'?htId='+ids,
-            //               done:function (res) {
-            //                   if(res.state === 200){
-            //                       layer.msg("上传成功");
-            //                       upload.render({
-            //                           elem:"#jszl",
-            //                           url:'?htId='+ids,
-            //                           done:function (res) {
-            //                               if(res.state === 200){
-            //                                   layer.msg("上传成功");
-            //                                   upload.render({
-            //                                       elem:"#hgz",
-            //                                       url:'?htId='+ids,
-            //                                       done:function (res) {
-            //                                           if(res.state === 200){
-            //                                               layer.msg("上传成功,请耐心等待审核");
-            //                                               setTimeout(function(){
-            //                                                   location.href="/supplier/index.html";
-            //                                               },1000)
-            //                                           }else{
-            //                                               layer.msg("上传失败");
-            //                                           }
-            //                                       },
-            //                                       error:function () {
-            //                                           layer.msg("上传失败,请稍后再试");
-            //                                       }
-            //                                   })
-            //                               }else{
-            //                                   layer.msg("上传失败");
-            //                               }
-            //                           },
-            //                           error:function () {
-            //                               layer.msg("上传失败,请稍后再试");
-            //                           }
-            //                       })
-            //                   }else{
-            //                       layer.msg("上传失败");
-            //                   }
-            //               },
-            //               error:function(){
-            //                   layer.msg("上传失败,请稍后再试");
-            //               }
-            //           })
-            //       }else{
-            //           layer.msg("上传失败");
-            //       }
-            //     }
-            //     ,error: function(){
-            //       layer.msg("上传失败，请稍后再试");
-            //     }
-            //   });
             // 厂家安装报告
             upload.render({
                 elem: '#cjazbg'

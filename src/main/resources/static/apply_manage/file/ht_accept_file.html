@@ -29,9 +29,12 @@
 <div class="layui-row">
     <div class="col-xs-12">
         <fieldset class="layui-elem-field layui-field-title">
-            <legend>合同文件</legend>
+            <legend>文件</legend>
         </fieldset>
         <img id="htFile" src="" alt="">
+        <div class="col-xs-12 btn">
+            <a id="updown" class="layui-btn layui-btn-normal">下载</a>
+        </div>
     </div>
 </div>
 <script>
@@ -42,20 +45,26 @@
     layui.use(['layer','jquery'],function(){
         var layer = layui.layer
             , $ = layui.jquery;
+        var paths = "";
         $(function(){
             $.ajax({
                 url:"/wjsc/select?sourceType="+0+"&sourceId="+htId+"&type="+ids,
                 method:"GET",
                 dataType:"JSON",
-                success:function(res){
-                    console.log(res.data[0].path);
+                success:function (res) {
+                    paths = res.data[0].path;
+                    console.log(paths);
                     $("#htFile").attr("src",res.data[0].path);
                 },
                 error:function(data){
                     layer.msg("请稍后再试");
                     console.log(data);
                 }
-            })
+            });
+        });
+        $("#updown").click(function(){
+            alert(paths);
+            window.location.href="/wjsc/downloadFile?filePath="+paths;
         })
     })
 </script>

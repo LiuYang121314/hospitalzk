@@ -38,7 +38,7 @@
       </fieldset>
       <table class="layui-table" id="sbInfo" lay-filter="looksbfj"></table>
       <fieldset class="layui-elem-field layui-field-title">
-          <legend>设备文件信息</legend>
+          <legend>设备文件</legend>
       </fieldset>
       <!--<table class="layui-table" id="fileInfo"></table>-->
       <table class="layui-table">
@@ -58,25 +58,25 @@
             <tr>
                 <td>中标通知书</td>
                 <td>
-                    <a class="layui-btn layui-btn-normal">查看</a>
+                    <a id="lookZhb" class="layui-btn layui-btn-normal">查看</a>
                 </td>
             </tr>
             <tr>
                 <td>医疗器械注册登记证</td>
                 <td>
-                    <a class="layui-btn layui-btn-normal">查看</a>
+                    <a id="lookYlqx" class="layui-btn layui-btn-normal">查看</a>
                 </td>
             </tr>
             <tr>
                 <td>厂家授权证明书</td>
                 <td>
-                    <a class="layui-btn layui-btn-normal">查看</a>
+                    <a id="lookCjsq" class="layui-btn layui-btn-normal">查看</a>
                 </td>
             </tr>
             <tr>
                 <td>海关进口货物报关单</td>
                 <td>
-                    <a class="layui-btn layui-btn-normal">查看</a>
+                    <a id="lookHgjk" class="layui-btn layui-btn-normal">查看</a>
                 </td>
             </tr>
             </tbody>
@@ -264,6 +264,22 @@
     $("#lookHt").click(function(){
         location.href="/supplier/file/ht_accept_file.html?id="+1;
     });
+      // 中标通知书
+      $("#lookZhb").click(function(){
+          location.href="/supplier/file/ht_accept_file.html?id="+2;
+      });
+      // 医疗器械注册登记证
+      $("#lookYlqx").click(function(){
+          location.href="/supplier/file/ht_accept_file.html?id="+3;
+      });
+      // 厂家授权证明书
+      $("#lookCjsq").click(function(){
+          location.href="/supplier/file/ht_accept_file.html?id="+4;
+      });
+      // 海关进口货物报关单
+      $("#lookHgjk").click(function(){
+          location.href="/supplier/file/ht_accept_file.html?id="+5;
+      });
   });
 </script>
 </body>

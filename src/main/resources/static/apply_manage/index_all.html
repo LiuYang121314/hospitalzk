@@ -48,24 +48,38 @@
                 <a href="?p=apply"><i class="fas fa-fas fa-home"></i>主页</a>
             </li>
             <li class="layui-nav-item" shiro:haspermission="" name="a">
-                <a href="javascript:void(0);" data-url="./home/not_manage.html" data-id="21" data-text="待验收管理"><i class="fas  fa-clipboard"></i>待验收管理</a>
+                <a href="javascript:;"><i class="fas fa-clipboard"></i>供应商管理</a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="javascript:void(0);" data-url="./home/supplier_check.html" data-id="21" data-text="注册信息审核"><i class="layui-icon layui-icon-circle-dot"></i>注册信息审核</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:void(0);" data-url="./home/supplier_manage.html" data-id="22" data-text="供应商信息管理"><i class="layui-icon layui-icon-circle-dot"></i>供应商信息管理</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:void(0);" data-url="./home/supplier_search.html" data-id="23" data-text="供应商查询"><i class="layui-icon layui-icon-circle-dot"></i>供应商查询</a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item" shiro:haspermission="" name="a">
+                <a href="javascript:void(0);" data-url="./home/not_manage.html" data-id="24" data-text="待验收管理"><i class="fas  fa-clipboard"></i>待验收管理</a>
             </li>
             <li class="layui-nav-item" shiro:haspermission="" name="a">
                 <a href="javascript:;"><i class="fas fa-clipboard"></i>验收管理</a>
                 <dl class="layui-nav-child">
                     <dd>
-                        <a href="javascript:void(0);" data-url="./home/apply_manage.html" data-id="22" data-text="到货登记管理"><i class="layui-icon layui-icon-circle-dot"></i>到货登记</a>
+                        <a href="javascript:void(0);" data-url="./home/apply_manage.html" data-id="25" data-text="到货登记"><i class="layui-icon layui-icon-circle-dot"></i>到货登记</a>
                     </dd>
                     <dd>
-                        <a href="javascript:void(0);" data-url="./home/last_check.html" data-id="23" data-text="验收审核"><i class="layui-icon layui-icon-circle-dot"></i>电子资料信息审核</a>
+                        <a href="javascript:void(0);" data-url="./home/last_check.html" data-id="26" data-text="电子资料信息审核"><i class="layui-icon layui-icon-circle-dot"></i>电子资料信息审核</a>
                     </dd>
                 </dl>
             </li>
             <li class="layui-nav-item" shiro:haspermission="" name="a">
-                <a href="javascript:void(0);" data-url="./home/already_manage.html" data-id="24" data-text="已验收管理"><i class="layui-icon layui-icon-date"></i>已验收管理</a>
+                <a href="javascript:void(0);" data-url="./home/already_manage.html" data-id="27" data-text="已验收管理"><i class="layui-icon layui-icon-date"></i>已验收管理</a>
             </li>
             <li class="layui-nav-item" shiro:haspermission="" name="a">
-                <a href="javascript:void(0);" data-url="./home/statistics.html" data-id="25" data-text="验收统计"><i class="layui-icon layui-icon-chart"></i>验收统计</a>
+                <a href="javascript:void(0);" data-url="./home/statistics.html" data-id="28" data-text="验收统计"><i class="layui-icon layui-icon-chart"></i>验收统计</a>
             </li>
         </ul>
     </div>
