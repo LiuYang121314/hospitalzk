@@ -23,6 +23,12 @@
             align-items: center;
             flex-wrap: wrap;
         }
+        .layui-form-item{
+            margin-top: 10px;
+        }
+        .btn{
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -45,51 +51,51 @@
                         <input type="text" name="sbcsAddress" class="layui-input" autocomplete="off">
                     </div>
                 </div>
-                <div class="layui-form-item">
+                <div class="layui-form-item col-md-7">
                     <label class="layui-form-label">固定电话</label>
                     <div class="layui-input-block">
                         <input type="text" name="sbcsLxdh1" class="layui-input" autocomplete="off" lay-verify="required">
                     </div>
                 </div>
-                <div class="layui-form-item">
+                <div class="layui-form-item col-md-7">
                     <label class="layui-form-label">Email</label>
                     <div class="layui-input-block">
                         <input type="text" name="email" class="layui-input" autocomplete="off" lay-verify="required">
                     </div>
                 </div>
-                <div class="layui-form-item">
+                <div class="layui-form-item col-md-7">
                     <label class="layui-form-label">医疗器械经营许可证号</label>
                     <div class="layui-input-block">
                         <input type="text" name="sbcsCertificate" class="layui-input" autocomplete="off" placeholder="医疗器械经营许可证号" lay-verify="required">
                     </div>
                 </div>
-                <div class="layui-form-item">
+                <div class="layui-form-item col-md-7">
                     <label class="layui-form-label">营业执照(统一社会信用代码)</label>
                     <div class="layui-input-block">
                         <input type="text" class="layui-input" name="sbcsCreditcode" placeholder="营业执照(统一社会信用代码)" autocomplete="off" lay-verify="required">
                     </div>
                 </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">医疗器械经营许可证影印件</label>
-                    <div class="layui-upload">
-                        <button type="button" class="layui-btn" id="ylqx">上传图片</button>
-                        <div class="layui-upload-list">
-                            <img class="layui-upload-img" id="ylqximg">
-                            <p id="ylqxtry"></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">营业执照影印件</label>
-                    <div class="layui-upload">
-                        <button type="button" class="layui-btn" id="yyzz">上传图片</button>
-                        <div class="layui-upload-list">
-                            <img class="layui-upload-img" id="yyzzimg">
-                            <p id="yyzztry"></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-form-item">
+                <!--<div class="layui-form-item">-->
+                    <!--<label class="layui-form-label">医疗器械经营许可证影印件</label>-->
+                    <!--<div class="layui-upload">-->
+                        <!--<button type="button" class="layui-btn" id="ylqx">上传图片</button>-->
+                        <!--<div class="layui-upload-list">-->
+                            <!--<img class="layui-upload-img" id="ylqximg">-->
+                            <!--<p id="ylqxtry"></p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="layui-form-item">-->
+                    <!--<label class="layui-form-label">营业执照影印件</label>-->
+                    <!--<div class="layui-upload">-->
+                        <!--<button type="button" class="layui-btn" id="yyzz">上传图片</button>-->
+                        <!--<div class="layui-upload-list">-->
+                            <!--<img class="layui-upload-img" id="yyzzimg">-->
+                            <!--<p id="yyzztry"></p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="layui-form-item col-md-12 btn">
                     <div class="layui-input-block">
                         <button class="layui-btn layui-btn-normal layui-btn-lg" lay-submit lay-filter="register" id="check-btn">立即注册</button>
                     </div>
