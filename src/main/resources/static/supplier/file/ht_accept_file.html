@@ -64,18 +64,7 @@
         });
         $("#updown").click(function(){
             alert(paths);
-            $.ajax({
-                url:"/wjsc/downloadFile?filePath="+paths,
-                method:"GET",
-                dataType:"JSON",
-                success:function(res){
-                    if(res.state === 200){
-                        layer.msg("请求成功，正在下载");
-                    }else{
-                        layer.msg("失败");
-                    }
-                }
-            })
+            window.open("/supplier/file/download.html?id="+paths);
         })
     })
 </script>
