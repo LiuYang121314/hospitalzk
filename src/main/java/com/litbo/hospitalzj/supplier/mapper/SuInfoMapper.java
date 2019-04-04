@@ -16,18 +16,20 @@ public interface SuInfoMapper {
             "      su_gsdz, su_lxrxm, su_lxrdh, \n" +
             "      su_lxrbm, su_dh, su_yb, \n" +
             "      su_email, su_cz, su_wz, \n" +
-            "      bz,is_delete)\n" +
+            "      bz,is_delete,state)\n" +
             "    values (#{suId,jdbcType=INTEGER},#{suMc},#{suSf,jdbcType=VARCHAR}, #{suCs,jdbcType=VARCHAR}, \n" +
             "      #{suXq,jdbcType=VARCHAR}, #{suFr,jdbcType=VARCHAR}, #{suDjr,jdbcType=VARCHAR}, \n" +
             "      #{suFzr,jdbcType=VARCHAR}, #{suKhyh,jdbcType=VARCHAR}, #{suKhyhzh,jdbcType=VARCHAR}, \n" +
             "      #{suGsdz,jdbcType=VARCHAR}, #{suLxrxm,jdbcType=VARCHAR}, #{suLxrdh,jdbcType=VARCHAR}, \n" +
             "      #{suLxrbm,jdbcType=VARCHAR}, #{suDh,jdbcType=VARCHAR}, #{suYb,jdbcType=VARCHAR}, \n" +
             "      #{suEmail,jdbcType=VARCHAR}, #{suCz,jdbcType=VARCHAR}, #{suWz,jdbcType=VARCHAR}, \n" +
-            "      #{bz,jdbcType=VARCHAR},#{isDelete})")
+            "      #{bz,jdbcType=VARCHAR},#{isDelete},#{state})")
     @Options(useGeneratedKeys = true, keyProperty = "suId", keyColumn = "su_id")
     int insert(SuInfo suInfo);
     @Update("update su_info set is_delete=#{isDelete} where su_id=#{suId} ")
     int delete(@Param("suId") Integer suId,@Param("isDelete") Integer isDelete);
+    @Update("update su_info set state=#{state} where su_id=#{suId} ")
+    int updateState(@Param("suId") Integer suId,@Param("state") Integer state);
     @Update(" update su_info\n" +
             "    set su_sf = #{suSf,jdbcType=VARCHAR},\n" +
             "      su_cs = #{suCs,jdbcType=VARCHAR},\n" +
@@ -49,8 +51,8 @@ public interface SuInfoMapper {
             "      bz = #{bz,jdbcType=VARCHAR}\n" +
             "    where su_id = #{suId,jdbcType=INTEGER}")
     int update(SuInfo suInfo);
-    @Select("select * from su_info where is_delete=0 ORDER BY su_id ASC LIMIT #{offset}, #{count}")
-    List<SuInfo> selectAll(@Param("offset")Integer offset, @Param("count") Integer count);
+    @Select("select * from su_info where is_delete=0")
+    List<SuInfo> selectAll();
     @Select("select * from su_info where su_id=#{suId} and is_delete=0")
     SuInfo findSuById(Integer suId);
     @Select("select * from su_info where su_mc=#{suMc} and is_delete=0")
