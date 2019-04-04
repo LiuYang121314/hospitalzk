@@ -20,14 +20,33 @@
             margin-top: 20px;
             color: red;
         }
+        .layui-form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
     </style>
 </head>
 <body>
 <div class="layui-row">
     <div class="col-xs-12">
         <fieldset class="layui-elem-field layui-field-title">
-            <legend>已完善信息列表</legend>
+            <legend style="font-size: 26px;color: #0C0C0C;text-align: center;">供应商查询</legend>
         </fieldset>
+        <form class="layui-form layui-form-pane" action="">
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">供应商名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" required  lay-verify="required" placeholder="请输入供应商名称" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="search">查询</button>
+                </div>
+            </div>
+        </form>
         <table class="layui-table" id="searchInfo" lay-filter="handle"></table>
     </div>
 </div>
@@ -36,50 +55,72 @@
     <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
 </script>
 <script>
-    layui.use(['table','layer','jquery'],function(){
+    layui.use(['table','layer','jquery','form'],function(){
         var table = layui.table
             , layer = layui.layer
-            , $ = layui.jquery;
-        // 已完善信息列表
-        table.render({
-            elem:"#searchInfo",
-            cellMinWidth:100,
-            toolbar: '#toolbarDemo',
-            url:"",
-            method:"GET",
-            response:{
-                statusName: 'status'
-                ,statusCode: 200
-                ,msgName: 'hint'
-                ,countName: 'total'
-                ,dataName: 'data'
-            },
-            parseData:function(res){
-                console.log(res);
-                return{
-                    "status":200
-                    ,"msg":res.message
-                    ,"count":res.total
-                    ,"data":res.data
+            , $ = layui.jquery
+            ,form = layui.form;
+        form.on('submit(search)', function(data){
+            console.log(data.field);
+            $.ajax({
+                url:"",
+                method:"POST",
+                data:data.field,
+                dataType:"JSON",
+                success:function(res){
+                    if(res.state === 200){
+                        layer.msg("查询成功");
+                        // 已完善信息列表
+                        table.render({
+                            elem:"#searchInfo",
+                            cellMinWidth:100,
+                            toolbar: '#toolbarDemo',
+                            url:"",
+                            method:"GET",
+                            response:{
+                                statusName: 'status'
+                                ,statusCode: 200
+                                ,msgName: 'hint'
+                                ,countName: 'total'
+                                ,dataName: 'data'
+                            },
+                            parseData:function(res){
+                                console.log(res);
+                                return{
+                                    "status":200
+                                    ,"msg":res.message
+                                    ,"count":res.total
+                                    ,"data":res.data
+                                }
+                            },
+                            cols:[[
+                                {field:'suMc', title:'企业名称',align:'center'},
+                                {field:'suSf', title:'所在省份',align:'center'},
+                                {field:'suCs', title:'所在城市',align:'center'},
+                                {field:'suXq', title:'所在区县',align:'center'},
+                                {field:'suFr', title:'企业法人',align:'center'},
+                                {field:'suDjr', title:'企业登记人',align:'center'},
+                                {field:'suFzr', title:'企业负责人',align:'center'},
+                                {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
+                            ]]
+                        });
+                    }else{
+                        layer.msg("提交失败");
+                    }
+                },
+                error:function(data){
+                    layer.msg("请稍后再试");
+                    console.log(data);
                 }
-            },
-            cols:[[
-                {field:'suMc', title:'企业名称',align:'center'},
-                {field:'suSf', title:'所在省份',align:'center'},
-                {field:'suCs', title:'所在城市',align:'center'},
-                {field:'suXq', title:'所在区县',align:'center'},
-                {field:'suFr', title:'企业法人',align:'center'},
-                {field:'suDjr', title:'企业登记人',align:'center'},
-                {field:'suFzr', title:'企业负责人',align:'center'},
-                {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
-            ]]
+            });
+            return false;
         });
         //监听行工具事件
         table.on('tool(handle)', function(obj){
             var data = obj.data;
             //console.log(obj)
             if(obj.event === 'more'){
-                location.href="/apply_manage/supplier/all_info.html?id="
+                location.href="/apply_manage/supplier/look_all_info.html?id="+obj.data.suId;
             }else if(obj.event === 'del'){
                 $.ajax({
                     url:"/suinfo/findBySuMcLike?suMc=",

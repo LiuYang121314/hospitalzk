@@ -299,13 +299,13 @@
             <tr>
                 <td>营业执照影印件</td>
                 <td>
-                    <a id="lookHt" class="layui-btn layui-btn-normal">查看</a>
+                    <a id="lookYyzz" class="layui-btn layui-btn-normal">查看</a>
                 </td>
             </tr>
             <tr>
                 <td>医疗器械经营许可证影印件</td>
                 <td>
-                    <a id="lookZhb" class="layui-btn layui-btn-normal">查看</a>
+                    <a id="lookJyxk" class="layui-btn layui-btn-normal">查看</a>
                 </td>
             </tr>
             </tbody>
@@ -320,6 +320,7 @@
     // 获取上个页面传递的类型
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
+    sessionStorage["suId"] = ids;
     layui.use(['jquery','layer','form'],function(){
         var $ = layui.jquery
             ,layer = layui.layer
@@ -384,11 +385,12 @@
                         $("#zzZzdz").append(res.data.zzZzdz);
                         $("#zzZzbz").append(res.data.zzZzbz);
                     }else{
-                        layer.msg("无数据")
+                        layer.msg("无数据");
                     }
                 },
                 error:function(data){
                     layer.msg("请稍后再试");
+                    console.log(data);
                 }
             })
         });
@@ -429,6 +431,14 @@
                     console.log(data);
                 }
             })
+        });
+        // 查看文件
+        $("#lookYyzz").click(function(){
+            location.href="/apply_manage/supplier/file_info.html?id="+1;
+        });
+        // 查看文件
+        $("#lookJyxk").click(function(){
+            location.href="/apply_manage/supplier/file_info.html?id="+2;
         });
     });
 </script>
