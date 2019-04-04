@@ -42,11 +42,14 @@ public interface EqInfoService {
 	List<EqInfo> findEqInfo(String userId);
 
 	List<EqInfo> findNewEqInfo();
+    //查询用户已分配的新设备信息
+	List<EqInfo> findNewJcEqByUserId(String userId);
 
 	public List<EqAndUname> findJcEqsByUserIdAndState(String userId, String state);
 
 	public List<EqInfo> findShEqsByUserIdAndState(String userId, String state);
 	//通过设备Id查询分配用户
 	List<User> findUserIdByEqId(String userId);
+
 
 }

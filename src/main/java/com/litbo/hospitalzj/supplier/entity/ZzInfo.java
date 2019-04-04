@@ -32,7 +32,7 @@ public class ZzInfo {
     private String zzYyscdz;
 
     private String zzCkdz;
-
+    private String zzYyjyfw;
     private String zzYybz;
 
     private String zzJyzh;
@@ -60,8 +60,24 @@ public class ZzInfo {
     private Date zzZzjzrq;
 
     private String zzZzdz;
-
+    private String zzZzyx;
     private String zzZzbz;
+
+    public String getZzZzyx() {
+        return zzZzyx;
+    }
+
+    public void setZzZzyx(String zzZzyx) {
+        this.zzZzyx = zzZzyx;
+    }
+
+    public String getZzYyjyfw() {
+        return zzYyjyfw;
+    }
+
+    public void setZzYyjyfw(String zzYyjyfw) {
+        this.zzYyjyfw = zzYyjyfw;
+    }
 
     public Integer getZzId() {
         return zzId;

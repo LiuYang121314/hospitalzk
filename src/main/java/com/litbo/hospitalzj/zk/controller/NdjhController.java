@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-/**
- *
- */
 @RestController
 @RequestMapping("/ndjh")
 public class NdjhController extends BaseController {

@@ -20,7 +20,7 @@ public interface ZzInfoMapper {
             "      zz_jyfddbr, zz_jysxrq, zz_jyjzrq, \n" +
             "      zz_jyyx, zz_jyzcdz, zz_jybz, \n" +
             "      zz_zzdm, zz_zzlx, zz_zzsxrq, \n" +
-            "      zz_zzjzrq, zz_zzdz, zz_zzbz\n" +
+            "      zz_zzjzrq, zz_zzdz, zz_zzbz,zz_yyjyfw,zz_zzyx\n" +
             "      )\n" +
             "    values (#{zzId,jdbcType=INTEGER}, #{suId,jdbcType=INTEGER}, #{zzYyzch,jdbcType=VARCHAR}, \n" +
             "      #{zzYyzzbh,jdbcType=VARCHAR}, #{zzYyclrq,jdbcType=DATE}, #{zzYyfdr,jdbcType=VARCHAR}, \n" +
@@ -31,7 +31,7 @@ public interface ZzInfoMapper {
             "      #{zzJyfddbr,jdbcType=VARCHAR}, #{zzJysxrq,jdbcType=DATE}, #{zzJyjzrq,jdbcType=DATE}, \n" +
             "      #{zzJyyx,jdbcType=VARCHAR}, #{zzJyzcdz,jdbcType=VARCHAR}, #{zzJybz,jdbcType=VARCHAR}, \n" +
             "      #{zzZzdm,jdbcType=VARCHAR}, #{zzZzlx,jdbcType=VARCHAR}, #{zzZzsxrq,jdbcType=DATE}, \n" +
-            "      #{zzZzjzrq,jdbcType=DATE}, #{zzZzdz,jdbcType=VARCHAR}, #{zzZzbz,jdbcType=VARCHAR}\n" +
+            "      #{zzZzjzrq,jdbcType=DATE}, #{zzZzdz,jdbcType=VARCHAR}, #{zzZzbz,jdbcType=VARCHAR},#{zzYyjyfw},#{zzZzyx}\n" +
             "      )")
     int insert(ZzInfo zzInfo);
     @Update("  update zz_info\n" +
@@ -63,7 +63,9 @@ public interface ZzInfoMapper {
             "      zz_zzsxrq = #{zzZzsxrq,jdbcType=DATE},\n" +
             "      zz_zzjzrq = #{zzZzjzrq,jdbcType=DATE},\n" +
             "      zz_zzdz = #{zzZzdz,jdbcType=VARCHAR},\n" +
-            "      zz_zzbz = #{zzZzbz,jdbcType=VARCHAR}\n" +
+            "      zz_zzbz = #{zzZzbz,jdbcType=VARCHAR},\n" +
+            "      zz_yyjyfw=#{zzYyjyfw}," +
+            "      zz_zzyx=#{zzZzyx}"+
             "    where zz_id = #{zzId,jdbcType=INTEGER}")
     int update(ZzInfo zzInfo);
     @Select("select * from zz_info where su_id=#{suId}")

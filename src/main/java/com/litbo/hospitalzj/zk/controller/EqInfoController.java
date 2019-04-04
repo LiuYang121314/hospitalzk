@@ -76,18 +76,4 @@ public class EqInfoController extends BaseController{
 		List<EqInfo> data=eqInfoService.findNewEqInfo();
 		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
 	}
-	/*@PostMapping("/save")
-	public String addUser(@RequestParam("file") MultipartFile file) {
-		String fileName = file.getOriginalFilename();
-		try {
-			return sysService.batchImport(fileName, file);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return e.getMessage();
-		}catch(Exception e){
-			e.printStackTrace();
-			return "文件异常,导入失败";
-
-		}
-	}*/
 }

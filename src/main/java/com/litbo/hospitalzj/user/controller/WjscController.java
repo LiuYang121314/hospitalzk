@@ -62,6 +62,17 @@ public class WjscController extends BaseController {
         wjscService.insert(wjsc);
         return new ResponseResult<Void>(SUCCESS);
     }
+    @RequestMapping("/insertSuWj")
+    public ResponseResult<Void> insertSuWj(Wjsc wjsc, @RequestParam("file") MultipartFile file, HttpSession session) {
+        String path = FileUpload.uploadOne(file, session);
+        System.out.println(path);
+        wjsc.setSourceType(3);
+        wjsc.setPath(path);
+        wjsc.setScTime(new Date());
+        wjscService.insert(wjsc);
+        return new ResponseResult<Void>(SUCCESS);
+    }
+
 
     @RequestMapping("/delete")
     public ResponseResult<Void> delete(Integer htId) {
@@ -88,44 +99,8 @@ public class WjscController extends BaseController {
         System.out.println(upload);
         if (!upload.exists()) upload.mkdirs();
         String path1 = upload.getAbsolutePath() + filePath;
-        /*FileDownLoad.downloadFile1(response, path1, filePath);*/
-        File file = new File(path1);
-        String fileName=filePath;
-        if (file.exists()) {
-            response.setContentType("application/force-download");// 设置强制下载不打开
-            response.addHeader("Content-Disposition", "attachment;fileName=" + file.getName());
-            byte[] buffer = new byte[1024];
-            FileInputStream fis = null;
-            BufferedInputStream bis = null;
-            try {
-                fis = new FileInputStream(file);
-                bis = new BufferedInputStream(fis);
-                OutputStream outputStream = response.getOutputStream();
-                int i = bis.read(buffer);
-                while (i != -1) {
-                    outputStream.write(buffer, 0, i);
-                    i = bis.read(buffer);
-                }
-                return null;
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                if (bis != null) {
-                    try {
-                        bis.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                if (fis != null) {
-                    try {
-                        fis.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
+        System.out.println(path1);
+        FileDownLoad.downloadFile1(response, path1, filePath);
         return null;
     }
 }

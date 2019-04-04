@@ -69,16 +69,19 @@ public class EqInfoController extends BaseController{
 		EqInfo data=eqinfoService.selectByEqId(eqId);
 		return new ResponseResult<EqInfo>(SUCCESS,data);
 	}
+	//全部新设备信息
 	@RequestMapping("/newEqInfo")
 	public ResponseResult<List<EqInfo>> newEqinfo() {
 		List<EqInfo> data=eqinfoService.newEqinfo();
 		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
 	}
+	//已分配新设备
 	@RequestMapping("/eqInfoYfp")
 	public ResponseResult<List<EqInfo>> eqInfoYfp() {
 		List<EqInfo> data=eqinfoService.eqInfoYfp();
 		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
 	}
+	//未分配新设备
 	@RequestMapping("/eqInfoWfp")
 	public ResponseResult<List<EqInfo>> eqInfoWfp() {
 		List<EqInfo> data=eqinfoService.eqInfoWfp();
