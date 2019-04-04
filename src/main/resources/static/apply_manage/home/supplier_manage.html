@@ -45,7 +45,7 @@
             elem:"#overInfo",
             cellMinWidth:100,
             toolbar: '#toolbarDemo',
-            url:"",
+            url:"/suinfo/findSuByState",
             method:"GET",
             response:{
                 statusName: 'status'
@@ -79,10 +79,10 @@
             var data = obj.data;
             //console.log(obj)
             if(obj.event === 'more'){
-                location.href="/apply_manage/supplier/all_info.html?id="
+                location.href="/apply_manage/supplier/all_info.html?id="+obj.data.suId
             }else if(obj.event === 'del'){
                 $.ajax({
-                    url:"?",
+                    url:"/suinfo/delete?suId="+obj.data.suId,
                     method:"POST",
                     dataType:"JSON",
                     success:function(res){

@@ -82,7 +82,7 @@
                 location.href="/apply_manage/supplier/all_info.html?id="
             }else if(obj.event === 'del'){
                 $.ajax({
-                    url:"?",
+                    url:"/suinfo/findBySuMcLike?suMc=",
                     method:"POST",
                     dataType:"JSON",
                     success:function(res){
