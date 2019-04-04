@@ -25,6 +25,15 @@
         .isbor{
             border: 1px solid #CCCCCC;
         }
+        .layui-form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .layui-form-item{
+            margin-left: 30px;
+        }
         th,td{
             text-align: center;
         }
@@ -41,92 +50,92 @@
             <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
                 <legend style="color: red;">营业执照</legend>
             </fieldset>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label"><span style="color: red;">*</span>[正本]注册号</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzYyzch" placeholder="[正本]注册号" class="layui-input" autocomplete="off" lay-verify="required">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">证照编号</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzYyzzbh" class="layui-input" autocomplete="off">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">成立日期</label>
                 <div class="layui-input-block">
                     <input id="data" type="text" name="zzYyclrq" class="layui-input" autocomplete="off">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">法定代表人</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzYyfdr" class="layui-input" autocomplete="off">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">注册资金</label>
                 <div class="layui-input-block">
                     <input type="zzYyzczj" name="zzYyzczj" class="layui-input" autocomplete="off">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">企业类型</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzQylx" class="layui-input" autocomplete="off">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label"><span style="color: red;">*</span>生效日期</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzYysxrq" class="layui-input" autocomplete="off" lay-verify="required">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label"><span style="color: red;">*</span>截止日期</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzYyjzrq" class="layui-input" autocomplete="off" lay-verify="required">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">是否长期有限</label>
                 <div class="layui-input-block isbor">
                     <input type="radio" name="zzYyyx" value="是" title="是" checked>
                     <input type="radio" name="zzYyyx" value="否" title="否">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">质量管理人</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzZlglr" class="layui-input" autocomplete="off">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">住所</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzZlglrdz" class="layui-input" autocomplete="off">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">生产地址</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzYyscdz" class="layui-input" autocomplete="off">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">仓库地址</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzCkdz" class="layui-input" autocomplete="off">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">经营范围</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzYyjyfw" class="layui-input" autocomplete="off">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">备注</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzYybz" class="layui-input" autocomplete="off">
@@ -135,50 +144,50 @@
             <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
                 <legend style="color: red;">经营许可证</legend>
             </fieldset>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label"><span style="color: red;">*</span>证号</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzJyzh" class="layui-input" autocomplete="off" lay-verify="required">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">企业负责人</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzJyqyfzr" class="layui-input" autocomplete="off">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">法定代表人</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzJyfddbr" class="layui-input" autocomplete="off">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label"><span style="color: red;">*</span>生效日期</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzJysxrq" class="layui-input" autocomplete="off" lay-verify="required">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label"><span style="color: red;">*</span>截止日期</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzJyjzrq" class="layui-input" autocomplete="off" lay-verify="required">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">是否长期有限</label>
                 <div class="layui-input-block isbor">
                     <input type="radio" name="zzJyyx" value="是" title="是" checked>
                     <input type="radio" name="zzJyyx" value="否" title="否">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">注册地址</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzJyzcdz" class="layui-input" autocomplete="off">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">备注</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzJybz" class="layui-input" autocomplete="off">
@@ -187,44 +196,44 @@
             <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
                 <legend style="color: red;">组织机构代码证</legend>
             </fieldset>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label"><span style="color: red;">*</span>代码</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzZzdm" class="layui-input" autocomplete="off" lay-verify="required">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label"><span style="color: red;">*</span>机构类型</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzZzlx" class="layui-input" autocomplete="off" lay-verify="required">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label"><span style="color: red;">*</span>生效日期</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzZzsxrq" class="layui-input" autocomplete="off" lay-verify="required">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label"><span style="color: red;">*</span>截止日期</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzZzjzrq" class="layui-input" autocomplete="off" lay-verify="required">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">是否长期有限</label>
                 <div class="layui-input-block isbor">
                     <input type="radio" name="zzZzyx" value="是" title="是" checked>
                     <input type="radio" name="zzZzyx" value="否" title="否">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">机构地址</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzZzdz" class="layui-input" autocomplete="off">
                 </div>
             </div>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">备注</label>
                 <div class="layui-input-block">
                     <input type="text" name="zzZzbz" class="layui-input" autocomplete="off">

@@ -20,6 +20,15 @@
         .btn{
             text-align: center;
         }
+        .layui-form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .layui-form-item{
+            margin-left: 30px;
+        }
     </style>
 </head>
 <body>
@@ -30,158 +39,120 @@
         </fieldset>
         <div class="col-xs-12">
             <form class="layui-form layui-form-pane" action="">
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label"><span style="color: red;">*</span>企业名称</label>
                     <div class="layui-input-block">
                         <input type="text" name="suMc" class="layui-input" autocomplete="off" lay-verify="required">
                     </div>
                 </div>
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label">所在省份</label>
                     <div class="layui-input-block">
                         <input type="text" name="suSf" class="layui-input" autocomplete="off">
                     </div>
                 </div>
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label">所在城市</label>
                     <div class="layui-input-block">
                         <input type="text" name="suCs" class="layui-input" autocomplete="off">
                     </div>
                 </div>
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label">所在区县</label>
                     <div class="layui-input-block">
                         <input type="text" name="suXq" class="layui-input" autocomplete="off">
                     </div>
                 </div>
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label"><span style="color: red;">*</span>企业法人</label>
                     <div class="layui-input-block">
                         <input type="text" name="suFr" class="layui-input" autocomplete="off" lay-verify="required">
                     </div>
                 </div>
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label">企业登记人</label>
                     <div class="layui-input-block">
                         <input type="text" name="suDjr" class="layui-input" autocomplete="off">
                     </div>
                 </div>
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label">企业负责人</label>
                     <div class="layui-input-block">
                         <input type="text" name="suFzr" class="layui-input" autocomplete="off">
                     </div>
                 </div>
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label"><span style="color: red;">*</span>开户银行</label>
                     <div class="layui-input-block">
                         <input type="text" name="suKhyh" class="layui-input" autocomplete="off" lay-verify="required">
                     </div>
                 </div>
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label"><span style="color: red;">*</span>开户银行账号</label>
                     <div class="layui-input-block">
                         <input type="text" name="suKhyhzh" placeholder="开户银行账号" class="layui-input" autocomplete="off" lay-verify="required">
                     </div>
                 </div>
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label"><span style="color: red;">*</span>公司地址</label>
                     <div class="layui-input-block">
                         <input type="text" name="suGsdz" class="layui-input" autocomplete="off" lay-verify="required">
                     </div>
                 </div>
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label"><span style="color: red;">*</span>联系人姓名</label>
                     <div class="layui-input-block">
                         <input type="text" name="suLxrxm" class="layui-input" placeholder="联系人姓名" autocomplete="off" lay-verify="required">
                     </div>
                 </div>
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label"><span style="color: red;">*</span>联系电话</label>
                     <div class="layui-input-block">
                         <input type="text" name="suLxrdh" class="layui-input" autocomplete="off" lay-verify="required">
                     </div>
                 </div>
-              <!--  <div class="layui-form-item col-md-5">
-                    <label class="layui-form-label">职务</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="email" class="layui-input" autocomplete="off">
-                    </div>
-                </div>-->
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label">部门</label>
                     <div class="layui-input-block">
                         <input type="text" name="suLxrbm" class="layui-input" autocomplete="off">
                     </div>
                 </div>
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label"><span style="color: red;">*</span>公司电话</label>
                     <div class="layui-input-block">
                         <input type="text" name="suDh" class="layui-input" autocomplete="off" lay-verify="required">
                     </div>
                 </div>
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label"><span style="color: red;">*</span>公司邮编</label>
                     <div class="layui-input-block">
                         <input type="text" name="suYb" class="layui-input" autocomplete="off" lay-verify="required">
                     </div>
                 </div>
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label"><span style="color: red;">*</span>公司邮箱</label>
                     <div class="layui-input-block">
                         <input type="text" name="suEmail" class="layui-input" autocomplete="off" lay-verify="required">
                     </div>
                 </div>
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label">公司传真</label>
                     <div class="layui-input-block">
                         <input type="text" name="suCz" class="layui-input" autocomplete="off">
                     </div>
                 </div>
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-4">
                     <label class="layui-form-label">公司网址</label>
                     <div class="layui-input-block">
                         <input type="text" name="suWz" class="layui-input" autocomplete="off">
                     </div>
                 </div>
-                <div class="layui-form-item col-md-5">
+                <div class="layui-form-item col-md-6">
                     <label class="layui-form-label">备注</label>
                     <div class="layui-input-block">
                         <input type="text" name="bz" class="layui-input" autocomplete="off">
                     </div>
                 </div>
-                <!--<div class="layui-form-item col-md-5">-->
-                    <!--<label class="layui-form-label">医疗器械经营许可证号</label>-->
-                    <!--<div class="layui-input-block">-->
-                        <!--<input type="text" name="sbcsCertificate" class="layui-input" autocomplete="off" placeholder="医疗器械经营许可证号" lay-verify="required">-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="layui-form-item col-md-5">-->
-                    <!--<label class="layui-form-label">营业执照(统一社会信用代码)</label>-->
-                    <!--<div class="layui-input-block">-->
-                        <!--<input type="text" class="layui-input" name="sbcsCreditcode" placeholder="营业执照(统一社会信用代码)" autocomplete="off" lay-verify="required">-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="layui-form-item">-->
-                    <!--<label class="layui-form-label">医疗器械经营许可证影印件</label>-->
-                    <!--<div class="layui-upload">-->
-                        <!--<button type="button" class="layui-btn" id="ylqx">上传图片</button>-->
-                        <!--<div class="layui-upload-list">-->
-                            <!--<img class="layui-upload-img" id="ylqximg">-->
-                            <!--<p id="ylqxtry"></p>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="layui-form-item">-->
-                    <!--<label class="layui-form-label">营业执照影印件</label>-->
-                    <!--<div class="layui-upload">-->
-                        <!--<button type="button" class="layui-btn" id="yyzz">上传图片</button>-->
-                        <!--<div class="layui-upload-list">-->
-                            <!--<img class="layui-upload-img" id="yyzzimg">-->
-                            <!--<p id="yyzztry"></p>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
                 <div class="layui-form-item col-md-12 btn">
                     <div class="layui-input-block">
                         <button class="layui-btn layui-btn-normal layui-btn-lg" lay-submit lay-filter="nextTap" id="check-btn">下一步</button>
