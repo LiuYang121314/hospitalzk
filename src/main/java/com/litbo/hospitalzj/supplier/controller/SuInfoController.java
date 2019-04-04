@@ -4,6 +4,7 @@ import com.litbo.hospitalzj.controller.BaseController;
 import com.litbo.hospitalzj.supplier.entity.EqCgfs;
 import com.litbo.hospitalzj.supplier.entity.SuInfo;
 import com.litbo.hospitalzj.supplier.service.SuInfoService;
+import com.litbo.hospitalzj.supplier.vo.SuInfoAndZzInfo;
 import com.litbo.hospitalzj.util.ResponseResult;
 import net.sf.jsqlparser.statement.select.Offset;
 import org.apache.ibatis.annotations.Param;
@@ -21,9 +22,9 @@ public class SuInfoController extends BaseController {
     @Autowired
     private SuInfoService suInfoService;
     @RequestMapping("/{suId}")
-    public ResponseResult<SuInfo> getByCode(@PathVariable("suId") Integer suId) {
-        SuInfo data=suInfoService.findSuById(suId);
-        return new ResponseResult<SuInfo>(SUCCESS,data);
+    public ResponseResult<SuInfoAndZzInfo> getByCode(@PathVariable("suId") Integer suId) {
+        SuInfoAndZzInfo data=suInfoService.findSuById(suId);
+        return new ResponseResult<SuInfoAndZzInfo>(SUCCESS,data);
     }
     @RequestMapping("/insert")
     public ResponseResult<Integer> insert(SuInfo suInfo) {
@@ -59,6 +60,11 @@ public class SuInfoController extends BaseController {
     @RequestMapping("/findBySuMcLike")
     public ResponseResult<List<SuInfo>> findBySuMcLike(String suMc) {
         List<SuInfo> data=suInfoService.findBySuMcLike(suMc);
+        return new ResponseResult<List<SuInfo>>(SUCCESS,data);
+    }
+    @RequestMapping("/findSuByState")
+    public ResponseResult<List<SuInfo>> findSuByState() {
+        List<SuInfo> data=suInfoService.findSuByState(1);
         return new ResponseResult<List<SuInfo>>(SUCCESS,data);
     }
 }

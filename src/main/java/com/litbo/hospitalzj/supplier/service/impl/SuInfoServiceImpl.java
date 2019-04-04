@@ -5,6 +5,7 @@ import com.litbo.hospitalzj.supplier.mapper.SuInfoMapper;
 import com.litbo.hospitalzj.supplier.service.SuInfoService;
 import com.litbo.hospitalzj.supplier.service.exception.InsertException;
 import com.litbo.hospitalzj.supplier.service.exception.UpdateException;
+import com.litbo.hospitalzj.supplier.vo.SuInfoAndZzInfo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,12 +50,17 @@ public class SuInfoServiceImpl implements SuInfoService {
     }
 
     @Override
-    public SuInfo findSuById(Integer suId) {
+    public SuInfoAndZzInfo findSuById(Integer suId) {
         return suInfoMapper.findSuById(suId);
     }
 
     @Override
     public List<SuInfo> findBySuMcLike(String suMc) {
         return suInfoMapper.findBySuMcLike(suMc);
+    }
+
+    @Override
+    public List<SuInfo> findSuByState(Integer state) {
+        return suInfoMapper.findSuByState(state);
     }
 }

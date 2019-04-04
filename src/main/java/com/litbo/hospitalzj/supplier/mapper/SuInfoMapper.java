@@ -1,6 +1,7 @@
 package com.litbo.hospitalzj.supplier.mapper;
 
 import com.litbo.hospitalzj.supplier.entity.SuInfo;
+import com.litbo.hospitalzj.supplier.vo.SuInfoAndZzInfo;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -30,6 +31,8 @@ public interface SuInfoMapper {
     int delete(@Param("suId") Integer suId,@Param("isDelete") Integer isDelete);
     @Update("update su_info set state=#{state} where su_id=#{suId} ")
     int updateState(@Param("suId") Integer suId,@Param("state") Integer state);
+    @Select("select * from su_info where state=#{state} and is_delete=0")
+    List<SuInfo> findSuByState(Integer state);
     @Update(" update su_info\n" +
             "    set su_sf = #{suSf,jdbcType=VARCHAR},\n" +
             "      su_cs = #{suCs,jdbcType=VARCHAR},\n" +
@@ -53,8 +56,8 @@ public interface SuInfoMapper {
     int update(SuInfo suInfo);
     @Select("select * from su_info where is_delete=0")
     List<SuInfo> selectAll();
-    @Select("select * from su_info where su_id=#{suId} and is_delete=0")
-    SuInfo findSuById(Integer suId);
+    @Select("select * from su_info s left join zz_info z on s.su_id=z.su_id where s.su_id=#{suId} and is_delete=0")
+    SuInfoAndZzInfo findSuById(Integer suId);
     @Select("select * from su_info where su_mc=#{suMc} and is_delete=0")
     SuInfo findSuByMc(String suMc);
     //模糊查询

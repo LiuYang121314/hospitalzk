@@ -1,6 +1,7 @@
 package com.litbo.hospitalzj.supplier.service;
 
 import com.litbo.hospitalzj.supplier.entity.SuInfo;
+import com.litbo.hospitalzj.supplier.vo.SuInfoAndZzInfo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -11,6 +12,7 @@ public interface SuInfoService {
     void update(SuInfo suInfo);
     void updateState(@Param("suId") Integer suId,@Param("state") Integer state);
     List<SuInfo> selectAll();
-    SuInfo findSuById(Integer suId);
+    SuInfoAndZzInfo findSuById(Integer suId);
     List<SuInfo> findBySuMcLike(@Param("suMc") String suMc);
+    List<SuInfo> findSuByState(Integer state);
 }
