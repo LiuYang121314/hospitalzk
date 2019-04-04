@@ -254,7 +254,7 @@
                         <td>营业执照影印件</td>
                         <td>
                             <div class="layui-upload">
-                                <button type="button" name="file" class="layui-btn" id="yyzz">上传文件</button>
+                                <button type="button"  class="layui-btn" id="yyzz">上传文件</button>
                                 <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
                                     预览图：
                                     <div class="layui-upload-list" id="yyzzImg"></div>
@@ -266,7 +266,7 @@
                         <td>医疗器械经营许可证影印件</td>
                         <td>
                             <div class="layui-upload">
-                                <button type="button" name="file" class="layui-btn" id="jyxk">上传文件</button>
+                                <button type="button" class="layui-btn" id="jyxk">上传文件</button>
                                 <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
                                     预览图：
                                     <div class="layui-upload-list" id="jyxkImg"></div>
@@ -278,7 +278,7 @@
             </table>
             <div class="layui-form-item col-md-12 btn">
                 <div class="layui-input-block">
-                    <button class="layui-btn layui-btn-normal layui-btn-lg" lay-submit lay-filter="upFile" id="check-btn">提交</button>
+                    <button class="layui-btn layui-btn-normal layui-btn-lg" lay-submit lay-filter="upFile">提交</button>
                 </div>
             </div>
         </form>
@@ -366,17 +366,15 @@
         // 提交
         form.on('submit(upFile)', function(data){
             console.log(data.field);
+
             $.ajax({
-                url:"/zzinfo/insert",
+                url:"/zzinfo/insert?suId="+ids,
                 method:"POST",
                 data:data.field,
                 dataType:"JSON",
                 success:function(res){
                     if(res.state === 200){
-                        setTimeout(function(){
-
-                        }, 1000);
-                        layer.msg("提交成功");
+                        layer.msg("提交成功,请耐心等待审核");
                     }else if(res.state === 603){
                         layer.msg("213456789");
                     }else{

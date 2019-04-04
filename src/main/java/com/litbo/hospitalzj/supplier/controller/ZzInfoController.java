@@ -31,6 +31,7 @@ public class ZzInfoController extends BaseController {
     }
     @RequestMapping("/insert")
     public ResponseResult<Void> insert(ZzInfo zzInfo) {
+        System.out.println(zzInfo);
         zzInfoService.insert(zzInfo);
         return new ResponseResult<Void>(SUCCESS);
     }
