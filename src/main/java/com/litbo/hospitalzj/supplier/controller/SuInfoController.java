@@ -46,8 +46,13 @@ public class SuInfoController extends BaseController {
         suInfoService.update(suInfo);
         return new ResponseResult<Void>(SUCCESS);
     }
-    @RequestMapping("/updateState")
-    public ResponseResult<Void> updateState(Integer suId) {
+    @RequestMapping("/updateStateIs")
+    public ResponseResult<Void> updateStateIs(Integer suId) {
+        suInfoService.updateState(suId,1);
+        return new ResponseResult<Void>(SUCCESS);
+    }
+    @RequestMapping("/updateStateNot")
+    public ResponseResult<Void> updateStateNot(Integer suId) {
         suInfoService.updateState(suId,2);
         return new ResponseResult<Void>(SUCCESS);
     }

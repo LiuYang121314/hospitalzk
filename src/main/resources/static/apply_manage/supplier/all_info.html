@@ -326,7 +326,7 @@
             ,form = layui.form;
         $(function(){
             $.ajax({
-                url:"?suId="+ids,
+                url:"/suinfo/"+ids,
                 method:"GET",
                 dataType:"JSON",
                 success:function(res){
@@ -404,7 +404,7 @@
         // 同意
         $("#pass").click(function(){
             $.ajax({
-                url:""+ids,
+                url:"/suinfo/updateStateIs?suId="+ids,
                 method:"POST",
                 dataType:"JSON",
                 success:function(res){
@@ -423,7 +423,7 @@
         // 驳回
         $("#miss").click(function(){
             $.ajax({
-                url:""+ids,
+                url:"/suinfo/updateStateNot?suId="+ids,
                 method:"POST",
                 dataType:"JSON",
                 success:function(res){
