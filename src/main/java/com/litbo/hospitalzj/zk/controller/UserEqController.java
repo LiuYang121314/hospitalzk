@@ -66,6 +66,12 @@ public class UserEqController extends BaseController{
 		List<EqInfo> yqList=eqInfoService.findJcEqByUserId(userId);
 		return new ResponseResult<List<EqInfo>>(SUCCESS,yqList);
 	}
+	//查询用户分配的新设备信息
+	@RequestMapping("/findNewJcEqByUserId/{userId}")
+	public ResponseResult<List<EqInfo>> findNewJcEqByUserId(@PathVariable String userId){
+		List<EqInfo> yqList=eqInfoService.findNewJcEqByUserId(userId);
+		return new ResponseResult<List<EqInfo>>(SUCCESS,yqList);
+	}
 	//通过设备Id查询分配用户
 	@RequestMapping("/findUserIdByEqId/{eqId}")
 	public ResponseResult<List<User>> findUserIdByEqId(@PathVariable String eqId){

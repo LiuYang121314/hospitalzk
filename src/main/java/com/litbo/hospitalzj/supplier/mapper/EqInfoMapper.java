@@ -127,6 +127,7 @@ public interface EqInfoMapper {
 	@Delete("delete from eq_info where eq_id=#{eqId}")
 	Integer delete(Integer eqId);
 	@Select("select * from eq_info where eq_dah='' and eq_state=0")
+	//全部新设备信息
 	List<EqInfo> newEqInfo();
 	@Select("SELECT * FROM eq_info WHERE eq_dah='' and eq_id IN(SELECT jc_eqid FROM user_eq)")
 	List<EqInfo> eqInfoYfp();

@@ -117,6 +117,12 @@ public class EqInfoServiceImpl implements EqInfoService {
 	public List<EqInfo> findNewEqInfo() {
 		return eqInfoMapper.findNewEqInfo();
 	}
+
+	@Override
+	public List<EqInfo> findNewJcEqByUserId(String userId) {
+		return eqInfoMapper.findNewJcEqByUserId(userId);
+	}
+
 	@Override
 	public List<EqAndUname> findJcEqsByUserIdAndState(String userId, String state) {
 		return eqInfoMapper.findJcEqsByUserIdAndState(userId,state);

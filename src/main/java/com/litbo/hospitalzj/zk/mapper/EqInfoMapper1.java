@@ -54,9 +54,12 @@ public interface EqInfoMapper1 {
 
 	@Select("SELECT * FROM eq_info WHERE eq_id NOT IN(SELECT eq_id FROM yq_eq WHERE jcyq_id=#{jcyqId})")
 	List<EqInfo> findNotByJcyqId(String jcyqId);
-
+	//查询用户分配的检测设备
 	@Select("SELECT * FROM eq_info WHERE eq_id IN(SELECT jc_eqid FROM user_eq WHERE user_id=#{userId})")
 	List<EqInfo> findJcEqByUserId(String userId);
+	//查询用户已分配的新设备信息
+	@Select("SELECT * FROM eq_info WHERE eq_dah='' and eq_id IN(SELECT jc_eqid FROM user_eq WHERE user_id=#{userId})")
+	List<EqInfo> findNewJcEqByUserId(String userId);
 
 	@Select("SELECT * FROM S_user WHERE user_id IN(SELECT user_id FROM user_eq WHERE jc_eqid=#{jcEqid})")
 	List<User> findUserIdByEqId(String userId);
