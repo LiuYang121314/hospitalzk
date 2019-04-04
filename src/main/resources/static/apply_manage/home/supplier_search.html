@@ -63,9 +63,8 @@
         form.on('submit(search)', function(data){
             console.log(data.field);
             $.ajax({
-                url:"",
+                url:"/suinfo/findBySuMcLike?suMc="+data.field.title,
                 method:"POST",
-                data:data.field,
                 dataType:"JSON",
                 success:function(res){
                     if(res.state === 200){
@@ -75,7 +74,7 @@
                             elem:"#searchInfo",
                             cellMinWidth:100,
                             toolbar: '#toolbarDemo',
-                            url:"",
+                            url:"/suinfo/findBySuMcLike?suMc="+data.field.title,
                             method:"GET",
                             response:{
                                 statusName: 'status'
@@ -123,7 +122,7 @@
                 location.href="/apply_manage/supplier/look_all_info.html?id="+obj.data.suId;
             }else if(obj.event === 'del'){
                 $.ajax({
-                    url:"/suinfo/findBySuMcLike?suMc=",
+                    url:"/suinfo/delete?suId="+obj.data.suId,
                     method:"POST",
                     dataType:"JSON",
                     success:function(res){
