@@ -65,7 +65,7 @@
             <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">成立日期</label>
                 <div class="layui-input-block">
-                    <input id="data" type="text" name="zzYyclrq" class="layui-input" autocomplete="off">
+                    <input id="date1" type="text" name="zzYyclrq" class="layui-input" autocomplete="off">
                 </div>
             </div>
             <div class="layui-form-item col-md-4">
@@ -89,13 +89,13 @@
             <div class="layui-form-item col-md-4">
                 <label class="layui-form-label"><span style="color: red;">*</span>生效日期</label>
                 <div class="layui-input-block">
-                    <input type="text" name="zzYysxrq" class="layui-input" autocomplete="off" lay-verify="required">
+                    <input id="date2" type="text" name="zzYysxrq" class="layui-input" autocomplete="off" lay-verify="required">
                 </div>
             </div>
             <div class="layui-form-item col-md-4">
                 <label class="layui-form-label"><span style="color: red;">*</span>截止日期</label>
                 <div class="layui-input-block">
-                    <input type="text" name="zzYyjzrq" class="layui-input" autocomplete="off" lay-verify="required">
+                    <input id="date3" type="text" name="zzYyjzrq" class="layui-input" autocomplete="off" lay-verify="required">
                 </div>
             </div>
             <div class="layui-form-item col-md-4">
@@ -165,13 +165,13 @@
             <div class="layui-form-item col-md-4">
                 <label class="layui-form-label"><span style="color: red;">*</span>生效日期</label>
                 <div class="layui-input-block">
-                    <input type="text" name="zzJysxrq" class="layui-input" autocomplete="off" lay-verify="required">
+                    <input id="date4" type="text" name="zzJysxrq" class="layui-input" autocomplete="off" lay-verify="required">
                 </div>
             </div>
             <div class="layui-form-item col-md-4">
                 <label class="layui-form-label"><span style="color: red;">*</span>截止日期</label>
                 <div class="layui-input-block">
-                    <input type="text" name="zzJyjzrq" class="layui-input" autocomplete="off" lay-verify="required">
+                    <input id="date5" type="text" name="zzJyjzrq" class="layui-input" autocomplete="off" lay-verify="required">
                 </div>
             </div>
             <div class="layui-form-item col-md-4">
@@ -211,13 +211,13 @@
             <div class="layui-form-item col-md-4">
                 <label class="layui-form-label"><span style="color: red;">*</span>生效日期</label>
                 <div class="layui-input-block">
-                    <input type="text" name="zzZzsxrq" class="layui-input" autocomplete="off" lay-verify="required">
+                    <input id="date6" type="text" name="zzZzsxrq" class="layui-input" autocomplete="off" lay-verify="required">
                 </div>
             </div>
             <div class="layui-form-item col-md-4">
                 <label class="layui-form-label"><span style="color: red;">*</span>截止日期</label>
                 <div class="layui-input-block">
-                    <input type="text" name="zzZzjzrq" class="layui-input" autocomplete="off" lay-verify="required">
+                    <input id="date7" type="text" name="zzZzjzrq" class="layui-input" autocomplete="off" lay-verify="required">
                 </div>
             </div>
             <div class="layui-form-item col-md-4">
@@ -288,11 +288,33 @@
     // 获取上个页面传递的类型
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
-    layui.use(['jquery','layer','form','upload'],function(){
+    layui.use(['jquery','layer','form','upload','laydate'],function(){
         var $ = layui.jquery
             ,layer = layui.layer
             ,form = layui.form
-            ,upload = layui.upload;
+            ,upload = layui.upload
+            ,laydate = layui.laydate;
+        laydate.render({
+            elem:"#date1"
+        });
+        laydate.render({
+            elem:"#date2"
+        });
+        laydate.render({
+            elem:"#date3"
+        });
+        laydate.render({
+            elem:"#date4"
+        });
+        laydate.render({
+            elem:"#date5"
+        });
+        laydate.render({
+            elem:"#date6"
+        });
+        laydate.render({
+            elem:"#date7"
+        });
         // 营业执照影印件
         upload.render({
             elem: '#yyzz'
