@@ -207,7 +207,7 @@
                     success:function(res){
                         if(res.state === 200){
                             setTimeout(function(){
-                                location.href = "/supplier/register_b.html";
+                                location.href = "/supplier/register_b.html?id="+res.data;
                             }, 1000);
                             layer.msg("提交成功");
                         }else if(res.state === 603){

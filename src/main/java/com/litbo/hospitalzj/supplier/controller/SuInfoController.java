@@ -26,10 +26,10 @@ public class SuInfoController extends BaseController {
         return new ResponseResult<SuInfo>(SUCCESS,data);
     }
     @RequestMapping("/insert")
-    public ResponseResult<Void> insert(SuInfo suInfo) {
+    public ResponseResult<Integer> insert(SuInfo suInfo) {
         suInfo.setIsDelete(0);
         suInfoService.insert(suInfo);
-        return new ResponseResult<Void>(SUCCESS);
+        return new ResponseResult<Integer>(SUCCESS, suInfo.getSuId());
     }
     @RequestMapping("/delete")
     public ResponseResult<Void> delete(@RequestParam("suId") Integer suId) {

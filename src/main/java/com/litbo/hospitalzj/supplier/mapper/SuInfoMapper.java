@@ -24,6 +24,7 @@ public interface SuInfoMapper {
             "      #{suLxrbm,jdbcType=VARCHAR}, #{suDh,jdbcType=VARCHAR}, #{suYb,jdbcType=VARCHAR}, \n" +
             "      #{suEmail,jdbcType=VARCHAR}, #{suCz,jdbcType=VARCHAR}, #{suWz,jdbcType=VARCHAR}, \n" +
             "      #{bz,jdbcType=VARCHAR},#{isDelete})")
+    @Options(useGeneratedKeys = true, keyProperty = "suId", keyColumn = "su_id")
     int insert(SuInfo suInfo);
     @Update("update su_info set is_delete=#{isDelete} where su_id=#{suId} ")
     int delete(@Param("suId") Integer suId,@Param("isDelete") Integer isDelete);
