@@ -384,11 +384,12 @@
                         $("#zzZzdz").append(res.data.zzZzdz);
                         $("#zzZzbz").append(res.data.zzZzbz);
                     }else{
-                        layer.msg("无数据")
+                        layer.msg("无数据");
                     }
                 },
                 error:function(data){
                     layer.msg("请稍后再试");
+                    console.log(data);
                 }
             })
         });
