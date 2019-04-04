@@ -9,7 +9,8 @@ public interface SuInfoService {
     void insert(SuInfo suInfo);
     void delete(@Param("suId") Integer suId, @Param("isDelete") Integer isDelete);
     void update(SuInfo suInfo);
-    List<SuInfo> selectAll(@Param("offset")Integer offset, @Param("count") Integer count);
+    void updateState(@Param("suId") Integer suId,@Param("state") Integer state);
+    List<SuInfo> selectAll();
     SuInfo findSuById(Integer suId);
     List<SuInfo> findBySuMcLike(@Param("suMc") String suMc);
 }

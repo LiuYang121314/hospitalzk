@@ -37,15 +37,21 @@ public class SuInfoController extends BaseController {
         return new ResponseResult<Void>(SUCCESS);
     }
     @RequestMapping("/all")
-    public ResponseResult<List<SuInfo>> getAll(@RequestParam("offset")Integer offset, @RequestParam("count") Integer count) {
-        List<SuInfo> data=suInfoService.selectAll(offset, count);
+    public ResponseResult<List<SuInfo>> getAll() {
+        List<SuInfo> data=suInfoService.selectAll();
         return new ResponseResult<List<SuInfo>>(SUCCESS,data);
     }
     @RequestMapping("/update")
     public ResponseResult<Void> update(SuInfo suInfo) {
         suInfoService.update(suInfo);
         return new ResponseResult<Void>(SUCCESS);
-    }@RequestMapping("/findBySuMcLike")
+    }
+    @RequestMapping("/updateState")
+    public ResponseResult<Void> updateState(Integer suId) {
+        suInfoService.updateState(suId,2);
+        return new ResponseResult<Void>(SUCCESS);
+    }
+    @RequestMapping("/findBySuMcLike")
     public ResponseResult<List<SuInfo>> findBySuMcLike(String suMc) {
         List<SuInfo> data=suInfoService.findBySuMcLike(suMc);
         return new ResponseResult<List<SuInfo>>(SUCCESS,data);

@@ -39,8 +39,13 @@ public class SuInfoServiceImpl implements SuInfoService {
     }
 
     @Override
-    public List<SuInfo> selectAll(@Param("offset")Integer offset, @Param("count") Integer count) {
-        return suInfoMapper.selectAll(offset,count);
+    public void updateState(Integer suId, Integer state) {
+        suInfoMapper.updateState(suId,state);
+    }
+
+    @Override
+    public List<SuInfo> selectAll() {
+        return suInfoMapper.selectAll();
     }
 
     @Override

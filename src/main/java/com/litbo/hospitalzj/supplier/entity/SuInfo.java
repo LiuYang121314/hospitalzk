@@ -42,6 +42,16 @@ public class SuInfo {
     private String bz;
 
     private Integer isDelete;
+    
+    private Integer state;
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
 
     public String getSuMc() {
         return suMc;
