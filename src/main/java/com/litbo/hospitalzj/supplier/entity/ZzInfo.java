@@ -1,5 +1,7 @@
 package com.litbo.hospitalzj.supplier.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class ZzInfo {
@@ -11,6 +13,7 @@ public class ZzInfo {
 
     private String zzYyzzbh;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date zzYyclrq;
 
     private String zzYyfdr;
@@ -19,8 +22,10 @@ public class ZzInfo {
 
     private String zzQylx;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date zzYysxrq;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date zzYyjzrq;
 
     private String zzYyyx;
@@ -32,7 +37,9 @@ public class ZzInfo {
     private String zzYyscdz;
 
     private String zzCkdz;
+
     private String zzYyjyfw;
+
     private String zzYybz;
 
     private String zzJyzh;
@@ -41,8 +48,10 @@ public class ZzInfo {
 
     private String zzJyfddbr;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date zzJysxrq;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date zzJyjzrq;
 
     private String zzJyyx;
@@ -55,12 +64,16 @@ public class ZzInfo {
 
     private String zzZzlx;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date zzZzsxrq;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date zzZzjzrq;
 
     private String zzZzdz;
+
     private String zzZzyx;
+
     private String zzZzbz;
 
     public String getZzZzyx() {
