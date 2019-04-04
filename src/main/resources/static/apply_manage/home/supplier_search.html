@@ -45,7 +45,7 @@
             elem:"#searchInfo",
             cellMinWidth:100,
             toolbar: '#toolbarDemo',
-            url:"/accept/selectAllHtDdshys",
+            url:"",
             method:"GET",
             response:{
                 statusName: 'status'
@@ -64,14 +64,13 @@
                 }
             },
             cols:[[
-                {field:'htHthao', title:'合同号',align:'center'},
-                {field:'htGhsn', title:'供应商',align:'center'},
-                {field:'htGhsdh', title:'联系电话',align:'center'},
-                {field:'htQytime', title:'签约日期',align:'center'},
-                {field:'htDhtime', title:'到货时间',sort: true,align:'center'},
-                {field:'htBxtime', title:'保修期',align:'center'},
-                {field:'htYzm', title:'验证码',sort: true,align:'center'},
-                {field:'state', title:'状态',sort: true,align:'center'},
+                {field:'suMc', title:'企业名称',align:'center'},
+                {field:'suSf', title:'所在省份',align:'center'},
+                {field:'suCs', title:'所在城市',align:'center'},
+                {field:'suXq', title:'所在区县',align:'center'},
+                {field:'suFr', title:'企业法人',align:'center'},
+                {field:'suDjr', title:'企业登记人',align:'center'},
+                {field:'suFzr', title:'企业负责人',align:'center'},
                 {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
             ]]
         });
