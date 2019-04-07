@@ -23,6 +23,46 @@ public class SybController extends BaseController {
 
     @Autowired
     private SybService sybService;
+    //插入模板数据
+    //插入输液泵儿童模板值
+    @RequestMapping("/insertChildTemplate")
+    public ResponseResult insertChildTemplate(SybCTemplate template){
+        sybService.insertChildTemplate(template);
+        return new ResponseResult(200);
+    }
+    //插入输液泵成人模板值
+    @RequestMapping("/insertManTemplate")
+    public ResponseResult insertManTemplate(SybCTemplate template){
+        sybService.insertManTemplate(template);
+        return new ResponseResult(200);
+    }
+
+    //查询模板数据（成年人）
+    @RequestMapping("/findManTemplate")
+    public ResponseResult<SybCTemplate> findManTemplate(){
+        return new ResponseResult<SybCTemplate>(200, sybService.findManTemplate());
+    }
+    //查询模板数据（儿童 ）
+    @RequestMapping("/findChildTemplate")
+    public ResponseResult<SybCTemplate> findChildTemplate(){
+        return new ResponseResult<SybCTemplate>(200, sybService.findChildTemplate());
+    }
+
+    //修改模板数据
+    //幼儿
+    @RequestMapping("/updateC")
+    public ResponseResult updateC(SybCTemplate template){
+        sybService.updateC(template);
+        return new ResponseResult(200);
+    }
+
+    //成人
+    @RequestMapping("/updateM")
+    public ResponseResult updateM(SybCTemplate template){
+        sybService.updateM(template);
+        return new ResponseResult(200);
+    }
+
     //保存信息
     @RequestMapping("/savechild")
     public ResponseResult<SybC> saveChild(@RequestParam(value = "eqId") String eqId, @RequestParam("jcyqId") String jcyqId,
@@ -40,31 +80,6 @@ public class SybController extends BaseController {
         return new ResponseResult<SybC>(200, sybC);
     }
 
-
-    //查询模板数据（成年人）
-    @RequestMapping("findManTemplate")
-    public ResponseResult<SybCTemplate> findManTemplate(){
-        return new ResponseResult<SybCTemplate>(200, sybService.findManTemplate());
-    }
-    //查询模板数据（儿童 ）
-    @RequestMapping("findChildTemplate")
-    public ResponseResult<SybCTemplate> findChildTemplate(){
-        return new ResponseResult<SybCTemplate>(200, sybService.findChildTemplate());
-    }
-
-    //插入输液泵成人模板值
-    @RequestMapping("insertManTemplate")
-    public ResponseResult insertManTemplate(SybCTemplate template){
-        sybService.insertManTemplate(template);
-        return new ResponseResult(200);
-    }
-    //插入输液泵儿童模板值
-    @RequestMapping("insertChildTemplate")
-    public ResponseResult insertChildTemplate(SybCTemplate template){
-        sybService.insertChildTemplate(template);
-        return new ResponseResult(200);
-    }
-
     //查询所有录入信息(成人)
     @RequestMapping("/findAllMan")
     public ResponseResult<List<SybC>> findAllMan(){
@@ -76,7 +91,6 @@ public class SybController extends BaseController {
         return new ResponseResult<List<SybC>>(200, sybService.findAllChild());
     }
     //查询最后录入的一条检测信息
-
     @RequestMapping("/findMan")
     public ResponseResult<SybC> findMan(){
         return new ResponseResult<SybC>(200, sybService.findMan());

@@ -69,7 +69,12 @@ public class DqjcService {
     public  List<Dqjc> findAll() {
     	return dqjcMapper.findAll();
     }
-    public  Dqjc findByEqIdandJcyqId(String eqId,String jcyqId) {
+	//根据设备Id,检测仪器Id以及状态查询电器表查询最后一条记录
+	public  Dqjc findByEqIdandJcyqIdLast1(String eqId,String jcyqId){
+		return dqjcMapper.findByEqIdandJcyqIdLast1(eqId, jcyqId);
+	}
+	//根据设备Id,检测仪器Id以及状态查询电器表
+    public  List<Dqjc> findByEqIdandJcyqId(String eqId,String jcyqId) {
     	return dqjcMapper.findByEqIdandJcyqId(eqId, jcyqId);
     }
 

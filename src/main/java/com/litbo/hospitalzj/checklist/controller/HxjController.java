@@ -26,6 +26,18 @@ public class HxjController {
     public ResponseResult<HxjTemplate> findTemplate(){
         return new ResponseResult<HxjTemplate>(200, hxjService.findTemplate());
     }
+    //修改模板值
+    @RequestMapping("/update")
+    public ResponseResult<Void> update(HxjTemplate hxjTemplate){
+        hxjService.update(hxjTemplate);
+        return new ResponseResult<Void>(200);
+    }
+    //插入模板值
+    @RequestMapping("/insert")
+    public ResponseResult<Void> insert(HxjTemplate hxjTemplate){
+        hxjService.insert(hxjTemplate);
+        return new ResponseResult<Void>(200);
+    }
 
     //查询一条数据
     @RequestMapping("/find")

@@ -25,7 +25,18 @@ public class GpddController {
     public ResponseResult<GpddTemplate> findTemplate(){
         return new ResponseResult<GpddTemplate>(200, gpddService.findTemplate());
     }
-
+    //修改模板值
+    @RequestMapping("/update")
+    public ResponseResult<Void> update(GpddTemplate gpddTemplate){
+        gpddService.update(gpddTemplate);
+        return new ResponseResult<Void>(200);
+    }
+    //插入模板值
+    @RequestMapping("/insert")
+    public ResponseResult<Void> insert(GpddTemplate gpddTemplate){
+        gpddService.insert(gpddTemplate);
+        return new ResponseResult<Void>(200);
+    }
     //查询一条
     @RequestMapping("/find")
     public ResponseResult<Gpdd> find(){
@@ -43,6 +54,23 @@ public class GpddController {
         Gpdd gpdd = CommonUtils.toBean(req.getParameterMap(), Gpdd.class);
         gpddService.save(gpdd);
         return new ResponseResult<Gpdd>(200, gpdd);
-
+    }
+    /**
+     * 查询根据设备IDand检测仪器id电气检测表数据查询最后一条记录
+     * @return
+     */
+    @RequestMapping("/findByEqIdandJcyqIdLast1")
+    public ResponseResult<Gpdd> findByEqIdandJcyqIdLast1(@RequestParam("eqId")String eqId,@RequestParam("jcyqId")String jcyqId){
+        Gpdd list = gpddService.findByEqIdandJcyqIdLast1(eqId,jcyqId);
+        return new ResponseResult<Gpdd>(200, list);
+    }
+    /**
+     * 查询根据设备IDand检测仪器id电气检测表数据
+     * @return
+     */
+    @RequestMapping("/findByEqIdandJcyqId")
+    public ResponseResult<List<Gpdd>> findByEqIdandJcyqId(@RequestParam("eqId")String eqId,@RequestParam("jcyqId")String jcyqId){
+        List<Gpdd> list = gpddService.findByEqIdandJcyqId(eqId,jcyqId);
+        return new ResponseResult<List<Gpdd>>(200, list);
     }
 }

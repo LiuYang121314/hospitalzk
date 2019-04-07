@@ -21,7 +21,45 @@ public class ZsbService {
 
     @Autowired
     private ZsbMapper zsbMapper;
-
+    //儿童注液泵数据修改
+    public void updateC(SybCTemplate sybCTemplate){
+        zsbMapper.updateC(sybCTemplate);
+    }
+    //成人注液泵数据修改
+    public void updateM(SybCTemplate sybCTemplate){
+        zsbMapper.updateM(sybCTemplate);
+    }
+    //双通道注液泵数据修改
+    public void updateS(StzsMTemplate stzsMTemplate){
+        zsbMapper.updateS(stzsMTemplate);
+    }
+    //查询模板数据(幼儿)
+    public SybCTemplate findChildsTemplate(){
+        String template = "zsb_c_template";
+        return zsbMapper.findTemplate(template);
+    }
+    //查询模板数据(成人)
+    public SybCTemplate findManTemplate(){
+        String template = "zsb_m_template";
+        return zsbMapper.findTemplate(template);
+    }
+    //查询双通道注射泵模板值
+    public StzsMTemplate findStzsMTemplate(){
+        return zsbMapper.findStZsTemplate();
+    }
+    //插入模板数据
+    //双通道
+    public void insertStzsTemplate(StzsMTemplate template) {
+        zsbMapper.insertStzsTemplate(template);
+    }
+    //成人
+    public void insertManTemplate(SybCTemplate template) {
+        zsbMapper.insertManTemplate(template);
+    }
+    //幼儿
+    public void insertChildTemplate(SybCTemplate template) {
+        zsbMapper.insertChildTemplate(template);
+    }
     //儿童输液泵数据录入
     public void saveChild(SybC sybC) {
         String tableName = "zsb_c";
@@ -44,21 +82,6 @@ public class ZsbService {
         zsbMapper.saveStzs(stzsM);
     }
 
-    //查询双通道注射泵模板值
-    public StzsMTemplate findStzsMTemplate(){
-        return zsbMapper.findStZsTemplate();
-    }
-    //查询模板数据(幼儿)
-    public SybCTemplate findChildsTemplate(){
-        String template = "zsb_c_template";
-        return zsbMapper.findTemplate(template);
-    }
-    //查询模板数据(成人)
-    public SybCTemplate findManTemplate(){
-        String template = "zsb_m_template";
-        return zsbMapper.findTemplate(template);
-    }
-    //插入模板数据
 
     //查询所有录入信息(幼儿)
     public List<SybC> findAllChild(){
@@ -89,15 +112,4 @@ public class ZsbService {
         return zsbMapper.findStzsM();
     }
 
-    public void insertStzsTemplate(StzsMTemplate template) {
-        zsbMapper.insertStzsTemplate(template);
-    }
-
-    public void insertManTemplate(SybCTemplate template) {
-        zsbMapper.insertManTemplate(template);
-    }
-
-    public void insertChildTemplate(SybCTemplate template) {
-        zsbMapper.insertChildTemplate(template);
-    }
 }
