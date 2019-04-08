@@ -5,6 +5,7 @@ import com.litbo.hospitalzj.checklist.domain.HxjTemplate;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -15,6 +16,50 @@ public interface HxjMapper {
     @Select("select * from hxj_template order by hxj_templateid desc limit 1")
     HxjTemplate findTemplate();
 
+    //修改模板值
+    @Update("   update hxj_template\n" +
+            "    set cqz_test1 = #{cqzTest1,jdbcType=INTEGER},\n" +
+            "      cqz_test2 = #{cqzTest2,jdbcType=INTEGER},\n" +
+            "      cqz_test3 = #{cqzTest3,jdbcType=INTEGER},\n" +
+            "      cqz_wc = #{cqzWc,jdbcType=INTEGER},\n" +
+            "      qztq_test1 = #{qztqTest1,jdbcType=INTEGER},\n" +
+            "      qztq_test2 = #{qztqTest2,jdbcType=INTEGER},\n" +
+            "      qztq_test3 = #{qztqTest3,jdbcType=INTEGER},\n" +
+            "      qztq_wc = #{qztqWc,jdbcType=INTEGER},\n" +
+            "      xrynd_test1 = #{xryndTest1,jdbcType=INTEGER},\n" +
+            "      xrynd_test2 = #{xryndTest2,jdbcType=INTEGER},\n" +
+            "      xrynd_test3 = #{xryndTest3,jdbcType=INTEGER},\n" +
+            "      xrynd_wc = #{xryndWc,jdbcType=INTEGER},\n" +
+            "      xqylsp_test1 = #{xqylspTest1,jdbcType=INTEGER},\n" +
+            "      xqylsp_test2 = #{xqylspTest2,jdbcType=INTEGER},\n" +
+            "      xqylsp_test3 = #{xqylspTest3,jdbcType=INTEGER},\n" +
+            "      xqylsp_wc = #{xqylspWc,jdbcType=INTEGER},\n" +
+            "      hqmzy_test1 = #{hqmzyTest1,jdbcType=INTEGER},\n" +
+            "      hqmzy_test2 = #{hqmzyTest2,jdbcType=INTEGER},\n" +
+            "      hqmzy_test3 = #{hqmzyTest3,jdbcType=INTEGER},\n" +
+            "      hqmzy_wc = #{hqmzyWc,jdbcType=INTEGER},\n" +
+            "      spare1 = #{spare1,jdbcType=TINYINT},\n" +
+            "      spare2 = #{spare2,jdbcType=TINYINT}\n" +
+            "    where hxj_templateid = #{hxjTemplateid,jdbcType=INTEGER}")
+    int update(HxjTemplate hxjTemplate);
+    //插入模板值
+    @Insert("  insert into hxj_template (hxj_templateid, cqz_test1, cqz_test2, \n" +
+            "      cqz_test3, cqz_wc, qztq_test1, \n" +
+            "      qztq_test2, qztq_test3, qztq_wc, \n" +
+            "      xrynd_test1, xrynd_test2, xrynd_test3, \n" +
+            "      xrynd_wc, xqylsp_test1, xqylsp_test2, \n" +
+            "      xqylsp_test3, xqylsp_wc, hqmzy_test1, \n" +
+            "      hqmzy_test2, hqmzy_test3, hqmzy_wc, \n" +
+            "      spare1, spare2)\n" +
+            "    values (#{hxjTemplateid,jdbcType=INTEGER}, #{cqzTest1,jdbcType=INTEGER}, #{cqzTest2,jdbcType=INTEGER}, \n" +
+            "      #{cqzTest3,jdbcType=INTEGER}, #{cqzWc,jdbcType=INTEGER}, #{qztqTest1,jdbcType=INTEGER}, \n" +
+            "      #{qztqTest2,jdbcType=INTEGER}, #{qztqTest3,jdbcType=INTEGER}, #{qztqWc,jdbcType=INTEGER}, \n" +
+            "      #{xryndTest1,jdbcType=INTEGER}, #{xryndTest2,jdbcType=INTEGER}, #{xryndTest3,jdbcType=INTEGER}, \n" +
+            "      #{xryndWc,jdbcType=INTEGER}, #{xqylspTest1,jdbcType=INTEGER}, #{xqylspTest2,jdbcType=INTEGER}, \n" +
+            "      #{xqylspTest3,jdbcType=INTEGER}, #{xqylspWc,jdbcType=INTEGER}, #{hqmzyTest1,jdbcType=INTEGER}, \n" +
+            "      #{hqmzyTest2,jdbcType=INTEGER}, #{hqmzyTest3,jdbcType=INTEGER}, #{hqmzyWc,jdbcType=INTEGER}, \n" +
+            "      #{spare1,jdbcType=TINYINT}, #{spare2,jdbcType=TINYINT})")
+    int insert(HxjTemplate hxjTemplate);
 
     //查询一条
     @Select("select * from hxj order by hxjid desc limit 1")

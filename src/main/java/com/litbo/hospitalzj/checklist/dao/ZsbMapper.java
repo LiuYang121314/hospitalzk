@@ -7,6 +7,7 @@ import com.litbo.hospitalzj.checklist.domain.SybCTemplate;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -16,10 +17,79 @@ import java.util.List;
 @Mapper
 public interface ZsbMapper {
 
-    //查询模板数据
-
+    //查询模板数据（成人，幼儿）
     @Select("select * from ${value} order by temp_id desc limit 1")
     SybCTemplate findTemplate(String tableName);
+
+    //查询双通道模板数据，最后一条记录
+    @Select("select * from stzs_m_template order by temp_id desc limit 1")
+    StzsMTemplate findStZsTemplate();
+    //修改模板表数据
+    //幼儿
+    @Update(" update zsb_c_template\n" +
+            "    set llcsd1 = #{llcsd1,jdbcType=INTEGER},\n" +
+            "      llcsd2 = #{llcsd2,jdbcType=INTEGER},\n" +
+            "      wc = #{wc,jdbcType=INTEGER},\n" +
+            "      zsbjllz = #{zsbjllz,jdbcType=INTEGER},\n" +
+            "      zsbj_wc1 = #{zsbjWc1,jdbcType=INTEGER},\n" +
+            "      zsbj_wc2 = #{zsbjWc2,jdbcType=INTEGER}\n" +
+            "    where temp_id = #{tempId,jdbcType=BIGINT}")
+    int updateC(SybCTemplate sybCTemplate);
+    //成人
+    @Update("update zsb_m_template\n" +
+            "    set llcsd1 = #{llcsd1,jdbcType=INTEGER},\n" +
+            "      llcsd2 = #{llcsd2,jdbcType=INTEGER},\n" +
+            "      wc = #{wc,jdbcType=INTEGER},\n" +
+            "      zsbjllz = #{zsbjllz,jdbcType=INTEGER},\n" +
+            "      zsbj_wc1 = #{zsbjWc1,jdbcType=INTEGER},\n" +
+            "      zsbj_wc2 = #{zsbjWc2,jdbcType=INTEGER}\n" +
+            "    where temp_id = #{tempId,jdbcType=BIGINT}")
+    int updateM(SybCTemplate sybCTemplate);
+    //双通道
+    @Update("update stzs_m_template\n" +
+            "    set llcsd11 = #{llcsd11,jdbcType=INTEGER},\n" +
+            "      llcsd21 = #{llcsd21,jdbcType=INTEGER},\n" +
+            "      wc1 = #{wc1,jdbcType=INTEGER},\n" +
+            "      zsbjcsz1 = #{zsbjcsz1,jdbcType=INTEGER},\n" +
+            "      zsbj_wc11 = #{zsbjWc11,jdbcType=INTEGER},\n" +
+            "      zsbj_wc21 = #{zsbjWc21,jdbcType=INTEGER},\n" +
+            "      llcsd12 = #{llcsd12,jdbcType=INTEGER},\n" +
+            "      llcsd22 = #{llcsd22,jdbcType=INTEGER},\n" +
+            "      wc2 = #{wc2,jdbcType=INTEGER},\n" +
+            "      zsbjcsz2 = #{zsbjcsz2,jdbcType=INTEGER},\n" +
+            "      zsbj_wc12 = #{zsbjWc12,jdbcType=INTEGER},\n" +
+            "      zsbj_wc22 = #{zsbjWc22,jdbcType=INTEGER}\n" +
+            "    where temp_id = #{tempId,jdbcType=BIGINT}")
+    int updateS(StzsMTemplate stzsMTemplate);
+    //插入模板表数据
+    //幼儿
+    @Insert("insert into zsb_c_template (temp_id, llcsd1, llcsd2, \n" +
+            "      wc, zsbjllz, zsbj_wc1, \n" +
+            "      zsbj_wc2)\n" +
+            "    values (#{tempId,jdbcType=BIGINT}, #{llcsd1,jdbcType=INTEGER}, #{llcsd2,jdbcType=INTEGER}, \n" +
+            "      #{wc,jdbcType=INTEGER}, #{zsbjllz,jdbcType=INTEGER}, #{zsbjWc1,jdbcType=INTEGER}, \n" +
+            "      #{zsbjWc2,jdbcType=INTEGER})")
+    int insertChildTemplate(SybCTemplate template);
+    //成人
+    @Insert("insert into zsb_m_template (temp_id, llcsd1, llcsd2, \n" +
+            "      wc, zsbjllz, zsbj_wc1, \n" +
+            "      zsbj_wc2)\n" +
+            "    values (#{tempId,jdbcType=BIGINT}, #{llcsd1,jdbcType=INTEGER}, #{llcsd2,jdbcType=INTEGER}, \n" +
+            "      #{wc,jdbcType=INTEGER}, #{zsbjllz,jdbcType=INTEGER}, #{zsbjWc1,jdbcType=INTEGER}, \n" +
+            "      #{zsbjWc2,jdbcType=INTEGER})")
+    int insertManTemplate(SybCTemplate template);
+    //双通道
+    @Insert("insert into stzs_m_template (temp_id, llcsd11, llcsd21, \n" +
+            "      wc1, zsbjcsz1, zsbj_wc11, \n" +
+            "      zsbj_wc21, llcsd12, llcsd22, \n" +
+            "      wc2, zsbjcsz2, zsbj_wc12, \n" +
+            "      zsbj_wc22)\n" +
+            "    values (#{tempId,jdbcType=BIGINT}, #{llcsd11,jdbcType=INTEGER}, #{llcsd21,jdbcType=INTEGER}, \n" +
+            "      #{wc1,jdbcType=INTEGER}, #{zsbjcsz1,jdbcType=INTEGER}, #{zsbjWc11,jdbcType=INTEGER}, \n" +
+            "      #{zsbjWc21,jdbcType=INTEGER}, #{llcsd12,jdbcType=INTEGER}, #{llcsd22,jdbcType=INTEGER}, \n" +
+            "      #{wc2,jdbcType=INTEGER}, #{zsbjcsz2,jdbcType=INTEGER}, #{zsbjWc12,jdbcType=INTEGER}, \n" +
+            "      #{zsbjWc22,jdbcType=INTEGER})")
+    int insertStzsTemplate(StzsMTemplate template);
     //保存信息
     //输液泵检测信息录入（幼儿）
     @Insert("insert into zsb_c (id, jcyq_id, eq_id,  tester, auditor, test_time,    jcjl, jcsm, llcsd1,   pjll_1, llcsd2, pjll_2, \n" +
@@ -90,9 +160,6 @@ public interface ZsbMapper {
     //查询最后录入的一条检测信息
     @Select("select * from ${value} order by id limit 1")
     SybC find(String tableName);
-    //查询双通道模板数据，最后一条记录
-    @Select("select * from stzs_m_template order by temp_id desc limit 1")
-    StzsMTemplate findStZsTemplate();
 
     //查询双通道检测数据（一条）
     @Select("select * from stzs_m order by id desc limit 1")
@@ -102,31 +169,6 @@ public interface ZsbMapper {
     @Select("select * from stzs_m")
     List<StzsM> findAllStzsM();
 
-    @Insert("insert into stzs_m_template (temp_id, llcsd11, llcsd21, \n" +
-            "      wc1, zsbjcsz1, zsbj_wc11, \n" +
-            "      zsbj_wc21, llcsd12, llcsd22, \n" +
-            "      wc2, zsbjcsz2, zsbj_wc12, \n" +
-            "      zsbj_wc22)\n" +
-            "    values (#{tempId,jdbcType=BIGINT}, #{llcsd11,jdbcType=INTEGER}, #{llcsd21,jdbcType=INTEGER}, \n" +
-            "      #{wc1,jdbcType=INTEGER}, #{zsbjcsz1,jdbcType=INTEGER}, #{zsbjWc11,jdbcType=INTEGER}, \n" +
-            "      #{zsbjWc21,jdbcType=INTEGER}, #{llcsd12,jdbcType=INTEGER}, #{llcsd22,jdbcType=INTEGER}, \n" +
-            "      #{wc2,jdbcType=INTEGER}, #{zsbjcsz2,jdbcType=INTEGER}, #{zsbjWc12,jdbcType=INTEGER}, \n" +
-            "      #{zsbjWc22,jdbcType=INTEGER})")
-    void insertStzsTemplate(StzsMTemplate template);
 
-    @Insert("insert into zsb_m_template (temp_id, llcsd1, llcsd2, \n" +
-            "      wc, zsbjllz, zsbj_wc1, \n" +
-            "      zsbj_wc2)\n" +
-            "    values (#{tempId,jdbcType=BIGINT}, #{llcsd1,jdbcType=INTEGER}, #{llcsd2,jdbcType=INTEGER}, \n" +
-            "      #{wc,jdbcType=INTEGER}, #{zsbjllz,jdbcType=INTEGER}, #{zsbjWc1,jdbcType=INTEGER}, \n" +
-            "      #{zsbjWc2,jdbcType=INTEGER})")
-    void insertManTemplate(SybCTemplate template);
 
-    @Insert("insert into zsb_c_template (temp_id, llcsd1, llcsd2, \n" +
-            "      wc, zsbjllz, zsbj_wc1, \n" +
-            "      zsbj_wc2)\n" +
-            "    values (#{tempId,jdbcType=BIGINT}, #{llcsd1,jdbcType=INTEGER}, #{llcsd2,jdbcType=INTEGER}, \n" +
-            "      #{wc,jdbcType=INTEGER}, #{zsbjllz,jdbcType=INTEGER}, #{zsbjWc1,jdbcType=INTEGER}, \n" +
-            "      #{zsbjWc2,jdbcType=INTEGER})")
-    void insertChildTemplate(SybCTemplate template);
 }

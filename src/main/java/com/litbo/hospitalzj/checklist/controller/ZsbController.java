@@ -21,34 +21,6 @@ public class ZsbController {
 
     @Autowired
     private ZsbService zsbService;
-    //保存信息
-    @RequestMapping("/savechild")
-    public ResponseResult<SybC> saveChild(@RequestParam(value = "eqId") String eqId, @RequestParam("jcyqId") String jcyqId,
-                                          HttpServletRequest req){
-
-        SybC sybC = CommonUtils.toBean(req.getParameterMap(), SybC.class);
-        zsbService.saveChild(sybC);
-        return new ResponseResult<SybC>(200, sybC);
-    }
-
-    @RequestMapping("/saveman")
-    public ResponseResult<SybC> saveMan(@RequestParam(value = "eqId") String eqId, @RequestParam("jcyqId") String jcyqId,
-                                        HttpServletRequest req){
-
-        SybC sybC = CommonUtils.toBean(req.getParameterMap(), SybC.class);
-        zsbService.saveMan(sybC);
-        return new ResponseResult<SybC>(200, sybC);
-    }
-
-    //保存双通道注射泵检测数据
-    @RequestMapping("/savestzs")
-    public ResponseResult<StzsM> saveStZs(@RequestParam(value = "eqId") String eqId, @RequestParam("jcyqId") String jcyqId,
-                                          HttpServletRequest req){
-        StzsM stzsM = CommonUtils.toBean(req.getParameterMap(), StzsM.class);
-        zsbService.saveStZs(stzsM);
-        return new ResponseResult<StzsM>(200, stzsM);
-    }
-
     //查询双通道注射泵模板数据
     @RequestMapping("/findStzsTemplate")
     public ResponseResult<StzsMTemplate> findStZsTemplate(){
@@ -84,6 +56,51 @@ public class ZsbController {
         zsbService.insertChildTemplate(template);
         return new ResponseResult(200);
     }
+    //修改模板数据（儿童）
+    @RequestMapping("/updateC")
+    public ResponseResult updateC(SybCTemplate template){
+        zsbService.updateC(template);
+        return new ResponseResult(200);
+    }
+    //修改模板数据（成人）
+    @RequestMapping("/updateM")
+    public ResponseResult updateM(SybCTemplate template){
+        zsbService.updateM(template);
+        return new ResponseResult(200);
+    }
+    //修改模板数据（儿童）
+    @RequestMapping("/updateS")
+    public ResponseResult updateS(StzsMTemplate stzsMTemplate){
+        zsbService.updateS(stzsMTemplate);
+        return new ResponseResult(200);
+    }
+    //保存信息
+    @RequestMapping("/savechild")
+    public ResponseResult<SybC> saveChild(@RequestParam(value = "eqId") String eqId, @RequestParam("jcyqId") String jcyqId,
+                                          HttpServletRequest req){
+        SybC sybC = CommonUtils.toBean(req.getParameterMap(), SybC.class);
+        zsbService.saveChild(sybC);
+        return new ResponseResult<SybC>(200, sybC);
+    }
+
+    @RequestMapping("/saveman")
+    public ResponseResult<SybC> saveMan(@RequestParam(value = "eqId") String eqId, @RequestParam("jcyqId") String jcyqId,
+                                        HttpServletRequest req){
+
+        SybC sybC = CommonUtils.toBean(req.getParameterMap(), SybC.class);
+        zsbService.saveMan(sybC);
+        return new ResponseResult<SybC>(200, sybC);
+    }
+
+    //保存双通道注射泵检测数据
+    @RequestMapping("/savestzs")
+    public ResponseResult<StzsM> saveStZs(@RequestParam(value = "eqId") String eqId, @RequestParam("jcyqId") String jcyqId,
+                                          HttpServletRequest req){
+        StzsM stzsM = CommonUtils.toBean(req.getParameterMap(), StzsM.class);
+        zsbService.saveStZs(stzsM);
+        return new ResponseResult<StzsM>(200, stzsM);
+    }
+
 
 
     //查询所有录入信息（双通道）

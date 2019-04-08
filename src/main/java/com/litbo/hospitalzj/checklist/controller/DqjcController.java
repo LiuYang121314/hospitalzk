@@ -103,15 +103,28 @@ public class DqjcController extends BaseController {
         List<Dqjc> list = dqjcService.findAll();
         return new ResponseResult<List<Dqjc>>(200, list);
     }
-    /***
+    /**
+     * 查询根据设备IDand检测仪器id电气检测表数据查询最后一条记录
+     * @return
+     */
+    @RequestMapping("/findByEqIdandJcyqIdLast1")
+    public ResponseResult<Dqjc> findByEqIdandJcyqIdLast1(@RequestParam("eqId")String eqId,@RequestParam("jcyqId")String jcyqId){
+        Dqjc list = dqjcService.findByEqIdandJcyqIdLast1(eqId,jcyqId);
+        return new ResponseResult<Dqjc>(200, list);
+    }
+    /**
      * 查询根据设备IDand检测仪器id电气检测表数据
      * @return
      */
     @RequestMapping("/findByEqIdandJcyqId")
-    public ResponseResult<Dqjc> findByEqIdandJcyqId(@RequestParam("eqId")String eqId,@RequestParam("jcyqId")String jcyqId){
-        Dqjc list = dqjcService.findByEqIdandJcyqId(eqId,jcyqId);
-        return new ResponseResult<Dqjc>(200, list);
+    public ResponseResult<List<Dqjc>> findByEqIdandJcyqId(@RequestParam("eqId")String eqId,@RequestParam("jcyqId")String jcyqId){
+        List<Dqjc> list = dqjcService.findByEqIdandJcyqId(eqId,jcyqId);
+        return new ResponseResult<List<Dqjc>>(200, list);
     }
+    /**
+     * 查询根据检测仪器id电气检测表数据
+     * @return
+     */
     @RequestMapping("/findByDqjcid")
     public ResponseResult<Dqjc> findByDqjcid(Integer dqjcid){
         Dqjc list = dqjcService.findByDqjcid(dqjcid,0);

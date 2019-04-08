@@ -28,8 +28,34 @@ public class DcsjhyService {
 
 	@Autowired
 	private DcsjhyMapper dcsjhyMapper;
-
-
+	//查询成人模板表数据
+	public DcsjhyTemplate findTemplateMan() {
+		DcsjhyTemplate dcsjhyTempate = dcsjhyMapper.findTemplate_m();
+		return dcsjhyTempate;
+	}
+	//查询幼儿模板表数据
+	public DcsjhyTemplate findTemplateChild() {
+		DcsjhyTemplate dcsjhyTempate = dcsjhyMapper.findTemplate_c();
+		return dcsjhyTempate;
+	}
+	//修改模板表数据
+	//成人
+	public void updateM(DcsjhyTemplate dcsjhyTemplate){
+		dcsjhyMapper.updateM(dcsjhyTemplate);
+	}
+	//幼儿
+	public void updateC(DcsjhyTemplate dcsjhyTemplate){
+		dcsjhyMapper.updateC(dcsjhyTemplate);
+	}
+	//插入模板表数据
+	//成人
+	public void insertM(DcsjhyTemplate dcsjhyTemplate){
+		dcsjhyMapper.insertM(dcsjhyTemplate);
+	}
+	//幼儿
+	public void insertC(DcsjhyTemplate dcsjhyTemplate){
+		dcsjhyMapper.insertC(dcsjhyTemplate);
+	}
 	//查询最新插入的监护仪检测数据{成人}单条数据
 	public Dcsjhy findDcsjhyMan() {
 		return dcsjhyMapper.findDcsjhyMan();
@@ -68,22 +94,14 @@ public class DcsjhyService {
 		dcsjhyMapper.saveChild(dcsjhy);
 	}
 
-	//查询成人模板表数据
-    public DcsjhyTemplate findTemplateMan() {
-		DcsjhyTemplate dcsjhyTempate = dcsjhyMapper.findTemplate_m();
-		return dcsjhyTempate;
-    }
+
     public Dcsjhy findByEqIdandJcyqIdCh(String string, String jcyqId){
 		return dcsjhyMapper.findByEqIdandJcyqIdCh(string,jcyqId);
 	}
     public Dcsjhy findByEqIdandJcyqIdMan(String eqId, String jcyqId){
 		return dcsjhyMapper.findByEqIdandJcyqIdMan(eqId,jcyqId);
 	}
-    //查询幼儿模板表数据
-	public DcsjhyTemplate findTemplateChild() {
-		DcsjhyTemplate dcsjhyTempate = dcsjhyMapper.findTemplate_c();
-		return dcsjhyTempate;
-	}
+
 	//删除数据
 	public void delectMen(String eqId,String jcyqId){
 		dcsjhyMapper.delectMen(eqId, jcyqId);

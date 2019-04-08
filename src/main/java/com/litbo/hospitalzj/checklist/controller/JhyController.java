@@ -42,19 +42,54 @@ public class JhyController extends BaseController {
 	 *  查询多参数监护仪模板表数据
 	 * @return
 	 */
+	//成人
 	@RequestMapping("/findTemplateMan")
 	public ResponseResult<DcsjhyTemplate> findTemplateMan(){
 		DcsjhyTemplate dcsjhyTemplate = dcsjhyService.findTemplateMan();
 		return new ResponseResult<DcsjhyTemplate>(200, dcsjhyTemplate);
 	}
-
-
+	//幼儿
 	@RequestMapping("/findTemplateChild")
 	public ResponseResult<DcsjhyTemplate> findTemplateChild(){
 		DcsjhyTemplate dcsjhyTemplate = dcsjhyService.findTemplateChild();
 		return new ResponseResult<DcsjhyTemplate>(200, dcsjhyTemplate);
 	}
 
+	/**
+	 * 插入模板表数据
+	 * @param dcsjhyTemplate
+	 * @return
+	 */
+	//成人
+	@RequestMapping("/insertM")
+	public ResponseResult<Void> insertM(DcsjhyTemplate dcsjhyTemplate){
+		dcsjhyService.insertM(dcsjhyTemplate);
+		return new ResponseResult<Void>(200);
+	}
+	//幼儿
+	@RequestMapping("/insertC")
+	public ResponseResult<Void> insertC(DcsjhyTemplate dcsjhyTemplate){
+		dcsjhyService.insertC(dcsjhyTemplate);
+		return new ResponseResult<Void>(200);
+	}
+
+	/**
+	 * 修改模板表数据
+	 * @param dcsjhyTemplate
+	 * @return
+	 */
+	//成人
+	@RequestMapping("/updateM")
+	public ResponseResult<Void> updateM(DcsjhyTemplate dcsjhyTemplate){
+		dcsjhyService.updateM(dcsjhyTemplate);
+		return new ResponseResult<Void>(200);
+	}
+	//幼儿
+	@RequestMapping("/updateC")
+	public ResponseResult<Void> updateC(DcsjhyTemplate dcsjhyTemplate){
+		dcsjhyService.updateC(dcsjhyTemplate);
+		return new ResponseResult<Void>(200);
+	}
 	/**
 	 * 保存成人检测数据
 	 * @param eqId

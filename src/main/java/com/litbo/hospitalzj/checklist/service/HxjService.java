@@ -21,7 +21,14 @@ public class HxjService {
     public HxjTemplate findTemplate(){
         return hxjMapper.findTemplate();
     }
-
+    //修改模板值
+    public void update(HxjTemplate hxjTemplate){
+        hxjMapper.update(hxjTemplate);
+    }
+    //插入模板值
+    public void insert(HxjTemplate hxjTemplate){
+        hxjMapper.insert(hxjTemplate);
+    }
     //查询一条检测数据
     public Hxj find(){
         return hxjMapper.find();

@@ -19,6 +19,34 @@ public class SybService {
 
     @Autowired
     private SybMapper sybMapper;
+    //查询模板数据(幼儿)
+    public SybCTemplate findChildTemplate(){
+        String template = "syb_c_template";
+        return sybMapper.findTemplate(template);
+    }
+    //查询模板数据(成人)
+    public SybCTemplate findManTemplate(){
+        String template = "syb_m_template";
+        return sybMapper.findTemplate(template);
+    }
+    //插入模板数据
+    //幼儿
+    public void insertChildTemplate(SybCTemplate template) {
+        sybMapper.insertChildTemplate(template);
+    }
+    //成人
+    public void insertManTemplate(SybCTemplate template) {
+        sybMapper.insertManTemplate(template);
+    }
+    //修改模板数据
+    //幼儿
+    public void updateC(SybCTemplate sybCTemplate){
+        sybMapper.updateC(sybCTemplate);
+    }
+    //成人
+    public void updateM(SybCTemplate sybCTemplate){
+        sybMapper.updateM(sybCTemplate);
+    }
     //保存信息
     //儿童输液泵数据录入
     public void saveChild(SybC sybC) {
@@ -36,17 +64,6 @@ public class SybService {
         BeanUtils.copyProperties(sybCTemplate,sybC);
         sybMapper.saveMan(sybC);
     }
-    //查询模板数据(幼儿)
-    public SybCTemplate findChildTemplate(){
-        String template = "syb_c_template";
-        return sybMapper.findTemplate(template);
-    }
-    //查询模板数据(成人)
-    public SybCTemplate findManTemplate(){
-        String template = "syb_m_template";
-        return sybMapper.findTemplate(template);
-    }
-    //插入模板数据
 
     //查询所有录入信息(幼儿)
     public List<SybC> findAllChild(){
@@ -69,11 +86,5 @@ public class SybService {
         return sybMapper.find(tableName);
     }
 
-    public void insertChildTemplate(SybCTemplate template) {
-        sybMapper.insertChildTemplate(template);
-    }
 
-    public void insertManTemplate(SybCTemplate template) {
-        sybMapper.insertManTemplate(template);
-    }
 }

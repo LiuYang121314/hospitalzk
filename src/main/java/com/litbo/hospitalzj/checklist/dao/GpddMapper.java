@@ -1,10 +1,9 @@
 package com.litbo.hospitalzj.checklist.dao;
 
+import com.litbo.hospitalzj.checklist.domain.Dqjc;
 import com.litbo.hospitalzj.checklist.domain.Gpdd;
 import com.litbo.hospitalzj.zk.domian.GpddTemplate;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -14,15 +13,68 @@ public interface GpddMapper {
     //查询模板值
     @Select("select * from gpdd_template order by gpdd_template_id desc limit 1")
     GpddTemplate findTemplate();
-
-
+    //修改模板表数据
+    @Update(" update gpdd_template\n" +
+            "    set djdq_test1 = #{djdqTest1,jdbcType=DOUBLE},\n" +
+            "      djdq_test2 = #{djdqTest2,jdbcType=DOUBLE},\n" +
+            "      djdq_test3 = #{djdqTest3,jdbcType=DOUBLE},\n" +
+            "      djdq_test4 = #{djdqTest4,jdbcType=DOUBLE},\n" +
+            "      djdq_wc = #{djdqWc,jdbcType=INTEGER},\n" +
+            "      djdn_test1 = #{djdnTest1,jdbcType=DOUBLE},\n" +
+            "      djdn_test2 = #{djdnTest2,jdbcType=DOUBLE},\n" +
+            "      djdn_test3 = #{djdnTest3,jdbcType=DOUBLE},\n" +
+            "      djdn_test4 = #{djdnTest4,jdbcType=DOUBLE},\n" +
+            "      djdn_wc = #{djdnWc,jdbcType=INTEGER},\n" +
+            "      sjdq_test1 = #{sjdqTest1,jdbcType=DOUBLE},\n" +
+            "      sjdq_test2 = #{sjdqTest2,jdbcType=DOUBLE},\n" +
+            "      sjdq_test3 = #{sjdqTest3,jdbcType=DOUBLE},\n" +
+            "      sjdq_test4 = #{sjdqTest4,jdbcType=DOUBLE},\n" +
+            "      sjdq_wc = #{sjdqWc,jdbcType=INTEGER},\n" +
+            "      sjdn_test1 = #{sjdnTest1,jdbcType=DOUBLE},\n" +
+            "      sjdn_test2 = #{sjdnTest2,jdbcType=DOUBLE},\n" +
+            "      sjdn_test3 = #{sjdnTest3,jdbcType=DOUBLE},\n" +
+            "      sjdn_test4 = #{sjdnTest4,jdbcType=DOUBLE},\n" +
+            "      sjdn_wc = #{sjdnWc,jdbcType=INTEGER},\n" +
+            "      djgpld_wc = #{djgpldWc,jdbcType=INTEGER},\n" +
+            "      sjgpld_wc = #{sjgpldWc,jdbcType=INTEGER},\n" +
+            "      spare1 = #{spare1,jdbcType=TINYINT},\n" +
+            "      spare2 = #{spare2,jdbcType=TINYINT}\n" +
+            "    where gpdd_template_id = #{gpddTemplateId,jdbcType=INTEGER}")
+    int update(GpddTemplate gpddTemplate);
+    //插入模板表数据
+    @Insert(" insert into gpdd_template (gpdd_template_id, djdq_test1, djdq_test2, \n" +
+            "      djdq_test3, djdq_test4, djdq_wc, \n" +
+            "      djdn_test1, djdn_test2, djdn_test3, \n" +
+            "      djdn_test4, djdn_wc, sjdq_test1, \n" +
+            "      sjdq_test2, sjdq_test3, sjdq_test4, \n" +
+            "      sjdq_wc, sjdn_test1, sjdn_test2, \n" +
+            "      sjdn_test3, sjdn_test4, sjdn_wc, \n" +
+            "      djgpld_wc, sjgpld_wc, spare1, \n" +
+            "      spare2)\n" +
+            "    values (#{gpddTemplateId,jdbcType=INTEGER}, #{djdqTest1,jdbcType=DOUBLE}, #{djdqTest2,jdbcType=DOUBLE}, \n" +
+            "      #{djdqTest3,jdbcType=DOUBLE}, #{djdqTest4,jdbcType=DOUBLE}, #{djdqWc,jdbcType=INTEGER}, \n" +
+            "      #{djdnTest1,jdbcType=DOUBLE}, #{djdnTest2,jdbcType=DOUBLE}, #{djdnTest3,jdbcType=DOUBLE}, \n" +
+            "      #{djdnTest4,jdbcType=DOUBLE}, #{djdnWc,jdbcType=INTEGER}, #{sjdqTest1,jdbcType=DOUBLE}, \n" +
+            "      #{sjdqTest2,jdbcType=DOUBLE}, #{sjdqTest3,jdbcType=DOUBLE}, #{sjdqTest4,jdbcType=DOUBLE}, \n" +
+            "      #{sjdqWc,jdbcType=INTEGER}, #{sjdnTest1,jdbcType=DOUBLE}, #{sjdnTest2,jdbcType=DOUBLE}, \n" +
+            "      #{sjdnTest3,jdbcType=DOUBLE}, #{sjdnTest4,jdbcType=DOUBLE}, #{sjdnWc,jdbcType=INTEGER}, \n" +
+            "      #{djgpldWc,jdbcType=INTEGER}, #{sjgpldWc,jdbcType=INTEGER}, #{spare1,jdbcType=TINYINT}, \n" +
+            "      #{spare2,jdbcType=TINYINT})")
+    int insert(GpddTemplate gpddTemplate);
     //查询一条
     @Select("select * from gpdd order by gpddid desc limit 1")
     Gpdd find();
+    //根据设备Id,检测仪器Id以及状态查询电切表查询最后一条记录
+    @Select("select gpdd.* from gpdd where gpdd.eq_id=#{eqId} and gpdd.jcyq_id=#{jcyqId} order by dqjcid desc limit 1" )
+    Gpdd findByEqIdandJcyqIdLast1(@Param("eqId")String eqId, @Param("jcyqId")String jcyqId);
 
+    //根据设备Id,检测仪器Id以及状态查询电切表
+    @Select("select gpdd.* from gpdd where gpdd.eq_id=#{eqId} and gpdd.jcyq_id=#{jcyqId}" )
+    List<Gpdd> findByEqIdandJcyqId(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
     //查询所有
     @Select("select * from gpdd")
     List<Gpdd> findAll();
+
     //保存
     @Insert("insert into gpdd (gpddid, jcyq_id, eq_id,  tester, auditor, test_time,    jcjl, jcsm, djdq_test1, \n" +
             "      djdq_value1, djdq_test2, djdq_value2,  djdq_test3, djdq_value3, djdq_test4,  djdq_value4, djdq_wc, djdq_result,   djdn_test1, djdn_value1, djdn_test2, \n" +

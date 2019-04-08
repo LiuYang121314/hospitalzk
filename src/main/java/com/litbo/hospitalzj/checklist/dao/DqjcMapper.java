@@ -122,9 +122,15 @@ public interface DqjcMapper {
 	//以id排序，查询最后一条记录
 	@Select("select * from dqjc order by dqjcid desc limit 1")
 	Dqjc find();
+
+	//根据设备Id,检测仪器Id以及状态查询电器表查询最后一条记录
+	@Select("select dqjc.* from dqjc where dqjc.eq_id=#{eqId} and dqjc.jcyq_id=#{jcyqId} order by dqjcid desc limit 1" )
+	Dqjc findByEqIdandJcyqIdLast1(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
+
 	//根据设备Id,检测仪器Id以及状态查询电器表
 	@Select("select dqjc.* from dqjc where dqjc.eq_id=#{eqId} and dqjc.jcyq_id=#{jcyqId}" )
-	Dqjc findByEqIdandJcyqId(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
+	List<Dqjc> findByEqIdandJcyqId(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
+
 	//根据设备Id,检测仪器Id以及状态查询电器表
 	@Select("select d.*,s.user_name,u.date from " +
 			"dqjc d left join user_eq u on u.jc_eqid=d.eq_id " +

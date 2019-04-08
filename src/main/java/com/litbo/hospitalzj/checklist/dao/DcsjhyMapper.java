@@ -27,6 +27,149 @@ public interface DcsjhyMapper {
 	@Select("select * from dcsjhy_template_c order by dc_templateid desc limit 1")
 	public DcsjhyTemplate findTemplate_c();
 
+	//修改模板表数据
+	@Update("update dcsjhy_template_m\n" +
+			"    set xl_test1 = #{xlTest1,jdbcType=INTEGER},\n" +
+			"      xl_test2 = #{xlTest2,jdbcType=INTEGER},\n" +
+			"      xl_test3 = #{xlTest3,jdbcType=INTEGER},\n" +
+			"      xl_test4 = #{xlTest4,jdbcType=INTEGER},\n" +
+			"      xl_test5 = #{xlTest5,jdbcType=INTEGER},\n" +
+			"      xl_wc = #{xlWc,jdbcType=INTEGER},\n" +
+			"      hxl_test1 = #{hxlTest1,jdbcType=INTEGER},\n" +
+			"      hxl_test2 = #{hxlTest2,jdbcType=INTEGER},\n" +
+			"      hxl_test3 = #{hxlTest3,jdbcType=INTEGER},\n" +
+			"      hxl_test4 = #{hxlTest4,jdbcType=INTEGER},\n" +
+			"      hxl_test5 = #{hxlTest5,jdbcType=INTEGER},\n" +
+			"      hxl_wc = #{hxlWc,jdbcType=INTEGER},\n" +
+			"      xybhd_test1 = #{xybhdTest1,jdbcType=INTEGER},\n" +
+			"      xybhd_test2 = #{xybhdTest2,jdbcType=INTEGER},\n" +
+			"      xybhd_test3 = #{xybhdTest3,jdbcType=INTEGER},\n" +
+			"      xybhd_test4 = #{xybhdTest4,jdbcType=INTEGER},\n" +
+			"      xybhd_test5 = #{xybhdTest5,jdbcType=INTEGER},\n" +
+			"      xybhd_wc = #{xybhdWc,jdbcType=INTEGER},\n" +
+			"      wcxy_h_test1 = #{wcxyHTest1,jdbcType=INTEGER},\n" +
+			"      wcxy_l_test1 = #{wcxyLTest1,jdbcType=INTEGER},\n" +
+			"      wcxy_m_test1 = #{wcxyMTest1,jdbcType=INTEGER},\n" +
+			"      wcxy_h_test2 = #{wcxyHTest2,jdbcType=INTEGER},\n" +
+			"      wcxy_l_test2 = #{wcxyLTest2,jdbcType=INTEGER},\n" +
+			"      wcxy_m_test2 = #{wcxyMTest2,jdbcType=INTEGER},\n" +
+			"      wcxy_h_test3 = #{wcxyHTest3,jdbcType=INTEGER},\n" +
+			"      wcxy_l_test3 = #{wcxyLTest3,jdbcType=INTEGER},\n" +
+			"      wcxy_m_test3 = #{wcxyMTest3,jdbcType=INTEGER},\n" +
+			"      wcxy_h_test4 = #{wcxyHTest4,jdbcType=INTEGER},\n" +
+			"      wcxy_l_test4 = #{wcxyLTest4,jdbcType=INTEGER},\n" +
+			"      wcxy_m_test4 = #{wcxyMTest4,jdbcType=INTEGER},\n" +
+			"      wcxy_h_test5 = #{wcxyHTest5,jdbcType=INTEGER},\n" +
+			"      wcxy_l_test5 = #{wcxyLTest5,jdbcType=INTEGER},\n" +
+			"      wcxy_m_test5 = #{wcxyMTest5,jdbcType=INTEGER},\n" +
+			"      wcxy_wc = #{wcxyWc,jdbcType=INTEGER},\n" +
+			"      wcxyjt_sd = #{wcxyjtSd,jdbcType=INTEGER},\n" +
+			"      wcxyjt_wc = #{wcxyjtWc,jdbcType=INTEGER},\n" +
+			"      wcxyqm_sd = #{wcxyqmSd,jdbcType=INTEGER},\n" +
+			"      wcxyqm_xll_wc = #{wcxyqmXllWc,jdbcType=INTEGER}\n" +
+			"    where dc_templateid = #{dcTemplateid,jdbcType=INTEGER}")
+	int updateM(DcsjhyTemplate dcsjhyTemplate);
+	//成人
+	@Update("update dcsjhy_template_c\n" +
+			"    set xl_test1 = #{xlTest1,jdbcType=INTEGER},\n" +
+			"      xl_test2 = #{xlTest2,jdbcType=INTEGER},\n" +
+			"      xl_test3 = #{xlTest3,jdbcType=INTEGER},\n" +
+			"      xl_test4 = #{xlTest4,jdbcType=INTEGER},\n" +
+			"      xl_test5 = #{xlTest5,jdbcType=INTEGER},\n" +
+			"      xl_wc = #{xlWc,jdbcType=INTEGER},\n" +
+			"      hxl_test1 = #{hxlTest1,jdbcType=INTEGER},\n" +
+			"      hxl_test2 = #{hxlTest2,jdbcType=INTEGER},\n" +
+			"      hxl_test3 = #{hxlTest3,jdbcType=INTEGER},\n" +
+			"      hxl_test4 = #{hxlTest4,jdbcType=INTEGER},\n" +
+			"      hxl_test5 = #{hxlTest5,jdbcType=INTEGER},\n" +
+			"      hxl_wc = #{hxlWc,jdbcType=INTEGER},\n" +
+			"      xybhd_test1 = #{xybhdTest1,jdbcType=INTEGER},\n" +
+			"      xybhd_test2 = #{xybhdTest2,jdbcType=INTEGER},\n" +
+			"      xybhd_test3 = #{xybhdTest3,jdbcType=INTEGER},\n" +
+			"      xybhd_test4 = #{xybhdTest4,jdbcType=INTEGER},\n" +
+			"      xybhd_test5 = #{xybhdTest5,jdbcType=INTEGER},\n" +
+			"      xybhd_wc = #{xybhdWc,jdbcType=INTEGER},\n" +
+			"      wcxy_h_test1 = #{wcxyHTest1,jdbcType=INTEGER},\n" +
+			"      wcxy_l_test1 = #{wcxyLTest1,jdbcType=INTEGER},\n" +
+			"      wcxy_m_test1 = #{wcxyMTest1,jdbcType=INTEGER},\n" +
+			"      wcxy_h_test2 = #{wcxyHTest2,jdbcType=INTEGER},\n" +
+			"      wcxy_l_test2 = #{wcxyLTest2,jdbcType=INTEGER},\n" +
+			"      wcxy_m_test2 = #{wcxyMTest2,jdbcType=INTEGER},\n" +
+			"      wcxy_h_test3 = #{wcxyHTest3,jdbcType=INTEGER},\n" +
+			"      wcxy_l_test3 = #{wcxyLTest3,jdbcType=INTEGER},\n" +
+			"      wcxy_m_test3 = #{wcxyMTest3,jdbcType=INTEGER},\n" +
+			"      wcxy_h_test4 = #{wcxyHTest4,jdbcType=INTEGER},\n" +
+			"      wcxy_l_test4 = #{wcxyLTest4,jdbcType=INTEGER},\n" +
+			"      wcxy_m_test4 = #{wcxyMTest4,jdbcType=INTEGER},\n" +
+			"      wcxy_h_test5 = #{wcxyHTest5,jdbcType=INTEGER},\n" +
+			"      wcxy_l_test5 = #{wcxyLTest5,jdbcType=INTEGER},\n" +
+			"      wcxy_m_test5 = #{wcxyMTest5,jdbcType=INTEGER},\n" +
+			"      wcxy_wc = #{wcxyWc,jdbcType=INTEGER},\n" +
+			"      wcxyjt_sd = #{wcxyjtSd,jdbcType=INTEGER},\n" +
+			"      wcxyjt_wc = #{wcxyjtWc,jdbcType=INTEGER},\n" +
+			"      wcxyqm_sd = #{wcxyqmSd,jdbcType=INTEGER},\n" +
+			"      wcxyqm_xll_wc = #{wcxyqmXllWc,jdbcType=INTEGER}\n" +
+			"    where dc_templateid = #{dcTemplateid,jdbcType=INTEGER}")
+	int updateC(DcsjhyTemplate dcsjhyTemplate);
+	//插入模板表数据
+	@Insert(" insert into dcsjhy_template_m (dc_templateid, xl_test1, xl_test2, \n" +
+			"      xl_test3, xl_test4, xl_test5, \n" +
+			"      xl_wc, hxl_test1, hxl_test2, \n" +
+			"      hxl_test3, hxl_test4, hxl_test5, \n" +
+			"      hxl_wc, xybhd_test1, xybhd_test2, \n" +
+			"      xybhd_test3, xybhd_test4, xybhd_test5, \n" +
+			"      xybhd_wc, wcxy_h_test1, wcxy_l_test1, \n" +
+			"      wcxy_m_test1, wcxy_h_test2, wcxy_l_test2, \n" +
+			"      wcxy_m_test2, wcxy_h_test3, wcxy_l_test3, \n" +
+			"      wcxy_m_test3, wcxy_h_test4, wcxy_l_test4, \n" +
+			"      wcxy_m_test4, wcxy_h_test5, wcxy_l_test5, \n" +
+			"      wcxy_m_test5, wcxy_wc, wcxyjt_sd, \n" +
+			"      wcxyjt_wc, wcxyqm_sd, wcxyqm_xll_wc\n" +
+			"      )\n" +
+			"    values (#{dcTemplateid,jdbcType=INTEGER}, #{xlTest1,jdbcType=INTEGER}, #{xlTest2,jdbcType=INTEGER}, \n" +
+			"      #{xlTest3,jdbcType=INTEGER}, #{xlTest4,jdbcType=INTEGER}, #{xlTest5,jdbcType=INTEGER}, \n" +
+			"      #{xlWc,jdbcType=INTEGER}, #{hxlTest1,jdbcType=INTEGER}, #{hxlTest2,jdbcType=INTEGER}, \n" +
+			"      #{hxlTest3,jdbcType=INTEGER}, #{hxlTest4,jdbcType=INTEGER}, #{hxlTest5,jdbcType=INTEGER}, \n" +
+			"      #{hxlWc,jdbcType=INTEGER}, #{xybhdTest1,jdbcType=INTEGER}, #{xybhdTest2,jdbcType=INTEGER}, \n" +
+			"      #{xybhdTest3,jdbcType=INTEGER}, #{xybhdTest4,jdbcType=INTEGER}, #{xybhdTest5,jdbcType=INTEGER}, \n" +
+			"      #{xybhdWc,jdbcType=INTEGER}, #{wcxyHTest1,jdbcType=INTEGER}, #{wcxyLTest1,jdbcType=INTEGER}, \n" +
+			"      #{wcxyMTest1,jdbcType=INTEGER}, #{wcxyHTest2,jdbcType=INTEGER}, #{wcxyLTest2,jdbcType=INTEGER}, \n" +
+			"      #{wcxyMTest2,jdbcType=INTEGER}, #{wcxyHTest3,jdbcType=INTEGER}, #{wcxyLTest3,jdbcType=INTEGER}, \n" +
+			"      #{wcxyMTest3,jdbcType=INTEGER}, #{wcxyHTest4,jdbcType=INTEGER}, #{wcxyLTest4,jdbcType=INTEGER}, \n" +
+			"      #{wcxyMTest4,jdbcType=INTEGER}, #{wcxyHTest5,jdbcType=INTEGER}, #{wcxyLTest5,jdbcType=INTEGER}, \n" +
+			"      #{wcxyMTest5,jdbcType=INTEGER}, #{wcxyWc,jdbcType=INTEGER}, #{wcxyjtSd,jdbcType=INTEGER}, \n" +
+			"      #{wcxyjtWc,jdbcType=INTEGER}, #{wcxyqmSd,jdbcType=INTEGER}, #{wcxyqmXllWc,jdbcType=INTEGER}\n" +
+			"      )")
+	int insertM(DcsjhyTemplate dcsjhyTemplate);
+	@Insert(" insert into dcsjhy_template_c (dc_templateid, xl_test1, xl_test2, \n" +
+			"      xl_test3, xl_test4, xl_test5, \n" +
+			"      xl_wc, hxl_test1, hxl_test2, \n" +
+			"      hxl_test3, hxl_test4, hxl_test5, \n" +
+			"      hxl_wc, xybhd_test1, xybhd_test2, \n" +
+			"      xybhd_test3, xybhd_test4, xybhd_test5, \n" +
+			"      xybhd_wc, wcxy_h_test1, wcxy_l_test1, \n" +
+			"      wcxy_m_test1, wcxy_h_test2, wcxy_l_test2, \n" +
+			"      wcxy_m_test2, wcxy_h_test3, wcxy_l_test3, \n" +
+			"      wcxy_m_test3, wcxy_h_test4, wcxy_l_test4, \n" +
+			"      wcxy_m_test4, wcxy_h_test5, wcxy_l_test5, \n" +
+			"      wcxy_m_test5, wcxy_wc, wcxyjt_sd, \n" +
+			"      wcxyjt_wc, wcxyqm_sd, wcxyqm_xll_wc\n" +
+			"      )\n" +
+			"    values (#{dcTemplateid,jdbcType=INTEGER}, #{xlTest1,jdbcType=INTEGER}, #{xlTest2,jdbcType=INTEGER}, \n" +
+			"      #{xlTest3,jdbcType=INTEGER}, #{xlTest4,jdbcType=INTEGER}, #{xlTest5,jdbcType=INTEGER}, \n" +
+			"      #{xlWc,jdbcType=INTEGER}, #{hxlTest1,jdbcType=INTEGER}, #{hxlTest2,jdbcType=INTEGER}, \n" +
+			"      #{hxlTest3,jdbcType=INTEGER}, #{hxlTest4,jdbcType=INTEGER}, #{hxlTest5,jdbcType=INTEGER}, \n" +
+			"      #{hxlWc,jdbcType=INTEGER}, #{xybhdTest1,jdbcType=INTEGER}, #{xybhdTest2,jdbcType=INTEGER}, \n" +
+			"      #{xybhdTest3,jdbcType=INTEGER}, #{xybhdTest4,jdbcType=INTEGER}, #{xybhdTest5,jdbcType=INTEGER}, \n" +
+			"      #{xybhdWc,jdbcType=INTEGER}, #{wcxyHTest1,jdbcType=INTEGER}, #{wcxyLTest1,jdbcType=INTEGER}, \n" +
+			"      #{wcxyMTest1,jdbcType=INTEGER}, #{wcxyHTest2,jdbcType=INTEGER}, #{wcxyLTest2,jdbcType=INTEGER}, \n" +
+			"      #{wcxyMTest2,jdbcType=INTEGER}, #{wcxyHTest3,jdbcType=INTEGER}, #{wcxyLTest3,jdbcType=INTEGER}, \n" +
+			"      #{wcxyMTest3,jdbcType=INTEGER}, #{wcxyHTest4,jdbcType=INTEGER}, #{wcxyLTest4,jdbcType=INTEGER}, \n" +
+			"      #{wcxyMTest4,jdbcType=INTEGER}, #{wcxyHTest5,jdbcType=INTEGER}, #{wcxyLTest5,jdbcType=INTEGER}, \n" +
+			"      #{wcxyMTest5,jdbcType=INTEGER}, #{wcxyWc,jdbcType=INTEGER}, #{wcxyjtSd,jdbcType=INTEGER}, \n" +
+			"      #{wcxyjtWc,jdbcType=INTEGER}, #{wcxyqmSd,jdbcType=INTEGER}, #{wcxyqmXllWc,jdbcType=INTEGER}\n" +
+			"      )")
+	int insertC(DcsjhyTemplate dcsjhyTemplate);
 	//保存多参数监护仪检测表(成人)
 	@Insert("insert into dcsjhy_m (dcid, jcyq_id, eq_id,tester, auditor, test_time,shr_jcjl,jcjl, jcsm, xl_test1,                         "
 			+"xl_test2, xl_test3, xl_test4, xl_test5, xl_value1, xl_value2,  xl_value3, xl_value4, xl_value5,                         "
