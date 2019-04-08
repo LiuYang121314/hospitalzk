@@ -95,12 +95,12 @@ public class YqController extends BaseController{
 	}
 	//根据档案号查询出设备以及仪器
 	@RequestMapping("/selectEqInfo")
-	public ResponseResult<EqInfo> selectEqInfo(@RequestParam("eqDah") String eqDah,@RequestParam("eqPmId") String eqPmId,@RequestParam("ndjhId") String ndjhId, HttpSession session){
+	public ResponseResult<EqInfo> selectEqInfo(@RequestParam("eqDah") String eqDah,@RequestParam("eqPmId") String eqPmId,@RequestParam("ndjhId") String ndjhId,HttpSession session){
 		EqInfo data=yqService.selectEqInfo(eqDah);
 		String eqId= String.valueOf(data.getEqId());
 		String userId=getUserIdFromSession(session);
 		String shrId=userPmService.selectShrId(userId,eqPmId);
-		userEqService.insertBatchByJcEqid(userId,eqId,shrId,ndjhId);
+		/*userEqService.insertBatchByJcEqid(userId,eqId,shrId,ndjhId);*/
 		ndjhService.updateMonth(Integer.valueOf(ndjhId));
 		return new ResponseResult<EqInfo>(SUCCESS,data);
 	}

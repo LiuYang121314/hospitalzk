@@ -78,7 +78,6 @@ public class EqInfoServiceImpl implements EqInfoService {
 
 	@Override
 	public EqToYqs findEqYqs(String dah) {
-		// TODO Auto-generated method stub
 		List<Yq> yqList=yqMapper.findByDah(dah);
 		EqInfo eqInfo=eqInfoMapper.findByDah(dah);
 		EqToYqs eqToYqs=new EqToYqs();
@@ -136,6 +135,16 @@ public class EqInfoServiceImpl implements EqInfoService {
 	@Override
 	public List<User> findUserIdByEqId(String userId) {
 		return eqInfoMapper.findUserIdByEqId(userId);
+	}
+
+	@Override
+	public EqInfo findByDah(String dah) {
+		return eqInfoMapper.findByDah(dah);
+	}
+
+	@Override
+	public EqInfo Dah(String dah) {
+		return eqInfoMapper.Dah(dah);
 	}
 
 

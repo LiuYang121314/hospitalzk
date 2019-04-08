@@ -6,8 +6,8 @@ import com.litbo.hospitalzj.user.bean.MonCount;
 import java.util.List;
 
 public interface EqZjlsService {
-    int delete(Integer dzId);
-    int insert(EqZjls eqZjls);
+    void delete(Integer dzId);
+    void insert(EqZjls eqZjls);
     List<EqZjls> selectAll();
     EqZjls select(Integer dzId);
     List<MonCount> count(String tester);

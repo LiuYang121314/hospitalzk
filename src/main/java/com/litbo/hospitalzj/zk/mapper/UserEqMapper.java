@@ -17,6 +17,7 @@ public interface UserEqMapper {
 
 	@Insert("insert into user_eq (id, user_id, sh_eqid,state,shr_id) value ("
 			+ "#{id}, #{userId},#{shEqid},#{state},#{shrId})")
+	@Options(useGeneratedKeys = true, keyProperty = "Id", keyColumn = "id")
 	void insertBatchByShEqid(UserEq userEq);
 	@Select("select * from s_user where user_id=#{userId}")
 	User findUserRole(String userId);

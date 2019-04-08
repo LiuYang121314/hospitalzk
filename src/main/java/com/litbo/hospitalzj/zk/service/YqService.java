@@ -24,8 +24,9 @@ public interface YqService {
 	void deleteBatch(String[] yqId);
 
 	List<Yq> select(Integer eqId);
-	//根据档案号查询出设备以及仪器
+	//根据档案号查询出设备
 	EqInfo selectEqInfo(String eqDah);
+
 	/*List<Yq> selectEqYq(String eqDah);*/
 
 	//电器的数据

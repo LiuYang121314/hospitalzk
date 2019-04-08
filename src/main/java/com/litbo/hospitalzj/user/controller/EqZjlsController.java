@@ -32,11 +32,11 @@ public class EqZjlsController extends BaseController {
         List<EqZjls> data=eqZjlsService.selectAll();
         return new ResponseResult<Void>(SUCCESS);
     }
-    @RequestMapping("/insert")
+    /*@RequestMapping("/insert")
     public ResponseResult<Void> insert(EqZjls eqZjls) {
         eqZjlsService.insert(eqZjls);
         return new ResponseResult<Void>(SUCCESS);
-    }
+    }*/
     @RequestMapping("/delete")
     public ResponseResult<Void> delete(@RequestParam("dzId")Integer dzId) {
         eqZjlsService.delete(dzId);

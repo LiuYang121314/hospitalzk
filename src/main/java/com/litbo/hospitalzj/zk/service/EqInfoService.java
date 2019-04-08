@@ -7,6 +7,7 @@ import com.litbo.hospitalzj.zk.domian.EqInfo;
 import com.litbo.hospitalzj.zk.domian.Yq;
 import com.litbo.hospitalzj.zk.vo.EqAndUname;
 import com.litbo.hospitalzj.zk.vo.EqToYqs;
+import org.apache.ibatis.annotations.Param;
 
 public interface EqInfoService {
 
@@ -50,6 +51,7 @@ public interface EqInfoService {
 	public List<EqInfo> findShEqsByUserIdAndState(String userId, String state);
 	//通过设备Id查询分配用户
 	List<User> findUserIdByEqId(String userId);
-
+	EqInfo findByDah(String dah);
+	EqInfo Dah(@Param("dah")String dah);
 
 }

@@ -71,9 +71,9 @@ public interface EqInfoMapper1 {
 	List<EqInfo> findJcEqNotByUserId(String userId);
 	@Select("SELECT * FROM eq_info WHERE eq_id NOT IN(SELECT sh_eqid FROM user_eq WHERE sh_eqid IS NOT NULL AND user_id=#{userId})")
 	List<EqInfo> findShEqNotByUserId(String userId);
-
+	//通过档案号查询设备信息
 	@Select("SELECT * FROM eq_info WHERE eq_dah=#{dah}")
-	EqInfo findByDah(String dah);
+	EqInfo findByDah(@Param("dah")String dah);
 
 	@Select("SELECT * FROM eq_info WHERE eq_id=#{eqId}")
 	EqInfo findEqById(String eqId);
@@ -86,7 +86,7 @@ public interface EqInfoMapper1 {
 
 	@Select("SELECT e.* FROM eq_info e left join user_eq u on e.eq_id=u.jc_eqid " +
 			"where u.user_id=#{userId} and u.state='待检测'")
-	List<EqInfo> findEqInfo(String userId);
+	List<EqInfo> findEqInfo(@Param("userId")String userId);
 
 	@Select("select * from eq_info where eq_state=1")
 	List<EqInfo> findNewEqInfo();
@@ -99,6 +99,6 @@ public interface EqInfoMapper1 {
 	@Select("SELECT * FROM eq_info WHERE eq_id " +
 			"IN(SELECT sh_eqid FROM user_eq WHERE user_id=#{userId} AND state=#{state})")
 	List<EqInfo> findShEqsByUserIdAndState(@Param("userId") String userId, @Param("state") String state);
-
-
+	@Select("SELECT * FROM eq_info WHERE eq_dah=#{dah}")
+	EqInfo Dah(@Param("dah")String dah);
 }
