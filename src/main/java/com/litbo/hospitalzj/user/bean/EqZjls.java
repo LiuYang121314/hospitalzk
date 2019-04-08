@@ -12,7 +12,6 @@ public class EqZjls {
 
     private Integer eqId;
 
-
     private String eqMc;
 
     private String tester;

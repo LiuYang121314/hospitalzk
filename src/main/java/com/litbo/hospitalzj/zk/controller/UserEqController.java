@@ -40,6 +40,12 @@ public class UserEqController extends BaseController{
 		userEqService.insertBatchByJcEqid(userId,jcEqid,shrId,ndjhId);
 		return new ResponseResult<Void>(SUCCESS);
 	}
+	@RequestMapping("/insertBatchByJcEqid/{jcEqid}/{ndjhId}")
+	public ResponseResult<Void> insertBatchByEqid(@PathVariable String jcEqid,@PathVariable String ndjhId,HttpSession session){
+		String userId=getUserIdFromSession(session);
+		/*userEqService.insertBatchByJcEqid(userId,jcEqid,shrId,ndjhId);*/
+		return new ResponseResult<Void>(SUCCESS);
+	}
 	//为用户批量添加新设备
 	@RequestMapping("/insertNewEqid/{userId}/{jcEqid}")
 	public ResponseResult<Void> insertNewEqid(@PathVariable String userId,@PathVariable String[] jcEqid,HttpSession session){

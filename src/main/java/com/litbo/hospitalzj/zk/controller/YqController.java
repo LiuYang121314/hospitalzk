@@ -100,7 +100,7 @@ public class YqController extends BaseController{
 		String eqId= String.valueOf(data.getEqId());
 		String userId=getUserIdFromSession(session);
 		String shrId=userPmService.selectShrId(userId,eqPmId);
-		/*userEqService.insertBatchByJcEqid(userId,eqId,shrId,ndjhId);*/
+	  /*  userEqService.insertBatchByJcEqid(userId,eqId,shrId,ndjhId);*/
 		ndjhService.updateMonth(Integer.valueOf(ndjhId));
 		return new ResponseResult<EqInfo>(SUCCESS,data);
 	}
