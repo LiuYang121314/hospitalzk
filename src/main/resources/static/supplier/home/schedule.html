@@ -149,7 +149,7 @@
         }else if(obj.event === 'uploads'){
             location.href="/supplier/checked/arrival_registration.html?htId="+obj.data.htId;
         }else if(obj.event === 'upload'){
-            location.href="/supplier/checked/electronic_materials.html?htId="+ids;
+            location.href="/supplier/checked/electronic_materials.html?htId="+obj.data.htId;
         }else if(obj.event === 'stamp'){
             if(obj.data.htGzspd == "无"){
                 location.href="/supplier/checked/look_hta_info.html?htId="+obj.data.htId;
