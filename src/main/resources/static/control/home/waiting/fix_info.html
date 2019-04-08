@@ -56,10 +56,17 @@
             <legend style="color: red;">被检设备基础信息</legend>
         </fieldset>
         <table class="layui-hide" id="fixInfo" lay-filter="handle"></table>
+        <div id="history" style="display: none;">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">历史检测数据</legend>
+            </fieldset>
+            <table class="layui-hide" id="hisInfo"></table>
+        </div>
     </div>
 </div>
 <script type="text/html" id="testHandles">
-    <a class="layui-btn layui-btn-xs" lay-event="hands">检测仪器</a>
+    <a class="layui-btn layui-btn-xs" lay-event="lookHistory">检测历史</a>
+    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="hands">检测</a>
 </script>
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
@@ -136,7 +143,55 @@
         table.on('tool(handle)', function(obj){
             var data = obj.data;
             //console.log(obj)
-            if(obj.event === "hands"){
+            if(obj.event === "lookHistory"){
+                layer.open({
+                    type:1,
+                    content:$("#history"),
+                    area:["90%","90%"],
+                    maxmin:true,
+                    btn:"确认",
+                    yes:function(){
+                        layer.closeAll();
+                    }
+                });
+                // 历史数据信息
+                table.render({
+                    elem:"#hisInfo",
+                    cellMinWidth:100,
+                    toolbar: '#toolbarDemo',
+                    url:"?"+obj.data.eqId,
+                    method:"GET",
+                    response: {
+                        statusName: 'status'
+                        ,statusCode: 200
+                        ,msgName: 'hint'
+                        ,countName: 'total'
+                        ,dataName: 'data'
+                    },
+                    parseData:function(res){
+                        console.log(res.data);
+                        return{
+                            "status":200
+                            ,"msg":res.message
+                            ,"count":res.total
+                            ,"data":res.data
+                        }
+                    },
+                    cols:[[
+                        {field:'eqMc', title:'设备名称',align:'center'},
+                        {field:'eqDah', title:'档案号',align:'center'},
+                        {field:'eqScbh', title:'出厂编号',align:'center'},
+                        {field:'eqNum', title:'设备数量',align:'center'},
+                        {field:'eqCcdate', title:'出厂日期',align:'center'},
+                        {field:'eqCscs', title:'生产厂商',align:'center'},
+                        {field:'eqSyks', title:'使用科室',align:'center'},
+                        {field:'eqJx', title:'设备机型',align:'center'},
+                        {field:'eqQyrq', title:'启用日期',align:'center'},
+                        {field:'eqCfdd', title:'设备存放地点',align:'center'},
+                        {fixed: 'right', title:'操作',toolbar: '#testHandles',align:'center'}
+                    ]]
+                });
+            }else if(obj.event === "hands"){
             	location.href="/control/home/waiting/check_info.html?id="+obj.data.eqId;
             }
         });
