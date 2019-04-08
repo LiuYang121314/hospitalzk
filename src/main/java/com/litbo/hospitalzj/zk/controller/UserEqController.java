@@ -2,8 +2,10 @@ package com.litbo.hospitalzj.zk.controller;
 
 import java.util.List;
 
+import com.litbo.hospitalzj.quality.service.UserPmService;
 import com.litbo.hospitalzj.sf.entity.User;
 import com.litbo.hospitalzj.zk.Enum.EnumProcess2;
+import com.litbo.hospitalzj.zk.domian.UserEq;
 import com.litbo.hospitalzj.zk.service.YqEqService;
 import com.litbo.hospitalzj.zk.vo.EqAndUname;
 import com.litbo.hospitalzj.zk.vo.UserEqVo;
@@ -32,19 +34,24 @@ public class UserEqController extends BaseController{
 	private EqInfoService eqInfoService;
 	@Autowired
 	private YqEqService yqEqService;
+	@Autowired
+	private UserPmService userPmService;
 	//测试通过
 	//为用户添加检测设备
-	@RequestMapping("/insertBatchByJcEqid/{userId}/{jcEqid}/{ndjhId}")
+	/*@RequestMapping("/insertBatchByJcEqid/{userId}/{jcEqid}/{ndjhId}")
 	public ResponseResult<Void> insertBatchByJcEqid(@PathVariable String userId,@PathVariable String jcEqid,@PathVariable String ndjhId,HttpSession session){
 		String shrId=getUserIdFromSession(session);
 		userEqService.insertBatchByJcEqid(userId,jcEqid,shrId,ndjhId);
 		return new ResponseResult<Void>(SUCCESS);
-	}
-	@RequestMapping("/insertBatchByJcEqid/{jcEqid}/{ndjhId}")
-	public ResponseResult<Void> insertBatchByEqid(@PathVariable String jcEqid,@PathVariable String ndjhId,HttpSession session){
+	}*/
+	@RequestMapping("/insertBatchByJcEqid")
+	public ResponseResult<Integer> insertBatchByEqid(UserEq userEq,
+													 @RequestParam("eqPmId") String eqPmId,
+													 HttpSession session){
 		String userId=getUserIdFromSession(session);
-		/*userEqService.insertBatchByJcEqid(userId,jcEqid,shrId,ndjhId);*/
-		return new ResponseResult<Void>(SUCCESS);
+		String shrId=userPmService.selectShrId(userId,eqPmId);
+		userEqService.insertBatchByJcEqid(userId,userEq.getJcEqid(),shrId,userEq.getNdjhId());
+		return new ResponseResult<Integer>(SUCCESS,userEq.getId());
 	}
 	//为用户批量添加新设备
 	@RequestMapping("/insertNewEqid/{userId}/{jcEqid}")

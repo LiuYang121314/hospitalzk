@@ -66,9 +66,7 @@ public class UserEqServiceImpl implements UserEqService{
 		userEq.setDate(new Date());
 		userEq.setState("待上传");
 		UserEq data=userEqMapper.findUserEqByUserIdAndJceqid(userId,jcEqid);
-		if(data==null){
-			userEqMapper.insertBatchByJcEqid(userEq);
-		}
+		userEqMapper.insertBatchByJcEqid(userEq);
 	}
 
 
