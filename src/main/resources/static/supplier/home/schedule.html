@@ -69,7 +69,7 @@
               success:function(res){
                   if(res.state === 200){
                       layer.msg("查询成功");
-                      tableIns = table.render({
+                      table.render({
                           elem:"#codeInfo",
                           cellMinWidth:80,
                           url:"/htInfo/yzm?htYzm="+data.field.htYzm,
