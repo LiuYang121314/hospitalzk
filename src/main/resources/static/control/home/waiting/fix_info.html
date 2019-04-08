@@ -86,7 +86,7 @@
             ,   element = layui.element;
         form.on("submit(searchSub)",function(data){
             $.ajax({
-                url:"/yq/selectEqInfo?eqDah="+data.field.dah+"&eqPmId="+ids+"&ndjhId="+ndjhId,
+                url:"/yq/selectEqInfo?eqDah="+data.field.dah+"&ndjhId="+ndjhId,
                 method:"POST",
                 dataType:"JSON",
                 success:function(res){
@@ -95,9 +95,9 @@
                         // 设备信息
                         table.render({
                             elem:"#fixInfo",
-                            cellMinWidth:100,
+                            cellMinWidth:130,
                             toolbar: '#toolbarDemo',
-                            url:"/yq/selectEqInfo?eqDah="+data.field.dah+"&eqPmId="+ids+"&ndjhId="+ndjhId,
+                            url:"/yq/selectEqInfo?eqDah="+data.field.dah+"&ndjhId="+ndjhId,
                             method:"GET",
                             response: {
                                 statusName: 'status'
@@ -186,7 +186,7 @@
                 });
             }else if(obj.event === "hands"){
                 $.ajax({
-                    url:"",
+                    url:"/userEq/insertBatchByJcEqid?jcEqid="+obj.data.eqId+"&ndjhId="+ndjhId+"&eqPmId="+ids,
                     method:"POST",
                     dataType:"JSON",
                     success:function(res){
