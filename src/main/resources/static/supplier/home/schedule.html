@@ -85,16 +85,18 @@
                               console.log(res);
                               rate = res.data.htState;
                               var handle = $("#handle");
-                              if(rate == "待预约验收" || rate == "已发货"){
+                              if(rate == "待预约验收" || rate == "确认验收"){
                                   handle.append("<p style='color:red;'>当前无操作</p>")
                               }else if(rate == "预约验收"){
                                   handle.append("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='lookinfo'>查看详情</a>");
                               }else if(rate == "信息未完善"){
-                                  handle.append("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='lookinfo'>查看详情</a><a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='update'>重新提交</a>");
+                                  handle.append("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='lookno'>查看验收信息</a>");
                               }else if(rate == "完善资料"){
                                   handle.append("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='uploads'>查看到货登记</a>");
                               }else if(rate == "等待审核"){
                                   handle.append("<p style='color:red;'>正在审核电子资料，请耐心等待...</p>");
+                              }else if(rate == "验收审核不通过"){
+                                  handle.append("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='upload'>重新上传</a>");
                               }else if(rate == "验收通过"){
                                   handle.append("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='stamp'>打印</a>");
                               }
@@ -138,13 +140,22 @@
             }else{
                 location.href="/supplier/checked/look_sg_info.html?htId="+obj.data.htId;
             }
-
-        }else if(obj.event === 'update'){
-            location.href="/supplier/home/check_accept.html";
+        }else if(obj.event === 'lookno'){
+            if(obj.data.htGzspd == "无"){
+                location.href="/supplier/checked/look_ht_nota_info.html?htId="+obj.data.htId;
+            }else{
+                location.href="/supplier/checked/look_sg_nota_info.html?htId="+obj.data.htId;
+            }
         }else if(obj.event === 'uploads'){
             location.href="/supplier/checked/arrival_registration.html?htId="+obj.data.htId;
+        }else if(obj.event === 'upload'){
+            location.href="/supplier/checked/electronic_materials.html?htId="+ids;
         }else if(obj.event === 'stamp'){
-            location.href="/supplier/checked/look_all_info.html?htId="+obj.data.htId;
+            if(obj.data.htGzspd == "无"){
+                location.href="/supplier/checked/look_hta_info.html?htId="+obj.data.htId;
+            }else{
+                location.href="/supplier/checked/look_sga_info.html?htId="+obj.data.htId;
+            }
         }
       });
     });

@@ -33,6 +33,7 @@
         </fieldset>
         <img id="htFile" src="" alt="">
         <div class="col-xs-12 btn">
+            <a id="back" class="layui-btn layui-btn-primary">返回</a>
             <a id="updown" class="layui-btn layui-btn-normal">下载</a>
         </div>
     </div>
@@ -51,7 +52,7 @@
                 url:"/wjsc/select?sourceType="+3+"&sourceId="+suId+"&type="+ids,
                 method:"GET",
                 dataType:"JSON",
-                success:function (res) {
+                success:function(res){
                     paths = res.data[0].path;
                     console.log(paths);
                     $("#htFile").attr("src",res.data[0].path);
@@ -65,7 +66,10 @@
         $("#updown").click(function(){
             alert(paths);
             window.location.href="/wjsc/downloadFile?filePath="+paths;
-        })
+        });
+        $("#back").click(function(){
+            window.history.back();
+        });
     })
 </script>
 </body>
