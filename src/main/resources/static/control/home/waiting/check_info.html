@@ -135,14 +135,14 @@
                 {fixed: 'right', title:'操作',toolbar: '#dqJump',align:'center'}
             ]]
         });
-        table.on('tool(handle1)', function(obj){
+        table.on('tool(handle1)',function(obj){
             var data = obj.data;
             //console.log(obj)
             if(obj.event === "hands"){
             	location.href="/control/home/waiting/write_info/write_life_info.html?id="+obj.data.jcyqId;
             }
         });
-        table.on('tool(handle2)', function(obj){
+        table.on('tool(handle2)',function(obj){
             var data = obj.data;
             //console.log(obj)
             if(obj.event === "hands"){

@@ -48,10 +48,10 @@
                 <a href="?p=apply"><i class="fas fa-fas fa-home"></i>主页</a>
             </li>
             <li class="layui-nav-item" shiro:haspermission="" name="a">
-                <a href="javascript:;"><i class="fas fa-clipboard"></i>供应商管理</a>
+                <a href="javascript:;"><i class="fas fa-clipboard"></i>供应商管理<span id="regNuma" class="layui-badge"></span></a>
                 <dl class="layui-nav-child">
                     <dd>
-                        <a href="javascript:void(0);" data-url="./home/supplier_check.html" data-id="21" data-text="注册信息审核"><i class="layui-icon layui-icon-circle-dot"></i>注册信息审核</a>
+                        <a href="javascript:void(0);" data-url="./home/supplier_check.html" data-id="21" data-text="注册信息审核"><i class="layui-icon layui-icon-circle-dot"></i>注册信息审核<span id="regNumb" class="layui-badge"></span></a>
                     </dd>
                     <dd>
                         <a href="javascript:void(0);" data-url="./home/supplier_manage.html" data-id="22" data-text="供应商信息管理"><i class="layui-icon layui-icon-circle-dot"></i>供应商信息管理</a>
@@ -62,16 +62,16 @@
                 </dl>
             </li>
             <li class="layui-nav-item" shiro:haspermission="" name="a">
-                <a href="javascript:void(0);" data-url="./home/not_manage.html" data-id="24" data-text="待验收管理"><i class="fas  fa-clipboard"></i>待验收管理</a>
+                <a href="javascript:void(0);" data-url="./home/not_manage.html" data-id="24" data-text="待验收管理"><i class="fas  fa-clipboard"></i>待验收管理<span id="acceptNum" class="layui-badge"></span></a>
             </li>
             <li class="layui-nav-item" shiro:haspermission="" name="a">
                 <a href="javascript:;"><i class="fas fa-clipboard"></i>验收管理</a>
                 <dl class="layui-nav-child">
                     <dd>
-                        <a href="javascript:void(0);" data-url="./home/apply_manage.html" data-id="25" data-text="到货登记"><i class="layui-icon layui-icon-circle-dot"></i>到货登记</a>
+                        <a href="javascript:void(0);" data-url="./home/apply_manage.html" data-id="25" data-text="到货登记"><i class="layui-icon layui-icon-circle-dot"></i>到货登记<span id="applyNum" class="layui-badge"></span></a>
                     </dd>
                     <dd>
-                        <a href="javascript:void(0);" data-url="./home/last_check.html" data-id="26" data-text="电子资料信息审核"><i class="layui-icon layui-icon-circle-dot"></i>电子资料信息审核</a>
+                        <a href="javascript:void(0);" data-url="./home/last_check.html" data-id="26" data-text="电子资料信息审核"><i class="layui-icon layui-icon-circle-dot"></i>电子资料信息审核<span id="infoNum" class="layui-badge"></span></a>
                     </dd>
                 </dl>
             </li>
@@ -172,6 +172,72 @@
 <script src="../static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
 <script src="../static/js/main.js" type="text/javascript" charset="utf-8"></script>
 <script>
+    // 供应商申请数量
+    $.ajax({
+        url:"",
+        method:"GET",
+        dataType:"JSON",
+        success:function(res){
+            if(res.data != null && res.data != ""){
+                $("#ndjhNuma").append(res.data);
+                $("#ndjhNumb").append(res.data);
+            }else{
+                $("#ndjhNuma").css("display","none");
+                $("#ndjhNumb").css("display","none");
+            }
+        },
+        error:function () {
+            layer.msg("请稍后再试");
+        }
+    });
+    // 待验收管理数量
+    $.ajax({
+        url:"",
+        method:"GET",
+        dataType:"JSON",
+        success:function(res){
+            if(res.data != null && res.data != ""){
+                $("#acceptNum").append(res.data);
+            }else{
+                $("#acceptNum").css("display","none");
+            }
+        },
+        error:function () {
+            layer.msg("请稍后再试");
+        }
+    });
+    // 到货登记数量
+    $.ajax({
+        url:"",
+        method:"GET",
+        dataType:"JSON",
+        success:function(res){
+            if(res.data != null && res.data != ""){
+                $("#applyNum").append(res.data);
+            }else{
+                $("#applyNum").css("display","none");
+            }
+        },
+        error:function () {
+            layer.msg("请稍后再试");
+        }
+    });
+    // 完善电子资料数量
+    $.ajax({
+        url:"",
+        method:"GET",
+        dataType:"JSON",
+        success:function(res){
+            if(res.data != null && res.data != ""){
+                $("#infoNum").append(res.data);
+            }else{
+                $("#infoNum").css("display","none");
+            }
+        },
+        error:function () {
+            layer.msg("请稍后再试");
+        }
+    });
     layui.use('element',function(){
         var element = layui.element;
     });
