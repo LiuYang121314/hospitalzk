@@ -895,7 +895,7 @@
             ,laydate = layui.laydate;
         laydate.render({
             elem:"#date"
-        })
+        });
         form.on("submit(saveAll)",function(data){
             console.log(data.field);
             $.ajax({

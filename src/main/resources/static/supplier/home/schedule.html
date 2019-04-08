@@ -90,7 +90,7 @@
                               }else if(rate == "预约验收"){
                                   handle.append("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='lookinfo'>查看详情</a>");
                               }else if(rate == "信息未完善"){
-                                  handle.append("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='lookinfo'>查看详情</a><a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='update'>重新提交</a>");
+                                  handle.append("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='lookno'>查看验收信息</a>");
                               }else if(rate == "完善资料"){
                                   handle.append("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='uploads'>查看到货登记</a>");
                               }else if(rate == "等待审核"){
@@ -138,7 +138,12 @@
             }else{
                 location.href="/supplier/checked/look_sg_info.html?htId="+obj.data.htId;
             }
-
+        }else if(obj.event === 'lookno'){
+            if(obj.data.htGzspd == "无"){
+                location.href="/supplier/checked/look_ht_nota_info.html?htId="+obj.data.htId;
+            }else{
+                location.href="/supplier/checked/look_sg_nota_info.html?htId="+obj.data.htId;
+            }
         }else if(obj.event === 'update'){
             location.href="/supplier/home/check_accept.html";
         }else if(obj.event === 'uploads'){
