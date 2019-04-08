@@ -52,7 +52,7 @@
                 url:"/wjsc/select?sourceType="+3+"&sourceId="+suId+"&type="+ids,
                 method:"GET",
                 dataType:"JSON",
-                success:function (res) {
+                success:function(res){
                     paths = res.data[0].path;
                     console.log(paths);
                     $("#htFile").attr("src",res.data[0].path);
