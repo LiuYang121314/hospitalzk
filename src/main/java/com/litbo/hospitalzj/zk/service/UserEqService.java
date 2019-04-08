@@ -10,13 +10,15 @@ public interface UserEqService {
 
 
 	void insertBatchByShEqid(String userId, String[] shEqid);
-	
-	void insertBatchByJcEqid(String userId, String jcEqId,String shrId,String ndjhId);
+
+	Integer insertBatchByJcEqid(String userId, String jcEqId,String shrId,String ndjhId);
 
 	void deleteBatchByShEqid(String userId, String[] shEqId);
 	
 	void deleteBatchByJcEqid(String userId, String jcEqId);
-	
+	//修改状态
+	void setEqState(@Param("Id") Integer Id, @Param("state") String state);
+
 	void setJcEqState2(@Param("userId") String userId, @Param("eqId") String eqId);
 	
 	void setEqState2(String userId, String jcEqid);

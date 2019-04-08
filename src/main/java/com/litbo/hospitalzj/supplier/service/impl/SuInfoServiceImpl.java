@@ -60,6 +60,11 @@ public class SuInfoServiceImpl implements SuInfoService {
     }
 
     @Override
+    public Integer count(Integer state) {
+        return suInfoMapper.count(state);
+    }
+
+    @Override
     public List<SuInfo> findSuByState(Integer state) {
         return suInfoMapper.findSuByState(state);
     }

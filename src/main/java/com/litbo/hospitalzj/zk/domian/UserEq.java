@@ -3,7 +3,7 @@ package com.litbo.hospitalzj.zk.domian;
 import java.util.Date;
 
 public class UserEq {
-    private Integer id;
+    private Integer Id;
 
     private String userId;
 
@@ -62,11 +62,11 @@ public class UserEq {
     }
 
     public Integer getId() {
-        return id;
+        return Id;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        Id = id;
     }
 
     public String getUserId() {

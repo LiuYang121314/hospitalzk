@@ -140,5 +140,11 @@ public class HtInfoController extends BaseController {
         htinfoService.HtJC(htId);
         return new ResponseResult<Void>(SUCCESS);
     }
+    //查询状态数量
+    @RequestMapping("/countByYyys")
+    public ResponseResult<Integer> htStateByYyys() {
+        Integer data=htinfoService.count(EnumProcess.WAIT_ACCEPT.getMessage());
+        return new ResponseResult<Integer>(SUCCESS,data);
+    }
 }
 

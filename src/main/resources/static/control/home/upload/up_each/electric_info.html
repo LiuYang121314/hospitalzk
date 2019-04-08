@@ -157,7 +157,7 @@
     var thiseqId = parseInt(sessionStorage['thiseqId']);
     $(function(){
     	$.ajax({
-            url:"/dqjc/findByEqIdandJcyqId?eqId="+thiseqId+"&jcyqId="+ids,
+            url:"/dqjc/findByEqIdandJcyqIdLast1?eqId="+thiseqId+"&jcyqId="+ids,
             method:"GET",
             dataType:"JSON",
             success:function(res){
@@ -273,7 +273,7 @@
             elem:"#testerInfo",
             cellMinWidth:100,
             toolbar: '#toolbarDemo',
-            url:"/dqjc/findByEqIdandJcyqId?eqId="+thiseqId+"&jcyqId="+ids,
+            url:"/dqjc/findByEqIdandJcyqIdLast1?eqId="+thiseqId+"&jcyqId="+ids,
             method:"GET",
             response: {
                 statusName: 'status'

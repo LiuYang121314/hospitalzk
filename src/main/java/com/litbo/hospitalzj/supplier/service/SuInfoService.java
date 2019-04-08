@@ -14,5 +14,6 @@ public interface SuInfoService {
     List<SuInfo> selectAll();
     SuInfoAndZzInfo findSuById(Integer suId);
     List<SuInfo> findBySuMcLike(@Param("suMc") String suMc);
+    Integer count(Integer state);
     List<SuInfo> findSuByState(Integer state);
 }

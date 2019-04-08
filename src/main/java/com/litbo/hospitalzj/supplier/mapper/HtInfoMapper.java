@@ -68,4 +68,7 @@ public interface HtInfoMapper {
 	//通过合同id修改合同状态
 	@Update("UPDATE ht_info SET ht_State=#{htState} where ht_id=#{htId}")
 	int updateStateById(@Param("htId") Integer htId, @Param("htState") String htState);
+	//查询状态数量
+	@Select("select count(*) from ht_info where ht_State=#{htState}")
+	int count(@Param("htState") String htState);
 }

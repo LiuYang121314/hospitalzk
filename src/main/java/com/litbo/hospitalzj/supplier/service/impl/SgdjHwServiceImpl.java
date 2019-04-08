@@ -52,4 +52,9 @@ public class SgdjHwServiceImpl implements SgdjHwService{
 			else
 				return null;
 		}
+
+	@Override
+	public int count(String htState) {
+		return SgdjHwMapper.count(htState);
 	}
+}

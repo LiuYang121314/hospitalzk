@@ -50,8 +50,8 @@ public class UserEqController extends BaseController{
 													 HttpSession session){
 		String userId=getUserIdFromSession(session);
 		String shrId=userPmService.selectShrId(userId,eqPmId);
-		userEqService.insertBatchByJcEqid(userId,userEq.getJcEqid(),shrId,userEq.getNdjhId());
-		return new ResponseResult<Integer>(SUCCESS,userEq.getId());
+		Integer data=userEqService.insertBatchByJcEqid(userId,userEq.getJcEqid(),shrId,userEq.getNdjhId());
+		return new ResponseResult<Integer>(SUCCESS,data);
 	}
 	//为用户批量添加新设备
 	@RequestMapping("/insertNewEqid/{userId}/{jcEqid}")
@@ -126,9 +126,14 @@ public class UserEqController extends BaseController{
 	}
 
 	//用户检测设备完毕、设置状态为:待上传
-	@RequestMapping("/setEqState5/{userId}/{eqId}")
+	/*@RequestMapping("/setEqState5/{userId}/{eqId}")
 	public ResponseResult<Void> setEqState5(@PathVariable String userId,@PathVariable String eqId){
 		userEqService.setEqState5(userId,eqId);
+		return new ResponseResult<Void>(SUCCESS);
+	}*/
+	@RequestMapping("/setEqState")
+	public ResponseResult<Void> setEqState5(Integer Id){
+		userEqService.setEqState(Id,EnumProcess2.TO_UPLOAD.getMessage());
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	//用户检测设备完毕、设置状态为:审核中

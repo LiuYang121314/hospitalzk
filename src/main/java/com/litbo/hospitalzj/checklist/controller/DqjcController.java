@@ -72,7 +72,7 @@ public class DqjcController extends BaseController {
      * @return
      */
     @RequestMapping("/save")
-    public ResponseResult<Integer> saveDq(@RequestParam(value = "eqId") String eqId,@RequestParam(value = "jcyqId") String jcyqId,
+    public ResponseResult<Integer> saveDq(@RequestParam(value = "eqId") String eqId,@RequestParam(value = "jcyqId") String jcyqId,@RequestParam(value = "Id") Integer Id,
                                       HttpSession session, HttpServletRequest req){
        Dqjc dqjc = CommonUtils.toBean(req.getParameterMap(), Dqjc.class);
        String userId=String.valueOf(session.getAttribute("uid").toString());
@@ -80,7 +80,8 @@ public class DqjcController extends BaseController {
        dqjc.setState(0);
        yqEqService.insertBatch(eqId,jcyqId);
        yqEqService.updateType(jcyqId,eqId,EnumProcess2.TO_UPLOAD.getMessage());
-       userEqService.setEqState5(userId,eqId);
+       //修改状态为待上传
+       userEqService.setEqState(Id,EnumProcess2.TO_UPLOAD.getMessage());
        dqjcService.save(dqjc);
        return new ResponseResult<Integer>(200, dqjc.getDqjcid());
     }

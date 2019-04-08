@@ -10,5 +10,5 @@ public interface SgdjHwService {
 	//上传外观图片
     int updateURL(Integer htIds, String path);
 	String[] showImages(Integer htIds);
-	/*int updateWjURL( Integer htIds, @Param("path") String path);*/
+	int count(String htState);
 }

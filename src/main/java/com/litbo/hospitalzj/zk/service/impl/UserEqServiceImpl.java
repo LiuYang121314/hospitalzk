@@ -57,18 +57,17 @@ public class UserEqServiceImpl implements UserEqService{
 	}
 
 	@Override
-	public void insertBatchByJcEqid(String userId, String jcEqid ,String shrId,String ndjhId) {
+	public Integer insertBatchByJcEqid(String userId, String jcEqid ,String shrId,String ndjhId) {
 		UserEq userEq=new UserEq();
 		userEq.setUserId(userId);
 		userEq.setJcEqid(jcEqid);
 		userEq.setShrId(shrId);
 		userEq.setNdjhId(ndjhId);
 		userEq.setDate(new Date());
-		userEq.setState("待上传");
-		UserEq data=userEqMapper.findUserEqByUserIdAndJceqid(userId,jcEqid);
 		userEqMapper.insertBatchByJcEqid(userEq);
+		System.out.println("!!!!!!!!!!!!!"+userEq.getId());
+		return userEq.getId();
 	}
-
 
 	@Override
 	public void deleteBatchByShEqid(String userId, String[] shEqId) {
@@ -80,6 +79,11 @@ public class UserEqServiceImpl implements UserEqService{
 	@Override
 	public void deleteBatchByJcEqid(String userId, String jcEqId) {
 			userEqMapper.deleteBatchByJcEqid(userId,jcEqId);
+	}
+
+	@Override
+	public void setEqState(Integer Id, String state) {
+		userEqMapper.setEqState(Id,state);
 	}
 
 	@Override

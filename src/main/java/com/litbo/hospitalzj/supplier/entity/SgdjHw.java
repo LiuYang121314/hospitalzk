@@ -10,10 +10,10 @@ import java.util.List;
 public class SgdjHw {
 	private Integer djhwId;
 	private Integer htIds;
-	private String djhwWbz;//
+	private String djhwWbz;
 	private String djhwYsbs;
 	private String djhwSbwg;
-	private String  djhwSxwj;
+	private String djhwSxwj;
 	private String djhwBz1;
 	private String djhwBz2;
 	private String djhwBz3;

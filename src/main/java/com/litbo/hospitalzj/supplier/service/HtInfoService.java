@@ -42,4 +42,6 @@ public interface HtInfoService {
 	List<HtInfo> selectAllHtByhtState(String htState);
 
 	void HtJC(Integer htId);
+
+	int count(@Param("htState") String htState);
 }

@@ -67,4 +67,9 @@ public class SuInfoController extends BaseController {
         List<SuInfo> data=suInfoService.findSuByState(1);
         return new ResponseResult<List<SuInfo>>(SUCCESS,data);
     }
+    @RequestMapping("/count")
+    public ResponseResult<Integer> count() {
+        Integer data=suInfoService.count(0);
+        return new ResponseResult<Integer>(SUCCESS,data);
+    }
 }

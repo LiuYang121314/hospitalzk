@@ -60,6 +60,9 @@ public interface SuInfoMapper {
     SuInfoAndZzInfo findSuById(Integer suId);
     @Select("select * from su_info where su_mc=#{suMc} and is_delete=0")
     SuInfo findSuByMc(String suMc);
+    //查询新注册数量
+    @Select("select count(*) from su_info where state=#{state} and is_delete=0")
+    Integer count(Integer state);
     //模糊查询
 	@Select("SELECT * FROM su_info WHERE su_mc LIKE '%${suMc}%' and is_delete=0")
 	List<SuInfo> findBySuMcLike(@Param("suMc") String suMc);

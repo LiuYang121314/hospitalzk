@@ -134,4 +134,9 @@ public class HtInfoServiceImpl implements HtInfoService {
 			}
 		}
 	}
+
+	@Override
+	public int count(String htState) {
+		return htInfoMapper.count(htState);
+	}
 }

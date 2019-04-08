@@ -49,4 +49,6 @@ public interface SgdjHwMapper {
 	SgdjHw selectSgdjHwByHtIds(Integer htIds);
 	@Select("select djhw_url from sg_djhw where ht_ids = #{htIds}")
 	String showImages(Integer htIds);
+	@Select("SELECT count(*) FROM sg_djhw s left join ht_info h on s.ht_ids=h.ht_id where h.ht_state=#{htState}")
+	int count(String htState);
 }

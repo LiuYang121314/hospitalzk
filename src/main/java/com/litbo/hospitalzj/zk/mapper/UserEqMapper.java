@@ -22,6 +22,11 @@ public interface UserEqMapper {
 	@Select("select * from s_user where user_id=#{userId}")
 	User findUserRole(String userId);
 
+	@Insert("insert into user_eq (id, user_id, jc_eqid,date,ndjh_id,state,shr_id) value ("
+			+ "#{Id,jdbcType=INTEGER}, #{userId},#{jcEqid},#{date},#{ndjhId},#{state},#{shrId})")
+	@Options(useGeneratedKeys = true, keyProperty = "Id", keyColumn = "id")
+	void insertBatchByJcEqid(UserEq userEq);
+
 	@Select("select * from user_eq where user_id=#{userId} and jc_eqid=#{jceqId}")
 	UserEq findUserEqByUserIdAndJceqid(@Param("userId") String userId,@Param("jceqId") String jceqId);
 	//检测设备成功与不成功
@@ -34,15 +39,15 @@ public interface UserEqMapper {
 			"AND jc_eqid in(select jc_eqid from ndjh where state=#{state} and ndjh_id=#{ndjhId})")
 	void updateState(@Param("ndjhId")Integer ndjhId,@Param("userEqState") String userEqState,@Param("state") String state);
 	
-	@Insert("insert into user_eq (id, user_id, jc_eqid,date,ndjh_id,state,shr_id) value ("
-			+ "#{id}, #{userId},#{jcEqid},#{date},#{ndjhId},#{state},#{shrId})")
-	void insertBatchByJcEqid(UserEq userEq);
 
 	@Delete("delete from user_eq where user_id = #{userId} AND sh_eqid = #{shEqid}")
 	void deleteBatchByShEqid(@Param("userId") String userId,@Param("shEqid") String shEqid);
 
 	@Delete("delete from user_eq where user_id = #{userId} AND jc_eqid = #{jcEqid}")
 	void deleteBatchByJcEqid(@Param("userId") String userId, @Param("jcEqid") String jcEqid);
+
+	@Update("update user_eq set state=#{state} where id=#{Id}")
+	void setEqState(@Param("Id") Integer Id, @Param("state") String state);
 
 	@Update("update user_eq set state='待审核' where user_id=#{userId} and jc_eqid=#{eqId}")
 	void setJcEqState2(@Param("userId") String userId, @Param("eqId") String eqId);
