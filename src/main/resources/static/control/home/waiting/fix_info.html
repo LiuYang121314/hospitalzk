@@ -191,6 +191,7 @@
                     dataType:"JSON",
                     success:function(res){
                         if(res.state === 200){
+                            sessionStorage['thisId'] = res.data;
                             location.href="/control/home/waiting/check_info.html?id="+obj.data.eqId;
                         }else{
                             layer.msg("失败");
