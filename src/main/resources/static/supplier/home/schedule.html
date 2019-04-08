@@ -85,7 +85,7 @@
                               console.log(res);
                               rate = res.data.htState;
                               var handle = $("#handle");
-                              if(rate == "待预约验收" || rate == "已发货"){
+                              if(rate == "待预约验收" || rate == "确认验收"){
                                   handle.append("<p style='color:red;'>当前无操作</p>")
                               }else if(rate == "预约验收"){
                                   handle.append("<a class='layui-btn layui-btn-sm layui-btn-normal' lay-event='lookinfo'>查看详情</a>");
@@ -151,7 +151,11 @@
         }else if(obj.event === 'upload'){
             location.href="/supplier/checked/electronic_materials.html?htId="+ids;
         }else if(obj.event === 'stamp'){
-            location.href="/supplier/checked/look_all_info.html?htId="+obj.data.htId;
+            if(obj.data.htGzspd == "无"){
+                location.href="/supplier/checked/look_hta_info.html?htId="+obj.data.htId;
+            }else{
+                location.href="/supplier/checked/look_sga_info.html?htId="+obj.data.htId;
+            }
         }
       });
     });
