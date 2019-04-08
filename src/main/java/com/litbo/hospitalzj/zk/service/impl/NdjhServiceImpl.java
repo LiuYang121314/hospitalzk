@@ -58,6 +58,7 @@ public class NdjhServiceImpl implements NdjhService {
 	public void updateMonth(Integer ndjhId) {
         Ndjh ndjh =new Ndjh();
         ndjh.setNdjhId(ndjhId);
+        /*List<MonthCount> data=eqZjlsDao.count(ndjhId);*/
         List<MonthCount> data=userEqMapper.count(ndjhId);
        for (int i = 0; i < data.size(); i++) {
            if(data.get(i).getMonth().equals("1")){

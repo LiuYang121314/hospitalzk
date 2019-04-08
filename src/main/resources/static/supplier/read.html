@@ -92,7 +92,7 @@
         <form class="layui-form" action="">
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <input type="checkbox" name="" title="我已仔细阅读XXXXXX协议" lay-skin="primary">
+                    <input type="checkbox" name="static" title="我已仔细阅读XXXXXX协议" lay-skin="primary">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -109,7 +109,7 @@
             ,form = layui.form;
         form.on('submit(nextTap)',function(data){
             console.log(data.field);
-            if(data.field.checkbox == "on"){
+            if(data.field.static == "on"){
                 location.href="/supplier/register_a.html";
             }else{
                 layer.msg("请点击我已同意再进行下一步")

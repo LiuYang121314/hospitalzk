@@ -66,10 +66,9 @@ public class UserEqServiceImpl implements UserEqService{
 		userEq.setDate(new Date());
 		userEq.setState("待上传");
 		UserEq data=userEqMapper.findUserEqByUserIdAndJceqid(userId,jcEqid);
-		if(data!=null){
-			throw new InsertException("此设备已经分配给此人员");
+		if(data==null){
+			userEqMapper.insertBatchByJcEqid(userEq);
 		}
-		userEqMapper.insertBatchByJcEqid(userEq);
 	}
 
 
@@ -141,13 +140,13 @@ public class UserEqServiceImpl implements UserEqService{
 		}
 		if(yqEqMapper.selectStateNot(jceqId,2)>0){
 			userEqMapper.setEqStateNotIs(jceqId,userId,EnumProcess2.DETECTION_OF_AUDIT_NOT.getMessage());
-			EqZjls data =new EqZjls();
+			/*EqZjls data =new EqZjls();
 			data.setEqId(Integer.valueOf(jceqId));
 			data.setTestTime(new Date());
 			data.setEqMc(eqInfo.getEqMc());
 			data.setTester(user.getUserName());
 			data.setAuditor(shr.getUserName());
-			eqZjlsDao.insert(data);
+			eqZjlsDao.insert(data);*/
 		}else{
 			userEqMapper.setEqStateNotIs(jceqId,userId,EnumProcess2.DETECTION_OF_AUDIT_IS.getMessage());
 			EqZjls data =new EqZjls();

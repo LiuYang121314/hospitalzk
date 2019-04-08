@@ -77,4 +77,9 @@ public class EqInfoController extends BaseController{
 		List<EqInfo> data=eqInfoService.findNewEqInfo();
 		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
 	}
+	@RequestMapping("/findByDah")
+	public ResponseResult<EqInfo> findByDah(String dah){
+		EqInfo data=eqInfoService.findByDah(dah);
+		return new ResponseResult<EqInfo>(SUCCESS,data);
+	}
 }

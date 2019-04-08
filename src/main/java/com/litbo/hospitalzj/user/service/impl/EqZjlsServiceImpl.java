@@ -17,15 +17,14 @@ public class EqZjlsServiceImpl implements EqZjlsService {
     @Autowired
     private EqZjlsDao eqZjlsDao;
 
-
     @Override
-    public int delete(Integer dzId) {
-        return eqZjlsDao.delete(dzId);
+    public void delete(Integer dzId) {
+         eqZjlsDao.delete(dzId);
     }
 
     @Override
-    public int insert(EqZjls eqZjls) {
-        return eqZjlsDao.insert(eqZjls);
+    public void insert(EqZjls eqZjls) {
+         eqZjlsDao.insert(eqZjls);
     }
 
     @Override

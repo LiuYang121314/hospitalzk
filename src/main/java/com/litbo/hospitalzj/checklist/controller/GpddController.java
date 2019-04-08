@@ -1,16 +1,22 @@
 package com.litbo.hospitalzj.checklist.controller;
 
+import com.litbo.hospitalzj.checklist.domain.Dqjc;
 import com.litbo.hospitalzj.checklist.domain.Gpdd;
 import com.litbo.hospitalzj.checklist.service.GpddService;
 import com.litbo.hospitalzj.checklist.utils.ResponseResult;
 import com.litbo.hospitalzj.checklist.utils.commons.CommonUtils;
+import com.litbo.hospitalzj.supplier.service.EqInfoService;
+import com.litbo.hospitalzj.zk.Enum.EnumProcess2;
 import com.litbo.hospitalzj.zk.domian.GpddTemplate;
+import com.litbo.hospitalzj.zk.service.UserEqService;
+import com.litbo.hospitalzj.zk.service.YqEqService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -19,7 +25,12 @@ public class GpddController {
 
     @Autowired
     private GpddService gpddService;
-
+    @Autowired
+    private UserEqService userEqService;
+    @Autowired
+    private EqInfoService eqinfoService;
+    @Autowired
+    private YqEqService yqEqService;
     //查询模板值
     @RequestMapping("/findTemplate")
     public ResponseResult<GpddTemplate> findTemplate(){
@@ -50,8 +61,12 @@ public class GpddController {
     //保存
     @RequestMapping("/save")
     public ResponseResult<Gpdd> save(@RequestParam("eqId") String eqId, @RequestParam("jcyqId") String jcyqId,
-                                     HttpServletRequest req){
+                                     HttpSession session, HttpServletRequest req){
         Gpdd gpdd = CommonUtils.toBean(req.getParameterMap(), Gpdd.class);
+        String userId=String.valueOf(session.getAttribute("uid").toString());
+        yqEqService.insertBatch(eqId,jcyqId);
+        yqEqService.updateType(jcyqId,eqId, EnumProcess2.TO_UPLOAD.getMessage());
+        userEqService.setEqState5(userId,eqId);
         gpddService.save(gpdd);
         return new ResponseResult<Gpdd>(200, gpdd);
     }
@@ -72,5 +87,14 @@ public class GpddController {
     public ResponseResult<List<Gpdd>> findByEqIdandJcyqId(@RequestParam("eqId")String eqId,@RequestParam("jcyqId")String jcyqId){
         List<Gpdd> list = gpddService.findByEqIdandJcyqId(eqId,jcyqId);
         return new ResponseResult<List<Gpdd>>(200, list);
+    }
+    /**
+     * 查询根据检测仪器id电气检测表数据
+     * @return
+     */
+    @RequestMapping("/findByGpddid")
+    public ResponseResult<Gpdd> findByGpddid(Integer gpddid){
+        Gpdd list = gpddService.findByGpddid(gpddid);
+        return new ResponseResult<Gpdd>(200, list);
     }
 }

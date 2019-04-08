@@ -44,6 +44,9 @@ public class GpddService {
     public List<Gpdd> findByEqIdandJcyqId(String eqId,String jcyqId){
         return gpddMapper.findByEqIdandJcyqId(eqId, jcyqId);
     }
+    public Gpdd findByGpddid(@Param("gpddid")Integer gpddid){
+        return gpddMapper.findByGpddid(gpddid);
+    }
     //查询所有
     public List<Gpdd> findAll(){
         return gpddMapper.findAll();

@@ -66,13 +66,21 @@ public class YqServiceImpl implements YqService{
 		return yqMapper.select(eqId);
 	}
 
+	/*@Override
+	public EqInfo selectEqInfo(String eqDah) {
+		EqInfo data=yqMapper.selectEqInfo(eqDah);
+		System.out.println(data);
+		System.out.println(yqMapper.selectEqInfo(eqDah));
+	*//*	if(data==null){
+			throw new NotFoundException("您查询的设备不存在");
+		}*//*
+		return yqMapper.selectEqInfo("123");
+	}*/
 	@Override
 	public EqInfo selectEqInfo(String eqDah) {
 		EqInfo data=yqMapper.selectEqInfo(eqDah);
-		if(data==null){
-			throw new NotFoundException("您查询的设备不存在");
-		}
-		return yqMapper.selectEqInfo(eqDah);
+		System.out.print(data);
+		return data;
 	}
 	/*@Override
         public List<Yq> selectEqYq(String eqDah) {

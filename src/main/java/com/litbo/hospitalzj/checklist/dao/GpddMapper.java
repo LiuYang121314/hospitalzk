@@ -71,6 +71,11 @@ public interface GpddMapper {
     //根据设备Id,检测仪器Id以及状态查询电切表
     @Select("select gpdd.* from gpdd where gpdd.eq_id=#{eqId} and gpdd.jcyq_id=#{jcyqId}" )
     List<Gpdd> findByEqIdandJcyqId(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
+
+    //根据检测仪器Id查询
+    @Select("select gpdd.* from gpdd where gpddid=#{gpddid}" )
+    Gpdd findByGpddid(@Param("gpddid")Integer gpddid);
+
     //查询所有
     @Select("select * from gpdd")
     List<Gpdd> findAll();
