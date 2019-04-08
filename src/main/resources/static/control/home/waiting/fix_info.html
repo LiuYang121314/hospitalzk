@@ -185,7 +185,22 @@
                     ]]
                 });
             }else if(obj.event === "hands"){
-            	location.href="/control/home/waiting/check_info.html?id="+obj.data.eqId;
+                $.ajax({
+                    url:"",
+                    method:"POST",
+                    dataType:"JSON",
+                    success:function(res){
+                        if(res.state === 200){
+                            location.href="/control/home/waiting/check_info.html?id="+obj.data.eqId;
+                        }else{
+                            layer.msg("失败");
+                        }
+                    },
+                    error:function(data){
+                        console.log(data);
+                        layer.msg("失败");
+                    }
+                });
             }
         });
     });
