@@ -165,11 +165,11 @@ public class UserEqController extends BaseController{
 		userEqService.setEqStateNotIs(jceqId,userId,shrId);
 		return new ResponseResult<Void>(SUCCESS);
 	}
-	@RequestMapping("/setYqStateNotIs")
+	/*@RequestMapping("/setYqStateNotIs")
 	public ResponseResult<Void> setYqStateNotIs(@RequestParam("jcyqId")String jcyqId,@RequestParam("eqId")String eqId,@RequestParam("state")Integer state){
 		yqEqService.updateState(jcyqId,eqId,state);
 		return new ResponseResult<Void>(SUCCESS);
-	}
+	}*/
 	//待上传
 	@RequestMapping("/setEqTypeNotIs")
 	public ResponseResult<Void> setEqTypeNotIs(@RequestParam("jceqId")String jceqId,HttpSession session){

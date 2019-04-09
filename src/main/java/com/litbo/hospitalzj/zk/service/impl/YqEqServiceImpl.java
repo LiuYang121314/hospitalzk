@@ -37,13 +37,13 @@ public class YqEqServiceImpl implements YqEqService{
 	}
 
 	@Override
-	public void updateState(String jcyqId, String eqId,Integer state) {
-		yqEqMapper.updateState(jcyqId, eqId,state);
+	public void updateState(Integer yqEqId,Integer state) {
+		yqEqMapper.updateState(yqEqId,state);
 	}
 
 	@Override
-	public void updateType(String jcyqId, String eqId, String state) {
-		yqEqMapper.updateType(jcyqId, eqId, state);
+	public void updateType(Integer yqEqId, String state) {
+		yqEqMapper.updateType(yqEqId, state);
 	}
 
 	@Override

@@ -14,8 +14,10 @@ public interface YqEqService {
 	
 	YqEq selectEqId(String jcyqId);
 
-	void updateState(String jcyqId, String eqId,Integer state);
-	void updateType(String jcyqId, String eqId,String state);
+	void updateState(Integer yqEqId,Integer state);
+
+	void updateType(Integer yqEqId,String state);
+
 	void updateAllType(@Param("eqId") String eqId,@Param("type") String  type);
 	List<YqEqVo> selectYqEq(@Param("userId") String userId, @Param("state") Integer state);
 
