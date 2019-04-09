@@ -127,6 +127,9 @@ public class HtInfoServiceImpl implements HtInfoService {
 		for(EqInfo eqInfo:data){
 			String eqScbh=eqInfo.getEqScbh();
 			String[] eqScbhOne=eqScbh.split(",");
+			if(eqScbhOne.length!=Integer.valueOf(eqInfo.getEqNum())){
+				throw new RuntimeException("请核对设备数量与生产编号数量，不对应");
+			}
 			for(int j=0;j<eqScbhOne.length;j++){
 				eqInfo.setEqState(0);
 				eqInfo.setEqScbh(eqScbhOne[j]);

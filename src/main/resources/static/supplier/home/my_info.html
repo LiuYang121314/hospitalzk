@@ -322,10 +322,11 @@
             ,form = layui.form;
         $(function(){
             $.ajax({
-                url:"",
+                url:"/suinfo/one",
                 method:"GET",
                 dataType:"JSON",
                 success:function(res){
+                    console.log(res.data);
                     if(res.data != "" && res.data != null){
                         sessionStorage['suId'] = res.data.suId;
                         // 企业信息

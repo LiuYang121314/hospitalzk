@@ -36,8 +36,9 @@ public class SuInfoController extends BaseController {
         // 返回
         return new ResponseResult<>(SUCCESS, user);
     }
-    @RequestMapping("/{suId}")
-    public ResponseResult<SuInfoAndZzInfo> getByCode(@PathVariable("suId") Integer suId) {
+    @RequestMapping("/one")
+    public ResponseResult<SuInfoAndZzInfo> getByCode(HttpSession session) {
+        Integer suId=getUidFromSession(session);
         SuInfoAndZzInfo data=suInfoService.findSuById(suId);
         return new ResponseResult<SuInfoAndZzInfo>(SUCCESS,data);
     }
