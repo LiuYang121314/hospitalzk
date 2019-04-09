@@ -541,4 +541,63 @@ public class SuInfoAndZzInfo {
     public void setZzZzbz(String zzZzbz) {
         this.zzZzbz = zzZzbz;
     }
+
+    @Override
+    public String toString() {
+        return "SuInfoAndZzInfo{" +
+                "suId=" + suId +
+                ", suMc='" + suMc + '\'' +
+                ", suSf='" + suSf + '\'' +
+                ", suCs='" + suCs + '\'' +
+                ", suXq='" + suXq + '\'' +
+                ", suFr='" + suFr + '\'' +
+                ", suDjr='" + suDjr + '\'' +
+                ", suFzr='" + suFzr + '\'' +
+                ", suKhyh='" + suKhyh + '\'' +
+                ", suKhyhzh='" + suKhyhzh + '\'' +
+                ", suGsdz='" + suGsdz + '\'' +
+                ", suLxrxm='" + suLxrxm + '\'' +
+                ", suLxrdh='" + suLxrdh + '\'' +
+                ", suLxrbm='" + suLxrbm + '\'' +
+                ", suDh='" + suDh + '\'' +
+                ", suYb='" + suYb + '\'' +
+                ", suEmail='" + suEmail + '\'' +
+                ", suCz='" + suCz + '\'' +
+                ", suWz='" + suWz + '\'' +
+                ", bz='" + bz + '\'' +
+                ", isDelete=" + isDelete +
+                ", state=" + state +
+                ", zzId=" + zzId +
+                ", zzYyzch='" + zzYyzch + '\'' +
+                ", zzYyzzbh='" + zzYyzzbh + '\'' +
+                ", zzYyclrq=" + zzYyclrq +
+                ", zzYyfdr='" + zzYyfdr + '\'' +
+                ", zzYyzczj='" + zzYyzczj + '\'' +
+                ", zzQylx='" + zzQylx + '\'' +
+                ", zzYysxrq=" + zzYysxrq +
+                ", zzYyjzrq=" + zzYyjzrq +
+                ", zzYyyx='" + zzYyyx + '\'' +
+                ", zzZlglr='" + zzZlglr + '\'' +
+                ", zzZlglrdz='" + zzZlglrdz + '\'' +
+                ", zzYyscdz='" + zzYyscdz + '\'' +
+                ", zzCkdz='" + zzCkdz + '\'' +
+                ", zzYyjyfw='" + zzYyjyfw + '\'' +
+                ", zzYybz='" + zzYybz + '\'' +
+                ", zzJyzh='" + zzJyzh + '\'' +
+                ", zzJyqyfzr='" + zzJyqyfzr + '\'' +
+                ", zzJyfddbr='" + zzJyfddbr + '\'' +
+                ", zzJysxrq=" + zzJysxrq +
+                ", zzJyjzrq=" + zzJyjzrq +
+                ", zzJyyx='" + zzJyyx + '\'' +
+                ", zzJyzcdz='" + zzJyzcdz + '\'' +
+                ", zzJybz='" + zzJybz + '\'' +
+                ", zzZzdm='" + zzZzdm + '\'' +
+                ", zzZzlx='" + zzZzlx + '\'' +
+                ", zzZzsxrq=" + zzZzsxrq +
+                ", zzZzjzrq=" + zzZzjzrq +
+                ", zzZzdz='" + zzZzdz + '\'' +
+                ", zzZzyx='" + zzZzyx + '\'' +
+                ", zzZzbz='" + zzZzbz + '\'' +
+                '}';
+    }
 }
