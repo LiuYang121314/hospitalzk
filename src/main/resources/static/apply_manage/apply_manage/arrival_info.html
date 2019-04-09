@@ -201,9 +201,9 @@
                     dataType:"JSON",
                     success:function(res){
                         if(res.state === 200){
-                            layer.msg("提交成功");
+                            layer.msg("提交成功,正在生成验收单");
                             setTimeout(function(){
-                                location.href="/apply_manage/home/apply_manage.html";
+                                location.href="/apply_manage/apply_manage/apply_input.html?id="+ids;
                             },1000);
                         }else{
                             layer.msg("提交失败")
