@@ -5,6 +5,7 @@ import com.litbo.hospitalzj.checklist.domain.Gpdd;
 import com.litbo.hospitalzj.checklist.service.GpddService;
 import com.litbo.hospitalzj.checklist.utils.ResponseResult;
 import com.litbo.hospitalzj.checklist.utils.commons.CommonUtils;
+import com.litbo.hospitalzj.controller.BaseController;
 import com.litbo.hospitalzj.supplier.service.EqInfoService;
 import com.litbo.hospitalzj.zk.Enum.EnumProcess2;
 import com.litbo.hospitalzj.zk.domian.GpddTemplate;
@@ -21,7 +22,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/gpdd")
-public class GpddController {
+public class GpddController extends BaseController {
 
     @Autowired
     private GpddService gpddService;
@@ -60,13 +61,13 @@ public class GpddController {
     }
     //保存
     @RequestMapping("/save")
-    public ResponseResult<Gpdd> save(@RequestParam("eqId") String eqId, @RequestParam("jcyqId") String jcyqId,
+    public ResponseResult<Gpdd> save(@RequestParam("eqId") String eqId, @RequestParam("jcyqId") String jcyqId,@RequestParam(value = "userEqId") Integer userEqId,
                                      HttpSession session, HttpServletRequest req){
         Gpdd gpdd = CommonUtils.toBean(req.getParameterMap(), Gpdd.class);
-        String userId=String.valueOf(session.getAttribute("uid").toString());
-        yqEqService.insertBatch(eqId,jcyqId);
-        yqEqService.updateType(jcyqId,eqId, EnumProcess2.TO_UPLOAD.getMessage());
-        userEqService.setEqState5(userId,eqId);
+        int yqEqId=yqEqService.insertBatch(eqId,jcyqId);
+        yqEqService.updateType(yqEqId, EnumProcess2.TO_UPLOAD.getMessage());
+        //修改状态为待上传
+        userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
         gpddService.save(gpdd);
         return new ResponseResult<Gpdd>(200, gpdd);
     }
@@ -96,5 +97,17 @@ public class GpddController {
     public ResponseResult<Gpdd> findByGpddid(Integer gpddid){
         Gpdd list = gpddService.findByGpddid(gpddid);
         return new ResponseResult<Gpdd>(200, list);
+    }
+    //修改审核人建议同时修改状态
+    @RequestMapping("/updateShrJcjy")
+    public ResponseResult<Void> updateShrJcjy(@RequestParam("dqjcid")Integer dqjcid, @RequestParam("yqEqId")Integer yqEqId, @RequestParam("shrJcjl")String shrJcjl, @RequestParam("state")Integer state, HttpSession session){
+        String auditor=getUserNameFromSession(session);
+       /* dqjcService.updateShrJcjy(dqjcid,shrJcjl,auditor);*/
+        if(state.equals(1)){
+            yqEqService.updateState(yqEqId,1);
+        }else{
+            yqEqService.updateState(yqEqId,2);
+        }
+        return new ResponseResult<Void>(200);
     }
 }

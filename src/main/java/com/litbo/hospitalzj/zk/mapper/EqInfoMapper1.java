@@ -6,11 +6,7 @@ import com.litbo.hospitalzj.sf.entity.User;
 import com.litbo.hospitalzj.zk.vo.EqAndUname;
 import com.litbo.hospitalzj.zk.vo.UserEqVo;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import com.litbo.hospitalzj.zk.domian.EqInfo;
 
@@ -42,6 +38,9 @@ public interface EqInfoMapper1 {
 			"      #{eqQyrq,jdbcType=VARCHAR}, #{eqCfdd,jdbcType=VARCHAR}, #{eqBfjd,jdbcType=VARCHAR}\n" +
 			"      )")
 	void insert(EqInfo eq);
+
+	@Update("update eq_info set eq_pm_id=#{eqPmId} where eq_id=#{eqId}")
+	void updateEqPm(@Param("eqPmId")Integer eqPmId,@Param("eqId") Integer eqId);
 
 	@Delete("delete from EqInfo_template where dc_templateid = #{dcTemplateId}")
 	void delete(String id);

@@ -24,55 +24,60 @@ public class EqInfoServiceImpl implements EqInfoService {
 	YqMapper yqMapper;
 
 	@Override
+	public void updateEqPm(Integer eqPmId, Integer eqId) {
+		eqInfoMapper.updateEqPm(eqPmId, eqId);
+	}
+
+	@Override
 	public void insert(EqInfo dt) {
 		eqInfoMapper.insert(dt);
 	}
 
 	@Override
 	public List<EqInfo> findAll() {
-		// TODO Auto-generated method stub
+	
 		return eqInfoMapper.findAll();
 	}
 
 	@Override
 	public void delete(String id) {
-		// TODO Auto-generated method stub
+	
 		eqInfoMapper.delete(id);
 	}
 
 	@Override
 	public List<EqInfo> findByJcyqId(String jcyqId) {
-		// TODO Auto-generated method stub
+	
 		return eqInfoMapper.findByJcyqId(jcyqId);
 	}
 
 	@Override
 	public List<EqInfo> findNotByJcyqId(String jcyqId) {
-		// TODO Auto-generated method stub
+	
 		return eqInfoMapper.findNotByJcyqId(jcyqId);
 	}
 
 	@Override
 	public List<EqInfo> findJcEqByUserId(String userId) {
-		// TODO Auto-generated method stub
+	
 		return eqInfoMapper.findJcEqByUserId(userId);
 	}
 
 	@Override
 	public List<EqInfo> findShEqByUserId(String userId) {
-		// TODO Auto-generated method stub
+	
 		return eqInfoMapper.findShEqByUserId(userId);
 	}
 
 	@Override
 	public List<EqInfo> findJcEqNotByUserId(String userId) {
-		// TODO Auto-generated method stub
+	
 		return eqInfoMapper.findJcEqNotByUserId(userId);
 	}
 
 	@Override
 	public List<EqInfo> findShEqNotByUserId(String userId) {
-		// TODO Auto-generated method stub
+	
 		return eqInfoMapper.findShEqNotByUserId(userId);
 	}
 
@@ -140,11 +145,6 @@ public class EqInfoServiceImpl implements EqInfoService {
 	@Override
 	public EqInfo findByDah(String dah) {
 		return eqInfoMapper.findByDah(dah);
-	}
-
-	@Override
-	public EqInfo Dah(String dah) {
-		return eqInfoMapper.Dah(dah);
 	}
 
 

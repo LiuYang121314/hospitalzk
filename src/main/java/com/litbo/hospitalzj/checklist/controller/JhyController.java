@@ -105,7 +105,6 @@ public class JhyController extends BaseController {
 			HttpSession session,
 			HttpServletRequest req){
 		Dcsjhy dcsjhy = CommonUtils.toBean(req.getParameterMap(), Dcsjhy.class);
-		String userId=String.valueOf(session.getAttribute("uid").toString());
 		dcsjhyService.delectMen(eqId, jcyqId);
 		dcsjhy.setState(0);
 		int yqEqId=yqEqService.insertBatch(eqId,jcyqId);
@@ -131,7 +130,6 @@ public class JhyController extends BaseController {
 			HttpSession session,
 			HttpServletRequest req){
 		Dcsjhy dcsjhy = CommonUtils.toBean(req.getParameterMap(), Dcsjhy.class);
-	    String userId=String.valueOf(session.getAttribute("uid").toString());
 		dcsjhyService.delectChi(eqId, jcyqId);
 		dcsjhy.setState(0);
 		int yqEqId=yqEqService.insertBatch(eqId,jcyqId);

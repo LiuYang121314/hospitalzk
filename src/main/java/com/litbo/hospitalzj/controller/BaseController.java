@@ -114,11 +114,11 @@ public abstract class BaseController {
 	}
 	public String getUserNameFromSession(HttpSession session) {
 		return String.valueOf(
-				session.getAttribute("userName").toString());
+				session.getAttribute("suMc").toString());
 	}
 	protected Integer getUidFromSession(HttpSession session) {
 		return Integer.valueOf(
-				session.getAttribute("sbcsId").toString());
+				session.getAttribute("suId").toString());
 	}
 	protected String getSctepFromSession(HttpSession session) {
 		return String.valueOf(
