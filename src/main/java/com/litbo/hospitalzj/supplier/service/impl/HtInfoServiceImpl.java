@@ -83,14 +83,14 @@ public class HtInfoServiceImpl implements HtInfoService {
 
 
 	@Override
-	public int agreeHtInfoById(Integer htId, String yy, String date) {
+	public int agreeHtInfoById(Integer htId, String yy, String date,String htYsyDh) {
 		System.out.println(123);
-		return htInfoMapper.updateState(htId,yy,date,EnumProcess.APPOINMENT_ACCEPTANCE.getMessage());
+		return htInfoMapper.updateState(htId,yy,date,EnumProcess.APPOINMENT_ACCEPTANCE.getMessage(),htYsyDh);
 	}
 
 	@Override
-	public int refuseHtInfoById(Integer htId, String yy, String date) {
-		return htInfoMapper.updateState(htId,yy,date,EnumProcess.IMPERFECT_CONTRACT_INFORMATION.getMessage());
+	public int refuseHtInfoById(Integer htId, String yy, String date,String htYsyDh) {
+		return htInfoMapper.updateState(htId,yy,date,EnumProcess.IMPERFECT_CONTRACT_INFORMATION.getMessage(),htYsyDh);
 	}
 
 	@Override

@@ -63,12 +63,14 @@ public interface HtInfoMapper {
 			+ "ht_ysbz  from ht_info where ht_state=#{state}")
     List<HtInfo> findAll(String state);
 
-	@Update("UPDATE ht_info SET ht_State=#{htState},ht_bz =#{yy},ht_yssj=#{date} where ht_id=#{htId}")
-	int updateState(@Param("htId") Integer htId, @Param("yy") String yy, @Param("date") String date, @Param("htState") String htState);
+	@Update("UPDATE ht_info SET ht_State=#{htState},ht_bz =#{yy},ht_yssj=#{date}, ht_ysy_dh=#{htYsyDh} where ht_id=#{htId}")
+	int updateState(@Param("htId") Integer htId, @Param("yy") String yy, @Param("date") String date, @Param("htState") String htState,@Param("htYsyDh") String htYsyDh);
 	//通过合同id修改合同状态
 	@Update("UPDATE ht_info SET ht_State=#{htState} where ht_id=#{htId}")
 	int updateStateById(@Param("htId") Integer htId, @Param("htState") String htState);
 	//查询状态数量
 	@Select("select count(*) from ht_info where ht_State=#{htState}")
 	int count(@Param("htState") String htState);
+	//查询一个合同中全部设备以及附件
+
 }

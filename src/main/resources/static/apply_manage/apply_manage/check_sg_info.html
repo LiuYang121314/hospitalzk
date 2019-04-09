@@ -18,6 +18,11 @@
         td{
             text-align: center;
         }
+        .btn{
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
         .manage legend{
             font-size: 24px;
             color: #000000;
@@ -134,42 +139,8 @@
             </tr>
             </tbody>
         </table>
-        <div id="postMsg" class="col-xs-12">
-            <fieldset class="layui-elem-field layui-field-title manage">
-                <legend>验收审批</legend>
-            </fieldset>
-            <form class="layui-form layui-form-pane pform" action="">
-                <div class="layui-form-item col-md-5">
-                    <label class="layui-form-label">验收意见</label>
-                    <div class="layui-input-block" style="border: 1px solid #cccccc">
-                        <input type="radio" name="view" value="同意" title="同意" checked>
-                        <input type="radio" name="view" value="不同意" title="不同意">
-                    </div>
-                </div>
-                <div class="layui-form-item col-md-5">
-                    <label class="layui-form-label">预约验收时间</label>
-                    <div class="layui-input-block">
-                        <input type="text" id="date" name="date" required  lay-verify="required" placeholder="预约验收时间" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item col-md-5">
-                    <label class="layui-form-label">联系电话</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="htYsyDh" required  lay-verify="required" placeholder="预约验收时间" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item layui-form-text col-md-8">
-                    <label class="layui-form-label">验收要求</label>
-                    <div class="layui-input-block">
-                        <textarea name="yy" placeholder="请输入本次验收要求" class="layui-textarea"></textarea>
-                    </div>
-                </div>
-                <div class="layui-form-item btn">
-                    <div class="layui-input-block">
-                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="submit">立即提交</button>
-                    </div>
-                </div>
-            </form>
+        <div class="col-xs-12 btn">
+            <a id="jumDdhdj" class="layui-btn layui-btn-normal">到货登记</a>
         </div>
     </div>
 </div>
@@ -316,29 +287,6 @@
                 location.href="/apply_manage/not_manage/enclosure_info.html?id="+obj.data.eqId;
             }
         });
-        form.on('submit(submit)', function(data){
-            console.log(data.field);
-            $.ajax({
-                url:"/accept/acceptHtInfoById?htId="+ids,
-                method:"POST",
-                data:data.field,
-                dataType:"JSON",
-                success:function(res){
-                    if(res.state === 200){
-                        setTimeout(function(){
-                            location.href="/apply_manage/home/not_manage.html";
-                        },1000);
-                        layer.msg("提交成功");
-                    }else{
-                        layer.msg("提交失败");
-                    }
-                },
-                error:function(data){
-                    layer.msg("提交失败,请稍后再试");
-                }
-            });
-            return false;
-        });
         // 购置审批申请单
         $("#lookHt").click(function(){
             location.href="/apply_manage/file/sg_accept_file.html?id="+1;
@@ -354,6 +302,24 @@
         // 海关进口货物报关单
         $("#lookHgjk").click(function(){
             location.href="/apply_manage/file/sg_accept_file.html?id="+4;
+        });
+        $("#jumDdhdj").click(function(){
+            $.ajax({
+                url:"/sgdjhw/insert?htIds="+ids,
+                method:"POST",
+                dataType:"JSON",
+                success:function(res){
+                    if(res.state ===200){
+                        location.href="/apply_manage/apply_manage/arrival_info.html?htIds="+ids;
+                    }else{
+                        layer.msg("失败");
+                    }
+                },
+                error:function(data){
+                    layer.msg("请稍后再试");
+                    console.log(data);
+                }
+            });
         });
     })
 </script>

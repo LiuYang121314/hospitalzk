@@ -81,7 +81,7 @@ public class FileUpload {
         }
         String newFileName = null;
         String insertPath = null;
-        String filePath="images/upload/";
+        String filePath="/images/upload/";
         String PATH = "static/"+filePath;
         try {
             //获取跟目录

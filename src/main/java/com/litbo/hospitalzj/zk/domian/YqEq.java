@@ -1,7 +1,7 @@
 package com.litbo.hospitalzj.zk.domian;
 
 public class YqEq {
-    private Integer id;
+    private Integer Id;
 
     private String jcyqId;
 
@@ -37,11 +37,11 @@ public class YqEq {
 	}
 
 	public Integer getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		Id = id;
 	}
 
 	public String getJcyqId() {
@@ -60,9 +60,5 @@ public class YqEq {
 		this.eqId = eqId;
 	}
 
-	@Override
-	public String toString() {
-		return "YqEq [id=" + id + ", jcyqId=" + jcyqId + ", eqId=" + eqId + ", eqMc=" + eqMc + "]";
-	}
    
 }

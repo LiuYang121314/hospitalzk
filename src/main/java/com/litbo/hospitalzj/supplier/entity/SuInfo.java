@@ -5,6 +5,8 @@ public class SuInfo {
 
     private String suMc;
 
+    private String password;
+
     private String suSf;
 
     private String suCs;
@@ -44,6 +46,14 @@ public class SuInfo {
     private Integer isDelete;
     
     private Integer state;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Integer getState() {
         return state;

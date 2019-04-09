@@ -76,12 +76,12 @@ public class AcceptController {
         return new ResponseResult<HtInfo>(SUCCESS,htInfo);
     }
     @RequestMapping(value = "acceptHtInfoById",method = RequestMethod.POST)
-    public ResponseResult AgreeHtInfoById(String view,Integer htId,String yy,String date){
+    public ResponseResult AgreeHtInfoById(String view,Integer htId,String yy,String date,String htYsyDh){
+        System.out.println("++++++++++++"+htYsyDh);
         if("同意".equals(view)){
-            int res = htInfoService.agreeHtInfoById(htId,yy,date);
+            int res = htInfoService.agreeHtInfoById(htId,yy,date,htYsyDh);
         }else {
-
-            int res = htInfoService.refuseHtInfoById(htId,yy,null);
+            int res = htInfoService.refuseHtInfoById(htId,yy,date,htYsyDh);
         }
         return new ResponseResult<>(SUCCESS);
     }

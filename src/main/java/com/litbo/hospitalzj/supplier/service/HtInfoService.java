@@ -27,9 +27,9 @@ public interface HtInfoService {
 	
 	HtInfo selectHtInfo(String htYzm);
 
-	int agreeHtInfoById(Integer htId, String yy, String date);
+	int agreeHtInfoById(Integer htId, String yy, String date,String htYsyDh);
 
-	int refuseHtInfoById(Integer htId, String yy, String date);
+	int refuseHtInfoById(Integer htId, String yy, String date,String htYsyDh);
 
 	List<HtInfo> selectAllHtWaitRegister();
 

@@ -906,8 +906,9 @@
                 dataType:"JSON",
                 success:function(res){
                     if(res.state === 200){
+                        sessionStorage["thissjId"] = res.data[1];
                         setTimeout(function(){
-                            location.href = "/control/home/waiting/wait_info/electric_info.html?id="+res.data;
+                            location.href = "/control/home/waiting/wait_info/electric_info.html?id="+res.data[0];
                         },1000);
                         layer.msg("保存成功,正在生成表格");
                     }else{

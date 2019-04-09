@@ -333,6 +333,7 @@
                 success:function(res){
                     if(res.data != "" && res.data != null){
                         // 企业信息
+                        sessionStorage["suName"] = res.data.suMc;
                         $("#suMc").append(res.data.suMc);
                         $("#suSf").append(res.data.suSf);
                         $("#suCs").append(res.data.suCs);
@@ -403,7 +404,10 @@
                 dataType:"JSON",
                 success:function(res){
                     if(res.state === 200){
-                        layer.msg("同意成功，结果将已短信方式发送给供应商");
+                        layer.msg("同意成功，请为供应商设置密码");
+                        setTimeout(function(){
+                            location.href="/apply_manage/supplier/set_user.html?id="+ids;
+                        },1000);
                     }else{
                         layer.msg("失败");
                     }
@@ -422,7 +426,7 @@
                 dataType:"JSON",
                 success:function(res){
                     if(res.state === 200){
-                        layer.msg("申请驳回成功");
+                        layer.msg("注册申请驳回成功");
                     }else{
                         layer.msg("失败");
                     }

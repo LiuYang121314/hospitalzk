@@ -42,16 +42,16 @@ public class SgdjHwController extends BaseController{
 		htinfoService.updateHtInfoState(sgdjHw.getHtIds(), EnumProcess.PERFECT_INFORMATION.getMessage());
 		return new ResponseResult<Void>(SUCCESS);
 	}
-	//同意验收数量
+/*	//同意验收数量
 	@RequestMapping("/countByTyys")
 	public ResponseResult<Integer> countByTyys() {
 		Integer all= sgdjHwService.count(EnumProcess.TONG_YI_YANSHOU.getMessage());
 		return new ResponseResult<Integer>(SUCCESS,all);
-	}
-	//等待审核验收数量
+	}*/
+	/*//等待审核验收数量
 	@RequestMapping("/countByDdshys")
 	public ResponseResult<Integer> countByDdshys() {
 		Integer all= sgdjHwService.count(EnumProcess.WAIT_ACCEPT_YS.getMessage());
 		return new ResponseResult<Integer>(SUCCESS,all);
-	}
+	}*/
 }

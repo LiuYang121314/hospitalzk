@@ -174,25 +174,25 @@
 <script>
     // 供应商申请数量
     $.ajax({
-        url:"",
+        url:"/suinfo/countByGyssq",
         method:"GET",
         dataType:"JSON",
         success:function(res){
             if(res.data != null && res.data != ""){
-                $("#ndjhNuma").append(res.data);
-                $("#ndjhNumb").append(res.data);
+                $("#regNuma").append(res.data);
+                $("#regNumb").append(res.data);
             }else{
-                $("#ndjhNuma").css("display","none");
-                $("#ndjhNumb").css("display","none");
+                $("#regNuma").css("display","none");
+                $("#regNumb").css("display","none");
             }
         },
         error:function () {
             layer.msg("请稍后再试");
         }
     });
-    // 待验收管理数量
+    // 验收申请数量
     $.ajax({
-        url:"",
+        url:"/htInfo/countByYyys",
         method:"GET",
         dataType:"JSON",
         success:function(res){
@@ -206,9 +206,9 @@
             layer.msg("请稍后再试");
         }
     });
-    // 到货登记数量
+    // (同意验收)到货登记数量
     $.ajax({
-        url:"",
+        url:"/htInfo/countByTyys",
         method:"GET",
         dataType:"JSON",
         success:function(res){
@@ -222,9 +222,9 @@
             layer.msg("请稍后再试");
         }
     });
-    // 完善电子资料数量
+    // 待验收审核数量
     $.ajax({
-        url:"",
+        url:"/htInfo/countByDdshys",
         method:"GET",
         dataType:"JSON",
         success:function(res){

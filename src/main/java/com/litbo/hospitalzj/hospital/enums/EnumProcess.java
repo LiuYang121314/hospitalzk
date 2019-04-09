@@ -7,6 +7,7 @@ public enum EnumProcess{
     IMPERFECT_CONTRACT_INFORMATION(3,"合同信息未完善"),
     PERFECT_INFORMATION(4,"完善资料"),
     WAIT_ACCEPT_YS(5,"等待审核验收"),
+    WAIT_ACCEPT_YS_NOT(10,"审核验收不通过"),
     ACCEPT_OVER(6,"验收完成"),
     CONTRACT_ENTRY( 7, "合同录入"),
     REVISE_A_CONTRACT(8, "合同修改"),

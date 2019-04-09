@@ -21,7 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/dqjc")
@@ -72,18 +74,21 @@ public class DqjcController extends BaseController {
      * @return
      */
     @RequestMapping("/save")
-    public ResponseResult<Integer> saveDq(@RequestParam(value = "eqId") String eqId,@RequestParam(value = "jcyqId") String jcyqId,@RequestParam(value = "Id") Integer Id,
+    public ResponseResult saveDq(@RequestParam(value = "eqId") String eqId,@RequestParam(value = "jcyqId") String jcyqId,@RequestParam(value = "Id") Integer Id,
                                       HttpSession session, HttpServletRequest req){
        Dqjc dqjc = CommonUtils.toBean(req.getParameterMap(), Dqjc.class);
        String userId=String.valueOf(session.getAttribute("uid").toString());
        dqjcService.delete(eqId,jcyqId);
        dqjc.setState(0);
-       yqEqService.insertBatch(eqId,jcyqId);
+       int yqEqId=yqEqService.insertBatch(eqId,jcyqId);
+       System.out.println(yqEqId);
        yqEqService.updateType(jcyqId,eqId,EnumProcess2.TO_UPLOAD.getMessage());
        //修改状态为待上传
        userEqService.setEqState(Id,EnumProcess2.TO_UPLOAD.getMessage());
        dqjcService.save(dqjc);
-       return new ResponseResult<Integer>(200, dqjc.getDqjcid());
+       System.out.println(dqjc.getDqjcid());
+       int[] x={dqjc.getDqjcid(),yqEqId};
+       return new ResponseResult<>(200,x);
     }
 
     

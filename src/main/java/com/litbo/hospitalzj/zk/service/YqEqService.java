@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface YqEqService {
 
-	void insertBatch(String eqId, String jcyqId);
+	int insertBatch(String eqId, String jcyqId);
 	
 	void deleteBatch(String jcyqId, String eqId);
 	

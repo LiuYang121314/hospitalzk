@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -21,6 +22,18 @@ import java.util.List;
 public class SuInfoController extends BaseController {
     @Autowired
     private SuInfoService suInfoService;
+    @RequestMapping("/login")
+    public ResponseResult<SuInfo> handleLogin(
+            @RequestParam("username") String suMc,
+            @RequestParam("password") String password,
+            HttpSession session) {
+        // 执行登录
+        SuInfo user= suInfoService.login(suMc, password);
+        session.setAttribute("suMc", user.getSuMc());
+        session.setAttribute("suId", user.getSuId());
+        // 返回
+        return new ResponseResult<>(SUCCESS, user);
+    }
     @RequestMapping("/{suId}")
     public ResponseResult<SuInfoAndZzInfo> getByCode(@PathVariable("suId") Integer suId) {
         SuInfoAndZzInfo data=suInfoService.findSuById(suId);
@@ -62,14 +75,28 @@ public class SuInfoController extends BaseController {
         List<SuInfo> data=suInfoService.findBySuMcLike(suMc);
         return new ResponseResult<List<SuInfo>>(SUCCESS,data);
     }
-    @RequestMapping("/findSuByState")
-    public ResponseResult<List<SuInfo>> findSuByState() {
+    //待审核供应商
+    @RequestMapping("/findSuByStateSh")
+    public ResponseResult<List<SuInfo>> findSuByStateSh() {
+        List<SuInfo> data=suInfoService.findSuByState(0);
+        return new ResponseResult<List<SuInfo>>(SUCCESS,data);
+    }
+    //已审核供应商
+    @RequestMapping("/findSuByStateXg")
+    public ResponseResult<List<SuInfo>> findSuByStateXg() {
         List<SuInfo> data=suInfoService.findSuByState(1);
         return new ResponseResult<List<SuInfo>>(SUCCESS,data);
     }
-    @RequestMapping("/count")
-    public ResponseResult<Integer> count() {
+    //供应商申请数量
+    @RequestMapping("/countByGyssq")
+    public ResponseResult<Integer> countByGyssq() {
         Integer data=suInfoService.count(0);
         return new ResponseResult<Integer>(SUCCESS,data);
+    }
+    //修改密码
+    @RequestMapping("/updatePwd")
+    public ResponseResult<Void> updatePwd(@RequestParam("suId")Integer suId,@RequestParam("password") String password) {
+        suInfoService.updatePwd(suId,password);
+        return new ResponseResult<Void>(SUCCESS);
     }
 }

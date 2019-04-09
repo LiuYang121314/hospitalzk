@@ -65,8 +65,6 @@ public class EqCsServiceImpl implements EqCsService{
 			throws UserNotFoundException, PasswordNotMatchException {
 		// 根据参数username查询用户数据
 		EqCs data = findByUsername(sbcsName);
-		System.out.println(data);
-		System.out.println(data.getSbcsCreditcode());
 		// 判断用户数据是否为null
 		if (data == null) {
 			// 是：为null，用户名不存在，则抛出UserNotFoundException

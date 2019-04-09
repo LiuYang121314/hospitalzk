@@ -17,13 +17,14 @@ public class YqEqServiceImpl implements YqEqService{
 	YqEqMapper yqEqMapper;
 
 	@Override
-	public void insertBatch(String eqId, String jcyqId) {
+	public int insertBatch(String eqId, String jcyqId) {
 		YqEq yqEq=new YqEq();
 		yqEq.setJcyqId(jcyqId);
 		yqEq.setEqId(eqId);
 		yqEq.setState(0);
 		yqEqMapper.delete(jcyqId, eqId);
 		yqEqMapper.insert(yqEq);
+		return yqEq.getId();
 	}
 	@Override
 	public void deleteBatch(String jcyqId, String eqId) {

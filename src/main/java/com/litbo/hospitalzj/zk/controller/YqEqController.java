@@ -6,6 +6,7 @@ import com.litbo.hospitalzj.zk.vo.YqEqVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.litbo.hospitalzj.controller.BaseController;
@@ -36,15 +37,12 @@ public class YqEqController extends BaseController{
 		List<YqEqVo> data=yqEqService.selectYqEq(userId,2);
 		return new ResponseResult<List<YqEqVo>>(SUCCESS,data);
 	}
-	/*//修改状态
+	//修改状态
 	@RequestMapping("/insert")
-	public ResponseResult<Void> insert(String jcyqId,String eqId){
-		YqEq yqEq=new YqEq();
-		yqEq.setJcyqId("1");;
-		yqEq.setEqId("6");;
-		yqEqService.insert(jcyqId,eqId);
-		return new ResponseResult<Void>(SUCCESS);
-	}*/
+	public ResponseResult<Integer> insert(@RequestParam("jcyqId") String jcyqId,@RequestParam("eqId") String eqId){
+		int data=yqEqService.insertBatch(eqId,jcyqId);
+		return new ResponseResult<Integer>(SUCCESS,data);
+	}
 //	
 //	//删除仪器设备
 //	@RequestMapping("/delete")

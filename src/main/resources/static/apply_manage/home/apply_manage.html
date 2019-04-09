@@ -26,24 +26,21 @@
   <div class="layui-row">
     <div class="col-xs-12">
       <fieldset class="layui-elem-field layui-field-title">
-          <legend>待到货验收列表</legend>
+          <legend>到货验收列表</legend>
       </fieldset>
-      <table class="layui-table" id="waitArrive" lay-filter="handle1"></table>
+      <table class="layui-table" id="waitArrive" lay-filter="handle"></table>
       <fieldset class="layui-elem-field layui-field-title">
           <legend>待完善资料列表</legend>
       </fieldset>
-      <table class="layui-table" id="waitInfo" lay-filter="handle2"></table>
+      <table class="layui-table" id="waitInfo"></table>
     </div>
   </div>
   <script type="text/html" id="toolbarDemo">
   <div class="layui-btn-container">
   </div>
 </script>
-<script type="text/html" id="barDemo1">
-    <a class="layui-btn layui-btn-xs" lay-event="manage">到货登记</a>
-</script>
-<script type="text/html" id="barDemo2">
-    <a class="layui-btn layui-btn-xs" lay-event="over">查看电子资料</a>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="check">核对信息</a>
 </script>
 <script>
   // 获取上个页面传递的类型
@@ -86,7 +83,7 @@
           {field:'htBxtime', title:'保修期',align:'center'},
           {field:'htYzm', title:'验证码',sort: true,align:'center'},
           {field:'state', title:'状态',sort: true,align:'center'},
-          {fixed: 'right', title:'操作', toolbar: '#barDemo1',align:'center'}
+          {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
         ]]
     });
     // 待完善资料列表
@@ -120,40 +117,21 @@
             {field:'htDhtime', title:'到货时间',sort: true,align:'center'},
             {field:'htBxtime', title:'保修期',align:'center'},
             {field:'htYzm', title:'验证码',sort: true,align:'center'},
-            {field:'state', title:'状态',sort: true,align:'center'},
-            {fixed: 'right', title:'操作', toolbar: '#barDemo2',align:'center'}
+            {field:'state', title:'状态',sort: true,align:'center'}
         ]]
     });
     //监听行工具事件
-    table.on('tool(handle1)', function(obj){
+    table.on('tool(handle)', function(obj){
       var data = obj.data;
       //console.log(obj)
-      if(obj.event === 'manage'){
-        $.ajax({
-            url:"/sgdjhw/insert?htIds="+obj.data.htId,
-            method:"POST",
-            dataType:"JSON",
-            success:function(res){
-                if(res.state ===200){
-                    location.href="/apply_manage/apply_manage/arrival_info.html?htIds="+obj.data.htId;
-                }else{
-                    layer.msg("失败");
-                }
-            },
-            error:function(data){
-                layer.msg("请稍后再试");
-                console.log(data);
-            }
-        });
+      if(obj.event === 'check'){
+          if(obj.data.htGzspd == "无"){
+              location.href="/apply_manage/apply_manage/check_ht_info.html?id="+obj.data.htId;
+          }else{
+              location.href="/apply_manage/apply_manage/check_sg_info.html?id="+obj.data.htId;
+          }
       }
     });
-      table.on('tool(handle2)',function(obj){
-          var data = obj.data;
-          //console.log(obj)
-          if(obj.event === 'over'){
-              location.href="/apply_manage/apply_manage/electron_info.html?htIds="+obj.data.htId;
-          }
-      });
   })
 </script>
 </body>

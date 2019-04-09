@@ -10,9 +10,9 @@ import java.util.List;
 
 @Mapper
 public interface YqEqMapper {
-
 	@Insert("insert into yq_eq (id, jcyq_id, eq_id,state,type) value ("
 			+ "#{id}, #{jcyqId},#{eqId},#{state},#{type})")
+	@Options(useGeneratedKeys = true, keyProperty = "Id", keyColumn = "id")
 	void insert(YqEq yqEq);
 	@Update("update yq_eq set state=#{state} where jcyq_id=#{jcyqId} and eq_id=#{eqId}")
 	void updateState(@Param("jcyqId") String jcyqId, @Param("eqId") String eqId,@Param("state") Integer  state);

@@ -83,9 +83,15 @@ public class HtInfoController extends BaseController {
 
     //等待审核验收
     @RequestMapping("/ddshjys")
-    public ResponseResult<Void> updataStatePerfectTwo(Integer htId) {
-        htinfoService.updateHtInfoState(htId, EnumProcess.WAIT_ACCEPT_YS.getMessage());
-        htLcService.InsertHtLc(htId, EnumProcess.WAIT_ACCEPT_YS.getMessage(), new Date());
+    public ResponseResult<Void> updataStatePerfectTwo(@RequestParam("htId") Integer htId,
+                                                      @RequestParam("state") String state) {
+        if(state.equals("同意")){
+            htinfoService.updateHtInfoState(htId, EnumProcess.WAIT_ACCEPT_YS.getMessage());
+            htLcService.InsertHtLc(htId, EnumProcess.WAIT_ACCEPT_YS.getMessage(), new Date());
+        }else{
+            htinfoService.updateHtInfoState(htId, EnumProcess.WAIT_ACCEPT_YS_NOT.getMessage());
+            htLcService.InsertHtLc(htId, EnumProcess.WAIT_ACCEPT_YS_NOT.getMessage(), new Date());
+        }
         return new ResponseResult<Void>(SUCCESS);
     }
 
@@ -145,6 +151,18 @@ public class HtInfoController extends BaseController {
     public ResponseResult<Integer> htStateByYyys() {
         Integer data=htinfoService.count(EnumProcess.WAIT_ACCEPT.getMessage());
         return new ResponseResult<Integer>(SUCCESS,data);
+    }
+    //等待审核验收数量
+    @RequestMapping("/countByDdshys")
+    public ResponseResult<Integer> countByDdshys() {
+        Integer all= htinfoService.count(EnumProcess.WAIT_ACCEPT_YS.getMessage());
+        return new ResponseResult<Integer>(SUCCESS,all);
+    }
+    //同意验收数量
+    @RequestMapping("/countByTyys")
+    public ResponseResult<Integer> countByTyys() {
+        Integer all= htinfoService.count(EnumProcess.TONG_YI_YANSHOU.getMessage());
+        return new ResponseResult<Integer>(SUCCESS,all);
     }
 }
 

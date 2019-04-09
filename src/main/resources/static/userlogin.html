@@ -61,7 +61,7 @@
             console.log(data.field);
             sessionStorage["supplierName"] = data.field.username;
             $.ajax({
-                url:"/supplier/login",
+                url:"/suinfo/login",
                 method:"POST",
                 data:data.field,
                 dataType:"JSON",

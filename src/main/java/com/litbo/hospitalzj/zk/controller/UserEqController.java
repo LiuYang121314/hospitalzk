@@ -131,8 +131,8 @@ public class UserEqController extends BaseController{
 		userEqService.setEqState5(userId,eqId);
 		return new ResponseResult<Void>(SUCCESS);
 	}*/
-	@RequestMapping("/setEqState")
-	public ResponseResult<Void> setEqState5(Integer Id){
+	@RequestMapping("/setEqStateDsc")
+	public ResponseResult<Void> setEqState(Integer Id){
 		userEqService.setEqState(Id,EnumProcess2.TO_UPLOAD.getMessage());
 		return new ResponseResult<Void>(SUCCESS);
 	}
