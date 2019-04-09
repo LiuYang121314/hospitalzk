@@ -20,6 +20,9 @@
             text-align: center;
             margin-top: 30px;
         }
+        td{
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -30,8 +33,27 @@
                 <legend>到货登记信息</legend>
             </fieldset>
             <table class="layui-hide" id="arrivalInfo"></table>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>到货登记图片</legend>
+            </fieldset>
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th style="width: 50%;">文件名称</th>
+                    <th style="width: 50%;">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>到货登记图片</td>
+                    <td>
+                        <a id="lookPic" class="layui-btn layui-btn-normal">查看</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
             <div class="col-xs-12 btn">
-                <button id="back" class="layui-btn">返回</button>
+                <button id="back" class="layui-btn layui-btn-primary">返回</button>
                 <button id="upfile" class="layui-btn layui-btn-normal">上传电子附件</button>
             </div>
         </div>
@@ -78,6 +100,9 @@
                     ,{field:'djhwSbwg', title:'设备外观',edit: 'text',align:'center'}
                     ,{field:'djhwSxwj', title:'随箱文件',align:'center'}
                 ]]
+            });
+            $("#lookPic").click(function(){
+                location.href="/supplier/file/already_pic.html?id="+ids;
             });
             $("#back").click(function () {
                 window.history.back(-1);

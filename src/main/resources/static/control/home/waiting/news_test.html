@@ -46,6 +46,7 @@
             ,   $ = layui.jquery;
         table.render({
             elem:"#noHandle",
+            cellMinWidth:120,
             url:"/userEq/findJcEqByMyUserId",
             method:"GET",
             toolbar:"#toolbarDemo",
@@ -94,7 +95,7 @@
             var data = obj.data;
             //console.log(obj)
             if(obj.event === 'make'){
-                location.href="/control/home/waiting/fix_info.html?id="+obj.data.id;
+                location.href="/control/home/waiting/check_info.html?id="+obj.data.eqId;
             }
         });
     });

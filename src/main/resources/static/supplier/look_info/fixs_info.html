@@ -40,8 +40,8 @@
             </thead>
             <tbody>
             <tr>
-                <td>设备品名</td>
-                <td id="eqPmId"></td>
+                <td>设备名称</td>
+                <td id="eqMc"></td>
             </tr>
             <tr>
                 <td>规格型号</td>
@@ -142,7 +142,7 @@
                 dataType:"JSON",
                 success:function(res){
                     if(res.data!="" && res.data!=null){
-                        $("#eqPmId").append(res.data.eqPmId);
+                        $("#eqMc").append(res.data.eqMc);
                         $("#eqXh").append(res.data.eqXh);
                         $("#eqPrice").append(res.data.eqPrice);
                         $("#eqNum").append(res.data.eqNum);

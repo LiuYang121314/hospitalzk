@@ -18,18 +18,15 @@
         td{
             text-align: center;
         }
-        .btn{
-            text-align: center;
-            margin-top: 30px;
-            margin-bottom: 40px;
-        }
         .manage legend{
             font-size: 24px;
             color: #000000;
             font-weight: bold;
         }
-        .pform{
-            margin: 30px auto;
+        .btn{
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
         }
     </style>
 </head>
@@ -37,7 +34,7 @@
 <div class="layui-row">
     <div class="col-xs-12">
         <fieldset class="layui-elem-field layui-field-title">
-            <legend>购置审批单详细信息</legend>
+            <legend>合同信息</legend>
         </fieldset>
         <table class="layui-table">
             <thead>
@@ -60,8 +57,12 @@
                 <td id="htGhsdh"></td>
             </tr>
             <tr>
-                <td>购置审批单编号</td>
-                <td id="htGzspd"></td>
+                <td>合同号</td>
+                <td id="htHthao"></td>
+            </tr>
+            <tr>
+                <td>招标编号</td>
+                <td id="htZhbhao"></td>
             </tr>
             <tr>
                 <td>合同总金额</td>
@@ -104,7 +105,6 @@
         <fieldset class="layui-elem-field layui-field-title">
             <legend>设备文件</legend>
         </fieldset>
-        <!--<table class="layui-table" id="fixingFile" lay-filter="handle"></table>-->
         <table class="layui-table">
             <thead>
             <tr>
@@ -114,9 +114,15 @@
             </thead>
             <tbody>
             <tr>
-                <td>购置审批申请单</td>
+                <td>合同文件</td>
                 <td>
                     <a id="lookHt" class="layui-btn layui-btn-normal">查看</a>
+                </td>
+            </tr>
+            <tr>
+                <td>中标通知书</td>
+                <td>
+                    <a id="lookZhb" class="layui-btn layui-btn-normal">查看</a>
                 </td>
             </tr>
             <tr>
@@ -139,8 +145,68 @@
             </tr>
             </tbody>
         </table>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>到货登记信息</legend>
+        </fieldset>
+        <table class="layui-hide" id="arrivalInfo"></table>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>到货登记图片</legend>
+        </fieldset>
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th style="width: 50%;">文件名称</th>
+                <th style="width: 50%;">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>到货登记图片</td>
+                <td>
+                    <a id="lookPic" class="layui-btn layui-btn-normal">查看</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>电子资料</legend>
+        </fieldset>
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th style="width: 50%;">文件名称</th>
+                <th style="width: 50%;">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>厂家安装报告</td>
+                <td>
+                    <a id="lookCjazbg" class="layui-btn layui-btn-normal">查看</a>
+                </td>
+            </tr>
+            <tr>
+                <td>延保协议、售后承诺</td>
+                <td>
+                    <a id="lookYbxy" class="layui-btn layui-btn-normal">查看</a>
+                </td>
+            </tr>
+            <tr>
+                <td>技术资料</td>
+                <td>
+                    <a id="lookJszl" class="layui-btn layui-btn-normal">查看</a>
+                </td>
+            </tr>
+            <tr>
+                <td>合格证/检测报告</td>
+                <td>
+                    <a id="lookHgz" class="layui-btn layui-btn-normal">查看</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
         <div class="col-xs-12 btn">
-            <a id="jumDdhdj" class="layui-btn layui-btn-normal">到货登记</a>
+            <a id="back" class="layui-btn layui-btn-primary">返回</a>
         </div>
     </div>
 </div>
@@ -165,6 +231,7 @@
             , $ = layui.jquery
             , form = layui.form
             , laydate = layui.laydate;
+        // 合同详情
         $(function(){
             $.ajax({
                 url:"/htInfo/selectOne?htId="+ids,
@@ -275,6 +342,36 @@
                 {field: 'picture', title: '图片', width: 150,templet:'<div><img src="{{ d.picture }}"></div>'},
             ]]
         });
+        // 到货登记信息
+        table.render({
+            elem:"#arrivalInfo"
+            ,cellMinWidth: 180
+            ,url:" /sgdjhw/select?htIds="+ids
+            ,toolbar: '#toolbarDemo'
+            ,method:"GET"
+            ,response: {
+                statusName: 'status' //规定数据状态的字段名称，默认：code
+                ,statusCode: 200 //规定成功的状态码，默认：0
+                ,msgName: 'hint' //规定状态信息的字段名称，默认：msg
+                ,countName: 'total' //规定数据总数的字段名称，默认：count
+                ,dataName: 'data' //规定数据列表的字段名称，默认：data
+            }
+            ,parseData:function(res){
+                console.log(res);
+                return{
+                    "status":200
+                    ,"msg":res.message
+                    ,"count":res.total
+                    ,"data":[res.data]
+                }
+            },
+            cols:[[
+                {field:'djhwWbz', title:'外包装', edit: 'text',align:'center'}
+                ,{field:'djhwYsbs', title:'防倾斜运输标记', edit: 'text',align:'center'}
+                ,{field:'djhwSbwg', title:'设备外观',edit: 'text',align:'center'}
+                ,{field:'djhwSxwj', title:'随箱文件',align:'center'}
+            ]]
+        });
         //监听行工具事件
         table.on('tool(handle)', function(obj){
             var data = obj.data;
@@ -287,40 +384,47 @@
                 location.href="/apply_manage/not_manage/enclosure_info.html?id="+obj.data.eqId;
             }
         });
-        // 购置审批申请单
+        // 查看合同文件
         $("#lookHt").click(function(){
-            location.href="/apply_manage/file/sg_accept_file.html?id="+1;
+            location.href="/apply_manage/file/ht_accept_file.html?id="+1;
+        });
+        // 中标通知书
+        $("#lookZhb").click(function(){
+            location.href="/apply_manage/file/ht_accept_file.html?id="+2;
         });
         // 医疗器械注册登记证
         $("#lookYlqx").click(function(){
-            location.href="/apply_manage/file/sg_accept_file.html?id="+2;
+            location.href="/apply_manage/file/ht_accept_file.html?id="+3;
         });
         // 厂家授权证明书
         $("#lookCjsq").click(function(){
-            location.href="/apply_manage/file/sg_accept_file.html?id="+3;
+            location.href="/apply_manage/file/ht_accept_file.html?id="+4;
         });
         // 海关进口货物报关单
         $("#lookHgjk").click(function(){
-            location.href="/apply_manage/file/sg_accept_file.html?id="+4;
+            location.href="/apply_manage/file/ht_accept_file.html?id="+5;
         });
-        $("#jumDdhdj").click(function(){
-            $.ajax({
-                url:"/sgdjhw/insert?htIds="+ids,
-                method:"POST",
-                dataType:"JSON",
-                success:function(res){
-                    if(res.state ===200){
-                        location.href="/apply_manage/apply_manage/arrival_info.html?htIds="+ids;
-                    }else{
-                        layer.msg("失败");
-                    }
-                },
-                error:function(data){
-                    layer.msg("请稍后再试");
-                    console.log(data);
-                }
-            });
+        // 查看到货登记图片
+        $("#lookPic").click(function(){
+            location.href="/supplier/file/already_pic.html?id="+ids;
         });
+        // 查看电子资料
+        $("#lookCjazbg").click(function(){
+            location.href="/apply_manage/file/electric_file.html?id="+1;
+        });
+        $("#lookYbxy").click(function(){
+            location.href="/apply_manage/file/electric_file.html?id="+2;
+        });
+        $("#lookJszl").click(function(){
+            location.href="/apply_manage/file/electric_file.html?id="+3;
+        });
+        $("#lookHgz").click(function(){
+            location.href="/apply_manage/file/electric_file.html?id="+4;
+        });
+        // 返回
+        $("#back").click(function(){
+            window.history.back();
+        })
     })
 </script>
 </body>
