@@ -98,20 +98,23 @@ public class JhyController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("/saveman")
-	public ResponseResult<Integer> saveMan(
+	public ResponseResult saveMan(
 			@RequestParam("eqId")String eqId,
 			@RequestParam("jcyqId") String jcyqId,
+			@RequestParam("userEqId") Integer userEqId,
 			HttpSession session,
 			HttpServletRequest req){
 		Dcsjhy dcsjhy = CommonUtils.toBean(req.getParameterMap(), Dcsjhy.class);
 		String userId=String.valueOf(session.getAttribute("uid").toString());
 		dcsjhyService.delectMen(eqId, jcyqId);
 		dcsjhy.setState(0);
-		yqEqService.insertBatch(eqId,jcyqId);
-		yqEqService.updateType(jcyqId,eqId,EnumProcess2.TO_UPLOAD.getMessage());
-		userEqService.setEqState5(userId,eqId);
+		int yqEqId=yqEqService.insertBatch(eqId,jcyqId);
+		yqEqService.updateType(yqEqId,EnumProcess2.TO_UPLOAD.getMessage());
+		//修改状态为待上传
+		userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
 		dcsjhyService.saveMan(dcsjhy);
-		return new ResponseResult<Integer>(200, dcsjhy.getDcid());
+		int[] x={dcsjhy.getDcid(),yqEqId};
+		return new ResponseResult<>(200, x);
 	}
 
 	/**
@@ -121,20 +124,22 @@ public class JhyController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("/savechild")
-	public ResponseResult<Integer> saveChild(
+	public ResponseResult saveChild(
 			@RequestParam("eqId")String eqId,
 			@RequestParam("jcyqId") String jcyqId,
+			@RequestParam("userEqId") Integer userEqId,
 			HttpSession session,
 			HttpServletRequest req){
 		Dcsjhy dcsjhy = CommonUtils.toBean(req.getParameterMap(), Dcsjhy.class);
 	    String userId=String.valueOf(session.getAttribute("uid").toString());
 		dcsjhyService.delectChi(eqId, jcyqId);
 		dcsjhy.setState(0);
-		yqEqService.insertBatch(eqId,jcyqId);
-		yqEqService.updateType(jcyqId,eqId, EnumProcess2.TO_UPLOAD.getMessage());
-		userEqService.setEqState5(userId,eqId);
+		int yqEqId=yqEqService.insertBatch(eqId,jcyqId);
+		yqEqService.updateType(yqEqId, EnumProcess2.TO_UPLOAD.getMessage());
+		userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
 		dcsjhyService.saveChild(dcsjhy);
-		return new ResponseResult<Integer>(200, dcsjhy.getDcid());
+		int[] x={dcsjhy.getDcid(),yqEqId};
+		return new ResponseResult<>(200, x);
 	}
 
 	/**
@@ -185,25 +190,25 @@ public class JhyController extends BaseController {
 	}
 	//修改状态
 	@RequestMapping("/updateStateM")
-	public ResponseResult<Void> updateStateM(@RequestParam("eqId")String eqId, @RequestParam("jcyqId")String jcyqId,HttpSession session){
-		yqEqService.updateState(jcyqId,eqId,0);
-		yqEqService.updateType(jcyqId,eqId,EnumProcess2.IS_UPLOAD.getMessage());
-		userEqService.setJcEqState2(getUserIdFromSession(session),eqId);
+	public ResponseResult<Void> updateStateM(@RequestParam("yqEqId")Integer yqEqId, @RequestParam("userEqId")Integer userEqId,HttpSession session){
+		yqEqService.updateState(yqEqId,0);
+		yqEqService.updateType(yqEqId,EnumProcess2.IS_UPLOAD.getMessage());
+		userEqService.setEqState(userEqId,EnumProcess2.UNDER_REVIEW.getMessage());
 		return new ResponseResult<Void>(200);
 	}
 	@RequestMapping("/updateStateC")
-	public ResponseResult<Void> updateStateC(@RequestParam("eqId")String eqId, @RequestParam("jcyqId")String jcyqId,HttpSession session){
-		yqEqService.updateState(jcyqId,eqId,0);
-		yqEqService.updateType(jcyqId,eqId,EnumProcess2.IS_UPLOAD.getMessage());
-		userEqService.setJcEqState2(getUserIdFromSession(session),eqId);
+	public ResponseResult<Void> updateStateC(@RequestParam("yqEqId")Integer yqEqId, @RequestParam("userEqId")Integer userEqId,HttpSession session){
+		yqEqService.updateState(yqEqId,0);
+		yqEqService.updateType(yqEqId,EnumProcess2.IS_UPLOAD.getMessage());
+		userEqService.setEqState(userEqId,EnumProcess2.UNDER_REVIEW.getMessage());
 		return new ResponseResult<Void>(200);
 	}
 	//修改仪器为已上传
 	//修改状态
 	@RequestMapping("/updateType")
-	public ResponseResult<Void> updateType(@RequestParam("eqId")String eqId, @RequestParam("jcyqId")String jcyqId,HttpSession session){
-		yqEqService.updateState(jcyqId,eqId,0);
-		yqEqService.updateType(jcyqId,eqId,EnumProcess2.IS_UPLOAD.getMessage());
+	public ResponseResult<Void> updateType(@RequestParam("yqEqId")Integer yqEqId,HttpSession session){
+		yqEqService.updateState(yqEqId,0);
+		yqEqService.updateType(yqEqId,EnumProcess2.IS_UPLOAD.getMessage());
 		return new ResponseResult<Void>(200);
 	}
 	//根据id状态查询
@@ -232,24 +237,24 @@ public class JhyController extends BaseController {
 	}
 	//修改审核人建议同时修改状态
 	@RequestMapping("/updateShrJcjyM")
-	public ResponseResult<Void> updateShrJcjyM(@RequestParam("dcid")Integer dcid, @RequestParam("jcyqId")String jcyqId,@RequestParam("eqId")String eqId,@RequestParam("shrJcjl")String shrJcjl,@RequestParam("state")Integer state,HttpSession session){
+	public ResponseResult<Void> updateShrJcjyM(@RequestParam("dcid")Integer dcid, @RequestParam("yqEqId")Integer yqEqId,@RequestParam("shrJcjl")String shrJcjl,@RequestParam("state")Integer state,HttpSession session){
 		String auditor=getUserNameFromSession(session);
 		dcsjhyService.updateShrJcjyM(dcid,shrJcjl,auditor);
 		if(state.equals(1)){
-			yqEqService.updateState(jcyqId,eqId,1);
+			yqEqService.updateState(yqEqId,1);
 		}else{
-			yqEqService.updateState(jcyqId,eqId,2);
+			yqEqService.updateState(yqEqId,2);
 		}
 		return new ResponseResult<Void>(200);
 	}
 	@RequestMapping("/updateShrJcjyC")
-	public ResponseResult<Void> updateShrJcjyC(@RequestParam("dcid")Integer dcid, @RequestParam("jcyqId")String jcyqId,@RequestParam("eqId")String eqId,@RequestParam("shrJcjl")String shrJcjl,@RequestParam("state")Integer state,HttpSession session){
+	public ResponseResult<Void> updateShrJcjyC(@RequestParam("dcid")Integer dcid, @RequestParam("yqEqId")Integer yqEqId,@RequestParam("shrJcjl")String shrJcjl,@RequestParam("state")Integer state,HttpSession session){
 		String auditor=getUserNameFromSession(session);
 		dcsjhyService.updateShrJcjyC(dcid,shrJcjl,auditor);
 		if(state.equals(1)){
-			yqEqService.updateState(jcyqId,eqId,1);
+			yqEqService.updateState(yqEqId,1);
 		}else{
-			yqEqService.updateState(jcyqId,eqId,2);
+			yqEqService.updateState(yqEqId,2);
 		}
 		return new ResponseResult<Void>(200);
 	}

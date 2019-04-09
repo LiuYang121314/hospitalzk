@@ -14,10 +14,10 @@ public interface YqEqMapper {
 			+ "#{id}, #{jcyqId},#{eqId},#{state},#{type})")
 	@Options(useGeneratedKeys = true, keyProperty = "Id", keyColumn = "id")
 	void insert(YqEq yqEq);
-	@Update("update yq_eq set state=#{state} where jcyq_id=#{jcyqId} and eq_id=#{eqId}")
-	void updateState(@Param("jcyqId") String jcyqId, @Param("eqId") String eqId,@Param("state") Integer  state);
-	@Update("update yq_eq set type=#{type} where jcyq_id=#{jcyqId} and eq_id=#{eqId}")
-	void updateType(@Param("jcyqId") String jcyqId, @Param("eqId") String eqId,@Param("type") String  type);
+	@Update("update yq_eq set state=#{state} where id=#{yqEqId}")
+	void updateState(@Param("yqEqId") Integer yqEqId,@Param("state") Integer  state);
+	@Update("update yq_eq set type=#{type} where id=#{yqEqId}")
+	void updateType(@Param("yqEqId") Integer yqEqId,@Param("type") String type);
 	@Update("update yq_eq set type=#{type} where eq_id=#{eqId}")
 	void updateAllType(@Param("eqId") String eqId,@Param("type") String  type);
 	@Delete("delete from yq_eq where jcyq_id = #{jcyqId} AND eq_id = #{eqId}")

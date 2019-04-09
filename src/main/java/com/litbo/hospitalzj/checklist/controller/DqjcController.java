@@ -74,7 +74,7 @@ public class DqjcController extends BaseController {
      * @return
      */
     @RequestMapping("/save")
-    public ResponseResult saveDq(@RequestParam(value = "eqId") String eqId,@RequestParam(value = "jcyqId") String jcyqId,@RequestParam(value = "Id") Integer Id,
+    public ResponseResult saveDq(@RequestParam(value = "eqId") String eqId,@RequestParam(value = "jcyqId") String jcyqId,@RequestParam(value = "userEqId") Integer userEqId,
                                       HttpSession session, HttpServletRequest req){
        Dqjc dqjc = CommonUtils.toBean(req.getParameterMap(), Dqjc.class);
        String userId=String.valueOf(session.getAttribute("uid").toString());
@@ -82,9 +82,9 @@ public class DqjcController extends BaseController {
        dqjc.setState(0);
        int yqEqId=yqEqService.insertBatch(eqId,jcyqId);
        System.out.println(yqEqId);
-       yqEqService.updateType(jcyqId,eqId,EnumProcess2.TO_UPLOAD.getMessage());
+       yqEqService.updateType(yqEqId,EnumProcess2.TO_UPLOAD.getMessage());
        //修改状态为待上传
-       userEqService.setEqState(Id,EnumProcess2.TO_UPLOAD.getMessage());
+       userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
        dqjcService.save(dqjc);
        System.out.println(dqjc.getDqjcid());
        int[] x={dqjc.getDqjcid(),yqEqId};
@@ -137,18 +137,18 @@ public class DqjcController extends BaseController {
     }
     //修改状态
     @RequestMapping("/updateState")
-    public ResponseResult<Void> updateState(@RequestParam("eqId")String eqId, @RequestParam("jcyqId")String jcyqId,HttpSession session){
-        yqEqService.updateState(jcyqId,eqId,0);
-        yqEqService.updateType(jcyqId,eqId,EnumProcess2.IS_UPLOAD.getMessage());
-        userEqService.setJcEqState2(getUserIdFromSession(session),eqId);
+    public ResponseResult<Void> updateState(@RequestParam("yqEqId")Integer yqEqId, @RequestParam("userEqId")Integer userEqId,HttpSession session){
+        yqEqService.updateState(yqEqId,0);
+        yqEqService.updateType(yqEqId,EnumProcess2.IS_UPLOAD.getMessage());
+        userEqService.setEqState(userEqId,EnumProcess2.UNDER_REVIEW.getMessage());
         return new ResponseResult<Void>(200);
     }
     //修改仪器为已上传
     //修改状态
     @RequestMapping("/updateType")
-    public ResponseResult<Void> updateType(@RequestParam("eqId")String eqId, @RequestParam("jcyqId")String jcyqId,HttpSession session){
-        yqEqService.updateState(jcyqId,eqId,0);
-        yqEqService.updateType(jcyqId,eqId,EnumProcess2.IS_UPLOAD.getMessage());
+    public ResponseResult<Void> updateType(@RequestParam("yqEqId")Integer yqEqId, @RequestParam("userEqId")Integer userEqId,HttpSession session){
+        yqEqService.updateState(yqEqId,0);
+        yqEqService.updateType(yqEqId,EnumProcess2.IS_UPLOAD.getMessage());
         return new ResponseResult<Void>(200);
     }
     /**
@@ -161,13 +161,13 @@ public class DqjcController extends BaseController {
     }
     //修改审核人建议同时修改状态
     @RequestMapping("/updateShrJcjy")
-    public ResponseResult<Void> updateShrJcjy(@RequestParam("dqjcid")Integer dqjcid, @RequestParam("jcyqId")String jcyqId,@RequestParam("eqId")String eqId,@RequestParam("shrJcjl")String shrJcjl,@RequestParam("state")Integer state,HttpSession session){
+    public ResponseResult<Void> updateShrJcjy(@RequestParam("dqjcid")Integer dqjcid, @RequestParam("yqEqId")Integer yqEqId,@RequestParam("shrJcjl")String shrJcjl,@RequestParam("state")Integer state,HttpSession session){
         String auditor=getUserNameFromSession(session);
         dqjcService.updateShrJcjy(dqjcid,shrJcjl,auditor);
         if(state.equals(1)){
-            yqEqService.updateState(jcyqId,eqId,1);
+            yqEqService.updateState(yqEqId,1);
         }else{
-            yqEqService.updateState(jcyqId,eqId,2);
+            yqEqService.updateState(yqEqId,2);
         }
         return new ResponseResult<Void>(200);
     }

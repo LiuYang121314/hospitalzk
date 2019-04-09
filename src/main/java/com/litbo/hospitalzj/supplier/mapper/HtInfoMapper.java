@@ -71,6 +71,6 @@ public interface HtInfoMapper {
 	//查询状态数量
 	@Select("select count(*) from ht_info where ht_State=#{htState}")
 	int count(@Param("htState") String htState);
-	//查询一个合同中全部设备以及附件
+	/*//查询一个合同中全部设备以及附件*/
 
 }

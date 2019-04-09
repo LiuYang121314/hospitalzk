@@ -39,7 +39,7 @@ public class SgdjHwController extends BaseController{
 		System.out.println(sgdjHw.getDjhwSbwg());
 		System.out.println(sgdjHw.getDjhwSxwj());
 		sgdjHwService.updateInfo(sgdjHw);
-		htinfoService.updateHtInfoState(sgdjHw.getHtIds(), EnumProcess.PERFECT_INFORMATION.getMessage());
+	/*	htinfoService.updateHtInfoState(sgdjHw.getHtIds(), EnumProcess.PERFECT_INFORMATION.getMessage());*/
 		return new ResponseResult<Void>(SUCCESS);
 	}
 /*	//同意验收数量
