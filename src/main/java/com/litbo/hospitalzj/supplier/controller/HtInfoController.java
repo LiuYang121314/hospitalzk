@@ -81,7 +81,7 @@ public class HtInfoController extends BaseController {
         return new ResponseResult<Void>(SUCCESS);
     }
 
-    //等待审核验收
+   /* //等待审核验收
     @RequestMapping("/ddshjys")
     public ResponseResult<Void> updataStatePerfectTwo(@RequestParam("htId") Integer htId,
                                                       @RequestParam("state") String state) {
@@ -92,6 +92,13 @@ public class HtInfoController extends BaseController {
             htinfoService.updateHtInfoState(htId, EnumProcess.WAIT_ACCEPT_YS_NOT.getMessage());
             htLcService.InsertHtLc(htId, EnumProcess.WAIT_ACCEPT_YS_NOT.getMessage(), new Date());
         }
+        return new ResponseResult<Void>(SUCCESS);
+    }*/
+    //等待审核验收
+    @RequestMapping("/ddshys")
+    public ResponseResult<Void> ddshys(@RequestParam("htId") Integer htId) {
+            htinfoService.updateHtInfoState(htId, EnumProcess.WAIT_ACCEPT_YS.getMessage());
+            htLcService.InsertHtLc(htId, EnumProcess.WAIT_ACCEPT_YS.getMessage(), new Date());
         return new ResponseResult<Void>(SUCCESS);
     }
 

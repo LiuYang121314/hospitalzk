@@ -180,7 +180,7 @@
             // 合格证/检测报告
             upload.render({
                 elem: '#hgz'
-                ,url: '?htId='+ids
+                ,url: '/wjsc/insertWszl?sourceId='+ids+'&type='+4
                 ,multiple: true
                 ,accept:"file"
                 ,before: function(obj){
@@ -201,14 +201,18 @@
                     console.log(data);
                 }
             });
-            $("#hgz").click(function(){
+            // 提交
+            $("#upmit").click(function(){
                 $.ajax({
-                    url: "/htInfo/ddshjys?htId="+ids,
+                    url: "/htInfo/ddshys?htId="+ids,
                     method:"POST",
                     dataType:"JSON",
                     success:function(res){
                         if(res.state === 200){
-                            layer.msg("提交成功");
+                            layer.msg("提交成功,请耐心等待审核结果");
+                            setTimeout(function(){
+                                location.href="/supplier/home/schedule.html"
+                            },1000);
                         }else{
                             layer.msg("提交失败");
                         }

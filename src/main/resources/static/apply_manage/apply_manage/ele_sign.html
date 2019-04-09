@@ -49,7 +49,9 @@
                 success:function(res){
                     if(res.state === 200){
                         layer.msg("提交成功,等待供应商完善资料");
-                        location.href="/apply_manage/home/apply_manage.html";
+                        setTimeout(function(){
+                            location.href="/apply_manage/home/apply_manage.html";
+                        });
                     }else{
                         layer.msg("提交失败");
                     }
