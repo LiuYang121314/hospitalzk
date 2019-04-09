@@ -28,24 +28,31 @@
       <fieldset class="layui-elem-field layui-field-title">
           <legend>待验收申请列表</legend>
       </fieldset>
-      <table class="layui-table" id="applyTable" lay-filter="handle">
-      </table>
+      <table class="layui-table" id="applyTable" lay-filter="handle1"></table>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>预约验收列表</legend>
+        </fieldset>
+        <table class="layui-table" id="readyTable" lay-filter="handle2"></table>
     </div>
   </div>
   <script type="text/html" id="toolbarDemo">
   <div class="layui-btn-container">
   </div>
 </script>
-<script type="text/html" id="barDemo">
+<script type="text/html" id="barDemo1">
   <a class="layui-btn layui-btn-xs" lay-event="more">查看详情</a>
 </script>
+  <script type="text/html" id="barDemo2">
+      <a class="layui-btn layui-btn-xs" lay-event="check">检测</a>
+  </script>
 <script>
   //Demo
   layui.use(['table','layer','jquery'],function(){
     var table = layui.table
     , layer = layui.layer
     , $ = layui.jquery;
-    var tableIns = table.render({
+    // 待预约验收列表
+    table.render({
       elem:"#applyTable",
       cellMinWidth:140,
       toolbar: '#toolbarDemo',
@@ -68,25 +75,32 @@
           }
         },
         cols:[[
-          {field:'htGhsn', title:'供应商', edit: 'text',align:'center'}
-          ,{field:'htGhslxr', title:'供方联系人',align:'center'}
-          ,{field:'htGhsdh', title:'供方联系电话',align:'center'}
-          ,{field:'htHthao', title:'合同号',edit: 'text',align:'center'}
-          ,{field:'htZhbhao', title:'招标编号',edit: 'text',align:'center'}
-          ,{field:'htGzspd', title:'购置审批申请单编号',edit: 'text',align:'center'}
-          ,{field:'htZje', title:'合同总金额',align:'center'}
-          ,{field:'htQytime', title:'合同签约期',align:'center'}
-          ,{field:'htDhtime', title:'合同到货期',align:'center'}
-          ,{field:'htBz', title:'备注',align:'center'}
-          ,{field:'htLy', title:'来源',align:'center'}
-          ,{field:'htCgfs', title:'采购方式',align:'center'}
-          ,{field:'htSglb', title:'申购类别',align:'center'}
-          ,{field:'htJfly', title:'经费来源',align:'center'}
-          ,{fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
+          // {field:'htGhsn', title:'供应商', edit: 'text',align:'center'}
+          // ,{field:'htGhslxr', title:'供方联系人',align:'center'}
+          // ,{field:'htGhsdh', title:'供方联系电话',align:'center'}
+          // ,{field:'htHthao', title:'合同号',edit: 'text',align:'center'}
+          // ,{field:'htZhbhao', title:'招标编号',edit: 'text',align:'center'}
+          // ,{field:'htGzspd', title:'购置审批申请单编号',edit: 'text',align:'center'}
+          // ,{field:'htZje', title:'合同总金额',align:'center'}
+          // ,{field:'htQytime', title:'合同签约期',align:'center'}
+          // ,{field:'htDhtime', title:'合同到货期',align:'center'}
+          // ,{field:'htBz', title:'备注',align:'center'}
+          // ,{field:'htLy', title:'来源',align:'center'}
+          // ,{field:'htCgfs', title:'采购方式',align:'center'}
+          // ,{field:'htSglb', title:'申购类别',align:'center'}
+            {field:'htGhsn', title:'供应商',align:'center'},
+            {field:'htHthao', title:'合同号',align:'center'},
+            {field:'htZhbhao', title:'招标编号',align:'center'},
+            {field:'htGzspd', title:'购置审批单编号',align:'center'},
+            {field:'htGhsdh', title:'联系电话',align:'center'},
+            {field:'htYssj', title:'预约验收时间',minWidth: 330,align:'center'},
+            {field:'htYzm', title:'验证码',sort: true,align:'center'},
+            {field:'htState', title:'状态',sort: true,align:'center'},
+            {fixed: 'right', title:'操作', toolbar: '#barDemo1',align:'center'}
         ]]
     });
     //监听行工具事件
-    table.on('tool(handle)', function(obj){
+    table.on('tool(handle1)', function(obj){
       var data = obj.data;
       //console.log(obj)
       if(obj.event === 'more'){
@@ -97,7 +111,65 @@
           }
       }
     });
-  })
+    // 预约验收列表
+    table.render({
+          elem:"#readyTable",
+          cellMinWidth:140,
+          toolbar: '#toolbarDemo',
+          url:"/accept/selectAllHtYyys",
+          method:"GET",
+          response: {
+              statusName: 'status'
+              ,statusCode: 200
+              ,msgName: 'hint'
+              ,countName: 'total'
+              ,dataName: 'data'
+          },
+          parseData:function(res){
+              console.log(res);
+              return{
+                  "status":200
+                  ,"msg":res.message
+                  ,"count":res.total
+                  ,"data":res.data
+              }
+          },
+          cols:[[
+              {field:'htGhsn', title:'供应商',align:'center'},
+              {field:'htHthao', title:'合同号',align:'center'},
+              {field:'htZhbhao', title:'招标编号',align:'center'},
+              {field:'htGzspd', title:'购置审批单编号',align:'center'},
+              {field:'htGhsdh', title:'联系电话',align:'center'},
+              {field:'htYssj', title:'预约验收时间',minWidth: 330,align:'center'},
+              {field:'htYzm', title:'验证码',sort: true,align:'center'},
+              {field:'htState', title:'状态',sort: true,align:'center'},
+              {fixed: 'right', title:'操作', toolbar: '#barDemo2',align:'center'}
+          ]]
+      });
+      //监听行工具事件
+      table.on('tool(handle2)', function(obj){
+          var data = obj.data;
+          //console.log(obj)
+          if(obj.event === 'check'){
+              $.ajax({
+                  url:"/htInfo/htjc?htId="+obj.data.htId,
+                  method:"POST",
+                  dataType:"JSON",
+                  success:function(res){
+                      if(res.state === 200){
+                          layer.msg("处理成功，该合同设备将进行质控检测");
+                      }else{
+                          layer.msg("处理失败");
+                      }
+                  },
+                  error:function(data){
+                      layer.msg("请稍后再试");
+                      console.log(data);
+                  }
+              })
+          }
+      });
+  });
 </script>
 </body>
 

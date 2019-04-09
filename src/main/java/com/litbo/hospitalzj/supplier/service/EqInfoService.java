@@ -34,4 +34,5 @@ public interface EqInfoService {
 
 	List<EqInfo> findByEqQk(String eqQk);
 
+	Integer lastId();
 }

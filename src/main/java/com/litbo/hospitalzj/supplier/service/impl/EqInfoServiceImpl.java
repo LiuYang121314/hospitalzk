@@ -3,6 +3,8 @@ package com.litbo.hospitalzj.supplier.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.litbo.hospitalzj.quality.entity.EqPm;
+import com.litbo.hospitalzj.quality.mapper.EqPmMapper;
 import com.litbo.hospitalzj.quality.mapper.EqXeqMapper;
 import com.litbo.hospitalzj.supplier.service.exception.InsertException;
 import org.apache.poi.ss.usermodel.*;
@@ -22,6 +24,8 @@ public class EqInfoServiceImpl implements EqInfoService {
 	public EqInfoMapper eqInfoMapper;
 	@Autowired
 	public EqXeqMapper eqXeqMapper;
+	@Autowired
+	public EqPmMapper eqPmMapper;
 
 	@Override
 	public Integer InsertEqInfo(EqInfo eqInfo) {
@@ -91,7 +95,8 @@ public class EqInfoServiceImpl implements EqInfoService {
 		List<EqInfo> data=eqInfoMapper.eqInfoWfp();
 		List<EqInfo> newE=new ArrayList();
 		for(EqInfo eqInfo:data){
-			int isNull=eqXeqMapper.findByEqName(eqInfo.getEqPmId());
+			EqPm eqPm=eqPmMapper.findById(Integer.valueOf(eqInfo.getEqPmId()));
+			int isNull=eqXeqMapper.findByEqName(eqPm.getEqPmName());
 			if(isNull==1){
 				newE.add(eqInfo);
 			}
@@ -109,6 +114,10 @@ public class EqInfoServiceImpl implements EqInfoService {
 		return eqInfoMapper.findByEqQk(eqQk);
 	}
 
+	@Override
+	public Integer lastId() {
+		return eqInfoMapper.lastId();
+	}
 
 
 	@Override

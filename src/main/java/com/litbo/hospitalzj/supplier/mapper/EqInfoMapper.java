@@ -60,7 +60,9 @@ public interface EqInfoMapper {
 	
 	@Select("select * from eq_info where ht_ids=#{htIds}")
 	List<EqInfo> selectEqinfo(Integer htIds);
-	
+
+	@Select("select eq_id from eq_info order by eq_id desc limit 1")
+	Integer lastId();
 	@Select("select ht_ids htIds from eq_info where eq_id=#{eqId}")
 	Integer selectHtId(Integer eqId);
 	@Select("select ht_ids htIds from eq_info where eq_mc=#{eqMc}")

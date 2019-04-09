@@ -1,6 +1,7 @@
 package com.litbo.hospitalzj.supplier.service.impl;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.litbo.hospitalzj.hospital.enums.EnumProcess;
 import com.litbo.hospitalzj.supplier.entity.EqInfo;
@@ -131,8 +132,13 @@ public class HtInfoServiceImpl implements HtInfoService {
 				throw new RuntimeException("请核对设备数量与生产编号数量，不对应");
 			}
 			for(int j=0;j<eqScbhOne.length;j++){
+				int lastId=eqInfoMapper.lastId();
+				eqInfo.setEqId(lastId+1);
+				eqInfo.setEqDah(" ");
+				eqInfo.setEqNum("1");
 				eqInfo.setEqState(0);
 				eqInfo.setEqScbh(eqScbhOne[j]);
+				System.out.println(eqInfo);
 				eqInfoMapper.insertEqInfo(eqInfo);
 			}
 		}

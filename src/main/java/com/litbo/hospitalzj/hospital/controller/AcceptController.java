@@ -70,6 +70,12 @@ public class AcceptController {
         List<HtInfo> htInfos=htInfoService.selectAllHtByhtState(EnumProcess.WAIT_ACCEPT_YS.getMessage());
         return new ResponseResult<List<HtInfo>>(SUCCESS,htInfos);
     }
+    //预约验收
+    @RequestMapping(value = "selectAllHtYyys",method = RequestMethod.GET)
+    public ResponseResult selectAllHtYyys(){
+        List<HtInfo> htInfos=htInfoService.selectAllHtByhtState(EnumProcess.APPOINMENT_ACCEPTANCE.getMessage());
+        return new ResponseResult<List<HtInfo>>(SUCCESS,htInfos);
+    }
     @RequestMapping(value = "selectHtInfoById",method = RequestMethod.POST)
     public ResponseResult selectAllHt(Integer htId){
         HtInfo htInfo=htInfoService.select(htId);

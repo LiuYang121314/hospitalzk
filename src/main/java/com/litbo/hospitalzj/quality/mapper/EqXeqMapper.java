@@ -33,6 +33,6 @@ public interface EqXeqMapper {
     @Select("SELECT * FROM eq_xeq WHERE eq_name LIKE '%${data}%' or eq_code like '%${data}%'")
     List<EqXeq> findEqXeqLike(@Param("data")String data);
 
-    @Select("SELECT COUNT(*) FROM eq_xeq WHERE find_in_set(#{eqName}, eq_name);")
+    @Select("SELECT COUNT(*) FROM eq_xeq WHERE find_in_set(#{eqName}, eq_name)")
     int findByEqName(@Param("eqName")String eqName);
 }
