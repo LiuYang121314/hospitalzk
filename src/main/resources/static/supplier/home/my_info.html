@@ -327,6 +327,7 @@
                 dataType:"JSON",
                 success:function(res){
                     if(res.data != "" && res.data != null){
+                        sessionStorage['suId'] = res.data.suId;
                         // 企业信息
                         sessionStorage["suName"] = res.data.suMc;
                         $("#suMc").append(res.data.suMc);
