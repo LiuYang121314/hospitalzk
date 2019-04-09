@@ -25,7 +25,7 @@ public class SgdjHwController extends BaseController{
 	@Autowired
 	private HtInfoService htinfoService;
 	@RequestMapping("/select")
-	public ResponseResult<SgdjHw> select(Integer htIds,HttpSession session) {
+	public ResponseResult<SgdjHw> select(Integer htIds) {
 		SgdjHw all= sgdjHwService.selectSgdjHw(htIds);
 		return new ResponseResult<SgdjHw>(SUCCESS,all);
 	}

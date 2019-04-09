@@ -52,8 +52,8 @@
             ,   $ = layui.jquery;
             table.render({
                 elem:"#arrivalInfo"
-                ,cellMinWidth: 80
-                ,url:"/sgdjsw/select?htId="+ids
+                ,cellMinWidth: 180
+                ,url:" /sgdjhw/select?htIds="+ids
                 ,toolbar: '#toolbarDemo'
                 ,method:"GET"
                 ,response: {
@@ -77,7 +77,6 @@
                     ,{field:'djhwYsbs', title:'防倾斜运输标记', edit: 'text',align:'center'}
                     ,{field:'djhwSbwg', title:'设备外观',edit: 'text',align:'center'}
                     ,{field:'djhwSxwj', title:'随箱文件',align:'center'}
-                    ,{field:'file', title:'图片'}
                 ]]
             });
             $("#back").click(function () {
@@ -85,7 +84,7 @@
             });
             $("#upfile").click(function () {
                 location.href="/supplier/checked/electronic_materials.html?htId="+ids;
-            })
+            });
         });
     </script>
 </body>
