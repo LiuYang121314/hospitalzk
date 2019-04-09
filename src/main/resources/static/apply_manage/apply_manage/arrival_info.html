@@ -38,11 +38,8 @@
             width: 100%;
             color: red;
         }
-        .bootom{
-            width: 100%;
-            height: 100px;
+        .btn{
             text-align: center;
-            line-height: 100px;
         }
     </style>
 </head>
@@ -96,7 +93,7 @@
                                 <input type="checkbox" name="djhwSxwj" value="备注" title="备注">
                             </div>
                         </div>
-                        <div class="layui-form-item col-md-9">
+                        <div class="layui-form-item col-md-12">
                             <table class="layui-table">
                                 <thead>
                                 <tr>
@@ -120,12 +117,12 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="layui-form-item col-md-9">
-                        <div class="layui-input-block" style="border: none;">
-                          <button class="layui-btn layui-btn-primary">返回</button>
-                          <button class="layui-btn" lay-submit lay-filter="submit">立即提交</button>
+                        <div class="layui-form-item col-md-12 btn">
+                            <div class="layui-input-block" style="border: none;">
+                                <a id="back" class="layui-btn layui-btn-primary">返回</a>
+                                <button class="layui-btn" lay-submit lay-filter="submit">立即提交</button>
+                            </div>
                         </div>
-                      </div>
                     </div>
                 </div>
             </form>
@@ -175,7 +172,6 @@
         var ids = parseInt(type.split("=")[1]);
         //Demo
         layui.use(['element','jquery','form','layer','upload'], function(){
-
             var element = layui.element
             ,   $ = layui.jquery
             ,   layer = layui.layer
@@ -205,9 +201,9 @@
                     dataType:"JSON",
                     success:function(res){
                         if(res.state === 200){
-                            layer.msg("提交成功");
+                            layer.msg("提交成功,正在生成验收单");
                             setTimeout(function(){
-                                location.href="/apply_manage/home/apply_manage.html";
+                                location.href="/apply_manage/apply_manage/apply_input.html?id="+ids;
                             },1000);
                         }else{
                             layer.msg("提交失败")
@@ -227,7 +223,7 @@
                 , accept: "file"
                 , before: function (obj){
                     //预读本地文件示例，不支持ie8
-                    obj.preview(function (index, file, result){
+                    obj.preview(function (index,file,result){
                         $('#img').append('<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
                     });
                 }
@@ -243,6 +239,9 @@
                     console.log(data);
                 }
             });
+            $("#back").click(function(){
+                window.history.back();
+            })
         });
     </script>
 </body>
