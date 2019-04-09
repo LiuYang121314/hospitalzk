@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface EqInfoService {
 
+	void updateEqPm(@Param("eqPmId")Integer eqPmId,@Param("eqId") Integer eqId);
 
 	public void insert(EqInfo dt);
 
@@ -52,6 +53,5 @@ public interface EqInfoService {
 	//通过设备Id查询分配用户
 	List<User> findUserIdByEqId(String userId);
 	EqInfo findByDah(String dah);
-	EqInfo Dah(@Param("dah")String dah);
 
 }

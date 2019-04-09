@@ -43,7 +43,7 @@
         });
         $("#upload").click(function(){
             $.ajax({
-                url:"?htId="+ids,
+                url:"/htInfo/wszl?htId="+ids,
                 method:"POST",
                 dataType:"JSON",
                 success:function(res){

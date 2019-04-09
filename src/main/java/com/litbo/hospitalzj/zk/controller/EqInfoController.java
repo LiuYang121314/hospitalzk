@@ -20,6 +20,12 @@ public class EqInfoController extends BaseController{
 	@Autowired
 	private EqInfoService eqInfoService;
 
+	@RequestMapping("/updateEqPm")
+	public ResponseResult<Void> updateEqPm(@RequestParam("eqId")Integer eqId,@RequestParam("eqPmId")Integer eqPmId){
+		eqInfoService.updateEqPm(eqId,eqPmId);
+		return new ResponseResult<Void>(SUCCESS);
+	}
+	
 	@RequestMapping("/insertEq")
 	public String insert(){
 		EqInfo dt=new EqInfo();

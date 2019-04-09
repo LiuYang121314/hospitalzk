@@ -80,6 +80,7 @@ public interface GpddMapper {
     @Select("select * from gpdd")
     List<Gpdd> findAll();
 
+
     //保存
     @Insert("insert into gpdd (gpddid, jcyq_id, eq_id,  tester, auditor, test_time,    jcjl, jcsm, djdq_test1, \n" +
             "      djdq_value1, djdq_test2, djdq_value2,  djdq_test3, djdq_value3, djdq_test4,  djdq_value4, djdq_wc, djdq_result,   djdn_test1, djdn_value1, djdn_test2, \n" +
@@ -110,6 +111,8 @@ public interface GpddMapper {
             "      #{spare4,jdbcType=TINYINT}, #{spare5,jdbcType=TINYINT})")
     void save(Gpdd gpdd);
 
-
+    //修改审核人意见
+    @Update("update gpdd set shr_jcjl=#{shrJcjl},auditor=#{auditor} where dqjcid=#{dqjcid}")
+    void updateShrJcjy(@Param("dqjcid")Integer dqjcid,@Param("shrJcjl")String shrJcjl,@Param("auditor")String auditor);
 }
 

@@ -29,8 +29,10 @@ public class SuInfoController extends BaseController {
             HttpSession session) {
         // 执行登录
         SuInfo user= suInfoService.login(suMc, password);
+        System.out.println(user.getSuId());
         session.setAttribute("suMc", user.getSuMc());
         session.setAttribute("suId", user.getSuId());
+        System.out.println(getUidFromSession(session));
         // 返回
         return new ResponseResult<>(SUCCESS, user);
     }

@@ -142,7 +142,9 @@
     </div>
 </div>
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs" lay-event="sbfj">查看附件信息</a>
+    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="look">查看详细</a>
+    <a class="layui-btn layui-btn-xs" lay-event="lookFssb">查看附属设备</a>
+    <a class="layui-btn layui-btn-xs" lay-event="lookFj">查看附件</a>
 </script>
 <script>
     // 获取上个页面传递的类型
@@ -211,29 +213,27 @@
             title:"验收申请设备信息记录表",
             // page:true,
             cols:[[
-                {field:'eqPm', title:'设备品名',align:'center'},
-                {field:'eqXh', title:'型号',align:'center'},
-                {field:'eqGg', title:'规格',align:'center'},
-                {field:'eqPrice', title:'单价',sort: true,align:'center'},
-                {field:'eqJldwId', title:'单位',align:'center'},
-                {field:'eqNum', title:'数量',sort: true,align:'center'},
-                {field:'eqTotalprice', title:'总价',align:'center'},
+                {field:'eqPmId', title:'设备品名',align:'center'},
+                {field:'eqXh', title:'规格型号',align:'center'},
+                {field:'eqPrice', title:'设备单价',align:'center'},
+                {field:'eqNum', title:'数量',align:'center'},
+                {field:'eqSyks', title:'使用科室',align:'center'},
+                {field:'eqYt', title:'设备用途',sort: true,align:'center'},
+                {field:'eqAzdd', title:'安装地点',align:'center'},
+                {field:'eqCscs', title:'生产厂商',sort: true,align:'center'},
+                {field:'eqGb', title:'国别',sort: true,align:'center'},
+                {field:'eqBgbh', title:'海关进口货物报关单号',align:'center'},
                 {field:'eqScbh', title:'出厂编号',align:'center'},
                 {field:'eqCcdate', title:'出厂日期',align:'center'},
-                {field:'eqCscs', title:'生产厂商',align:'center'},
-                {field:'htHthao', title:'合同号',sort: true,align:'center'},
-                {field:'eqZczbh', title:'医疗器械注册登记证号',align:'center'},
-                {field:'eqGb', title:'国别',sort: true,align:'center'},
-                {field:'eqBgbh', title:'海关进口货物报关单编号',align:'center'},
-                {field:'eqShFws', title:'售后服务商',align:'center'},
-                {field:'eqShQddh', title:'售后固定电话',align:'center'},
-                {field:'eqShShjl', title:'售后经理',sort: true,align:'center'},
-                {field:'eqShJldh', title:'经理电话',align:'center'},
-                {field:'eqShLxr', title:'售后联系人',sort: true,align:'center'},
-                {field:'eqShLxrdh', title:'联系人电话',align:'center'},
-                {field:'eqShJlsb', title:'计量设备',sort: true,align:'center'},
-                {field:'eqShFs', title:'放射设备',align:'center'},
-                {fixed: 'right', title:'查看', toolbar: '#barDemo',align:'center'}
+                {field:'eqBxq', title:'保修期(月)',align:'center'},
+                {field:'eqShFws', title:'售后服务机构',align:'center'},
+                {field:'eqShQddh', title:'售后座机',align:'center'},
+                {field:'eqShShjl', title:'售后经理',align:'center'},
+                {field:'eqShJldh', title:'售后经理电话',align:'center'},
+                {field:'eqShLxr', title:'售后联系人',align:'center'},
+                {field:'eqShLxrdh', title:'售后联系电话',align:'center'},
+                {field:'eqShLb', title:'设备类别',align:'center'},
+                {fixed: 'right', title:'操作',minWidth:250, toolbar: '#barDemo',align:'center'}
             ]]
         });
         // 验收信息
@@ -269,12 +269,13 @@
         table.on('tool(looksbfj)', function(obj){
             var data = obj.data;
             console.log(obj);
-            if(obj.event === 'sbfj'){
-                location.href="/supplier/checked/look_sbfj_info.html?eqIds="+obj.data.eqId;
+            if(obj.event === 'look'){
+                location.href="/apply_manage/not_manage/fixs_info.html?id="+obj.data.eqId;
+            }else if(obj.event === 'lookFssb'){
+                location.href="/apply_manage/not_manage/child_fix_info.html?id="+obj.data.eqId;
+            }else if(obj.event === 'lookFj'){
+                location.href="/apply_manage/not_manage/enclosure_info.html?id="+obj.data.eqId;
             }
-        });
-        $("#looksbimg").click(function(){
-            location.href="/supplier/apply/check_accept.html";
         });
         $("#sureSend").click(function(){
             $.ajax({

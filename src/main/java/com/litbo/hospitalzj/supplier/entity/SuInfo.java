@@ -230,4 +230,33 @@ public class SuInfo {
     public void setBz(String bz) {
         this.bz = bz == null ? null : bz.trim();
     }
+
+    @Override
+    public String toString() {
+        return "SuInfo{" +
+                "suId=" + suId +
+                ", suMc='" + suMc + '\'' +
+                ", password='" + password + '\'' +
+                ", suSf='" + suSf + '\'' +
+                ", suCs='" + suCs + '\'' +
+                ", suXq='" + suXq + '\'' +
+                ", suFr='" + suFr + '\'' +
+                ", suDjr='" + suDjr + '\'' +
+                ", suFzr='" + suFzr + '\'' +
+                ", suKhyh='" + suKhyh + '\'' +
+                ", suKhyhzh='" + suKhyhzh + '\'' +
+                ", suGsdz='" + suGsdz + '\'' +
+                ", suLxrxm='" + suLxrxm + '\'' +
+                ", suLxrdh='" + suLxrdh + '\'' +
+                ", suLxrbm='" + suLxrbm + '\'' +
+                ", suDh='" + suDh + '\'' +
+                ", suYb='" + suYb + '\'' +
+                ", suEmail='" + suEmail + '\'' +
+                ", suCz='" + suCz + '\'' +
+                ", suWz='" + suWz + '\'' +
+                ", bz='" + bz + '\'' +
+                ", isDelete=" + isDelete +
+                ", state=" + state +
+                '}';
+    }
 }

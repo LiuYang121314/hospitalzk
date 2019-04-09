@@ -30,6 +30,7 @@ public class SuInfoServiceImpl implements SuInfoService {
                     "登录失败！您尝试登录的企业或公司不存在！请注册");
         }
         if (password.equals(data.getPassword())) {
+            System.out.println(data);
             return data;
         }else {
             // 否：不匹配，密码错误，则抛出PasswordNotMatchException
