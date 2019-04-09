@@ -391,47 +391,6 @@
                 }
             })
         });
-        // // 同意
-        // $("#pass").click(function(){
-        //     $.ajax({
-        //         url:"/suinfo/updateStateIs?suId="+ids,
-        //         method:"POST",
-        //         dataType:"JSON",
-        //         success:function(res){
-        //             if(res.state === 200){
-        //                 layer.msg("同意成功，请为供应商设置密码");
-        //                 setTimeout(function(){
-        //                     location.href="/apply_manage/supplier/set_user.html?id="+ids;
-        //                 },1000);
-        //             }else{
-        //                 layer.msg("失败");
-        //             }
-        //         },
-        //         error:function(data){
-        //             layer.msg("请稍后再试");
-        //             console.log(data);
-        //         }
-        //     })
-        // });
-        // // 驳回
-        // $("#miss").click(function(){
-        //     $.ajax({
-        //         url:"/suinfo/updateStateNot?suId="+ids,
-        //         method:"POST",
-        //         dataType:"JSON",
-        //         success:function(res){
-        //             if(res.state === 200){
-        //                 layer.msg("注册申请驳回成功");
-        //             }else{
-        //                 layer.msg("失败");
-        //             }
-        //         },
-        //         error:function(data){
-        //             layer.msg("请稍后再试");
-        //             console.log(data);
-        //         }
-        //     })
-        // });
         // 查看文件
         $("#lookYyzz").click(function(){
             location.href="/apply_manage/supplier/file_info.html?id="+1;
