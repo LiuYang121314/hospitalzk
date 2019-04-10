@@ -31,6 +31,7 @@ public class SgdjHwServiceImpl implements SgdjHwService{
 
 	@Override
 	public Integer updateInfo(SgdjHw sgdjhw) {
+		System.out.println(sgdjhw);
 		return SgdjHwMapper.updateInfo(sgdjhw);
 	}
 	@Transactional

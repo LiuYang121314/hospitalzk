@@ -49,7 +49,7 @@
         var paths = "";
         $(function(){
             $.ajax({
-                url:"/wjsc/select?sourceType="+ids+"&sourceId="+htId,
+                url:"/wjsc/select?sourceType="+2+"&sourceId="+htId+"&type="+ids,
                 method:"GET",
                 dataType:"JSON",
                 success:function (res) {

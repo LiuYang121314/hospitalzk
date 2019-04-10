@@ -48,7 +48,7 @@
         var paths = "";
         $(function(){
             $.ajax({
-                url:"/wjsc/select?sourceType="+1+"&sourceId="+ids,
+                url:"/wjsc/select?sourceType="+1+"&sourceId="+ids+"&type="+1,
                 method:"GET",
                 dataType:"JSON",
                 success:function (res) {
