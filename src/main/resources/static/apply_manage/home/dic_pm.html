@@ -38,7 +38,7 @@
                 </div>
             </div>
         </form>
-        <div class="searchAll" style="display: none;">
+        <div id="searchAll" style="display: none;">
             <fieldset class="layui-elem-field layui-field-title">
                 <legend style="color: #000000;font-size: 22px;text-align: center;">查询结果</legend>
             </fieldset>
@@ -88,7 +88,6 @@
                 dataType:"JSON",
                 success:function(res){
                     if(res.state === 200){
-                        layer.msg("查询成功");
                         layer.open({
                             type:1,
                             content:$("#searchAll"),
@@ -100,6 +99,7 @@
                                 layer.closeAll();
                             }
                         });
+                        layer.msg("查询成功");
                         // 查询数据
                         table.render({
                             elem:"#searchInfo"
@@ -127,6 +127,8 @@
                                 {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
                             ]]
                         });
+                    }else if(res.state === 704){
+                        layer.msg("该设备品名不存在");
                     }else{
                         layer.msg("查询失败");
                     }

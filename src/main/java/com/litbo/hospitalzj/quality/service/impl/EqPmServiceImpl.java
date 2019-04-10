@@ -8,6 +8,7 @@ package com.litbo.hospitalzj.quality.service.impl;
 		import java.util.List;
 
         import com.litbo.hospitalzj.supplier.service.exception.DeleteException;
+		import com.litbo.hospitalzj.supplier.service.exception.FindIsNullException;
 		import com.litbo.hospitalzj.supplier.service.exception.InsertException;
 		import org.apache.ibatis.annotations.Param;
 		import org.springframework.beans.factory.annotation.Autowired;
@@ -86,6 +87,10 @@ public class EqPmServiceImpl implements EqPmService{
 	//模糊查询名称
 	@Override
 	public List<EqPm> findPmLike(String eqPmName) {
+		List<EqPm> data=eqPmMapper.findPmLike(eqPmName);
+		if(data==null){
+			throw new FindIsNullException("您查找的数据不存在");
+		}
 		return eqPmMapper.findPmLike(eqPmName);
 	}
 }

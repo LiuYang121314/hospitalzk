@@ -111,16 +111,16 @@ public interface YepyxMapper {
     public Yepyx findYepyx(String eqId);
 
     //以id排序，查询最后一条记录
-    @Select("select * from dqjc order by dqjcid desc limit 1")
-    Dqjc find();
+    @Select("select * from yepyx order by pyx_id desc limit 1")
+    Yepyx find();
 
     //根据设备Id,检测仪器Id以及状态查询电器表查询最后一条记录
-    @Select("select dqjc.* from dqjc where dqjc.eq_id=#{eqId} and dqjc.jcyq_id=#{jcyqId} order by dqjcid desc limit 1" )
-    Dqjc findByEqIdandJcyqIdLast1(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
+    @Select("select yepyx.* from yepyx where dqjc.eq_id=#{eqId} and dqjc.jcyq_id=#{jcyqId} order by pyx_id desc limit 1" )
+    Yepyx findByEqIdandJcyqIdLast1(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
 
     //根据设备Id,检测仪器Id以及状态查询电器表
-    @Select("select dqjc.* from dqjc where dqjc.eq_id=#{eqId} and dqjc.jcyq_id=#{jcyqId}" )
-    List<Dqjc> findByEqIdandJcyqId(@Param("eqId")String eqId, @Param("jcyqId")String jcyqId);
+    @Select("select yepyx.* from yepyx where dqjc.eq_id=#{eqId} and dqjc.jcyq_id=#{jcyqId}" )
+    List<Yepyx> findByEqIdandJcyqId(@Param("eqId")String eqId, @Param("jcyqId")String jcyqId);
 
     //根据设备Id,检测仪器Id以及状态查询电器表
     @Select("select d.*,s.user_name,u.date from " +
@@ -130,14 +130,14 @@ public interface YepyxMapper {
     DqjcUser findShrAndShrjcjl(@Param("eqId")String eqId, @Param("jcyqId")String jcyqId, @Param("state")Integer state);
 
     //查询所有检测表数据信息
-    @Select("select * from dqjc")
-    List<Dqjc> findAll();
+    @Select("select * from Yepyx")
+    List<Yepyx> findAll();
 
     /**
      * 删除电器数据
-     */
+     *//*
     @Delete("delete from dqjc where eq_id=#{eqId} and jcyq_id=#{jcyqId}")
-    void delete(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
+    void delete(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);*/
 
     /**
      * 根据iD状态查询

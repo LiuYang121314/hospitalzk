@@ -104,8 +104,10 @@ public abstract class BaseController {
 		} else if (e instanceof EqFjIsNullException) {
 			// 703-设备附件不存在
 			state = 703;
+		} else if (e instanceof FindIsNullException){
+			// 704-数据不存在
+			state = 704;
 		}
-		
 		return new ResponseResult<>(state, e);
 	}
 	public String getUserIdFromSession(HttpSession session) {
