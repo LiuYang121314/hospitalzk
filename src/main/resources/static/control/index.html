@@ -57,7 +57,7 @@
                         <a href="javascript:void(0);" data-url="./home/waiting/on_test.html" data-id="31" data-text="在用设备定期检测"><i class="layui-icon layui-icon-circle-dot"></i>在用设备定期检测</a>
                     </dd>
                     <dd>
-                        <a href="javascript:void(0);" data-url="./home/waiting/news_test.html" data-id="32" data-text="新设备验收检测"><i class="layui-icon layui-icon-circle-dot"></i>新设备验收检测</a>
+                        <a href="javascript:void(0);" data-url="./home/waiting/news_test.html" data-id="32" data-text="新设备验收检测"><i class="layui-icon layui-icon-circle-dot"></i>新设备验收检测<span id="newsNum" class="layui-badge"></span></a>
                     </dd>
                     <dd>
                         <a href="javascript:void(0);" data-url="./home/waiting/breakdown.html" data-id="33" data-text="故障设备维修检测"><i class="layui-icon layui-icon-circle-dot"></i>故障设备维修检测</a>
@@ -199,7 +199,23 @@
         error:function () {
             alert("服务器故障")
         }
-    })
+    });
+    // 所分配新设备数量
+    $.ajax({
+        url:"",
+        method:"GET",
+        dataType:"JSON",
+        success:function(res){
+            if(res.data != null && res.data != ""){
+                $("#newsNum").append(res.data);
+            }else{
+                $("#newsNum").css("display","none");
+            }
+        },
+        error:function () {
+            alert("服务器故障")
+        }
+    });
     layui.use('element',function(){
         var element = layui.element;
     });

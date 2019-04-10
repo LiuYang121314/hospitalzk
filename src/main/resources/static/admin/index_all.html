@@ -89,7 +89,7 @@
                 <a href="javascript:void(0);" data-url="./home/check_apply.html" data-id="51" data-text="检测数据提交审核"><i class="layui-icon layui-icon-engine"></i>检测数据提交审核<span id="jcsjNum" class="layui-badge"></span></a>
             </li>
             <li class="layui-nav-item" shiro:haspermission="" name="a">
-                <a href="javascript:void(0);" data-url="./home/new_manage.html" data-id="52" data-text="新设备分配管理"><i class="layui-icon layui-icon-engine"></i>新设备分配管理<span style="display: none;" class="layui-badge"></span></a>
+                <a href="javascript:void(0);" data-url="./home/new_manage.html" data-id="52" data-text="新设备分配管理"><i class="layui-icon layui-icon-engine"></i>新设备分配管理<span id="newsNum" class="layui-badge"></span></a>
             </li>
         </ul>
     </div>
@@ -213,6 +213,22 @@
         },
         error:function () {
             layer.msg("请稍后再试");
+        }
+    });
+    // 未分配新设备数量
+    $.ajax({
+        url:"",
+        method:"GET",
+        dataType:"JSON",
+        success:function(res){
+            if(res.data != null && res.data != ""){
+                $("#newsNum").append(res.data);
+            }else{
+                $("#newsNum").css("display","none");
+            }
+        },
+        error:function () {
+            alert("服务器故障")
         }
     });
     layui.use('element',function(){

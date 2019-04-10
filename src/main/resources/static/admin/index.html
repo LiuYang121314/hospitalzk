@@ -86,7 +86,7 @@
                 <a href="javascript:void(0);" data-url="./home/check_apply.html" data-id="50" data-text="检测数据提交审核"><i class="layui-icon layui-icon-engine"></i>检测数据提交审核<span id="jcsjNum" class="layui-badge"></span></a>
             </li>
             <li class="layui-nav-item" shiro:haspermission="" name="a">
-                <a href="javascript:void(0);" data-url="./home/new_manage.html" data-id="51" data-text="新设备分配管理"><i class="layui-icon layui-icon-engine"></i>新设备分配管理<span style="display: none;" class="layui-badge"></span></a>
+                <a href="javascript:void(0);" data-url="./home/new_manage.html" data-id="51" data-text="新设备分配管理"><i class="layui-icon layui-icon-engine"></i>新设备分配管理<span id="newsNum" class="layui-badge"></span></a>
             </li>
         </ul>
     </div>
@@ -180,10 +180,57 @@
 <script src="../static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
 <script src="../static/js/main.js" type="text/javascript" charset="utf-8"></script>
 <script>
+    // 待审核年度计划数量
+    $.ajax({
+        url:"/ndjh/ByShrIddshCount",
+        method:"GET",
+        dataType:"JSON",
+        success:function(res){
+            if(res.data != null && res.data != ""){
+                $("#ndjhNum").append(res.data);
+            }else{
+                $("#ndjhNum").css("display","none");
+            }
+        },
+        error:function () {
+            layer.msg("请稍后再试");
+        }
+    });
+    // 待审核检测仪器数量
+    $.ajax({
+        url:"/correlation/findByShrIdEqDshCount",
+        method:"GET",
+        dataType:"JSON",
+        success:function(res){
+            if(res.data != null && res.data != ""){
+                $("#jcsjNum").append(res.data);
+            }else{
+                $("#jcsjNum").css("display","none");
+            }
+        },
+        error:function () {
+            layer.msg("请稍后再试");
+        }
+    });
+    // 未分配新设备数量
+    $.ajax({
+        url:"",
+        method:"GET",
+        dataType:"JSON",
+        success:function(res){
+            if(res.data != null && res.data != ""){
+                $("#newsNum").append(res.data);
+            }else{
+                $("#newsNum").css("display","none");
+            }
+        },
+        error:function () {
+            alert("服务器故障")
+        }
+    });
     layui.use('element',function(){
         var element = layui.element;
     });
-
     window.onload = function(){
         var homes = document.getElementById('home');
         //判断当前页面渲染是否正确，不正确的话将刷新页面重新渲染
