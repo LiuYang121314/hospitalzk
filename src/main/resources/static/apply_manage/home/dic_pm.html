@@ -25,7 +25,7 @@
 <div class="layui-row">
     <div class="col-xs-12">
         <fieldset class="layui-elem-field layui-field-title">
-            <legend style="color: #000000;font-size: 22px;text-align: center;">设备品名字典查询</legend>
+            <legend style="color: #000000;font-size: 22px;text-align: center;">设备品名字典</legend>
         </fieldset>
         <form style="display: flex;justify-content: center;" class="layui-form" action="">
             <div class="layui-form-item col-xs-12 col-md-7 list">
@@ -38,10 +38,12 @@
                 </div>
             </div>
         </form>
-        <table class="layui-hide" id="searchInfo" lay-filter="handle"></table>
-        <fieldset class="layui-elem-field layui-field-title">
-            <legend style="color: #000000;font-size: 22px;text-align: center;">所有设备品名字典信息</legend>
-        </fieldset>
+        <div class="searchAll" style="display: none;">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #000000;font-size: 22px;text-align: center;">查询结果</legend>
+            </fieldset>
+            <table class="layui-hide" id="searchInfo" lay-filter="handle"></table>
+        </div>
         <table class="layui-hide" id="pmDic" lay-filter="handle"></table>
         <div id="create" style="display: none;">
             <from class="layui-form layui-form-pane" action="">
@@ -87,6 +89,17 @@
                 success:function(res){
                     if(res.state === 200){
                         layer.msg("查询成功");
+                        layer.open({
+                            type:1,
+                            content:$("#searchAll"),
+                            area:["90%","90%"],
+                            maxmin:true,
+                            btn:"确定",
+                            yes:function(){
+                                location.href="./dic_pm.html";
+                                layer.closeAll();
+                            }
+                        });
                         // 查询数据
                         table.render({
                             elem:"#searchInfo"
