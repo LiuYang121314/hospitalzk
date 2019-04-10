@@ -205,6 +205,42 @@
                 }
             })
         });
+        //监听行工具事件
+        table.on('tool(handle)', function(obj){
+            var data = obj.data;
+            //console.log(obj)
+            if(obj.event === 'del'){
+                layer.confirm('确定删除此条数据么', function(index){
+                    obj.del();
+                    // layer.close(index);
+                    $.ajax({
+                        url:"/eqpm/delete?eqPmId="+obj.data.eqPmId,
+                        success:function(res){
+                            if(res.state === 200){
+                                layer.msg("删除成功");
+                            }else{
+                                layer.msg("删除失败");
+                            }
+                        },
+                        error:function(data){
+                            layer.msg("删除失败,请稍后再试");
+                            console.log(data);
+                        }
+                    })
+                });
+            }
+            // else if(obj.event === 'edit'){
+            //     layer.prompt({
+            //         formType: 2
+            //         ,value: data.email
+            //     }, function(value, index){
+            //         obj.update({
+            //             email: value
+            //         });
+            //         layer.close(index);
+            //     });
+            // }
+        });
     });
 </script>
 </body>
