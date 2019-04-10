@@ -2,6 +2,7 @@ package com.litbo.hospitalzj.checklist.dao;
 
 import com.litbo.hospitalzj.checklist.domain.Dqjc;
 import com.litbo.hospitalzj.checklist.domain.DqjcTemplate;
+import com.litbo.hospitalzj.checklist.domain.Yepyx;
 import com.litbo.hospitalzj.checklist.domain.YepyxTemplate;
 import com.litbo.hospitalzj.checklist.vo.DqjcUser;
 import org.apache.ibatis.annotations.*;
@@ -12,7 +13,7 @@ import java.util.List;
 public interface YepyxMapper {
     //查询婴儿培养箱检测模板表
     @Select("select * from yepyx_template order by pyx_template_id desc limit 1")
-    public DqjcTemplate findTemplate();
+    public YepyxTemplate findTemplate();
     //修改模板表数据
     @Update(" update yepyx_template\n" +
             "    set wdpc_wc = #{wdpcWc,jdbcType=DOUBLE},\n" +
@@ -37,73 +38,77 @@ public interface YepyxMapper {
             "      #{bddWc,jdbcType=DOUBLE}, #{wkpcWc,jdbcType=DOUBLE}, #{ctlWc,jdbcType=DOUBLE}, \n" +
             "      #{kqlsWc,jdbcType=DOUBLE}, #{zsbjWc,jdbcType=DOUBLE}, #{zszcWc,jdbcType=DOUBLE}, \n" +
             "      #{jsbfWc,jdbcType=DOUBLE}, #{cdbfWc,jdbcType=DOUBLE}, #{sdWc,jdbcType=DOUBLE})")
-    void insertTemplate(DqjcTemplate dqjcTemplate);
+    void insertTemplate(YepyxTemplate yepyxTemplate);
 
-    //保存电气检测数据
-    @Insert("insert into dqjc (dqjcid, jcyq_id, eq_id, \n" +
-            "      tester, auditor, test_time, \n" +
-            "      shr_jcjl,jcjl, jcsm, dydy, dydy_value, \n" +
-            "      dydy_result, jdzk, jdzk_value, \n" +
-            "      jdzk_result, jyzk, jyzk_value, \n" +
-            "      jyzk_result, ddldl_zc, ddldl_zc_zx_value, \n" +
-            "      ddldl_zc_fx_value, ddldl_zc_result, ddldl_dy, \n" +
-            "      ddldl_dy_zxdl_value, ddldl_dy_fxdl_value, ddldl_dy_result, \n" +
-            "      wkldl_zc, wkldl_zc_zx_value, wkldl_zc_fx_value, \n" +
-            "      wkldl_zc_result, wkldl_dy, wkldl_dy_zxdl_value, \n" +
-            "      wkldl_dy_zxdd_value, wkldl_dy_fxdl_value, wkldl_dy_fxdd_value, \n" +
-            "      wkldl_dy_result, hzldl_zc_zxbf_value, hzldl_zc_fxbf_value, \n" +
-            "      hzldl_zc_zxcf_value, hzldl_zc_fxcf_value, hzldl_zc_result, \n" +
-            "      hzldl_dy_zxdlbf_value, hzldl_dy_zxddbf_value, hzldl_dy_fxdlbf_value, \n" +
-            "      hzldl_dy_fxddbf_value, hzldl_dy_zxdlcf_value, hzldl_dy_zxddcf_value, \n" +
-            "      hzldl_dy_fxdlcf_value, hzldl_dy_fxddcf_value, hzldl_dy_result, \n" +
-            "      hzfzldl_zc_zxbf_value, hzfzldl_zc_fxbf_value, hzfzldl_zc_zxcf_value, \n" +
-            "      hzfzldl_zc_fxcf_value, hzfzldl_zc_result, hzfzldl_dy_zxdlbf_value, \n" +
-            "      hzfzldl_dy_zxddbf_value, hzfzldl_dy_fxdlbf_value, \n" +
-            "      hzfzldl_dy_fxddbf_value, hzfzldl_dy_zxdlcf_value, \n" +
-            "      hzfzldl_dy_zxddcf_value, hzfzldl_dy_fxdlcf_value, \n" +
-            "      hzfzldl_dy_fxddcf_value, hzfzldl_dy_result, state, \n" +
-            "      spare2, spare3, spare4, \n" +
-            "      spare5)\n" +
-            "    values (#{dqjcid,jdbcType=INTEGER}, #{jcyqId,jdbcType=INTEGER}, #{eqId,jdbcType=INTEGER}, \n" +
-            "      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{testTime,jdbcType=TIMESTAMP}, \n" +
-            "      #{shrJcjl,jdbcType=VARCHAR},#{jcjl,jdbcType=VARCHAR}, #{jcsm,jdbcType=VARCHAR}, #{dydy,jdbcType=DOUBLE}, #{dydyValue,jdbcType=DOUBLE}, \n" +
-            "      #{dydyResult,jdbcType=TINYINT}, #{jdzk,jdbcType=DOUBLE}, #{jdzkValue,jdbcType=DOUBLE}, \n" +
-            "      #{jdzkResult,jdbcType=TINYINT}, #{jyzk,jdbcType=DOUBLE}, #{jyzkValue,jdbcType=DOUBLE}, \n" +
-            "      #{jyzkResult,jdbcType=TINYINT}, #{ddldlZc,jdbcType=DOUBLE}, #{ddldlZcZxValue,jdbcType=DOUBLE}, \n" +
-            "      #{ddldlZcFxValue,jdbcType=DOUBLE}, #{ddldlZcResult,jdbcType=TINYINT}, #{ddldlDy,jdbcType=DOUBLE}, \n" +
-            "      #{ddldlDyZxdlValue,jdbcType=DOUBLE}, #{ddldlDyFxdlValue,jdbcType=DOUBLE}, #{ddldlDyResult,jdbcType=TINYINT}, \n" +
-            "      #{wkldlZc,jdbcType=DOUBLE}, #{wkldlZcZxValue,jdbcType=DOUBLE}, #{wkldlZcFxValue,jdbcType=DOUBLE}, \n" +
-            "      #{wkldlZcResult,jdbcType=TINYINT}, #{wkldlDy,jdbcType=DOUBLE}, #{wkldlDyZxdlValue,jdbcType=DOUBLE}, \n" +
-            "      #{wkldlDyZxddValue,jdbcType=DOUBLE}, #{wkldlDyFxdlValue,jdbcType=DOUBLE}, #{wkldlDyFxddValue,jdbcType=DOUBLE}, \n" +
-            "      #{wkldlDyResult,jdbcType=TINYINT}, #{hzldlZcZxbfValue,jdbcType=DOUBLE}, #{hzldlZcFxbfValue,jdbcType=DOUBLE}, \n" +
-            "      #{hzldlZcZxcfValue,jdbcType=DOUBLE}, #{hzldlZcFxcfValue,jdbcType=DOUBLE}, #{hzldlZcResult,jdbcType=TINYINT}, \n" +
-            "      #{hzldlDyZxdlbfValue,jdbcType=DOUBLE}, #{hzldlDyZxddbfValue,jdbcType=DOUBLE}, #{hzldlDyFxdlbfValue,jdbcType=DOUBLE}, \n" +
-            "      #{hzldlDyFxddbfValue,jdbcType=DOUBLE}, #{hzldlDyZxdlcfValue,jdbcType=DOUBLE}, #{hzldlDyZxddcfValue,jdbcType=DOUBLE}, \n" +
-            "      #{hzldlDyFxdlcfValue,jdbcType=DOUBLE}, #{hzldlDyFxddcfValue,jdbcType=DOUBLE}, #{hzldlDyResult,jdbcType=TINYINT}, \n" +
-            "      #{hzfzldlZcZxbfValue,jdbcType=DOUBLE}, #{hzfzldlZcFxbfValue,jdbcType=DOUBLE}, #{hzfzldlZcZxcfValue,jdbcType=DOUBLE}, \n" +
-            "      #{hzfzldlZcFxcfValue,jdbcType=DOUBLE}, #{hzfzldlZcResult,jdbcType=TINYINT}, #{hzfzldlDyZxdlbfValue,jdbcType=DOUBLE}, \n" +
-            "      #{hzfzldlDyZxddbfValue,jdbcType=DOUBLE}, #{hzfzldlDyFxdlbfValue,jdbcType=DOUBLE}, \n" +
-            "      #{hzfzldlDyFxddbfValue,jdbcType=DOUBLE}, #{hzfzldlDyZxdlcfValue,jdbcType=DOUBLE}, \n" +
-            "      #{hzfzldlDyZxddcfValue,jdbcType=DOUBLE}, #{hzfzldlDyFxdlcfValue,jdbcType=DOUBLE}, \n" +
-            "      #{hzfzldlDyFxddcfValue,jdbcType=DOUBLE}, #{hzfzldlDyResult,jdbcType=TINYINT}, #{state,jdbcType=TINYINT}, \n" +
-            "      #{spare2,jdbcType=TINYINT}, #{spare3,jdbcType=TINYINT}, #{spare4,jdbcType=TINYINT}, \n" +
-            "      #{spare5,jdbcType=TINYINT})")
-    @Options(useGeneratedKeys = true, keyProperty = "dqjcid", keyColumn = "dqjcid")
-    public void save(Dqjc dqjc);
+    //保存婴儿培养箱检测数据
+    @Insert(" insert into yepyx (pyx_id, jcyq_id, eq_id, \n" +
+            "      tester, auditor, shr_jcjl, \n" +
+            "      test_time, jcjl, jcsm, \n" +
+            "      tx_wd1, tx_wd2, tx_wd3, tx_wd4, \n" +
+            "      tx_wd5, tx_wd6, tx_wd7, tx_wd8, \n" +
+            "      tx_wd9, tx_wd10, tx_wd11, \n" +
+            "      tx_wd12, tx_wd13, tx_wd14, \n" +
+            "      tx_wd15, t5s_wd1, t5s_wd2, \n" +
+            "      t5s_wd3, t5s_wd4, t5s_wd5, \n" +
+            "      t5s_wd6, t5s_wd7, t5s_wd8, \n" +
+            "      t5s_wd9, t5s_wd10, t5s_wd11, \n" +
+            "      t5s_wd12, t5s_wd13, t5s_wd14, \n" +
+            "      t5s_wd15, kzwd, wdt1, wdt2, \n" +
+            "      wdt3, wdtxa, wdt4, wdt5, \n" +
+            "      wdpc, wdpc_wc, wdpc_result, \n" +
+            "      jyx, jyx_wc, jyx_result, \n" +
+            "      bdd, bdd_wc, bdd_result, \n" +
+            "      wkpc, wkpc_wc, wkpc_result, \n" +
+            "      ctl, ctl_wc, ctl_result, \n" +
+            "      kqls, kqls_wc, kqls_result, \n" +
+            "      zsbj, zsbj_wc, zsbj_result, \n" +
+            "      zszc, zszc_wc, zszc_result, \n" +
+            "      jsbf, jsbf_wc, jsbf_result, \n" +
+            "      cdbf, cdbf_wc, cdbf_result, \n" +
+            "      sdszz, sdcsz, sdpc, sd_wc, \n" +
+            "      sd_result, ddbj_result, cwbj_result, \n" +
+            "      fjbj_result)\n" +
+            "    values (#{pyxId,jdbcType=INTEGER}, #{jcyqId,jdbcType=INTEGER}, #{eqId,jdbcType=INTEGER}, \n" +
+            "      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{shrJcjl,jdbcType=VARCHAR}, \n" +
+            "      #{testTime,jdbcType=TIMESTAMP}, #{jcjl,jdbcType=VARCHAR}, #{jcsm,jdbcType=VARCHAR}, \n" +
+            "      #{txWd1,jdbcType=DOUBLE}, #{txWd2,jdbcType=DOUBLE}, #{txWd3,jdbcType=DOUBLE}, #{txWd4,jdbcType=DOUBLE}, \n" +
+            "      #{txWd5,jdbcType=DOUBLE}, #{txWd6,jdbcType=DOUBLE}, #{txWd7,jdbcType=DOUBLE}, #{txWd8,jdbcType=DOUBLE}, \n" +
+            "      #{txWd9,jdbcType=DOUBLE}, #{txWd10,jdbcType=DOUBLE}, #{txWd11,jdbcType=DOUBLE}, \n" +
+            "      #{txWd12,jdbcType=DOUBLE}, #{txWd13,jdbcType=DOUBLE}, #{txWd14,jdbcType=DOUBLE}, \n" +
+            "      #{txWd15,jdbcType=DOUBLE}, #{t5sWd1,jdbcType=DOUBLE}, #{t5sWd2,jdbcType=DOUBLE}, \n" +
+            "      #{t5sWd3,jdbcType=DOUBLE}, #{t5sWd4,jdbcType=DOUBLE}, #{t5sWd5,jdbcType=DOUBLE}, \n" +
+            "      #{t5sWd6,jdbcType=DOUBLE}, #{t5sWd7,jdbcType=DOUBLE}, #{t5sWd8,jdbcType=DOUBLE}, \n" +
+            "      #{t5sWd9,jdbcType=DOUBLE}, #{t5sWd10,jdbcType=DOUBLE}, #{t5sWd11,jdbcType=DOUBLE}, \n" +
+            "      #{t5sWd12,jdbcType=DOUBLE}, #{t5sWd13,jdbcType=DOUBLE}, #{t5sWd14,jdbcType=DOUBLE}, \n" +
+            "      #{t5sWd15,jdbcType=DOUBLE}, #{kzwd,jdbcType=DOUBLE}, #{wdt1,jdbcType=DOUBLE}, #{wdt2,jdbcType=DOUBLE}, \n" +
+            "      #{wdt3,jdbcType=DOUBLE}, #{wdtxa,jdbcType=DOUBLE}, #{wdt4,jdbcType=DOUBLE}, #{wdt5,jdbcType=DOUBLE}, \n" +
+            "      #{wdpc,jdbcType=DOUBLE}, #{wdpcWc,jdbcType=DOUBLE}, #{wdpcResult,jdbcType=DOUBLE}, \n" +
+            "      #{jyx,jdbcType=DOUBLE}, #{jyxWc,jdbcType=DOUBLE}, #{jyxResult,jdbcType=TINYINT}, \n" +
+            "      #{bdd,jdbcType=DOUBLE}, #{bddWc,jdbcType=DOUBLE}, #{bddResult,jdbcType=TINYINT}, \n" +
+            "      #{wkpc,jdbcType=DOUBLE}, #{wkpcWc,jdbcType=DOUBLE}, #{wkpcResult,jdbcType=TINYINT}, \n" +
+            "      #{ctl,jdbcType=DOUBLE}, #{ctlWc,jdbcType=DOUBLE}, #{ctlResult,jdbcType=TINYINT}, \n" +
+            "      #{kqls,jdbcType=DOUBLE}, #{kqlsWc,jdbcType=DOUBLE}, #{kqlsResult,jdbcType=TINYINT}, \n" +
+            "      #{zsbj,jdbcType=DOUBLE}, #{zsbjWc,jdbcType=DOUBLE}, #{zsbjResult,jdbcType=TINYINT}, \n" +
+            "      #{zszc,jdbcType=DOUBLE}, #{zszcWc,jdbcType=DOUBLE}, #{zszcResult,jdbcType=TINYINT}, \n" +
+            "      #{jsbf,jdbcType=DOUBLE}, #{jsbfWc,jdbcType=DOUBLE}, #{jsbfResult,jdbcType=TINYINT}, \n" +
+            "      #{cdbf,jdbcType=DOUBLE}, #{cdbfWc,jdbcType=DOUBLE}, #{cdbfResult,jdbcType=TINYINT}, \n" +
+            "      #{sdszz,jdbcType=DOUBLE}, #{sdcsz,jdbcType=DOUBLE}, #{sdpc,jdbcType=DOUBLE}, #{sdWc,jdbcType=DOUBLE}, \n" +
+            "      #{sdResult,jdbcType=TINYINT}, #{ddbjResult,jdbcType=TINYINT}, #{cwbjResult,jdbcType=TINYINT}, \n" +
+            "      #{fjbjResult,jdbcType=TINYINT})")
+    @Options(useGeneratedKeys = true, keyProperty = "pyxId", keyColumn = "dqjcid")
+    public void save(Yepyx yepyx);
 
     //根据电气检测设备id查询设备检测表
-    @Select("select dqjcid, jcyq_id, eq_id, tester, auditor, test_time, jcjl, jcsm, dydy, dydy_value, "
-            +"dydy_result, jdzk, jdzk_value, jdzk_result, jyzk, jyzk_value, jyzk_result, ddldl_zc,            "
-            +"ddldl_zc_zx_value, ddldl_zc_fx_value, ddldl_zc_result, ddldl_dy, ddldl_dy_zxdl_value,           "
-            +"ddldl_dy_fxdl_value, ddldl_dy_result, wkldl_zc, wkldl_zc_zx_value, wkldl_zc_fx_value,           "
-            +"wkldl_zc_result, wkldl_dy, wkldl_dy_zxdl_value, wkldl_dy_zxdd_value, wkldl_dy_fxdl_value,       "
-            +"wkldl_dy_fxdd_value, wkldl_dy_result, hzldl_zc_bf, hzldl_zc_cf, hzldl_zc_zx_value,              "
-            +"hzldl_zc_fx_value, hzldl_zc_result, hzldl_dy_bf, hzldl_dy_cf, hzldl_dy_zxdl_value,              "
-            +"hzldl_dy_zxdd_value, hzldl_dy_fxdl_value, hzldl_dy_fxdd_value, hzldl_dy_result, hzfzldl_zc_bf,  "
-            +"hzfzldl_zc_cf, hzfzldl_zc_zx_value, hzfzldl_zc_fx_value, hzfzldl_zc_result, hzfzldl_dy_bf,      "
-            +"hzfzldl_dy_cf, hzfzldl_dy_zxdl_value, hzfzldl_dy_zxdd_value, hzfzldl_dy_fxdl_value,             "
-            +"hzfzldl_dy_fxdd_value, hzfzldl_dy_result, spare1, spare2, spare3, spare4, spare5 from dqjc order by dqjcid desc limit 1 where eq_id = '#{eqId}'")
-    public Dqjc findDqjc(String eqId);
+    @Select("select pyx_id, jcyq_id, eq_id, tester, auditor, shr_jcjl, test_time, jcjl, jcsm, tx_wd1, \n" +
+            "    tx_wd2, tx_wd3, tx_wd4, tx_wd5, tx_wd6, tx_wd7, tx_wd8, tx_wd9, tx_wd10, tx_wd11, \n" +
+            "    tx_wd12, tx_wd13, tx_wd14, tx_wd15, t5s_wd1, t5s_wd2, t5s_wd3, t5s_wd4, t5s_wd5, \n" +
+            "    t5s_wd6, t5s_wd7, t5s_wd8, t5s_wd9, t5s_wd10, t5s_wd11, t5s_wd12, t5s_wd13, t5s_wd14, \n" +
+            "    t5s_wd15, kzwd, wdt1, wdt2, wdt3, wdtxa, wdt4, wdt5, wdpc, wdpc_wc, wdpc_result, \n" +
+            "    jyx, jyx_wc, jyx_result, bdd, bdd_wc, bdd_result, wkpc, wkpc_wc, wkpc_result, ctl, \n" +
+            "    ctl_wc, ctl_result, kqls, kqls_wc, kqls_result, zsbj, zsbj_wc, zsbj_result, zszc, \n" +
+            "    zszc_wc, zszc_result, jsbf, jsbf_wc, jsbf_result, cdbf, cdbf_wc, cdbf_result, sdszz, \n" +
+            "    sdcsz, sdpc, sd_wc, sd_result, ddbj_result, cwbj_result, fjbj_result from yepyx order by pyx_id desc limit 1 where eq_id = '#{eqId}'")
+    public Yepyx findYepyx(String eqId);
 
     //以id排序，查询最后一条记录
     @Select("select * from dqjc order by dqjcid desc limit 1")
