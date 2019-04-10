@@ -17,8 +17,8 @@ public interface EqPmMapper {
 	EqPm findById(@Param("eqPmId") Integer eqPmId);
 	@Select("SELECT eq_pm_id eqPmId,eq_pm_name eqPmName,eq_pm_lx eqPmLx FROM eq_pm WHERE eq_pm_name=#{eqPmName} and is_delete=0")
 	EqPm findByName(@Param("eqPmName") String eqPmName);
-	@Select("SELECT eq_pm_id eqPmId,eq_pm_name FROM eq_pm where is_delete=0 ORDER BY eq_pm_id ASC LIMIT #{offset},#{count}")
-	List<EqPm> findAll(@Param("offset")Integer offset, @Param("count") Integer count);
+	@Select("SELECT eq_pm_id eqPmId,eq_pm_name FROM eq_pm where is_delete=0")
+	List<EqPm> findAll();
 	//删除设备pm
 	/*@Delete("delete from eq_pm\n" +
 			"    where eq_pm_id = #{eqPmId}")*/
@@ -46,6 +46,6 @@ public interface EqPmMapper {
 	@Select("SELECT * FROM eq_pm WHERE eq_pm_id NOT IN(SELECT eq_pm_id FROM yq_pm WHERE eq_pm_id IS NOT NULL AND yq_id=#{yqId})")
 	List<EqPm> findYqPmNotByYqId(String yqId);
 	//模糊查询
-	@Select("SELECT * FROM eq_pm WHERE eq_pm_name LIKE '%${eqPmName}%'")
+	@Select("SELECT * FROM eq_pm WHERE is_delete =0 and eq_pm_name LIKE '%${eqPmName}%'")
 	List<EqPm> findPmLike(@Param("eqPmName")String eqPmName);
 }

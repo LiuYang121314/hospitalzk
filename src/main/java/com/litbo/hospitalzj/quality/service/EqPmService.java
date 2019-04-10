@@ -15,7 +15,7 @@ public interface EqPmService {
 	EqPm getById(Integer eqPmId);
 /*	//通过pm nam去查询
 	EqPm findByName(@Param("eqPmName") String eqPmName);*/
-	List<EqPm> getAll(@Param("offset")Integer offset, @Param("count") Integer count);
+	List<EqPm> getAll();
 	//删除，修改状态
 	void delete(@Param("eqPmId")Integer eqPmId, @Param("isDelete")Integer isDelete);
 

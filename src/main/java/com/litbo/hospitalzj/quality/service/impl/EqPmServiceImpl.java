@@ -36,8 +36,8 @@ public class EqPmServiceImpl implements EqPmService{
 		return eqPmMapper.findById(eqPmId);
 	}
 	@Override
-	public List<EqPm> getAll(@Param("offset")Integer offset, @Param("count") Integer count) {
-		return eqPmMapper.findAll(offset,count);
+	public List<EqPm> getAll() {
+		return eqPmMapper.findAll();
 	}
 
 	@Override

@@ -25,13 +25,13 @@
 <div class="layui-row">
     <div class="col-xs-12">
         <fieldset class="layui-elem-field layui-field-title">
-            <legend style="color: #000000;font-size: 22px;text-align: center;">设备品名字典</legend>
+            <legend style="color: #000000;font-size: 22px;text-align: center;">设备品名字典查询</legend>
         </fieldset>
         <form style="display: flex;justify-content: center;" class="layui-form" action="">
-            <div class="layui-form-item col-xs-12 col-md-5 list">
+            <div class="layui-form-item col-xs-12 col-md-7 list">
                 <div class="layui-input-block item">
-                    <input type="text" name="eqPmName" required  lay-verify="required" placeholder="请输入要查询的设备品名" autocomplete="off" class="layui-input">
-                    <button style="margin: 0;" class="layui-btn" lay-submit lay-filter="search">
+                    <input style="margin-left: -100px;" type="text" name="eqPmName" required  lay-verify="required" placeholder="请输入要查询的设备品名" autocomplete="off" class="layui-input">
+                    <button style="margin: 0;" class="layui-btn layui-btn-normal" lay-submit lay-filter="search">
                         <i class="layui-icon">&#xe615;</i>
                     </button>
                     <a style="margin-left: 50px;" id="btn" class="layui-btn layui-btn-normal"><i class="layui-icon">&#xe608;</i>添加字典</a>
@@ -39,6 +39,9 @@
             </div>
         </form>
         <table class="layui-hide" id="searchInfo" lay-filter="handle"></table>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend style="color: #000000;font-size: 22px;text-align: center;">所有设备品名字典信息</legend>
+        </fieldset>
         <table class="layui-hide" id="pmDic" lay-filter="handle"></table>
         <div id="create" style="display: none;">
             <from class="layui-form layui-form-pane" action="">
@@ -78,7 +81,7 @@
         form.on("submit(search)",function (data) {
             console.log(data.field);
             $.ajax({
-                url:"",
+                url:"/eqpm/selectByEqPmNameLike?eqPmName="+data.field.eqPmName,
                 method:"POST",
                 dataType:"JSON",
                 success:function(res){
@@ -88,7 +91,7 @@
                         table.render({
                             elem:"#searchInfo"
                             ,cellMinWidth: 80
-                            ,url:""
+                            ,url:"/eqpm/selectByEqPmNameLike?eqPmName="+data.field.eqPmName
                             ,method:"GET"
                             ,response: {
                                 statusName: 'status' //规定数据状态的字段名称，默认：code
@@ -107,7 +110,6 @@
                                 }
                             },
                             cols:[[
-                                {field:'eqPmId', title:'设备品名序列',align:'center',sort: true},
                                 {field:'eqPmName', title:'设备品名名称',align:'center'},
                                 {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
                             ]]
@@ -141,7 +143,7 @@
         table.render({
             elem:"#pmDic"
             ,cellMinWidth: 80
-            ,url:""
+            ,url:"/eqpm/all"
             ,method:"GET"
             ,response: {
                 statusName: 'status' //规定数据状态的字段名称，默认：code
@@ -161,7 +163,6 @@
             },
             page:true,
             cols:[[
-                {field:'eqPmId', title:'设备品名序列',align:'center',sort: true},
                 {field:'eqPmName', title:'设备品名名称',align:'center'},
                 {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
             ]]
@@ -170,7 +171,7 @@
         form.on("submit(create)",function(data){
             console.log(data.field);
             $.ajax({
-                url:"",
+                url:"/eqpm/insert",
                 method:"POST",
                 data:data.field,
                 dataType:"JSON",

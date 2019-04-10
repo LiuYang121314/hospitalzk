@@ -29,12 +29,12 @@ public class EqPmController extends BaseController{
 	}
 	@RequestMapping("/all")
 	public ResponseResult<List<EqPm>> getAll() {
-		List<EqPm> data= eqPmService.getAll(0,10);
+		List<EqPm> data= eqPmService.getAll();
 		return new ResponseResult<List<EqPm>>(SUCCESS,data);
 	}
 	@RequestMapping("/allEqPm")
 	public ResponseResult<List<EqPm>> All() {
-		List<EqPm> data= eqPmService.getAll(0,1000);
+		List<EqPm> data= eqPmService.getAll();
 		return new ResponseResult<List<EqPm>>(SUCCESS,data);
 	}
 	@RequestMapping("/insert")
