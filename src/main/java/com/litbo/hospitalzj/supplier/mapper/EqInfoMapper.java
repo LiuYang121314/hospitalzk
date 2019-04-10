@@ -128,13 +128,25 @@ public interface EqInfoMapper {
 	EqInfo selectByEqId(Integer eqId);
 	@Delete("delete from eq_info where eq_id=#{eqId}")
 	Integer delete(Integer eqId);
-	@Select("select * from eq_info where eq_dah='' and eq_state=0")
 	//全部新设备信息
+	@Select("select * from eq_info where eq_dah='' and eq_state=0")
 	List<EqInfo> newEqInfo();
-	@Select("SELECT * FROM eq_info WHERE eq_dah='' and eq_id IN(SELECT jc_eqid FROM user_eq)")
-	List<EqInfo> eqInfoYfp();
-	@Select("SELECT * FROM eq_info WHERE eq_dah='' and eq_id not IN(SELECT jc_eqid FROM user_eq)")
-	List<EqInfo> eqInfoWfp();
+	//已分配的设备
+	@Select("SELECT * FROM eq_info WHERE eq_state=#{eqState} and eq_id IN(SELECT jc_eqid FROM user_eq)")
+	List<EqInfo> eqInfoYfp(Integer eqState);
+	//未分配的设备
+	@Select("SELECT * FROM eq_info WHERE eq_state=#{eqState} and eq_id not IN(SELECT jc_eqid FROM user_eq)")
+	List<EqInfo> eqInfoWfp(Integer eqState);
+	//未分配的设备数量
+	@Select("SELECT count(*) FROM eq_info WHERE eq_state=#{eqState} and eq_id not IN(SELECT jc_eqid FROM user_eq)")
+	Integer countWfp(Integer eqState);
+	//查询已分配到人的设备
+	@Select("SELECT * FROM eq_info e left join user_eq u on e.eq_id =u.jc_eqid WHERE eq_state=#{eqState} and u.user_id=#{userId}")
+	List<EqInfo> findByUserIdEqInfo(@Param("eqState")Integer eqState,@Param("userId")String userId);
+	//查询已分配到人的新设备数量
+	@Select("SELECT count(*) FROM eq_info e left join user_eq u on e.eq_id =u.jc_eqid WHERE eq_state=#{eqState} and u.user_id=#{userId}")
+	Integer findByUserIdEqInfoCount(@Param("eqState")Integer eqState,@Param("userId")String userId);
+	//修改设备情况
 	@Update("update eq_info set eq_qk = #{eqQk} where eq_id=#{eqId}")
 	Integer updateEqQk(@Param("eqId") Integer eqId, @Param("eqQk")String eqQk);
 	@Select("select * from eq_info where eq_qk=#{eqQk}")

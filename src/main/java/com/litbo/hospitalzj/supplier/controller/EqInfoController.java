@@ -69,6 +69,9 @@ public class EqInfoController extends BaseController{
 		EqInfo data=eqinfoService.selectByEqId(eqId);
 		return new ResponseResult<EqInfo>(SUCCESS,data);
 	}
+	/*
+	 *新设备模块
+	 */
 	//全部新设备信息
 	@RequestMapping("/newEqInfo")
 	public ResponseResult<List<EqInfo>> newEqinfo() {
@@ -78,16 +81,35 @@ public class EqInfoController extends BaseController{
 	//已分配新设备
 	@RequestMapping("/eqInfoYfp")
 	public ResponseResult<List<EqInfo>> eqInfoYfp() {
-		List<EqInfo> data=eqinfoService.eqInfoYfp();
+		List<EqInfo> data=eqinfoService.eqInfoYfp(1);
 		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
 	}
 	//未分配新设备
 	@RequestMapping("/eqInfoWfp")
 	public ResponseResult<List<EqInfo>> eqInfoWfp() {
-		List<EqInfo> data=eqinfoService.eqInfoWfp();
+		List<EqInfo> data=eqinfoService.eqInfoWfp(1);
 		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
 	}
-
+	//未分配设备数量
+	@RequestMapping("/countWfp")
+	public ResponseResult<Integer> countWfp() {
+		Integer data=eqinfoService.countWfp(1);
+		return new ResponseResult<Integer>(SUCCESS,data);
+	}
+	//查询已分配到人的设备
+	@RequestMapping("/findByUserIdEqInfo")
+	public ResponseResult<List<EqInfo>> findByUserIdEqInfo(HttpSession session) {
+		String userId=getUserIdFromSession(session);
+		List<EqInfo> data=eqinfoService.findByUserIdEqInfo(1,userId);
+		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
+	}
+	//查询已分配到人的设备数量
+	@RequestMapping("/findByUserIdEqInfoCount")
+	public ResponseResult<Integer> findByUserIdEqInfoCount(HttpSession session) {
+		String userId=getUserIdFromSession(session);
+		Integer data=eqinfoService.findByUserIdEqInfoCount(1,userId);
+		return new ResponseResult<Integer>(SUCCESS,data);
+	}
 	@RequestMapping("/updateEqQk")
 	public ResponseResult<Void> updateEqQk(@RequestParam("eqId")Integer eqId,@RequestParam("eqQk")String eqQk) {
 		eqinfoService.updateEqQk(eqId,eqQk);

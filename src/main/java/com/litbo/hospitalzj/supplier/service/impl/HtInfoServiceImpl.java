@@ -136,7 +136,7 @@ public class HtInfoServiceImpl implements HtInfoService {
 				eqInfo.setEqId(lastId+1);
 				eqInfo.setEqDah(" ");
 				eqInfo.setEqNum("1");
-				eqInfo.setEqState(0);
+				eqInfo.setEqState(2);
 				eqInfo.setEqScbh(eqScbhOne[j]);
 				System.out.println(eqInfo);
 				eqInfoMapper.insertEqInfo(eqInfo);

@@ -26,9 +26,15 @@ public interface EqInfoService {
 
 	List<EqInfo> newEqinfo();
 
-	List<EqInfo> eqInfoYfp();
+	List<EqInfo> eqInfoYfp(Integer eqState);
 
-	List<EqInfo> eqInfoWfp();
+	List<EqInfo> eqInfoWfp(Integer eqState);
+	//未分配的设备数量
+	Integer countWfp(Integer eqState);
+	//查询已分配到人的设备
+	List<EqInfo> findByUserIdEqInfo(@Param("eqState")Integer eqState,@Param("userId")String userId);
+	//查询已分配到人的新设备数量
+	Integer findByUserIdEqInfoCount(@Param("eqState")Integer eqState,@Param("userId")String userId);
 
 	void updateEqQk(@Param("eqId") Integer eqId, @Param("eqQk")String eqQk);
 

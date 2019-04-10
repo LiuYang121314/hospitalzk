@@ -86,13 +86,13 @@ public class EqInfoServiceImpl implements EqInfoService {
 	}
 
 	@Override
-	public List<EqInfo> eqInfoYfp() {
-		return eqInfoMapper.eqInfoYfp();
+	public List<EqInfo> eqInfoYfp(Integer eqState) {
+		return eqInfoMapper.eqInfoYfp(eqState);
 	}
 
 	@Override
-	public List<EqInfo> eqInfoWfp() {
-		List<EqInfo> data=eqInfoMapper.eqInfoWfp();
+	public List<EqInfo> eqInfoWfp(Integer eqState) {
+		List<EqInfo> data=eqInfoMapper.eqInfoWfp(eqState);
 		List<EqInfo> newE=new ArrayList();
 		for(EqInfo eqInfo:data){
 			EqPm eqPm=eqPmMapper.findById(Integer.valueOf(eqInfo.getEqPmId()));
@@ -102,6 +102,21 @@ public class EqInfoServiceImpl implements EqInfoService {
 			}
 		}
 		return newE;
+	}
+
+	@Override
+	public Integer countWfp(Integer eqState) {
+		return eqInfoMapper.countWfp(eqState);
+	}
+
+	@Override
+	public List<EqInfo> findByUserIdEqInfo(Integer eqState, String userId) {
+		return eqInfoMapper.findByUserIdEqInfo(eqState,userId);
+	}
+
+	@Override
+	public Integer findByUserIdEqInfoCount(Integer eqState, String userId) {
+		return eqInfoMapper.findByUserIdEqInfoCount(eqState, userId);
 	}
 
 	@Override

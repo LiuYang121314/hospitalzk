@@ -16,9 +16,11 @@ import com.litbo.hospitalzj.supplier.entity.SgdjHw;
 import com.litbo.hospitalzj.supplier.mapper.EqInfoMapper;
 import com.litbo.hospitalzj.supplier.service.HtLcService;
 import com.litbo.hospitalzj.supplier.service.exception.InsertException;
+import com.litbo.hospitalzj.supplier.util.Message;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.litbo.hospitalzj.controller.BaseController;
@@ -28,6 +30,9 @@ import com.litbo.hospitalzj.supplier.service.HtInfoService;
 import com.litbo.hospitalzj.supplier.util.Upload;
 import com.litbo.hospitalzj.supplier.vo.EqHtVo;
 import com.litbo.hospitalzj.util.ResponseResult;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.methods.PostMethod;
+import org.apache.commons.httpclient.params.HttpMethodParams;
 
 
 @RestController
@@ -66,6 +71,7 @@ public class HtInfoController extends BaseController {
         }
         return new ResponseResult<Void>(SUCCESS);
     }
+
     //修改合同状态为已发货
     @RequestMapping("/tyys")
     public ResponseResult<Void> updataState(Integer htId) {
@@ -73,6 +79,7 @@ public class HtInfoController extends BaseController {
         htLcService.InsertHtLc(htId, EnumProcess.TONG_YI_YANSHOU.getMessage(), new Date());
         return new ResponseResult<Void>(SUCCESS);
     }
+
     //完善资料
     @RequestMapping("/wszl")
     public ResponseResult<Void> updataStatePerfectOne(Integer htId) {
@@ -81,24 +88,24 @@ public class HtInfoController extends BaseController {
         return new ResponseResult<Void>(SUCCESS);
     }
 
-   /* //等待审核验收
-    @RequestMapping("/ddshjys")
-    public ResponseResult<Void> updataStatePerfectTwo(@RequestParam("htId") Integer htId,
-                                                      @RequestParam("state") String state) {
-        if(state.equals("同意")){
-            htinfoService.updateHtInfoState(htId, EnumProcess.WAIT_ACCEPT_YS.getMessage());
-            htLcService.InsertHtLc(htId, EnumProcess.WAIT_ACCEPT_YS.getMessage(), new Date());
-        }else{
-            htinfoService.updateHtInfoState(htId, EnumProcess.WAIT_ACCEPT_YS_NOT.getMessage());
-            htLcService.InsertHtLc(htId, EnumProcess.WAIT_ACCEPT_YS_NOT.getMessage(), new Date());
-        }
-        return new ResponseResult<Void>(SUCCESS);
-    }*/
+    /* //等待审核验收
+     @RequestMapping("/ddshjys")
+     public ResponseResult<Void> updataStatePerfectTwo(@RequestParam("htId") Integer htId,
+                                                       @RequestParam("state") String state) {
+         if(state.equals("同意")){
+             htinfoService.updateHtInfoState(htId, EnumProcess.WAIT_ACCEPT_YS.getMessage());
+             htLcService.InsertHtLc(htId, EnumProcess.WAIT_ACCEPT_YS.getMessage(), new Date());
+         }else{
+             htinfoService.updateHtInfoState(htId, EnumProcess.WAIT_ACCEPT_YS_NOT.getMessage());
+             htLcService.InsertHtLc(htId, EnumProcess.WAIT_ACCEPT_YS_NOT.getMessage(), new Date());
+         }
+         return new ResponseResult<Void>(SUCCESS);
+     }*/
     //等待审核验收
     @RequestMapping("/ddshys")
     public ResponseResult<Void> ddshys(@RequestParam("htId") Integer htId) {
-            htinfoService.updateHtInfoState(htId, EnumProcess.WAIT_ACCEPT_YS.getMessage());
-            htLcService.InsertHtLc(htId, EnumProcess.WAIT_ACCEPT_YS.getMessage(), new Date());
+        htinfoService.updateHtInfoState(htId, EnumProcess.WAIT_ACCEPT_YS.getMessage());
+        htLcService.InsertHtLc(htId, EnumProcess.WAIT_ACCEPT_YS.getMessage(), new Date());
         return new ResponseResult<Void>(SUCCESS);
     }
 
@@ -107,7 +114,7 @@ public class HtInfoController extends BaseController {
     public ResponseResult<Void> updataStatePerfectThree(Integer htId) {
         htinfoService.updateHtInfoState(htId, EnumProcess.ACCEPT_OVER.getMessage());
         htLcService.InsertHtLc(htId, EnumProcess.ACCEPT_OVER.getMessage(), new Date());
-        eqInfoMapper.update(htId,1);
+        eqInfoMapper.update(htId, 1);
         return new ResponseResult<Void>(SUCCESS);
     }
 
@@ -153,23 +160,36 @@ public class HtInfoController extends BaseController {
         htinfoService.HtJC(htId);
         return new ResponseResult<Void>(SUCCESS);
     }
+
     //查询状态数量
     @RequestMapping("/countByYyys")
     public ResponseResult<Integer> htStateByYyys() {
-        Integer data=htinfoService.count(EnumProcess.WAIT_ACCEPT.getMessage());
-        return new ResponseResult<Integer>(SUCCESS,data);
+        Integer data = htinfoService.count(EnumProcess.WAIT_ACCEPT.getMessage());
+        return new ResponseResult<Integer>(SUCCESS, data);
     }
+
     //等待审核验收数量
     @RequestMapping("/countByDdshys")
     public ResponseResult<Integer> countByDdshys() {
-        Integer all= htinfoService.count(EnumProcess.WAIT_ACCEPT_YS.getMessage());
-        return new ResponseResult<Integer>(SUCCESS,all);
+        Integer all = htinfoService.count(EnumProcess.WAIT_ACCEPT_YS.getMessage());
+        return new ResponseResult<Integer>(SUCCESS, all);
     }
+
     //同意验收数量
     @RequestMapping("/countByTyys")
     public ResponseResult<Integer> countByTyys() {
-        Integer all= htinfoService.count(EnumProcess.TONG_YI_YANSHOU.getMessage());
-        return new ResponseResult<Integer>(SUCCESS,all);
+        Integer all = htinfoService.count(EnumProcess.TONG_YI_YANSHOU.getMessage());
+        return new ResponseResult<Integer>(SUCCESS, all);
     }
+
+    //调用接口发送短信
+    @RequestMapping("/sendInfo")
+    public ResponseResult<Integer> sendInfo() {
+        Message.sendMessage();
+        return new ResponseResult<Integer>(SUCCESS);
+    }
+
+
+
 }
 
