@@ -134,10 +134,12 @@ public class UserEqServiceImpl implements UserEqService{
 	}
 	@Override
 	public void setEqStateNotIs(String jceqId,String userId,String shrId) {
+		System.out.println("++++++++++++++++++++"+jceqId);
 		EqInfo eqInfo= eqInfoMapper.selectByEqId(Integer.valueOf(jceqId));
 		UserRoleVo user=userMapper.select(userId);
 		UserRoleVo shr=userMapper.select(shrId);
 		Integer userEqId=userEqMapper.findUserEqByUserIdAndJceqid(userId, jceqId);
+		System.out.println(userEqId);
 		if(yqEqMapper.selectStateNot(jceqId,0)>0){
 			throw new ServiceException("此设备，您还有数据没有验收！！！");
 		}

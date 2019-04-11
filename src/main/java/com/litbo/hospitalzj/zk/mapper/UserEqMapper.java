@@ -30,7 +30,7 @@ public interface UserEqMapper {
 	/*@Select("select * from user_eq where user_id=#{userId} and jc_eqid=#{jceqId}")
 	UserEq findUserEqByUserIdAndJceqid(@Param("userId") String userId,@Param("jceqId") String jceqId);*/
 
-	@Select("select id from user_eq where user_id=#{userId} and jc_eqid=#{jceqId} order by id limit 1")
+	@Select("select id from user_eq where user_id=#{userId} and jc_eqid=#{jceqId} order by id desc limit 1")
 	Integer findUserEqByUserIdAndJceqid(@Param("userId") String userId,@Param("jceqId") String jceqId);
 	//检测设备成功与不成功
 	@Update("update user_eq set state=#{state} where id=#{userEqId}")

@@ -109,6 +109,15 @@ public class DqjcService {
 	public DqjcUser findShrAndShrjcjl(String eqId, String jcyqId, Integer state){
 		return dqjcMapper.findShrAndShrjcjl(eqId, jcyqId, state);
 	}
+
+	/**
+	 * 通过ID查询本条数据
+	 * @param dqjcid
+	 * @return
+	 */
+	public Dqjc findShrShrjcjl(@Param("dqjcid")Integer dqjcid){
+		return dqjcMapper.findShrShrjcjl(dqjcid);
+	}
 	/**
 	 * 修改审核人意见
 	 */

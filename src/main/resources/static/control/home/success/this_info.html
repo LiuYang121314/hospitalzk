@@ -57,6 +57,7 @@
     // 获取上个页面传递的类型
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
+    sessionStorage['thiseqId']=ids;
     layui.use(['form','layer','jquery','table','element'], function(){
         var form = layui.form
             ,   layer = layui.layer
@@ -79,7 +80,6 @@
             },
             parseData:function(res){
                 console.log(res);
-                sessionStorage['thiseqId']=res.data.eqId;
                 return{
                     "status":200
                     ,"msg":res.message
