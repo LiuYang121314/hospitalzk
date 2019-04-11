@@ -119,12 +119,12 @@
                                 }
                             },
                             cols:[[
-                                {field:'eqPmName', title:'设备品名名称',align:'center'},
+                                {field:'eqPmName', title:'企业类型名称',align:'center'},
                                 {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
                             ]]
                         });
                     }else if(res.state === 704){
-                        layer.msg("该设备品名不存在");
+                        layer.msg("该企业类型不存在");
                     }else{
                         layer.msg("查询失败");
                     }
@@ -174,7 +174,7 @@
             },
             page:true,
             cols:[[
-                {field:'eqPmName', title:'设备品名名称',align:'center'},
+                {field:'eqPmName', title:'企业类型名称',align:'center'},
                 {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
             ]]
         });
