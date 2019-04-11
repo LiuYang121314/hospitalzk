@@ -1,5 +1,6 @@
 package com.litbo.hospitalzj.zk.mapper;
 
+import com.litbo.hospitalzj.checklist.domain.Dqjc;
 import com.litbo.hospitalzj.zk.vo.YqEqVo;
 import org.apache.ibatis.annotations.*;
 
@@ -34,4 +35,7 @@ public interface YqEqMapper {
 			"left join yq on y.jcyq_id=yq.jcyq_id " +
 			"where u.user_id=#{userId} and y.state=#{state}")
 	List<YqEqVo> selectYqEq(@Param("userId") String userId, @Param("state") Integer state);
+	//以id排序，查询最后一条记录
+	@Select("select id from yq_eq where jcyq_id=#{jcyqId} and eq_id=#{eqId} order by id limit 1")
+	Integer findId(@Param("jcyqId") Integer jcyqId,@Param("eqId") Integer eqId);
 }

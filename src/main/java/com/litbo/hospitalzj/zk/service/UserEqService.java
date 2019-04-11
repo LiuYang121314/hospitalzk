@@ -20,7 +20,7 @@ public interface UserEqService {
 	void setEqState(@Param("Id") Integer Id, @Param("state") String state);
 
 	void setJcEqState2(@Param("userId") String userId, @Param("eqId") String eqId);
-	
+
 	void setEqState2(String userId, String jcEqid);
 
 	void setEqState34(String State,String userId, String eqId);
@@ -41,4 +41,7 @@ public interface UserEqService {
 
 	//查询审核不成功个数
 	Integer findByUserIdState(@Param("userId")String userId, @Param("state")String state);
+
+	//查询出最后一条数据
+	Integer findUserEqByUserIdAndJceqid(@Param("userId") String userId,@Param("jceqId") String jceqId);
 }

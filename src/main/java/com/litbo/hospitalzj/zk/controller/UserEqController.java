@@ -170,11 +170,12 @@ public class UserEqController extends BaseController{
 		yqEqService.updateState(jcyqId,eqId,state);
 		return new ResponseResult<Void>(SUCCESS);
 	}*/
-	//待上传
-	@RequestMapping("/setEqTypeNotIs")
+	//待审核
+	@RequestMapping("/setUserEqStateDsh")
 	public ResponseResult<Void> setEqTypeNotIs(@RequestParam("jceqId")String jceqId,HttpSession session){
 		String userId=getUserIdFromSession(session);
-		userEqService.setEqTypeNotIs(jceqId,userId);
+		Integer userEqId=userEqService.findUserEqByUserIdAndJceqid(userId,jceqId);
+		userEqService.setEqState(userEqId,EnumProcess2.UNDER_REVIEW.getMessage());
 		yqEqService.updateAllType(jceqId,EnumProcess2.IS_UPLOAD.getMessage());
 		return new ResponseResult<Void>(SUCCESS);
 	}

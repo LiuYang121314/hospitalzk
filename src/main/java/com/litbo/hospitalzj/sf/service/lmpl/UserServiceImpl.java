@@ -73,6 +73,11 @@ private UserMapper userMapper;
         userMapper.updateRole(roleId, userId);
     }
 
+    @Override
+    public String findNameById(String userId) {
+        return userMapper.findNameById(userId);
+    }
+
     //用户登录
     @Override
     public UserRoleVo login(String userName, String userPwd) {

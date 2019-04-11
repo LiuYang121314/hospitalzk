@@ -171,11 +171,12 @@
     var dqId = "";
     $(function(){
     	$.ajax({
-            url:"/dqjc/findByEqIdandJcyqId?eqId="+thiseqId+"&jcyqId="+ids,
+            url:"/dqjc/findByEqIdandJcyqIdLast1?eqId="+thiseqId+"&jcyqId="+ids,
             method:"GET",
             dataType:"JSON",
             success:function(res){
                 console.log(res);
+                dqId = res.data.dqjcid;
                 if(res.data != null && res.data != ""){
                 	// 电源电压
 	                $("#dydyValue").append(res.data.dydyValue);
@@ -275,8 +276,7 @@
                 }
             }
         })
-    })
-
+    });
     //Demo
     layui.use(['table','layer','jquery','form'],function(){
         var table = layui.table
@@ -288,7 +288,7 @@
             elem:"#testerInfo",
             cellMinWidth:100,
             toolbar: '#toolbarDemo',
-            url:"/dqjc/findByEqIdandJcyqId?eqId="+thiseqId+"&jcyqId="+ids,
+            url:"/dqjc/findByEqIdandJcyqIdLast1?eqId="+thiseqId+"&jcyqId="+ids,
             method:"GET",
             response: {
                 statusName: 'status'
@@ -332,7 +332,7 @@
         			layer.msg("服务器故障");
                     console.log(data);
         		}
-        	})
+        	});
         	return false;
         });
     })

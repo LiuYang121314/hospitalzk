@@ -20,6 +20,7 @@ public interface YqEqService {
 
 	void updateAllType(@Param("eqId") String eqId,@Param("type") String  type);
 	List<YqEqVo> selectYqEq(@Param("userId") String userId, @Param("state") Integer state);
+	Integer findId(@Param("jcyqId") Integer jcyqId,@Param("eqId") Integer eqId);
 
 
 }

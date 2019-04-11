@@ -318,7 +318,7 @@
                 location.href="/control/home/upload/up_info.html?id="+obj.data.eqId;
             }else if(obj.event === "up"){
                 $.ajax({
-                    url:"/userEq/setEqTypeNotIs?jceqId="+obj.data.eqId,
+                    url:"/userEq/setUserEqStateDsh?jceqId="+obj.data.eqId,
                     method:"POST",
                     success:function(res){
                         if(res.state === 200){
