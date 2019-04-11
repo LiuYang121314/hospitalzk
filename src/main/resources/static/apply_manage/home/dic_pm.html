@@ -48,17 +48,13 @@
         <div id="create" style="display: none;">
             <from class="layui-form layui-form-pane" action="">
                 <fieldset class="layui-elem-field layui-field-title">
-                    <legend style="color: #000000;font-weight: bold;">添加字典</legend>
+                    <legend style="color: #000000;font-weight: bold;text-align: center;">添加字典</legend>
                 </fieldset>
-                <div class="layui-form-item col-md-4">
+                <div class="layui-form-item" style="width: 50%;margin: 0 auto;">
                     <label class="layui-form-label">字典名</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="eqPmName" required  lay-verify="required" placeholder="请输入字典名" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit lay-filter="create">添加</button>
+                    <div style="display: flex;" class="layui-input-block">
+                        <input type="text" name="eqPmName" required  lay-verify="required" placeholder="请输入要添加的字典名" autocomplete="off" class="layui-input">
+                        <button style="margin: 0;margin-left: 30px;" class="layui-btn" lay-submit lay-filter="create"><i class="layui-icon">&#xe608;</i>添加</button>
                     </div>
                 </div>
             </from>
@@ -204,6 +200,42 @@
                     layer.msg("请稍后再试");
                 }
             })
+        });
+        //监听行工具事件
+        table.on('tool(handle)', function(obj){
+            var data = obj.data;
+            //console.log(obj)
+            if(obj.event === 'del'){
+                layer.confirm('确定删除此条数据么', function(index){
+                    obj.del();
+                    // layer.close(index);
+                    $.ajax({
+                        url:"/eqpm/delete?eqPmId="+obj.data.eqPmId,
+                        success:function(res){
+                            if(res.state === 200){
+                                layer.msg("删除成功");
+                            }else{
+                                layer.msg("删除失败");
+                            }
+                        },
+                        error:function(data){
+                            layer.msg("删除失败,请稍后再试");
+                            console.log(data);
+                        }
+                    })
+                });
+            }
+            // else if(obj.event === 'edit'){
+            //     layer.prompt({
+            //         formType: 2
+            //         ,value: data.email
+            //     }, function(value, index){
+            //         obj.update({
+            //             email: value
+            //         });
+            //         layer.close(index);
+            //     });
+            // }
         });
     });
 </script>
