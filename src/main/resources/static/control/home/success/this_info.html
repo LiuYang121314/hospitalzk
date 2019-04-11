@@ -57,6 +57,7 @@
     // 获取上个页面传递的类型
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
+    sessionStorage["thiseqId"] = ids;
     layui.use(['form','layer','jquery','table','element'], function(){
         var form = layui.form
             ,   layer = layui.layer
@@ -136,11 +137,7 @@
             var data = obj.data;
             //console.log(obj)
             if(obj.event === "hands"){
-                if(obj.data.jcyqName == "电气安全分析仪"){
-                    location.href="/control/home/success/look/electric_info.html?id="+obj.data.jcyqId;
-                }else{
-                    location.href="/control/home/success/look/man_life_table.html?id="+obj.data.jcyqId;
-                }
+                location.href="/control/home/success/look/his_info.html?id="+obj.data.jcyqId;
             }
         });
     });
