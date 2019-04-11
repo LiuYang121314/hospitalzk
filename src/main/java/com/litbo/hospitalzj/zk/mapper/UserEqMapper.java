@@ -27,11 +27,14 @@ public interface UserEqMapper {
 	@Options(useGeneratedKeys = true, keyProperty = "Id", keyColumn = "id")
 	void insertBatchByJcEqid(UserEq userEq);
 
-	@Select("select * from user_eq where user_id=#{userId} and jc_eqid=#{jceqId}")
-	UserEq findUserEqByUserIdAndJceqid(@Param("userId") String userId,@Param("jceqId") String jceqId);
+	/*@Select("select * from user_eq where user_id=#{userId} and jc_eqid=#{jceqId}")
+	UserEq findUserEqByUserIdAndJceqid(@Param("userId") String userId,@Param("jceqId") String jceqId);*/
+
+	@Select("select id from user_eq where user_id=#{userId} and jc_eqid=#{jceqId} order by id limit 1")
+	Integer findUserEqByUserIdAndJceqid(@Param("userId") String userId,@Param("jceqId") String jceqId);
 	//检测设备成功与不成功
-	@Update("update user_eq set state=#{state} where jc_eqid=#{jceqId} and user_id=#{userId}")
-	void setEqStateNotIs(@Param("jceqId")String jceqId,@Param("userId")String userId,@Param("state")String state);
+	@Update("update user_eq set state=#{state} where id=#{userEqId}")
+	void setEqStateNotIs(@Param("userEqId")Integer userEqId,@Param("state")String state);
 
 	
 	@Update("update user_eq set state=#{userEqState} where " +

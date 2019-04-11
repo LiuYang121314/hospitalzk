@@ -142,15 +142,14 @@ public interface YepyxMapper {
     /**
      * 根据iD状态查询
      */
-    @Select("select * from dqjc where dqjcid=#{dqjcid} and state=#{state}")
-    Dqjc findByDqjcid(@Param("dqjcid")Integer dqjcid,@Param("state")Integer state);
+    @Select("select * from yepyx where pyx_id=#{pyxId} and state=#{state}")
+    Yepyx findByDqjcid(@Param("pyxId")Integer pyxId,@Param("state")Integer state);
     /*
     修改状态
      */
-    @Update("update dqjc set state=#{state} where dqjcid=#{dqjcid}")
-    void updateState(@Param("dqjcid")Integer dqjcid,@Param("state")Integer state);
+    @Update("update yepyx set state=#{state} where pyx_id=#{pyxId}")
+    void updateState(@Param("pyxId")Integer pyxId,@Param("state")Integer state);
     //修改审核人意见
-    @Update("update dqjc set shr_jcjl=#{shrJcjl},auditor=#{auditor} where dqjcid=#{dqjcid}")
-    void updateShrJcjy(@Param("dqjcid")Integer dqjcid,@Param("shrJcjl")String shrJcjl,@Param("auditor")String auditor);
-
+    @Update("update yepyx set shr_jcjl=#{shrJcjl},auditor=#{auditor} where pyx_id=#{pyxId}")
+    void updateShrJcjy(@Param("pyxId")Integer pyxId,@Param("shrJcjl")String shrJcjl,@Param("auditor")String auditor);
 }

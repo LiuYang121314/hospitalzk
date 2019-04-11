@@ -138,6 +138,11 @@ public interface DqjcMapper {
 			"d.eq_id=#{eqId} and d.jcyq_id=#{jcyqId} and d.state=#{state}")
 	DqjcUser findShrAndShrjcjl(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId,@Param("state")Integer state);
 
+	@Select("select d.*,s.user_name,u.date from " +
+			"dqjc d left join user_eq u on u.jc_eqid=d.eq_id " +
+			"left join s_user s on u.user_id=s.user_id where " +
+			"d.eq_id=#{eqId} and d.jcyq_id=#{jcyqId} and d.state=#{state}")
+	Dqjc findShrShrjcjl(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId,@Param("state")Integer state);
 	//查询所有检测表数据信息
 	@Select("select * from dqjc")
 	List<Dqjc> findAll();

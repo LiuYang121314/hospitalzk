@@ -161,8 +161,9 @@
     // 获取上个页面传递的类型
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
-    var thiseqId = parseInt(sessionStorage['thiseqId']);
+    // var thiseqId = parseInt(sessionStorage['thiseqId']);
     var thisjcyqId = parseInt(sessionStorage['thisjcyqId']);
+    var thisId = parseInt(sessionStorage['thisId']);
     $(function(){
     	$.ajax({
             url:"/dqjc/findByDqjcid?dqjcid="+ids,
@@ -269,7 +270,7 @@
                 }
             }
         })
-    })
+    });
     //Demo
     layui.use(['table','layer','jquery','form'],function(){
         var table = layui.table
@@ -308,7 +309,7 @@
         // 上传
         $("#upload").click(function(){
             $.ajax({
-                url:"/dqjc/updateState?eqId="+thiseqId+"&jcyqId="+thisjcyqId,
+                url:"/dqjc/updateState?yqEqId="+thisjcyqId+"&userEqId="+thisId,
                 method:"POST",
                 success:function(res){
                     if(res.state === 200){
@@ -329,7 +330,7 @@
         // 修改
         $("#update").click(function(){
             location.href="/control/home/update/write_electric_info.html?id="+ids;
-        })
+        });
         // 返回
         $("#back").click(function () {
             location.href="/control/home/home.html";

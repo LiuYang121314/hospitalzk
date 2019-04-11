@@ -135,22 +135,16 @@ public class UserEqServiceImpl implements UserEqService{
 	@Override
 	public void setEqStateNotIs(String jceqId,String userId,String shrId) {
 		EqInfo eqInfo= eqInfoMapper.selectByEqId(Integer.valueOf(jceqId));
-		UserRoleVo user=userMapper.select(jceqId);
+		UserRoleVo user=userMapper.select(userId);
 		UserRoleVo shr=userMapper.select(shrId);
+		Integer userEqId=userEqMapper.findUserEqByUserIdAndJceqid(userId, jceqId);
 		if(yqEqMapper.selectStateNot(jceqId,0)>0){
 			throw new ServiceException("此设备，您还有数据没有验收！！！");
 		}
 		if(yqEqMapper.selectStateNot(jceqId,2)>0){
-			userEqMapper.setEqStateNotIs(jceqId,userId,EnumProcess2.DETECTION_OF_AUDIT_NOT.getMessage());
-			/*EqZjls data =new EqZjls();
-			data.setEqId(Integer.valueOf(jceqId));
-			data.setTestTime(new Date());
-			data.setEqMc(eqInfo.getEqMc());
-			data.setTester(user.getUserName());
-			data.setAuditor(shr.getUserName());
-			eqZjlsDao.insert(data);*/
+			userEqMapper.setEqStateNotIs(userEqId,EnumProcess2.DETECTION_OF_AUDIT_NOT.getMessage());
 		}else{
-			userEqMapper.setEqStateNotIs(jceqId,userId,EnumProcess2.DETECTION_OF_AUDIT_IS.getMessage());
+			userEqMapper.setEqStateNotIs(userEqId,EnumProcess2.DETECTION_OF_AUDIT_IS.getMessage());
 			EqZjls data =new EqZjls();
 			data.setEqId(Integer.valueOf(jceqId));
 			data.setTestTime(new Date());
@@ -161,18 +155,25 @@ public class UserEqServiceImpl implements UserEqService{
 		}
 	}
 
+
+
+	//
+	///
+	///
+	///
 	@Override
 	public void setEqTypeNotIs(String jceqId, String userId) {
-	/*if(yqEqMapper.selectTypeNot(jceqId,EnumProcess2.TO_UPLOAD.getMessage())>0){
-		    userEqMapper.setEqStateNotIs(jceqId,userId,EnumProcess2.TO_UPLOAD.getMessage());
-			throw new ServiceException("此设备，您还有数据没有上传！！！");
-		}else{*/
-		userEqMapper.setEqStateNotIs(jceqId,userId,EnumProcess2.UNDER_REVIEW.getMessage());
-	/*	}*/
+		Integer userEqId=null;
+		userEqMapper.setEqStateNotIs(userEqId,EnumProcess2.UNDER_REVIEW.getMessage());
 	}
 	//查询审核不成功个数
 	@Override
 	public Integer findByUserIdState(String userId, String state) {
 		return userEqMapper.findByUserIdState(userId,state);
+	}
+
+	@Override
+	public Integer findUserEqByUserIdAndJceqid(String userId, String jceqId) {
+		return userEqMapper.findUserEqByUserIdAndJceqid(userId,jceqId);
 	}
 }

@@ -56,5 +56,10 @@ public class YqEqServiceImpl implements YqEqService{
 		return yqEqMapper.selectYqEq(userId, state);
 	}
 
+	@Override
+	public Integer findId(Integer jcyqId, Integer eqId) {
+		return yqEqMapper.findId(jcyqId,eqId);
+	}
+
 
 }

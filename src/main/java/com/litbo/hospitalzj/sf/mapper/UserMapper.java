@@ -24,6 +24,9 @@ public interface UserMapper {
     //查找用户信息通过用户ID
     @Select("select s.*,r.role_name from s_user s left join s_role r on s.role_id=r.role_id where s.user_id=#{userId}")
     UserRoleVo select(String userId);
+    //通过用户Id寻用户名
+    @Select("select user_name from s_user where user_id=#{userId}")
+    String findNameById(String userId);
     //查询用户信息通过用户名
     @Select("select s.*,r.role_name from s_user s left join s_role r on s.role_id=r.role_id where s.user_name=#{userName} and is_delete=0")
     UserRoleVo findByName(String userName);
@@ -55,4 +58,5 @@ public interface UserMapper {
     //修改用户角色
     @Update("update s_user set role_id=#{role_id} where user_id")
     int updateRole(@Param("roleId")String roleId,@Param("userId")String userId);
+
 }

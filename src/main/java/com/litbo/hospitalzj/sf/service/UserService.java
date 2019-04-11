@@ -24,4 +24,5 @@ public interface UserService {
     void update(User user);
     //修改用户角色
     void updateRole(@Param("roleId")String roleId, @Param("userId")String userId);
+    String findNameById(String userId);
 }

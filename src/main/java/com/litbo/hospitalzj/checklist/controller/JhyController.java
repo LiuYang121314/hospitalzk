@@ -235,8 +235,10 @@ public class JhyController extends BaseController {
 	}
 	//修改审核人建议同时修改状态
 	@RequestMapping("/updateShrJcjyM")
-	public ResponseResult<Void> updateShrJcjyM(@RequestParam("dcid")Integer dcid, @RequestParam("yqEqId")Integer yqEqId,@RequestParam("shrJcjl")String shrJcjl,@RequestParam("state")Integer state,HttpSession session){
+	public ResponseResult<Void> updateShrJcjyM(@RequestParam("dcid")Integer dcid,  @RequestParam("jcyqId")Integer jcyqId,
+		@RequestParam("eqId")Integer eqId,@RequestParam("shrJcjl")String shrJcjl,@RequestParam("state")Integer state,HttpSession session){
 		String auditor=getUserNameFromSession(session);
+		Integer yqEqId= yqEqService.findId(jcyqId,eqId);
 		dcsjhyService.updateShrJcjyM(dcid,shrJcjl,auditor);
 		if(state.equals(1)){
 			yqEqService.updateState(yqEqId,1);
@@ -246,8 +248,10 @@ public class JhyController extends BaseController {
 		return new ResponseResult<Void>(200);
 	}
 	@RequestMapping("/updateShrJcjyC")
-	public ResponseResult<Void> updateShrJcjyC(@RequestParam("dcid")Integer dcid, @RequestParam("yqEqId")Integer yqEqId,@RequestParam("shrJcjl")String shrJcjl,@RequestParam("state")Integer state,HttpSession session){
+	public ResponseResult<Void> updateShrJcjyC(@RequestParam("dcid")Integer dcid, @RequestParam("jcyqId")Integer jcyqId,
+        @RequestParam("eqId")Integer eqId,@RequestParam("shrJcjl")String shrJcjl,@RequestParam("state")Integer state,HttpSession session){
 		String auditor=getUserNameFromSession(session);
+		Integer yqEqId= yqEqService.findId(jcyqId,eqId);
 		dcsjhyService.updateShrJcjyC(dcid,shrJcjl,auditor);
 		if(state.equals(1)){
 			yqEqService.updateState(yqEqId,1);

@@ -6,6 +6,7 @@ import com.litbo.hospitalzj.checklist.service.DqjcService;
 import com.litbo.hospitalzj.checklist.utils.commons.CommonUtils;
 import com.litbo.hospitalzj.checklist.vo.DqjcUser;
 import com.litbo.hospitalzj.controller.BaseController;
+import com.litbo.hospitalzj.sf.service.UserService;
 import com.litbo.hospitalzj.supplier.service.EqInfoService;
 import com.litbo.hospitalzj.util.ResponseResult;
 import com.litbo.hospitalzj.zk.Enum.EnumProcess2;
@@ -34,7 +35,7 @@ public class DqjcController extends BaseController {
     @Autowired
     private UserEqService userEqService;
     @Autowired
-    private EqInfoService eqinfoService;
+    private UserService userService;
     @Autowired
     private YqEqService yqEqService;
 
@@ -159,8 +160,10 @@ public class DqjcController extends BaseController {
     }
     //修改审核人建议同时修改状态
     @RequestMapping("/updateShrJcjy")
-    public ResponseResult<Void> updateShrJcjy(@RequestParam("dqjcid")Integer dqjcid, @RequestParam("yqEqId")Integer yqEqId,@RequestParam("shrJcjl")String shrJcjl,@RequestParam("state")Integer state,HttpSession session){
+    public ResponseResult<Void> updateShrJcjy(@RequestParam("dqjcid")Integer dqjcid, @RequestParam("jcyqId")Integer jcyqId,
+            @RequestParam("eqId")Integer eqId,@RequestParam("shrJcjl")String shrJcjl,@RequestParam("state")Integer state,HttpSession session){
         String auditor=getUserNameFromSession(session);
+        Integer yqEqId= yqEqService.findId(jcyqId,eqId);
         dqjcService.updateShrJcjy(dqjcid,shrJcjl,auditor);
         if(state.equals(1)){
             yqEqService.updateState(yqEqId,1);
