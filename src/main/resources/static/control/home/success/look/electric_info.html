@@ -147,10 +147,10 @@
     // 获取上个页面传递的类型
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
-    var thiseqId = parseInt(sessionStorage['thiseqId']);
+    // 根据数据此条数据ID显示
     $(function(){
     	$.ajax({
-            url:"/dqjc/findByEqIdandJcyqId?eqId="+thiseqId+"&jcyqId="+ids,
+            url:""+ids,
             method:"GET",
             dataType:"JSON",
             success:function(res){
