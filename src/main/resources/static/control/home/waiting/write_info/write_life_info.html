@@ -1247,6 +1247,7 @@
     sessionStorage["thisjcyqId"]=ids;
     var thiseqId = parseInt(sessionStorage['thiseqId']);
     var userName = sessionStorage["userName"];
+    var thisId = parseInt(sessionStorage['thisId']);
     $(function(){
         $("#isUser1").val(userName);
         $("#isUser2").val(userName);
@@ -2393,21 +2394,22 @@
             ,   laydate = layui.laydate;
         laydate.render({
             elem:"#date1"
-        })
+        });
         laydate.render({
             elem:"#date2"
-        })
+        });
         form.on('submit(subman)',function (data) {
             console.log(data.field);
             $.ajax({
-                url:"/jhy/saveman?eqId="+thiseqId+"&jcyqId="+ids,
+                url:"/jhy/saveman?eqId="+thiseqId+"&jcyqId="+ids+"&userEqId="+thisId,
                 method:"POST",
                 data:data.field,
                 dataType:"JSON",
                 success:function (res) {
                     if(res.state === 200){
                         setTimeout(function(){
-                            location.href = "/control/home/waiting/wait_info/man_life_table.html?id="+res.data;
+                            sessionStorage["thissjId"] = res.data[1];
+                            location.href = "/control/home/waiting/wait_info/man_life_table.html?id="+res.data[0];
                         },1000);
                         layer.msg("保存成功,正在生成表格");
                     }else{
@@ -2424,7 +2426,7 @@
         form.on('submit(subchild)',function (data) {
             console.log(data.field);
             $.ajax({
-                url:"/jhy/savechild?eqId="+thiseqId+"&jcyqId="+ids,
+                url:"/jhy/savechild?eqId="+thiseqId+"&jcyqId="+ids+"&userEqId="+thisId,
                 method:"POST",
                 data:data.field,
                 dataType:"JSON",

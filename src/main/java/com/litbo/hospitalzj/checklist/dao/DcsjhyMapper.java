@@ -171,7 +171,7 @@ public interface DcsjhyMapper {
 			"      )")
 	int insertC(DcsjhyTemplate dcsjhyTemplate);
 	//保存多参数监护仪检测表(成人)
-	@Insert("insert into dcsjhy_m (dcid, jcyq_id, eq_id,tester, auditor, test_time,shr_jcjl,jcjl, jcsm, xl_test1,                         "
+	@Insert("insert into dcsjhy_m (dcid, jcyq_id, eq_id,tester, auditor,shsj_time, test_time,shr_jcjl,jcjl, jcsm, xl_test1,                         "
 			+"xl_test2, xl_test3, xl_test4, xl_test5, xl_value1, xl_value2,  xl_value3, xl_value4, xl_value5,                         "
 			+"xl_wc, xl_result, hxl_test1,  hxl_test2, hxl_test3, hxl_test4, hxl_test5, hxl_value1, hxl_value2,                       "
 			+"hxl_value3, hxl_value4, hxl_value5, hxl_wc, hxl_result, xybhd_test1,xybhd_test2, xybhd_test3, xybhd_test4,              "
@@ -189,7 +189,7 @@ public interface DcsjhyMapper {
 			+"wcxy_m_value35, wcxy_l_value35, wcxy_wc, wcxy_result, wcxyjt_sd, wcxyjt_mnq, wcxyjt_jhy, wcxyjt_wc, wcxyjt_result,      "
 			+"wcxyqm_sd, wcxyqm_xll, wcxyqm_wc,  wcxyqm_result, sgbj_result, bjxjc_result, jyjc_result, state, spare2,  spare3)      "
 			+"values (#{dcid,jdbcType=INTEGER}, #{jcyqId,jdbcType=INTEGER}, #{eqId,jdbcType=INTEGER},                                 "
-			+"#{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{testTime,jdbcType=TIMESTAMP},                                "
+			+"#{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{shsjTime},#{testTime,jdbcType=TIMESTAMP},                                "
 			+"#{shrJcjl,jdbcType=VARCHAR},#{jcjl,jdbcType=VARCHAR}, #{jcsm,jdbcType=VARCHAR}, #{xlTest1,jdbcType=INTEGER},                                        "
 			+"#{xlTest2,jdbcType=INTEGER}, #{xlTest3,jdbcType=INTEGER}, #{xlTest4,jdbcType=INTEGER},                                  "
 			+"#{xlTest5,jdbcType=INTEGER}, #{xlValue1,jdbcType=INTEGER}, #{xlValue2,jdbcType=INTEGER},                                "
@@ -233,7 +233,7 @@ public interface DcsjhyMapper {
 	public void saveMan( Dcsjhy dcsjhy);
 
 	//保存多参数监护仪检测表(幼儿)
-	@Insert("insert into dcsjhy_c (dcid, jcyq_id, eq_id,tester, auditor, test_time,sh_jcjl, jcjl, jcsm, xl_test1,                         "
+	@Insert("insert into dcsjhy_c (dcid, jcyq_id, eq_id,tester, auditor, shsj_time,test_time,sh_jcjl, jcjl, jcsm, xl_test1,                         "
 			+"xl_test2, xl_test3, xl_test4, xl_test5, xl_value1, xl_value2,  xl_value3, xl_value4, xl_value5,                         "
 			+"xl_wc, xl_result, hxl_test1,  hxl_test2, hxl_test3, hxl_test4, hxl_test5, hxl_value1, hxl_value2,                       "
 			+"hxl_value3, hxl_value4, hxl_value5, hxl_wc, hxl_result, xybhd_test1,xybhd_test2, xybhd_test3, xybhd_test4,              "
@@ -251,7 +251,7 @@ public interface DcsjhyMapper {
 			+"wcxy_m_value35, wcxy_l_value35, wcxy_wc, wcxy_result, wcxyjt_sd, wcxyjt_mnq, wcxyjt_jhy, wcxyjt_wc, wcxyjt_result,      "
 			+"wcxyqm_sd, wcxyqm_xll, wcxyqm_wc,  wcxyqm_result, sgbj_result, bjxjc_result, jyjc_result, state, spare2,  spare3)      "
 			+"values (#{dcid,jdbcType=INTEGER}, #{jcyqId,jdbcType=INTEGER}, #{eqId,jdbcType=INTEGER},                                 "
-			+"#{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{testTime,jdbcType=TIMESTAMP},                                "
+			+"#{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{shsjTime},#{testTime,jdbcType=TIMESTAMP},                                "
 			+"#{shrJcjl,jdbcType=VARCHAR},#{jcjl,jdbcType=VARCHAR}, #{jcsm,jdbcType=VARCHAR}, #{xlTest1,jdbcType=INTEGER},                                        "
 			+"#{xlTest2,jdbcType=INTEGER}, #{xlTest3,jdbcType=INTEGER}, #{xlTest4,jdbcType=INTEGER},                                  "
 			+"#{xlTest5,jdbcType=INTEGER}, #{xlValue1,jdbcType=INTEGER}, #{xlValue2,jdbcType=INTEGER},                                "
@@ -298,13 +298,12 @@ public interface DcsjhyMapper {
 	@Select("select * from dcsjhy_m order by dcid desc limit 1")
 	Dcsjhy findDcsjhyMan();
 	@Select("select d.* from dcsjhy_m d where eq_id=#{eqId} and jcyq_id=#{jcyqId}")
-	Dcsjhy findByEqIdandJcyqIdMan(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
+	List<Dcsjhy> findByEqIdandJcyqIdMan(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
 	//查询多参数监护仪检测单条数据（幼儿）
 	@Select("select * from dcsjhy_c order by dcid desc limit 1")
 	Dcsjhy findDcsjhyChild();
-
 	@Select("select d.* from dcsjhy_c d where eq_id=#{eqId} and jcyq_id=#{jcyqId} and state=#{state}")
-	Dcsjhy findByEqIdandJcyqIdCh(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
+	List<Dcsjhy>  findByEqIdandJcyqIdCh(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
 	//查询多参数监护仪检测单条数据（成人）
 	@Select("select * from dcsjhy_m")
 	List<Dcsjhy> findDcsjhyMans();

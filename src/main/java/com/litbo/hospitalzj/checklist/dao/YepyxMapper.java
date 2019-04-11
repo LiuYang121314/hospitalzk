@@ -7,6 +7,7 @@ import com.litbo.hospitalzj.checklist.domain.YepyxTemplate;
 import com.litbo.hospitalzj.checklist.vo.DqjcUser;
 import org.apache.ibatis.annotations.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Mapper
@@ -42,7 +43,7 @@ public interface YepyxMapper {
 
     //保存婴儿培养箱检测数据
     @Insert(" insert into yepyx (pyx_id, jcyq_id, eq_id, \n" +
-            "      tester, auditor, shr_jcjl, \n" +
+            "      tester, auditor,shsj_time,shr_jcjl, \n" +
             "      test_time, jcjl, jcsm, \n" +
             "      tx_wd1, tx_wd2, tx_wd3, tx_wd4, \n" +
             "      tx_wd5, tx_wd6, tx_wd7, tx_wd8, \n" +
@@ -69,8 +70,8 @@ public interface YepyxMapper {
             "      sd_result, ddbj_result, cwbj_result, \n" +
             "      fjbj_result)\n" +
             "    values (#{pyxId,jdbcType=INTEGER}, #{jcyqId,jdbcType=INTEGER}, #{eqId,jdbcType=INTEGER}, \n" +
-            "      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{shrJcjl,jdbcType=VARCHAR}, \n" +
-            "      #{testTime,jdbcType=TIMESTAMP}, #{jcjl,jdbcType=VARCHAR}, #{jcsm,jdbcType=VARCHAR}, \n" +
+            "      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR},#{shsjTime},#{shrJcjl,jdbcType=VARCHAR}, \n" +
+            "      #{testTime,jdbcType=TIMESTAMP},#{jcjl,jdbcType=VARCHAR}, #{jcsm,jdbcType=VARCHAR}, \n" +
             "      #{txWd1,jdbcType=DOUBLE}, #{txWd2,jdbcType=DOUBLE}, #{txWd3,jdbcType=DOUBLE}, #{txWd4,jdbcType=DOUBLE}, \n" +
             "      #{txWd5,jdbcType=DOUBLE}, #{txWd6,jdbcType=DOUBLE}, #{txWd7,jdbcType=DOUBLE}, #{txWd8,jdbcType=DOUBLE}, \n" +
             "      #{txWd9,jdbcType=DOUBLE}, #{txWd10,jdbcType=DOUBLE}, #{txWd11,jdbcType=DOUBLE}, \n" +
@@ -99,7 +100,7 @@ public interface YepyxMapper {
     public void save(Yepyx yepyx);
 
     //根据电气检测设备id查询设备检测表
-    @Select("select pyx_id, jcyq_id, eq_id, tester, auditor, shr_jcjl, test_time, jcjl, jcsm, tx_wd1, \n" +
+    @Select("select pyx_id, jcyq_id, eq_id, tester, auditor, shr_jcjl, test_time,shsj_time, jcjl, jcsm, tx_wd1, \n" +
             "    tx_wd2, tx_wd3, tx_wd4, tx_wd5, tx_wd6, tx_wd7, tx_wd8, tx_wd9, tx_wd10, tx_wd11, \n" +
             "    tx_wd12, tx_wd13, tx_wd14, tx_wd15, t5s_wd1, t5s_wd2, t5s_wd3, t5s_wd4, t5s_wd5, \n" +
             "    t5s_wd6, t5s_wd7, t5s_wd8, t5s_wd9, t5s_wd10, t5s_wd11, t5s_wd12, t5s_wd13, t5s_wd14, \n" +
@@ -123,12 +124,12 @@ public interface YepyxMapper {
     List<Yepyx> findByEqIdandJcyqId(@Param("eqId")String eqId, @Param("jcyqId")String jcyqId);
 
     //根据设备Id,检测仪器Id以及状态查询电器表
-    @Select("select d.*,s.user_name,u.date from " +
+    /*@Select("select d.*,s.user_name,u.date from " +
             "dqjc d left join user_eq u on u.jc_eqid=d.eq_id " +
             "left join s_user s on u.user_id=s.user_id where " +
             "d.eq_id=#{eqId} and d.jcyq_id=#{jcyqId} and d.state=#{state}")
     DqjcUser findShrAndShrjcjl(@Param("eqId")String eqId, @Param("jcyqId")String jcyqId, @Param("state")Integer state);
-
+*/
     //查询所有检测表数据信息
     @Select("select * from Yepyx")
     List<Yepyx> findAll();
@@ -150,6 +151,6 @@ public interface YepyxMapper {
     @Update("update yepyx set state=#{state} where pyx_id=#{pyxId}")
     void updateState(@Param("pyxId")Integer pyxId,@Param("state")Integer state);
     //修改审核人意见
-    @Update("update yepyx set shr_jcjl=#{shrJcjl},auditor=#{auditor} where pyx_id=#{pyxId}")
-    void updateShrJcjy(@Param("pyxId")Integer pyxId,@Param("shrJcjl")String shrJcjl,@Param("auditor")String auditor);
+    @Update("update yepyx set shr_jcjl=#{shrJcjl},auditor=#{auditor},shsj_time=#{shsjTime}  where pyx_id=#{pyxId}")
+    void updateShrJcjy(@Param("pyxId")Integer pyxId,@Param("shrJcjl")String shrJcjl,@Param("auditor")String auditor,@Param("shsjTime") Date shsjTime);
 }

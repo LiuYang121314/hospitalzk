@@ -165,10 +165,9 @@
     // 获取上个页面传递的类型
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
-    var thiseqId = parseInt(sessionStorage['thiseqId']);
     $(function(){
         $.ajax({
-            url:"/jhy/findMa?eqId="+thiseqId+"&jcyqId="+ids,
+            url:"/jhy/findByDcidM?dcid="+ids,
             method:"GET",
             dataType:"JSON",
             success:function(res){
@@ -283,7 +282,7 @@
             elem:"#testerInfo",
             cellMinWidth:100,
             toolbar: '#toolbarDemo',
-            url:"/jhy/findMa?eqId="+thiseqId+"&jcyqId="+ids,
+            url:"/jhy/findByDcidM?dcid="+ids,
             method:"GET",
             response: {
                 statusName: 'status'

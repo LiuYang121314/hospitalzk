@@ -95,10 +95,10 @@ public class DcsjhyService {
 	}
 
 
-    public Dcsjhy findByEqIdandJcyqIdCh(String string, String jcyqId){
+    public List<Dcsjhy>  findByEqIdandJcyqIdCh(String string, String jcyqId){
 		return dcsjhyMapper.findByEqIdandJcyqIdCh(string,jcyqId);
 	}
-    public Dcsjhy findByEqIdandJcyqIdMan(String eqId, String jcyqId){
+    public List<Dcsjhy>  findByEqIdandJcyqIdMan(String eqId, String jcyqId){
 		return dcsjhyMapper.findByEqIdandJcyqIdMan(eqId,jcyqId);
 	}
 

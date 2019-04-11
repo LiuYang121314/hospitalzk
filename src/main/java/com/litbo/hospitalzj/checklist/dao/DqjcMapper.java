@@ -5,6 +5,7 @@ import com.litbo.hospitalzj.checklist.domain.DqjcTemplate;
 import com.litbo.hospitalzj.checklist.vo.DqjcUser;
 import org.apache.ibatis.annotations.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -131,16 +132,13 @@ public interface DqjcMapper {
 	@Select("select dqjc.* from dqjc where dqjc.eq_id=#{eqId} and dqjc.jcyq_id=#{jcyqId}" )
 	List<Dqjc> findByEqIdandJcyqId(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
 
-	//根据设备Id,检测仪器Id以及状态查询电器表
+	/*//根据设备Id,检测仪器Id以及状态查询电器表
 	@Select("select d.*,s.user_name,u.date from " +
 			"dqjc d left join user_eq u on u.jc_eqid=d.eq_id " +
 			"left join s_user s on u.user_id=s.user_id where " +
 			"d.eq_id=#{eqId} and d.jcyq_id=#{jcyqId} and d.state=#{state}")
-	DqjcUser findShrAndShrjcjl(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId,@Param("state")Integer state);
+	DqjcUser findShrAndShrjcjl(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId,@Param("state")Integer state);*/
 
-
-	@Select("select * from dqjc where dqjcid=#{dqjcid}")
-	Dqjc findShrShrjcjl(@Param("dqjcid")Integer dqjcid);
 	//查询所有检测表数据信息
 	@Select("select * from dqjc")
 	List<Dqjc> findAll();
@@ -162,7 +160,7 @@ public interface DqjcMapper {
 	@Update("update dqjc set state=#{state} where dqjcid=#{dqjcid}")
 	void updateState(@Param("dqjcid")Integer dqjcid,@Param("state")Integer state);
 	//修改审核人意见
-	@Update("update dqjc set shr_jcjl=#{shrJcjl},auditor=#{auditor} where dqjcid=#{dqjcid}")
-	void updateShrJcjy(@Param("dqjcid")Integer dqjcid,@Param("shrJcjl")String shrJcjl,@Param("auditor")String auditor);
+	@Update("update dqjc set shr_jcjl=#{shrJcjl},auditor=#{auditor},shsj_time=#{shsjTime} where dqjcid=#{dqjcid}")
+	void updateShrJcjy(@Param("dqjcid")Integer dqjcid, @Param("shrJcjl")String shrJcjl, @Param("auditor")String auditor, @Param("shsjTime")Date shsjTime);
 
 }

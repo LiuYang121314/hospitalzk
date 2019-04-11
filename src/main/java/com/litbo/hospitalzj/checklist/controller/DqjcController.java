@@ -150,14 +150,6 @@ public class DqjcController extends BaseController {
         yqEqService.updateType(yqEqId,EnumProcess2.IS_UPLOAD.getMessage());
         return new ResponseResult<Void>(200);
     }
-    /**
-     * 查找审核人，审核人意见
-     */
-    @RequestMapping("/findShrAndShrjcjl")
-    public ResponseResult<DqjcUser> findShrAndShrjcjl(@RequestParam("eqId")String eqId, @RequestParam("jcyqId")String jcyqId){
-        DqjcUser data=dqjcService.findShrAndShrjcjl(eqId,jcyqId,1);
-        return new ResponseResult<DqjcUser>(200,data);
-    }
 
     //修改审核人建议同时修改状态
     @RequestMapping("/updateShrJcjy")
