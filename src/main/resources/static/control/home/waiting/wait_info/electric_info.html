@@ -162,7 +162,7 @@
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
     // var thiseqId = parseInt(sessionStorage['thiseqId']);
-    var thisjcyqId = parseInt(sessionStorage['thisjcyqId']);
+    var thissjId = parseInt(sessionStorage['thissjId']);
     var thisId = parseInt(sessionStorage['thisId']);
     $(function(){
     	$.ajax({
@@ -309,7 +309,7 @@
         // 上传
         $("#upload").click(function(){
             $.ajax({
-                url:"/dqjc/updateState?yqEqId="+thisjcyqId+"&userEqId="+thisId,
+                url:"/dqjc/updateState?yqEqId="+thissjId+"&userEqId="+thisId,
                 method:"POST",
                 success:function(res){
                     if(res.state === 200){

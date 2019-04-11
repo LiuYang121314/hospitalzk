@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -85,7 +86,6 @@ public class DqjcController extends BaseController {
        //修改状态为待上传
        userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
        dqjcService.save(dqjc);
-       System.out.println(dqjc.getDqjcid());
        int[] x={dqjc.getDqjcid(),yqEqId};
        return new ResponseResult<>(200,x);
     }
@@ -150,14 +150,7 @@ public class DqjcController extends BaseController {
         yqEqService.updateType(yqEqId,EnumProcess2.IS_UPLOAD.getMessage());
         return new ResponseResult<Void>(200);
     }
-    /**
-     * 查找审核人，审核人意见
-     */
-    @RequestMapping("/findShrAndShrjcjl")
-    public ResponseResult<DqjcUser> findShrAndShrjcjl(@RequestParam("eqId")String eqId, @RequestParam("jcyqId")String jcyqId){
-        DqjcUser data=dqjcService.findShrAndShrjcjl(eqId,jcyqId,1);
-        return new ResponseResult<DqjcUser>(200,data);
-    }
+
     //修改审核人建议同时修改状态
     @RequestMapping("/updateShrJcjy")
     public ResponseResult<Void> updateShrJcjy(@RequestParam("dqjcid")Integer dqjcid, @RequestParam("jcyqId")Integer jcyqId,

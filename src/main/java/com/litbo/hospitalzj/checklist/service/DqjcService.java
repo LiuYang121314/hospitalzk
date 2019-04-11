@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -106,13 +107,14 @@ public class DqjcService {
 	 * @param state
 	 * @return
 	 */
-	public DqjcUser findShrAndShrjcjl(String eqId, String jcyqId, Integer state){
+/*	public DqjcUser findShrAndShrjcjl(String eqId, String jcyqId, Integer state){
 		return dqjcMapper.findShrAndShrjcjl(eqId, jcyqId, state);
-	}
+	}*/
+
 	/**
 	 * 修改审核人意见
 	 */
 	public void updateShrJcjy(@Param("dqjcid")Integer dqjcid,@Param("shrJcjl")String shrJcjl,@Param("auditor")String auditor){
-		dqjcMapper.updateShrJcjy(dqjcid,shrJcjl,auditor);
+		dqjcMapper.updateShrJcjy(dqjcid,shrJcjl,auditor,new Date());
 	}
 }

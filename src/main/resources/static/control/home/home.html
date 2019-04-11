@@ -350,7 +350,7 @@
                 location.href="/control/home/nopass/nopass_info.html?id="+obj.data.eqId;
             }else if(obj.event === "againup"){
                 $.ajax({
-                    url:"/userEq/setEqTypeNotIs?jceqId="+obj.data.eqId,
+                    url:"/userEq/setUserEqStateDsh?jceqId="+obj.data.eqId,
                     method:"POST",
                     success:function(res){
                         if(res.state === 200){

@@ -177,14 +177,14 @@ public class JhyController extends BaseController {
 		return new ResponseResult<List<Dcsjhy>>(200, dcsjhyService.findDcsjhyChilds());
 	}
 	@RequestMapping("/findch")
-	public ResponseResult<Dcsjhy> findch(@RequestParam("eqId")String eqId,@RequestParam("jcyqId")String jcyqId){
-		Dcsjhy data=dcsjhyService.findByEqIdandJcyqIdCh(eqId, jcyqId);
-		return new ResponseResult<Dcsjhy>(200, data);
+	public ResponseResult<List<Dcsjhy> > findch(@RequestParam("eqId")String eqId,@RequestParam("jcyqId")String jcyqId){
+		List<Dcsjhy>  data=dcsjhyService.findByEqIdandJcyqIdCh(eqId, jcyqId);
+		return new ResponseResult<List<Dcsjhy> >(200, data);
 	}
 	@RequestMapping("/findMa")
-	public ResponseResult<Dcsjhy> findMa(@RequestParam("eqId")String eqId,@RequestParam("jcyqId")String jcyqId){
-		Dcsjhy data=dcsjhyService.findByEqIdandJcyqIdMan(eqId, jcyqId);
-		return new ResponseResult<Dcsjhy>(200, data);
+	public ResponseResult<List<Dcsjhy> > findMa(@RequestParam("eqId")String eqId,@RequestParam("jcyqId")String jcyqId){
+		List<Dcsjhy>  data=dcsjhyService.findByEqIdandJcyqIdMan(eqId, jcyqId);
+		return new ResponseResult<List<Dcsjhy> >(200, data);
 	}
 	//修改状态
 	@RequestMapping("/updateStateM")
@@ -220,19 +220,7 @@ public class JhyController extends BaseController {
 		Dcsjhy data=dcsjhyService.findByDcidC(dcid,0);
 		return new ResponseResult<Dcsjhy>(200,data);
 	}
-	/**
-	 * 查找审核人，审核人意见(成人)
-	 */
-	@RequestMapping("/findShrAndShrjcjlM")
-	public ResponseResult<JhyUser> findShrAndShrjcjlM(@RequestParam("eqId")String eqId, @RequestParam("jcyqId")String jcyqId){
-		JhyUser data=dcsjhyService.findShrAndShrjcjlM(eqId,jcyqId,0);
-		return new ResponseResult<JhyUser>(200,data);
-	}
-	@RequestMapping("/findShrAndShrjcjlC")
-	public ResponseResult<JhyUser> findShrAndShrjcjlC(@RequestParam("eqId")String eqId, @RequestParam("jcyqId")String jcyqId){
-		JhyUser data=dcsjhyService.findShrAndShrjcjlC(eqId,jcyqId,0);
-		return new ResponseResult<JhyUser>(200,data);
-	}
+
 	//修改审核人建议同时修改状态
 	@RequestMapping("/updateShrJcjyM")
 	public ResponseResult<Void> updateShrJcjyM(@RequestParam("dcid")Integer dcid,  @RequestParam("jcyqId")Integer jcyqId,

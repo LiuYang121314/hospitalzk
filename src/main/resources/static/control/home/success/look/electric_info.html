@@ -150,7 +150,7 @@
     // 根据数据此条数据ID显示
     $(function(){
     	$.ajax({
-            url:""+ids,
+            url:"/dqjc/findByDqjcid?dqjcid="+ids,
             method:"GET",
             dataType:"JSON",
             success:function(res){
@@ -254,7 +254,7 @@
                 }
             }
         })
-    })
+    });
     //Demo
     layui.use(['table','layer','jquery','form'],function(){
         var table = layui.table
@@ -266,7 +266,7 @@
             elem:"#testerInfo",
             cellMinWidth:100,
             toolbar: '#toolbarDemo',
-            url:"/dqjc/findByEqIdandJcyqId?eqId="+thiseqId+"&jcyqId="+ids,
+            url:"/dqjc/findByDqjcid?dqjcid="+ids,
             method:"GET",
             response: {
                 statusName: 'status'

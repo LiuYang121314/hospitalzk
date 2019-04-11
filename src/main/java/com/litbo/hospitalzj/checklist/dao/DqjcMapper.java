@@ -5,6 +5,7 @@ import com.litbo.hospitalzj.checklist.domain.DqjcTemplate;
 import com.litbo.hospitalzj.checklist.vo.DqjcUser;
 import org.apache.ibatis.annotations.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -55,7 +56,7 @@ public interface DqjcMapper {
 
 	//保存电气检测数据
 	@Insert("insert into dqjc (dqjcid, jcyq_id, eq_id, \n" +
-			"      tester, auditor, test_time, \n" +
+			"      tester, auditor,shsj_time, test_time, \n" +
 			"      shr_jcjl,jcjl, jcsm, dydy, dydy_value, \n" +
 			"      dydy_result, jdzk, jdzk_value, \n" +
 			"      jdzk_result, jyzk, jyzk_value, \n" +
@@ -79,7 +80,7 @@ public interface DqjcMapper {
 			"      spare2, spare3, spare4, \n" +
 			"      spare5)\n" +
 			"    values (#{dqjcid,jdbcType=INTEGER}, #{jcyqId,jdbcType=INTEGER}, #{eqId,jdbcType=INTEGER}, \n" +
-			"      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{testTime,jdbcType=TIMESTAMP}, \n" +
+			"      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR},#{shsjTime}, #{testTime,jdbcType=TIMESTAMP}, \n" +
 			"      #{shrJcjl,jdbcType=VARCHAR},#{jcjl,jdbcType=VARCHAR}, #{jcsm,jdbcType=VARCHAR}, #{dydy,jdbcType=DOUBLE}, #{dydyValue,jdbcType=DOUBLE}, \n" +
 			"      #{dydyResult,jdbcType=TINYINT}, #{jdzk,jdbcType=DOUBLE}, #{jdzkValue,jdbcType=DOUBLE}, \n" +
 			"      #{jdzkResult,jdbcType=TINYINT}, #{jyzk,jdbcType=DOUBLE}, #{jyzkValue,jdbcType=DOUBLE}, \n" +
@@ -106,7 +107,7 @@ public interface DqjcMapper {
 	public void save(Dqjc dqjc);
 
 	//根据电气检测设备id查询设备检测表
-	@Select("select dqjcid, jcyq_id, eq_id, tester, auditor, test_time, jcjl, jcsm, dydy, dydy_value, "
+	@Select("select dqjcid, jcyq_id, eq_id, tester, auditor,shsj_time,test_time, jcjl, jcsm, dydy, dydy_value, "
 			+"dydy_result, jdzk, jdzk_value, jdzk_result, jyzk, jyzk_value, jyzk_result, ddldl_zc,            "
 			+"ddldl_zc_zx_value, ddldl_zc_fx_value, ddldl_zc_result, ddldl_dy, ddldl_dy_zxdl_value,           "
 			+"ddldl_dy_fxdl_value, ddldl_dy_result, wkldl_zc, wkldl_zc_zx_value, wkldl_zc_fx_value,           "
@@ -131,18 +132,13 @@ public interface DqjcMapper {
 	@Select("select dqjc.* from dqjc where dqjc.eq_id=#{eqId} and dqjc.jcyq_id=#{jcyqId}" )
 	List<Dqjc> findByEqIdandJcyqId(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
 
-	//根据设备Id,检测仪器Id以及状态查询电器表
+	/*//根据设备Id,检测仪器Id以及状态查询电器表
 	@Select("select d.*,s.user_name,u.date from " +
 			"dqjc d left join user_eq u on u.jc_eqid=d.eq_id " +
 			"left join s_user s on u.user_id=s.user_id where " +
 			"d.eq_id=#{eqId} and d.jcyq_id=#{jcyqId} and d.state=#{state}")
-	DqjcUser findShrAndShrjcjl(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId,@Param("state")Integer state);
+	DqjcUser findShrAndShrjcjl(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId,@Param("state")Integer state);*/
 
-	@Select("select d.*,s.user_name,u.date from " +
-			"dqjc d left join user_eq u on u.jc_eqid=d.eq_id " +
-			"left join s_user s on u.user_id=s.user_id where " +
-			"d.eq_id=#{eqId} and d.jcyq_id=#{jcyqId} and d.state=#{state}")
-	Dqjc findShrShrjcjl(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId,@Param("state")Integer state);
 	//查询所有检测表数据信息
 	@Select("select * from dqjc")
 	List<Dqjc> findAll();
@@ -164,7 +160,7 @@ public interface DqjcMapper {
 	@Update("update dqjc set state=#{state} where dqjcid=#{dqjcid}")
 	void updateState(@Param("dqjcid")Integer dqjcid,@Param("state")Integer state);
 	//修改审核人意见
-	@Update("update dqjc set shr_jcjl=#{shrJcjl},auditor=#{auditor} where dqjcid=#{dqjcid}")
-	void updateShrJcjy(@Param("dqjcid")Integer dqjcid,@Param("shrJcjl")String shrJcjl,@Param("auditor")String auditor);
+	@Update("update dqjc set shr_jcjl=#{shrJcjl},auditor=#{auditor},shsj_time=#{shsjTime} where dqjcid=#{dqjcid}")
+	void updateShrJcjy(@Param("dqjcid")Integer dqjcid, @Param("shrJcjl")String shrJcjl, @Param("auditor")String auditor, @Param("shsjTime")Date shsjTime);
 
 }

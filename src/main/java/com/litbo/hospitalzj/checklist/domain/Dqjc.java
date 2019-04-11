@@ -12,7 +12,7 @@ public class Dqjc {
     private String tester;
 
     private String auditor;
-
+    private Date shsjTime;
     private Date testTime;
 
     private String jcjl;
@@ -140,6 +140,14 @@ public class Dqjc {
     private Byte spare5;
 
     private String shrJcjl;
+
+    public Date getShsjTime() {
+        return shsjTime;
+    }
+
+    public void setShsjTime(Date shsjTime) {
+        this.shsjTime = shsjTime;
+    }
 
     public String getShrJcjl() {
         return shrJcjl;

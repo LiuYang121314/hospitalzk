@@ -12,7 +12,7 @@ public class Dcsjhy {
     private String tester;
 
     private String auditor;
-
+    private Date shsjTime;
     private Date testTime;
 
     private String shrJcjl;
@@ -248,6 +248,14 @@ public class Dcsjhy {
     private Byte bjxjcResult;
 
     private Byte jyjcResult;
+
+    public Date getShsjTime() {
+        return shsjTime;
+    }
+
+    public void setShsjTime(Date shsjTime) {
+        this.shsjTime = shsjTime;
+    }
 
     public Integer getState() {
         return state;

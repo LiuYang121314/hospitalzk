@@ -47,7 +47,7 @@
     </div>
 </div>
 <script type="text/html" id="testHandles">
-    <a class="layui-btn layui-btn-xs" lay-event="hands">查看数据</a>
+    <a class="layui-btn layui-btn-xs" lay-event="hands">检测历史</a>
 </script>
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
@@ -57,7 +57,7 @@
     // 获取上个页面传递的类型
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
-    sessionStorage["thiseqId"] = ids;
+    sessionStorage['thiseqId']=ids;
     layui.use(['form','layer','jquery','table','element'], function(){
         var form = layui.form
             ,   layer = layui.layer
@@ -80,7 +80,6 @@
             },
             parseData:function(res){
                 console.log(res);
-                sessionStorage['thiseqId']=res.data.eqId;
                 return{
                     "status":200
                     ,"msg":res.message
@@ -137,7 +136,11 @@
             var data = obj.data;
             //console.log(obj)
             if(obj.event === "hands"){
-                location.href="/control/home/success/look/his_info.html?id="+obj.data.jcyqId;
+                if(obj.data.jcyqName == "电气安全分析仪"){
+                    location.href="/control/home/success/look/electric_his_info.html?id="+obj.data.jcyqId;
+                }else{
+                    location.href="/control/home/success/look/life_his_info.html?id="+obj.data.jcyqId;
+                }
             }
         });
     });
