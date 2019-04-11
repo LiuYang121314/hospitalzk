@@ -55,7 +55,7 @@ public interface DqjcMapper {
 
 	//保存电气检测数据
 	@Insert("insert into dqjc (dqjcid, jcyq_id, eq_id, \n" +
-			"      tester, auditor, test_time, \n" +
+			"      tester, auditor,shsj_time, test_time, \n" +
 			"      shr_jcjl,jcjl, jcsm, dydy, dydy_value, \n" +
 			"      dydy_result, jdzk, jdzk_value, \n" +
 			"      jdzk_result, jyzk, jyzk_value, \n" +
@@ -79,7 +79,7 @@ public interface DqjcMapper {
 			"      spare2, spare3, spare4, \n" +
 			"      spare5)\n" +
 			"    values (#{dqjcid,jdbcType=INTEGER}, #{jcyqId,jdbcType=INTEGER}, #{eqId,jdbcType=INTEGER}, \n" +
-			"      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{testTime,jdbcType=TIMESTAMP}, \n" +
+			"      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR},#{shsjTime}, #{testTime,jdbcType=TIMESTAMP}, \n" +
 			"      #{shrJcjl,jdbcType=VARCHAR},#{jcjl,jdbcType=VARCHAR}, #{jcsm,jdbcType=VARCHAR}, #{dydy,jdbcType=DOUBLE}, #{dydyValue,jdbcType=DOUBLE}, \n" +
 			"      #{dydyResult,jdbcType=TINYINT}, #{jdzk,jdbcType=DOUBLE}, #{jdzkValue,jdbcType=DOUBLE}, \n" +
 			"      #{jdzkResult,jdbcType=TINYINT}, #{jyzk,jdbcType=DOUBLE}, #{jyzkValue,jdbcType=DOUBLE}, \n" +
@@ -106,7 +106,7 @@ public interface DqjcMapper {
 	public void save(Dqjc dqjc);
 
 	//根据电气检测设备id查询设备检测表
-	@Select("select dqjcid, jcyq_id, eq_id, tester, auditor, test_time, jcjl, jcsm, dydy, dydy_value, "
+	@Select("select dqjcid, jcyq_id, eq_id, tester, auditor,shsj_time,test_time, jcjl, jcsm, dydy, dydy_value, "
 			+"dydy_result, jdzk, jdzk_value, jdzk_result, jyzk, jyzk_value, jyzk_result, ddldl_zc,            "
 			+"ddldl_zc_zx_value, ddldl_zc_fx_value, ddldl_zc_result, ddldl_dy, ddldl_dy_zxdl_value,           "
 			+"ddldl_dy_fxdl_value, ddldl_dy_result, wkldl_zc, wkldl_zc_zx_value, wkldl_zc_fx_value,           "
