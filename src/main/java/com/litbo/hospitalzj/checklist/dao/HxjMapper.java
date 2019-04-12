@@ -16,7 +16,7 @@ public interface HxjMapper {
     HxjTemplate findTemplate();
 
     //修改模板值
-    @Update("   update hxj_template\n" +
+    @Update("update hxj_template\n" +
             "    set cqz_test1 = #{cqzTest1,jdbcType=INTEGER},\n" +
             "      cqz_test2 = #{cqzTest2,jdbcType=INTEGER},\n" +
             "      cqz_test3 = #{cqzTest3,jdbcType=INTEGER},\n" +
@@ -42,82 +42,185 @@ public interface HxjMapper {
             "    where hxj_templateid = #{hxjTemplateid,jdbcType=INTEGER}")
     int updateHxjTemplate(HxjTemplate hxjTemplate);
     //插入模板值
-    @Insert("  insert into hxj_template (hxj_templateid, cqz_test1, cqz_test2, \n" +
-            "      cqz_test3, cqz_wc, qztq_test1, \n" +
-            "      qztq_test2, qztq_test3, qztq_wc, \n" +
-            "      xrynd_test1, xrynd_test2, xrynd_test3, \n" +
-            "      xrynd_wc, xqylsp_test1, xqylsp_test2, \n" +
-            "      xqylsp_test3, xqylsp_wc, hqmzy_test1, \n" +
-            "      hqmzy_test2, hqmzy_test3, hqmzy_wc, \n" +
-            "      spare1, spare2)\n" +
-            "    values (#{hxjTemplateid,jdbcType=INTEGER}, #{cqzTest1,jdbcType=INTEGER}, #{cqzTest2,jdbcType=INTEGER}, \n" +
-            "      #{cqzTest3,jdbcType=INTEGER}, #{cqzWc,jdbcType=INTEGER}, #{qztqTest1,jdbcType=INTEGER}, \n" +
-            "      #{qztqTest2,jdbcType=INTEGER}, #{qztqTest3,jdbcType=INTEGER}, #{qztqWc,jdbcType=INTEGER}, \n" +
-            "      #{xryndTest1,jdbcType=INTEGER}, #{xryndTest2,jdbcType=INTEGER}, #{xryndTest3,jdbcType=INTEGER}, \n" +
-            "      #{xryndWc,jdbcType=INTEGER}, #{xqylspTest1,jdbcType=INTEGER}, #{xqylspTest2,jdbcType=INTEGER}, \n" +
-            "      #{xqylspTest3,jdbcType=INTEGER}, #{xqylspWc,jdbcType=INTEGER}, #{hqmzyTest1,jdbcType=INTEGER}, \n" +
-            "      #{hqmzyTest2,jdbcType=INTEGER}, #{hqmzyTest3,jdbcType=INTEGER}, #{hqmzyWc,jdbcType=INTEGER}, \n" +
-            "      #{spare1,jdbcType=TINYINT}, #{spare2,jdbcType=TINYINT})")
+    @Insert("  update hxj_template\n" +
+            "    set bhjdzk_yx = #{bhjdzkYx,jdbcType=INTEGER},\n" +
+            "      jykz_yx = #{jykzYx,jdbcType=INTEGER},\n" +
+            "      ddld_z_yx = #{ddldZYx,jdbcType=INTEGER},\n" +
+            "      ddld_d_yx = #{ddldDYx,jdbcType=INTEGER},\n" +
+            "      wkld_z_yx = #{wkldZYx,jdbcType=INTEGER},\n" +
+            "      wkld_d_yx = #{wkldDYx,jdbcType=INTEGER},\n" +
+            "      cqz1 = #{cqz1,jdbcType=INTEGER},\n" +
+            "      cqz2 = #{cqz2,jdbcType=INTEGER},\n" +
+            "      cqz3 = #{cqz3,jdbcType=INTEGER},\n" +
+            "      cqz_zdwc = #{cqzZdwc,jdbcType=INTEGER},\n" +
+            "      qztq1 = #{qztq1,jdbcType=INTEGER},\n" +
+            "      qztq2 = #{qztq2,jdbcType=INTEGER},\n" +
+            "      qztq3 = #{qztq3,jdbcType=INTEGER},\n" +
+            "      qztq_zdwc = #{qztqZdwc,jdbcType=INTEGER},\n" +
+            "      xry1 = #{xry1,jdbcType=INTEGER},\n" +
+            "      xry2 = #{xry2,jdbcType=INTEGER},\n" +
+            "      xry3 = #{xry3,jdbcType=INTEGER},\n" +
+            "      xry_zdwc = #{xryZdwc,jdbcType=INTEGER},\n" +
+            "      xqf1 = #{xqf1,jdbcType=INTEGER},\n" +
+            "      xqf2 = #{xqf2,jdbcType=INTEGER},\n" +
+            "      xqf3 = #{xqf3,jdbcType=INTEGER},\n" +
+            "      xqf_zdwc = #{xqfZdwc,jdbcType=INTEGER},\n" +
+            "      hqm1 = #{hqm1,jdbcType=INTEGER},\n" +
+            "      hqm2 = #{hqm2,jdbcType=INTEGER},\n" +
+            "      hqm3 = #{hqm3,jdbcType=INTEGER},\n" +
+            "      hqm_zdwc = #{hqmZdwc,jdbcType=INTEGER},\n" +
+            "      dybj = #{dybj,jdbcType=INTEGER},\n" +
+            "      yqndsx = #{yqndsx,jdbcType=INTEGER},\n" +
+            "      qybj = #{qybj,jdbcType=INTEGER},\n" +
+            "      zxbj = #{zxbj,jdbcType=INTEGER},\n" +
+            "      qdyl = #{qdyl,jdbcType=INTEGER},\n" +
+            "      brhl = #{brhl,jdbcType=INTEGER},\n" +
+            "      fztql = #{fztql,jdbcType=INTEGER},\n" +
+            "      ajgn = #{ajgn,jdbcType=INTEGER},\n" +
+            "      bz = #{bz,jdbcType=INTEGER},\n" +
+            "      bz1 = #{bz1,jdbcType=INTEGER}")
     int insertHxjTemplate(HxjTemplate hxjTemplate);
 
     //保存
     @Insert("insert into hxj (hxjid, jcyq_id, eq_id, \n" +
-            "      tester, auditor, test_time, \n" +
-            "      jcjl, jcsm, cqz_test1, \n" +
-            "      cqz_test2, cqz_test3, cqz_sz_value1, \n" +
-            "      cqz_sz_value2, cqz_sz_value3, cqz_sc_value1, \n" +
-            "      cqz_sc_value2, cqz_sc_value3, cqz_wc, \n" +
-            "      cqz_sz_result, cqz_sc_result, qztq_test1, \n" +
-            "      qztq_test2, qztq_test3, qztq_sz_value1, \n" +
-            "      qztq_sz_value2, qztq_sz_value3, qztq_sc_value1, \n" +
-            "      qztq_sc_value2, qztq_sc_value3, qztq_wc, \n" +
-            "      qztq_sz_result, qztq_sc_result, xrynd_test1, \n" +
-            "      xrynd_test2, xrynd_test3, xrynd_sz_value1, \n" +
-            "      xrynd_sz_value2, xrynd_sz_value3, xrynd_sc_value1, \n" +
-            "      xrynd_sc_value2, xrynd_sc_value3, xrynd_wc, \n" +
-            "      xrynd_sz_result, xrynd_sc_result, xqylsp_test1, \n" +
-            "      xqylsp_test2, xqylsp_test3, xqylsp_sz_value1, \n" +
-            "      xqylsp_sz_value2, xqylsp_sz_value3, xqylsp_sc_value1, \n" +
-            "      xqylsp_sc_value2, xqylsp_sc_value3, xqylsp_wc, \n" +
-            "      xqylsp_sz_result, xqylsp_sc_result, hqmzy_test1, \n" +
-            "      hqmzy_test2, hqmzy_test3, hqmzy_sz_value1, \n" +
-            "      hqmzy_sz_value2, hqmzy_sz_value3, hqmzy_sc_value1, \n" +
-            "      hqmzy_sc_value2, hqmzy_sc_value3, hqmzy_wc, \n" +
-            "      hqmzy_sz_result, hqmzy_sc_result, dybj_result, \n" +
-            "      qybj_result, qdylbj_result, fztqlbj_result, \n" +
-            "      yndbj_result, zxbj_result, brhlgybh_result, \n" +
-            "      ajgnjc_result, spare1, spare2, \n" +
-            "      spare3, spare4)\n" +
+            "      tester, auditor, shsj_time, \n" +
+            "      test_time, jcjl, jcsm, \n" +
+            "      bhjdzk_test, bhjdzk_yx, bhjdzk_result, \n" +
+            "      jykz_test, jykz_yx, jykz_result, \n" +
+            "      ddld_z_z, ddld_z_f, ddld_z_yx, \n" +
+            "      ddld_z_result, ddld_d_z1, ddld_d_z2, \n" +
+            "      ddld_d_yx, ddld_d_result, wkld_z_z, \n" +
+            "      wkld_z_f, wkld_z_yx, wkld_z_result, \n" +
+            "      wkld_d_z1, wkld_d_z2, wkld_d_z3, \n" +
+            "      wkld_d_z4, wkld_d_yx, wkld_d_result, \n" +
+            "      cqz1, cqzh11, cqzh12, \n" +
+            "      cqzh13, cqzhp11, cqzc11, \n" +
+            "      cqzc12, cqzc13, cqzcp12, \n" +
+            "      cqz1_swc, cqz2, cqzh21, \n" +
+            "      cqzh22, cqzh23, cqzhp21, \n" +
+            "      cqzc21, cqzc22, cqzc23, \n" +
+            "      cqzcp22, cqz2_swc, cqz3, \n" +
+            "      cqzh31, cqzh32, cqzh33, \n" +
+            "      cqzhp31, cqzc31, cqzc32, \n" +
+            "      cqzc33, cqzcp32, cqz3_swc, \n" +
+            "      cqz_zdwc, cqz_result, qztq1, \n" +
+            "      qztqh11, qztqh12, qztqh13, \n" +
+            "      qztqhp11, qztqc11, qztqc12, \n" +
+            "      qztqc13, qztqcp12, qztq1_swc, \n" +
+            "      qztq2, qztqh21, qztqh22, \n" +
+            "      qztqh23, qztqhp21, qztqc21, \n" +
+            "      qztqc22, qztqc23, qztqcp22, \n" +
+            "      qztq2_swc, qztq3, qztqh31, \n" +
+            "      qztqh32, qztqh33, qztqhp31, \n" +
+            "      qztqc31, qztqc32, qztqc33, \n" +
+            "      qztqcp32, qztq3_swc, qztq_zdwc, \n" +
+            "      qztq_result, xry1, xryh11, \n" +
+            "      xryh12, xryh13, xryhp11, \n" +
+            "      xryc11, xryc12, xryc13, \n" +
+            "      xrycp12, xry1_swc, xry2, \n" +
+            "      xryh21, xryh22, xryh23, \n" +
+            "      xryhp21, xryc21, xryc22, \n" +
+            "      xryc23, xrycp22, xry2_swc, \n" +
+            "      xry3, xryh31, xryh32, \n" +
+            "      xryh33, xryhp31, xryc31, \n" +
+            "      xryc32, xryc33, xrycp32, \n" +
+            "      xry3_swc, xry_zdwc, xry_result, \n" +
+            "      xqf1, xqfh11, xqfh12, \n" +
+            "      xqfh13, xqfhp11, xqfc11, \n" +
+            "      xqfc12, xqfc13, xqfcp12, \n" +
+            "      xqf1_swc, xqf2, xqfh21, \n" +
+            "      xqfh22, xqfh23, xqfhp21, \n" +
+            "      xqfc21, xqfc22, xqfc23, \n" +
+            "      xqfcp22, xqf2_swc, xqf3, \n" +
+            "      xqfh31, xqfh32, xqfh33, \n" +
+            "      xqfhp31, xqfc31, xqfc32, \n" +
+            "      xqfc33, xqfcp32, xqf3_swc, \n" +
+            "      xqf_zdwc, xqf_result, hqm1, \n" +
+            "      hqmh11, hqmh12, hqmh13, \n" +
+            "      hqmhp11, hqmc11, hqmc12, \n" +
+            "      hqmc13, hqmcp12, hqm1_swc, \n" +
+            "      hqm2, hqmh21, hqmh22, \n" +
+            "      hqmh23, hqmhp21, hqmc21, \n" +
+            "      hqmc22, hqmc23, hqmcp22, \n" +
+            "      hqm2_swc, hqm3, hqmh31, \n" +
+            "      hqmh32, hqmh33, hqmhp31, \n" +
+            "      hqmc31, hqmc32, hqmc33, \n" +
+            "      hqmcp32, hqm3_swc, hqm_zdwc, \n" +
+            "      hqm_result, dybj, yqndsx, \n" +
+            "      qybj, zxbj, qdyl, brhl, \n" +
+            "      fztql, ajgn, bz, bz1\n" +
+            "      )\n" +
             "    values (#{hxjid,jdbcType=INTEGER}, #{jcyqId,jdbcType=INTEGER}, #{eqId,jdbcType=INTEGER}, \n" +
-            "      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{testTime,jdbcType=TIMESTAMP}, \n" +
-            "      #{jcjl,jdbcType=VARCHAR}, #{jcsm,jdbcType=VARCHAR}, #{cqzTest1,jdbcType=INTEGER}, \n" +
-            "      #{cqzTest2,jdbcType=INTEGER}, #{cqzTest3,jdbcType=INTEGER}, #{cqzSzValue1,jdbcType=INTEGER}, \n" +
-            "      #{cqzSzValue2,jdbcType=INTEGER}, #{cqzSzValue3,jdbcType=INTEGER}, #{cqzScValue1,jdbcType=INTEGER}, \n" +
-            "      #{cqzScValue2,jdbcType=INTEGER}, #{cqzScValue3,jdbcType=INTEGER}, #{cqzWc,jdbcType=VARCHAR}, \n" +
-            "      #{cqzSzResult,jdbcType=TINYINT}, #{cqzScResult,jdbcType=TINYINT}, #{qztqTest1,jdbcType=INTEGER}, \n" +
-            "      #{qztqTest2,jdbcType=INTEGER}, #{qztqTest3,jdbcType=INTEGER}, #{qztqSzValue1,jdbcType=INTEGER}, \n" +
-            "      #{qztqSzValue2,jdbcType=INTEGER}, #{qztqSzValue3,jdbcType=INTEGER}, #{qztqScValue1,jdbcType=INTEGER}, \n" +
-            "      #{qztqScValue2,jdbcType=INTEGER}, #{qztqScValue3,jdbcType=INTEGER}, #{qztqWc,jdbcType=INTEGER}, \n" +
-            "      #{qztqSzResult,jdbcType=TINYINT}, #{qztqScResult,jdbcType=TINYINT}, #{xryndTest1,jdbcType=INTEGER}, \n" +
-            "      #{xryndTest2,jdbcType=INTEGER}, #{xryndTest3,jdbcType=INTEGER}, #{xryndSzValue1,jdbcType=INTEGER}, \n" +
-            "      #{xryndSzValue2,jdbcType=INTEGER}, #{xryndSzValue3,jdbcType=INTEGER}, #{xryndScValue1,jdbcType=INTEGER}, \n" +
-            "      #{xryndScValue2,jdbcType=INTEGER}, #{xryndScValue3,jdbcType=INTEGER}, #{xryndWc,jdbcType=INTEGER}, \n" +
-            "      #{xryndSzResult,jdbcType=TINYINT}, #{xryndScResult,jdbcType=TINYINT}, #{xqylspTest1,jdbcType=INTEGER}, \n" +
-            "      #{xqylspTest2,jdbcType=INTEGER}, #{xqylspTest3,jdbcType=INTEGER}, #{xqylspSzValue1,jdbcType=INTEGER}, \n" +
-            "      #{xqylspSzValue2,jdbcType=INTEGER}, #{xqylspSzValue3,jdbcType=INTEGER}, #{xqylspScValue1,jdbcType=INTEGER}, \n" +
-            "      #{xqylspScValue2,jdbcType=INTEGER}, #{xqylspScValue3,jdbcType=INTEGER}, #{xqylspWc,jdbcType=INTEGER}, \n" +
-            "      #{xqylspSzResult,jdbcType=TINYINT}, #{xqylspScResult,jdbcType=TINYINT}, #{hqmzyTest1,jdbcType=INTEGER}, \n" +
-            "      #{hqmzyTest2,jdbcType=INTEGER}, #{hqmzyTest3,jdbcType=INTEGER}, #{hqmzySzValue1,jdbcType=INTEGER}, \n" +
-            "      #{hqmzySzValue2,jdbcType=INTEGER}, #{hqmzySzValue3,jdbcType=INTEGER}, #{hqmzyScValue1,jdbcType=INTEGER}, \n" +
-            "      #{hqmzyScValue2,jdbcType=INTEGER}, #{hqmzyScValue3,jdbcType=INTEGER}, #{hqmzyWc,jdbcType=INTEGER}, \n" +
-            "      #{hqmzySzResult,jdbcType=TINYINT}, #{hqmzyScResult,jdbcType=TINYINT}, #{dybjResult,jdbcType=TINYINT}, \n" +
-            "      #{qybjResult,jdbcType=TINYINT}, #{qdylbjResult,jdbcType=TINYINT}, #{fztqlbjResult,jdbcType=TINYINT}, \n" +
-            "      #{yndbjResult,jdbcType=TINYINT}, #{zxbjResult,jdbcType=TINYINT}, #{brhlgybhResult,jdbcType=TINYINT}, \n" +
-            "      #{ajgnjcResult,jdbcType=TINYINT}, #{spare1,jdbcType=TINYINT}, #{spare2,jdbcType=TINYINT}, \n" +
-            "      #{spare3,jdbcType=TINYINT}, #{spare4,jdbcType=TINYINT})")
+            "      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{shsjTime,jdbcType=TIMESTAMP}, \n" +
+            "      #{testTime,jdbcType=TIMESTAMP}, #{jcjl,jdbcType=VARCHAR}, #{jcsm,jdbcType=VARCHAR}, \n" +
+            "      #{bhjdzkTest,jdbcType=INTEGER}, #{bhjdzkYx,jdbcType=INTEGER}, #{bhjdzkResult,jdbcType=INTEGER}, \n" +
+            "      #{jykzTest,jdbcType=INTEGER}, #{jykzYx,jdbcType=INTEGER}, #{jykzResult,jdbcType=INTEGER}, \n" +
+            "      #{ddldZZ,jdbcType=INTEGER}, #{ddldZF,jdbcType=INTEGER}, #{ddldZYx,jdbcType=INTEGER}, \n" +
+            "      #{ddldZResult,jdbcType=INTEGER}, #{ddldDZ1,jdbcType=INTEGER}, #{ddldDZ2,jdbcType=INTEGER}, \n" +
+            "      #{ddldDYx,jdbcType=INTEGER}, #{ddldDResult,jdbcType=INTEGER}, #{wkldZZ,jdbcType=INTEGER}, \n" +
+            "      #{wkldZF,jdbcType=INTEGER}, #{wkldZYx,jdbcType=INTEGER}, #{wkldZResult,jdbcType=INTEGER}, \n" +
+            "      #{wkldDZ1,jdbcType=INTEGER}, #{wkldDZ2,jdbcType=INTEGER}, #{wkldDZ3,jdbcType=INTEGER}, \n" +
+            "      #{wkldDZ4,jdbcType=INTEGER}, #{wkldDYx,jdbcType=INTEGER}, #{wkldDResult,jdbcType=INTEGER}, \n" +
+            "      #{cqz1,jdbcType=INTEGER}, #{cqzh11,jdbcType=INTEGER}, #{cqzh12,jdbcType=INTEGER}, \n" +
+            "      #{cqzh13,jdbcType=INTEGER}, #{cqzhp11,jdbcType=INTEGER}, #{cqzc11,jdbcType=INTEGER}, \n" +
+            "      #{cqzc12,jdbcType=INTEGER}, #{cqzc13,jdbcType=INTEGER}, #{cqzcp12,jdbcType=INTEGER}, \n" +
+            "      #{cqz1Swc,jdbcType=INTEGER}, #{cqz2,jdbcType=INTEGER}, #{cqzh21,jdbcType=INTEGER}, \n" +
+            "      #{cqzh22,jdbcType=INTEGER}, #{cqzh23,jdbcType=INTEGER}, #{cqzhp21,jdbcType=INTEGER}, \n" +
+            "      #{cqzc21,jdbcType=INTEGER}, #{cqzc22,jdbcType=INTEGER}, #{cqzc23,jdbcType=INTEGER}, \n" +
+            "      #{cqzcp22,jdbcType=INTEGER}, #{cqz2Swc,jdbcType=INTEGER}, #{cqz3,jdbcType=INTEGER}, \n" +
+            "      #{cqzh31,jdbcType=INTEGER}, #{cqzh32,jdbcType=INTEGER}, #{cqzh33,jdbcType=INTEGER}, \n" +
+            "      #{cqzhp31,jdbcType=INTEGER}, #{cqzc31,jdbcType=INTEGER}, #{cqzc32,jdbcType=INTEGER}, \n" +
+            "      #{cqzc33,jdbcType=INTEGER}, #{cqzcp32,jdbcType=INTEGER}, #{cqz3Swc,jdbcType=INTEGER}, \n" +
+            "      #{cqzZdwc,jdbcType=INTEGER}, #{cqzResult,jdbcType=INTEGER}, #{qztq1,jdbcType=INTEGER}, \n" +
+            "      #{qztqh11,jdbcType=INTEGER}, #{qztqh12,jdbcType=INTEGER}, #{qztqh13,jdbcType=INTEGER}, \n" +
+            "      #{qztqhp11,jdbcType=INTEGER}, #{qztqc11,jdbcType=INTEGER}, #{qztqc12,jdbcType=INTEGER}, \n" +
+            "      #{qztqc13,jdbcType=INTEGER}, #{qztqcp12,jdbcType=INTEGER}, #{qztq1Swc,jdbcType=INTEGER}, \n" +
+            "      #{qztq2,jdbcType=INTEGER}, #{qztqh21,jdbcType=INTEGER}, #{qztqh22,jdbcType=INTEGER}, \n" +
+            "      #{qztqh23,jdbcType=INTEGER}, #{qztqhp21,jdbcType=INTEGER}, #{qztqc21,jdbcType=INTEGER}, \n" +
+            "      #{qztqc22,jdbcType=INTEGER}, #{qztqc23,jdbcType=INTEGER}, #{qztqcp22,jdbcType=INTEGER}, \n" +
+            "      #{qztq2Swc,jdbcType=INTEGER}, #{qztq3,jdbcType=INTEGER}, #{qztqh31,jdbcType=INTEGER}, \n" +
+            "      #{qztqh32,jdbcType=INTEGER}, #{qztqh33,jdbcType=INTEGER}, #{qztqhp31,jdbcType=INTEGER}, \n" +
+            "      #{qztqc31,jdbcType=INTEGER}, #{qztqc32,jdbcType=INTEGER}, #{qztqc33,jdbcType=INTEGER}, \n" +
+            "      #{qztqcp32,jdbcType=INTEGER}, #{qztq3Swc,jdbcType=INTEGER}, #{qztqZdwc,jdbcType=INTEGER}, \n" +
+            "      #{qztqResult,jdbcType=INTEGER}, #{xry1,jdbcType=INTEGER}, #{xryh11,jdbcType=INTEGER}, \n" +
+            "      #{xryh12,jdbcType=INTEGER}, #{xryh13,jdbcType=INTEGER}, #{xryhp11,jdbcType=INTEGER}, \n" +
+            "      #{xryc11,jdbcType=INTEGER}, #{xryc12,jdbcType=INTEGER}, #{xryc13,jdbcType=INTEGER}, \n" +
+            "      #{xrycp12,jdbcType=INTEGER}, #{xry1Swc,jdbcType=INTEGER}, #{xry2,jdbcType=INTEGER}, \n" +
+            "      #{xryh21,jdbcType=INTEGER}, #{xryh22,jdbcType=INTEGER}, #{xryh23,jdbcType=INTEGER}, \n" +
+            "      #{xryhp21,jdbcType=INTEGER}, #{xryc21,jdbcType=INTEGER}, #{xryc22,jdbcType=INTEGER}, \n" +
+            "      #{xryc23,jdbcType=INTEGER}, #{xrycp22,jdbcType=INTEGER}, #{xry2Swc,jdbcType=INTEGER}, \n" +
+            "      #{xry3,jdbcType=INTEGER}, #{xryh31,jdbcType=INTEGER}, #{xryh32,jdbcType=INTEGER}, \n" +
+            "      #{xryh33,jdbcType=INTEGER}, #{xryhp31,jdbcType=INTEGER}, #{xryc31,jdbcType=INTEGER}, \n" +
+            "      #{xryc32,jdbcType=INTEGER}, #{xryc33,jdbcType=INTEGER}, #{xrycp32,jdbcType=INTEGER}, \n" +
+            "      #{xry3Swc,jdbcType=INTEGER}, #{xryZdwc,jdbcType=INTEGER}, #{xryResult,jdbcType=INTEGER}, \n" +
+            "      #{xqf1,jdbcType=INTEGER}, #{xqfh11,jdbcType=INTEGER}, #{xqfh12,jdbcType=INTEGER}, \n" +
+            "      #{xqfh13,jdbcType=INTEGER}, #{xqfhp11,jdbcType=INTEGER}, #{xqfc11,jdbcType=INTEGER}, \n" +
+            "      #{xqfc12,jdbcType=INTEGER}, #{xqfc13,jdbcType=INTEGER}, #{xqfcp12,jdbcType=INTEGER}, \n" +
+            "      #{xqf1Swc,jdbcType=INTEGER}, #{xqf2,jdbcType=INTEGER}, #{xqfh21,jdbcType=INTEGER}, \n" +
+            "      #{xqfh22,jdbcType=INTEGER}, #{xqfh23,jdbcType=INTEGER}, #{xqfhp21,jdbcType=INTEGER}, \n" +
+            "      #{xqfc21,jdbcType=INTEGER}, #{xqfc22,jdbcType=INTEGER}, #{xqfc23,jdbcType=INTEGER}, \n" +
+            "      #{xqfcp22,jdbcType=INTEGER}, #{xqf2Swc,jdbcType=INTEGER}, #{xqf3,jdbcType=INTEGER}, \n" +
+            "      #{xqfh31,jdbcType=INTEGER}, #{xqfh32,jdbcType=INTEGER}, #{xqfh33,jdbcType=INTEGER}, \n" +
+            "      #{xqfhp31,jdbcType=INTEGER}, #{xqfc31,jdbcType=INTEGER}, #{xqfc32,jdbcType=INTEGER}, \n" +
+            "      #{xqfc33,jdbcType=INTEGER}, #{xqfcp32,jdbcType=INTEGER}, #{xqf3Swc,jdbcType=INTEGER}, \n" +
+            "      #{xqfZdwc,jdbcType=INTEGER}, #{xqfResult,jdbcType=INTEGER}, #{hqm1,jdbcType=INTEGER}, \n" +
+            "      #{hqmh11,jdbcType=INTEGER}, #{hqmh12,jdbcType=INTEGER}, #{hqmh13,jdbcType=INTEGER}, \n" +
+            "      #{hqmhp11,jdbcType=INTEGER}, #{hqmc11,jdbcType=INTEGER}, #{hqmc12,jdbcType=INTEGER}, \n" +
+            "      #{hqmc13,jdbcType=INTEGER}, #{hqmcp12,jdbcType=INTEGER}, #{hqm1Swc,jdbcType=INTEGER}, \n" +
+            "      #{hqm2,jdbcType=INTEGER}, #{hqmh21,jdbcType=INTEGER}, #{hqmh22,jdbcType=INTEGER}, \n" +
+            "      #{hqmh23,jdbcType=INTEGER}, #{hqmhp21,jdbcType=INTEGER}, #{hqmc21,jdbcType=INTEGER}, \n" +
+            "      #{hqmc22,jdbcType=INTEGER}, #{hqmc23,jdbcType=INTEGER}, #{hqmcp22,jdbcType=INTEGER}, \n" +
+            "      #{hqm2Swc,jdbcType=INTEGER}, #{hqm3,jdbcType=INTEGER}, #{hqmh31,jdbcType=INTEGER}, \n" +
+            "      #{hqmh32,jdbcType=INTEGER}, #{hqmh33,jdbcType=INTEGER}, #{hqmhp31,jdbcType=INTEGER}, \n" +
+            "      #{hqmc31,jdbcType=INTEGER}, #{hqmc32,jdbcType=INTEGER}, #{hqmc33,jdbcType=INTEGER}, \n" +
+            "      #{hqmcp32,jdbcType=INTEGER}, #{hqm3Swc,jdbcType=INTEGER}, #{hqmZdwc,jdbcType=INTEGER}, \n" +
+            "      #{hqmResult,jdbcType=INTEGER}, #{dybj,jdbcType=INTEGER}, #{yqndsx,jdbcType=INTEGER}, \n" +
+            "      #{qybj,jdbcType=INTEGER}, #{zxbj,jdbcType=INTEGER}, #{qdyl,jdbcType=INTEGER}, #{brhl,jdbcType=INTEGER}, \n" +
+            "      #{fztql,jdbcType=INTEGER}, #{ajgn,jdbcType=INTEGER}, #{bz,jdbcType=INTEGER}, #{bz1,jdbcType=INTEGER}\n" +
+            "      )")
     @Options(useGeneratedKeys = true, keyProperty = "dqjcid", keyColumn = "dqjcid")
     void save(Hxj hxj);
-@Update("update hxj\n" +
+@Update(" update hxj\n" +
         "    set jcyq_id = #{jcyqId,jdbcType=INTEGER},\n" +
         "      eq_id = #{eqId,jdbcType=INTEGER},\n" +
         "      tester = #{tester,jdbcType=VARCHAR},\n" +
@@ -200,19 +303,28 @@ public interface HxjMapper {
         "    where hxjid = #{hxjid,jdbcType=INTEGER}")
 void updateHxj(Hxj hxj);
     //根据电气检测设备id查询设备检测表
-    @Select("select hxjid, jcyq_id, eq_id, tester, auditor, test_time, jcjl, jcsm, cqz_test1, cqz_test2, \n" +
-            "    cqz_test3, cqz_sz_value1, cqz_sz_value2, cqz_sz_value3, cqz_sc_value1, cqz_sc_value2, \n" +
-            "    cqz_sc_value3, cqz_wc, cqz_sz_result, cqz_sc_result, qztq_test1, qztq_test2, qztq_test3, \n" +
-            "    qztq_sz_value1, qztq_sz_value2, qztq_sz_value3, qztq_sc_value1, qztq_sc_value2, qztq_sc_value3, \n" +
-            "    qztq_wc, qztq_sz_result, qztq_sc_result, xrynd_test1, xrynd_test2, xrynd_test3, xrynd_sz_value1, \n" +
-            "    xrynd_sz_value2, xrynd_sz_value3, xrynd_sc_value1, xrynd_sc_value2, xrynd_sc_value3, \n" +
-            "    xrynd_wc, xrynd_sz_result, xrynd_sc_result, xqylsp_test1, xqylsp_test2, xqylsp_test3, \n" +
-            "    xqylsp_sz_value1, xqylsp_sz_value2, xqylsp_sz_value3, xqylsp_sc_value1, xqylsp_sc_value2, \n" +
-            "    xqylsp_sc_value3, xqylsp_wc, xqylsp_sz_result, xqylsp_sc_result, hqmzy_test1, hqmzy_test2, \n" +
-            "    hqmzy_test3, hqmzy_sz_value1, hqmzy_sz_value2, hqmzy_sz_value3, hqmzy_sc_value1, \n" +
-            "    hqmzy_sc_value2, hqmzy_sc_value3, hqmzy_wc, hqmzy_sz_result, hqmzy_sc_result, dybj_result, \n" +
-            "    qybj_result, qdylbj_result, fztqlbj_result, yndbj_result, zxbj_result, brhlgybh_result, \n" +
-            "    ajgnjc_result, spare1, spare2, spare3, spare4 from hxj order by hxjid desc limit 1 where eq_id = #{eqId}")
+    @Select("select  hxjid, jcyq_id, eq_id, tester, auditor, shsj_time, test_time, jcjl, jcsm, bhjdzk_test, \n" +
+            "    bhjdzk_yx, bhjdzk_result, jykz_test, jykz_yx, jykz_result, ddld_z_z, ddld_z_f, ddld_z_yx, \n" +
+            "    ddld_z_result, ddld_d_z1, ddld_d_z2, ddld_d_yx, ddld_d_result, wkld_z_z, wkld_z_f, \n" +
+            "    wkld_z_yx, wkld_z_result, wkld_d_z1, wkld_d_z2, wkld_d_z3, wkld_d_z4, wkld_d_yx, \n" +
+            "    wkld_d_result, cqz1, cqzh11, cqzh12, cqzh13, cqzhp11, cqzc11, cqzc12, cqzc13, cqzcp12, \n" +
+            "    cqz1_swc, cqz2, cqzh21, cqzh22, cqzh23, cqzhp21, cqzc21, cqzc22, cqzc23, cqzcp22, \n" +
+            "    cqz2_swc, cqz3, cqzh31, cqzh32, cqzh33, cqzhp31, cqzc31, cqzc32, cqzc33, cqzcp32, \n" +
+            "    cqz3_swc, cqz_zdwc, cqz_result, qztq1, qztqh11, qztqh12, qztqh13, qztqhp11, qztqc11, \n" +
+            "    qztqc12, qztqc13, qztqcp12, qztq1_swc, qztq2, qztqh21, qztqh22, qztqh23, qztqhp21, \n" +
+            "    qztqc21, qztqc22, qztqc23, qztqcp22, qztq2_swc, qztq3, qztqh31, qztqh32, qztqh33, \n" +
+            "    qztqhp31, qztqc31, qztqc32, qztqc33, qztqcp32, qztq3_swc, qztq_zdwc, qztq_result, \n" +
+            "    xry1, xryh11, xryh12, xryh13, xryhp11, xryc11, xryc12, xryc13, xrycp12, xry1_swc, \n" +
+            "    xry2, xryh21, xryh22, xryh23, xryhp21, xryc21, xryc22, xryc23, xrycp22, xry2_swc, \n" +
+            "    xry3, xryh31, xryh32, xryh33, xryhp31, xryc31, xryc32, xryc33, xrycp32, xry3_swc, \n" +
+            "    xry_zdwc, xry_result, xqf1, xqfh11, xqfh12, xqfh13, xqfhp11, xqfc11, xqfc12, xqfc13, \n" +
+            "    xqfcp12, xqf1_swc, xqf2, xqfh21, xqfh22, xqfh23, xqfhp21, xqfc21, xqfc22, xqfc23, \n" +
+            "    xqfcp22, xqf2_swc, xqf3, xqfh31, xqfh32, xqfh33, xqfhp31, xqfc31, xqfc32, xqfc33, \n" +
+            "    xqfcp32, xqf3_swc, xqf_zdwc, xqf_result, hqm1, hqmh11, hqmh12, hqmh13, hqmhp11, hqmc11, \n" +
+            "    hqmc12, hqmc13, hqmcp12, hqm1_swc, hqm2, hqmh21, hqmh22, hqmh23, hqmhp21, hqmc21, \n" +
+            "    hqmc22, hqmc23, hqmcp22, hqm2_swc, hqm3, hqmh31, hqmh32, hqmh33, hqmhp31, hqmc31, \n" +
+            "    hqmc32, hqmc33, hqmcp32, hqm3_swc, hqm_zdwc, hqm_result, dybj, yqndsx, qybj, zxbj, \n" +
+            "    qdyl, brhl, fztql, ajgn, bz, bz1 from hxj order by hxjid desc limit 1 where eq_id = #{eqId}")
     public Hxj findHxj(String eqId);
 
     /*//以id排序，查询最后一条记录
