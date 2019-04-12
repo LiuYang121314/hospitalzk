@@ -20,136 +20,144 @@ public class ZsbServiceImpl implements ZsbService {
 
     @Override
     public SybCTemplate findTemplate(String tableName) {
-        return null;
+        return zsbMapper.findTemplate(tableName);
     }
 
     @Override
     public StzsMTemplate findStZsTemplate() {
-        return null;
+        return zsbMapper.findStZsTemplate();
     }
 
     @Override
     public int updateC(SybCTemplate sybCTemplate) {
-        return 0;
+        return zsbMapper.updateC(sybCTemplate);
     }
 
     @Override
     public int updateM(SybCTemplate sybCTemplate) {
-        return 0;
+        return zsbMapper.updateM(sybCTemplate);
     }
 
     @Override
     public int updateS(StzsMTemplate stzsMTemplate) {
-        return 0;
+        return zsbMapper.updateS(stzsMTemplate);
     }
 
     @Override
     public int insertChildTemplate(SybCTemplate template) {
-        return 0;
+        return zsbMapper.insertChildTemplate(template);
     }
 
     @Override
     public int insertManTemplate(SybCTemplate template) {
-        return 0;
+        return zsbMapper.insertManTemplate(template);
     }
 
     @Override
     public int insertStzsTemplate(StzsMTemplate template) {
-        return 0;
+        return zsbMapper.insertStzsTemplate(template);
     }
 
     @Override
     public void saveChild(SybC sybC) {
-
+        String tableName = "zsb_c_template";
+        SybCTemplate sybCTemplate = zsbMapper.findTemplate(tableName);
+        BeanUtils.copyProperties(sybCTemplate, sybC);
+        zsbMapper.saveChild(sybC);
     }
 
     @Override
     public void updateChild(SybC sybC) {
-
+        zsbMapper.updateChild(sybC);
     }
 
     @Override
     public void saveMan(SybC sybC) {
-
+        String tableName = "zsb_m_template";
+        SybCTemplate sybCTemplate = zsbMapper.findTemplate(tableName);
+        BeanUtils.copyProperties(sybCTemplate, sybC);
+        zsbMapper.saveMan(sybC);
     }
 
     @Override
     public void updateMan(SybC sybC) {
-
+        zsbMapper.updateMan(sybC);
     }
 
     @Override
     public void saveStzs(StzsM stzsM) {
-
+        StzsMTemplate stzsMTemplate = zsbMapper.findStZsTemplate();
+        BeanUtils.copyProperties(stzsMTemplate, stzsM);
+        zsbMapper.saveStzs(stzsM);
     }
 
     @Override
     public void updateStzs(StzsM stzsM) {
-
+        zsbMapper.updateStzs(stzsM);
     }
 
     @Override
     public SybC findByEqIdandJcyqIdLast1C(String eqId, String jcyqId) {
-        return null;
+        return zsbMapper.findByEqIdandJcyqIdLast1C(eqId, jcyqId);
     }
 
     @Override
     public List<SybC> findByEqIdandJcyqIdC(String eqId, String jcyqId) {
-        return null;
+        return zsbMapper.findByEqIdandJcyqIdC(eqId, jcyqId);
     }
 
     @Override
     public SybC findByEqIdandJcyqIdLast1M(String eqId, String jcyqId) {
-        return null;
+        return zsbMapper.findByEqIdandJcyqIdLast1M(eqId, jcyqId);
     }
 
     @Override
     public List<SybC> findByEqIdandJcyqIdM(String eqId, String jcyqId) {
-        return null;
+        return zsbMapper.findByEqIdandJcyqIdM(eqId, jcyqId);
     }
 
     @Override
     public StzsM findByEqIdandJcyqIdLast1S(String eqId, String jcyqId) {
-        return null;
+        return zsbMapper.findByEqIdandJcyqIdLast1S(eqId, jcyqId);
     }
 
     @Override
     public List<StzsM> findByEqIdandJcyqIdS(String eqId, String jcyqId) {
-        return null;
+        return zsbMapper.findByEqIdandJcyqIdS(eqId, jcyqId);
     }
 
     @Override
     public List<SybC> findAll(String tableName) {
-        return null;
+        return zsbMapper.findAll(tableName);
     }
 
     @Override
     public List<StzsM> findAllS() {
-        return null;
+        return zsbMapper.findAllS();
     }
 
     @Override
-    public SybC findByidC(Integer id, String tableName) {
-        return zsbMapper.findByidC(id, tableName);
+    public SybC findByid(Integer id, String tableName) {
+        return zsbMapper.findByid(id, tableName);
     }
 
     @Override
     public StzsM findByidS(Integer id) {
-        return null;
+        return zsbMapper.findByidS(id);
     }
 
     @Override
     public void updateShrJcjyC(Integer dqjcid, String shrJcjl, String auditor, Date shsjTime) {
-
+        zsbMapper.updateShrJcjyC(dqjcid, shrJcjl, auditor, new Date());
     }
 
     @Override
     public void updateShrJcjyM(Integer dqjcid, String shrJcjl, String auditor, Date shsjTime) {
-
+        zsbMapper.updateShrJcjyM(dqjcid, shrJcjl, auditor, new Date());
     }
 
     @Override
     public void updateShrJcjyS(Integer dqjcid, String shrJcjl, String auditor, Date shsjTime) {
-
+        zsbMapper.updateShrJcjyS(dqjcid, shrJcjl, auditor, new Date());
     }
 }
