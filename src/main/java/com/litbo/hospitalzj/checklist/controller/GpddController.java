@@ -11,6 +11,8 @@ import com.litbo.hospitalzj.zk.Enum.EnumProcess2;
 import com.litbo.hospitalzj.zk.domian.GpddTemplate;
 import com.litbo.hospitalzj.zk.service.UserEqService;
 import com.litbo.hospitalzj.zk.service.YqEqService;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -38,9 +41,9 @@ public class GpddController extends BaseController {
         return new ResponseResult<GpddTemplate>(200, gpddService.findTemplate());
     }
     //修改模板值
-    @RequestMapping("/update")
-    public ResponseResult<Void> update(GpddTemplate gpddTemplate){
-        gpddService.update(gpddTemplate);
+    @RequestMapping("/updateGpddTemplate")
+    public ResponseResult<Void> updateGpddTemplate(GpddTemplate gpddTemplate){
+        gpddService.updateGpddTemplate(gpddTemplate);
         return new ResponseResult<Void>(200);
     }
     //插入模板值
@@ -48,16 +51,6 @@ public class GpddController extends BaseController {
     public ResponseResult<Void> insert(GpddTemplate gpddTemplate){
         gpddService.insert(gpddTemplate);
         return new ResponseResult<Void>(200);
-    }
-    //查询一条
-    @RequestMapping("/find")
-    public ResponseResult<Gpdd> find(){
-        return new ResponseResult<Gpdd>(200, gpddService.find());
-    }
-    //查询所有
-    @RequestMapping("/findAll")
-    public ResponseResult<List<Gpdd>> findAll(){
-        return new ResponseResult<List<Gpdd>>(200, gpddService.findAll());
     }
     //保存
     @RequestMapping("/save")
@@ -71,6 +64,28 @@ public class GpddController extends BaseController {
         gpddService.save(gpdd);
         return new ResponseResult<Gpdd>(200, gpdd);
     }
+
+    //修改录入数据
+    @RequestMapping("/updateGpdd")
+    public ResponseResult<Void> updateGpdd(Gpdd gpdd){
+        gpddService.updateGpdd(gpdd);
+        return new ResponseResult<Void>(200);
+    }
+
+    //查询本设备的最后一条
+    @RequestMapping("/findGpdd")
+    public ResponseResult<Gpdd> findGpdd(String eqId){
+        gpddService.findGpdd(eqId);
+        return new ResponseResult<Gpdd>(200);
+    }
+
+    //查询全部数据的最后一条
+    @RequestMapping("/find")
+    public ResponseResult<Gpdd> find(){
+        gpddService.find();
+        return new ResponseResult<Gpdd>(200);
+    }
+
     /**
      * 查询根据设备IDand检测仪器id电气检测表数据查询最后一条记录
      * @return
@@ -89,8 +104,13 @@ public class GpddController extends BaseController {
         List<Gpdd> list = gpddService.findByEqIdandJcyqId(eqId,jcyqId);
         return new ResponseResult<List<Gpdd>>(200, list);
     }
+    //查询所有
+    @RequestMapping("/findAll")
+    public ResponseResult<List<Gpdd>> findAll(){
+        return new ResponseResult<List<Gpdd>>(200, gpddService.findAll());
+    }
     /**
-     * 查询根据检测仪器id电气检测表数据
+     * 查询根据检测仪器id检测表数据
      * @return
      */
     @RequestMapping("/findByGpddid")
@@ -100,9 +120,14 @@ public class GpddController extends BaseController {
     }
     //修改审核人建议同时修改状态
     @RequestMapping("/updateShrJcjy")
-    public ResponseResult<Void> updateShrJcjy(@RequestParam("dqjcid")Integer dqjcid, @RequestParam("yqEqId")Integer yqEqId, @RequestParam("shrJcjl")String shrJcjl, @RequestParam("state")Integer state, HttpSession session){
+    public ResponseResult<Void> updateShrJcjy(@RequestParam("gpddid")Integer gpddid,
+                                              @RequestParam("jcyqId")Integer jcyqId,
+                                              @RequestParam("eqId")Integer eqId,
+                                              @RequestParam("shrJcjl")String shrJcjl,
+                                              @RequestParam("state")Integer state, HttpSession session){
         String auditor=getUserNameFromSession(session);
-       /* dqjcService.updateShrJcjy(dqjcid,shrJcjl,auditor);*/
+        Integer yqEqId= yqEqService.findId(jcyqId,eqId);
+        gpddService.updateShrJcjy(gpddid,shrJcjl,auditor);
         if(state.equals(1)){
             yqEqService.updateState(yqEqId,1);
         }else{

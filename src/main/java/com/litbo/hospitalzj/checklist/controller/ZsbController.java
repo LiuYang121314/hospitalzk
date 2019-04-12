@@ -22,11 +22,12 @@ public class ZsbController {
     @Autowired
     private ZsbService zsbService;
     //查询双通道注射泵模板数据
-    @RequestMapping("/findStzsTemplate")
-    public ResponseResult<StzsMTemplate> findStZsTemplate(){
-        return new ResponseResult<StzsMTemplate>(200, zsbService.findStzsMTemplate());
+    @RequestMapping("/find")
+    public ResponseResult<SybC> findStZsTemplate(Integer id){
+        String tableName="zsb_c";
+        return new ResponseResult<SybC>(200, zsbService.findByidC(id,tableName));
     }
-    //查询注射泵模板数据（成人）
+  /*  //查询注射泵模板数据（成人）
     @RequestMapping("/findManTemplate")
     public ResponseResult<SybCTemplate> findManTemplate(){
         return new ResponseResult<SybCTemplate>(200, zsbService.findManTemplate());
@@ -131,5 +132,5 @@ public class ZsbController {
     public ResponseResult<SybC> findMan(){
         return new ResponseResult<SybC>(200, zsbService.findMan());
     }
-
+*/
 }

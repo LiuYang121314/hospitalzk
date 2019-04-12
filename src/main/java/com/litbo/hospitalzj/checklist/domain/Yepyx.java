@@ -17,6 +17,8 @@ public class Yepyx {
 
     private Date testTime;
 
+    private Date shsjTime;
+
     private String jcjl;
 
     private String jcsm;
@@ -170,6 +172,14 @@ public class Yepyx {
     private Byte cwbjResult;
 
     private Byte fjbjResult;
+
+    public Date getShsjTime() {
+        return shsjTime;
+    }
+
+    public void setShsjTime(Date shsjTime) {
+        this.shsjTime = shsjTime;
+    }
 
     public Integer getPyxId() {
         return pyxId;

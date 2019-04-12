@@ -13,48 +13,34 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("gpddSerivce")
-@Transactional
-public class GpddService {
-
-    @Autowired
-    private GpddMapper gpddMapper;
+public interface GpddService {
 
     //查询模板值
-    public GpddTemplate findTemplate(){
-        return gpddMapper.findTemplate();
-    }
+    public GpddTemplate findTemplate();
     //修改模板值
-    public void update(GpddTemplate gpddTemplate){
-        gpddMapper.update(gpddTemplate);
-    }
+    public void updateGpddTemplate(GpddTemplate gpddTemplate);
     //插入模板值
-    public void insert(GpddTemplate gpddTemplate){
-        gpddMapper.insert(gpddTemplate);
-    }
+    public void insert(GpddTemplate gpddTemplate);
+   //保存高频电刀数据
+    void save(Gpdd gpdd);
+    //修改数据
+    void updateGpdd(Gpdd gpdd);
+    //根据设备id查询检测表高频电刀
+    public Gpdd findGpdd(String eqId);
     //查询一条
-    public Gpdd find(){
-        return gpddMapper.find();
-    }
+    Gpdd find();
     //根据设备Id,检测仪器Id以及状态查询电切表查询最后一条记录
-    public Gpdd findByEqIdandJcyqIdLast1(String eqId, String jcyqId){
-        return gpddMapper.findByEqIdandJcyqIdLast1(eqId, jcyqId);
-    }
-    //根据设备Id,检测仪器Id以及状态查询电切表
-    public List<Gpdd> findByEqIdandJcyqId(String eqId,String jcyqId){
-        return gpddMapper.findByEqIdandJcyqId(eqId, jcyqId);
-    }
-    public Gpdd findByGpddid(@Param("gpddid")Integer gpddid){
-        return gpddMapper.findByGpddid(gpddid);
-    }
-    //查询所有
-    public List<Gpdd> findAll(){
-        return gpddMapper.findAll();
-    }
-    //保存
-    public void save(Gpdd gpdd){
-        BeanUtils.copyProperties(gpddMapper.findTemplate(), gpdd);
-        gpddMapper.save(gpdd);
-    }
+    Gpdd findByEqIdandJcyqIdLast1(@Param("eqId")String eqId, @Param("jcyqId")String jcyqId);
 
+    //根据设备Id,检测仪器Id以及状态查询电切表
+    List<Gpdd> findByEqIdandJcyqId(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
+
+    //查询所有
+    List<Gpdd> findAll();
+
+    //根据检测仪器Id查询
+    Gpdd findByGpddid(@Param("gpddid")Integer gpddid);
+
+    //修改审核人意见
+    void updateShrJcjy(@Param("dqjcid")Integer dqjcid,@Param("shrJcjl")String shrJcjl,@Param("auditor")String auditor);
 }
