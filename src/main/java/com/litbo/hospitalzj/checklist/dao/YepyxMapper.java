@@ -1,10 +1,7 @@
 package com.litbo.hospitalzj.checklist.dao;
 
-import com.litbo.hospitalzj.checklist.domain.Dqjc;
-import com.litbo.hospitalzj.checklist.domain.DqjcTemplate;
 import com.litbo.hospitalzj.checklist.domain.Yepyx;
 import com.litbo.hospitalzj.checklist.domain.YepyxTemplate;
-import com.litbo.hospitalzj.checklist.vo.DqjcUser;
 import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
@@ -96,10 +93,97 @@ public interface YepyxMapper {
             "      #{sdszz,jdbcType=DOUBLE}, #{sdcsz,jdbcType=DOUBLE}, #{sdpc,jdbcType=DOUBLE}, #{sdWc,jdbcType=DOUBLE}, \n" +
             "      #{sdResult,jdbcType=TINYINT}, #{ddbjResult,jdbcType=TINYINT}, #{cwbjResult,jdbcType=TINYINT}, \n" +
             "      #{fjbjResult,jdbcType=TINYINT})")
-    @Options(useGeneratedKeys = true, keyProperty = "pyxId", keyColumn = "dqjcid")
+    @Options(useGeneratedKeys = true, keyProperty = "pyxId", keyColumn = "pyx_id")
     public void save(Yepyx yepyx);
 
-    //根据电气检测设备id查询设备检测表
+    //修改数据
+    @Update(" update yepyx\n" +
+            "    set jcyq_id = #{jcyqId,jdbcType=INTEGER},\n" +
+            "      eq_id = #{eqId,jdbcType=INTEGER},\n" +
+            "      tester = #{tester,jdbcType=VARCHAR},\n" +
+            "      auditor = #{auditor,jdbcType=VARCHAR},\n" +
+            "      shr_jcjl = #{shrJcjl,jdbcType=VARCHAR},\n" +
+            "      test_time = #{testTime,jdbcType=TIMESTAMP},\n" +
+            "      jcjl = #{jcjl,jdbcType=VARCHAR},\n" +
+            "      jcsm = #{jcsm,jdbcType=VARCHAR},\n" +
+            "      tx_wd1 = #{txWd1,jdbcType=DOUBLE},\n" +
+            "      tx_wd2 = #{txWd2,jdbcType=DOUBLE},\n" +
+            "      tx_wd3 = #{txWd3,jdbcType=DOUBLE},\n" +
+            "      tx_wd4 = #{txWd4,jdbcType=DOUBLE},\n" +
+            "      tx_wd5 = #{txWd5,jdbcType=DOUBLE},\n" +
+            "      tx_wd6 = #{txWd6,jdbcType=DOUBLE},\n" +
+            "      tx_wd7 = #{txWd7,jdbcType=DOUBLE},\n" +
+            "      tx_wd8 = #{txWd8,jdbcType=DOUBLE},\n" +
+            "      tx_wd9 = #{txWd9,jdbcType=DOUBLE},\n" +
+            "      tx_wd10 = #{txWd10,jdbcType=DOUBLE},\n" +
+            "      tx_wd11 = #{txWd11,jdbcType=DOUBLE},\n" +
+            "      tx_wd12 = #{txWd12,jdbcType=DOUBLE},\n" +
+            "      tx_wd13 = #{txWd13,jdbcType=DOUBLE},\n" +
+            "      tx_wd14 = #{txWd14,jdbcType=DOUBLE},\n" +
+            "      tx_wd15 = #{txWd15,jdbcType=DOUBLE},\n" +
+            "      t5s_wd1 = #{t5sWd1,jdbcType=DOUBLE},\n" +
+            "      t5s_wd2 = #{t5sWd2,jdbcType=DOUBLE},\n" +
+            "      t5s_wd3 = #{t5sWd3,jdbcType=DOUBLE},\n" +
+            "      t5s_wd4 = #{t5sWd4,jdbcType=DOUBLE},\n" +
+            "      t5s_wd5 = #{t5sWd5,jdbcType=DOUBLE},\n" +
+            "      t5s_wd6 = #{t5sWd6,jdbcType=DOUBLE},\n" +
+            "      t5s_wd7 = #{t5sWd7,jdbcType=DOUBLE},\n" +
+            "      t5s_wd8 = #{t5sWd8,jdbcType=DOUBLE},\n" +
+            "      t5s_wd9 = #{t5sWd9,jdbcType=DOUBLE},\n" +
+            "      t5s_wd10 = #{t5sWd10,jdbcType=DOUBLE},\n" +
+            "      t5s_wd11 = #{t5sWd11,jdbcType=DOUBLE},\n" +
+            "      t5s_wd12 = #{t5sWd12,jdbcType=DOUBLE},\n" +
+            "      t5s_wd13 = #{t5sWd13,jdbcType=DOUBLE},\n" +
+            "      t5s_wd14 = #{t5sWd14,jdbcType=DOUBLE},\n" +
+            "      t5s_wd15 = #{t5sWd15,jdbcType=DOUBLE},\n" +
+            "      kzwd = #{kzwd,jdbcType=DOUBLE},\n" +
+            "      wdt1 = #{wdt1,jdbcType=DOUBLE},\n" +
+            "      wdt2 = #{wdt2,jdbcType=DOUBLE},\n" +
+            "      wdt3 = #{wdt3,jdbcType=DOUBLE},\n" +
+            "      wdtxa = #{wdtxa,jdbcType=DOUBLE},\n" +
+            "      wdt4 = #{wdt4,jdbcType=DOUBLE},\n" +
+            "      wdt5 = #{wdt5,jdbcType=DOUBLE},\n" +
+            "      wdpc = #{wdpc,jdbcType=DOUBLE},\n" +
+            "      wdpc_wc = #{wdpcWc,jdbcType=DOUBLE},\n" +
+            "      wdpc_result = #{wdpcResult,jdbcType=DOUBLE},\n" +
+            "      jyx = #{jyx,jdbcType=DOUBLE},\n" +
+            "      jyx_wc = #{jyxWc,jdbcType=DOUBLE},\n" +
+            "      jyx_result = #{jyxResult,jdbcType=TINYINT},\n" +
+            "      bdd = #{bdd,jdbcType=DOUBLE},\n" +
+            "      bdd_wc = #{bddWc,jdbcType=DOUBLE},\n" +
+            "      bdd_result = #{bddResult,jdbcType=TINYINT},\n" +
+            "      wkpc = #{wkpc,jdbcType=DOUBLE},\n" +
+            "      wkpc_wc = #{wkpcWc,jdbcType=DOUBLE},\n" +
+            "      wkpc_result = #{wkpcResult,jdbcType=TINYINT},\n" +
+            "      ctl = #{ctl,jdbcType=DOUBLE},\n" +
+            "      ctl_wc = #{ctlWc,jdbcType=DOUBLE},\n" +
+            "      ctl_result = #{ctlResult,jdbcType=TINYINT},\n" +
+            "      kqls = #{kqls,jdbcType=DOUBLE},\n" +
+            "      kqls_wc = #{kqlsWc,jdbcType=DOUBLE},\n" +
+            "      kqls_result = #{kqlsResult,jdbcType=TINYINT},\n" +
+            "      zsbj = #{zsbj,jdbcType=DOUBLE},\n" +
+            "      zsbj_wc = #{zsbjWc,jdbcType=DOUBLE},\n" +
+            "      zsbj_result = #{zsbjResult,jdbcType=TINYINT},\n" +
+            "      zszc = #{zszc,jdbcType=DOUBLE},\n" +
+            "      zszc_wc = #{zszcWc,jdbcType=DOUBLE},\n" +
+            "      zszc_result = #{zszcResult,jdbcType=TINYINT},\n" +
+            "      jsbf = #{jsbf,jdbcType=DOUBLE},\n" +
+            "      jsbf_wc = #{jsbfWc,jdbcType=DOUBLE},\n" +
+            "      jsbf_result = #{jsbfResult,jdbcType=TINYINT},\n" +
+            "      cdbf = #{cdbf,jdbcType=DOUBLE},\n" +
+            "      cdbf_wc = #{cdbfWc,jdbcType=DOUBLE},\n" +
+            "      cdbf_result = #{cdbfResult,jdbcType=TINYINT},\n" +
+            "      sdszz = #{sdszz,jdbcType=DOUBLE},\n" +
+            "      sdcsz = #{sdcsz,jdbcType=DOUBLE},\n" +
+            "      sdpc = #{sdpc,jdbcType=DOUBLE},\n" +
+            "      sd_wc = #{sdWc,jdbcType=DOUBLE},\n" +
+            "      sd_result = #{sdResult,jdbcType=TINYINT},\n" +
+            "      ddbj_result = #{ddbjResult,jdbcType=TINYINT},\n" +
+            "      cwbj_result = #{cwbjResult,jdbcType=TINYINT},\n" +
+            "      fjbj_result = #{fjbjResult,jdbcType=TINYINT}\n" +
+            "    where pyx_id = #{pyxId,jdbcType=INTEGER}")
+    void update(Yepyx yepyx);
+    //根据设备id查询检测表婴儿培养箱
     @Select("select pyx_id, jcyq_id, eq_id, tester, auditor, shr_jcjl, test_time,shsj_time, jcjl, jcsm, tx_wd1, \n" +
             "    tx_wd2, tx_wd3, tx_wd4, tx_wd5, tx_wd6, tx_wd7, tx_wd8, tx_wd9, tx_wd10, tx_wd11, \n" +
             "    tx_wd12, tx_wd13, tx_wd14, tx_wd15, t5s_wd1, t5s_wd2, t5s_wd3, t5s_wd4, t5s_wd5, \n" +
@@ -123,28 +207,16 @@ public interface YepyxMapper {
     @Select("select yepyx.* from yepyx where dqjc.eq_id=#{eqId} and dqjc.jcyq_id=#{jcyqId}" )
     List<Yepyx> findByEqIdandJcyqId(@Param("eqId")String eqId, @Param("jcyqId")String jcyqId);
 
-    //根据设备Id,检测仪器Id以及状态查询电器表
-    /*@Select("select d.*,s.user_name,u.date from " +
-            "dqjc d left join user_eq u on u.jc_eqid=d.eq_id " +
-            "left join s_user s on u.user_id=s.user_id where " +
-            "d.eq_id=#{eqId} and d.jcyq_id=#{jcyqId} and d.state=#{state}")
-    DqjcUser findShrAndShrjcjl(@Param("eqId")String eqId, @Param("jcyqId")String jcyqId, @Param("state")Integer state);
-*/
     //查询所有检测表数据信息
     @Select("select * from Yepyx")
     List<Yepyx> findAll();
 
-    /**
-     * 删除电器数据
-     *//*
-    @Delete("delete from dqjc where eq_id=#{eqId} and jcyq_id=#{jcyqId}")
-    void delete(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);*/
 
     /**
      * 根据iD状态查询
      */
-    @Select("select * from yepyx where pyx_id=#{pyxId} and state=#{state}")
-    Yepyx findByDqjcid(@Param("pyxId")Integer pyxId,@Param("state")Integer state);
+    @Select("select * from yepyx where pyx_id=#{pyxId}")
+    Yepyx findByPyxId(@Param("pyxId")Integer pyxId);
     /*
     修改状态
      */

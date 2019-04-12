@@ -302,7 +302,7 @@ public interface DcsjhyMapper {
 	//查询多参数监护仪检测单条数据（幼儿）
 	@Select("select * from dcsjhy_c order by dcid desc limit 1")
 	Dcsjhy findDcsjhyChild();
-	@Select("select d.* from dcsjhy_c d where eq_id=#{eqId} and jcyq_id=#{jcyqId} and state=#{state}")
+	@Select("select d.* from dcsjhy_c d where eq_id=#{eqId} and jcyq_id=#{jcyqId}")
 	List<Dcsjhy>  findByEqIdandJcyqIdCh(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
 	//查询多参数监护仪检测单条数据（成人）
 	@Select("select * from dcsjhy_m")

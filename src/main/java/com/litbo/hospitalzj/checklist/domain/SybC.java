@@ -15,6 +15,8 @@ public class SybC {
 
     private Date testTime;
 
+    private Date shsjTime;
+
     private String jcjl;
 
     private String jcsm;
@@ -68,6 +70,14 @@ public class SybC {
     private Byte qpbj;
 
     private Byte kmbj;
+
+    public Date getShsjTime() {
+        return shsjTime;
+    }
+
+    public void setShsjTime(Date shsjTime) {
+        this.shsjTime = shsjTime;
+    }
 
     public Long getId() {
         return id;

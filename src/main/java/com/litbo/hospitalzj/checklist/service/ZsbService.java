@@ -5,111 +5,79 @@ import com.litbo.hospitalzj.checklist.domain.StzsM;
 import com.litbo.hospitalzj.checklist.domain.StzsMTemplate;
 import com.litbo.hospitalzj.checklist.domain.SybC;
 import com.litbo.hospitalzj.checklist.domain.SybCTemplate;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
  * 注射泵Service层
  */
-@Service
-@Transactional
-public class ZsbService {
-
-    @Autowired
-    private ZsbMapper zsbMapper;
-    //儿童注液泵数据修改
-    public void updateC(SybCTemplate sybCTemplate){
-        zsbMapper.updateC(sybCTemplate);
-    }
-    //成人注液泵数据修改
-    public void updateM(SybCTemplate sybCTemplate){
-        zsbMapper.updateM(sybCTemplate);
-    }
-    //双通道注液泵数据修改
-    public void updateS(StzsMTemplate stzsMTemplate){
-        zsbMapper.updateS(stzsMTemplate);
-    }
-    //查询模板数据(幼儿)
-    public SybCTemplate findChildsTemplate(){
-        String template = "zsb_c_template";
-        return zsbMapper.findTemplate(template);
-    }
-    //查询模板数据(成人)
-    public SybCTemplate findManTemplate(){
-        String template = "zsb_m_template";
-        return zsbMapper.findTemplate(template);
-    }
-    //查询双通道注射泵模板值
-    public StzsMTemplate findStzsMTemplate(){
-        return zsbMapper.findStZsTemplate();
-    }
-    //插入模板数据
-    //双通道
-    public void insertStzsTemplate(StzsMTemplate template) {
-        zsbMapper.insertStzsTemplate(template);
-    }
-    //成人
-    public void insertManTemplate(SybCTemplate template) {
-        zsbMapper.insertManTemplate(template);
-    }
+public interface ZsbService {
+    //查询模板数据（成人，幼儿）
+    SybCTemplate findTemplate(String tableName);
+    //查询双通道模板数据，最后一条记录
+    StzsMTemplate findStZsTemplate();
+    //修改模板表数据
     //幼儿
-    public void insertChildTemplate(SybCTemplate template) {
-        zsbMapper.insertChildTemplate(template);
-    }
-    //儿童输液泵数据录入
-    public void saveChild(SybC sybC) {
-        String tableName = "zsb_c";
-        SybCTemplate sybCTemplate = findChildsTemplate();
-        BeanUtils.copyProperties(sybCTemplate, sybC);
-        zsbMapper.saveChild(sybC);
-    }
+    int updateC(SybCTemplate sybCTemplate);
+    //成人
+    int updateM(SybCTemplate sybCTemplate);
+    //双通道
+    int updateS(StzsMTemplate stzsMTemplate);
+    //插入模板表数据
+    //幼儿
+    int insertChildTemplate(SybCTemplate template);
+    //成人
+    int insertManTemplate(SybCTemplate template);
+    //双通道
+    int insertStzsTemplate(StzsMTemplate template);
+    //保存信息
+    //输液泵检测信息录入（幼儿）
+    void saveChild(SybC sybC);
+    void updateChild(SybC sybC);
+    //输液泵检测信息录入（成人）
+    void saveMan(SybC sybC);
+    void updateMan(SybC sybC);
+    //插入双通道注射泵检测数据
+    void saveStzs(StzsM stzsM);
+    void updateStzs(StzsM stzsM);
 
-    public void saveMan(SybC sybC) {
-        String tableName = "zsb_m";
-        SybCTemplate sybCTemplate = findManTemplate();
-        BeanUtils.copyProperties(sybCTemplate,sybC);
-        zsbMapper.saveMan(sybC);
-    }
+    //根据设备Id,检测仪器Id以及状态查询电器表查询最后一条记录
+    SybC findByEqIdandJcyqIdLast1C(@Param("eqId")String eqId, @Param("jcyqId")String jcyqId);
 
-    //保存双通道注射泵检测信息
-    public void saveStZs(StzsM stzsM) {
-        StzsMTemplate stzsMTemplate = findStzsMTemplate();
-        BeanUtils.copyProperties(stzsMTemplate, stzsM);
-        zsbMapper.saveStzs(stzsM);
-    }
+    //根据设备Id,检测仪器Id以及状态查询电器表
+    List<SybC> findByEqIdandJcyqIdC(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
 
+    //根据设备Id,检测仪器Id以及状态查询电器表查询最后一条记录
+    SybC findByEqIdandJcyqIdLast1M(@Param("eqId")String eqId, @Param("jcyqId")String jcyqId);
+    //根据设备Id,检测仪器Id以及状态查询电器表
+    List<SybC> findByEqIdandJcyqIdM(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
+    //根据设备Id,检测仪器Id以及状态查询电器表查询最后一条记录
+    StzsM findByEqIdandJcyqIdLast1S(@Param("eqId")String eqId, @Param("jcyqId")String jcyqId);
+    //根据设备Id,检测仪器Id以及状态查询电器表
+    List<StzsM> findByEqIdandJcyqIdS(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
 
-    //查询所有录入信息(幼儿)
-    public List<SybC> findAllChild(){
-        String tableName = "zsb_m";
-        return zsbMapper.findAll(tableName);
-    }
-    //查询所有录入信息（成人）
-    public List<SybC> findAllMan(){
-        String tableName = "zsb_m";
-        return zsbMapper.findAll(tableName);
-    }
-    //查询所有双通道注射泵录入数据
-    public List<StzsM> findAllStzsMan(){
-        return zsbMapper.findAllStzsM();
-    }
-    //查询最后录入的一条检测信息（幼儿）
-    public SybC findChild(){
-        String tableName = "zsb_m";
-        return zsbMapper.find(tableName);
-    }
-    //查询最后录入的一条检测信息(成人)
-    public SybC findMan(){
-        String tableName = "zsb_m";
-        return zsbMapper.find(tableName);
-    }
-    //查询最后录入的一条双通道注射泵检测信息(成人)
-    public StzsM findStzsMan(){
-        return zsbMapper.findStzsM();
-    }
+    //查询所有检测表数据信息
+    List<SybC> findAll(String tableName);
+    List<StzsM> findAllS();
+
+    /**
+     * 根据iD状态查询
+     */
+    SybC findByidC(@Param("id")Integer id,@Param("tableName")String tableName);
+    StzsM findByidS(@Param("id")Integer id);
+    //修改审核人意见
+    void updateShrJcjyC(@Param("dqjcid")Integer dqjcid, @Param("shrJcjl")String shrJcjl, @Param("auditor")String auditor, @Param("shsjTime") Date shsjTime);
+    void updateShrJcjyM(@Param("dqjcid")Integer dqjcid, @Param("shrJcjl")String shrJcjl, @Param("auditor")String auditor, @Param("shsjTime") Date shsjTime);
+    void updateShrJcjyS(@Param("dqjcid")Integer dqjcid, @Param("shrJcjl")String shrJcjl, @Param("auditor")String auditor, @Param("shsjTime") Date shsjTime);
 
 }
+
