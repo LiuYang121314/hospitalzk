@@ -13,7 +13,7 @@ import java.util.List;
 public interface ZsbMapper {
 
     //查询模板数据（成人，幼儿）
-    @Select("select * from ${value} order by temp_id desc limit 1")
+    @Select("select * from ${tableName} order by temp_id desc limit 1")
     SybCTemplate findTemplate(String tableName);
 
     //查询双通道模板数据，最后一条记录
@@ -303,7 +303,7 @@ public interface ZsbMapper {
     List<StzsM> findByEqIdandJcyqIdS(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
 
     //查询所有检测表数据信息
-    @Select("select * from ${value}")
+    @Select("select * from ${tableName}")
     List<SybC> findAll(String tableName);
     @Select("select * from stzs_m")
     List<StzsM> findAllS();
@@ -311,8 +311,8 @@ public interface ZsbMapper {
     /**
      * 根据iD状态查询
      */
-    @Select("select * from ${value} where id=#{id}")
-    SybC findByidC(@Param("id")Integer id,@Param("tableName")String tableName);
+    @Select("select * from ${tableName} where id=#{id}")
+    SybC findByid(@Param("id")Integer id,@Param("tableName")String tableName);
     @Select("select * from stzs_m where id=#{id}")
     StzsM findByidS(@Param("id")Integer id);
     //修改审核人意见

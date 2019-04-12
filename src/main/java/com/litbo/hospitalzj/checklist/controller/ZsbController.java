@@ -4,12 +4,18 @@ import com.litbo.hospitalzj.checklist.domain.*;
 import com.litbo.hospitalzj.checklist.service.ZsbService;
 import com.litbo.hospitalzj.checklist.utils.ResponseResult;
 import com.litbo.hospitalzj.checklist.utils.commons.CommonUtils;
+import com.litbo.hospitalzj.controller.BaseController;
+import com.litbo.hospitalzj.sf.service.UserService;
+import com.litbo.hospitalzj.zk.Enum.EnumProcess2;
+import com.litbo.hospitalzj.zk.service.UserEqService;
+import com.litbo.hospitalzj.zk.service.YqEqService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -17,120 +23,230 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/zsb")
-public class ZsbController {
+public class ZsbController extends BaseController {
 
     @Autowired
     private ZsbService zsbService;
-    //查询双通道注射泵模板数据
-    @RequestMapping("/find")
-    public ResponseResult<SybC> findStZsTemplate(Integer id){
-        String tableName="zsb_c";
-        return new ResponseResult<SybC>(200, zsbService.findByidC(id,tableName));
-    }
-  /*  //查询注射泵模板数据（成人）
-    @RequestMapping("/findManTemplate")
-    public ResponseResult<SybCTemplate> findManTemplate(){
-        return new ResponseResult<SybCTemplate>(200, zsbService.findManTemplate());
-    }
-    //查询注射泵模板数据（成人）
-    @RequestMapping("/findChildTemplate")
-    public ResponseResult<SybCTemplate> findChildTemplate(){
-        return new ResponseResult<SybCTemplate>(200, zsbService.findChildsTemplate());
-    }
-    //插入模板数据(双通道注射泵)
-    @RequestMapping("/insertStzsTemplate")
-    public ResponseResult insertStzsTemplate(StzsMTemplate template){
-        zsbService.insertStzsTemplate(template);
-        return new ResponseResult(200);
-    }
+    @Autowired
+    private UserEqService userEqService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private YqEqService yqEqService;
 
-    //插入模板数据（成人）
-    @RequestMapping("/insertManTemplate")
-    public ResponseResult insertManTemplate(SybCTemplate template){
-        System.out.println(template);
-        zsbService.insertManTemplate(template);
-        return new ResponseResult(200);
+    //查询模板表中最后一条数据
+    @RequestMapping("/findTemplateC")
+    public ResponseResult<SybCTemplate> findTemplateC(){
+        String tableName="zsb_c_template";
+        return new ResponseResult<SybCTemplate>(200, zsbService.findTemplate(tableName));
     }
-    //插入模板数据（儿童）
-    @RequestMapping("/insertChildTemplate")
-    public ResponseResult insertChildTemplate(SybCTemplate template){
-        zsbService.insertChildTemplate(template);
-        return new ResponseResult(200);
+    @RequestMapping("/findTemplateM")
+    public ResponseResult<SybCTemplate> findTemplateM(){
+        String tableName="zsb_M_template";
+        return new ResponseResult<SybCTemplate>(200, zsbService.findTemplate(tableName));
     }
-    //修改模板数据（儿童）
-    @RequestMapping("/updateC")
-    public ResponseResult updateC(SybCTemplate template){
-        zsbService.updateC(template);
-        return new ResponseResult(200);
+    @RequestMapping("/findStZsTemplate")
+    public ResponseResult<StzsMTemplate> findStZsTemplate(){
+        return new ResponseResult<StzsMTemplate>(200, zsbService.findStZsTemplate());
     }
-    //修改模板数据（成人）
-    @RequestMapping("/updateM")
-    public ResponseResult updateM(SybCTemplate template){
-        zsbService.updateM(template);
-        return new ResponseResult(200);
+    //修改模板表数据
+    @RequestMapping("/updateCT")
+    public ResponseResult<Void> updateCT(SybCTemplate sybCTemplate){
+        zsbService.updateC(sybCTemplate);
+        return new ResponseResult<Void>(200);
     }
-    //修改模板数据（儿童）
-    @RequestMapping("/updateS")
-    public ResponseResult updateS(StzsMTemplate stzsMTemplate){
+    @RequestMapping("/updateMT")
+    public ResponseResult<Void> updateMT(SybCTemplate sybCTemplate){
+        zsbService.updateM(sybCTemplate);
+        return new ResponseResult<Void>(200);
+    }
+    @RequestMapping("/updateST")
+    public ResponseResult<Void> updateST(StzsMTemplate stzsMTemplate){
         zsbService.updateS(stzsMTemplate);
-        return new ResponseResult(200);
+        return new ResponseResult<Void>(200);
     }
-    //保存信息
-    @RequestMapping("/savechild")
-    public ResponseResult<SybC> saveChild(@RequestParam(value = "eqId") String eqId, @RequestParam("jcyqId") String jcyqId,
-                                          HttpServletRequest req){
-        SybC sybC = CommonUtils.toBean(req.getParameterMap(), SybC.class);
+    //插入模板表数据
+    @RequestMapping("/insertChildTemplate")
+    public ResponseResult<Void> insertChildTemplate(SybCTemplate sybCTemplate){
+        zsbService.insertChildTemplate(sybCTemplate);
+        return new ResponseResult<Void>(200);
+    }
+
+    @RequestMapping("/insertManTemplate")
+    public ResponseResult<Void> insertManTemplate(SybCTemplate sybCTemplate){
+        zsbService.insertManTemplate(sybCTemplate);
+        return new ResponseResult<Void>(200);
+    }
+    @RequestMapping("/insertStzsTemplate")
+    public ResponseResult<Void> insertStzsTemplate(StzsMTemplate template){
+        zsbService.insertStzsTemplate(template);
+        return new ResponseResult<Void>(200);
+    }
+
+    //保存录入数据
+    @RequestMapping("/saveChild")
+    public ResponseResult saveChild(@RequestParam(value = "eqId") String eqId,
+                                                           @RequestParam(value = "jcyqId") String jcyqId,
+                                                           @RequestParam(value = "userEqId") Integer userEqId,
+                                                           SybC sybC, HttpSession session, HttpServletRequest req){
+        int yqEqId=yqEqService.insertBatch(eqId,jcyqId);
+        yqEqService.updateType(yqEqId, EnumProcess2.TO_UPLOAD.getMessage());
+        //修改状态为待上传
+        userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
         zsbService.saveChild(sybC);
-        return new ResponseResult<SybC>(200, sybC);
+        long[] x={sybC.getId(),yqEqId};
+        return new ResponseResult<>(200,x);
     }
-
-    @RequestMapping("/saveman")
-    public ResponseResult<SybC> saveMan(@RequestParam(value = "eqId") String eqId, @RequestParam("jcyqId") String jcyqId,
-                                        HttpServletRequest req){
-
-        SybC sybC = CommonUtils.toBean(req.getParameterMap(), SybC.class);
+    //修改数据
+    @RequestMapping("/updateChild")
+    public ResponseResult updateChild(SybC sybC){
+        zsbService.updateChild(sybC);
+        return new ResponseResult<>(200);
+    }
+    //保存录入数据
+    @RequestMapping("/saveMan")
+    public ResponseResult saveMan(@RequestParam(value = "eqId") String eqId,
+                                                              @RequestParam(value = "jcyqId") String jcyqId,
+                                                              @RequestParam(value = "userEqId") Integer userEqId,
+                                                              SybC sybC, HttpSession session, HttpServletRequest req){
+        int yqEqId=yqEqService.insertBatch(eqId,jcyqId);
+        yqEqService.updateType(yqEqId, EnumProcess2.TO_UPLOAD.getMessage());
+        //修改状态为待上传
+        userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
         zsbService.saveMan(sybC);
-        return new ResponseResult<SybC>(200, sybC);
+        long[] x={sybC.getId(),yqEqId};
+        return new ResponseResult<>(200,x);
+    }
+    @RequestMapping("/updateMan")
+    public ResponseResult updateMan(SybC sybC){
+        zsbService.updateMan(sybC);
+        return new ResponseResult<>(200);
+    }
+    //保存录入数据
+    @RequestMapping("/saveStzs")
+    public ResponseResult saveStzs(@RequestParam(value = "eqId") String eqId,
+                                  @RequestParam(value = "jcyqId") String jcyqId,
+                                  @RequestParam(value = "userEqId") Integer userEqId,
+                                   StzsM stzsM, HttpSession session, HttpServletRequest req){
+        int yqEqId=yqEqService.insertBatch(eqId,jcyqId);
+        yqEqService.updateType(yqEqId, EnumProcess2.TO_UPLOAD.getMessage());
+        //修改状态为待上传
+        userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
+        zsbService.saveStzs(stzsM);
+        long[] x={stzsM.getId(),yqEqId};
+        return new ResponseResult<>(200,x);
+    }
+    @RequestMapping("/updateStzs")
+    public ResponseResult updateStzs(StzsM stzsM){
+        zsbService.updateStzs(stzsM);
+        return new ResponseResult<>(200);
+    }
+    @RequestMapping("/findByEqIdandJcyqIdLast1C")
+    public ResponseResult<SybC> findByEqIdandJcyqIdLast1C(String eqId, String jcyqId){
+        SybC sybC= zsbService.findByEqIdandJcyqIdLast1C(eqId, jcyqId);
+        return new ResponseResult<SybC>(200,sybC);
     }
 
-    //保存双通道注射泵检测数据
-    @RequestMapping("/savestzs")
-    public ResponseResult<StzsM> saveStZs(@RequestParam(value = "eqId") String eqId, @RequestParam("jcyqId") String jcyqId,
-                                          HttpServletRequest req){
-        StzsM stzsM = CommonUtils.toBean(req.getParameterMap(), StzsM.class);
-        zsbService.saveStZs(stzsM);
-        return new ResponseResult<StzsM>(200, stzsM);
+    @RequestMapping("/findByEqIdandJcyqIdC")
+    public ResponseResult<List<SybC>> findByEqIdandJcyqIdC(String eqId, String jcyqId){
+        List<SybC> sybC= zsbService.findByEqIdandJcyqIdC(eqId, jcyqId);
+        return new ResponseResult<List<SybC>>(200,sybC);
+    }
+
+    @RequestMapping("/findByEqIdandJcyqIdLast1M")
+    public ResponseResult<SybC> findByEqIdandJcyqIdLast1M(String eqId, String jcyqId){
+        SybC sybC= zsbService.findByEqIdandJcyqIdLast1M(eqId, jcyqId);
+        return new ResponseResult<SybC>(200,sybC);
+    }
+    @RequestMapping("/findByEqIdandJcyqIdM")
+    public ResponseResult<List<SybC>> findByEqIdandJcyqIdM(String eqId, String jcyqId){
+        List<SybC> sybC= zsbService.findByEqIdandJcyqIdM(eqId, jcyqId);
+        return new ResponseResult<List<SybC>>(200,sybC);
+    }
+
+    @RequestMapping("/findByEqIdandJcyqIdLast1S")
+    public ResponseResult<StzsM> findByEqIdandJcyqIdLast1S(String eqId, String jcyqId) {
+        StzsM sybCs = zsbService.findByEqIdandJcyqIdLast1S(eqId, jcyqId);
+        return new ResponseResult<StzsM>(200, sybCs);
+    }
+    @RequestMapping("/findByEqIdandJcyqIdS")
+    public ResponseResult<List<StzsM>> findByEqIdandJcyqIdS(String eqId, String jcyqId){
+        List<StzsM> stzsM= zsbService.findByEqIdandJcyqIdS(eqId, jcyqId);
+        return new ResponseResult<List<StzsM>>(200,stzsM);
     }
 
 
-
-    //查询所有录入信息（双通道）
-    @RequestMapping("/findAllStzs")
-    public ResponseResult<List<StzsM>> findAllStzsMan(){
-        return new ResponseResult<List<StzsM>>(200, zsbService.findAllStzsMan());
+    //查询数据表中全部数据
+     @RequestMapping("/findAllC")
+     public ResponseResult<List<SybC>> findAllC(){
+         String tableName="zsb_c";
+         List<SybC> sybC= zsbService.findAll(tableName);
+         return new ResponseResult<List<SybC>>(200,sybC);
+     }
+    @RequestMapping("/findAllM")
+    public ResponseResult<List<SybC>> findAllM(){
+        String tableName="zsb_m";
+        List<SybC> sybC= zsbService.findAll(tableName);
+        return new ResponseResult<List<SybC>>(200,sybC);
     }
-    @RequestMapping("/findAllMan")
-    public ResponseResult<List<SybC>> findAllMan(){
-        return new ResponseResult<List<SybC>>(200, zsbService.findAllMan());
+    @RequestMapping("/findAllS")
+    public ResponseResult<List<StzsM>> findAllS(){
+        List<StzsM> sybC= zsbService.findAllS();
+        return new ResponseResult<List<StzsM>>(200,sybC);
     }
-    @RequestMapping("findAllChild")
-    public ResponseResult<List<SybC>> findAllChild(){
-        return new ResponseResult<List<SybC>>(200, zsbService.findAllChild());
+    //通过id查询表中数据
+    @RequestMapping("/findByidC")
+    public ResponseResult<SybC> findByidC(Integer id){
+        String tableName="zsb_c";
+        return new ResponseResult<SybC>(200, zsbService.findByid(id,tableName));
     }
-    //查询最后录入的一条检测信息
-    @RequestMapping("/findstzs")
-    public ResponseResult<StzsM> findStzsMan(){
-        return new ResponseResult<StzsM>(200, zsbService.findStzsMan());
+    @RequestMapping("/findByidM")
+    public ResponseResult<SybC> findByidM(Integer id){
+        String tableName="zsb_m";
+        return new ResponseResult<SybC>(200, zsbService.findByid(id,tableName));
     }
-
-    @RequestMapping("/findchild")
-    public ResponseResult<SybC> findChild(){
-        return new ResponseResult<SybC>(200, zsbService.findChild());
+    @RequestMapping("/findByidS")
+    public ResponseResult<StzsM> findByidS(Integer id){
+        return new ResponseResult<StzsM>(200, zsbService.findByidS(id));
     }
-
-    @RequestMapping("/findman")
-    public ResponseResult<SybC> findMan(){
-        return new ResponseResult<SybC>(200, zsbService.findMan());
+    //修改审核人状态
+    @RequestMapping("/updateShrJcjyC")
+    public com.litbo.hospitalzj.util.ResponseResult<Void> updateShrJcjy(@RequestParam("id")Integer id, @RequestParam("jcyqId")Integer jcyqId,
+                                                                        @RequestParam("eqId")Integer eqId, @RequestParam("shrJcjl")String shrJcjl, @RequestParam("state")Integer state, HttpSession session){
+        String auditor=getUserNameFromSession(session);
+        Integer yqEqId= yqEqService.findId(jcyqId,eqId);
+        zsbService.updateShrJcjyC(id,shrJcjl,auditor);
+        if(state.equals(1)){
+            yqEqService.updateState(yqEqId,1);
+        }else{
+            yqEqService.updateState(yqEqId,2);
+        }
+        return new com.litbo.hospitalzj.util.ResponseResult<Void>(200);
     }
-*/
+    @RequestMapping("/updateShrJcjyM")
+    public com.litbo.hospitalzj.util.ResponseResult<Void> updateShrJcjyM(@RequestParam("id")Integer id, @RequestParam("jcyqId")Integer jcyqId,
+                                                                        @RequestParam("eqId")Integer eqId, @RequestParam("shrJcjl")String shrJcjl, @RequestParam("state")Integer state, HttpSession session){
+        String auditor=getUserNameFromSession(session);
+        Integer yqEqId= yqEqService.findId(jcyqId,eqId);
+        zsbService.updateShrJcjyM(id,shrJcjl,auditor);
+        if(state.equals(1)){
+            yqEqService.updateState(yqEqId,1);
+        }else{
+            yqEqService.updateState(yqEqId,2);
+        }
+        return new com.litbo.hospitalzj.util.ResponseResult<Void>(200);
+    }
+    @RequestMapping("/updateShrJcjyS")
+    public com.litbo.hospitalzj.util.ResponseResult<Void> updateShrJcjyS(@RequestParam("id")Integer id, @RequestParam("jcyqId")Integer jcyqId,
+                                                                        @RequestParam("eqId")Integer eqId, @RequestParam("shrJcjl")String shrJcjl, @RequestParam("state")Integer state, HttpSession session){
+        String auditor=getUserNameFromSession(session);
+        Integer yqEqId= yqEqService.findId(jcyqId,eqId);
+        zsbService.updateShrJcjyS(id,shrJcjl,auditor);
+        if(state.equals(1)){
+            yqEqService.updateState(yqEqId,1);
+        }else{
+            yqEqService.updateState(yqEqId,2);
+        }
+        return new com.litbo.hospitalzj.util.ResponseResult<Void>(200);
+    }
 }

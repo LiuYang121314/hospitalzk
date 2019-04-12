@@ -72,12 +72,12 @@ public interface ZsbService {
     /**
      * 根据iD状态查询
      */
-    SybC findByidC(@Param("id")Integer id,@Param("tableName")String tableName);
+    SybC findByid(@Param("id")Integer id,@Param("tableName")String tableName);
     StzsM findByidS(@Param("id")Integer id);
     //修改审核人意见
-    void updateShrJcjyC(@Param("dqjcid")Integer dqjcid, @Param("shrJcjl")String shrJcjl, @Param("auditor")String auditor, @Param("shsjTime") Date shsjTime);
-    void updateShrJcjyM(@Param("dqjcid")Integer dqjcid, @Param("shrJcjl")String shrJcjl, @Param("auditor")String auditor, @Param("shsjTime") Date shsjTime);
-    void updateShrJcjyS(@Param("dqjcid")Integer dqjcid, @Param("shrJcjl")String shrJcjl, @Param("auditor")String auditor, @Param("shsjTime") Date shsjTime);
+    void updateShrJcjyC(@Param("dqjcid")Integer dqjcid, @Param("shrJcjl")String shrJcjl, @Param("auditor")String auditor);
+    void updateShrJcjyM(@Param("dqjcid")Integer dqjcid, @Param("shrJcjl")String shrJcjl, @Param("auditor")String auditor);
+    void updateShrJcjyS(@Param("dqjcid")Integer dqjcid, @Param("shrJcjl")String shrJcjl, @Param("auditor")String auditor);
 
 }
 
