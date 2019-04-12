@@ -300,7 +300,7 @@
                     <input id="isUser" type="text" disabled name="tester" required autocomplete="off" class="layui-input">
                 </div>
             </div>
-            <div class="layui-form-item col-md-6">
+            <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">检测时间</label>
                 <div class="layui-input-block">
                     <input id="date" type="text" name="testTime" required autocomplete="off" class="layui-input">
@@ -338,7 +338,8 @@
             $("#isUser").val(userName);
         });
         laydate.render({
-            elem:"#date"
+            elem:"#date",
+            type:"datetime"
         });
         form.on("submit(saveAll)",function(data){
             console.log(data.field);
