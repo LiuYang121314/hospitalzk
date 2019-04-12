@@ -5,7 +5,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
-    <title>除颤器质量检测原始记录表</title>
+    <title>呼吸机质量检测原始记录表</title>
     <link rel="stylesheet" type="text/css" href="../../../../static/layui/css/layui.css"/>
     <link rel="stylesheet" type="text/css" href="../../../../static/css/admin.css"/>
     <script src="../../../../static/js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
@@ -33,57 +33,61 @@
 <div class="layui-row">
     <div class="col-xs-12">
         <fieldset class="layui-elem-field layui-field-title">
-            <legend style="color: #000000;font-weight: bold;text-align: center;margin-bottom: 30px;">除颤器质量检测原始记录表</legend>
+            <legend style="color: #000000;font-weight: bold;text-align: center;margin-bottom: 30px;">呼吸机质量检测原始记录表</legend>
         </fieldset>
         <table class="layui-table">
             <tr>
-                <td width="156" rowspan="6"><p align="center">释放能量(J)允许误差 ±15%或±4J（取最大值）</p>    </td>
-                <td width="137">标称值</td>
-                <td colspan="3">测量值</td>
-                <td width="141">误差</td>
-                <td width="140">标称值</td>
-                <td colspan="3">测量值</td>
-                <td width="152">误差</td>
-                <td width="199">测试结果</td>
+                <td colspan="12">吸气峰值压力（PCV模式、f=15bpm、I:E=1:2、PEEP=0cmH2O、FiO2=40%）</td>
             </tr>
             <tr>
-                <td>最小能量值</td>
-                <td colspan="3">&nbsp;</td>
+                <td rowspan="2">呼吸机设定值 （cmH2O）</td>
+                <td colspan="3">呼吸机监测值</td>
+                <td rowspan="2">平均值 （呼吸机监测值）</td>
+                <td colspan="3">测试仪测量值</td>
+                <td rowspan="2">平均值 （测试仪测量值）</td>
+                <td rowspan="2">示值误差</td>
+                <td rowspan="2">最大允差</td>
+                <td rowspan="2">符合情况</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td style="width: 8%;">10</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;" rowspan="3">±3 cmH2O 或设定值的±10% （两者取绝对值大者）</td>
+                <td style="width: 8%;" rowspan="3">□符合 □不符合</td>
+            </tr>
+            <tr>
+                <td>20</td>
                 <td>&nbsp;</td>
-                <td>100</td>
-                <td colspan="3">&nbsp;</td>
                 <td>&nbsp;</td>
-                <td rowspan="5">□符合□不符合</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>30</td>
-                <td colspan="3">&nbsp;</td>
                 <td>&nbsp;</td>
-                <td>200</td>
-                <td colspan="3">&nbsp;</td>
                 <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>50</td>
-                <td colspan="3">&nbsp;</td>
                 <td>&nbsp;</td>
-                <td>最大能量值</td>
-                <td colspan="3">&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td rowspan="2">20</td>
-                <td width="125">前</td>
-                <td width="122">中</td>
-                <td width="126">后</td>
-                <td rowspan="2">&nbsp;</td>
-                <td rowspan="2">200</td>
-                <td width="89">前</td>
-                <td width="93">中</td>
-                <td width="102">后</td>
-                <td rowspan="2">&nbsp;</td>
-            </tr>
-            <tr>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -91,49 +95,65 @@
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
+
             <tr>
-                <td height="67"><p align="center">充电时间(s)≤20s</p>    </td>
-                <td colspan="3">&nbsp;</td>
-                <td colspan="3">□符合 □不符合</td>
-                <td colspan="2">内部放电</td>
-                <td colspan="3">&nbsp;</td>
+                <td colspan="12">强制通气频率f（VCV模式、Vt=400ml、I:E=1:2、PEEP=2cmH2O、FiO2=40%）</td>
             </tr>
             <tr>
-                <td>同步模式</td>
-                <td colspan="4">□有同步触发功能 □无同步触发功能</td>
-                <td colspan="2">同步延迟时间（ms）:≤60ms</td>
-                <td colspan="2">&nbsp;</td>
-                <td colspan="3">□符合 □不符合</td>
+                <td rowspan="2">呼吸机设定值 （cmH2O）</td>
+                <td colspan="3">呼吸机监测值</td>
+                <td rowspan="2">平均值 （呼吸机监测值）</td>
+                <td colspan="3">测试仪测量值</td>
+                <td rowspan="2">平均值 （测试仪测量值）</td>
+                <td rowspan="2">示值误差</td>
+                <td rowspan="2">最大允差</td>
+                <td rowspan="2">符合情况</td>
             </tr>
             <tr>
-                <td rowspan="2">心率示值</td>
-                <td colspan="2">设定值</td>
-                <td colspan="2">30(28～32)</td>
-                <td>60(57～63)</td>
-                <td>100(95～105)</td>
-                <td colspan="2">120(114～126)</td>
-                <td colspan="2">180(171～189)</td>
-                <td>测试结果</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
             </tr>
             <tr>
-                <td colspan="2">测量值</td>
-                <td colspan="2">&nbsp;</td>
-                <td colspan="2">&nbsp;</td>
-                <td colspan="2">&nbsp;</td>
-                <td colspan="2">&nbsp;</td>
-                <td>□符合 □不符合</td>
+                <td style="width: 8%;">10</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;">&nbsp;</td>
+                <td style="width: 8%;" rowspan="3">±3 cmH2O 或设定值的±10% （两者取绝对值大者）</td>
+                <td style="width: 8%;" rowspan="3">□符合 □不符合</td>
             </tr>
             <tr>
-                <td>声光报警</td>
-                <td colspan="2">□符合 □不符合</td>
-                <td colspan="2">报警限检查</td>
-                <td colspan="2">□符合 □不符合</td>
-                <td colspan="3">静音检查</td>
-                <td colspan="2">□符合 □不符合</td>
+                <td>20</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
-                <td height="88">检测说明</td>
-                <td colspan="11">&nbsp;</td>
+                <td>30</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
         </table>
         <fieldset class="layui-elem-field layui-field-title">
