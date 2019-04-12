@@ -23,13 +23,11 @@
         }
         .layui-input-block{
             display: flex;
-            justify-content: center;
             align-items: center;
         }
-        p{
-            width: 70%;
-            font-weight: bold;
-            margin-left: 30px;
+        b{
+            padding-left: 30px;
+            width: 20%;
         }
         .is{
             color: green;
@@ -41,7 +39,7 @@
 </head>
 <body>
 <div class="layui-row">
-    <p style="height: 34px;width: 100%;line-height: 34px;background-color: lightyellow; text-align: center;"><span class="sign">***</span>请谨慎核对数据信息<span class="sign">***</span></p>
+    <p style="height: 34px;width: 100%;line-height: 34px;background-color: lightyellow; text-align: center;"><span class="sign">***</span>请认真填写数据信息<span class="sign">***</span></p>
     <div class="col-xs-12">
         <fieldset class="layui-elem-field layui-field-title">
             <legend style="font-size: 22px;font-weight: bold;">医疗设备通用电气安全检测原始记录</legend>
@@ -54,21 +52,21 @@
                 <label class="layui-form-label">电源电压(V)</label>
                 <div class="layui-input-block">
                     <input id="inp1" type="text" name="dydyValue" placeholder="电源电压(V)" autocomplete="off" class="layui-input">
-                    <p id="p1"></p>
+                    <b id="p1"></b>
                 </div>
             </div>
             <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">保护接地阻抗（mΩ）</label>
                 <div class="layui-input-block">
                     <input id="inp2" type="text" name="jdzkValue"  placeholder="保护接地阻抗（mΩ）" autocomplete="off" class="layui-input">
-                    <p id="p2"></p>
+                    <b id="p2"></b>
                 </div>
             </div>
             <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">绝缘阻抗(电源—外壳)(MΩ)</label>
                 <div class="layui-input-block">
                     <input id="inp3" type="text" name="jyzkValue" placeholder="绝缘阻抗(电源—外壳)(MΩ)" autocomplete="off" class="layui-input">
-                    <p id="p3"></p>
+                    <b id="p3"></b>
                 </div>
             </div>
             <fieldset class="layui-elem-field layui-field-title">
@@ -78,14 +76,14 @@
                 <label class="layui-form-label">正向</label>
                 <div class="layui-input-block">
                     <input id="inp4" type="text" name="ddldlZcZxValue" placeholder="正向" autocomplete="off" class="layui-input">
-                    <p id="p4"></p>
+                    <b id="p4"></b>
                 </div>
             </div>
             <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">反向</label>
                 <div class="layui-input-block">
                     <input id="inp5" type="text" name="ddldlZcFxValue" placeholder="反向" autocomplete="off" class="layui-input">
-                    <p id="p5"></p>
+                    <b id="p5"></b>
                 </div>
             </div>
             <fieldset class="layui-elem-field layui-field-title">
@@ -95,14 +93,14 @@
                 <label class="layui-form-label">正向断零</label>
                 <div class="layui-input-block">
                     <input id="inp6" type="text" name="ddldlDyZxdlValue" placeholder="正向断零" autocomplete="off" class="layui-input">
-                    <p id="p6"></p>
+                    <b id="p6"></b>
                 </div>
             </div>
             <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">反向断零</label>
                 <div class="layui-input-block">
                     <input id="inp7" type="text" name="ddldlDyFxdlValue" placeholder="反向断零" autocomplete="off" class="layui-input">
-                    <p id="p7"></p>
+                    <b id="p7"></b>
                 </div>
             </div>
             <fieldset class="layui-elem-field layui-field-title">
@@ -112,14 +110,14 @@
                 <label class="layui-form-label">正向</label>
                 <div class="layui-input-block">
                     <input id="inp8" type="text" name="wkldlZcZxValue" placeholder="正向" autocomplete="off" class="layui-input">
-                    <p id="p8"></p>
+                    <b id="p8"></b>
                 </div>
             </div>
             <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">反向</label>
                 <div class="layui-input-block">
                     <input id="inp9" type="text" name="wkldlZcFxValue" placeholder="反向" autocomplete="off" class="layui-input">
-                    <p id="p9"></p>
+                    <b id="p9"></b>
                 </div>
             </div>
             <fieldset class="layui-elem-field layui-field-title">
@@ -129,28 +127,28 @@
                 <label class="layui-form-label">正向断零</label>
                 <div class="layui-input-block">
                     <input id="inp10" type="text" name="wkldlDyZxdlValue" placeholder="正向断零" autocomplete="off" class="layui-input">
-                    <p id="p10"></p>
+                    <b id="p10"></b>
                 </div>
             </div>
             <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">正向断地</label>
                 <div class="layui-input-block">
                     <input id="inp11" type="text" name="wkldlDyZxddValue" placeholder="正向断地" autocomplete="off" class="layui-input">
-                    <p id="p11"></p>
+                    <b id="p11"></b>
                 </div>
             </div>
             <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">反向断零</label>
                 <div class="layui-input-block">
                     <input id="inp12" type="text" name="wkldlDyFxdlValue" placeholder="反向断零" autocomplete="off" class="layui-input">
-                    <p id="p12"></p>
+                    <b id="p12"></b>
                 </div>
             </div>
             <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">反向断地</label>
                 <div class="layui-input-block">
                     <input id="inp13" type="text" name="wkldlDyFxddValue" placeholder="反向断地" autocomplete="off" class="layui-input">
-                    <p id="p13"></p>
+                    <b id="p13"></b>
                 </div>
             </div>
             <fieldset class="layui-elem-field layui-field-title">
@@ -175,14 +173,14 @@
                             <label class="layui-form-label">正向</label>
                             <div class="layui-input-block">
                                 <input id="inp14" type="text" name="hzldlZcZxbfValue" placeholder="正向" autocomplete="off" class="layui-input">
-                                <p id="p14"></p>
+                                <b id="p14"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">反向</label>
                             <div class="layui-input-block">
                                 <input id="inp15" type="text" name="hzldlZcFxbfValue" placeholder="反向" autocomplete="off" class="layui-input">
-                                <p id="p15"></p>
+                                <b id="p15"></b>
                             </div>
                         </div>
                         <fieldset class="layui-elem-field layui-field-title">
@@ -192,28 +190,28 @@
                             <label class="layui-form-label">正向断零</label>
                             <div class="layui-input-block">
                                 <input id="inp16" type="text" name="hzldlDyZxdlbfValue" placeholder="正向断零" autocomplete="off" class="layui-input">
-                                <p id="p16"></p>
+                                <b id="p16"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">正向断地</label>
                             <div class="layui-input-block">
                                 <input id="inp17" type="text" name="hzldlDyZxddbfValue" placeholder="正向断地" autocomplete="off" class="layui-input">
-                                <p id="p17"></p>
+                                <b id="p17"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">反向断零</label>
                             <div class="layui-input-block">
                                 <input id="inp18" type="text" name="hzldlDyFxdlbfValue" placeholder="反向断零" autocomplete="off" class="layui-input">
-                                <p id="p18"></p>
+                                <b id="p18"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">反向断地</label>
                             <div class="layui-input-block">
                                 <input id="inp19" type="text" name="hzldlDyFxddbfValue" placeholder="反向断地" autocomplete="off" class="layui-input">
-                                <p id="p19"></p>
+                                <b id="p19"></b>
                             </div>
                         </div>
                         <fieldset class="layui-elem-field layui-field-title">
@@ -223,14 +221,14 @@
                             <label class="layui-form-label">正向</label>
                             <div class="layui-input-block">
                                 <input id="inp20" type="text" name="hzfzldlZcZxbfValue" placeholder="正向" autocomplete="off" class="layui-input">
-                                <p id="p20"></p>
+                                <b id="p20"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">反向</label>
                             <div class="layui-input-block">
                                 <input id="inp21" type="text" name="hzfzldlZcFxbfValue" placeholder="反向" autocomplete="off" class="layui-input">
-                                <p id="p21"></p>
+                                <b id="p21"></b>
                             </div>
                         </div>
                         <fieldset class="layui-elem-field layui-field-title">
@@ -240,28 +238,28 @@
                             <label class="layui-form-label">正向断零</label>
                             <div class="layui-input-block">
                                 <input id="inp22" type="text" name="hzfzldlDyZxdlbfValue" placeholder="正向断零" autocomplete="off" class="layui-input">
-                                <p id="p22"></p>
+                                <b id="p22"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">正向断地</label>
                             <div class="layui-input-block">
                                 <input id="inp23" type="text" name="hzfzldlDyZxddbfValue" placeholder="正向断地" autocomplete="off" class="layui-input">
-                                <p id="p23"></p>
+                                <b id="p23"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">反向断零</label>
                             <div class="layui-input-block">
                                 <input id="inp24" type="text" name="hzfzldlDyFxdlbfValue" placeholder="反向断零" autocomplete="off" class="layui-input">
-                                <p id="p24"></p>
+                                <b id="p24"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">反向断地</label>
                             <div class="layui-input-block">
                                 <input id="inp25" type="text" name="hzfzldlDyFxddbfValue" placeholder="反向断地" autocomplete="off" class="layui-input">
-                                <p id="p25"></p>
+                                <b id="p25"></b>
                             </div>
                         </div>
                     </div>
@@ -273,14 +271,14 @@
                             <label class="layui-form-label">正向</label>
                             <div class="layui-input-block">
                                 <input id="inp26" type="text" name="hzldlZcZxcfValue" placeholder="正向" autocomplete="off" class="layui-input">
-                                <p id="p26"></p>
+                                <b id="p26"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">反向</label>
                             <div class="layui-input-block">
                                 <input id="inp27" type="text" name="hzldlZcFxcfValue" placeholder="反向" autocomplete="off" class="layui-input">
-                                <p id="p27"></p>
+                                <b id="p27"></b>
                             </div>
                         </div>
                         <fieldset class="layui-elem-field layui-field-title">
@@ -290,28 +288,28 @@
                             <label class="layui-form-label">正向断零</label>
                             <div class="layui-input-block">
                                 <input id="inp28" type="text" name="hzldlDyZxdlcfValue" placeholder="正向断零" autocomplete="off" class="layui-input">
-                                <p id="p28"></p>
+                                <b id="p28"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">正向断地</label>
                             <div class="layui-input-block">
                                 <input id="inp29" type="text" name="hzldlDyZxddcfValue" placeholder="正向断地" autocomplete="off" class="layui-input">
-                                <p id="p29"></p>
+                                <b id="p29"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">反向断零</label>
                             <div class="layui-input-block">
                                 <input id="inp30" type="text" name="hzldlDyFxdlcfValue" placeholder="反向断零" autocomplete="off" class="layui-input">
-                                <p id="p30"></p>
+                                <b id="p30"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">反向断地</label>
                             <div class="layui-input-block">
                                 <input id="inp31" type="text" name="hzldlDyFxddcfValue" placeholder="反向断地" autocomplete="off" class="layui-input">
-                                <p id="p31"></p>
+                                <b id="p31"></b>
                             </div>
                         </div>
                         <fieldset class="layui-elem-field layui-field-title">
@@ -321,14 +319,14 @@
                             <label class="layui-form-label">正向</label>
                             <div class="layui-input-block">
                                 <input id="inp32" type="text" name="hzfzldlZcZxcfValue" placeholder="正向" autocomplete="off" class="layui-input">
-                                <p id="p32"></p>
+                                <b id="p32"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">反向</label>
                             <div class="layui-input-block">
                                 <input id="inp33" type="text" name="hzfzldlZcFxcfValue" placeholder="反向" autocomplete="off" class="layui-input">
-                                <p id="p33"></p>
+                                <b id="p33"></b>
                             </div>
                         </div>
                         <fieldset class="layui-elem-field layui-field-title">
@@ -338,28 +336,28 @@
                             <label class="layui-form-label">正向断零</label>
                             <div class="layui-input-block">
                                 <input id="inp34" type="text" name="hzfzldlDyZxdlcfValue" placeholder="正向断零" autocomplete="off" class="layui-input">
-                                <p id="p34"></p>
+                                <b id="p34"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">正向断地</label>
                             <div class="layui-input-block">
                                 <input id="inp35" type="text" name="hzfzldlDyZxddcfValue" placeholder="正向断地" autocomplete="off" class="layui-input">
-                                <p id="p35"></p>
+                                <b id="p35"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">反向断零</label>
                             <div class="layui-input-block">
                                 <input id="inp36" type="text" name="hzfzldlDyFxdlcfValue" placeholder="反向断零" autocomplete="off" class="layui-input">
-                                <p id="p36"></p>
+                                <b id="p36"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">反向断地</label>
                             <div class="layui-input-block">
                                 <input id="inp37" type="text" name="hzfzldlDyFxddcfValue" placeholder="反向断地" autocomplete="off" class="layui-input">
-                                <p id="p37"></p>
+                                <b id="p37"></b>
                             </div>
                         </div>
                     </div>

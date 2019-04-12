@@ -23,13 +23,11 @@
         }
         .layui-input-block{
             display: flex;
-            justify-content: center;
             align-items: center;
         }
-        p{
-            width: 70%;
-            font-weight: bold;
-            margin-left: 30px;
+        b{
+            padding-left: 30px;
+            width: 20%;
         }
         .is{
             color: green;
@@ -41,7 +39,7 @@
 </head>
 <body>
 <div class="layui-row">
-    <p style="height: 34px;width: 100%;line-height: 34px;background-color: lightyellow; text-align: center;"><span class="sign">***</span>请谨慎录入数据信息<span class="sign">***</span></p>
+    <p style="height: 34px;width: 100%;line-height: 34px;background-color: lightyellow; text-align: center;"><span class="sign">***</span>请认真填写数据信息<span class="sign">***</span></p>
     <div class="col-xs-12">
         <fieldset class="layui-elem-field layui-field-title">
             <legend style="font-size: 22px;font-weight: bold;">生命体征模拟器检测数据录入</legend>
@@ -61,35 +59,35 @@
                             <label class="layui-form-label">实测值1</label>
                             <div class="layui-input-block">
                                 <input id="Minp1" type="text" name="xlValue1" placeholder="测试点为30" autocomplete="off" class="layui-input">
-                                <p id="Mp1"></p>
+                                <b id="Mp1"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值2</label>
                             <div class="layui-input-block">
                                 <input id="Minp2" type="text" name="xlValue2" placeholder="测试点为60" autocomplete="off" class="layui-input">
-                                <p id="Mp2"></p>
+                                <b id="Mp2"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值3</label>
                             <div class="layui-input-block">
                                 <input id="Minp3" type="text" name="xlValue3" placeholder="测试点为100" autocomplete="off" class="layui-input">
-                                <p id="Mp3"></p>
+                                <b id="Mp3"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值4</label>
                             <div class="layui-input-block">
                                 <input id="Minp4" type="text" name="xlValue4" placeholder="测试点为120" autocomplete="off" class="layui-input">
-                                <p id="Mp4"></p>
+                                <b id="Mp4"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值5</label>
                             <div class="layui-input-block">
                                 <input id="Minp5" type="text" name="xlValue5" placeholder="测试点为180" autocomplete="off" class="layui-input">
-                                <p id="Mp5"></p>
+                                <b id="Mp5"></b>
                             </div>
                         </div>
                         <fieldset class="layui-elem-field layui-field-title">
@@ -99,35 +97,35 @@
                             <label class="layui-form-label">实测值1</label>
                             <div class="layui-input-block">
                                 <input id="Minp6" type="text" name="hxlValue1" placeholder="测试点为15" autocomplete="off" class="layui-input">
-                                <p id="Mp6"></p>
+                                <b id="Mp6"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值2</label>
                             <div class="layui-input-block">
                                 <input id="Minp7" type="text" name="hxlValue2" placeholder="测试点为20" autocomplete="off" class="layui-input">
-                                <p id="Mp7"></p>
+                                <b id="Mp7"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值3</label>
                             <div class="layui-input-block">
                                 <input id="Minp8" type="text" name="hxlValue3" placeholder="测试点为40" autocomplete="off" class="layui-input">
-                                <p id="Mp8"></p>
+                                <b id="Mp8"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值4</label>
                             <div class="layui-input-block">
                                 <input id="Minp9" type="text" name="hxlValue4" placeholder="测试点为60" autocomplete="off" class="layui-input">
-                                <p id="Mp9"></p>
+                                <b id="Mp9"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值5</label>
                             <div class="layui-input-block">
                                 <input id="Minp10" type="text" name="hxlValue5" placeholder="测试点为80" autocomplete="off" class="layui-input">
-                                <p id="Mp10"></p>
+                                <b id="Mp10"></b>
                             </div>
                         </div>
                         <fieldset class="layui-elem-field layui-field-title">
@@ -141,14 +139,14 @@
                                         <label class="layui-form-label">测试点为75</label>
                                         <div class="layui-input-block">
                                             <input id="MssyA1" type="text" name="wcxyHValue11" placeholder="测试点为75" autocomplete="off" class="layui-input">
-                                            <p id="MssyA1P"></p>
+                                            <b id="MssyA1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为45</label>
                                         <div class="layui-input-block">
                                             <input id="MszyA1" type="text" name="wcxyMValue11" placeholder="测试点为45" autocomplete="off" class="layui-input">
-                                            <p id="MszyA1P"></p>
+                                            <b id="MszyA1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -166,14 +164,14 @@
                                         <label class="layui-form-label">测试点为75</label>
                                         <div class="layui-input-block">
                                             <input id="MssyA2" type="text" name="wcxyHValue21" placeholder="测试点为75" autocomplete="off" class="layui-input">
-                                            <p id="MssyA2P"></p>
+                                            <b id="MssyA2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为45</label>
                                         <div class="layui-input-block">
                                             <input id="MszyA2" type="text" name="wcxyMValue21" placeholder="测试点为45" autocomplete="off" class="layui-input">
-                                            <p id="MszyA2P"></p>
+                                            <b id="MszyA2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -191,14 +189,14 @@
                                         <label class="layui-form-label">测试点为75</label>
                                         <div class="layui-input-block">
                                             <input id="MssyA3" type="text" name="wcxyHValue31" placeholder="测试点为75" autocomplete="off" class="layui-input">
-                                            <p id="MssyA3P"></p>
+                                            <b id="MssyA3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为45</label>
                                         <div class="layui-input-block">
                                             <input id="MszyA3" type="text" name="wcxyMValue31" placeholder="测试点为45" autocomplete="off" class="layui-input">
-                                            <p id="MszyA3P"></p>
+                                            <b id="MszyA3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -218,14 +216,14 @@
                                         <label class="layui-form-label">测试点为100</label>
                                         <div class="layui-input-block">
                                             <input id="MssyB1" type="text" name="wcxyHValue12" placeholder="测试点为100" autocomplete="off" class="layui-input">
-                                            <p id="MssyB1P"></p>
+                                            <b id="MssyB1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为65</label>
                                         <div class="layui-input-block">
                                             <input id="MszyB1" type="text" name="wcxyMValue12" placeholder="测试点为65" autocomplete="off" class="layui-input">
-                                            <p id="MszyB1P"></p>
+                                            <b id="MszyB1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -243,14 +241,14 @@
                                         <label class="layui-form-label">测试点为100</label>
                                         <div class="layui-input-block">
                                             <input id="MssyB2" type="text" name="wcxyHValue22" placeholder="测试点为100" autocomplete="off" class="layui-input">
-                                            <p id="MssyB2P"></p>
+                                            <b id="MssyB2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为65</label>
                                         <div class="layui-input-block">
                                             <input id="MszyB2" type="text" name="wcxyMValue22" placeholder="测试点为65" autocomplete="off" class="layui-input">
-                                            <p id="MszyB2P"></p>
+                                            <b id="MszyB2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -268,14 +266,14 @@
                                         <label class="layui-form-label">测试点为100</label>
                                         <div class="layui-input-block">
                                             <input id="MssyB3" type="text" name="wcxyHValue32" placeholder="测试点为100" autocomplete="off" class="layui-input">
-                                            <p id="MssyB3P"></p>
+                                            <b id="MssyB3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为65</label>
                                         <div class="layui-input-block">
                                             <input id="MszyB3" type="text" name="wcxyMValue32" placeholder="测试点为65" autocomplete="off" class="layui-input">
-                                            <p id="MszyB3P"></p>
+                                            <b id="MszyB3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -295,14 +293,14 @@
                                         <label class="layui-form-label">测试点为120</label>
                                         <div class="layui-input-block">
                                             <input id="MssyC1" type="text" name="wcxyHValue13" placeholder="测试点为120" autocomplete="off" class="layui-input">
-                                            <p id="MssyC1P"></p>
+                                            <b id="MssyC1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为80</label>
                                         <div class="layui-input-block">
                                             <input id="MszyC1" type="text" name="wcxyMValue13" placeholder="测试点为80" autocomplete="off" class="layui-input">
-                                            <p id="MszyC1P"></p>
+                                            <b id="MszyC1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -320,14 +318,14 @@
                                         <label class="layui-form-label">测试点为120</label>
                                         <div class="layui-input-block">
                                             <input id="MssyC2" type="text" name="wcxyHValue23" placeholder="测试点为120" autocomplete="off" class="layui-input">
-                                            <p id="MssyC2P"></p>
+                                            <b id="MssyC2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为80</label>
                                         <div class="layui-input-block">
                                             <input id="MszyC2" type="text" name="wcxyMValue23" placeholder="测试点为80" autocomplete="off" class="layui-input">
-                                            <p id="MszyC2P"></p>
+                                            <b id="MszyC2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -345,14 +343,14 @@
                                         <label class="layui-form-label">测试点为120</label>
                                         <div class="layui-input-block">
                                             <input id="MssyC3" type="text" name="wcxyHValue33" placeholder="测试点为120" autocomplete="off" class="layui-input">
-                                            <p id="MssyC3P"></p>
+                                            <b id="MssyC3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为80</label>
                                         <div class="layui-input-block">
                                             <input id="MszyC3" type="text" name="wcxyMValue33" placeholder="测试点为80" autocomplete="off" class="layui-input">
-                                            <p id="MszyC3P"></p>
+                                            <b id="MszyC3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -372,14 +370,14 @@
                                         <label class="layui-form-label">测试点为150</label>
                                         <div class="layui-input-block">
                                             <input id="MssyD1" type="text" name="wcxyHValue14" placeholder="测试点为150" autocomplete="off" class="layui-input">
-                                            <p id="MssyD1P"></p>
+                                            <b id="MssyD1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为100</label>
                                         <div class="layui-input-block">
                                             <input id="MszyD1" type="text" name="wcxyMValue14" placeholder="测试点为100" autocomplete="off" class="layui-input">
-                                            <p id="MszyD1P"></p>
+                                            <b id="MszyD1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -397,14 +395,14 @@
                                         <label class="layui-form-label">测试点为150</label>
                                         <div class="layui-input-block">
                                             <input id="MssyD2" type="text" name="wcxyHValue24" placeholder="测试点为150" autocomplete="off" class="layui-input">
-                                            <p id="MssyD2P"></p>
+                                            <b id="MssyD2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为100</label>
                                         <div class="layui-input-block">
                                             <input id="MszyD2" type="text" name="wcxyMValue24" placeholder="测试点为100" autocomplete="off" class="layui-input">
-                                            <p id="MszyD2P"></p>
+                                            <b id="MszyD2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -422,14 +420,14 @@
                                         <label class="layui-form-label">测试点为150</label>
                                         <div class="layui-input-block">
                                             <input id="MssyD3" type="text" name="wcxyHValue34" placeholder="测试点为150" autocomplete="off" class="layui-input">
-                                            <p id="MssyD3P"></p>
+                                            <b id="MssyD3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为100</label>
                                         <div class="layui-input-block">
                                             <input id="MszyD3" type="text" name="wcxyMValue34" placeholder="测试点为100" autocomplete="off" class="layui-input">
-                                            <p id="MszyD3P"></p>
+                                            <b id="MszyD3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -449,14 +447,14 @@
                                         <label class="layui-form-label">测试点为180</label>
                                         <div class="layui-input-block">
                                             <input id="MssyE1" type="text" name="wcxyHValue15" placeholder="测试点为180" autocomplete="off" class="layui-input">
-                                            <p id="MssyE1P"></p>
+                                            <b id="MssyE1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为120</label>
                                         <div class="layui-input-block">
                                             <input id="MszyE1" type="text" name="wcxyMValue15" placeholder="测试点为120" autocomplete="off" class="layui-input">
-                                            <p id="MszyE1P"></p>
+                                            <b id="MszyE1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -474,14 +472,14 @@
                                         <label class="layui-form-label">测试点为180</label>
                                         <div class="layui-input-block">
                                             <input id="MssyE2" type="text" name="wcxyHValue25" placeholder="测试点为180" autocomplete="off" class="layui-input">
-                                            <p id="MssyE2P"></p>
+                                            <b id="MssyE2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为120</label>
                                         <div class="layui-input-block">
                                             <input id="MszyE2" type="text" name="wcxyMValue25" placeholder="测试点为120" autocomplete="off" class="layui-input">
-                                            <p id="MszyE2P"></p>
+                                            <b id="MszyE2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -499,14 +497,14 @@
                                         <label class="layui-form-label">测试点为180</label>
                                         <div class="layui-input-block">
                                             <input id="MssyE3" type="text" name="wcxyHValue35" placeholder="测试点为180" autocomplete="off" class="layui-input">
-                                            <p id="MssyE3P"></p>
+                                            <b id="MssyE3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为120</label>
                                         <div class="layui-input-block">
                                             <input id="MszyE3" type="text" name="wcxyMValue35" placeholder="测试点为120" autocomplete="off" class="layui-input">
-                                            <p id="MszyE3P"></p>
+                                            <b id="MszyE3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -525,21 +523,21 @@
                             <label class="layui-form-label">实测值1</label>
                             <div class="layui-input-block">
                                 <input id="Minp11" type="text" name="xybhdValue1" placeholder="测试点为85" autocomplete="off" class="layui-input">
-                                <p id="Mp11"></p>
+                                <b id="Mp11"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值2</label>
                             <div class="layui-input-block">
                                 <input id="Minp12" type="text" name="xybhdValue2" placeholder="测试点为88" autocomplete="off" class="layui-input">
-                                <p id="Mp12"></p>
+                                <b id="Mp12"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值3</label>
                             <div class="layui-input-block">
                                 <input id="Minp13" type="text" name="xybhdValue3" placeholder="测试点为95" autocomplete="off" class="layui-input">
-                                <p id="Mp13"></p>
+                                <b id="Mp13"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
@@ -553,7 +551,7 @@
                             <label class="layui-form-label">实测值5</label>
                             <div class="layui-input-block">
                                 <input id="Minp15" type="text" name="xybhdValue5" placeholder="测试点为100" autocomplete="off" class="layui-input">
-                                <p id="Mp15"></p>
+                                <b id="Mp15"></b>
                             </div>
                         </div>
                         <fieldset class="layui-elem-field layui-field-title">
@@ -563,14 +561,14 @@
                             <label class="layui-form-label">模拟器测量值</label>
                             <div class="layui-input-block">
                                 <input id="Minp16" type="text" name="wcxyjtMnq" placeholder="模拟器测量值" autocomplete="off" class="layui-input">
-                                <p id="Mp16"></p>
+                                <b id="Mp16"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">监护仪测量值</label>
                             <div class="layui-input-block">
                                 <input id="Minp17" type="text" name="wcxyjtJhy" placeholder="监护仪测量值" autocomplete="off" class="layui-input">
-                                <p id="Mp17"></p>
+                                <b id="Mp17"></b>
                             </div>
                         </div>
                         <fieldset class="layui-elem-field layui-field-title">
@@ -586,7 +584,7 @@
                             <label class="layui-form-label">泄露率测量值</label>
                             <div class="layui-input-block">
                                 <input id="Minp18" type="text" name="wcxyqmXll" placeholder="泄露率测量值" autocomplete="off" class="layui-input">
-                                <p id="Mp18"></p>
+                                <b id="Mp18"></b>
                             </div>
                         </div>
                         <fieldset class="layui-elem-field layui-field-title">
@@ -653,35 +651,35 @@
                             <label class="layui-form-label">实测值1</label>
                             <div class="layui-input-block">
                                 <input id="Cinp1" type="text" name="xlValue1" placeholder="测试点为30" autocomplete="off" class="layui-input">
-                                <p id="Cp1"></p>
+                                <b id="Cp1"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值2</label>
                             <div class="layui-input-block">
                                 <input id="Cinp2" type="text" name="xlValue2" placeholder="测试点为60" autocomplete="off" class="layui-input">
-                                <p id="Cp2"></p>
+                                <b id="Cp2"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值3</label>
                             <div class="layui-input-block">
                                 <input id="Cinp3" type="text" name="xlValue3" placeholder="测试点为100" autocomplete="off" class="layui-input">
-                                <p id="Cp3"></p>
+                                <b id="Cp3"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值4</label>
                             <div class="layui-input-block">
                                 <input id="Cinp4" type="text" name="xlValue4" placeholder="测试点为120" autocomplete="off" class="layui-input">
-                                <p id="Cp4"></p>
+                                <b id="Cp4"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值5</label>
                             <div class="layui-input-block">
                                 <input id="Cinp5" type="text" name="xlValue5" placeholder="测试点为180" autocomplete="off" class="layui-input">
-                                <p id="Cp5"></p>
+                                <b id="Cp5"></b>
                             </div>
                         </div>
                         <fieldset class="layui-elem-field layui-field-title">
@@ -691,35 +689,35 @@
                             <label class="layui-form-label">实测值1</label>
                             <div class="layui-input-block">
                                 <input id="Cinp6" type="text" name="hxlValue1" placeholder="测试点为15" autocomplete="off" class="layui-input">
-                                <p id="Cp6"></p>
+                                <b id="Cp6"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值2</label>
                             <div class="layui-input-block">
                                 <input id="Cinp7" type="text" name="hxlValue2" placeholder="测试点为20" autocomplete="off" class="layui-input">
-                                <p id="Cp7"></p>
+                                <b id="Cp7"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值3</label>
                             <div class="layui-input-block">
                                 <input id="Cinp8" type="text" name="hxlValue3" placeholder="测试点为40" autocomplete="off" class="layui-input">
-                                <p id="Cp8"></p>
+                                <b id="Cp8"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值4</label>
                             <div class="layui-input-block">
                                 <input id="Cinp9" type="text" name="hxlValue4" placeholder="测试点为60" autocomplete="off" class="layui-input">
-                                <p id="Cp9"></p>
+                                <b id="Cp9"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值5</label>
                             <div class="layui-input-block">
                                 <input id="Cinp10" type="text" name="hxlValue5" placeholder="测试点为80" autocomplete="off" class="layui-input">
-                                <p id="Cp10"></p>
+                                <b id="Cp10"></b>
                             </div>
                         </div>
                         <fieldset class="layui-elem-field layui-field-title">
@@ -733,14 +731,14 @@
                                         <label class="layui-form-label">测试点为35</label>
                                         <div class="layui-input-block">
                                             <input id="CssyA1" type="text" name="wcxyHValue11" placeholder="测试点为35" autocomplete="off" class="layui-input">
-                                            <p id="CssyA1P"></p>
+                                            <b id="CssyA1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为15</label>
                                         <div class="layui-input-block">
                                             <input id="CszyA1" type="text" name="wcxyMValue11" placeholder="测试点为15" autocomplete="off" class="layui-input">
-                                            <p id="CszyA1P"></p>
+                                            <b id="CszyA1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -758,14 +756,14 @@
                                         <label class="layui-form-label">测试点为35</label>
                                         <div class="layui-input-block">
                                             <input id="CssyA2" type="text" name="wcxyHValue21" placeholder="测试点为35" autocomplete="off" class="layui-input">
-                                            <p id="CssyA2P"></p>
+                                            <b id="CssyA2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为15</label>
                                         <div class="layui-input-block">
                                             <input id="CszyA2" type="text" name="wcxyMValue21" placeholder="测试点为15" autocomplete="off" class="layui-input">
-                                            <p id="CszyA2P"></p>
+                                            <b id="CszyA2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -783,14 +781,14 @@
                                         <label class="layui-form-label">测试点为35</label>
                                         <div class="layui-input-block">
                                             <input id="CssyA3" type="text" name="wcxyHValue31" placeholder="测试点为35" autocomplete="off" class="layui-input">
-                                            <p id="CssyA3P"></p>
+                                            <b id="CssyA3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为15</label>
                                         <div class="layui-input-block">
                                             <input id="CszyA3" type="text" name="wcxyMValue31" placeholder="测试点为15" autocomplete="off" class="layui-input">
-                                            <p id="CszyA3P"></p>
+                                            <b id="CszyA3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -810,14 +808,14 @@
                                         <label class="layui-form-label">测试点为48</label>
                                         <div class="layui-input-block">
                                             <input id="CssyB1" type="text" name="wcxyHValue12" placeholder="测试点为48" autocomplete="off" class="layui-input">
-                                            <p id="CssyB1P"></p>
+                                            <b id="CssyB1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为22</label>
                                         <div class="layui-input-block">
                                             <input id="CszyB1" type="text" name="wcxyMValue12" placeholder="测试点为22" autocomplete="off" class="layui-input">
-                                            <p id="CszyB1P"></p>
+                                            <b id="CszyB1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -835,14 +833,14 @@
                                         <label class="layui-form-label">测试点为48</label>
                                         <div class="layui-input-block">
                                             <input id="CssyB2" type="text" name="wcxyHValue22" placeholder="测试点为48" autocomplete="off" class="layui-input">
-                                            <p id="CssyB2P"></p>
+                                            <b id="CssyB2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为22</label>
                                         <div class="layui-input-block">
                                             <input id="CszyB2" type="text" name="wcxyMValue22" placeholder="测试点为22" autocomplete="off" class="layui-input">
-                                            <p id="CszyB2P"></p>
+                                            <b id="CszyB2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -860,14 +858,14 @@
                                         <label class="layui-form-label">测试点为48</label>
                                         <div class="layui-input-block">
                                             <input id="CssyB3" type="text" name="wcxyHValue32" placeholder="测试点为48" autocomplete="off" class="layui-input">
-                                            <p id="CssyB3P"></p>
+                                            <b id="CssyB3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为22</label>
                                         <div class="layui-input-block">
                                             <input id="CszyB3" type="text" name="wcxyMValue32" placeholder="测试点为22" autocomplete="off" class="layui-input">
-                                            <p id="CszyB3P"></p>
+                                            <b id="CszyB3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -887,14 +885,14 @@
                                         <label class="layui-form-label">测试点为57</label>
                                         <div class="layui-input-block">
                                             <input id="CssyC1" type="text" name="wcxyHValue13" placeholder="测试点为57" autocomplete="off" class="layui-input">
-                                            <p id="CssyC1P"></p>
+                                            <b id="CssyC1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为32</label>
                                         <div class="layui-input-block">
                                             <input id="CszyC1" type="text" name="wcxyMValue13" placeholder="测试点为32" autocomplete="off" class="layui-input">
-                                            <p id="CszyC1P"></p>
+                                            <b id="CszyC1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -912,14 +910,14 @@
                                         <label class="layui-form-label">测试点为57</label>
                                         <div class="layui-input-block">
                                             <input id="CssyC2" type="text" name="wcxyHValue23" placeholder="测试点为57" autocomplete="off" class="layui-input">
-                                            <p id="CssyC2P"></p>
+                                            <b id="CssyC2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为32</label>
                                         <div class="layui-input-block">
                                             <input id="CszyC2" type="text" name="wcxyMValue23" placeholder="测试点为32" autocomplete="off" class="layui-input">
-                                            <p id="CszyC2P"></p>
+                                            <b id="CszyC2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -937,14 +935,14 @@
                                         <label class="layui-form-label">测试点为57</label>
                                         <div class="layui-input-block">
                                             <input id="CssyC3" type="text" name="wcxyHValue33" placeholder="测试点为57" autocomplete="off" class="layui-input">
-                                            <p id="CssyC3P"></p>
+                                            <b id="CssyC3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为32</label>
                                         <div class="layui-input-block">
                                             <input id="CszyC3" type="text" name="wcxyMValue33" placeholder="测试点为32" autocomplete="off" class="layui-input">
-                                            <p id="CszyC3P"></p>
+                                            <b id="CszyC3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -964,14 +962,14 @@
                                         <label class="layui-form-label">测试点为70</label>
                                         <div class="layui-input-block">
                                             <input id="CssyD1" type="text" name="wcxyHValue14" placeholder="测试点为70" autocomplete="off" class="layui-input">
-                                            <p id="CssyD1P"></p>
+                                            <b id="CssyD1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为40</label>
                                         <div class="layui-input-block">
                                             <input id="CszyD1" type="text" name="wcxyMValue14" placeholder="测试点为40" autocomplete="off" class="layui-input">
-                                            <p id="CszyD1P"></p>
+                                            <b id="CszyD1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -989,14 +987,14 @@
                                         <label class="layui-form-label">测试点为70</label>
                                         <div class="layui-input-block">
                                             <input id="CssyD2" type="text" name="wcxyHValue24" placeholder="测试点为70" autocomplete="off" class="layui-input">
-                                            <p id="CssyD2P"></p>
+                                            <b id="CssyD2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为40</label>
                                         <div class="layui-input-block">
                                             <input id="CszyD2" type="text" name="wcxyMValue24" placeholder="测试点为40" autocomplete="off" class="layui-input">
-                                            <p id="CszyD2P"></p>
+                                            <b id="CszyD2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -1014,14 +1012,14 @@
                                         <label class="layui-form-label">测试点为70</label>
                                         <div class="layui-input-block">
                                             <input id="CssyD3" type="text" name="wcxyHValue34" placeholder="测试点为70" autocomplete="off" class="layui-input">
-                                            <p id="CssyD3P"></p>
+                                            <b id="CssyD3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为40</label>
                                         <div class="layui-input-block">
                                             <input id="CszyD3" type="text" name="wcxyMValue34" placeholder="测试点为40" autocomplete="off" class="layui-input">
-                                            <p id="CszyD3P"></p>
+                                            <b id="CszyD3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -1041,14 +1039,14 @@
                                         <label class="layui-form-label">测试点为90</label>
                                         <div class="layui-input-block">
                                             <input id="CssyE1" type="text" name="wcxyHValue15" placeholder="测试点为90" autocomplete="off" class="layui-input">
-                                            <p id="CssyE1P"></p>
+                                            <b id="CssyE1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为60</label>
                                         <div class="layui-input-block">
                                             <input id="CszyE1" type="text" name="wcxyMValue15" placeholder="测试点为60" autocomplete="off" class="layui-input">
-                                            <p id="CszyE1P"></p>
+                                            <b id="CszyE1P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -1066,14 +1064,14 @@
                                         <label class="layui-form-label">测试点为90</label>
                                         <div class="layui-input-block">
                                             <input id="CssyE2" type="text" name="wcxyHValue25" placeholder="测试点为90" autocomplete="off" class="layui-input">
-                                            <p id="CssyE2P"></p>
+                                            <b id="CssyE2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为60</label>
                                         <div class="layui-input-block">
                                             <input id="CszyE2" type="text" name="wcxyMValue25" placeholder="测试点为60" autocomplete="off" class="layui-input">
-                                            <p id="CszyE2P"></p>
+                                            <b id="CszyE2P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -1091,14 +1089,14 @@
                                         <label class="layui-form-label">测试点为90</label>
                                         <div class="layui-input-block">
                                             <input id="CssyE3" type="text" name="wcxyHValue35" placeholder="测试点为90" autocomplete="off" class="layui-input">
-                                            <p id="CssyE3P"></p>
+                                            <b id="CssyE3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-6">
                                         <label class="layui-form-label">测试点为60</label>
                                         <div class="layui-input-block">
                                             <input id="CszyE3" type="text" name="wcxyMValue35" placeholder="测试点为60" autocomplete="off" class="layui-input">
-                                            <p id="CszyE3P"></p>
+                                            <b id="CszyE3P"></b>
                                         </div>
                                     </div>
                                     <div class="layui-form-item col-md-4">
@@ -1117,35 +1115,35 @@
                             <label class="layui-form-label">实测值1</label>
                             <div class="layui-input-block">
                                 <input id="Cinp11" type="text" name="xybhdValue1" placeholder="测试点为85" autocomplete="off" class="layui-input">
-                                <p id="Cp11"></p>
+                                <b id="Cp11"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值2</label>
                             <div class="layui-input-block">
                                 <input id="Cinp12" type="text" name="xybhdValue2" placeholder="测试点为88" autocomplete="off" class="layui-input">
-                                <p id="Cp12"></p>
+                                <b id="Cp12"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值3</label>
                             <div class="layui-input-block">
                                 <input id="Cinp13" type="text" name="xybhdValue3" placeholder="测试点为95" autocomplete="off" class="layui-input">
-                                <p id="Cp13"></p>
+                                <b id="Cp13"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值4</label>
                             <div class="layui-input-block">
                                 <input id="Cinp14" type="text" name="xybhdValue4" placeholder="测试点为98" autocomplete="off" class="layui-input">
-                                <p id="Cp14"></p>
+                                <b id="Cp14"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">实测值5</label>
                             <div class="layui-input-block">
                                 <input id="Cinp15" type="text" name="xybhdValue5" placeholder="测试点为100" autocomplete="off" class="layui-input">
-                                <p id="Cp15"></p>
+                                <b id="Cp15"></b>
                             </div>
                         </div>
                         <fieldset class="layui-elem-field layui-field-title">
@@ -1155,14 +1153,14 @@
                             <label class="layui-form-label">模拟器测量值</label>
                             <div class="layui-input-block">
                                 <input id="Cinp16" type="text" name="wcxyjtMnq" placeholder="模拟器测量值" autocomplete="off" class="layui-input">
-                                <p id="Cp16"></p>
+                                <b id="Cp16"></b>
                             </div>
                         </div>
                         <div class="layui-form-item col-md-6">
                             <label class="layui-form-label">监护仪测量值</label>
                             <div class="layui-input-block">
                                 <input id="Cinp17" type="text" name="wcxyjtJhy" placeholder="监护仪测量值" autocomplete="off" class="layui-input">
-                                <p id="Cp17"></p>
+                                <b id="Cp17"></b>
                             </div>
                         </div>
                         <fieldset class="layui-elem-field layui-field-title">
@@ -1178,7 +1176,7 @@
                             <label class="layui-form-label">泄露率测量值</label>
                             <div class="layui-input-block">
                                 <input id="Cinp18" type="text" name="wcxyqmXll" placeholder="泄露率测量值" autocomplete="off" class="layui-input">
-                                <p id="Cp18"></p>
+                                <b id="Cp18"></b>
                             </div>
                         </div>
                         <fieldset class="layui-elem-field layui-field-title">
