@@ -45,8 +45,8 @@
             </tr>
             <tr>
                 <td colspan="3">平均流量</td>
-                <td colspan="3">&nbsp;</td>
-                <td colspan="3">&nbsp;</td>
+                <td id="pjll1" colspan="3">&nbsp;</td>
+                <td id="pjll2" colspan="3">&nbsp;</td>
                 <td>符合    不符合</td>
             </tr>
             <tr>
@@ -69,34 +69,34 @@
                 <td rowspan="2">符合  不符合</td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td id="bjszH">&nbsp;</td>
+                <td id="bjszM">&nbsp;</td>
+                <td id="bjszL">&nbsp;</td>
+                <td id="bjsjH">&nbsp;</td>
+                <td id="bjsjM">&nbsp;</td>
+                <td id="bjsjL">&nbsp;</td>
+                <td id="bjylH">&nbsp;</td>
+                <td id="bjylM">&nbsp;</td>
+                <td id="bjylL">&nbsp;</td>
             </tr>
             <tr>
                 <td rowspan="3">报警系统检测</td>
                 <td colspan="3">堵塞</td>
-                <td colspan="3">符合  不符合  不适用</td>
+                <td id="zs" colspan="3">符合  不符合  不适用</td>
                 <td colspan="3">即将空瓶</td>
-                <td>符合  不符合  不适用</td>
+                <td id="jjkp">符合  不符合  不适用</td>
             </tr>
             <tr>
                 <td colspan="3">输液管路安装不妥</td>
-                <td colspan="3">符合  不符合  不适用</td>
+                <td id="sygbt" colspan="3">符合  不符合  不适用</td>
                 <td colspan="3">气泡报警</td>
-                <td>符合  不符合  不适用</td>
+                <td id="qpbj">符合  不符合  不适用</td>
             </tr>
             <tr>
                 <td colspan="3">电源线脱开</td>
-                <td colspan="3">符合  不符合  不适用</td>
+                <td id="dyxtk" colspan="3">符合  不符合  不适用</td>
                 <td colspan="3">开门报警</td>
-                <td>符合  不符合  不适用</td>
+                <td id="kmbj">符合  不符合  不适用</td>
             </tr>
         </table>
         <fieldset class="layui-elem-field layui-field-title">
@@ -128,101 +128,49 @@
             success:function(res){
                 console.log(res);
                 if(res.data != null && res.data != ""){
-                    // 电源电压
-                    $("#dydyValue").append(res.data.dydyValue);
-                    if(res.data.dydyValue>198 && res.data.dydyValue<242){
-                        $("#dydyValues").append("<p style='color:green;'>符合</p>")
+                    $("#pjll1").append(res.data.pjll1);
+                    $("#pjll2").append(res.data.pjll2);
+                    $("#bjszH").append(res.data.bjszH);
+                    $("#bjszM").append(res.data.bjszM);
+                    $("#bjszL").append(res.data.bjszL);
+                    $("#bjsjH").append(res.data.bjsjH);
+                    $("#bjsjM").append(res.data.bjsjM);
+                    $("#bjsjL").append(res.data.bjsjL);
+                    $("#bjylH").append(res.data.bjylH);
+                    $("#bjylM").append(res.data.bjylM);
+                    $("#bjylL").append(res.data.bjylL);
+                    // 单选
+                    if(res.data.zs === 1){
+
                     }else{
-                        $("#dydyValues").append("<p style='color:red;'>不符合</p>")
+
                     }
-                    // 保护接地阻抗
-                    $("#jdzkValue").append(res.data.jdzkValue);
-                    if(res.data.jdzkValue<=200 && res.data.jdzkValue != ""){
-                        $("#jdzkValues").append("<p style='color:green;'>符合</p>")
+                    if(res.data.jjkp === 1){
+
                     }else{
-                        $("#jdzkValues").append("<p style='color:red;'>不符合</p>")
+
                     }
-                    // 绝缘阻抗
-                    $("#jyzkValue").append(res.data.jyzkValue);
-                    if(res.data.jyzkValue >= 10){
-                        $("#jyzkValues").append("<p style='color:green;'>符合</p>")
+                    if(res.data.sygbt === 1){
+
                     }else{
-                        $("#jyzkValues").append("<p style='color:red;'>不符合</p>")
+
                     }
-                    // 对地漏电流
-                    // 正常
-                    $("#ddldlZcZxValue").append(res.data.ddldlZcZxValue);
-                    $("#ddldlZcFxValue").append(res.data.ddldlZcFxValue);
-                    if(res.data.ddldlZcZxValue <=500 && res.data.ddldlZcFxValue <=500 && res.data.ddldlZcZxValue != "" && res.data.ddldlZcFxValue != ""){
-                        $("#ddldlZcZxValues").append("<p style='color:green;'>符合</p>")
+                    if(res.data.qpbj === 1){
+
                     }else{
-                        $("#ddldlZcZxValues").append("<p style='color:red;'>不符合</p>")
+
                     }
-                    // 单一故障
-                    $("#ddldlDyZxdlValue").append(res.data.ddldlDyZxdlValue);
-                    $("#ddldlDyFxdlValue").append(res.data.ddldlDyFxdlValue);
-                    if(res.data.ddldlDyZxdlValue <=1000 && res.data.ddldlDyFxdlValue <=1000 && res.data.ddldlDyZxdlValue != "" && res.data.ddldlDyFxdlValue != ""){
-                        $("#ddldlDyZxdlValues").append("<p style='color:green;'>符合</p>")
+                    if(res.data.dyxtk === 1){
+
                     }else{
-                        $("#ddldlDyZxdlValues").append("<p style='color:red;'>不符合</p>")
+
                     }
-                    // 外壳漏电流
-                    // 正常
-                    $("#wkldlZcZxValue").append(res.data.wkldlZcZxValue);
-                    $("#wkldlZcFxValue").append(res.data.wkldlZcFxValue);
-                    if(res.data.wkldlZcZxValue <=100 && res.data.wkldlZcFxValue <=100 && res.data.wkldlZcZxValue != "" && res.data.wkldlZcFxValue != ""){
-                        $("#wkldlZcZxValues").append("<p style='color:green;'>符合</p>")
+                    if(res.data.kmbj === 1){
+
                     }else{
-                        $("#wkldlZcZxValues").append("<p style='color:red;'>不符合</p>")
+
                     }
-                    // 单一故障
-                    $("#wkldlDyZxdlValue").append(res.data.wkldlDyZxdlValue);
-                    $("#wkldlDyZxddValue").append(res.data.wkldlDyZxddValue);
-                    $("#wkldlDyFxdlValue").append(res.data.wkldlDyFxdlValue);
-                    $("#wkldlDyFxddValue").append(res.data.wkldlDyFxddValue);
-                    if(res.data.wkldlDyZxdlValue <= 500 && res.data.wkldlDyZxddValue <= 500 && res.data.wkldlDyFxdlValue <= 500 && res.data.wkldlDyFxddValue <= 500 && res.data.wkldlDyZxdlValue != "" && res.data.wkldlDyZxddValue != "" && res.data.wkldlDyFxdlValue != "" && res.data.wkldlDyFxddValue != ""){
-                        $("#wkldlDyZxdlValues").append("<p style='color:green;'>符合</p>")
-                    }else{
-                        $("#wkldlDyZxdlValues").append("<p style='color:red;'>不符合</p>")
-                    }
-                    // 患者漏电流
-                    // 正常
-                    $("#hzldlZcZxbfValue").append(res.data.hzldlZcZxbfValue);
-                    $("#hzldlZcFxbfValue").append(res.data.hzldlZcFxbfValue);
-                    if(res.data.hzldlZcZxbfValue <= 100 && res.data.hzldlZcFxbfValue <= 100 && res.data.hzldlZcZxbfValue != "" && res.data.hzldlZcFxbfValue != ""){
-                        $("#hzldlZcZxbfValues").append("<p style='color:green;'>符合</p>")
-                    }else{
-                        $("#hzldlZcZxbfValues").append("<p style='color:red;'>不符合</p>")
-                    }
-                    // 单一故障
-                    $("#hzldlDyZxdlbfValue").append(res.data.hzldlDyZxdlbfValue);
-                    $("#hzldlDyZxddbfValue").append(res.data.hzldlDyZxddbfValue);
-                    $("#hzldlDyFxdlbfValue").append(res.data.hzldlDyFxdlbfValue);
-                    $("#hzldlDyFxddbfValue").append(res.data.hzldlDyFxddbfValue);
-                    if(res.data.hzldlDyZxdlbfValue <= 500 && res.data.hzldlDyZxddbfValue <= 500 && res.data.hzldlDyFxdlbfValue <= 500 && res.data.hzldlDyFxddbfValue <= 500 && res.data.hzldlDyZxdlbfValue != "" && res.data.hzldlDyZxddbfValue != "" && res.data.hzldlDyFxdlbfValue != "" && res.data.hzldlDyFxddbfValue != ""){
-                        $("#hzldlDyZxdlbfValues").append("<p style='color:green;'>符合</p>")
-                    }else{
-                        $("#hzldlDyZxdlbfValues").append("<p style='color:red;'>不符合</p>")
-                    }
-                    // 患者辅助漏电流
-                    // 正常
-                    $("#hzfzldlZcZxbfValue").append(res.data.hzfzldlZcZxbfValue);
-                    $("#hzfzldlZcFxbfValue").append(res.data.hzfzldlZcFxbfValue);
-                    if(res.data.hzfzldlZcZxbfValue <= 100 && res.data.hzfzldlZcFxbfValue <= 100 && res.data.hzfzldlZcZxbfValue != "" && res.data.hzfzldlZcFxbfValue != ""){
-                        $("#hzfzldlZcZxbfValues").append("<p style='color:green;'>符合</p>")
-                    }else{
-                        $("#hzfzldlZcZxbfValues").append("<p style='color:red;'>不符合</p>")
-                    }
-                    // 单一故障
-                    $("#hzfzldlDyZxdlbfValue").append(res.data.hzfzldlDyZxdlbfValue);
-                    $("#hzfzldlDyZxddbfValue").append(res.data.hzfzldlDyZxddbfValue);
-                    $("#hzfzldlDyFxdlbfValue").append(res.data.hzfzldlDyFxdlbfValue);
-                    $("#hzfzldlDyFxddbfValue").append(res.data.hzfzldlDyFxddbfValue);
-                    if(res.data.hzfzldlDyZxdlbfValue <= 500 && res.data.hzfzldlDyZxddbfValue <= 500 && res.data.hzfzldlDyFxdlbfValue <= 500 && res.data.hzfzldlDyFxddbfValue <= 500 && res.data.hzfzldlDyZxdlbfValue != "" && res.data.hzfzldlDyZxddbfValue != "" && res.data.hzfzldlDyFxdlbfValue != "" && res.data.hzfzldlDyFxddbfValue != ""){
-                        $("#hzfzldlDyZxdlbfValues").append("<p style='color:green;'>符合</p>")
-                    }else{
-                        $("#hzfzldlDyZxdlbfValues").append("<p style='color:red;'>不符合</p>")
-                    }
+
                 }
             }
         })
@@ -248,7 +196,6 @@
             },
             parseData:function(res){
                 console.log(res.data);
-//                sessionStorage['lreqId'] = res.data.eqId;
                 return{
                     "status":200
                     ,"msg":res.message
