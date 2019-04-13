@@ -105,8 +105,8 @@ public class HxjController extends BaseController {
      * 查询根据检测仪器id检测表数据
      * @return
      */
-    @RequestMapping("/findByGpddid")
-    public ResponseResult<Hxj> findByGpddid(Integer hxjId){
+    @RequestMapping("/findByHxjId")
+    public ResponseResult<Hxj> findByHxjId(Integer hxjId){
         Hxj list = hxjService.findByHxjId(hxjId);
         return new ResponseResult<Hxj>(200, list);
     }

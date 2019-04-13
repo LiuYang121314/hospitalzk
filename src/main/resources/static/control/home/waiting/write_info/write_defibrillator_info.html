@@ -392,7 +392,7 @@
         form.on("submit(saveAll)",function(data){
             console.log(data.field);
             $.ajax({
-                url:"/dqjc/save?eqId="+thiseqId+"&jcyqId="+ids+"&userEqId="+thisId,
+                url:"/ccy/save?eqId="+thiseqId+"&jcyqId="+ids+"&userEqId="+thisId,
                 method:"POST",
                 data:data.field,
                 dataType:"JSON",

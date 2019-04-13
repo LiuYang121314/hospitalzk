@@ -159,7 +159,7 @@
     var thisId = parseInt(sessionStorage['thisId']);
     $(function(){
         $.ajax({
-            url:"/dqjc/findByDqjcid?dqjcid="+ids,
+            url:"/ccy/findByCcyIds?ccyId="+ids,
             method:"GET",
             dataType:"JSON",
             success:function(res){
@@ -274,7 +274,7 @@
             elem:"#testerInfo",
             cellMinWidth:100,
             toolbar: '#toolbarDemo',
-            url:"/dqjc/findByDqjcid?dqjcid="+ids,
+            url:"/ccy/findByCcyIds?ccyId="+ids,
             method:"GET",
             response: {
                 statusName: 'status'

@@ -123,19 +123,12 @@ public class CcyController extends BaseController {
      * 查询根据检测仪器id电气检测表数据
      * @return
      */
-    @RequestMapping("/findByDqjcid")
-    public ResponseResult<Ccy> findByDqjcid(Integer ccyId){
+    @RequestMapping("/findByCcyIds")
+    public ResponseResult<Ccy> findByCcyId(Integer ccyId){
         Ccy list = ccyService.findByCcyId(ccyId);
         return new ResponseResult<Ccy>(200, list);
     }
-    //修改状态
-   /* @RequestMapping("/updateState")
-    public ResponseResult<Void> updateState(@RequestParam("yqEqId")Integer yqEqId, @RequestParam("userEqId")Integer userEqId,HttpSession session){
-        yqEqService.updateState(yqEqId,0);
-        yqEqService.updateType(yqEqId,EnumProcess2.IS_UPLOAD.getMessage());
-        userEqService.setEqState(userEqId,EnumProcess2.UNDER_REVIEW.getMessage());
-        return new ResponseResult<Void>(200);
-    }*/
+
     //修改仪器为已上传
     //修改状态
     @RequestMapping("/updateType")

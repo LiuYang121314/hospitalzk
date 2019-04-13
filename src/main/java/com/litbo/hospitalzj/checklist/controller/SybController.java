@@ -7,6 +7,7 @@ import com.litbo.hospitalzj.checklist.utils.ResponseResult;
 import com.litbo.hospitalzj.checklist.utils.commons.CommonUtils;
 import com.litbo.hospitalzj.controller.BaseController;
 import com.litbo.hospitalzj.sf.service.UserService;
+import com.litbo.hospitalzj.zk.Enum.EnumProcess2;
 import com.litbo.hospitalzj.zk.service.UserEqService;
 import com.litbo.hospitalzj.zk.service.YqEqService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,18 @@ public class SybController extends BaseController {
     }
 
     //修改幼儿数据表信息
+    @RequestMapping("/savechild")
+    public ResponseResult<SybC> savechild(@RequestParam(value = "eqId") String eqId,
+                                          @RequestParam(value = "jcyqId") String jcyqId,
+                                          @RequestParam(value = "userEqId") Integer userEqId,
+                                          SybC sybC){
+        int yqEqId=yqEqService.insertBatch(eqId,jcyqId);
+        yqEqService.updateType(yqEqId, EnumProcess2.TO_UPLOAD.getMessage());
+        //修改状态为待上传
+        userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
+        sybService.saveChild(sybC);
+        return new ResponseResult<SybC>(200, sybC);
+    }
     @RequestMapping("/updateChild")
     public ResponseResult<SybC> updateChild(SybC sybC){
         sybService.updateChild(sybC);
@@ -81,9 +94,14 @@ public class SybController extends BaseController {
     }
 
     @RequestMapping("/saveman")
-    public ResponseResult<SybC> saveMan(@RequestParam(value = "eqId") String eqId, @RequestParam("jcyqId") String jcyqId,
-                                        HttpServletRequest req){
-        SybC sybC = CommonUtils.toBean(req.getParameterMap(), SybC.class);
+    public ResponseResult<SybC> saveMan(@RequestParam(value = "eqId") String eqId,
+                                        @RequestParam(value = "jcyqId") String jcyqId,
+                                        @RequestParam(value = "userEqId") Integer userEqId,
+                                        SybC sybC, HttpSession session, HttpServletRequest req){
+        int yqEqId=yqEqService.insertBatch(eqId,jcyqId);
+        yqEqService.updateType(yqEqId, EnumProcess2.TO_UPLOAD.getMessage());
+        //修改状态为待上传
+        userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
         sybService.saveMan(sybC);
         return new ResponseResult<SybC>(200, sybC);
     }
