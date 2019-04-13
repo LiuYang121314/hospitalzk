@@ -100,7 +100,7 @@
             </tr>
             <tr>
                 <td>同步模式</td>
-                <td colspan="4">□有同步触发功能 □无同步触发功能</td>
+                <td id="tbmsCfresult" colspan="4">□有同步触发功能 □无同步触发功能</td>
                 <td colspan="2">同步延迟时间（ms）:≤60ms</td>
                 <td id="tbmsSj" colspan="2">&nbsp;</td>
                 <td colspan="3">□符合 □不符合</td>
@@ -194,19 +194,29 @@
                     $("#xlszValue5").append(res.data.xlszValue5);
                     // 单选
                     if(res.data.nbfdResult == 1){
-
+                        $("#nbfdResult").append("<p style='color: green;'>符合</p>");
+                    }else{
+                        $("#nbfdResult").append("<p style='color: red;'>不符合</p>");
                     }
                     if(res.data.tbmsCfresult == 1){
-
+                        $("#tbmsCfresult").append("<p style='color: green;'>有同步触发功能</p>");
+                    }else{
+                        $("#tbmsCfresult").append("<p style='color: red;'>无同步触发功能</p>");
                     }
                     if(res.data.sgbjResult == 1){
-
+                        $("#sgbjResult").append("<p style='color: green;'>符合</p>");
+                    }else{
+                        $("#sgbjResult").append("<p style='color: red;'>不符合</p>");
                     }
                     if(res.data.bjxResult == 1){
-
+                        $("#bjxResult").append("<p style='color: green;'>符合</p>");
+                    }else{
+                        $("#bjxResult").append("<p style='color: red;'>不符合</p>");
                     }
                     if(res.data.jyResult == 1){
-
+                        $("#jyResult").append("<p style='color: green;'>符合</p>");
+                    }else{
+                        $("#jyResult").append("<p style='color: red;'>不符合</p>");
                     }
 
                 }
