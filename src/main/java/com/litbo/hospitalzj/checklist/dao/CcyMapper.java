@@ -2,8 +2,6 @@ package com.litbo.hospitalzj.checklist.dao;
 
 import com.litbo.hospitalzj.checklist.domain.Ccy;
 import com.litbo.hospitalzj.checklist.domain.CcyTemplate;
-import com.litbo.hospitalzj.checklist.domain.Dqjc;
-import com.litbo.hospitalzj.checklist.domain.DqjcTemplate;
 import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
@@ -30,7 +28,7 @@ public interface CcyMapper {
             "      tbms_ycsj = #{tbmsYcsj,jdbcType=VARCHAR},\n" +
             "      xlsz_test1 = #{xlszTest1,jdbcType=VARCHAR},\n" +
             "      xlsz_test2 = #{xlszTest2,jdbcType=VARCHAR},\n" +
-            "      xlsz_test3 = #{xlszTest3,jdbcType=VARCHAR},\n" +
+            "      xlsz_test3 = #{xlszTest3,jdbcType =VARCHAR},\n" +
             "      xlsz_test4 = #{xlszTest4,jdbcType=VARCHAR},\n" +
             "      xlsz_test5 = #{xlszTest5,jdbcType=VARCHAR}\n" +
             "    where ccy_template_id = #{ccyTemplateId,jdbcType=INTEGER}")

@@ -1,6 +1,5 @@
 package com.litbo.hospitalzj.checklist.controller;
 
-import com.litbo.hospitalzj.checklist.domain.Dqjc;
 import com.litbo.hospitalzj.checklist.domain.Gpdd;
 import com.litbo.hospitalzj.checklist.service.GpddService;
 import com.litbo.hospitalzj.checklist.utils.ResponseResult;
@@ -11,8 +10,6 @@ import com.litbo.hospitalzj.zk.Enum.EnumProcess2;
 import com.litbo.hospitalzj.zk.domian.GpddTemplate;
 import com.litbo.hospitalzj.zk.service.UserEqService;
 import com.litbo.hospitalzj.zk.service.YqEqService;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Date;
 import java.util.List;
 
 @RestController

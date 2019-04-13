@@ -1229,7 +1229,7 @@
                         </div>
                         <div class="layui-form-item btn">
                             <div class="layui-input-block">
-                                <button class="layui-btn" lay-submit lay-filter="subman">保存</button>
+                                <button class="layui-btn" lay-submit lay-filter="subchild">保存</button>
                             </div>
                         </div>
                     </form>
@@ -2431,7 +2431,8 @@
                 success:function (res) {
                     if(res.state === 200){
                         setTimeout(function(){
-                            location.href = "/control/home/waiting/wait_info/man_life_table.html?id="+res.data;
+                            sessionStorage["thissjId"] = res.data[1];
+                            location.href = "/control/home/waiting/wait_info/man_life_table.html?id="+res.data[0];
                         },1000);
                         layer.msg("保存成功,正在生成表格");
                     }else{

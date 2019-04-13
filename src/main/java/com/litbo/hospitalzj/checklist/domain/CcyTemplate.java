@@ -3,37 +3,37 @@ package com.litbo.hospitalzj.checklist.domain;
 public class CcyTemplate {
     private Integer ccyTemplateId;
 
-    private Double sfnlTest1;
+    private String sfnlYxwc;
 
-    private Double sfnlTest2;
+    private String sfnlTest1;
 
-    private Double sfnlTest3;
+    private String sfnlTest2;
 
-    private Double sfnlTest4;
+    private String sfnlTest3;
 
-    private Double sfnlTest5;
+    private String sfnlTest4;
 
-    private Double sfnlTest6;
+    private String sfnlTest5;
 
-    private Byte sfnlWc;
+    private String sfnlTest6;
+
+    private String sfnlTest7;
+
+    private String sfnlTest8;
 
     private String cdsjTest;
 
-    private Integer cdsjWc;
+    private String tbmsYcsj;
 
-    private Integer tbmsWc;
+    private String xlszTest1;
 
-    private Double xlszTest1;
+    private String xlszTest2;
 
-    private Double xlszTest2;
+    private String xlszTest3;
 
-    private Double xlszTest3;
+    private String xlszTest4;
 
-    private Double xlszTest4;
-
-    private Double xlszTest5;
-
-    private Integer xlszWc;
+    private String xlszTest5;
 
     public Integer getCcyTemplateId() {
         return ccyTemplateId;
@@ -43,60 +43,76 @@ public class CcyTemplate {
         this.ccyTemplateId = ccyTemplateId;
     }
 
-    public Double getSfnlTest1() {
+    public String getSfnlYxwc() {
+        return sfnlYxwc;
+    }
+
+    public void setSfnlYxwc(String sfnlYxwc) {
+        this.sfnlYxwc = sfnlYxwc == null ? null : sfnlYxwc.trim();
+    }
+
+    public String getSfnlTest1() {
         return sfnlTest1;
     }
 
-    public void setSfnlTest1(Double sfnlTest1) {
-        this.sfnlTest1 = sfnlTest1;
+    public void setSfnlTest1(String sfnlTest1) {
+        this.sfnlTest1 = sfnlTest1 == null ? null : sfnlTest1.trim();
     }
 
-    public Double getSfnlTest2() {
+    public String getSfnlTest2() {
         return sfnlTest2;
     }
 
-    public void setSfnlTest2(Double sfnlTest2) {
-        this.sfnlTest2 = sfnlTest2;
+    public void setSfnlTest2(String sfnlTest2) {
+        this.sfnlTest2 = sfnlTest2 == null ? null : sfnlTest2.trim();
     }
 
-    public Double getSfnlTest3() {
+    public String getSfnlTest3() {
         return sfnlTest3;
     }
 
-    public void setSfnlTest3(Double sfnlTest3) {
-        this.sfnlTest3 = sfnlTest3;
+    public void setSfnlTest3(String sfnlTest3) {
+        this.sfnlTest3 = sfnlTest3 == null ? null : sfnlTest3.trim();
     }
 
-    public Double getSfnlTest4() {
+    public String getSfnlTest4() {
         return sfnlTest4;
     }
 
-    public void setSfnlTest4(Double sfnlTest4) {
-        this.sfnlTest4 = sfnlTest4;
+    public void setSfnlTest4(String sfnlTest4) {
+        this.sfnlTest4 = sfnlTest4 == null ? null : sfnlTest4.trim();
     }
 
-    public Double getSfnlTest5() {
+    public String getSfnlTest5() {
         return sfnlTest5;
     }
 
-    public void setSfnlTest5(Double sfnlTest5) {
-        this.sfnlTest5 = sfnlTest5;
+    public void setSfnlTest5(String sfnlTest5) {
+        this.sfnlTest5 = sfnlTest5 == null ? null : sfnlTest5.trim();
     }
 
-    public Double getSfnlTest6() {
+    public String getSfnlTest6() {
         return sfnlTest6;
     }
 
-    public void setSfnlTest6(Double sfnlTest6) {
-        this.sfnlTest6 = sfnlTest6;
+    public void setSfnlTest6(String sfnlTest6) {
+        this.sfnlTest6 = sfnlTest6 == null ? null : sfnlTest6.trim();
     }
 
-    public Byte getSfnlWc() {
-        return sfnlWc;
+    public String getSfnlTest7() {
+        return sfnlTest7;
     }
 
-    public void setSfnlWc(Byte sfnlWc) {
-        this.sfnlWc = sfnlWc;
+    public void setSfnlTest7(String sfnlTest7) {
+        this.sfnlTest7 = sfnlTest7 == null ? null : sfnlTest7.trim();
+    }
+
+    public String getSfnlTest8() {
+        return sfnlTest8;
+    }
+
+    public void setSfnlTest8(String sfnlTest8) {
+        this.sfnlTest8 = sfnlTest8 == null ? null : sfnlTest8.trim();
     }
 
     public String getCdsjTest() {
@@ -107,67 +123,51 @@ public class CcyTemplate {
         this.cdsjTest = cdsjTest == null ? null : cdsjTest.trim();
     }
 
-    public Integer getCdsjWc() {
-        return cdsjWc;
+    public String getTbmsYcsj() {
+        return tbmsYcsj;
     }
 
-    public void setCdsjWc(Integer cdsjWc) {
-        this.cdsjWc = cdsjWc;
+    public void setTbmsYcsj(String tbmsYcsj) {
+        this.tbmsYcsj = tbmsYcsj == null ? null : tbmsYcsj.trim();
     }
 
-    public Integer getTbmsWc() {
-        return tbmsWc;
-    }
-
-    public void setTbmsWc(Integer tbmsWc) {
-        this.tbmsWc = tbmsWc;
-    }
-
-    public Double getXlszTest1() {
+    public String getXlszTest1() {
         return xlszTest1;
     }
 
-    public void setXlszTest1(Double xlszTest1) {
-        this.xlszTest1 = xlszTest1;
+    public void setXlszTest1(String xlszTest1) {
+        this.xlszTest1 = xlszTest1 == null ? null : xlszTest1.trim();
     }
 
-    public Double getXlszTest2() {
+    public String getXlszTest2() {
         return xlszTest2;
     }
 
-    public void setXlszTest2(Double xlszTest2) {
-        this.xlszTest2 = xlszTest2;
+    public void setXlszTest2(String xlszTest2) {
+        this.xlszTest2 = xlszTest2 == null ? null : xlszTest2.trim();
     }
 
-    public Double getXlszTest3() {
+    public String getXlszTest3() {
         return xlszTest3;
     }
 
-    public void setXlszTest3(Double xlszTest3) {
-        this.xlszTest3 = xlszTest3;
+    public void setXlszTest3(String xlszTest3) {
+        this.xlszTest3 = xlszTest3 == null ? null : xlszTest3.trim();
     }
 
-    public Double getXlszTest4() {
+    public String getXlszTest4() {
         return xlszTest4;
     }
 
-    public void setXlszTest4(Double xlszTest4) {
-        this.xlszTest4 = xlszTest4;
+    public void setXlszTest4(String xlszTest4) {
+        this.xlszTest4 = xlszTest4 == null ? null : xlszTest4.trim();
     }
 
-    public Double getXlszTest5() {
+    public String getXlszTest5() {
         return xlszTest5;
     }
 
-    public void setXlszTest5(Double xlszTest5) {
-        this.xlszTest5 = xlszTest5;
-    }
-
-    public Integer getXlszWc() {
-        return xlszWc;
-    }
-
-    public void setXlszWc(Integer xlszWc) {
-        this.xlszWc = xlszWc;
+    public void setXlszTest5(String xlszTest5) {
+        this.xlszTest5 = xlszTest5 == null ? null : xlszTest5.trim();
     }
 }

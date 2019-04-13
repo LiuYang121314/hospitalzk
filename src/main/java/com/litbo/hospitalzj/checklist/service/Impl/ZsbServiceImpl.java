@@ -147,17 +147,17 @@ public class ZsbServiceImpl implements ZsbService {
     }
 
     @Override
-    public void updateShrJcjyC(Integer dqjcid, String shrJcjl, String auditor, Date shsjTime) {
+    public void updateShrJcjyC(Integer dqjcid, String shrJcjl, String auditor) {
         zsbMapper.updateShrJcjyC(dqjcid, shrJcjl, auditor, new Date());
     }
 
     @Override
-    public void updateShrJcjyM(Integer dqjcid, String shrJcjl, String auditor, Date shsjTime) {
+    public void updateShrJcjyM(Integer dqjcid, String shrJcjl, String auditor) {
         zsbMapper.updateShrJcjyM(dqjcid, shrJcjl, auditor, new Date());
     }
 
     @Override
-    public void updateShrJcjyS(Integer dqjcid, String shrJcjl, String auditor, Date shsjTime) {
+    public void updateShrJcjyS(Integer dqjcid, String shrJcjl, String auditor) {
         zsbMapper.updateShrJcjyS(dqjcid, shrJcjl, auditor, new Date());
     }
 }

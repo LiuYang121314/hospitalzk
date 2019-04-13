@@ -23,81 +23,109 @@ public class Ccy {
 
     private String jcsm;
 
-    private Double sfnlTest1;
+    private String sfnlYxwc;
 
-    private Double sfnlValue1;
+    private String sfnlTest1;
 
-    private Double sfnlTest2;
+    private String sfnlValue1;
 
-    private Double sfnlValue2;
+    private String sfnlWc1;
 
-    private Double sfnlTest3;
+    private String sfnlTest2;
 
-    private Double sfnlValue3;
+    private String sfnlValue2;
 
-    private Double sfnlTest4;
+    private String sfnlWc2;
 
-    private Double sfnlValue4;
+    private String sfnlTest3;
 
-    private Double sfnlTest5;
+    private String sfnlValue3;
 
-    private Double sfnlValue5;
+    private String sfnlWc3;
 
-    private Double sfnlTest6;
+    private String sfnlTest4;
 
-    private Double sfnlValue6;
+    private String sfnlValue4;
 
-    private Byte sfnlWc;
+    private String sfnlWc4;
 
-    private Byte sfnlResult;
+    private String sfnlTest5;
+
+    private String sfnlValue5;
+
+    private String sfnlWc5;
+
+    private String sfnlTest6;
+
+    private String sfnlValue6;
+
+    private String sfnlWc6;
+
+    private String sfnlTest7;
+
+    private String sfnlValue71;
+
+    private String sfnlValue72;
+
+    private String sfnlValue73;
+
+    private String sfnlWc7;
+
+    private String sfnlTest8;
+
+    private String sfnlValue81;
+
+    private String sfnlValue82;
+
+    private String sfnlValue83;
+
+    private String sfnlWc8;
+
+    private String sfnlResult;
 
     private String cdsjTest;
 
     private String cdsjValue;
 
-    private Integer cdsjWc;
+    private String cdsjResult;
 
-    private Byte cdsjResult;
+    private String nbfdResult;
 
-    private Byte nbfdResult;
-
-    private Byte tbmsCfresult;
+    private String tbmsCfresult;
 
     private String tbmsYcsj;
 
-    private Integer tbmsWc;
+    private String tbmsSj;
 
-    private Byte tbmsResult;
+    private String tbmsResult;
 
-    private Double xlszTest1;
+    private String xlszTest1;
 
-    private Double xlszValue1;
+    private String xlszValue1;
 
-    private Double xlszTest2;
+    private String xlszTest2;
 
-    private Double xlszValue2;
+    private String xlszValue2;
 
-    private Double xlszTest3;
+    private String xlszTest3;
 
-    private Double xlszValue3;
+    private String xlszValue3;
 
-    private Double xlszTest4;
+    private String xlszTest4;
 
-    private Double xlszValue4;
+    private String xlszValue4;
 
-    private Double xlszTest5;
+    private String xlszTest5;
 
-    private Double xlszValue5;
+    private String xlszValue5;
 
-    private Integer xlszWc;
+    private String xlszResult;
 
-    private Byte xlszResult;
+    private String sgbjResult;
 
-    private Byte sgbjResult;
+    private String bjxResult;
 
-    private Byte bjxResult;
-
-    private Byte jyResult;
+    private String jyResult;
 
     public Integer getCcyId() {
         return ccyId;
@@ -179,116 +207,244 @@ public class Ccy {
         this.jcsm = jcsm == null ? null : jcsm.trim();
     }
 
-    public Double getSfnlTest1() {
+    public String getSfnlYxwc() {
+        return sfnlYxwc;
+    }
+
+    public void setSfnlYxwc(String sfnlYxwc) {
+        this.sfnlYxwc = sfnlYxwc == null ? null : sfnlYxwc.trim();
+    }
+
+    public String getSfnlTest1() {
         return sfnlTest1;
     }
 
-    public void setSfnlTest1(Double sfnlTest1) {
-        this.sfnlTest1 = sfnlTest1;
+    public void setSfnlTest1(String sfnlTest1) {
+        this.sfnlTest1 = sfnlTest1 == null ? null : sfnlTest1.trim();
     }
 
-    public Double getSfnlValue1() {
+    public String getSfnlValue1() {
         return sfnlValue1;
     }
 
-    public void setSfnlValue1(Double sfnlValue1) {
-        this.sfnlValue1 = sfnlValue1;
+    public void setSfnlValue1(String sfnlValue1) {
+        this.sfnlValue1 = sfnlValue1 == null ? null : sfnlValue1.trim();
     }
 
-    public Double getSfnlTest2() {
+    public String getSfnlWc1() {
+        return sfnlWc1;
+    }
+
+    public void setSfnlWc1(String sfnlWc1) {
+        this.sfnlWc1 = sfnlWc1 == null ? null : sfnlWc1.trim();
+    }
+
+    public String getSfnlTest2() {
         return sfnlTest2;
     }
 
-    public void setSfnlTest2(Double sfnlTest2) {
-        this.sfnlTest2 = sfnlTest2;
+    public void setSfnlTest2(String sfnlTest2) {
+        this.sfnlTest2 = sfnlTest2 == null ? null : sfnlTest2.trim();
     }
 
-    public Double getSfnlValue2() {
+    public String getSfnlValue2() {
         return sfnlValue2;
     }
 
-    public void setSfnlValue2(Double sfnlValue2) {
-        this.sfnlValue2 = sfnlValue2;
+    public void setSfnlValue2(String sfnlValue2) {
+        this.sfnlValue2 = sfnlValue2 == null ? null : sfnlValue2.trim();
     }
 
-    public Double getSfnlTest3() {
+    public String getSfnlWc2() {
+        return sfnlWc2;
+    }
+
+    public void setSfnlWc2(String sfnlWc2) {
+        this.sfnlWc2 = sfnlWc2 == null ? null : sfnlWc2.trim();
+    }
+
+    public String getSfnlTest3() {
         return sfnlTest3;
     }
 
-    public void setSfnlTest3(Double sfnlTest3) {
-        this.sfnlTest3 = sfnlTest3;
+    public void setSfnlTest3(String sfnlTest3) {
+        this.sfnlTest3 = sfnlTest3 == null ? null : sfnlTest3.trim();
     }
 
-    public Double getSfnlValue3() {
+    public String getSfnlValue3() {
         return sfnlValue3;
     }
 
-    public void setSfnlValue3(Double sfnlValue3) {
-        this.sfnlValue3 = sfnlValue3;
+    public void setSfnlValue3(String sfnlValue3) {
+        this.sfnlValue3 = sfnlValue3 == null ? null : sfnlValue3.trim();
     }
 
-    public Double getSfnlTest4() {
+    public String getSfnlWc3() {
+        return sfnlWc3;
+    }
+
+    public void setSfnlWc3(String sfnlWc3) {
+        this.sfnlWc3 = sfnlWc3 == null ? null : sfnlWc3.trim();
+    }
+
+    public String getSfnlTest4() {
         return sfnlTest4;
     }
 
-    public void setSfnlTest4(Double sfnlTest4) {
-        this.sfnlTest4 = sfnlTest4;
+    public void setSfnlTest4(String sfnlTest4) {
+        this.sfnlTest4 = sfnlTest4 == null ? null : sfnlTest4.trim();
     }
 
-    public Double getSfnlValue4() {
+    public String getSfnlValue4() {
         return sfnlValue4;
     }
 
-    public void setSfnlValue4(Double sfnlValue4) {
-        this.sfnlValue4 = sfnlValue4;
+    public void setSfnlValue4(String sfnlValue4) {
+        this.sfnlValue4 = sfnlValue4 == null ? null : sfnlValue4.trim();
     }
 
-    public Double getSfnlTest5() {
+    public String getSfnlWc4() {
+        return sfnlWc4;
+    }
+
+    public void setSfnlWc4(String sfnlWc4) {
+        this.sfnlWc4 = sfnlWc4 == null ? null : sfnlWc4.trim();
+    }
+
+    public String getSfnlTest5() {
         return sfnlTest5;
     }
 
-    public void setSfnlTest5(Double sfnlTest5) {
-        this.sfnlTest5 = sfnlTest5;
+    public void setSfnlTest5(String sfnlTest5) {
+        this.sfnlTest5 = sfnlTest5 == null ? null : sfnlTest5.trim();
     }
 
-    public Double getSfnlValue5() {
+    public String getSfnlValue5() {
         return sfnlValue5;
     }
 
-    public void setSfnlValue5(Double sfnlValue5) {
-        this.sfnlValue5 = sfnlValue5;
+    public void setSfnlValue5(String sfnlValue5) {
+        this.sfnlValue5 = sfnlValue5 == null ? null : sfnlValue5.trim();
     }
 
-    public Double getSfnlTest6() {
+    public String getSfnlWc5() {
+        return sfnlWc5;
+    }
+
+    public void setSfnlWc5(String sfnlWc5) {
+        this.sfnlWc5 = sfnlWc5 == null ? null : sfnlWc5.trim();
+    }
+
+    public String getSfnlTest6() {
         return sfnlTest6;
     }
 
-    public void setSfnlTest6(Double sfnlTest6) {
-        this.sfnlTest6 = sfnlTest6;
+    public void setSfnlTest6(String sfnlTest6) {
+        this.sfnlTest6 = sfnlTest6 == null ? null : sfnlTest6.trim();
     }
 
-    public Double getSfnlValue6() {
+    public String getSfnlValue6() {
         return sfnlValue6;
     }
 
-    public void setSfnlValue6(Double sfnlValue6) {
-        this.sfnlValue6 = sfnlValue6;
+    public void setSfnlValue6(String sfnlValue6) {
+        this.sfnlValue6 = sfnlValue6 == null ? null : sfnlValue6.trim();
     }
 
-    public Byte getSfnlWc() {
-        return sfnlWc;
+    public String getSfnlWc6() {
+        return sfnlWc6;
     }
 
-    public void setSfnlWc(Byte sfnlWc) {
-        this.sfnlWc = sfnlWc;
+    public void setSfnlWc6(String sfnlWc6) {
+        this.sfnlWc6 = sfnlWc6 == null ? null : sfnlWc6.trim();
     }
 
-    public Byte getSfnlResult() {
+    public String getSfnlTest7() {
+        return sfnlTest7;
+    }
+
+    public void setSfnlTest7(String sfnlTest7) {
+        this.sfnlTest7 = sfnlTest7 == null ? null : sfnlTest7.trim();
+    }
+
+    public String getSfnlValue71() {
+        return sfnlValue71;
+    }
+
+    public void setSfnlValue71(String sfnlValue71) {
+        this.sfnlValue71 = sfnlValue71 == null ? null : sfnlValue71.trim();
+    }
+
+    public String getSfnlValue72() {
+        return sfnlValue72;
+    }
+
+    public void setSfnlValue72(String sfnlValue72) {
+        this.sfnlValue72 = sfnlValue72 == null ? null : sfnlValue72.trim();
+    }
+
+    public String getSfnlValue73() {
+        return sfnlValue73;
+    }
+
+    public void setSfnlValue73(String sfnlValue73) {
+        this.sfnlValue73 = sfnlValue73 == null ? null : sfnlValue73.trim();
+    }
+
+    public String getSfnlWc7() {
+        return sfnlWc7;
+    }
+
+    public void setSfnlWc7(String sfnlWc7) {
+        this.sfnlWc7 = sfnlWc7 == null ? null : sfnlWc7.trim();
+    }
+
+    public String getSfnlTest8() {
+        return sfnlTest8;
+    }
+
+    public void setSfnlTest8(String sfnlTest8) {
+        this.sfnlTest8 = sfnlTest8 == null ? null : sfnlTest8.trim();
+    }
+
+    public String getSfnlValue81() {
+        return sfnlValue81;
+    }
+
+    public void setSfnlValue81(String sfnlValue81) {
+        this.sfnlValue81 = sfnlValue81 == null ? null : sfnlValue81.trim();
+    }
+
+    public String getSfnlValue82() {
+        return sfnlValue82;
+    }
+
+    public void setSfnlValue82(String sfnlValue82) {
+        this.sfnlValue82 = sfnlValue82 == null ? null : sfnlValue82.trim();
+    }
+
+    public String getSfnlValue83() {
+        return sfnlValue83;
+    }
+
+    public void setSfnlValue83(String sfnlValue83) {
+        this.sfnlValue83 = sfnlValue83 == null ? null : sfnlValue83.trim();
+    }
+
+    public String getSfnlWc8() {
+        return sfnlWc8;
+    }
+
+    public void setSfnlWc8(String sfnlWc8) {
+        this.sfnlWc8 = sfnlWc8 == null ? null : sfnlWc8.trim();
+    }
+
+    public String getSfnlResult() {
         return sfnlResult;
     }
 
-    public void setSfnlResult(Byte sfnlResult) {
-        this.sfnlResult = sfnlResult;
+    public void setSfnlResult(String sfnlResult) {
+        this.sfnlResult = sfnlResult == null ? null : sfnlResult.trim();
     }
 
     public String getCdsjTest() {
@@ -307,36 +463,28 @@ public class Ccy {
         this.cdsjValue = cdsjValue == null ? null : cdsjValue.trim();
     }
 
-    public Integer getCdsjWc() {
-        return cdsjWc;
-    }
-
-    public void setCdsjWc(Integer cdsjWc) {
-        this.cdsjWc = cdsjWc;
-    }
-
-    public Byte getCdsjResult() {
+    public String getCdsjResult() {
         return cdsjResult;
     }
 
-    public void setCdsjResult(Byte cdsjResult) {
-        this.cdsjResult = cdsjResult;
+    public void setCdsjResult(String cdsjResult) {
+        this.cdsjResult = cdsjResult == null ? null : cdsjResult.trim();
     }
 
-    public Byte getNbfdResult() {
+    public String getNbfdResult() {
         return nbfdResult;
     }
 
-    public void setNbfdResult(Byte nbfdResult) {
-        this.nbfdResult = nbfdResult;
+    public void setNbfdResult(String nbfdResult) {
+        this.nbfdResult = nbfdResult == null ? null : nbfdResult.trim();
     }
 
-    public Byte getTbmsCfresult() {
+    public String getTbmsCfresult() {
         return tbmsCfresult;
     }
 
-    public void setTbmsCfresult(Byte tbmsCfresult) {
-        this.tbmsCfresult = tbmsCfresult;
+    public void setTbmsCfresult(String tbmsCfresult) {
+        this.tbmsCfresult = tbmsCfresult == null ? null : tbmsCfresult.trim();
     }
 
     public String getTbmsYcsj() {
@@ -347,139 +495,131 @@ public class Ccy {
         this.tbmsYcsj = tbmsYcsj == null ? null : tbmsYcsj.trim();
     }
 
-    public Integer getTbmsWc() {
-        return tbmsWc;
+    public String getTbmsSj() {
+        return tbmsSj;
     }
 
-    public void setTbmsWc(Integer tbmsWc) {
-        this.tbmsWc = tbmsWc;
+    public void setTbmsSj(String tbmsSj) {
+        this.tbmsSj = tbmsSj == null ? null : tbmsSj.trim();
     }
 
-    public Byte getTbmsResult() {
+    public String getTbmsResult() {
         return tbmsResult;
     }
 
-    public void setTbmsResult(Byte tbmsResult) {
-        this.tbmsResult = tbmsResult;
+    public void setTbmsResult(String tbmsResult) {
+        this.tbmsResult = tbmsResult == null ? null : tbmsResult.trim();
     }
 
-    public Double getXlszTest1() {
+    public String getXlszTest1() {
         return xlszTest1;
     }
 
-    public void setXlszTest1(Double xlszTest1) {
-        this.xlszTest1 = xlszTest1;
+    public void setXlszTest1(String xlszTest1) {
+        this.xlszTest1 = xlszTest1 == null ? null : xlszTest1.trim();
     }
 
-    public Double getXlszValue1() {
+    public String getXlszValue1() {
         return xlszValue1;
     }
 
-    public void setXlszValue1(Double xlszValue1) {
-        this.xlszValue1 = xlszValue1;
+    public void setXlszValue1(String xlszValue1) {
+        this.xlszValue1 = xlszValue1 == null ? null : xlszValue1.trim();
     }
 
-    public Double getXlszTest2() {
+    public String getXlszTest2() {
         return xlszTest2;
     }
 
-    public void setXlszTest2(Double xlszTest2) {
-        this.xlszTest2 = xlszTest2;
+    public void setXlszTest2(String xlszTest2) {
+        this.xlszTest2 = xlszTest2 == null ? null : xlszTest2.trim();
     }
 
-    public Double getXlszValue2() {
+    public String getXlszValue2() {
         return xlszValue2;
     }
 
-    public void setXlszValue2(Double xlszValue2) {
-        this.xlszValue2 = xlszValue2;
+    public void setXlszValue2(String xlszValue2) {
+        this.xlszValue2 = xlszValue2 == null ? null : xlszValue2.trim();
     }
 
-    public Double getXlszTest3() {
+    public String getXlszTest3() {
         return xlszTest3;
     }
 
-    public void setXlszTest3(Double xlszTest3) {
-        this.xlszTest3 = xlszTest3;
+    public void setXlszTest3(String xlszTest3) {
+        this.xlszTest3 = xlszTest3 == null ? null : xlszTest3.trim();
     }
 
-    public Double getXlszValue3() {
+    public String getXlszValue3() {
         return xlszValue3;
     }
 
-    public void setXlszValue3(Double xlszValue3) {
-        this.xlszValue3 = xlszValue3;
+    public void setXlszValue3(String xlszValue3) {
+        this.xlszValue3 = xlszValue3 == null ? null : xlszValue3.trim();
     }
 
-    public Double getXlszTest4() {
+    public String getXlszTest4() {
         return xlszTest4;
     }
 
-    public void setXlszTest4(Double xlszTest4) {
-        this.xlszTest4 = xlszTest4;
+    public void setXlszTest4(String xlszTest4) {
+        this.xlszTest4 = xlszTest4 == null ? null : xlszTest4.trim();
     }
 
-    public Double getXlszValue4() {
+    public String getXlszValue4() {
         return xlszValue4;
     }
 
-    public void setXlszValue4(Double xlszValue4) {
-        this.xlszValue4 = xlszValue4;
+    public void setXlszValue4(String xlszValue4) {
+        this.xlszValue4 = xlszValue4 == null ? null : xlszValue4.trim();
     }
 
-    public Double getXlszTest5() {
+    public String getXlszTest5() {
         return xlszTest5;
     }
 
-    public void setXlszTest5(Double xlszTest5) {
-        this.xlszTest5 = xlszTest5;
+    public void setXlszTest5(String xlszTest5) {
+        this.xlszTest5 = xlszTest5 == null ? null : xlszTest5.trim();
     }
 
-    public Double getXlszValue5() {
+    public String getXlszValue5() {
         return xlszValue5;
     }
 
-    public void setXlszValue5(Double xlszValue5) {
-        this.xlszValue5 = xlszValue5;
+    public void setXlszValue5(String xlszValue5) {
+        this.xlszValue5 = xlszValue5 == null ? null : xlszValue5.trim();
     }
 
-    public Integer getXlszWc() {
-        return xlszWc;
-    }
-
-    public void setXlszWc(Integer xlszWc) {
-        this.xlszWc = xlszWc;
-    }
-
-    public Byte getXlszResult() {
+    public String getXlszResult() {
         return xlszResult;
     }
 
-    public void setXlszResult(Byte xlszResult) {
-        this.xlszResult = xlszResult;
+    public void setXlszResult(String xlszResult) {
+        this.xlszResult = xlszResult == null ? null : xlszResult.trim();
     }
 
-    public Byte getSgbjResult() {
+    public String getSgbjResult() {
         return sgbjResult;
     }
 
-    public void setSgbjResult(Byte sgbjResult) {
-        this.sgbjResult = sgbjResult;
+    public void setSgbjResult(String sgbjResult) {
+        this.sgbjResult = sgbjResult == null ? null : sgbjResult.trim();
     }
 
-    public Byte getBjxResult() {
+    public String getBjxResult() {
         return bjxResult;
     }
 
-    public void setBjxResult(Byte bjxResult) {
-        this.bjxResult = bjxResult;
+    public void setBjxResult(String bjxResult) {
+        this.bjxResult = bjxResult == null ? null : bjxResult.trim();
     }
 
-    public Byte getJyResult() {
+    public String getJyResult() {
         return jyResult;
     }
 
-    public void setJyResult(Byte jyResult) {
-        this.jyResult = jyResult;
+    public void setJyResult(String jyResult) {
+        this.jyResult = jyResult == null ? null : jyResult.trim();
     }
 }

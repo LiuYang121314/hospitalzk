@@ -233,7 +233,7 @@ public interface DcsjhyMapper {
 	public void saveMan( Dcsjhy dcsjhy);
 
 	//保存多参数监护仪检测表(幼儿)
-	@Insert("insert into dcsjhy_c (dcid, jcyq_id, eq_id,tester, auditor, shsj_time,test_time,sh_jcjl, jcjl, jcsm, xl_test1,                         "
+	@Insert("insert into dcsjhy_c (dcid, jcyq_id, eq_id,tester, auditor, shsj_time,test_time,shr_jcjl, jcjl, jcsm, xl_test1,                         "
 			+"xl_test2, xl_test3, xl_test4, xl_test5, xl_value1, xl_value2,  xl_value3, xl_value4, xl_value5,                         "
 			+"xl_wc, xl_result, hxl_test1,  hxl_test2, hxl_test3, hxl_test4, hxl_test5, hxl_value1, hxl_value2,                       "
 			+"hxl_value3, hxl_value4, hxl_value5, hxl_wc, hxl_result, xybhd_test1,xybhd_test2, xybhd_test3, xybhd_test4,              "
@@ -294,6 +294,9 @@ public interface DcsjhyMapper {
 	@Options(useGeneratedKeys = true, keyProperty = "dcid", keyColumn = "dcid")
 	public void saveChild( Dcsjhy dcsjhy);
 
+	//修改
+	@Update("")
+	Dcsjhy updateChild(Dcsjhy dcsjhy);
 	//查询多参数监护仪检测单条数据（成人）
 	@Select("select * from dcsjhy_m order by dcid desc limit 1")
 	Dcsjhy findDcsjhyMan();
