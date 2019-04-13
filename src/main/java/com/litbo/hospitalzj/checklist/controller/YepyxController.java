@@ -52,7 +52,7 @@ public class YepyxController extends BaseController {
     }
     //保存婴儿培养箱检测数据
     @RequestMapping("/save")
-    public ResponseResult<Dqjc> save(@RequestParam(value = "eqId") String eqId,
+    public ResponseResult save(@RequestParam(value = "eqId") String eqId,
                                      @RequestParam(value = "jcyqId") String jcyqId,
                                      @RequestParam(value = "userEqId") Integer userEqId,
                                      Yepyx yepyx){
@@ -61,7 +61,8 @@ public class YepyxController extends BaseController {
         //修改状态为待上传
         userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
         yepyxService.save(yepyx);
-        return new ResponseResult<Dqjc>(200);
+        int[] x={yepyx.getPyxId(),yqEqId};
+        return new ResponseResult<>(200,x);
     }
     //数据修改
     @RequestMapping("/updateYepyx")
