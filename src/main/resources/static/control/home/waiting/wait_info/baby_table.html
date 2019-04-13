@@ -258,10 +258,29 @@
                         $("#cdbf").append(res.data.cdbf);
                         $("#sdszz").append(res.data.sdszz);
                         $("#sdcsz").append(res.data.sdcsz);
-                        $("#sdpc").append(res.data.sdpc);
-                        $("#ddbjResult").append(res.data.ddbjResult);
-                        $("#cwbjResult").append(res.data.cwbjResult);
-                        $("#fjbjResult").append(res.data.fjbjResult);
+                        // 单选框
+                        if(res.data.sdpc == 1){
+                            $("#sdpc").append("<p style='color: green;'>符合</p>");
+                        }else if(res.data.sdpc == 2){
+                            $("#sdpc").append("<p style='color: red;'>不符合</p>");
+                        }else{
+                            $("#sdpc").append("<p style='color: red;'>不适用</p>");
+                        }
+                        if(res.data.ddbjResult == 1){
+                            $("#ddbjResult").append("<p style='color: green;'>符合</p>");
+                        }else{
+                            $("#ddbjResult").append("<p style='color: red;'>不符合</p>");
+                        }
+                        if(res.data.cwbjResult == 1){
+                            $("#cwbjResult").append("<p style='color: green;'>符合</p>");
+                        }else{
+                            $("#cwbjResult").append("<p style='color: red;'>不符合</p>");
+                        }
+                        if(res.data.fjbjResult == 1){
+                            $("#fjbjResult").append("<p style='color: green;'>符合</p>");
+                        }else{
+                            $("#fjbjResult").append("<p style='color: red;'>不符合</p>");
+                        }
                     }else{
                         layer.msg("无数据");
                     }
