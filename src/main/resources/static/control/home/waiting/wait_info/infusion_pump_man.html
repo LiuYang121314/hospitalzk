@@ -141,36 +141,35 @@
                     $("#bjylL").append(res.data.bjylL);
                     // 单选
                     if(res.data.zs === 1){
-
+                        $("#zs").append("<p style='color: green;'>符合</p>");
                     }else{
-
+                        $("#zs").append("<p style='color: red;'>不符合</p>");
                     }
                     if(res.data.jjkp === 1){
-
+                        $("#jjkp").append("<p style='color: green;'>符合</p>");
                     }else{
-
+                        $("#jjkp").append("<p style='color: red;'>不符合</p>");
                     }
                     if(res.data.sygbt === 1){
-
+                        $("#sygbt").append("<p style='color: green;'>符合</p>");
                     }else{
-
+                        $("#sygbt").append("<p style='color: red;'>不符合</p>");
                     }
                     if(res.data.qpbj === 1){
-
+                        $("#qpbj").append("<p style='color: green;'>符合</p>");
                     }else{
-
+                        $("#qpbj").append("<p style='color: red;'>不符合</p>");
                     }
                     if(res.data.dyxtk === 1){
-
+                        $("#dyxtk").append("<p style='color: green;'>符合</p>");
                     }else{
-
+                        $("#dyxtk").append("<p style='color: red;'>不符合</p>");
                     }
                     if(res.data.kmbj === 1){
-
+                        $("#kmbj").append("<p style='color: green;'>符合</p>");
                     }else{
-
+                        $("#kmbj").append("<p style='color: red;'>不符合</p>");
                     }
-
                 }
             }
         })

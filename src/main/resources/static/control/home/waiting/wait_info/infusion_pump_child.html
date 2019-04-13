@@ -45,8 +45,8 @@
             </tr>
             <tr>
                 <td colspan="3">平均流量</td>
-                <td colspan="3">&nbsp;</td>
-                <td colspan="3">&nbsp;</td>
+                <td id="pjll1" colspan="3">&nbsp;</td>
+                <td id="pjll2" colspan="3">&nbsp;</td>
                 <td>符合    不符合</td>
             </tr>
             <tr>
@@ -69,34 +69,34 @@
                 <td rowspan="2">符合  不符合</td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td id="bjszH">&nbsp;</td>
+                <td id="bjszM">&nbsp;</td>
+                <td id="bjszL">&nbsp;</td>
+                <td id="bjsjH">&nbsp;</td>
+                <td id="bjsjM">&nbsp;</td>
+                <td id="bjsjL">&nbsp;</td>
+                <td id="bjylH">&nbsp;</td>
+                <td id="bjylM">&nbsp;</td>
+                <td id="bjylL">&nbsp;</td>
             </tr>
             <tr>
                 <td rowspan="3">报警系统检测</td>
                 <td colspan="3">堵塞</td>
-                <td colspan="3">符合  不符合  不适用</td>
+                <td id="zs" colspan="3">符合  不符合  不适用</td>
                 <td colspan="3">即将空瓶</td>
-                <td>符合  不符合  不适用</td>
+                <td id="jjkp">符合  不符合  不适用</td>
             </tr>
             <tr>
                 <td colspan="3">输液管路安装不妥</td>
-                <td colspan="3">符合  不符合  不适用</td>
+                <td id="sygbt" colspan="3">符合  不符合  不适用</td>
                 <td colspan="3">气泡报警</td>
-                <td>符合  不符合  不适用</td>
+                <td id="qpbj">符合  不符合  不适用</td>
             </tr>
             <tr>
                 <td colspan="3">电源线脱开</td>
-                <td colspan="3">符合  不符合  不适用</td>
+                <td id="dyxtk" colspan="3">符合  不符合  不适用</td>
                 <td colspan="3">开门报警</td>
-                <td>符合  不符合  不适用</td>
+                <td id="kmbj">符合  不符合  不适用</td>
             </tr>
         </table>
         <fieldset class="layui-elem-field layui-field-title">
@@ -141,34 +141,34 @@
                     $("#bjylL").append(res.data.bjylL);
                     // 单选
                     if(res.data.zs === 1){
-
+                        $("#zs").append("<p style='color: green;'>符合</p>");
                     }else{
-
+                        $("#zs").append("<p style='color: red;'>不符合</p>");
                     }
                     if(res.data.jjkp === 1){
-
+                        $("#jjkp").append("<p style='color: green;'>符合</p>");
                     }else{
-
+                        $("#jjkp").append("<p style='color: red;'>不符合</p>");
                     }
                     if(res.data.sygbt === 1){
-
+                        $("#sygbt").append("<p style='color: green;'>符合</p>");
                     }else{
-
+                        $("#sygbt").append("<p style='color: red;'>不符合</p>");
                     }
                     if(res.data.qpbj === 1){
-
+                        $("#qpbj").append("<p style='color: green;'>符合</p>");
                     }else{
-
+                        $("#qpbj").append("<p style='color: red;'>不符合</p>");
                     }
                     if(res.data.dyxtk === 1){
-
+                        $("#dyxtk").append("<p style='color: green;'>符合</p>");
                     }else{
-
+                        $("#dyxtk").append("<p style='color: red;'>不符合</p>");
                     }
                     if(res.data.kmbj === 1){
-
+                        $("#kmbj").append("<p style='color: green;'>符合</p>");
                     }else{
-
+                        $("#kmbj").append("<p style='color: red;'>不符合</p>");
                     }
                 }
             }
