@@ -69,6 +69,7 @@ public interface SybMapper {
             "      #{zsbjWc1,jdbcType=INTEGER}, #{zsbjWc2,jdbcType=INTEGER}, #{zsbjResult,jdbcType=TINYINT}, \n" +
             "      #{zs,jdbcType=TINYINT}, #{sygbt,jdbcType=TINYINT}, #{dyxtk,jdbcType=TINYINT}, #{jjkp,jdbcType=TINYINT}, \n" +
             "      #{qpbj,jdbcType=TINYINT}, #{kmbj,jdbcType=TINYINT})")
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     void saveChild(SybC sybC);
     @Update("update syb_c\n" +
             "    set jcyq_id = #{jcyqId,jdbcType=INTEGER},\n" +
@@ -120,6 +121,7 @@ public interface SybMapper {
             "      #{zsbjWc1,jdbcType=INTEGER}, #{zsbjWc2,jdbcType=INTEGER}, #{zsbjResult,jdbcType=TINYINT}, \n" +
             "      #{zs,jdbcType=TINYINT}, #{sygbt,jdbcType=TINYINT}, #{dyxtk,jdbcType=TINYINT}, #{jjkp,jdbcType=TINYINT}, \n" +
             "      #{qpbj,jdbcType=TINYINT}, #{kmbj,jdbcType=TINYINT})")
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     void saveMan(SybC sybC);
     @Update("update syb_m\n" +
             "    set jcyq_id = #{jcyqId,jdbcType=INTEGER},\n" +
@@ -176,11 +178,11 @@ public interface SybMapper {
     /**
      * 根据iD状态查询
      */
-    @Select("select * from ${value} where id=#{id}")
+    @Select("select * from ${tableName} where id=#{id}")
     SybC findByid(@Param("id")Integer id,@Param("tableName")String tableName);
     //查询所有检测表数据信息
     //查询所有录入信息
-    @Select("select * from ${value}")
+    @Select("select * from ${tableName}")
     List<SybC> findAll(String tableName);
     //修改审核人意见
     @Update("update syb_c set shr_jcjl=#{shrJcjl},auditor=#{auditor},shsj_time=#{shsjTime} where id=#{id}")

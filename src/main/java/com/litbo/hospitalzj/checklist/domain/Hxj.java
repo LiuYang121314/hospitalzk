@@ -1,5 +1,7 @@
 package com.litbo.hospitalzj.checklist.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Hxj {
@@ -12,156 +14,402 @@ public class Hxj {
     private String tester;
 
     private String auditor;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private Date shsjTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date testTime;
 
     private String jcjl;
 
     private String jcsm;
 
-    private Integer cqzTest1;
+    private Integer bhjdzkTest;
 
-    private Integer cqzTest2;
+    private Integer bhjdzkYx;
 
-    private Integer cqzTest3;
+    private Integer bhjdzkResult;
 
-    private Integer cqzSzValue1;
+    private Integer jykzTest;
 
-    private Integer cqzSzValue2;
+    private Integer jykzYx;
 
-    private Integer cqzSzValue3;
+    private Integer jykzResult;
 
-    private Integer cqzScValue1;
+    private Integer ddldZZ;
 
-    private Integer cqzScValue2;
+    private Integer ddldZF;
 
-    private Integer cqzScValue3;
+    private Integer ddldZYx;
 
-    private Integer cqzWc;
+    private Integer ddldZResult;
 
-    private Byte cqzSzResult;
+    private Integer ddldDZ1;
 
-    private Byte cqzScResult;
+    private Integer ddldDZ2;
 
-    private Integer qztqTest1;
+    private Integer ddldDYx;
 
-    private Integer qztqTest2;
+    private Integer ddldDResult;
 
-    private Integer qztqTest3;
+    private Integer wkldZZ;
 
-    private Integer qztqSzValue1;
+    private Integer wkldZF;
 
-    private Integer qztqSzValue2;
+    private Integer wkldZYx;
 
-    private Integer qztqSzValue3;
+    private Integer wkldZResult;
 
-    private Integer qztqScValue1;
+    private Integer wkldDZ1;
 
-    private Integer qztqScValue2;
+    private Integer wkldDZ2;
 
-    private Integer qztqScValue3;
+    private Integer wkldDZ3;
 
-    private Integer qztqWc;
+    private Integer wkldDZ4;
 
-    private Byte qztqSzResult;
+    private Integer wkldDYx;
 
-    private Byte qztqScResult;
+    private Integer wkldDResult;
 
-    private Integer xryndTest1;
+    private Integer cqz1;
 
-    private Integer xryndTest2;
+    private Integer cqzh11;
 
-    private Integer xryndTest3;
+    private Integer cqzh12;
 
-    private Integer xryndSzValue1;
+    private Integer cqzh13;
 
-    private Integer xryndSzValue2;
+    private Integer cqzhp11;
 
-    private Integer xryndSzValue3;
+    private Integer cqzc11;
 
-    private Integer xryndScValue1;
+    private Integer cqzc12;
 
-    private Integer xryndScValue2;
+    private Integer cqzc13;
 
-    private Integer xryndScValue3;
+    private Integer cqzcp12;
 
-    private Integer xryndWc;
+    private Integer cqz1Swc;
 
-    private Byte xryndSzResult;
+    private Integer cqz2;
 
-    private Byte xryndScResult;
+    private Integer cqzh21;
 
-    private Integer xqylspTest1;
+    private Integer cqzh22;
 
-    private Integer xqylspTest2;
+    private Integer cqzh23;
 
-    private Integer xqylspTest3;
+    private Integer cqzhp21;
 
-    private Integer xqylspSzValue1;
+    private Integer cqzc21;
 
-    private Integer xqylspSzValue2;
+    private Integer cqzc22;
 
-    private Integer xqylspSzValue3;
+    private Integer cqzc23;
 
-    private Integer xqylspScValue1;
+    private Integer cqzcp22;
 
-    private Integer xqylspScValue2;
+    private Integer cqz2Swc;
 
-    private Integer xqylspScValue3;
+    private Integer cqz3;
 
-    private Integer xqylspWc;
+    private Integer cqzh31;
 
-    private Byte xqylspSzResult;
+    private Integer cqzh32;
 
-    private Byte xqylspScResult;
+    private Integer cqzh33;
 
-    private Integer hqmzyTest1;
+    private Integer cqzhp31;
 
-    private Integer hqmzyTest2;
+    private Integer cqzc31;
 
-    private Integer hqmzyTest3;
+    private Integer cqzc32;
 
-    private Integer hqmzySzValue1;
+    private Integer cqzc33;
 
-    private Integer hqmzySzValue2;
+    private Integer cqzcp32;
 
-    private Integer hqmzySzValue3;
+    private Integer cqz3Swc;
 
-    private Integer hqmzyScValue1;
+    private Integer cqzZdwc;
 
-    private Integer hqmzyScValue2;
+    private Integer cqzResult;
 
-    private Integer hqmzyScValue3;
+    private Integer qztq1;
 
-    private Integer hqmzyWc;
+    private Integer qztqh11;
 
-    private Byte hqmzySzResult;
+    private Integer qztqh12;
 
-    private Byte hqmzyScResult;
+    private Integer qztqh13;
 
-    private Byte dybjResult;
+    private Integer qztqhp11;
 
-    private Byte qybjResult;
+    private Integer qztqc11;
 
-    private Byte qdylbjResult;
+    private Integer qztqc12;
 
-    private Byte fztqlbjResult;
+    private Integer qztqc13;
 
-    private Byte yndbjResult;
+    private Integer qztqcp12;
 
-    private Byte zxbjResult;
+    private Integer qztq1Swc;
 
-    private Byte brhlgybhResult;
+    private Integer qztq2;
 
-    private Byte ajgnjcResult;
+    private Integer qztqh21;
 
-    private Byte spare1;
+    private Integer qztqh22;
 
-    private Byte spare2;
+    private Integer qztqh23;
 
-    private Byte spare3;
+    private Integer qztqhp21;
 
-    private Byte spare4;
+    private Integer qztqc21;
+
+    private Integer qztqc22;
+
+    private Integer qztqc23;
+
+    private Integer qztqcp22;
+
+    private Integer qztq2Swc;
+
+    private Integer qztq3;
+
+    private Integer qztqh31;
+
+    private Integer qztqh32;
+
+    private Integer qztqh33;
+
+    private Integer qztqhp31;
+
+    private Integer qztqc31;
+
+    private Integer qztqc32;
+
+    private Integer qztqc33;
+
+    private Integer qztqcp32;
+
+    private Integer qztq3Swc;
+
+    private Integer qztqZdwc;
+
+    private Integer qztqResult;
+
+    private Integer xry1;
+
+    private Integer xryh11;
+
+    private Integer xryh12;
+
+    private Integer xryh13;
+
+    private Integer xryhp11;
+
+    private Integer xryc11;
+
+    private Integer xryc12;
+
+    private Integer xryc13;
+
+    private Integer xrycp12;
+
+    private Integer xry1Swc;
+
+    private Integer xry2;
+
+    private Integer xryh21;
+
+    private Integer xryh22;
+
+    private Integer xryh23;
+
+    private Integer xryhp21;
+
+    private Integer xryc21;
+
+    private Integer xryc22;
+
+    private Integer xryc23;
+
+    private Integer xrycp22;
+
+    private Integer xry2Swc;
+
+    private Integer xry3;
+
+    private Integer xryh31;
+
+    private Integer xryh32;
+
+    private Integer xryh33;
+
+    private Integer xryhp31;
+
+    private Integer xryc31;
+
+    private Integer xryc32;
+
+    private Integer xryc33;
+
+    private Integer xrycp32;
+
+    private Integer xry3Swc;
+
+    private Integer xryZdwc;
+
+    private Integer xryResult;
+
+    private Integer xqf1;
+
+    private Integer xqfh11;
+
+    private Integer xqfh12;
+
+    private Integer xqfh13;
+
+    private Integer xqfhp11;
+
+    private Integer xqfc11;
+
+    private Integer xqfc12;
+
+    private Integer xqfc13;
+
+    private Integer xqfcp12;
+
+    private Integer xqf1Swc;
+
+    private Integer xqf2;
+
+    private Integer xqfh21;
+
+    private Integer xqfh22;
+
+    private Integer xqfh23;
+
+    private Integer xqfhp21;
+
+    private Integer xqfc21;
+
+    private Integer xqfc22;
+
+    private Integer xqfc23;
+
+    private Integer xqfcp22;
+
+    private Integer xqf2Swc;
+
+    private Integer xqf3;
+
+    private Integer xqfh31;
+
+    private Integer xqfh32;
+
+    private Integer xqfh33;
+
+    private Integer xqfhp31;
+
+    private Integer xqfc31;
+
+    private Integer xqfc32;
+
+    private Integer xqfc33;
+
+    private Integer xqfcp32;
+
+    private Integer xqf3Swc;
+
+    private Integer xqfZdwc;
+
+    private Integer xqfResult;
+
+    private Integer hqm1;
+
+    private Integer hqmh11;
+
+    private Integer hqmh12;
+
+    private Integer hqmh13;
+
+    private Integer hqmhp11;
+
+    private Integer hqmc11;
+
+    private Integer hqmc12;
+
+    private Integer hqmc13;
+
+    private Integer hqmcp12;
+
+    private Integer hqm1Swc;
+
+    private Integer hqm2;
+
+    private Integer hqmh21;
+
+    private Integer hqmh22;
+
+    private Integer hqmh23;
+
+    private Integer hqmhp21;
+
+    private Integer hqmc21;
+
+    private Integer hqmc22;
+
+    private Integer hqmc23;
+
+    private Integer hqmcp22;
+
+    private Integer hqm2Swc;
+
+    private Integer hqm3;
+
+    private Integer hqmh31;
+
+    private Integer hqmh32;
+
+    private Integer hqmh33;
+
+    private Integer hqmhp31;
+
+    private Integer hqmc31;
+
+    private Integer hqmc32;
+
+    private Integer hqmc33;
+
+    private Integer hqmcp32;
+
+    private Integer hqm3Swc;
+
+    private Integer hqmZdwc;
+
+    private Integer hqmResult;
+
+    private Integer dybj;
+
+    private Integer yqndsx;
+
+    private Integer qybj;
+
+    private Integer zxbj;
+
+    private Integer qdyl;
+
+    private Integer brhl;
+
+    private Integer fztql;
+
+    private Integer ajgn;
+
+    private Integer bz;
+
+    private Integer bz1;
 
     public Integer getHxjid() {
         return hxjid;
@@ -203,6 +451,14 @@ public class Hxj {
         this.auditor = auditor == null ? null : auditor.trim();
     }
 
+    public Date getShsjTime() {
+        return shsjTime;
+    }
+
+    public void setShsjTime(Date shsjTime) {
+        this.shsjTime = shsjTime;
+    }
+
     public Date getTestTime() {
         return testTime;
     }
@@ -227,579 +483,1555 @@ public class Hxj {
         this.jcsm = jcsm == null ? null : jcsm.trim();
     }
 
-    public Integer getCqzTest1() {
-        return cqzTest1;
+    public Integer getBhjdzkTest() {
+        return bhjdzkTest;
     }
 
-    public void setCqzTest1(Integer cqzTest1) {
-        this.cqzTest1 = cqzTest1;
+    public void setBhjdzkTest(Integer bhjdzkTest) {
+        this.bhjdzkTest = bhjdzkTest;
     }
 
-    public Integer getCqzTest2() {
-        return cqzTest2;
+    public Integer getBhjdzkYx() {
+        return bhjdzkYx;
     }
 
-    public void setCqzTest2(Integer cqzTest2) {
-        this.cqzTest2 = cqzTest2;
+    public void setBhjdzkYx(Integer bhjdzkYx) {
+        this.bhjdzkYx = bhjdzkYx;
     }
 
-    public Integer getCqzTest3() {
-        return cqzTest3;
+    public Integer getBhjdzkResult() {
+        return bhjdzkResult;
     }
 
-    public void setCqzTest3(Integer cqzTest3) {
-        this.cqzTest3 = cqzTest3;
+    public void setBhjdzkResult(Integer bhjdzkResult) {
+        this.bhjdzkResult = bhjdzkResult;
     }
 
-    public Integer getCqzSzValue1() {
-        return cqzSzValue1;
+    public Integer getJykzTest() {
+        return jykzTest;
     }
 
-    public void setCqzSzValue1(Integer cqzSzValue1) {
-        this.cqzSzValue1 = cqzSzValue1;
+    public void setJykzTest(Integer jykzTest) {
+        this.jykzTest = jykzTest;
     }
 
-    public Integer getCqzSzValue2() {
-        return cqzSzValue2;
+    public Integer getJykzYx() {
+        return jykzYx;
     }
 
-    public void setCqzSzValue2(Integer cqzSzValue2) {
-        this.cqzSzValue2 = cqzSzValue2;
+    public void setJykzYx(Integer jykzYx) {
+        this.jykzYx = jykzYx;
     }
 
-    public Integer getCqzSzValue3() {
-        return cqzSzValue3;
+    public Integer getJykzResult() {
+        return jykzResult;
     }
 
-    public void setCqzSzValue3(Integer cqzSzValue3) {
-        this.cqzSzValue3 = cqzSzValue3;
+    public void setJykzResult(Integer jykzResult) {
+        this.jykzResult = jykzResult;
     }
 
-    public Integer getCqzScValue1() {
-        return cqzScValue1;
+    public Integer getDdldZZ() {
+        return ddldZZ;
     }
 
-    public void setCqzScValue1(Integer cqzScValue1) {
-        this.cqzScValue1 = cqzScValue1;
+    public void setDdldZZ(Integer ddldZZ) {
+        this.ddldZZ = ddldZZ;
     }
 
-    public Integer getCqzScValue2() {
-        return cqzScValue2;
+    public Integer getDdldZF() {
+        return ddldZF;
     }
 
-    public void setCqzScValue2(Integer cqzScValue2) {
-        this.cqzScValue2 = cqzScValue2;
+    public void setDdldZF(Integer ddldZF) {
+        this.ddldZF = ddldZF;
     }
 
-    public Integer getCqzScValue3() {
-        return cqzScValue3;
+    public Integer getDdldZYx() {
+        return ddldZYx;
     }
 
-    public void setCqzScValue3(Integer cqzScValue3) {
-        this.cqzScValue3 = cqzScValue3;
+    public void setDdldZYx(Integer ddldZYx) {
+        this.ddldZYx = ddldZYx;
     }
 
-    public Integer getCqzWc() {
-        return cqzWc;
+    public Integer getDdldZResult() {
+        return ddldZResult;
     }
 
-    public void setCqzWc(Integer cqzWc) {
-        this.cqzWc = cqzWc;
+    public void setDdldZResult(Integer ddldZResult) {
+        this.ddldZResult = ddldZResult;
     }
 
-    public Byte getCqzSzResult() {
-        return cqzSzResult;
+    public Integer getDdldDZ1() {
+        return ddldDZ1;
     }
 
-    public void setCqzSzResult(Byte cqzSzResult) {
-        this.cqzSzResult = cqzSzResult;
+    public void setDdldDZ1(Integer ddldDZ1) {
+        this.ddldDZ1 = ddldDZ1;
     }
 
-    public Byte getCqzScResult() {
-        return cqzScResult;
+    public Integer getDdldDZ2() {
+        return ddldDZ2;
     }
 
-    public void setCqzScResult(Byte cqzScResult) {
-        this.cqzScResult = cqzScResult;
+    public void setDdldDZ2(Integer ddldDZ2) {
+        this.ddldDZ2 = ddldDZ2;
     }
 
-    public Integer getQztqTest1() {
-        return qztqTest1;
+    public Integer getDdldDYx() {
+        return ddldDYx;
     }
 
-    public void setQztqTest1(Integer qztqTest1) {
-        this.qztqTest1 = qztqTest1;
+    public void setDdldDYx(Integer ddldDYx) {
+        this.ddldDYx = ddldDYx;
     }
 
-    public Integer getQztqTest2() {
-        return qztqTest2;
+    public Integer getDdldDResult() {
+        return ddldDResult;
     }
 
-    public void setQztqTest2(Integer qztqTest2) {
-        this.qztqTest2 = qztqTest2;
+    public void setDdldDResult(Integer ddldDResult) {
+        this.ddldDResult = ddldDResult;
     }
 
-    public Integer getQztqTest3() {
-        return qztqTest3;
+    public Integer getWkldZZ() {
+        return wkldZZ;
     }
 
-    public void setQztqTest3(Integer qztqTest3) {
-        this.qztqTest3 = qztqTest3;
+    public void setWkldZZ(Integer wkldZZ) {
+        this.wkldZZ = wkldZZ;
     }
 
-    public Integer getQztqSzValue1() {
-        return qztqSzValue1;
+    public Integer getWkldZF() {
+        return wkldZF;
     }
 
-    public void setQztqSzValue1(Integer qztqSzValue1) {
-        this.qztqSzValue1 = qztqSzValue1;
+    public void setWkldZF(Integer wkldZF) {
+        this.wkldZF = wkldZF;
     }
 
-    public Integer getQztqSzValue2() {
-        return qztqSzValue2;
+    public Integer getWkldZYx() {
+        return wkldZYx;
     }
 
-    public void setQztqSzValue2(Integer qztqSzValue2) {
-        this.qztqSzValue2 = qztqSzValue2;
+    public void setWkldZYx(Integer wkldZYx) {
+        this.wkldZYx = wkldZYx;
     }
 
-    public Integer getQztqSzValue3() {
-        return qztqSzValue3;
+    public Integer getWkldZResult() {
+        return wkldZResult;
     }
 
-    public void setQztqSzValue3(Integer qztqSzValue3) {
-        this.qztqSzValue3 = qztqSzValue3;
+    public void setWkldZResult(Integer wkldZResult) {
+        this.wkldZResult = wkldZResult;
     }
 
-    public Integer getQztqScValue1() {
-        return qztqScValue1;
+    public Integer getWkldDZ1() {
+        return wkldDZ1;
     }
 
-    public void setQztqScValue1(Integer qztqScValue1) {
-        this.qztqScValue1 = qztqScValue1;
+    public void setWkldDZ1(Integer wkldDZ1) {
+        this.wkldDZ1 = wkldDZ1;
     }
 
-    public Integer getQztqScValue2() {
-        return qztqScValue2;
+    public Integer getWkldDZ2() {
+        return wkldDZ2;
     }
 
-    public void setQztqScValue2(Integer qztqScValue2) {
-        this.qztqScValue2 = qztqScValue2;
+    public void setWkldDZ2(Integer wkldDZ2) {
+        this.wkldDZ2 = wkldDZ2;
     }
 
-    public Integer getQztqScValue3() {
-        return qztqScValue3;
+    public Integer getWkldDZ3() {
+        return wkldDZ3;
     }
 
-    public void setQztqScValue3(Integer qztqScValue3) {
-        this.qztqScValue3 = qztqScValue3;
+    public void setWkldDZ3(Integer wkldDZ3) {
+        this.wkldDZ3 = wkldDZ3;
     }
 
-    public Integer getQztqWc() {
-        return qztqWc;
+    public Integer getWkldDZ4() {
+        return wkldDZ4;
     }
 
-    public void setQztqWc(Integer qztqWc) {
-        this.qztqWc = qztqWc;
+    public void setWkldDZ4(Integer wkldDZ4) {
+        this.wkldDZ4 = wkldDZ4;
     }
 
-    public Byte getQztqSzResult() {
-        return qztqSzResult;
+    public Integer getWkldDYx() {
+        return wkldDYx;
     }
 
-    public void setQztqSzResult(Byte qztqSzResult) {
-        this.qztqSzResult = qztqSzResult;
+    public void setWkldDYx(Integer wkldDYx) {
+        this.wkldDYx = wkldDYx;
     }
 
-    public Byte getQztqScResult() {
-        return qztqScResult;
+    public Integer getWkldDResult() {
+        return wkldDResult;
     }
 
-    public void setQztqScResult(Byte qztqScResult) {
-        this.qztqScResult = qztqScResult;
+    public void setWkldDResult(Integer wkldDResult) {
+        this.wkldDResult = wkldDResult;
     }
 
-    public Integer getXryndTest1() {
-        return xryndTest1;
+    public Integer getCqz1() {
+        return cqz1;
     }
 
-    public void setXryndTest1(Integer xryndTest1) {
-        this.xryndTest1 = xryndTest1;
+    public void setCqz1(Integer cqz1) {
+        this.cqz1 = cqz1;
     }
 
-    public Integer getXryndTest2() {
-        return xryndTest2;
+    public Integer getCqzh11() {
+        return cqzh11;
     }
 
-    public void setXryndTest2(Integer xryndTest2) {
-        this.xryndTest2 = xryndTest2;
+    public void setCqzh11(Integer cqzh11) {
+        this.cqzh11 = cqzh11;
     }
 
-    public Integer getXryndTest3() {
-        return xryndTest3;
+    public Integer getCqzh12() {
+        return cqzh12;
     }
 
-    public void setXryndTest3(Integer xryndTest3) {
-        this.xryndTest3 = xryndTest3;
+    public void setCqzh12(Integer cqzh12) {
+        this.cqzh12 = cqzh12;
     }
 
-    public Integer getXryndSzValue1() {
-        return xryndSzValue1;
+    public Integer getCqzh13() {
+        return cqzh13;
     }
 
-    public void setXryndSzValue1(Integer xryndSzValue1) {
-        this.xryndSzValue1 = xryndSzValue1;
+    public void setCqzh13(Integer cqzh13) {
+        this.cqzh13 = cqzh13;
     }
 
-    public Integer getXryndSzValue2() {
-        return xryndSzValue2;
+    public Integer getCqzhp11() {
+        return cqzhp11;
     }
 
-    public void setXryndSzValue2(Integer xryndSzValue2) {
-        this.xryndSzValue2 = xryndSzValue2;
+    public void setCqzhp11(Integer cqzhp11) {
+        this.cqzhp11 = cqzhp11;
     }
 
-    public Integer getXryndSzValue3() {
-        return xryndSzValue3;
+    public Integer getCqzc11() {
+        return cqzc11;
     }
 
-    public void setXryndSzValue3(Integer xryndSzValue3) {
-        this.xryndSzValue3 = xryndSzValue3;
+    public void setCqzc11(Integer cqzc11) {
+        this.cqzc11 = cqzc11;
     }
 
-    public Integer getXryndScValue1() {
-        return xryndScValue1;
+    public Integer getCqzc12() {
+        return cqzc12;
     }
 
-    public void setXryndScValue1(Integer xryndScValue1) {
-        this.xryndScValue1 = xryndScValue1;
+    public void setCqzc12(Integer cqzc12) {
+        this.cqzc12 = cqzc12;
     }
 
-    public Integer getXryndScValue2() {
-        return xryndScValue2;
+    public Integer getCqzc13() {
+        return cqzc13;
     }
 
-    public void setXryndScValue2(Integer xryndScValue2) {
-        this.xryndScValue2 = xryndScValue2;
+    public void setCqzc13(Integer cqzc13) {
+        this.cqzc13 = cqzc13;
     }
 
-    public Integer getXryndScValue3() {
-        return xryndScValue3;
+    public Integer getCqzcp12() {
+        return cqzcp12;
     }
 
-    public void setXryndScValue3(Integer xryndScValue3) {
-        this.xryndScValue3 = xryndScValue3;
+    public void setCqzcp12(Integer cqzcp12) {
+        this.cqzcp12 = cqzcp12;
     }
 
-    public Integer getXryndWc() {
-        return xryndWc;
+    public Integer getCqz1Swc() {
+        return cqz1Swc;
     }
 
-    public void setXryndWc(Integer xryndWc) {
-        this.xryndWc = xryndWc;
+    public void setCqz1Swc(Integer cqz1Swc) {
+        this.cqz1Swc = cqz1Swc;
     }
 
-    public Byte getXryndSzResult() {
-        return xryndSzResult;
+    public Integer getCqz2() {
+        return cqz2;
     }
 
-    public void setXryndSzResult(Byte xryndSzResult) {
-        this.xryndSzResult = xryndSzResult;
+    public void setCqz2(Integer cqz2) {
+        this.cqz2 = cqz2;
     }
 
-    public Byte getXryndScResult() {
-        return xryndScResult;
+    public Integer getCqzh21() {
+        return cqzh21;
     }
 
-    public void setXryndScResult(Byte xryndScResult) {
-        this.xryndScResult = xryndScResult;
+    public void setCqzh21(Integer cqzh21) {
+        this.cqzh21 = cqzh21;
     }
 
-    public Integer getXqylspTest1() {
-        return xqylspTest1;
+    public Integer getCqzh22() {
+        return cqzh22;
     }
 
-    public void setXqylspTest1(Integer xqylspTest1) {
-        this.xqylspTest1 = xqylspTest1;
+    public void setCqzh22(Integer cqzh22) {
+        this.cqzh22 = cqzh22;
     }
 
-    public Integer getXqylspTest2() {
-        return xqylspTest2;
+    public Integer getCqzh23() {
+        return cqzh23;
     }
 
-    public void setXqylspTest2(Integer xqylspTest2) {
-        this.xqylspTest2 = xqylspTest2;
+    public void setCqzh23(Integer cqzh23) {
+        this.cqzh23 = cqzh23;
     }
 
-    public Integer getXqylspTest3() {
-        return xqylspTest3;
+    public Integer getCqzhp21() {
+        return cqzhp21;
     }
 
-    public void setXqylspTest3(Integer xqylspTest3) {
-        this.xqylspTest3 = xqylspTest3;
+    public void setCqzhp21(Integer cqzhp21) {
+        this.cqzhp21 = cqzhp21;
     }
 
-    public Integer getXqylspSzValue1() {
-        return xqylspSzValue1;
+    public Integer getCqzc21() {
+        return cqzc21;
     }
 
-    public void setXqylspSzValue1(Integer xqylspSzValue1) {
-        this.xqylspSzValue1 = xqylspSzValue1;
+    public void setCqzc21(Integer cqzc21) {
+        this.cqzc21 = cqzc21;
     }
 
-    public Integer getXqylspSzValue2() {
-        return xqylspSzValue2;
+    public Integer getCqzc22() {
+        return cqzc22;
     }
 
-    public void setXqylspSzValue2(Integer xqylspSzValue2) {
-        this.xqylspSzValue2 = xqylspSzValue2;
+    public void setCqzc22(Integer cqzc22) {
+        this.cqzc22 = cqzc22;
     }
 
-    public Integer getXqylspSzValue3() {
-        return xqylspSzValue3;
+    public Integer getCqzc23() {
+        return cqzc23;
     }
 
-    public void setXqylspSzValue3(Integer xqylspSzValue3) {
-        this.xqylspSzValue3 = xqylspSzValue3;
+    public void setCqzc23(Integer cqzc23) {
+        this.cqzc23 = cqzc23;
     }
 
-    public Integer getXqylspScValue1() {
-        return xqylspScValue1;
+    public Integer getCqzcp22() {
+        return cqzcp22;
     }
 
-    public void setXqylspScValue1(Integer xqylspScValue1) {
-        this.xqylspScValue1 = xqylspScValue1;
+    public void setCqzcp22(Integer cqzcp22) {
+        this.cqzcp22 = cqzcp22;
     }
 
-    public Integer getXqylspScValue2() {
-        return xqylspScValue2;
+    public Integer getCqz2Swc() {
+        return cqz2Swc;
     }
 
-    public void setXqylspScValue2(Integer xqylspScValue2) {
-        this.xqylspScValue2 = xqylspScValue2;
+    public void setCqz2Swc(Integer cqz2Swc) {
+        this.cqz2Swc = cqz2Swc;
     }
 
-    public Integer getXqylspScValue3() {
-        return xqylspScValue3;
+    public Integer getCqz3() {
+        return cqz3;
     }
 
-    public void setXqylspScValue3(Integer xqylspScValue3) {
-        this.xqylspScValue3 = xqylspScValue3;
+    public void setCqz3(Integer cqz3) {
+        this.cqz3 = cqz3;
     }
 
-    public Integer getXqylspWc() {
-        return xqylspWc;
+    public Integer getCqzh31() {
+        return cqzh31;
     }
 
-    public void setXqylspWc(Integer xqylspWc) {
-        this.xqylspWc = xqylspWc;
+    public void setCqzh31(Integer cqzh31) {
+        this.cqzh31 = cqzh31;
     }
 
-    public Byte getXqylspSzResult() {
-        return xqylspSzResult;
+    public Integer getCqzh32() {
+        return cqzh32;
     }
 
-    public void setXqylspSzResult(Byte xqylspSzResult) {
-        this.xqylspSzResult = xqylspSzResult;
+    public void setCqzh32(Integer cqzh32) {
+        this.cqzh32 = cqzh32;
     }
 
-    public Byte getXqylspScResult() {
-        return xqylspScResult;
+    public Integer getCqzh33() {
+        return cqzh33;
     }
 
-    public void setXqylspScResult(Byte xqylspScResult) {
-        this.xqylspScResult = xqylspScResult;
+    public void setCqzh33(Integer cqzh33) {
+        this.cqzh33 = cqzh33;
     }
 
-    public Integer getHqmzyTest1() {
-        return hqmzyTest1;
+    public Integer getCqzhp31() {
+        return cqzhp31;
     }
 
-    public void setHqmzyTest1(Integer hqmzyTest1) {
-        this.hqmzyTest1 = hqmzyTest1;
+    public void setCqzhp31(Integer cqzhp31) {
+        this.cqzhp31 = cqzhp31;
     }
 
-    public Integer getHqmzyTest2() {
-        return hqmzyTest2;
+    public Integer getCqzc31() {
+        return cqzc31;
     }
 
-    public void setHqmzyTest2(Integer hqmzyTest2) {
-        this.hqmzyTest2 = hqmzyTest2;
+    public void setCqzc31(Integer cqzc31) {
+        this.cqzc31 = cqzc31;
     }
 
-    public Integer getHqmzyTest3() {
-        return hqmzyTest3;
+    public Integer getCqzc32() {
+        return cqzc32;
     }
 
-    public void setHqmzyTest3(Integer hqmzyTest3) {
-        this.hqmzyTest3 = hqmzyTest3;
+    public void setCqzc32(Integer cqzc32) {
+        this.cqzc32 = cqzc32;
     }
 
-    public Integer getHqmzySzValue1() {
-        return hqmzySzValue1;
+    public Integer getCqzc33() {
+        return cqzc33;
     }
 
-    public void setHqmzySzValue1(Integer hqmzySzValue1) {
-        this.hqmzySzValue1 = hqmzySzValue1;
+    public void setCqzc33(Integer cqzc33) {
+        this.cqzc33 = cqzc33;
     }
 
-    public Integer getHqmzySzValue2() {
-        return hqmzySzValue2;
+    public Integer getCqzcp32() {
+        return cqzcp32;
     }
 
-    public void setHqmzySzValue2(Integer hqmzySzValue2) {
-        this.hqmzySzValue2 = hqmzySzValue2;
+    public void setCqzcp32(Integer cqzcp32) {
+        this.cqzcp32 = cqzcp32;
     }
 
-    public Integer getHqmzySzValue3() {
-        return hqmzySzValue3;
+    public Integer getCqz3Swc() {
+        return cqz3Swc;
     }
 
-    public void setHqmzySzValue3(Integer hqmzySzValue3) {
-        this.hqmzySzValue3 = hqmzySzValue3;
+    public void setCqz3Swc(Integer cqz3Swc) {
+        this.cqz3Swc = cqz3Swc;
     }
 
-    public Integer getHqmzyScValue1() {
-        return hqmzyScValue1;
+    public Integer getCqzZdwc() {
+        return cqzZdwc;
     }
 
-    public void setHqmzyScValue1(Integer hqmzyScValue1) {
-        this.hqmzyScValue1 = hqmzyScValue1;
+    public void setCqzZdwc(Integer cqzZdwc) {
+        this.cqzZdwc = cqzZdwc;
     }
 
-    public Integer getHqmzyScValue2() {
-        return hqmzyScValue2;
+    public Integer getCqzResult() {
+        return cqzResult;
     }
 
-    public void setHqmzyScValue2(Integer hqmzyScValue2) {
-        this.hqmzyScValue2 = hqmzyScValue2;
+    public void setCqzResult(Integer cqzResult) {
+        this.cqzResult = cqzResult;
     }
 
-    public Integer getHqmzyScValue3() {
-        return hqmzyScValue3;
+    public Integer getQztq1() {
+        return qztq1;
     }
 
-    public void setHqmzyScValue3(Integer hqmzyScValue3) {
-        this.hqmzyScValue3 = hqmzyScValue3;
+    public void setQztq1(Integer qztq1) {
+        this.qztq1 = qztq1;
     }
 
-    public Integer getHqmzyWc() {
-        return hqmzyWc;
+    public Integer getQztqh11() {
+        return qztqh11;
     }
 
-    public void setHqmzyWc(Integer hqmzyWc) {
-        this.hqmzyWc = hqmzyWc;
+    public void setQztqh11(Integer qztqh11) {
+        this.qztqh11 = qztqh11;
     }
 
-    public Byte getHqmzySzResult() {
-        return hqmzySzResult;
+    public Integer getQztqh12() {
+        return qztqh12;
     }
 
-    public void setHqmzySzResult(Byte hqmzySzResult) {
-        this.hqmzySzResult = hqmzySzResult;
+    public void setQztqh12(Integer qztqh12) {
+        this.qztqh12 = qztqh12;
     }
 
-    public Byte getHqmzyScResult() {
-        return hqmzyScResult;
+    public Integer getQztqh13() {
+        return qztqh13;
     }
 
-    public void setHqmzyScResult(Byte hqmzyScResult) {
-        this.hqmzyScResult = hqmzyScResult;
+    public void setQztqh13(Integer qztqh13) {
+        this.qztqh13 = qztqh13;
     }
 
-    public Byte getDybjResult() {
-        return dybjResult;
+    public Integer getQztqhp11() {
+        return qztqhp11;
     }
 
-    public void setDybjResult(Byte dybjResult) {
-        this.dybjResult = dybjResult;
+    public void setQztqhp11(Integer qztqhp11) {
+        this.qztqhp11 = qztqhp11;
     }
 
-    public Byte getQybjResult() {
-        return qybjResult;
+    public Integer getQztqc11() {
+        return qztqc11;
     }
 
-    public void setQybjResult(Byte qybjResult) {
-        this.qybjResult = qybjResult;
+    public void setQztqc11(Integer qztqc11) {
+        this.qztqc11 = qztqc11;
     }
 
-    public Byte getQdylbjResult() {
-        return qdylbjResult;
+    public Integer getQztqc12() {
+        return qztqc12;
     }
 
-    public void setQdylbjResult(Byte qdylbjResult) {
-        this.qdylbjResult = qdylbjResult;
+    public void setQztqc12(Integer qztqc12) {
+        this.qztqc12 = qztqc12;
     }
 
-    public Byte getFztqlbjResult() {
-        return fztqlbjResult;
+    public Integer getQztqc13() {
+        return qztqc13;
     }
 
-    public void setFztqlbjResult(Byte fztqlbjResult) {
-        this.fztqlbjResult = fztqlbjResult;
+    public void setQztqc13(Integer qztqc13) {
+        this.qztqc13 = qztqc13;
     }
 
-    public Byte getYndbjResult() {
-        return yndbjResult;
+    public Integer getQztqcp12() {
+        return qztqcp12;
     }
 
-    public void setYndbjResult(Byte yndbjResult) {
-        this.yndbjResult = yndbjResult;
+    public void setQztqcp12(Integer qztqcp12) {
+        this.qztqcp12 = qztqcp12;
     }
 
-    public Byte getZxbjResult() {
-        return zxbjResult;
+    public Integer getQztq1Swc() {
+        return qztq1Swc;
     }
 
-    public void setZxbjResult(Byte zxbjResult) {
-        this.zxbjResult = zxbjResult;
+    public void setQztq1Swc(Integer qztq1Swc) {
+        this.qztq1Swc = qztq1Swc;
     }
 
-    public Byte getBrhlgybhResult() {
-        return brhlgybhResult;
+    public Integer getQztq2() {
+        return qztq2;
     }
 
-    public void setBrhlgybhResult(Byte brhlgybhResult) {
-        this.brhlgybhResult = brhlgybhResult;
+    public void setQztq2(Integer qztq2) {
+        this.qztq2 = qztq2;
     }
 
-    public Byte getAjgnjcResult() {
-        return ajgnjcResult;
+    public Integer getQztqh21() {
+        return qztqh21;
     }
 
-    public void setAjgnjcResult(Byte ajgnjcResult) {
-        this.ajgnjcResult = ajgnjcResult;
+    public void setQztqh21(Integer qztqh21) {
+        this.qztqh21 = qztqh21;
     }
 
-    public Byte getSpare1() {
-        return spare1;
+    public Integer getQztqh22() {
+        return qztqh22;
     }
 
-    public void setSpare1(Byte spare1) {
-        this.spare1 = spare1;
+    public void setQztqh22(Integer qztqh22) {
+        this.qztqh22 = qztqh22;
     }
 
-    public Byte getSpare2() {
-        return spare2;
+    public Integer getQztqh23() {
+        return qztqh23;
     }
 
-    public void setSpare2(Byte spare2) {
-        this.spare2 = spare2;
+    public void setQztqh23(Integer qztqh23) {
+        this.qztqh23 = qztqh23;
     }
 
-    public Byte getSpare3() {
-        return spare3;
+    public Integer getQztqhp21() {
+        return qztqhp21;
     }
 
-    public void setSpare3(Byte spare3) {
-        this.spare3 = spare3;
+    public void setQztqhp21(Integer qztqhp21) {
+        this.qztqhp21 = qztqhp21;
     }
 
-    public Byte getSpare4() {
-        return spare4;
+    public Integer getQztqc21() {
+        return qztqc21;
     }
 
-    public void setSpare4(Byte spare4) {
-        this.spare4 = spare4;
+    public void setQztqc21(Integer qztqc21) {
+        this.qztqc21 = qztqc21;
+    }
+
+    public Integer getQztqc22() {
+        return qztqc22;
+    }
+
+    public void setQztqc22(Integer qztqc22) {
+        this.qztqc22 = qztqc22;
+    }
+
+    public Integer getQztqc23() {
+        return qztqc23;
+    }
+
+    public void setQztqc23(Integer qztqc23) {
+        this.qztqc23 = qztqc23;
+    }
+
+    public Integer getQztqcp22() {
+        return qztqcp22;
+    }
+
+    public void setQztqcp22(Integer qztqcp22) {
+        this.qztqcp22 = qztqcp22;
+    }
+
+    public Integer getQztq2Swc() {
+        return qztq2Swc;
+    }
+
+    public void setQztq2Swc(Integer qztq2Swc) {
+        this.qztq2Swc = qztq2Swc;
+    }
+
+    public Integer getQztq3() {
+        return qztq3;
+    }
+
+    public void setQztq3(Integer qztq3) {
+        this.qztq3 = qztq3;
+    }
+
+    public Integer getQztqh31() {
+        return qztqh31;
+    }
+
+    public void setQztqh31(Integer qztqh31) {
+        this.qztqh31 = qztqh31;
+    }
+
+    public Integer getQztqh32() {
+        return qztqh32;
+    }
+
+    public void setQztqh32(Integer qztqh32) {
+        this.qztqh32 = qztqh32;
+    }
+
+    public Integer getQztqh33() {
+        return qztqh33;
+    }
+
+    public void setQztqh33(Integer qztqh33) {
+        this.qztqh33 = qztqh33;
+    }
+
+    public Integer getQztqhp31() {
+        return qztqhp31;
+    }
+
+    public void setQztqhp31(Integer qztqhp31) {
+        this.qztqhp31 = qztqhp31;
+    }
+
+    public Integer getQztqc31() {
+        return qztqc31;
+    }
+
+    public void setQztqc31(Integer qztqc31) {
+        this.qztqc31 = qztqc31;
+    }
+
+    public Integer getQztqc32() {
+        return qztqc32;
+    }
+
+    public void setQztqc32(Integer qztqc32) {
+        this.qztqc32 = qztqc32;
+    }
+
+    public Integer getQztqc33() {
+        return qztqc33;
+    }
+
+    public void setQztqc33(Integer qztqc33) {
+        this.qztqc33 = qztqc33;
+    }
+
+    public Integer getQztqcp32() {
+        return qztqcp32;
+    }
+
+    public void setQztqcp32(Integer qztqcp32) {
+        this.qztqcp32 = qztqcp32;
+    }
+
+    public Integer getQztq3Swc() {
+        return qztq3Swc;
+    }
+
+    public void setQztq3Swc(Integer qztq3Swc) {
+        this.qztq3Swc = qztq3Swc;
+    }
+
+    public Integer getQztqZdwc() {
+        return qztqZdwc;
+    }
+
+    public void setQztqZdwc(Integer qztqZdwc) {
+        this.qztqZdwc = qztqZdwc;
+    }
+
+    public Integer getQztqResult() {
+        return qztqResult;
+    }
+
+    public void setQztqResult(Integer qztqResult) {
+        this.qztqResult = qztqResult;
+    }
+
+    public Integer getXry1() {
+        return xry1;
+    }
+
+    public void setXry1(Integer xry1) {
+        this.xry1 = xry1;
+    }
+
+    public Integer getXryh11() {
+        return xryh11;
+    }
+
+    public void setXryh11(Integer xryh11) {
+        this.xryh11 = xryh11;
+    }
+
+    public Integer getXryh12() {
+        return xryh12;
+    }
+
+    public void setXryh12(Integer xryh12) {
+        this.xryh12 = xryh12;
+    }
+
+    public Integer getXryh13() {
+        return xryh13;
+    }
+
+    public void setXryh13(Integer xryh13) {
+        this.xryh13 = xryh13;
+    }
+
+    public Integer getXryhp11() {
+        return xryhp11;
+    }
+
+    public void setXryhp11(Integer xryhp11) {
+        this.xryhp11 = xryhp11;
+    }
+
+    public Integer getXryc11() {
+        return xryc11;
+    }
+
+    public void setXryc11(Integer xryc11) {
+        this.xryc11 = xryc11;
+    }
+
+    public Integer getXryc12() {
+        return xryc12;
+    }
+
+    public void setXryc12(Integer xryc12) {
+        this.xryc12 = xryc12;
+    }
+
+    public Integer getXryc13() {
+        return xryc13;
+    }
+
+    public void setXryc13(Integer xryc13) {
+        this.xryc13 = xryc13;
+    }
+
+    public Integer getXrycp12() {
+        return xrycp12;
+    }
+
+    public void setXrycp12(Integer xrycp12) {
+        this.xrycp12 = xrycp12;
+    }
+
+    public Integer getXry1Swc() {
+        return xry1Swc;
+    }
+
+    public void setXry1Swc(Integer xry1Swc) {
+        this.xry1Swc = xry1Swc;
+    }
+
+    public Integer getXry2() {
+        return xry2;
+    }
+
+    public void setXry2(Integer xry2) {
+        this.xry2 = xry2;
+    }
+
+    public Integer getXryh21() {
+        return xryh21;
+    }
+
+    public void setXryh21(Integer xryh21) {
+        this.xryh21 = xryh21;
+    }
+
+    public Integer getXryh22() {
+        return xryh22;
+    }
+
+    public void setXryh22(Integer xryh22) {
+        this.xryh22 = xryh22;
+    }
+
+    public Integer getXryh23() {
+        return xryh23;
+    }
+
+    public void setXryh23(Integer xryh23) {
+        this.xryh23 = xryh23;
+    }
+
+    public Integer getXryhp21() {
+        return xryhp21;
+    }
+
+    public void setXryhp21(Integer xryhp21) {
+        this.xryhp21 = xryhp21;
+    }
+
+    public Integer getXryc21() {
+        return xryc21;
+    }
+
+    public void setXryc21(Integer xryc21) {
+        this.xryc21 = xryc21;
+    }
+
+    public Integer getXryc22() {
+        return xryc22;
+    }
+
+    public void setXryc22(Integer xryc22) {
+        this.xryc22 = xryc22;
+    }
+
+    public Integer getXryc23() {
+        return xryc23;
+    }
+
+    public void setXryc23(Integer xryc23) {
+        this.xryc23 = xryc23;
+    }
+
+    public Integer getXrycp22() {
+        return xrycp22;
+    }
+
+    public void setXrycp22(Integer xrycp22) {
+        this.xrycp22 = xrycp22;
+    }
+
+    public Integer getXry2Swc() {
+        return xry2Swc;
+    }
+
+    public void setXry2Swc(Integer xry2Swc) {
+        this.xry2Swc = xry2Swc;
+    }
+
+    public Integer getXry3() {
+        return xry3;
+    }
+
+    public void setXry3(Integer xry3) {
+        this.xry3 = xry3;
+    }
+
+    public Integer getXryh31() {
+        return xryh31;
+    }
+
+    public void setXryh31(Integer xryh31) {
+        this.xryh31 = xryh31;
+    }
+
+    public Integer getXryh32() {
+        return xryh32;
+    }
+
+    public void setXryh32(Integer xryh32) {
+        this.xryh32 = xryh32;
+    }
+
+    public Integer getXryh33() {
+        return xryh33;
+    }
+
+    public void setXryh33(Integer xryh33) {
+        this.xryh33 = xryh33;
+    }
+
+    public Integer getXryhp31() {
+        return xryhp31;
+    }
+
+    public void setXryhp31(Integer xryhp31) {
+        this.xryhp31 = xryhp31;
+    }
+
+    public Integer getXryc31() {
+        return xryc31;
+    }
+
+    public void setXryc31(Integer xryc31) {
+        this.xryc31 = xryc31;
+    }
+
+    public Integer getXryc32() {
+        return xryc32;
+    }
+
+    public void setXryc32(Integer xryc32) {
+        this.xryc32 = xryc32;
+    }
+
+    public Integer getXryc33() {
+        return xryc33;
+    }
+
+    public void setXryc33(Integer xryc33) {
+        this.xryc33 = xryc33;
+    }
+
+    public Integer getXrycp32() {
+        return xrycp32;
+    }
+
+    public void setXrycp32(Integer xrycp32) {
+        this.xrycp32 = xrycp32;
+    }
+
+    public Integer getXry3Swc() {
+        return xry3Swc;
+    }
+
+    public void setXry3Swc(Integer xry3Swc) {
+        this.xry3Swc = xry3Swc;
+    }
+
+    public Integer getXryZdwc() {
+        return xryZdwc;
+    }
+
+    public void setXryZdwc(Integer xryZdwc) {
+        this.xryZdwc = xryZdwc;
+    }
+
+    public Integer getXryResult() {
+        return xryResult;
+    }
+
+    public void setXryResult(Integer xryResult) {
+        this.xryResult = xryResult;
+    }
+
+    public Integer getXqf1() {
+        return xqf1;
+    }
+
+    public void setXqf1(Integer xqf1) {
+        this.xqf1 = xqf1;
+    }
+
+    public Integer getXqfh11() {
+        return xqfh11;
+    }
+
+    public void setXqfh11(Integer xqfh11) {
+        this.xqfh11 = xqfh11;
+    }
+
+    public Integer getXqfh12() {
+        return xqfh12;
+    }
+
+    public void setXqfh12(Integer xqfh12) {
+        this.xqfh12 = xqfh12;
+    }
+
+    public Integer getXqfh13() {
+        return xqfh13;
+    }
+
+    public void setXqfh13(Integer xqfh13) {
+        this.xqfh13 = xqfh13;
+    }
+
+    public Integer getXqfhp11() {
+        return xqfhp11;
+    }
+
+    public void setXqfhp11(Integer xqfhp11) {
+        this.xqfhp11 = xqfhp11;
+    }
+
+    public Integer getXqfc11() {
+        return xqfc11;
+    }
+
+    public void setXqfc11(Integer xqfc11) {
+        this.xqfc11 = xqfc11;
+    }
+
+    public Integer getXqfc12() {
+        return xqfc12;
+    }
+
+    public void setXqfc12(Integer xqfc12) {
+        this.xqfc12 = xqfc12;
+    }
+
+    public Integer getXqfc13() {
+        return xqfc13;
+    }
+
+    public void setXqfc13(Integer xqfc13) {
+        this.xqfc13 = xqfc13;
+    }
+
+    public Integer getXqfcp12() {
+        return xqfcp12;
+    }
+
+    public void setXqfcp12(Integer xqfcp12) {
+        this.xqfcp12 = xqfcp12;
+    }
+
+    public Integer getXqf1Swc() {
+        return xqf1Swc;
+    }
+
+    public void setXqf1Swc(Integer xqf1Swc) {
+        this.xqf1Swc = xqf1Swc;
+    }
+
+    public Integer getXqf2() {
+        return xqf2;
+    }
+
+    public void setXqf2(Integer xqf2) {
+        this.xqf2 = xqf2;
+    }
+
+    public Integer getXqfh21() {
+        return xqfh21;
+    }
+
+    public void setXqfh21(Integer xqfh21) {
+        this.xqfh21 = xqfh21;
+    }
+
+    public Integer getXqfh22() {
+        return xqfh22;
+    }
+
+    public void setXqfh22(Integer xqfh22) {
+        this.xqfh22 = xqfh22;
+    }
+
+    public Integer getXqfh23() {
+        return xqfh23;
+    }
+
+    public void setXqfh23(Integer xqfh23) {
+        this.xqfh23 = xqfh23;
+    }
+
+    public Integer getXqfhp21() {
+        return xqfhp21;
+    }
+
+    public void setXqfhp21(Integer xqfhp21) {
+        this.xqfhp21 = xqfhp21;
+    }
+
+    public Integer getXqfc21() {
+        return xqfc21;
+    }
+
+    public void setXqfc21(Integer xqfc21) {
+        this.xqfc21 = xqfc21;
+    }
+
+    public Integer getXqfc22() {
+        return xqfc22;
+    }
+
+    public void setXqfc22(Integer xqfc22) {
+        this.xqfc22 = xqfc22;
+    }
+
+    public Integer getXqfc23() {
+        return xqfc23;
+    }
+
+    public void setXqfc23(Integer xqfc23) {
+        this.xqfc23 = xqfc23;
+    }
+
+    public Integer getXqfcp22() {
+        return xqfcp22;
+    }
+
+    public void setXqfcp22(Integer xqfcp22) {
+        this.xqfcp22 = xqfcp22;
+    }
+
+    public Integer getXqf2Swc() {
+        return xqf2Swc;
+    }
+
+    public void setXqf2Swc(Integer xqf2Swc) {
+        this.xqf2Swc = xqf2Swc;
+    }
+
+    public Integer getXqf3() {
+        return xqf3;
+    }
+
+    public void setXqf3(Integer xqf3) {
+        this.xqf3 = xqf3;
+    }
+
+    public Integer getXqfh31() {
+        return xqfh31;
+    }
+
+    public void setXqfh31(Integer xqfh31) {
+        this.xqfh31 = xqfh31;
+    }
+
+    public Integer getXqfh32() {
+        return xqfh32;
+    }
+
+    public void setXqfh32(Integer xqfh32) {
+        this.xqfh32 = xqfh32;
+    }
+
+    public Integer getXqfh33() {
+        return xqfh33;
+    }
+
+    public void setXqfh33(Integer xqfh33) {
+        this.xqfh33 = xqfh33;
+    }
+
+    public Integer getXqfhp31() {
+        return xqfhp31;
+    }
+
+    public void setXqfhp31(Integer xqfhp31) {
+        this.xqfhp31 = xqfhp31;
+    }
+
+    public Integer getXqfc31() {
+        return xqfc31;
+    }
+
+    public void setXqfc31(Integer xqfc31) {
+        this.xqfc31 = xqfc31;
+    }
+
+    public Integer getXqfc32() {
+        return xqfc32;
+    }
+
+    public void setXqfc32(Integer xqfc32) {
+        this.xqfc32 = xqfc32;
+    }
+
+    public Integer getXqfc33() {
+        return xqfc33;
+    }
+
+    public void setXqfc33(Integer xqfc33) {
+        this.xqfc33 = xqfc33;
+    }
+
+    public Integer getXqfcp32() {
+        return xqfcp32;
+    }
+
+    public void setXqfcp32(Integer xqfcp32) {
+        this.xqfcp32 = xqfcp32;
+    }
+
+    public Integer getXqf3Swc() {
+        return xqf3Swc;
+    }
+
+    public void setXqf3Swc(Integer xqf3Swc) {
+        this.xqf3Swc = xqf3Swc;
+    }
+
+    public Integer getXqfZdwc() {
+        return xqfZdwc;
+    }
+
+    public void setXqfZdwc(Integer xqfZdwc) {
+        this.xqfZdwc = xqfZdwc;
+    }
+
+    public Integer getXqfResult() {
+        return xqfResult;
+    }
+
+    public void setXqfResult(Integer xqfResult) {
+        this.xqfResult = xqfResult;
+    }
+
+    public Integer getHqm1() {
+        return hqm1;
+    }
+
+    public void setHqm1(Integer hqm1) {
+        this.hqm1 = hqm1;
+    }
+
+    public Integer getHqmh11() {
+        return hqmh11;
+    }
+
+    public void setHqmh11(Integer hqmh11) {
+        this.hqmh11 = hqmh11;
+    }
+
+    public Integer getHqmh12() {
+        return hqmh12;
+    }
+
+    public void setHqmh12(Integer hqmh12) {
+        this.hqmh12 = hqmh12;
+    }
+
+    public Integer getHqmh13() {
+        return hqmh13;
+    }
+
+    public void setHqmh13(Integer hqmh13) {
+        this.hqmh13 = hqmh13;
+    }
+
+    public Integer getHqmhp11() {
+        return hqmhp11;
+    }
+
+    public void setHqmhp11(Integer hqmhp11) {
+        this.hqmhp11 = hqmhp11;
+    }
+
+    public Integer getHqmc11() {
+        return hqmc11;
+    }
+
+    public void setHqmc11(Integer hqmc11) {
+        this.hqmc11 = hqmc11;
+    }
+
+    public Integer getHqmc12() {
+        return hqmc12;
+    }
+
+    public void setHqmc12(Integer hqmc12) {
+        this.hqmc12 = hqmc12;
+    }
+
+    public Integer getHqmc13() {
+        return hqmc13;
+    }
+
+    public void setHqmc13(Integer hqmc13) {
+        this.hqmc13 = hqmc13;
+    }
+
+    public Integer getHqmcp12() {
+        return hqmcp12;
+    }
+
+    public void setHqmcp12(Integer hqmcp12) {
+        this.hqmcp12 = hqmcp12;
+    }
+
+    public Integer getHqm1Swc() {
+        return hqm1Swc;
+    }
+
+    public void setHqm1Swc(Integer hqm1Swc) {
+        this.hqm1Swc = hqm1Swc;
+    }
+
+    public Integer getHqm2() {
+        return hqm2;
+    }
+
+    public void setHqm2(Integer hqm2) {
+        this.hqm2 = hqm2;
+    }
+
+    public Integer getHqmh21() {
+        return hqmh21;
+    }
+
+    public void setHqmh21(Integer hqmh21) {
+        this.hqmh21 = hqmh21;
+    }
+
+    public Integer getHqmh22() {
+        return hqmh22;
+    }
+
+    public void setHqmh22(Integer hqmh22) {
+        this.hqmh22 = hqmh22;
+    }
+
+    public Integer getHqmh23() {
+        return hqmh23;
+    }
+
+    public void setHqmh23(Integer hqmh23) {
+        this.hqmh23 = hqmh23;
+    }
+
+    public Integer getHqmhp21() {
+        return hqmhp21;
+    }
+
+    public void setHqmhp21(Integer hqmhp21) {
+        this.hqmhp21 = hqmhp21;
+    }
+
+    public Integer getHqmc21() {
+        return hqmc21;
+    }
+
+    public void setHqmc21(Integer hqmc21) {
+        this.hqmc21 = hqmc21;
+    }
+
+    public Integer getHqmc22() {
+        return hqmc22;
+    }
+
+    public void setHqmc22(Integer hqmc22) {
+        this.hqmc22 = hqmc22;
+    }
+
+    public Integer getHqmc23() {
+        return hqmc23;
+    }
+
+    public void setHqmc23(Integer hqmc23) {
+        this.hqmc23 = hqmc23;
+    }
+
+    public Integer getHqmcp22() {
+        return hqmcp22;
+    }
+
+    public void setHqmcp22(Integer hqmcp22) {
+        this.hqmcp22 = hqmcp22;
+    }
+
+    public Integer getHqm2Swc() {
+        return hqm2Swc;
+    }
+
+    public void setHqm2Swc(Integer hqm2Swc) {
+        this.hqm2Swc = hqm2Swc;
+    }
+
+    public Integer getHqm3() {
+        return hqm3;
+    }
+
+    public void setHqm3(Integer hqm3) {
+        this.hqm3 = hqm3;
+    }
+
+    public Integer getHqmh31() {
+        return hqmh31;
+    }
+
+    public void setHqmh31(Integer hqmh31) {
+        this.hqmh31 = hqmh31;
+    }
+
+    public Integer getHqmh32() {
+        return hqmh32;
+    }
+
+    public void setHqmh32(Integer hqmh32) {
+        this.hqmh32 = hqmh32;
+    }
+
+    public Integer getHqmh33() {
+        return hqmh33;
+    }
+
+    public void setHqmh33(Integer hqmh33) {
+        this.hqmh33 = hqmh33;
+    }
+
+    public Integer getHqmhp31() {
+        return hqmhp31;
+    }
+
+    public void setHqmhp31(Integer hqmhp31) {
+        this.hqmhp31 = hqmhp31;
+    }
+
+    public Integer getHqmc31() {
+        return hqmc31;
+    }
+
+    public void setHqmc31(Integer hqmc31) {
+        this.hqmc31 = hqmc31;
+    }
+
+    public Integer getHqmc32() {
+        return hqmc32;
+    }
+
+    public void setHqmc32(Integer hqmc32) {
+        this.hqmc32 = hqmc32;
+    }
+
+    public Integer getHqmc33() {
+        return hqmc33;
+    }
+
+    public void setHqmc33(Integer hqmc33) {
+        this.hqmc33 = hqmc33;
+    }
+
+    public Integer getHqmcp32() {
+        return hqmcp32;
+    }
+
+    public void setHqmcp32(Integer hqmcp32) {
+        this.hqmcp32 = hqmcp32;
+    }
+
+    public Integer getHqm3Swc() {
+        return hqm3Swc;
+    }
+
+    public void setHqm3Swc(Integer hqm3Swc) {
+        this.hqm3Swc = hqm3Swc;
+    }
+
+    public Integer getHqmZdwc() {
+        return hqmZdwc;
+    }
+
+    public void setHqmZdwc(Integer hqmZdwc) {
+        this.hqmZdwc = hqmZdwc;
+    }
+
+    public Integer getHqmResult() {
+        return hqmResult;
+    }
+
+    public void setHqmResult(Integer hqmResult) {
+        this.hqmResult = hqmResult;
+    }
+
+    public Integer getDybj() {
+        return dybj;
+    }
+
+    public void setDybj(Integer dybj) {
+        this.dybj = dybj;
+    }
+
+    public Integer getYqndsx() {
+        return yqndsx;
+    }
+
+    public void setYqndsx(Integer yqndsx) {
+        this.yqndsx = yqndsx;
+    }
+
+    public Integer getQybj() {
+        return qybj;
+    }
+
+    public void setQybj(Integer qybj) {
+        this.qybj = qybj;
+    }
+
+    public Integer getZxbj() {
+        return zxbj;
+    }
+
+    public void setZxbj(Integer zxbj) {
+        this.zxbj = zxbj;
+    }
+
+    public Integer getQdyl() {
+        return qdyl;
+    }
+
+    public void setQdyl(Integer qdyl) {
+        this.qdyl = qdyl;
+    }
+
+    public Integer getBrhl() {
+        return brhl;
+    }
+
+    public void setBrhl(Integer brhl) {
+        this.brhl = brhl;
+    }
+
+    public Integer getFztql() {
+        return fztql;
+    }
+
+    public void setFztql(Integer fztql) {
+        this.fztql = fztql;
+    }
+
+    public Integer getAjgn() {
+        return ajgn;
+    }
+
+    public void setAjgn(Integer ajgn) {
+        this.ajgn = ajgn;
+    }
+
+    public Integer getBz() {
+        return bz;
+    }
+
+    public void setBz(Integer bz) {
+        this.bz = bz;
+    }
+
+    public Integer getBz1() {
+        return bz1;
+    }
+
+    public void setBz1(Integer bz1) {
+        this.bz1 = bz1;
     }
 }

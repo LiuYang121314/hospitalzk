@@ -12,7 +12,7 @@ import java.util.List;
 public interface HxjMapper {
 
     //查询模板值
-    @Select("select * from hxj_template order by hxj_templateid desc limit 1")
+    @Select("select * from hxj_template order by hxj_template_id desc limit 1")
     HxjTemplate findTemplate();
 
     //修改模板值

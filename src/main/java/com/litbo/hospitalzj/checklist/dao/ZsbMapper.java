@@ -14,7 +14,7 @@ public interface ZsbMapper {
 
     //查询模板数据（成人，幼儿）
     @Select("select * from ${tableName} order by temp_id desc limit 1")
-    SybCTemplate findTemplate(String tableName);
+    SybCTemplate findTemplate(@Param("tableName")String tableName);
 
     //查询双通道模板数据，最后一条记录
     @Select("select * from stzs_m_template order by temp_id desc limit 1")
@@ -101,6 +101,7 @@ public interface ZsbMapper {
             "      #{zsbjWc1,jdbcType=INTEGER}, #{zsbjWc2,jdbcType=INTEGER}, #{zsbjResult,jdbcType=TINYINT}, \n" +
             "      #{zs,jdbcType=TINYINT}, #{sygbt,jdbcType=TINYINT}, #{dyxtk,jdbcType=TINYINT}, #{jjkp,jdbcType=TINYINT}, \n" +
             "      #{qpbj,jdbcType=TINYINT}, #{kmbj,jdbcType=TINYINT})")
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     void saveChild(SybC sybC);
 
     @Update("update zsb_c\n" +
@@ -154,6 +155,7 @@ public interface ZsbMapper {
             "      #{zsbjWc1,jdbcType=INTEGER}, #{zsbjWc2,jdbcType=INTEGER}, #{zsbjResult,jdbcType=TINYINT}, \n" +
             "      #{zs,jdbcType=TINYINT}, #{sygbt,jdbcType=TINYINT}, #{dyxtk,jdbcType=TINYINT}, #{jjkp,jdbcType=TINYINT}, \n" +
             "      #{qpbj,jdbcType=TINYINT}, #{kmbj,jdbcType=TINYINT})")
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     void saveMan(SybC sybC);
     @Update("update zsb_m\n" +
             "    set jcyq_id = #{jcyqId,jdbcType=INTEGER},\n" +
@@ -217,6 +219,7 @@ public interface ZsbMapper {
             "      #{zsbjResult2,jdbcType=TINYINT}, #{zs2,jdbcType=TINYINT}, #{sygbt2,jdbcType=TINYINT}, \n" +
             "      #{dyxtk2,jdbcType=TINYINT}, #{jjkp2,jdbcType=TINYINT}, #{qpbj2,jdbcType=TINYINT}, \n" +
             "      #{kmbj2,jdbcType=TINYINT})")
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     void saveStzs(StzsM stzsM);
     @Update("update stzs_m\n" +
             "    set jcyq_id = #{jcyqId,jdbcType=INTEGER},\n" +

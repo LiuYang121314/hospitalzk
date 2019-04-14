@@ -50,7 +50,7 @@ public class GpddController extends BaseController {
     }
     //保存
     @RequestMapping("/save")
-    public ResponseResult<Gpdd> save(@RequestParam("eqId") String eqId, @RequestParam("jcyqId") String jcyqId,@RequestParam(value = "userEqId") Integer userEqId,
+    public ResponseResult save(@RequestParam("eqId") String eqId, @RequestParam("jcyqId") String jcyqId,@RequestParam(value = "userEqId") Integer userEqId,
                                      HttpSession session, HttpServletRequest req){
         Gpdd gpdd = CommonUtils.toBean(req.getParameterMap(), Gpdd.class);
         int yqEqId=yqEqService.insertBatch(eqId,jcyqId);
@@ -58,7 +58,8 @@ public class GpddController extends BaseController {
         //修改状态为待上传
         userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
         gpddService.save(gpdd);
-        return new ResponseResult<Gpdd>(200, gpdd);
+        int[] x={gpdd.getGpddid(),yqEqId};
+        return new ResponseResult<>(200, x);
     }
 
     //修改录入数据

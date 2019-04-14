@@ -2,6 +2,8 @@ package com.litbo.hospitalzj.checklist.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Gpdd {
     private Integer gpddid;
 
@@ -12,9 +14,10 @@ public class Gpdd {
     private String tester;
 
     private String auditor;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date testTime;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private Date shsjTime;
     private String jcjl;
 
     private String jcsm;
@@ -181,7 +184,15 @@ public class Gpdd {
         this.testTime = testTime;
     }
 
-    public String getJcjl() {
+    public Date getShsjtime() {
+		return shsjTime;
+	}
+
+	public void setShsjtime(Date shsjtime) {
+		this.shsjTime = shsjtime;
+	}
+
+	public String getJcjl() {
         return jcjl;
     }
 

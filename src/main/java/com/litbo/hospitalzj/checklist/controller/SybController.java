@@ -76,7 +76,7 @@ public class SybController extends BaseController {
 
     //修改幼儿数据表信息
     @RequestMapping("/savechild")
-    public ResponseResult<SybC> savechild(@RequestParam(value = "eqId") String eqId,
+    public ResponseResult savechild(@RequestParam(value = "eqId") String eqId,
                                           @RequestParam(value = "jcyqId") String jcyqId,
                                           @RequestParam(value = "userEqId") Integer userEqId,
                                           SybC sybC){
@@ -85,7 +85,8 @@ public class SybController extends BaseController {
         //修改状态为待上传
         userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
         sybService.saveChild(sybC);
-        return new ResponseResult<SybC>(200, sybC);
+        long[] x={sybC.getId(),yqEqId};
+        return new ResponseResult(200, x);
     }
     @RequestMapping("/updateChild")
     public ResponseResult<SybC> updateChild(SybC sybC){
@@ -94,7 +95,7 @@ public class SybController extends BaseController {
     }
 
     @RequestMapping("/saveman")
-    public ResponseResult<SybC> saveMan(@RequestParam(value = "eqId") String eqId,
+    public ResponseResult saveMan(@RequestParam(value = "eqId") String eqId,
                                         @RequestParam(value = "jcyqId") String jcyqId,
                                         @RequestParam(value = "userEqId") Integer userEqId,
                                         SybC sybC, HttpSession session, HttpServletRequest req){
@@ -103,7 +104,8 @@ public class SybController extends BaseController {
         //修改状态为待上传
         userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
         sybService.saveMan(sybC);
-        return new ResponseResult<SybC>(200, sybC);
+        long[] x={sybC.getId(),yqEqId};
+        return new ResponseResult(200,x);
     }
     @RequestMapping("/updateMan")
     public ResponseResult<SybC> updateMan(SybC sybC){
