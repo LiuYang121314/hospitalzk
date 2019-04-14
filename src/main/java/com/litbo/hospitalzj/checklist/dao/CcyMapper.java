@@ -71,7 +71,7 @@ public interface CcyMapper {
             "      xlsz_value5, xlsz_result, sgbj_result, \n" +
             "      bjx_result, jy_result)\n" +
             "    values (#{ccyId,jdbcType=INTEGER}, #{jcyqId,jdbcType=INTEGER}, #{eqId,jdbcType=INTEGER}, \n" +
-            "      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{testTime,jdbcType=TIMESTAMP}, \n" +
+            "      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{testTime}, \n" +
             "      #{shrJcjl,jdbcType=VARCHAR}, #{shsjTime,jdbcType=TIMESTAMP}, #{jcjl,jdbcType=VARCHAR}, \n" +
             "      #{jcsm,jdbcType=VARCHAR}, #{sfnlYxwc,jdbcType=VARCHAR}, #{sfnlTest1,jdbcType=VARCHAR}, \n" +
             "      #{sfnlValue1,jdbcType=VARCHAR}, #{sfnlWc1,jdbcType=VARCHAR}, #{sfnlTest2,jdbcType=VARCHAR}, \n" +

@@ -92,6 +92,7 @@ public interface GpddMapper {
             "      #{zxldSjdn,jdbcType=DOUBLE}, #{sjgpldWc,jdbcType=INTEGER}, #{sjgpldResult,jdbcType=TINYINT}, \n" +
             "      #{spare1,jdbcType=TINYINT}, #{spare2,jdbcType=TINYINT}, #{spare3,jdbcType=TINYINT}, \n" +
             "      #{spare4,jdbcType=TINYINT}, #{spare5,jdbcType=TINYINT})")
+    @Options(useGeneratedKeys = true, keyProperty = "gpddid", keyColumn = "gpddid")
     void save(Gpdd gpdd);
     //修改数据
     @Update(" update gpdd\n" +

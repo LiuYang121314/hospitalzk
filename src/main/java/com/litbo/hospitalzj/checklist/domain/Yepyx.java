@@ -2,6 +2,8 @@ package com.litbo.hospitalzj.checklist.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Yepyx {
     private Integer pyxId;
 
@@ -15,8 +17,10 @@ public class Yepyx {
 
     private String shrJcjl;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date testTime;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date shsjTime;
 
     private String jcjl;

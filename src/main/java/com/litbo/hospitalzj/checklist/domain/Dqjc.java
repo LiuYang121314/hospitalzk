@@ -2,6 +2,8 @@ package com.litbo.hospitalzj.checklist.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Dqjc {
     private Integer dqjcid;
 
@@ -12,7 +14,9 @@ public class Dqjc {
     private String tester;
 
     private String auditor;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date shsjTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date testTime;
 
     private String jcjl;

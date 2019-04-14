@@ -106,9 +106,9 @@ public class ZsbController extends BaseController {
     //保存录入数据
     @RequestMapping("/saveMan")
     public ResponseResult saveMan(@RequestParam(value = "eqId") String eqId,
-                                                              @RequestParam(value = "jcyqId") String jcyqId,
-                                                              @RequestParam(value = "userEqId") Integer userEqId,
-                                                              SybC sybC, HttpSession session, HttpServletRequest req){
+                                  @RequestParam(value = "jcyqId") String jcyqId,
+                                  @RequestParam(value = "userEqId") Integer userEqId,
+                                  SybC sybC){
         int yqEqId=yqEqService.insertBatch(eqId,jcyqId);
         yqEqService.updateType(yqEqId, EnumProcess2.TO_UPLOAD.getMessage());
         //修改状态为待上传

@@ -1,5 +1,7 @@
 package com.litbo.hospitalzj.checklist.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Ccy {
@@ -13,8 +15,9 @@ public class Ccy {
 
     private String auditor;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date testTime;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private String shrJcjl;
 
     private Date shsjTime;
