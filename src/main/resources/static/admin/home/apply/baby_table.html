@@ -339,7 +339,7 @@
         form.on("submit(subEnd)",function(data){
             console.log(data.field);
             $.ajax({
-                url:"/dqjc/updateShrJcjy?babyId ="+babyId+"&jcyqId="+ids+"&eqId="+thiseqId+"&shrJcjl="+data.field.shrJcjl+"&state="+data.field.state,
+                url:"/dqjc/updateShrJcjy?babyId="+babyId+"&jcyqId="+ids+"&eqId="+thiseqId+"&shrJcjl="+data.field.shrJcjl+"&state="+data.field.state,
                 method:"POST",
                 dataType:"JSON",
                 success:function(res){
