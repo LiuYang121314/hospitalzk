@@ -52,7 +52,7 @@ public class HxjController extends BaseController {
 
     //保存呼吸机检测数据
     @RequestMapping("/save")
-    public ResponseResult<Hxj> saveChild(@RequestParam("eqId") String eqId,
+    public ResponseResult saveChild(@RequestParam("eqId") String eqId,
                                          @RequestParam("jcyqId") String jcyqId,
                                          @RequestParam(value = "userEqId") Integer userEqId,
                                             Hxj hxj){
@@ -61,7 +61,8 @@ public class HxjController extends BaseController {
         //修改状态为待上传
         userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
         hxjService.save(hxj);
-        return new ResponseResult<Hxj>(200, hxj);
+        int[] x={hxj.getHxjid(),yqEqId};
+        return new ResponseResult(200, x);
     }
 
     //修改录入数据

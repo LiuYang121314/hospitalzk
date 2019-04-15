@@ -4,6 +4,7 @@ import com.litbo.hospitalzj.supplier.entity.SuInfo;
 import com.litbo.hospitalzj.supplier.service.exception.PasswordNotMatchException;
 import com.litbo.hospitalzj.supplier.service.exception.UserNotFoundException;
 import com.litbo.hospitalzj.supplier.vo.SuInfoAndZzInfo;
+
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -20,4 +21,5 @@ public interface SuInfoService {
     List<SuInfo> findSuByState(Integer state);
     void updatePwd(@Param("suId") Integer suId,@Param("password")String password);
     public SuInfo login(String suMc, String password) throws UserNotFoundException, PasswordNotMatchException;
+    void sendEmail(String suMc,String email,String password);
 }

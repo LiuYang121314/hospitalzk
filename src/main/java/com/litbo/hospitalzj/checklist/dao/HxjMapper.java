@@ -218,7 +218,7 @@ public interface HxjMapper {
             "      #{qybj,jdbcType=INTEGER}, #{zxbj,jdbcType=INTEGER}, #{qdyl,jdbcType=INTEGER}, #{brhl,jdbcType=INTEGER}, \n" +
             "      #{fztql,jdbcType=INTEGER}, #{ajgn,jdbcType=INTEGER}, #{bz,jdbcType=INTEGER}, #{bz1,jdbcType=INTEGER}\n" +
             "      )")
-    @Options(useGeneratedKeys = true, keyProperty = "dqjcid", keyColumn = "dqjcid")
+    @Options(useGeneratedKeys = true, keyProperty = "hxjid", keyColumn = "hxjid")
     void save(Hxj hxj);
 @Update(" update hxj\n" +
         "    set jcyq_id = #{jcyqId,jdbcType=INTEGER},\n" +
@@ -353,7 +353,7 @@ void updateHxj(Hxj hxj);
     /**
      * 根据iD状态查询
      */
-    @Select("select * from dqjc where hxjid=#{hxjid}")
+    @Select("select * from hxj where hxjid=#{hxjid}")
     Hxj findByHxjId(@Param("hxjid")Integer hxjid);
     /*
     修改状态
