@@ -31,12 +31,12 @@ public class EqCgController extends BaseController{
 	}
 	@RequestMapping("/all")
 	public ResponseResult<List<EqCgfs>> getAll() {
-		List<EqCgfs> data=eqCgService.getAll(0,10);
+		List<EqCgfs> data=eqCgService.getAll();
 		return new ResponseResult<List<EqCgfs>>(SUCCESS,data);
 	}
 	@RequestMapping("/allEqCgfs")
 	public ResponseResult<List<EqCgfs>> All() {
-		List<EqCgfs> data=eqCgService.getAll(0,200);
+		List<EqCgfs> data=eqCgService.getAll();
 		return new ResponseResult<List<EqCgfs>>(SUCCESS,data);
 	}
 	@RequestMapping("/insert")

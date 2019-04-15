@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface JgLxService {
-	List<JgLx> findAll(@Param("offset") Integer offset, @Param("count") Integer count);
+	List<JgLx> findAll();
 	void insert(JgLx qyLx);
 	void update(JgLx qyLx);
 	List<JgLx> findByJgLxNameLike(@Param("jgLx") String jgLx);

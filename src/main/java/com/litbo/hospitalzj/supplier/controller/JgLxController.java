@@ -26,13 +26,13 @@ public class JgLxController extends BaseController{
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	@RequestMapping("/all")
-	public ResponseResult<List<JgLx>> getAll(@RequestParam("offset")Integer offset, @RequestParam("count") Integer count) {
-		List<JgLx> data=jgLxService.findAll(offset,count);
+	public ResponseResult<List<JgLx>> getAll() {
+		List<JgLx> data=jgLxService.findAll();
 		return new ResponseResult<List<JgLx>>(SUCCESS,data);
 	}
 	@RequestMapping("/allJgLx")
 	public ResponseResult<List<JgLx>> All() {
-		List<JgLx> data=jgLxService.findAll(0,200);
+		List<JgLx> data=jgLxService.findAll();
 		return new ResponseResult<List<JgLx>>(SUCCESS,data);
 	}
 	@RequestMapping("/delete")

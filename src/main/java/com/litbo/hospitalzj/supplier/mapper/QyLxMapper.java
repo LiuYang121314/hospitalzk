@@ -19,8 +19,8 @@ public interface QyLxMapper {
 	@Select("SELECT * FROM qy_lx WHERE qy_lxcm=#{qyLxcm}")
 	QyLx findByName(@Param("qyLxcm") String qyLxcm);
 
-	@Select("SELECT * FROM qy_lx ORDER BY qy_lxid ASC LIMIT #{offset}, #{count}")
-	List<QyLx> findAll(@Param("offset") Integer offset, @Param("count") Integer count);
+	@Select("SELECT * FROM qy_lx")
+	List<QyLx> findAll();
 
 	@Insert(" insert into qy_lx (qy_lxid, qy_lxcm, qy_lx_code\n" +
 			"      )\n" +

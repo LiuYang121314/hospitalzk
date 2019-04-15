@@ -15,7 +15,9 @@ public interface YqMapper {
 
 	@Select("SELECT * FROM yq WHERE jcyq_id NOT IN(SELECT yq_id FROM yq_role WHERE user_id=#{1})")
 	List<Yq> findNotByUserId(String userId);
-	
+
+	@Select("SELECT * FROM yq WHERE jcyq_name LIKE '%${jcyqName}%'")
+	List<Yq> findYqByYqName(@Param("jcyqName") String jcyqName);
 
 	@Select("select * from yq")
 	List<Yq> findAll();

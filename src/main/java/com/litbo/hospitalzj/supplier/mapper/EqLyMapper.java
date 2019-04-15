@@ -20,8 +20,8 @@ public interface EqLyMapper {
 	@Select("SELECT eqly_id eqlyId, eqly_name eqlyName FROM eq_ly WHERE eqly_name=#{eqlyName} where is_delete=0")
 	EqLy findByName(@Param("eqlyName") String eqlyName);
 
-	@Select("SELECT eqly_id eqlyId, eqly_name eqlyName FROM eq_ly where is_delete=0 ORDER BY eqly_id ASC LIMIT #{offset}, #{count}" )
-	List<EqLy> findAll(@Param("offset")Integer offset, @Param("count") Integer count);
+	@Select("SELECT eqly_id eqlyId, eqly_name eqlyName FROM eq_ly where is_delete=0" )
+	List<EqLy> findAll();
 
 
 	@Delete(" delete from eq_ly" +

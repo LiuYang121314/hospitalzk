@@ -8,16 +8,26 @@ import com.litbo.hospitalzj.supplier.service.exception.PasswordNotMatchException
 import com.litbo.hospitalzj.supplier.service.exception.UpdateException;
 import com.litbo.hospitalzj.supplier.service.exception.UserNotFoundException;
 import com.litbo.hospitalzj.supplier.vo.SuInfoAndZzInfo;
-import org.apache.ibatis.annotations.Param;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import javax.mail.MessagingException;
 
 @Service
 public class SuInfoServiceImpl implements SuInfoService {
     @Autowired
     private SuInfoMapper suInfoMapper;
+    @Autowired
+    private JavaMailSender mailSender; //自动注入的Bean
+
+    @Value("${spring.mail.username}")
+    private String Sender; //读取配置文件中的参数
     @Override
     public SuInfo login(String suMc, String password)
             throws UserNotFoundException, PasswordNotMatchException {
@@ -95,4 +105,20 @@ public class SuInfoServiceImpl implements SuInfoService {
     public void updatePwd(Integer suId, String password) {
         suInfoMapper.updatePwd(suId,password);
     }
+    /**
+	 * 发送用户以及密码
+	 * @throws MessagingException 
+	 */
+	@Override
+	public void sendEmail(Integer suId,String suMc,String email,String password){
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setFrom(Sender);
+		message.setTo(email); 
+		message.setSubject("主题:南方医院账户密码验证");
+		message.setText("您的医院系统登录用户名是"+suMc+","
+				+ "登录密码是"+password+",请妥善管理！"
+				+ "如有遗失，请联系系统管理员，谢谢合作！！！");
+        suInfoMapper.updatePwd(suId,password);
+		mailSender.send(message);
+	}
 }

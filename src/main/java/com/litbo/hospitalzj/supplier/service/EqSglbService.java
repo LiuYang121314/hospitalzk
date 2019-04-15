@@ -15,7 +15,7 @@ public interface EqSglbService {
 
 	EqSglb getById(Integer eqsgId);
 
-	List<EqSglb> getAll(@Param("offset")Integer offset, @Param("count") Integer count);
+	List<EqSglb> getAll();
 	//shanchu
 	void delete(@Param("eqlyId")Integer eqlyId,@Param("isDelete")Integer isDelete);
 

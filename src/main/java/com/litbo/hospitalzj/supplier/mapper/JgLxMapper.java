@@ -18,8 +18,8 @@ public interface JgLxMapper {
 	@Select("SELECT * FROM jg_lx WHERE jg_lxmc=#{jgLxmc}")
 	JgLx findByName(@Param("jgLxmc") String jgLxmc);
 
-	@Select("SELECT * FROM jg_lx ORDER BY jg_id ASC LIMIT #{offset}, #{count}")
-	List<JgLx> findAll(@Param("offset") Integer offset, @Param("count") Integer count);
+	@Select("SELECT * FROM jg_lx ")
+	List<JgLx> findAll();
 
 	@Insert(" insert into jg_lx (jg_id, jg_lxmc, jg_lx_code\n" +
 			"      )\n" +

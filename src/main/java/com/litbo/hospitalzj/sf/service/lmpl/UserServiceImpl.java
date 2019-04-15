@@ -108,8 +108,8 @@ private UserMapper userMapper;
     }
     //查询所有用户信息
     @Override
-    public List<UserRoleVo> findAll(@Param("offset")Integer offset, @Param("count") Integer count) {
-        return userMapper.findAll(offset,count);
+    public List<UserRoleVo> findAll() {
+        return userMapper.findAll();
     }
     //模糊查询用户信息
     @Override

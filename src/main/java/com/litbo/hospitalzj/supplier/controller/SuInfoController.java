@@ -6,14 +6,17 @@ import com.litbo.hospitalzj.supplier.entity.SuInfo;
 import com.litbo.hospitalzj.supplier.service.SuInfoService;
 import com.litbo.hospitalzj.supplier.vo.SuInfoAndZzInfo;
 import com.litbo.hospitalzj.util.ResponseResult;
+
 import net.sf.jsqlparser.statement.select.Offset;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -102,4 +105,14 @@ public class SuInfoController extends BaseController {
         suInfoService.updatePwd(suId,password);
         return new ResponseResult<Void>(SUCCESS);
     }
+    //发送密码和用户
+    @RequestMapping("/mail")
+	public ResponseResult<Void> sendMail(
+            @RequestParam("suId") Integer suId,
+	        @RequestParam("email") String email,
+			@RequestParam("suMc") String suMc,
+			@RequestParam("password") String password) throws MessagingException {
+		suInfoService.sendEmail(suId,suMc,email,password);
+		return new ResponseResult<>(SUCCESS);
+	}
 }

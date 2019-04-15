@@ -14,7 +14,7 @@ public interface EqCgService {
 
 	EqCgfs getById(Integer eqcgId);
 
-	List<EqCgfs> getAll(@Param("offset")Integer offset, @Param("count") Integer count);
+	List<EqCgfs> getAll();
 	//删除，修改状态
 	void delete(@Param("eqcgId")Integer eqcgId,@Param("isDelete")Integer isDelete);
 

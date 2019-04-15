@@ -97,6 +97,16 @@ public class ZsbServiceImpl implements ZsbService {
     }
 
     @Override
+    public SybC findByEqIdandJcyqIdLast(String tableName, String eqId, String jcyqId) {
+        return zsbMapper.findByEqIdandJcyqIdLast(tableName,eqId,jcyqId);
+    }
+
+    @Override
+    public List<SybC> findByEqIdandJcyqId(String tableName, String eqId, String jcyqId) {
+        return zsbMapper.findByEqIdandJcyqId(tableName, eqId, jcyqId);
+    }
+
+    @Override
     public SybC findByEqIdandJcyqIdLast1C(String eqId, String jcyqId) {
         return zsbMapper.findByEqIdandJcyqIdLast1C(eqId, jcyqId);
     }

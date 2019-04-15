@@ -30,8 +30,8 @@ public class EqSglbServiceImpl implements EqSglbService{
 		return eqSglbMapper.findById(eqsgId);
 	}
 	@Override
-	public List<EqSglb> getAll(@Param("offset")Integer offset, @Param("count") Integer count) {
-		return eqSglbMapper.findAll(offset,count);
+	public List<EqSglb> getAll() {
+		return eqSglbMapper.findAll();
 	}
 
 	@Override

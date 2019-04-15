@@ -42,11 +42,6 @@ public class CcyServiceImpl implements CcyService {
         return ccyMapper.findCcy(eqId);
     }
 
-   /* @Override
-    public Ccy find() {
-        return ccyMapper.find();
-    }*/
-
     @Override
     public Ccy findByEqIdandJcyqIdLast1(String eqId, String jcyqId) {
         return ccyMapper.findByEqIdandJcyqIdLast1(eqId, jcyqId);

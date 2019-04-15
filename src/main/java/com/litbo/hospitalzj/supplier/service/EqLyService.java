@@ -16,7 +16,7 @@ public interface EqLyService {
 
 	EqLy getById(Integer eqlyId);
 
-	List<EqLy> getAll(@Param("offset")Integer offset, @Param("count") Integer count);
+	List<EqLy> getAll();
 
 	void delete(@Param("eqlyId")Integer eqlyId,@Param("isDelete")Integer isDelete);
 

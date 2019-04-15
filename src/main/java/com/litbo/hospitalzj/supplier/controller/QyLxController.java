@@ -27,13 +27,13 @@ public class QyLxController extends BaseController{
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	@RequestMapping("/all")
-	public ResponseResult<List<QyLx>> getAll(@RequestParam("offset")Integer offset, @RequestParam("count") Integer count) {
-		List<QyLx> data=qyLxService.findAll(offset,count);
+	public ResponseResult<List<QyLx>> getAll() {
+		List<QyLx> data=qyLxService.findAll();
 		return new ResponseResult<List<QyLx>>(SUCCESS,data);
 	}
 	@RequestMapping("/allQyLx")
 	public ResponseResult<List<QyLx>> All() {
-		List<QyLx> data=qyLxService.findAll(0,200);
+		List<QyLx> data=qyLxService.findAll();
 		return new ResponseResult<List<QyLx>>(SUCCESS,data);
 	}
 	@RequestMapping("/delete")

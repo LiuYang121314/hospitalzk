@@ -1,5 +1,7 @@
 package com.litbo.hospitalzj.checklist.controller;
 
+import com.google.common.collect.Table;
+import com.litbo.hospitalzj.checklist.domain.Ccy;
 import com.litbo.hospitalzj.checklist.domain.SybC;
 import com.litbo.hospitalzj.checklist.domain.SybCTemplate;
 import com.litbo.hospitalzj.checklist.service.SybService;
@@ -8,6 +10,8 @@ import com.litbo.hospitalzj.checklist.utils.commons.CommonUtils;
 import com.litbo.hospitalzj.controller.BaseController;
 import com.litbo.hospitalzj.sf.service.UserService;
 import com.litbo.hospitalzj.zk.Enum.EnumProcess2;
+import com.litbo.hospitalzj.zk.domian.TabEq;
+import com.litbo.hospitalzj.zk.service.TabEqService;
 import com.litbo.hospitalzj.zk.service.UserEqService;
 import com.litbo.hospitalzj.zk.service.YqEqService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,6 +37,8 @@ public class SybController extends BaseController {
     private UserEqService userEqService;
     @Autowired
     private YqEqService yqEqService;
+    @Autowired
+    private TabEqService tabEqService;
     //插入模板数据
     //插入输液泵儿童模板值
     @RequestMapping("/insertChildTemplate")
@@ -85,6 +92,11 @@ public class SybController extends BaseController {
         //修改状态为待上传
         userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
         sybService.saveChild(sybC);
+        TabEq table=new TabEq();
+        table.setEqId(Integer.valueOf(eqId));
+        table.setJcyqId(Integer.valueOf(jcyqId));
+        table.setTableName("syb_c");
+        tabEqService.insert(table);
         long[] x={sybC.getId(),yqEqId};
         return new ResponseResult(200, x);
     }
@@ -104,6 +116,11 @@ public class SybController extends BaseController {
         //修改状态为待上传
         userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
         sybService.saveMan(sybC);
+        TabEq table=new TabEq();
+        table.setEqId(Integer.valueOf(eqId));
+        table.setJcyqId(Integer.valueOf(jcyqId));
+        table.setTableName("syb_m");
+        tabEqService.insert(table);
         long[] x={sybC.getId(),yqEqId};
         return new ResponseResult(200,x);
     }
@@ -122,7 +139,7 @@ public class SybController extends BaseController {
     public ResponseResult<List<SybC>> findAllChild(){
         return new ResponseResult<List<SybC>>(200, sybService.findAll("syb_c"));
     }
-    //查询最后录入的一条检测信息
+    
     @RequestMapping("/findByidM")
     public ResponseResult<SybC> findByidM(Integer id){
         String tableName="syb_m";
@@ -133,6 +150,47 @@ public class SybController extends BaseController {
         String tableName="syb_c";
         return new ResponseResult<SybC>(200, sybService.findByid(id,tableName));
     }
+    //查询最后录入的一条检测信息
+    @RequestMapping("/findByEqIdandJcyqIdLast1")
+    public ResponseResult findByEqIdandJcyqIdLast1(@RequestParam("eqId")String eqId,@RequestParam("jcyqId") String jcyqId){
+        String tableName=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
+        SybC data=sybService.findByEqIdandJcyqIdLast(tableName,eqId,jcyqId);
+        List list= new ArrayList();
+        list.add(data);
+        list.add(tableName);
+        return new ResponseResult(200,list);
+    }
+    @RequestMapping("/findByEqIdandJcyqId")
+    public ResponseResult<List<SybC>> findByEqIdandJcyqId(@RequestParam("eqId")String eqId,@RequestParam("jcyqId") String jcyqId){
+        String tableName=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
+        List<SybC> data=sybService.findByEqIdandJcyqId(tableName,eqId,jcyqId);
+        List list= new ArrayList();
+        list.add(data);
+        list.add(tableName);
+        return new ResponseResult<List<SybC>>(200,list);
+    }
+
+   /* @RequestMapping("/findByEqIdandJcyqIdLast1C")
+    public ResponseResult<SybC> findByEqIdandJcyqIdLast1C(@RequestParam("eqId")String eqId,@RequestParam("jcyqId") String jcyqId){
+        SybC data=sybService.findByEqIdandJcyqIdLast1C(eqId, jcyqId);
+        return new ResponseResult<SybC>(200,data);
+    }
+    @RequestMapping("/findByEqIdandJcyqIdC")
+    public ResponseResult<List<SybC>> findByEqIdandJcyqIdC(@RequestParam("eqId")String eqId, @RequestParam("jcyqId")String jcyqId){
+        List<SybC> data=sybService.findByEqIdandJcyqIdC(eqId,jcyqId);
+        return new ResponseResult<List<SybC>>(200, data);
+    }
+
+    @RequestMapping("/findByEqIdandJcyqIdLast1M")
+    public ResponseResult<SybC> findByEqIdandJcyqIdLast1M(@RequestParam("eqId")String eqId,@RequestParam("jcyqId") String jcyqId){
+        SybC data=sybService.findByEqIdandJcyqIdLast1C(eqId, jcyqId);
+        return new ResponseResult<SybC>(200,data);
+    }
+    @RequestMapping("/findByEqIdandJcyqIdM")
+    public ResponseResult<List<SybC>> findByEqIdandJcyqIdM(@RequestParam("eqId")String eqId, @RequestParam("jcyqId")String jcyqId){
+        List<SybC> data=sybService.findByEqIdandJcyqIdM(eqId,jcyqId);
+        return new ResponseResult<List<SybC>>(200, data);
+    }*/
     //修改审核人意见
     @RequestMapping("/updateShrJcjyM")
     public ResponseResult<Void> updateShrJcjyM(@RequestParam("id")Integer id, @RequestParam("jcyqId")Integer jcyqId,
