@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface TabEqService {
 
-	String findTable(Integer eqId,Integer jcyqId);
+	TabEq findTable(Integer eqId,Integer jcyqId);
 
 	void insert(TabEq tabEq);
 

@@ -9,6 +9,7 @@ import com.litbo.hospitalzj.controller.BaseController;
 import com.litbo.hospitalzj.supplier.service.EqInfoService;
 import com.litbo.hospitalzj.util.ResponseResult;
 import com.litbo.hospitalzj.zk.Enum.EnumProcess2;
+import com.litbo.hospitalzj.zk.domian.TabEq;
 import com.litbo.hospitalzj.zk.service.TabEqService;
 import com.litbo.hospitalzj.zk.service.UserEqService;
 
@@ -114,6 +115,12 @@ public class JhyController extends BaseController {
 		//修改状态为待上传
 		userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
 		dcsjhyService.saveMan(dcsjhy);
+		TabEq table=new TabEq();
+		table.setEqId(Integer.valueOf(eqId));
+		table.setJcyqId(Integer.valueOf(jcyqId));
+		table.setTableName("dcsjhy_m");
+		table.setValue(2);
+		tabEqService.insert(table);
 		int[] x={dcsjhy.getDcid(),yqEqId};
 		return new ResponseResult<>(200, x);
 	}
@@ -136,6 +143,12 @@ public class JhyController extends BaseController {
 		yqEqService.updateType(yqEqId, EnumProcess2.TO_UPLOAD.getMessage());
 		userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
 		dcsjhyService.saveChild(dcsjhy);
+		TabEq table=new TabEq();
+		table.setEqId(Integer.valueOf(eqId));
+		table.setJcyqId(Integer.valueOf(jcyqId));
+		table.setTableName("dcsjhy_c");
+		table.setValue(1);
+		tabEqService.insert(table);
 		int[] x={dcsjhy.getDcid(),yqEqId};
 		return new ResponseResult<>(200, x);
 	}
@@ -155,21 +168,16 @@ public class JhyController extends BaseController {
 
 	@RequestMapping("/findByEqIdandJcyqIdLast1")
 	public ResponseResult findByEqIdandJcyqIdLast1(@RequestParam("eqId")String eqId,@RequestParam("jcyqId") String jcyqId){
-		String tableName=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
-		Dcsjhy data=dcsjhyService.findByEqIdandJcyqIdLast(tableName,eqId,jcyqId);
-		List list= new ArrayList();
-		list.add(data);
-		list.add(tableName);
-		return new ResponseResult(200,list);
+		TabEq table=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
+		Dcsjhy data=dcsjhyService.findByEqIdandJcyqIdLast(table.getTableName(),eqId,jcyqId);
+		return new ResponseResult(200,data);
 	}
 	@RequestMapping("/findByEqIdandJcyqId")
 	public ResponseResult<List<Dcsjhy>> findByEqIdandJcyqId(@RequestParam("eqId")String eqId,@RequestParam("jcyqId") String jcyqId){
-		String tableName=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
-		List<Dcsjhy> data=dcsjhyService.findByEqIdandJcyqId(tableName,eqId,jcyqId);
+		TabEq table=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
+		List<Dcsjhy> data=dcsjhyService.findByEqIdandJcyqId(table.getTableName(),eqId,jcyqId);
 		List list= new ArrayList();
-		list.add(data);
-		list.add(tableName);
-		return new ResponseResult<List<Dcsjhy>>(200,list);
+		return new ResponseResult<List<Dcsjhy>>(200,data);
 	}
 
 

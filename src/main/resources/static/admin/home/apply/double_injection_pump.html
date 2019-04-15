@@ -201,7 +201,7 @@
     var thisId = parseInt(sessionStorage['thisId']);
     $(function(){
         $.ajax({
-            url:"/zsb/findByidS?id="+ids,
+            url:"/zsb/findByEqIdandJcyqIdLast1?eqId="+thiseqId+"&jcyqId="+ids,
             method:"GET",
             dataType:"JSON",
             success:function(res){
@@ -223,7 +223,7 @@
             elem:"#testerInfo",
             cellMinWidth:100,
             toolbar: '#toolbarDemo',
-            url:"/yepyx/findByEqIdandJcyqIdLast1?eqId="+thiseqId+"&jcyqId="+ids,
+            url:"/zsb/findByEqIdandJcyqIdLast1?eqId="+thiseqId+"&jcyqId="+ids,
             method:"GET",
             response: {
                 statusName: 'status'

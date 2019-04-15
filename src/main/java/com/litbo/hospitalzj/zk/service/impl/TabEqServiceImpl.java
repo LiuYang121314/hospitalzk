@@ -20,7 +20,7 @@ public class TabEqServiceImpl implements TabEqService {
 
 
 	@Override
-	public String findTable(Integer eqId,Integer jcyqId) {
+	public TabEq findTable(Integer eqId,Integer jcyqId) {
 		return tabEqMapper.findTable(eqId,jcyqId);
 	}
 

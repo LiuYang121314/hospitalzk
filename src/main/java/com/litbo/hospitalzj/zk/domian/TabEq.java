@@ -9,6 +9,16 @@ public class TabEq {
 
     private String tableName;
 
+    private  Integer value;
+
+    public Integer getValue() {
+        return value;
+    }
+
+    public void setValue(Integer value) {
+        this.value = value;
+    }
+
     public Integer getJcyqId() {
         return jcyqId;
     }
@@ -40,4 +50,5 @@ public class TabEq {
     public void setTableName(String tableName) {
         this.tableName = tableName == null ? null : tableName.trim();
     }
+
 }
