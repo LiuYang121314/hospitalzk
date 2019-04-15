@@ -86,7 +86,7 @@
             },
             parseData:function(res){
                 console.log(res);
-                if(res.data.jcyqName == "生命体征模拟器" || res.data.jcyqName == "注射泵检测仪" || res.data.jcyqName == "输液泵检测仪"){
+                if(res.data[0].jcyqName == "生命体征模拟器" || res.data.jcyqName == "注射泵检测仪" || res.data.jcyqName == "输液泵检测仪"){
                     $("#xnJump").append("<a class='layui-btn layui-btn-xs layui-btn-normal' lay-event='man'>成人</a><a class='layui-btn layui-btn-xs' lay-event='child'>新生儿</a>")
                 }else{
                     $("#xnJump").append("<a class='layui-btn layui-btn-xs layui-btn-normal' lay-event='writeInfo'>录入数据</a>")
@@ -159,16 +159,16 @@
                     location.href="/control/home/waiting/write_info/write_infusion_child.html?id="+obj.data.jcyqId;
                 }
             }else if(obj.event === "writeInfo"){
-                if(obj.data.jcEqName == "婴儿培养箱检测仪"){
+                if(obj.data.jcyqName == "婴儿培养箱检测仪"){
                     location.href="/control/home/waiting/write_info/write_baby_info.html?id="+obj.data.jcyqId;
-                }else if(obj.data.jcEqName == "高频电刀检测仪"){
-                    location.href="/control/home/waiting/write_info/write_baby_info.html?id="+obj.data.jcyqId;
-                }else if(obj.data.jcEqName == "呼吸机检测仪"){
-                    location.href="/control/home/waiting/write_info/write_baby_info.html?id="+obj.data.jcyqId;
-                }else if(obj.data.jcEqName == "双通道注射泵检测仪"){
-                    location.href="/control/home/waiting/write_info/write_baby_info.html?id="+obj.data.jcyqId;
-                }else if(obj.data.jcEqName == "除颤器检测仪"){
-                    location.href="/control/home/waiting/write_info/write_baby_info.html?id="+obj.data.jcyqId;
+                }else if(obj.data.jcyqName == "高频电刀检测仪"){
+                    location.href="/control/home/waiting/write_endotherm_knife_info.html?id="+obj.data.jcyqId;
+                }else if(obj.data.jcyqName == "呼吸机检测仪"){
+                    location.href="/control/home/waiting/write_info/write_breath_info.html?id="+obj.data.jcyqId;
+                }else if(obj.data.jcyqName == "双通道注射泵检测仪"){
+                    location.href="/control/home/waiting/write_double_injection_info.html?id="+obj.data.jcyqId;
+                }else if(obj.data.jcyqName == "除颤器检测仪"){
+                    location.href="/control/home/waiting/write_info/write_defibrillator_info.html?id="+obj.data.jcyqId;
                 }
             }
         });
