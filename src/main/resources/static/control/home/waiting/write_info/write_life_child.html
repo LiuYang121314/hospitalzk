@@ -1239,7 +1239,7 @@
                     if(res.state === 200){
                         setTimeout(function(){
                             sessionStorage["thissjId"] = res.data[1];
-                            location.href = "/control/home/waiting/wait_info/man_life_table.html?id="+res.data[0];
+                            location.href = "/control/home/waiting/wait_info/child_life_table.html?id="+res.data[0];
                         },1000);
                         layer.msg("保存成功,正在生成表格");
                     }else{

@@ -216,7 +216,7 @@
             , form = layui.form;
         $(function(){
             $.ajax({
-                url:"/dqjc/findByDqjcid?dqjcid="+ids,
+                url:"/yepyx/findByEqIdandJcyqIdLast1?eqId="+thiseqId+"&jcyqId="+ids,
                 method:"GET",
                 dataType:"JSON",
                 success:function(res){
@@ -312,7 +312,7 @@
             elem:"#testerInfo",
             cellMinWidth:100,
             toolbar: '#toolbarDemo',
-            url:"/dqjc/findByEqIdandJcyqIdLast1?eqId="+thiseqId+"&jcyqId="+ids,
+            url:"/yepyx/findByEqIdandJcyqIdLast1?eqId="+thiseqId+"&jcyqId="+ids,
             method:"GET",
             response: {
                 statusName: 'status'
