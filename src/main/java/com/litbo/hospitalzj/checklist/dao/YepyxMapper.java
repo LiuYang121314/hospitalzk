@@ -200,11 +200,11 @@ public interface YepyxMapper {
     Yepyx find();
 
     //根据设备Id,检测仪器Id以及状态查询电器表查询最后一条记录
-    @Select("select yepyx.* from yepyx where dqjc.eq_id=#{eqId} and dqjc.jcyq_id=#{jcyqId} order by pyx_id desc limit 1" )
+    @Select("select yepyx.* from yepyx where eq_id=#{eqId} and jcyq_id=#{jcyqId} order by pyx_id desc limit 1" )
     Yepyx findByEqIdandJcyqIdLast1(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
 
     //根据设备Id,检测仪器Id以及状态查询电器表
-    @Select("select yepyx.* from yepyx where dqjc.eq_id=#{eqId} and dqjc.jcyq_id=#{jcyqId}" )
+    @Select("select yepyx.* from yepyx where eq_id=#{eqId} and jcyq_id=#{jcyqId}" )
     List<Yepyx> findByEqIdandJcyqId(@Param("eqId")String eqId, @Param("jcyqId")String jcyqId);
 
     //查询所有检测表数据信息

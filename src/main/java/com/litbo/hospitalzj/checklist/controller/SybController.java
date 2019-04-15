@@ -96,6 +96,7 @@ public class SybController extends BaseController {
         table.setEqId(Integer.valueOf(eqId));
         table.setJcyqId(Integer.valueOf(jcyqId));
         table.setTableName("syb_c");
+        table.setValue(1);
         tabEqService.insert(table);
         long[] x={sybC.getId(),yqEqId};
         return new ResponseResult(200, x);
@@ -120,6 +121,7 @@ public class SybController extends BaseController {
         table.setEqId(Integer.valueOf(eqId));
         table.setJcyqId(Integer.valueOf(jcyqId));
         table.setTableName("syb_m");
+        table.setValue(2);
         tabEqService.insert(table);
         long[] x={sybC.getId(),yqEqId};
         return new ResponseResult(200,x);
@@ -153,21 +155,15 @@ public class SybController extends BaseController {
     //查询最后录入的一条检测信息
     @RequestMapping("/findByEqIdandJcyqIdLast1")
     public ResponseResult findByEqIdandJcyqIdLast1(@RequestParam("eqId")String eqId,@RequestParam("jcyqId") String jcyqId){
-        String tableName=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
-        SybC data=sybService.findByEqIdandJcyqIdLast(tableName,eqId,jcyqId);
-        List list= new ArrayList();
-        list.add(data);
-        list.add(tableName);
-        return new ResponseResult(200,list);
+        TabEq table=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
+        SybC data=sybService.findByEqIdandJcyqIdLast(table.getTableName(),eqId,jcyqId);
+        return new ResponseResult(200,data);
     }
     @RequestMapping("/findByEqIdandJcyqId")
     public ResponseResult<List<SybC>> findByEqIdandJcyqId(@RequestParam("eqId")String eqId,@RequestParam("jcyqId") String jcyqId){
-        String tableName=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
-        List<SybC> data=sybService.findByEqIdandJcyqId(tableName,eqId,jcyqId);
-        List list= new ArrayList();
-        list.add(data);
-        list.add(tableName);
-        return new ResponseResult<List<SybC>>(200,list);
+        TabEq table=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
+        List<SybC> data=sybService.findByEqIdandJcyqId(table.getTableName(),eqId,jcyqId);
+        return new ResponseResult<List<SybC>>(200,data);
     }
 
    /* @RequestMapping("/findByEqIdandJcyqIdLast1C")

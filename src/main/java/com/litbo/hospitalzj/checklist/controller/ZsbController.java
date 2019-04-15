@@ -161,21 +161,15 @@ public class ZsbController extends BaseController {
 
     @RequestMapping("/findByEqIdandJcyqIdLast1")
     public ResponseResult findByEqIdandJcyqIdLast1(@RequestParam("eqId")String eqId,@RequestParam("jcyqId") String jcyqId){
-        String tableName=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
-        SybC data=zsbService.findByEqIdandJcyqIdLast(tableName,eqId,jcyqId);
-        List list= new ArrayList();
-        list.add(data);
-        list.add(tableName);
-        return new ResponseResult(200,list);
+        TabEq table=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
+        SybC data=zsbService.findByEqIdandJcyqIdLast(table.getTableName(),eqId,jcyqId);
+        return new ResponseResult(200,data);
     }
     @RequestMapping("/findByEqIdandJcyqId")
     public ResponseResult<List<SybC>> findByEqIdandJcyqId(@RequestParam("eqId")String eqId,@RequestParam("jcyqId") String jcyqId){
-        String tableName=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
-        List<SybC> data=zsbService.findByEqIdandJcyqId(tableName,eqId,jcyqId);
-        List list= new ArrayList();
-        list.add(data);
-        list.add(tableName);
-        return new ResponseResult<List<SybC>>(200,list);
+        TabEq table=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
+        List<SybC> data=zsbService.findByEqIdandJcyqId(table.getTableName(),eqId,jcyqId);
+        return new ResponseResult<List<SybC>>(200,data);
     }
 
 

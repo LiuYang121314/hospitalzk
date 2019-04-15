@@ -63,7 +63,7 @@ public class DcsjhyServiceImpl implements DcsjhyService {
     public void saveChild(Dcsjhy dcsjhy) {
         DcsjhyTemplate template = dcsjhyMapper.findTemplate_c();
         BeanUtils.copyProperties(template, dcsjhy);
-        dcsjhyMapper.saveMan(dcsjhy);
+        dcsjhyMapper.saveChild(dcsjhy);
     }
 
     @Override
@@ -100,8 +100,8 @@ public class DcsjhyServiceImpl implements DcsjhyService {
     public Dcsjhy findByDcidC(Integer dcid) {
         return dcsjhyMapper.findByDcidC(dcid);
 
-    @Override    }
-
+    }
+    @Override
     public void updateShrJcjyM(Integer dcid, String shrJcjl, String auditor) {
         dcsjhyMapper.updateShrJcjyM(dcid, shrJcjl, auditor, new Date());
     }
