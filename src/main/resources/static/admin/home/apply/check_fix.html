@@ -37,7 +37,7 @@
     </div>
 </div>
 <script type="text/html" id="xnJump">
-    <a class="layui-btn layui-btn-xs" lay-event="hands">查看数据</a>
+    <a class="layui-btn layui-btn-xs" lay-event="hands1">查看数据</a>
 </script>
 <script type="text/html" id="dqJump">
     <a class="layui-btn layui-btn-xs" lay-event="hands">查看数据</a>
@@ -73,6 +73,11 @@
             },
             parseData:function(res){
                 console.log(res);
+                if(res.data.jcyqName == "生命体征模拟器" || res.data.jcyqName == "注射泵检测仪" || res.data.jcyqName == "输液泵检测仪"){
+                    $("#xnJump").append("<a class='ayui-btn layui-btn-xs' lay-event='hands1'>查看数据</a>")
+                }else{
+                    $("#xnJump").append("<a class='ayui-btn layui-btn-xs' lay-event='hands2'>查看数据</a>")
+                }
                 return{
                     "status":200
                     ,"msg":res.message
@@ -121,13 +126,75 @@
                 {fixed: 'right', title:'操作',toolbar: '#dqJump',align:'center'}
             ]]
         });
-
 		//监听行工具事件
         table.on('tool(handle1)', function(obj){
             var data = obj.data;
             //console.log(obj)
-            if(obj.event === "hands"){
-                location.href="/admin/home/apply/man_life_table.html?id="+obj.data.jcyqId;
+            if(obj.event === "hands1"){
+                if(obj.data.jcyqName == "生命体征模拟器"){
+                    $.ajax({
+                        url:"",
+                        method:"GET",
+                        dataType:"JSON",
+                        success:function(res){
+                            if(res.data == 1){
+                                location.href="/admin/home/apply/man_life_table.html?id="+obj.data.jcyqId;
+                            }else{
+                                location.href="/admin/home/apply/child_life_table.html?id="+obj.data.jcyqId;
+                            }
+                        },
+                        error:function(data){
+                            console.log(data);
+                            layer.msg("请稍后再试");
+                        }
+                    });
+                }else if(obj.data.jcyqName == "注射泵检测仪"){
+                    $.ajax({
+                        url:"",
+                        method:"GET",
+                        dataType:"JSON",
+                        success:function(res){
+                            if(res.data == 1){
+                                location.href="/admin/home/apply/man_life_table.html?id="+obj.data.jcyqId;
+                            }else{
+                                location.href="/admin/home/apply/child_life_table.html?id="+obj.data.jcyqId;
+                            }
+                        },
+                        error:function(data){
+                            console.log(data);
+                            layer.msg("请稍后再试");
+                        }
+                    });
+                }else if(obj.data.jcyqName == "注射泵检测仪"){
+                    $.ajax({
+                        url:"",
+                        method:"GET",
+                        dataType:"JSON",
+                        success:function(res){
+                            if(res.data == 1){
+                                location.href="/admin/home/apply/man_life_table.html?id="+obj.data.jcyqId;
+                            }else{
+                                location.href="/admin/home/apply/child_life_table.html?id="+obj.data.jcyqId;
+                            }
+                        },
+                        error:function(data){
+                            console.log(data);
+                            layer.msg("请稍后再试");
+                        }
+                    });
+                }
+            }else if(obj.event === "hands2"){
+                if(obj.data.jcEqName == "婴儿培养箱检测仪"){
+                    location.href="/control/home/waiting/write_info/write_baby_info.html?id="+obj.data.jcyqId;
+                }else if(obj.data.jcEqName == "高频电刀检测仪"){
+                    location.href="/control/home/waiting/write_info/write_baby_info.html?id="+obj.data.jcyqId;
+                }else if(obj.data.jcEqName == "呼吸机检测仪"){
+                    location.href="/control/home/waiting/write_info/write_baby_info.html?id="+obj.data.jcyqId;
+                }else if(obj.data.jcEqName == "双通道注射泵检测仪"){
+                    location.href="/control/home/waiting/write_info/write_baby_info.html?id="+obj.data.jcyqId;
+                }else if(obj.data.jcEqName == "除颤器检测仪"){
+                    location.href="/control/home/waiting/write_info/write_baby_info.html?id="+obj.data.jcyqId;
+                }
             }
         });
         table.on('tool(handle2)', function(obj){
