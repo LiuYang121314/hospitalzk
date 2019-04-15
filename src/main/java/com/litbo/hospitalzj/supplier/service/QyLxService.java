@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 public interface QyLxService {
-	List<QyLx> findAll(@Param("offset") Integer offset, @Param("count") Integer count);
+	List<QyLx> findAll();
 	void insert(QyLx qyLx);
 	void update(QyLx qyLx);
 	List<QyLx> findByQyLxNameLike(@Param("qyLx") String qyLx);

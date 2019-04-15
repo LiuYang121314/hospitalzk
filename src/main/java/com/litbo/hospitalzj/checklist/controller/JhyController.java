@@ -9,9 +9,11 @@ import com.litbo.hospitalzj.controller.BaseController;
 import com.litbo.hospitalzj.supplier.service.EqInfoService;
 import com.litbo.hospitalzj.util.ResponseResult;
 import com.litbo.hospitalzj.zk.Enum.EnumProcess2;
+import com.litbo.hospitalzj.zk.service.TabEqService;
 import com.litbo.hospitalzj.zk.service.UserEqService;
 
 import com.litbo.hospitalzj.zk.service.YqEqService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -34,10 +38,9 @@ public class JhyController extends BaseController {
     private UserEqService userEqService;
 
 	@Autowired
-	private EqInfoService eqinfoService;
+	private TabEqService tabEqService;
 	@Autowired
 	private YqEqService yqEqService;
-
 	/**
 	 *  查询多参数监护仪模板表数据
 	 * @return
@@ -45,13 +48,13 @@ public class JhyController extends BaseController {
 	//成人
 	@RequestMapping("/findTemplateMan")
 	public ResponseResult<DcsjhyTemplate> findTemplateMan(){
-		DcsjhyTemplate dcsjhyTemplate = dcsjhyService.findTemplateMan();
+		DcsjhyTemplate dcsjhyTemplate = dcsjhyService.findTemplate_m();
 		return new ResponseResult<DcsjhyTemplate>(200, dcsjhyTemplate);
 	}
 	//幼儿
 	@RequestMapping("/findTemplateChild")
 	public ResponseResult<DcsjhyTemplate> findTemplateChild(){
-		DcsjhyTemplate dcsjhyTemplate = dcsjhyService.findTemplateChild();
+		DcsjhyTemplate dcsjhyTemplate = dcsjhyService.findTemplate_c();
 		return new ResponseResult<DcsjhyTemplate>(200, dcsjhyTemplate);
 	}
 
@@ -61,14 +64,14 @@ public class JhyController extends BaseController {
 	 * @return
 	 */
 	//成人
-	@RequestMapping("/insertM")
-	public ResponseResult<Void> insertM(DcsjhyTemplate dcsjhyTemplate){
+	@RequestMapping("/insertTemplateM")
+	public ResponseResult<Void> insertTemplateM(DcsjhyTemplate dcsjhyTemplate){
 		dcsjhyService.insertM(dcsjhyTemplate);
 		return new ResponseResult<Void>(200);
 	}
 	//幼儿
-	@RequestMapping("/insertC")
-	public ResponseResult<Void> insertC(DcsjhyTemplate dcsjhyTemplate){
+	@RequestMapping("/insertTemplateC")
+	public ResponseResult<Void> insertTemplateC(DcsjhyTemplate dcsjhyTemplate){
 		dcsjhyService.insertC(dcsjhyTemplate);
 		return new ResponseResult<Void>(200);
 	}
@@ -90,6 +93,7 @@ public class JhyController extends BaseController {
 		dcsjhyService.updateC(dcsjhyTemplate);
 		return new ResponseResult<Void>(200);
 	}
+
 	/**
 	 * 保存成人检测数据
 	 * @param eqId
@@ -105,8 +109,6 @@ public class JhyController extends BaseController {
 			HttpSession session,
 			HttpServletRequest req){
 		Dcsjhy dcsjhy = CommonUtils.toBean(req.getParameterMap(), Dcsjhy.class);
-		dcsjhyService.delectMen(eqId, jcyqId);
-		dcsjhy.setState(0);
 		int yqEqId=yqEqService.insertBatch(eqId,jcyqId);
 		yqEqService.updateType(yqEqId,EnumProcess2.TO_UPLOAD.getMessage());
 		//修改状态为待上传
@@ -130,8 +132,6 @@ public class JhyController extends BaseController {
 			HttpSession session,
 			HttpServletRequest req){
 		Dcsjhy dcsjhy = CommonUtils.toBean(req.getParameterMap(), Dcsjhy.class);
-		dcsjhyService.delectChi(eqId, jcyqId);
-		dcsjhy.setState(0);
 		int yqEqId=yqEqService.insertBatch(eqId,jcyqId);
 		yqEqService.updateType(yqEqId, EnumProcess2.TO_UPLOAD.getMessage());
 		userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
@@ -140,84 +140,59 @@ public class JhyController extends BaseController {
 		return new ResponseResult<>(200, x);
 	}
 
-	/**
-	 * 查询单条多参数监护仪检测数据(成人)单条数据
-	 * @return
-	 */
-	@RequestMapping("/findman")
-	public ResponseResult<Dcsjhy> findMan(){
-		return new ResponseResult<Dcsjhy>(200, dcsjhyService.findDcsjhyMan());
-	}
-
-	/**
-	 * 查询单条多参数监护仪检测数据(成人)多条数据
-	 * @return
-	 */
-	@RequestMapping("/findmans")
-	public ResponseResult<List<Dcsjhy>> findMans(){
-		return new ResponseResult<List<Dcsjhy>>(200, dcsjhyService.findDcsjhyMans());
-	}
-
-	/**
-	 * 查询单条多参数监护仪检测数据
-	 * @return
-	 */
-	@RequestMapping("/findchild")
-	public ResponseResult<Dcsjhy> findChild(){
-		return new ResponseResult<Dcsjhy>(200, dcsjhyService.findDcsjhyChild());
-	}
-
-
-	/**
-	 * 查询单条多参数监护仪检测数据
-	 * @return
-	 */
-	@RequestMapping("/findchilds")
-	public ResponseResult<List<Dcsjhy>> findChilds(){
-		return new ResponseResult<List<Dcsjhy>>(200, dcsjhyService.findDcsjhyChilds());
-	}
-	@RequestMapping("/findch")
-	public ResponseResult<List<Dcsjhy> > findch(@RequestParam("eqId")String eqId,@RequestParam("jcyqId")String jcyqId){
-		List<Dcsjhy>  data=dcsjhyService.findByEqIdandJcyqIdCh(eqId, jcyqId);
-		return new ResponseResult<List<Dcsjhy> >(200, data);
-	}
-	@RequestMapping("/findMa")
-	public ResponseResult<List<Dcsjhy> > findMa(@RequestParam("eqId")String eqId,@RequestParam("jcyqId")String jcyqId){
-		List<Dcsjhy>  data=dcsjhyService.findByEqIdandJcyqIdMan(eqId, jcyqId);
-		return new ResponseResult<List<Dcsjhy> >(200, data);
-	}
-	//修改状态
-	@RequestMapping("/updateStateM")
-	public ResponseResult<Void> updateStateM(@RequestParam("yqEqId")Integer yqEqId, @RequestParam("userEqId")Integer userEqId,HttpSession session){
-		yqEqService.updateState(yqEqId,0);
-		yqEqService.updateType(yqEqId,EnumProcess2.IS_UPLOAD.getMessage());
-		userEqService.setEqState(userEqId,EnumProcess2.UNDER_REVIEW.getMessage());
+	//成人
+	@RequestMapping("/updateMen")
+	public ResponseResult<Void> updateMen(Dcsjhy dcsjhy){
+		dcsjhyService.updateMen(dcsjhy);
 		return new ResponseResult<Void>(200);
 	}
-	@RequestMapping("/updateStateC")
-	public ResponseResult<Void> updateStateC(@RequestParam("yqEqId")Integer yqEqId, @RequestParam("userEqId")Integer userEqId,HttpSession session){
-		yqEqService.updateState(yqEqId,0);
-		yqEqService.updateType(yqEqId,EnumProcess2.IS_UPLOAD.getMessage());
-		userEqService.setEqState(userEqId,EnumProcess2.UNDER_REVIEW.getMessage());
+	//幼儿
+	@RequestMapping("/updateChild")
+	public ResponseResult<Void> updateC(Dcsjhy dcsjhy){
+		dcsjhyService.updateChild(dcsjhy);
 		return new ResponseResult<Void>(200);
 	}
-	//修改仪器为已上传
-	//修改状态
-	@RequestMapping("/updateType")
-	public ResponseResult<Void> updateType(@RequestParam("yqEqId")Integer yqEqId,HttpSession session){
-		yqEqService.updateState(yqEqId,0);
-		yqEqService.updateType(yqEqId,EnumProcess2.IS_UPLOAD.getMessage());
-		return new ResponseResult<Void>(200);
+
+	@RequestMapping("/findByEqIdandJcyqIdLast1")
+	public ResponseResult findByEqIdandJcyqIdLast1(@RequestParam("eqId")String eqId,@RequestParam("jcyqId") String jcyqId){
+		String tableName=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
+		Dcsjhy data=dcsjhyService.findByEqIdandJcyqIdLast(tableName,eqId,jcyqId);
+		List list= new ArrayList();
+		list.add(data);
+		list.add(tableName);
+		return new ResponseResult(200,list);
 	}
-	//根据id状态查询
+	@RequestMapping("/findByEqIdandJcyqId")
+	public ResponseResult<List<Dcsjhy>> findByEqIdandJcyqId(@RequestParam("eqId")String eqId,@RequestParam("jcyqId") String jcyqId){
+		String tableName=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
+		List<Dcsjhy> data=dcsjhyService.findByEqIdandJcyqId(tableName,eqId,jcyqId);
+		List list= new ArrayList();
+		list.add(data);
+		list.add(tableName);
+		return new ResponseResult<List<Dcsjhy>>(200,list);
+	}
+
+
+	@RequestMapping("/findDcsjhyMans")
+	public ResponseResult<List<Dcsjhy>> findDcsjhyMans(){
+		List<Dcsjhy> data=dcsjhyService.findDcsjhyMans();
+		return new ResponseResult<List<Dcsjhy>>(200,data);
+	}
+
+	@RequestMapping("/findDcsjhyChilds")
+	public ResponseResult<List<Dcsjhy>> findDcsjhyChilds(){
+		List<Dcsjhy> data=dcsjhyService.findDcsjhyChilds();
+		return new ResponseResult<List<Dcsjhy>>(200,data);
+	}
+
 	@RequestMapping("/findByDcidM")
 	public ResponseResult<Dcsjhy> findByDcidM(Integer dcid){
-		Dcsjhy data=dcsjhyService.findByDcidM(dcid,0);
+		Dcsjhy data=dcsjhyService.findByDcidM(dcid);
 		return new ResponseResult<Dcsjhy>(200,data);
 	}
 	@RequestMapping("/findByDcidC")
 	public ResponseResult<Dcsjhy> findByDcidC(Integer dcid){
-		Dcsjhy data=dcsjhyService.findByDcidC(dcid,0);
+		Dcsjhy data=dcsjhyService.findByDcidC(dcid);
 		return new ResponseResult<Dcsjhy>(200,data);
 	}
 

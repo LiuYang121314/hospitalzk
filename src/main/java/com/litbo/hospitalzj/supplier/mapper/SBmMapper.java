@@ -20,8 +20,8 @@ public interface SBmMapper {
 	@Select("SELECT bm_name from s_bm where bm_name = #{bmName}")
 	SBm findByName(@Param("bmName") String bmName);
 	//查询全部部门
-	@Select("SELECT * FROM s_bm ORDER BY bm_id ASC LIMIT #{offset}, #{count}")
-	List<SBm> findAll(@Param("offset") Integer offset, @Param("count") Integer count);
+	@Select("SELECT * FROM s_bm")
+	List<SBm> findAll();
 	//删除记录
 	@Delete(" delete from s_bm where bm_id = #{bmId,jdbcType=INTEGER}")
 	int delete(@Param("bmId") Integer bmId);

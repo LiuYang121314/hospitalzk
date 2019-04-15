@@ -38,8 +38,8 @@ public class YqController extends BaseController{
 	@Autowired
 	private YqJxjlService yqJxjlService;
 	//仪器模糊查询
-	@RequestMapping("/insert")
-	public ResponseResult<List<Yq>> insert(String jcyqName){
+	@RequestMapping("/findYqByYqName")
+	public ResponseResult<List<Yq>> findYqByYqName(String jcyqName){
 		List<Yq> data=yqService.findYqByYqName(jcyqName);
 		return new ResponseResult<List<Yq>>(SUCCESS,data);
 	}
@@ -78,9 +78,6 @@ public class YqController extends BaseController{
 	@RequestMapping("/findAll")
 	public ResponseResult<List<Yq>> findAll(){
 		List<Yq> yqList=yqService.findAll();
-		for(int i=0;i<yqList.size();i++){
-			System.out.println(yqList.get(i));
-		}
 		return new ResponseResult<List<Yq>>(SUCCESS,yqList);
 	}
 	

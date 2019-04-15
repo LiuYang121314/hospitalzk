@@ -17,7 +17,7 @@ public interface SBmService {
 	/*//通过名称查询
 	SBm findByName(@Param("bmName") String bmName);*/
 	//查询全部部门
-	List<SBm> findAll(@Param("offset") Integer offset, @Param("count") Integer count);
+	List<SBm> findAll();
 	//删除记录
 	void delete(@Param("bmId") Integer bmId);
 	//插入部门

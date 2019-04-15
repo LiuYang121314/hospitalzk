@@ -17,8 +17,12 @@ import com.litbo.hospitalzj.supplier.mapper.EqInfoMapper;
 import com.litbo.hospitalzj.supplier.service.HtLcService;
 import com.litbo.hospitalzj.supplier.service.exception.InsertException;
 import com.litbo.hospitalzj.supplier.util.Message;
+import com.litbo.hospitalzj.supplier.util.StringRandom;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,6 +47,11 @@ public class HtInfoController extends BaseController {
     public HtLcService htLcService;
     @Autowired
     private EqInfoMapper eqInfoMapper;
+    @Autowired
+    private JavaMailSender mailSender; //自动注入的Bean
+
+    @Value("${spring.mail.username}")
+    private String Sender; //读取配置文件中的参数
 
     //增加合同
     @RequestMapping("/insert")
@@ -86,20 +95,6 @@ public class HtInfoController extends BaseController {
         htLcService.InsertHtLc(htId, EnumProcess.PERFECT_INFORMATION.getMessage(), new Date());
         return new ResponseResult<Void>(SUCCESS);
     }
-
-    /* //等待审核验收
-     @RequestMapping("/ddshjys")
-     public ResponseResult<Void> updataStatePerfectTwo(@RequestParam("htId") Integer htId,
-                                                       @RequestParam("state") String state) {
-         if(state.equals("同意")){
-             htinfoService.updateHtInfoState(htId, EnumProcess.WAIT_ACCEPT_YS.getMessage());
-             htLcService.InsertHtLc(htId, EnumProcess.WAIT_ACCEPT_YS.getMessage(), new Date());
-         }else{
-             htinfoService.updateHtInfoState(htId, EnumProcess.WAIT_ACCEPT_YS_NOT.getMessage());
-             htLcService.InsertHtLc(htId, EnumProcess.WAIT_ACCEPT_YS_NOT.getMessage(), new Date());
-         }
-         return new ResponseResult<Void>(SUCCESS);
-     }*/
     //等待审核验收
     @RequestMapping("/ddshys")
     public ResponseResult<Void> ddshys(@RequestParam("htId") Integer htId) {
@@ -134,7 +129,7 @@ public class HtInfoController extends BaseController {
     //通过验证码查询合同信息
     @RequestMapping("/yzm")
     public ResponseResult<HtInfo> selectHtInfo(String htYzm) {
-        HtInfo data = htinfoService.selectHtInfo(htYzm);
+        HtInfo data = htinfoService.selectHtInfo(htYzm.toUpperCase());
         return new ResponseResult<HtInfo>(SUCCESS, data);
     }
 
@@ -147,7 +142,17 @@ public class HtInfoController extends BaseController {
 
     //生成验证码，并修改
     @RequestMapping("/updateYzm")
-    public ResponseResult<Void> updataYzm(@RequestParam("htId") Integer htId, @RequestParam("htYzm") String htYzm, HttpSession session) {
+    public ResponseResult<Void> updataYzm(@RequestParam("htId") Integer htId,@RequestParam("email") String email) {
+        String htYzm=StringRandom.getStringRandom(8);
+        System.out.println(htYzm);
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(Sender);
+        message.setTo(email);
+        message.setSubject("主题:南方医院合同验证码验证");
+        message.setText("您的医院系统合同验证码是"+htYzm+","
+                + "此验证码是您查询合同流程的重要依据，请妥善管理！"
+                + "如有遗失，请联系系统管理员，谢谢合作！！！");
+        mailSender.send(message);
         htinfoService.updateYzm(htId, htYzm, EnumProcess.WAIT_ACCEPT.getMessage());
         htLcService.InsertHtLc(htId, EnumProcess.WAIT_ACCEPT.getMessage(), new Date());
         return new ResponseResult<Void>(SUCCESS);

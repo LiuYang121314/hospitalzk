@@ -39,7 +39,7 @@ public class UserController extends BaseController {
 
     @RequestMapping("/all")
     public ResponseResult<List<UserRoleVo>> getAll() {
-        List<UserRoleVo> data=userService.findAll(0,10);
+        List<UserRoleVo> data=userService.findAll();
         return new ResponseResult<List<UserRoleVo>>(SUCCESS,data);
     }
     @RequestMapping("/insert")

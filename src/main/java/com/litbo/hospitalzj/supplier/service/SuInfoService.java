@@ -21,5 +21,5 @@ public interface SuInfoService {
     List<SuInfo> findSuByState(Integer state);
     void updatePwd(@Param("suId") Integer suId,@Param("password")String password);
     public SuInfo login(String suMc, String password) throws UserNotFoundException, PasswordNotMatchException;
-    void sendEmail(String suMc,String email,String password);
+    void sendEmail(Integer suId,String suMc,String email,String password);
 }

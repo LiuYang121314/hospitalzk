@@ -76,6 +76,16 @@ public class SybServiceImpl implements SybService {
     }
 
     @Override
+    public SybC findByEqIdandJcyqIdLast(String tableName, String eqId, String jcyqId) {
+        return sybMapper.findByEqIdandJcyqIdLast(tableName,eqId,jcyqId);
+    }
+
+    @Override
+    public List<SybC> findByEqIdandJcyqId(String tableName, String eqId, String jcyqId) {
+        return sybMapper.findByEqIdandJcyqId(tableName, eqId, jcyqId);
+    }
+
+    @Override
     public List<SybC> findByEqIdandJcyqIdC(String eqId, String jcyqId) {
         return sybMapper.findByEqIdandJcyqIdC(eqId, jcyqId);
     }

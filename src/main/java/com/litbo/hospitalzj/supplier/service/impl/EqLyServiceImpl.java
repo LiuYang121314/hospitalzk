@@ -31,8 +31,8 @@ public class EqLyServiceImpl implements EqLyService{
 		return eqLyMapper.findById(eqlyId);
 	}
 	@Override
-	public List<EqLy> getAll(@Param("offset")Integer offset, @Param("count") Integer count) {
-		return eqLyMapper.findAll(offset,count);
+	public List<EqLy> getAll() {
+		return eqLyMapper.findAll();
 	}
 
 	@Override

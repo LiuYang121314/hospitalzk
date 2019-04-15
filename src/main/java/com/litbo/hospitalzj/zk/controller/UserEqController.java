@@ -36,14 +36,6 @@ public class UserEqController extends BaseController{
 	private YqEqService yqEqService;
 	@Autowired
 	private UserPmService userPmService;
-	//测试通过
-	//为用户添加检测设备
-	/*@RequestMapping("/insertBatchByJcEqid/{userId}/{jcEqid}/{ndjhId}")
-	public ResponseResult<Void> insertBatchByJcEqid(@PathVariable String userId,@PathVariable String jcEqid,@PathVariable String ndjhId,HttpSession session){
-		String shrId=getUserIdFromSession(session);
-		userEqService.insertBatchByJcEqid(userId,jcEqid,shrId,ndjhId);
-		return new ResponseResult<Void>(SUCCESS);
-	}*/
 	@RequestMapping("/insertBatchByJcEqid")
 	public ResponseResult<Integer> insertBatchByEqid(UserEq userEq,
 													 @RequestParam("eqPmId") String eqPmId,
@@ -165,11 +157,7 @@ public class UserEqController extends BaseController{
 		userEqService.setEqStateNotIs(jceqId,userId,shrId);
 		return new ResponseResult<Void>(SUCCESS);
 	}
-	/*@RequestMapping("/setYqStateNotIs")
-	public ResponseResult<Void> setYqStateNotIs(@RequestParam("jcyqId")String jcyqId,@RequestParam("eqId")String eqId,@RequestParam("state")Integer state){
-		yqEqService.updateState(jcyqId,eqId,state);
-		return new ResponseResult<Void>(SUCCESS);
-	}*/
+
 	//待审核
 	@RequestMapping("/setUserEqStateDsh")
 	public ResponseResult<Void> setEqTypeNotIs(@RequestParam("jceqId")String jceqId,HttpSession session){

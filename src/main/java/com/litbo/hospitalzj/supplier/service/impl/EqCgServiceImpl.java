@@ -41,8 +41,8 @@ public class EqCgServiceImpl implements EqCgService{
 	}*/
 
 	@Override
-	public List<EqCgfs> getAll(@Param("offset")Integer offset, @Param("count") Integer count) {
-		return eqCgMapper.findAll(offset,count);
+	public List<EqCgfs> getAll() {
+		return eqCgMapper.findAll();
 	}
 
 

@@ -40,8 +40,10 @@ public interface SybService {
     void updateMan(SybC sybC);
 
     //根据设备Id,检测仪器Id以及状态查询电器表查询最后一条记录
-    SybC findByEqIdandJcyqIdLast1C(@Param("eqId")String eqId, @Param("jcyqId")String jcyqId);
+    SybC findByEqIdandJcyqIdLast(@Param("tableName") String tableName,@Param("eqId")String eqId, @Param("jcyqId")String jcyqId);
+    List<SybC> findByEqIdandJcyqId(@Param("tableName") String tableName,@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
 
+    SybC findByEqIdandJcyqIdLast1C(@Param("eqId")String eqId, @Param("jcyqId")String jcyqId);
     //根据设备Id,检测仪器Id以及状态查询电器表
     List<SybC> findByEqIdandJcyqIdC(@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
 

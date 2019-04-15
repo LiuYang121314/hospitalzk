@@ -107,11 +107,12 @@ public class SuInfoController extends BaseController {
     }
     //发送密码和用户
     @RequestMapping("/mail")
-	public ResponseResult<Void> sendMail(@RequestParam("email") String email,
+	public ResponseResult<Void> sendMail(
+            @RequestParam("suId") Integer suId,
+	        @RequestParam("email") String email,
 			@RequestParam("suMc") String suMc,
-			@RequestParam("password") String password,
-			HttpSession session) throws MessagingException {
-		suInfoService.sendEmail(suMc,email,password);
+			@RequestParam("password") String password) throws MessagingException {
+		suInfoService.sendEmail(suId,suMc,email,password);
 		return new ResponseResult<>(SUCCESS);
 	}
 }

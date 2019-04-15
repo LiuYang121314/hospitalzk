@@ -31,8 +31,8 @@ public class SBmServiceImpl implements SBmService {
 	}
 
 	@Override
-	public List<SBm> findAll(Integer offset, Integer count) {
-		return sBmMapper.findAll(offset,count);
+	public List<SBm> findAll() {
+		return sBmMapper.findAll();
 	}
 
 	@Override

@@ -19,8 +19,8 @@ public interface EqJfMapper {
 	EqJfly findById(@Param("eqjfId") Integer eqjfId);
 	@Select("SELECT eqjf_id eqjfId, eqjf_name eqjfName FROM eq_jfly WHERE eqjf_name=#{eqjfName} and is_delete=0")
 	EqJfly findByName(@Param("eqjfName") String eqjfName);
-	@Select("SELECT eqjf_id eqjfId, eqjf_name eqjfName FROM eq_jfly where is_delete = 0 ORDER BY eqjf_id ASC LIMIT #{offset},#{count}")
-	List<EqJfly> findAll(@Param("offset")Integer offset, @Param("count") Integer count);
+	@Select("SELECT eqjf_id eqjfId, eqjf_name eqjfName FROM eq_jfly where is_delete = 0")
+	List<EqJfly> findAll();
 	//删除，修改状态
 	/*@Delete("delete from eq_jfly where eqjf_id = #{eqjfId}")*/
 	@Update("update eq_jfly set is_delete = #{isDelete} where eqjf_id = #{eqjfId}")

@@ -32,8 +32,8 @@ public class EqYtServiceImpl implements EqYtService{
 		return eqYtMapper.findById(eqytId);
 	}
 	@Override
-	public List<EqYt> getAll(@Param("offset")Integer offset, @Param("count") Integer count) {
-		return eqYtMapper.findAll(0,10);
+	public List<EqYt> getAll() {
+		return eqYtMapper.findAll();
 	}
 
 	@Override

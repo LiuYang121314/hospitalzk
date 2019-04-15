@@ -110,7 +110,7 @@ public class SuInfoServiceImpl implements SuInfoService {
 	 * @throws MessagingException 
 	 */
 	@Override
-	public void sendEmail(String suMc,String email,String password){
+	public void sendEmail(Integer suId,String suMc,String email,String password){
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setFrom(Sender);
 		message.setTo(email); 
@@ -118,6 +118,7 @@ public class SuInfoServiceImpl implements SuInfoService {
 		message.setText("您的医院系统登录用户名是"+suMc+","
 				+ "登录密码是"+password+",请妥善管理！"
 				+ "如有遗失，请联系系统管理员，谢谢合作！！！");
+        suInfoMapper.updatePwd(suId,password);
 		mailSender.send(message);
 	}
 }

@@ -159,7 +159,13 @@ public interface SybMapper {
             "    where id = #{id,jdbcType=BIGINT}")
     void updateMan(SybC sybC);
 
-    //根据设备Id,检测仪器Id以及状态查询电器表查询最后一条记录
+    //根据设备Id,检测仪器Id以及状态查询最后一条记录
+    @Select("select * from ${tableName} where eq_id=#{eqId} and jcyq_id=#{jcyqId} order by id desc limit 1" )
+    SybC findByEqIdandJcyqIdLast(@Param("tableName") String tableName,@Param("eqId")String eqId, @Param("jcyqId")String jcyqId);
+    //根据设备Id,检测仪器Id以及状态查询
+    @Select("select * from ${tableName} where eq_id=#{eqId} and jcyq_id=#{jcyqId}" )
+    List<SybC> findByEqIdandJcyqId(@Param("tableName") String tableName,@Param("eqId")String eqId,@Param("jcyqId")String jcyqId);
+
     @Select("select * from syb_c where syb_c.eq_id=#{eqId} and syb_c.jcyq_id=#{jcyqId} order by id desc limit 1" )
     SybC findByEqIdandJcyqIdLast1C(@Param("eqId")String eqId, @Param("jcyqId")String jcyqId);
 

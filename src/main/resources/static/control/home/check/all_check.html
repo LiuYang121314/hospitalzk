@@ -53,25 +53,31 @@
                 <div class="layui-form-item" style="width: 50%;margin: 30px auto;">
                     <label class="layui-form-label">仪器名称</label>
                     <div class="layui-input-block">
-                        <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input">
+                        <input type="text" name="jcyqName" required  lay-verify="required" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item" style="width: 50%;margin: 30px auto;">
                     <label class="layui-form-label">型号</label>
                     <div class="layui-input-block">
-                        <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input">
+                        <input type="text" name="jcyqXh" required  lay-verify="required" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item" style="width: 50%;margin: 30px auto;">
-                    <label class="layui-form-label">品牌</label>
+                    <label class="layui-form-label">检测仪器档案号</label>
                     <div class="layui-input-block">
-                        <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input">
+                        <input type="text" name="jcyqDah" required  lay-verify="required" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item" style="width: 50%;margin: 30px auto;">
-                    <label class="layui-form-label">科室</label>
+                    <label class="layui-form-label">检测仪器编号</label>
                     <div class="layui-input-block">
-                        <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input">
+                        <input type="text" name="jcyqBh" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="width: 50%;margin: 30px auto;">
+                    <label class="layui-form-label">仪器检测时间</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="jcyqJzTime" required  lay-verify="required" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item btn">
@@ -101,7 +107,7 @@
         form.on("submit(search)",function (data) {
             console.log(data.field);
             $.ajax({
-                url:"?jcEqName="+data.field.jcEqName,
+                url:"/yq/findYqByYqName?jceqName="+data.field.jcEqName,
                 method:"POST",
                 dataType:"JSON",
                 success:function(res){
@@ -122,7 +128,7 @@
                         table.render({
                             elem:"#searchInfo"
                             ,cellMinWidth: 80
-                            ,url:"?jcEqName="+data.field.jcEqName
+                            ,url:"/yq/findYqByYqName?jceqName="+data.field.jcEqName
                             ,method:"GET"
                             ,response: {
                                 statusName: 'status' //规定数据状态的字段名称，默认：code
@@ -180,7 +186,7 @@
         table.render({
             elem:"#allInfo"
             ,cellMinWidth: 80
-            ,url:""
+            ,url:"/yq/findAll"
             ,method:"GET"
             ,response: {
                 statusName: 'status' //规定数据状态的字段名称，默认：code
@@ -212,7 +218,7 @@
         form.on("submit(saveAdd)",function(data){
             console.log(data.field);
             $.ajax({
-                url:"",
+                url:"/yq/insert",
                 method:"POST",
                 data:data.field,
                 dataType:"JSON",
@@ -238,7 +244,7 @@
                     obj.del();
                     // layer.close(index);
                     $.ajax({
-                        url:"?jcEqId="+obj.data.jcEqId,
+                        url:"/yq/delete/"+obj.data.jcEqId,
                         success:function(res){
                             if(res.state === 200){
                                 layer.msg("删除成功");

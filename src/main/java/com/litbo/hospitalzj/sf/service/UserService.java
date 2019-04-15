@@ -16,7 +16,7 @@ public interface UserService {
     //用户登录
     UserRoleVo login(String userName, String userPwd);
     //查找全部用户信息
-    List<UserRoleVo> findAll(@Param("offset")Integer offset, @Param("count") Integer count);
+    List<UserRoleVo> findAll();
     //模糊查询用户信息
     List<UserRoleVo> findByNameLike(String userName);
     List<String> findRoleName();

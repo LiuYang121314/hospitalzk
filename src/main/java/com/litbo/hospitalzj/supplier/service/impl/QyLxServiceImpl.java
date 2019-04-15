@@ -21,8 +21,8 @@ public class QyLxServiceImpl implements QyLxService {
 	private QyLxMapper  qyLxMapper;
 
 	@Override
-	public List<QyLx> findAll(Integer offset, Integer count) {
-		return qyLxMapper.findAll(offset,count);
+	public List<QyLx> findAll() {
+		return qyLxMapper.findAll();
 	}
 
 	@Override

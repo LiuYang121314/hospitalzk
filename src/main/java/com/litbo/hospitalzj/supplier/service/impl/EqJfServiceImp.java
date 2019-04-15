@@ -32,8 +32,8 @@ public class EqJfServiceImp implements EqJfService{
 		return eqJflyMapper.findById(eqjfId);
 	}
 	@Override
-	public List<EqJfly> getAll(@Param("offset")Integer offset, @Param("count") Integer count) {
-		return eqJflyMapper.findAll(offset,count);
+	public List<EqJfly> getAll() {
+		return eqJflyMapper.findAll();
 	}
 
 	@Override

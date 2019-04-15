@@ -7,6 +7,8 @@ import com.litbo.hospitalzj.checklist.utils.commons.CommonUtils;
 import com.litbo.hospitalzj.controller.BaseController;
 import com.litbo.hospitalzj.sf.service.UserService;
 import com.litbo.hospitalzj.zk.Enum.EnumProcess2;
+import com.litbo.hospitalzj.zk.domian.TabEq;
+import com.litbo.hospitalzj.zk.service.TabEqService;
 import com.litbo.hospitalzj.zk.service.UserEqService;
 import com.litbo.hospitalzj.zk.service.YqEqService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,7 +33,7 @@ public class ZsbController extends BaseController {
     @Autowired
     private UserEqService userEqService;
     @Autowired
-    private UserService userService;
+    private TabEqService tabEqService;
     @Autowired
     private YqEqService yqEqService;
 
@@ -94,6 +97,11 @@ public class ZsbController extends BaseController {
         //修改状态为待上传
         userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
         zsbService.saveChild(sybC);
+        TabEq table=new TabEq();
+        table.setEqId(Integer.valueOf(eqId));
+        table.setJcyqId(Integer.valueOf(jcyqId));
+        table.setTableName("zsb_c");
+        tabEqService.insert(table);
         long[] x={sybC.getId(),yqEqId};
         return new ResponseResult<>(200,x);
     }
@@ -114,6 +122,11 @@ public class ZsbController extends BaseController {
         //修改状态为待上传
         userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
         zsbService.saveMan(sybC);
+        TabEq table=new TabEq();
+        table.setEqId(Integer.valueOf(eqId));
+        table.setJcyqId(Integer.valueOf(jcyqId));
+        table.setTableName("zsb_m");
+        tabEqService.insert(table);
         long[] x={sybC.getId(),yqEqId};
         return new ResponseResult<>(200,x);
     }
@@ -133,6 +146,10 @@ public class ZsbController extends BaseController {
         //修改状态为待上传
         userEqService.setEqState(userEqId,EnumProcess2.TO_UPLOAD.getMessage());
         zsbService.saveStzs(stzsM);
+        TabEq table=new TabEq();
+        table.setEqId(Integer.valueOf(eqId));
+        table.setJcyqId(Integer.valueOf(jcyqId));
+        table.setTableName("stzs_m");
         long[] x={stzsM.getId(),yqEqId};
         return new ResponseResult<>(200,x);
     }
@@ -141,7 +158,28 @@ public class ZsbController extends BaseController {
         zsbService.updateStzs(stzsM);
         return new ResponseResult<>(200);
     }
-    @RequestMapping("/findByEqIdandJcyqIdLast1C")
+
+    @RequestMapping("/findByEqIdandJcyqIdLast1")
+    public ResponseResult findByEqIdandJcyqIdLast1(@RequestParam("eqId")String eqId,@RequestParam("jcyqId") String jcyqId){
+        String tableName=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
+        SybC data=zsbService.findByEqIdandJcyqIdLast(tableName,eqId,jcyqId);
+        List list= new ArrayList();
+        list.add(data);
+        list.add(tableName);
+        return new ResponseResult(200,list);
+    }
+    @RequestMapping("/findByEqIdandJcyqId")
+    public ResponseResult<List<SybC>> findByEqIdandJcyqId(@RequestParam("eqId")String eqId,@RequestParam("jcyqId") String jcyqId){
+        String tableName=tabEqService.findTable(Integer.valueOf(eqId),Integer.valueOf(jcyqId));
+        List<SybC> data=zsbService.findByEqIdandJcyqId(tableName,eqId,jcyqId);
+        List list= new ArrayList();
+        list.add(data);
+        list.add(tableName);
+        return new ResponseResult<List<SybC>>(200,list);
+    }
+
+
+   /* @RequestMapping("/findByEqIdandJcyqIdLast1C")
     public ResponseResult<SybC> findByEqIdandJcyqIdLast1C(String eqId, String jcyqId){
         SybC sybC= zsbService.findByEqIdandJcyqIdLast1C(eqId, jcyqId);
         return new ResponseResult<SybC>(200,sybC);
@@ -174,7 +212,7 @@ public class ZsbController extends BaseController {
         List<StzsM> stzsM= zsbService.findByEqIdandJcyqIdS(eqId, jcyqId);
         return new ResponseResult<List<StzsM>>(200,stzsM);
     }
-
+*/
 
     //查询数据表中全部数据
      @RequestMapping("/findAllC")

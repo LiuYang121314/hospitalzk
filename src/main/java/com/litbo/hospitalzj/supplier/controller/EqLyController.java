@@ -32,12 +32,12 @@ public class EqLyController extends BaseController{
 	}
 	@RequestMapping("/all")
 	public ResponseResult<List<EqLy>> getAll() {
-		List<EqLy> data=eqLyService.getAll(0,10);
+		List<EqLy> data=eqLyService.getAll();
 		return new ResponseResult<List<EqLy>>(SUCCESS,data);
 	}
 	@RequestMapping("/allEqly")
 	public ResponseResult<List<EqLy>> All() {
-		List<EqLy> data=eqLyService.getAll(0,200);
+		List<EqLy> data=eqLyService.getAll();
 		return new ResponseResult<List<EqLy>>(SUCCESS,data);
 	}
 	@RequestMapping("/insert")

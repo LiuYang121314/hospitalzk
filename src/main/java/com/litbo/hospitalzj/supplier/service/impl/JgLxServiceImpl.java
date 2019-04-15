@@ -19,8 +19,8 @@ public class JgLxServiceImpl implements JgLxService {
 	private JgLxMapper jgLxMapper;
 
 	@Override
-	public List<JgLx> findAll(Integer offset, Integer count) {
-		return jgLxMapper.findAll(offset,count);
+	public List<JgLx> findAll() {
+		return jgLxMapper.findAll();
 	}
 
 	@Override

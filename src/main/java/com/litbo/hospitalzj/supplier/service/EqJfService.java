@@ -14,7 +14,7 @@ public interface EqJfService {
 
 	EqJfly getById(Integer eqjfId);
 
-	List<EqJfly> getAll(@Param("offset")Integer offset, @Param("count") Integer count);
+	List<EqJfly> getAll();
 
 	void delete(@Param("eqjfId")Integer eqjfId, @Param("isDelete")Integer isDelete);
 
