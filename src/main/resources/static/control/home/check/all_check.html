@@ -104,7 +104,7 @@
             ,   table = layui.table
             ,   form = layui.form;
         // 查询
-        form.on("submit(search)",function (data) {
+        form.on("submit(search)",function(data){
             console.log(data.field);
             $.ajax({
                 url:"/yq/findYqByYqName?jceqName="+data.field.jcEqName,
