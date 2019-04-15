@@ -37,6 +37,12 @@ public class YqController extends BaseController{
 	private NdjhService ndjhService;
 	@Autowired
 	private YqJxjlService yqJxjlService;
+	//仪器模糊查询
+	@RequestMapping("/insert")
+	public ResponseResult<List<Yq>> insert(String jcyqName){
+		List<Yq> data=yqService.findYqByYqName(jcyqName);
+		return new ResponseResult<List<Yq>>(SUCCESS,data);
+	}
 	//新增仪器
 	@RequestMapping("/insert")
 	public ResponseResult<Void> insert(Yq yq){
