@@ -413,35 +413,6 @@
             , layer = layui.layer
             , $ = layui.jquery
             , form = layui.form;
-        table.render({
-            elem:"#testerInfo",
-            cellMinWidth:100,
-            toolbar: '#toolbarDemo',
-            url:"/hxj/findByHxjId?hxjId="+ids,
-            method:"GET",
-            response: {
-                statusName: 'status'
-                ,statusCode: 200
-                ,msgName: 'hint'
-                ,countName: 'total'
-                ,dataName: 'data'
-            },
-            parseData:function(res){
-                console.log(res.data);
-//                sessionStorage['lreqId'] = res.data.eqId;
-                return{
-                    "status":200
-                    ,"msg":res.message
-                    ,"count":res.total
-                    ,"data":[res.data]
-                }
-            },
-            cols:[[
-                {field:'tester', title:'检测人',align:'center'},
-                {field:'testTime', title:'检测时间',align:'center'},
-                {field:'jcsm', title:'检测情况说明',align:'center'}
-            ]]
-        });
         // 检测人信息
         table.render({
             elem:"#testerInfo",
