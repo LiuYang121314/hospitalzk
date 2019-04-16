@@ -24,6 +24,11 @@ public class EqInfoServiceImpl implements EqInfoService {
 	YqMapper yqMapper;
 
 	@Override
+	public Integer updateInfo1(EqInfo eqinfo) {
+		return eqInfoMapper.updateInfo1(eqinfo);
+	}
+
+	@Override
 	public void updateEqPm(Integer eqPmId, Integer eqId) {
 		eqInfoMapper.updateEqPm(eqPmId, eqId);
 	}

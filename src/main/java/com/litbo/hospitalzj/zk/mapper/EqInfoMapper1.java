@@ -38,6 +38,19 @@ public interface EqInfoMapper1 {
 			"      #{eqQyrq,jdbcType=VARCHAR}, #{eqCfdd,jdbcType=VARCHAR}, #{eqBfjd,jdbcType=VARCHAR}\n" +
 			"      )")
 	void insert(EqInfo eq);
+	@Update(" update eq_info\n" +
+			"    set eq_mc = #{eqMc,jdbcType=VARCHAR},\n" +
+			"      eq_dah = #{eqDah,jdbcType=VARCHAR},\n" +
+			"      eq_pm_id = #{eqPmId,jdbcType=VARCHAR},\n" +
+			"      eq_ccdate = #{eqCcdate,jdbcType=VARCHAR},\n" +
+			"      eq_cscs = #{eqCscs,jdbcType=VARCHAR},\n" +
+			"      eq_syks = #{eqSyks,jdbcType=VARCHAR},\n" +
+			"      eq_jx = #{eqJx,jdbcType=VARCHAR},\n" +
+			"	   eq_scbh=#{eqScbh},"+
+			"	   eq_qyrq=#{eqQyrq},"+
+			"      eq_cfdd = #{eqCfdd,jdbcType=VARCHAR},\n" +
+			"    where eq_id = #{eqId,jdbcType=INTEGER}")
+	Integer updateInfo1(EqInfo eqinfo);
 
 	@Update("update eq_info set eq_pm_id=#{eqPmId} where eq_id=#{eqId}")
 	void updateEqPm(@Param("eqPmId")Integer eqPmId,@Param("eqId") Integer eqId);
@@ -45,7 +58,7 @@ public interface EqInfoMapper1 {
 	@Delete("delete from EqInfo_template where dc_templateid = #{dcTemplateId}")
 	void delete(String id);
 
-	@Select("select * from eq_info")
+	@Select("select * from eq_info e left join eq_pm p on e.eq_pm_id=p.eq_pm_id ")
 	List<EqInfo> findAll();
 
 	@Select("SELECT * FROM eq_info WHERE eq_id IN(SELECT eq_id FROM yq_eq WHERE jcyq_id=#{jcyqId})")
