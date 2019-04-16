@@ -28,6 +28,11 @@ public class DcsjhyServiceImpl implements DcsjhyService {
     }
 
     @Override
+    public DcsjhyTemplate findTemplateById(Integer dcTemplateid, String tableName) {
+        return dcsjhyMapper.findTemplateById(dcTemplateid,tableName);
+    }
+
+    @Override
     public void updateM(DcsjhyTemplate dcsjhyTemplate) {
         dcsjhyMapper.updateM(dcsjhyTemplate);
     }

@@ -10,6 +10,7 @@ import java.util.List;
 public interface CcyService {
     //查询除颤仪检测模板表
     public CcyTemplate findTemplate();
+    public CcyTemplate findTemplateById(Integer ccYtemplateId);
     //修改模板表数据
     public void updateTemplate(CcyTemplate ccyTemplate);
     //插入模板表数据

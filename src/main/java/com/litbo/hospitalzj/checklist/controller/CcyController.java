@@ -45,6 +45,15 @@ public class CcyController extends BaseController {
         return new ResponseResult<CcyTemplate>(200, dqjc);
     }
     /**
+     * 查询含有模板表数据的电气检测表
+     * @return
+     */
+    @RequestMapping("/findTemplateById")
+    public ResponseResult<CcyTemplate> findTemplateById(Integer ccYtemplateId){
+        CcyTemplate dqjc = ccyService.findTemplateById(ccYtemplateId);
+        return new ResponseResult<CcyTemplate>(200, dqjc);
+    }
+    /**
      * 修改模板表数据
      * @return
      */

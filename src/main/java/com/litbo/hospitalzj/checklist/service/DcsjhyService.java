@@ -21,8 +21,10 @@ public interface DcsjhyService {
 
 		//查询多参数监护仪模板表(儿童)
 		public DcsjhyTemplate findTemplate_c();
+		public DcsjhyTemplate findTemplateById(@Param("dcTemplateid") Integer dcTemplateid,@Param("tableName") String tableName);
 
-		//修改模板表数据
+
+	//修改模板表数据
 		void updateM(DcsjhyTemplate dcsjhyTemplate);
 		//成人
 		void updateC(DcsjhyTemplate dcsjhyTemplate);

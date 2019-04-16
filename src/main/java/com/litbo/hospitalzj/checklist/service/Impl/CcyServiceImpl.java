@@ -21,6 +21,11 @@ public class CcyServiceImpl implements CcyService {
     }
 
     @Override
+    public CcyTemplate findTemplateById(Integer ccYtemplateId) {
+        return ccyMapper.findTemplateById(ccYtemplateId);
+    }
+
+    @Override
     public void updateTemplate(CcyTemplate ccyTemplate) {
         ccyMapper.updateTemplate(ccyTemplate);
     }

@@ -156,105 +156,40 @@
                 <td id="jyjcResult"></td>
             </tr>
         </table>
-        <fieldset class="layui-elem-field layui-field-title">
-            <legend style="color: #000000;font-weight: bold;">检测人信息</legend>
-        </fieldset>
-        <table class="layui-hide" id="testerInfo"></table>
         <div class="col-xs-12 btn">
-            <a id="update" class="layui-btn">修改</a>
-            <a id="back" class="layui-btn">暂不上传</a>
-            <button id="upload" class="layui-btn layui-btn-normal">上传</button>
+            <a id="back" class="layui-btn">返回</a>
+            <a id="update" class="layui-btn layui-btn-normal">修改</a>
         </div>
     </div>
 </div>
-<script type="text/html" id="toolbarDemo">
-    <div class="layui-btn-container">
-    </div>
-</script>
 <script>
-    // 获取上个页面传递的类型
-    var type = window.location.search;
-    var ids = parseInt(type.split("=")[1]);
-    // var thiseqId = parseInt(sessionStorage['thiseqId']);
-    // var thisjcyqId = parseInt(sessionStorage['thisjcyqId']);
-    var thissjId = parseInt(sessionStorage['thissjId']);
-    var thisId = parseInt(sessionStorage['thisId']);
-    $(function(){
-        $.ajax({
-            url:"/jhy/findByDcidM?dcid="+ids,
-            method:"GET",
-            dataType:"JSON",
-            success:function(res){
-                console.log(res);
-                if(res.data != null && res.data != ""){
-
-                }
-            }
-        })
-    });
     //Demo
     layui.use(['table','layer','jquery'],function(){
         var table = layui.table
             , layer = layui.layer
             , $ = layui.jquery;
-        table.render({
-            elem:"#testerInfo",
-            cellMinWidth:100,
-            toolbar: '#toolbarDemo',
-            url:"/jhy/findByDcidM?dcid="+ids,
-            method:"GET",
-            response: {
-                statusName: 'status'
-                ,statusCode: 200
-                ,msgName: 'hint'
-                ,countName: 'total'
-                ,dataName: 'data'
-            },
-            parseData:function(res){
-                console.log(res.data);
-                return{
-                    "status":200
-                    ,"msg":res.message
-                    ,"count":res.total
-                    ,"data":[res.data]
-                }
-            },
-            cols:[[
-                {field:'tester', title:'检测人',align:'center'},
-                {field:'testTime', title:'检测时间',align:'center'},
-                {field:'jcsm', title:'检测情况说明',align:'center'}
-            ]]
-        });
-        // 上传
-        $("#upload").click(function(){
+        $(function(){
             $.ajax({
-                url:"/dqjc/updateState?yqEqId="+thissjId+"&userEqId="+thisId,
-                method:"POST",
+                url:"/jhy/findTemplateMan",
+                method:"GET",
+                dataType:"JSON",
                 success:function(res){
-                    if(res.state === 200){
-                        layer.msg("上传成功，请耐心等待管理员审核");
-                        setTimeout(function(){
-                            location.href="/control/home/home.html";
-                        },1000)
-                    }else{
-                        layer.msg("上传失败");
+                    console.log(res);
+                    if(res.data != null && res.data != ""){
+
                     }
-                },
-                error:function(data){
-                    layer.msg("上传失败,请稍后再试");
-                    console.log(data);
                 }
             })
         });
-        // 修改
+     	// 修改
         $("#update").click(function(){
-            location.href="/control/home/update/write_life_info.html?id="+ids;
+            layer.msg("111");
         });
         // 返回
         $("#back").click(function () {
-            location.href="/control/home/home.html";
-        })
-    })
+            window.history.back();
+        });
+    });
 </script>
 </body>
 

@@ -13,6 +13,8 @@ public interface CcyMapper {
     //查询电气检测模板表
     @Select("select * from ccy_template order by ccy_template_id desc limit 1")
     public CcyTemplate findTemplate();
+    @Select("select * from ccy_template where ccy_template_id=#{ccyTemplateId}")
+    public CcyTemplate findTemplateById(Integer ccYtemplateId);
     //修改模板表数据
     @Update("  update ccy_template\n" +
             "    set sfnl_yxwc = #{sfnlYxwc,jdbcType=VARCHAR},\n" +

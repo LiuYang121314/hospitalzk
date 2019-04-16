@@ -28,7 +28,9 @@ public interface DcsjhyMapper {
 	//查询多参数监护仪模板表(儿童)
 	@Select("select * from dcsjhy_template_c order by dc_templateid desc limit 1")
 	public DcsjhyTemplate findTemplate_c();
-
+	//查询多参数监护仪模板表(儿童)
+	@Select("select * from ${tableName} wehere dc_templateid=#{dcTemplateid}")
+	public DcsjhyTemplate findTemplateById(@Param("dcTemplateid") Integer dcTemplateid,@Param("tableName") String tableName);
 	//修改模板表数据
 	@Update("update dcsjhy_template_m\n" +
 			"    set xl_test1 = #{xlTest1,jdbcType=INTEGER},\n" +

@@ -52,6 +52,7 @@ public class JhyController extends BaseController {
 		DcsjhyTemplate dcsjhyTemplate = dcsjhyService.findTemplate_m();
 		return new ResponseResult<DcsjhyTemplate>(200, dcsjhyTemplate);
 	}
+
 	//幼儿
 	@RequestMapping("/findTemplateChild")
 	public ResponseResult<DcsjhyTemplate> findTemplateChild(){
