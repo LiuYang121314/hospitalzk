@@ -59,7 +59,9 @@
                 <div class="layui-form-item" style="width: 50%;margin: 30px auto;">
                     <label class="layui-form-label">设备品名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="eqPmId" required  lay-verify="required" autocomplete="off" class="layui-input">
+                        <select id="eqPm1" name="eqPmId" lay-verify="" lay-search>
+                            <option value=""></option>
+                        </select>
                     </div>
                 </div>
                 <div class="layui-form-item" style="width: 50%;margin: 30px auto;">
@@ -71,7 +73,9 @@
                 <div class="layui-form-item" style="width: 50%;margin: 30px auto;">
                     <label class="layui-form-label">使用科室</label>
                     <div class="layui-input-block">
-                        <input type="text" name="eqSyks" required  lay-verify="required" autocomplete="off" class="layui-input">
+                        <select id="eqKs1" name="eqSyks" lay-verify="" lay-search>
+                            <option value=""></option>
+                        </select>
                     </div>
                 </div>
                 <div class="layui-form-item" style="width: 50%;margin: 30px auto;">
@@ -131,7 +135,9 @@
                 <div class="layui-form-item" style="width: 50%;margin: 30px auto;">
                     <label class="layui-form-label">设备品名</label>
                     <div class="layui-input-block">
-                        <input type="text" id="eqPmId" name="eqPmId" required  lay-verify="required" autocomplete="off" class="layui-input">
+                        <select id="eqPm2" name="eqPmId" lay-verify="" lay-search>
+                            <option value=""></option>
+                        </select>
                     </div>
                 </div>
                 <div class="layui-form-item" style="width: 50%;margin: 30px auto;">
@@ -143,7 +149,9 @@
                 <div class="layui-form-item" style="width: 50%;margin: 30px auto;">
                     <label class="layui-form-label">使用科室</label>
                     <div class="layui-input-block">
-                        <input type="text" id="eqSyks" name="eqSyks" required  lay-verify="required" autocomplete="off" class="layui-input">
+                        <select id="eqKs2" name="eqSyks" lay-verify="" lay-search>
+                            <option value=""></option>
+                        </select>
                     </div>
                 </div>
                 <div class="layui-form-item" style="width: 50%;margin: 30px auto;">
@@ -205,6 +213,65 @@
             ,   $ = layui.jquery
             ,   table = layui.table
             ,   form = layui.form;
+        $(function(){
+            // 设备品名字段
+            function pmList(){
+                // 清空当前列表
+                $("#eqPm1").empty();
+                $("#eqPm2").empty();
+                // 添加默认选项
+                var op = '<option value=""></option>';
+                $("#eqPm1").append(op);
+                $("#eqPm2").append(op);
+                // 发出ajax请求，并处理结果
+                $.ajax({
+                    url:"/eqpm/allEqPm",
+                    method: "GET",
+                    dataType: "JSON",
+                    async:false,
+                    "success":function(json){
+                        // 遍历加载新列表项
+                        var list = json.data;
+                        for (var i = 0; i < list.length; i++) {
+                            // console.log(list[i].eqlyId + " - " + list[i].eqlyName);
+                            op = '<option value="' + list[i].eqlyName + '">' + list[i].eqlyName + '</option>';
+                            $("#eqPm1").append(op);
+                            $("#eqPm2").append(op);
+                        }
+                    }
+                });
+            }
+            pmList();
+
+            // 科室字段
+            function pmList(){
+                // 清空当前列表
+                $("#eqKs1").empty();
+                $("#eqKs2").empty();
+                // 添加默认选项
+                var op = '<option value=""></option>';
+                $("#eqKs1").append(op);
+                $("#eqKs2").append(op);
+                // 发出ajax请求，并处理结果
+                $.ajax({
+                    url:"/sbm/selectAll",
+                    method: "GET",
+                    dataType: "JSON",
+                    async:false,
+                    "success":function(json){
+                        // 遍历加载新列表项
+                        var list = json.data;
+                        for (var i = 0; i < list.length; i++) {
+                            // console.log(list[i].eqlyId + " - " + list[i].eqlyName);
+                            op = '<option value="' + list[i].eqlyName + '">' + list[i].eqlyName + '</option>';
+                            $("#eqKs1").append(op);
+                            $("#eqKs2").append(op);
+                        }
+                    }
+                });
+            }
+            pmList();
+        });
         // 查询
         form.on("submit(search)",function(data){
             console.log(data.field);
