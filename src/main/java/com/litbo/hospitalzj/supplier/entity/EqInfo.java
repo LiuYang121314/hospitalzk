@@ -10,7 +10,7 @@ public class EqInfo {
     private String eqDah;
 
     private String eqPmId;
-
+    private String eqPmName;
     private String eqXh;
 
     private String eqJldwId;
@@ -70,6 +70,14 @@ public class EqInfo {
     private String eqBfjd;
 
     private String eqQk;
+
+    public String getEqPmName() {
+        return eqPmName;
+    }
+
+    public void setEqPmName(String eqPmName) {
+        this.eqPmName = eqPmName;
+    }
 
     public String getEqQk() {
         return eqQk;

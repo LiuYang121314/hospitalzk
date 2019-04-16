@@ -5,9 +5,12 @@ import java.util.List;
 import com.litbo.hospitalzj.supplier.entity.EqInfo;
 import com.litbo.hospitalzj.supplier.vo.SelHtEqVo;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface EqInfoService {
+
+
 	Integer InsertEqInfo(EqInfo eqInfo);
 	
 	Integer findHtId(Integer eqId);

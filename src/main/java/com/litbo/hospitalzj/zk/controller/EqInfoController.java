@@ -25,23 +25,12 @@ public class EqInfoController extends BaseController{
 		eqInfoService.updateEqPm(eqId,eqPmId);
 		return new ResponseResult<Void>(SUCCESS);
 	}
-	
-	@RequestMapping("/insertEq")
-	public String insert(){
-		EqInfo dt=new EqInfo();
-		dt.setEqMc("小刀");
-		eqInfoService.insert(dt);
-		return "success";
+
+	@RequestMapping("/updateEqInfo1")
+	public ResponseResult<Void> updateEqInfo1(EqInfo eqInfo){
+		eqInfoService.updateInfo1(eqInfo);
+		return new ResponseResult<Void>(SUCCESS);
 	}
-
-	@RequestMapping("/deleteEq")
-	public String delete(){
-		String id="f1f98c86-e26d-4b8d-85bc-154b67f5ffee";
-		eqInfoService.delete(id);
-		return "deleteSuccess";
-	}
-
-
 
 	@RequestMapping("/findAllEq")
 	public ResponseResult<List<EqInfo>> findAll1(){

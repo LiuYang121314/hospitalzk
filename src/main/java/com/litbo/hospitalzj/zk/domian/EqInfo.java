@@ -11,6 +11,8 @@ public class EqInfo {
 
     private String eqPmId;
 
+    private String eqPmName;
+
     private String eqXh;
 
     private String eqJldwId;
@@ -68,6 +70,14 @@ public class EqInfo {
     private String eqCfdd;
 
     private String eqBfjd;
+
+    public String getEqPmName() {
+        return eqPmName;
+    }
+
+    public void setEqPmName(String eqPmName) {
+        this.eqPmName = eqPmName;
+    }
 
     public Integer getEqId() {
         return eqId;
