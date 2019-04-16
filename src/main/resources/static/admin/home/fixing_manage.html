@@ -119,7 +119,7 @@
                             maxmin:true,
                             btn:"确定",
                             yes:function(){
-                                location.href="./fixing_info.html";
+                                location.href="./fixing_manage.html";
                                 layer.closeAll();
                             }
                         });
@@ -143,15 +143,19 @@
                                     "status":200
                                     ,"msg":res.message
                                     ,"count":res.total
-                                    ,"data":res.data
+                                    ,"data":[res.data]
                                 }
                             },
                             cols:[[
-                                {field:'jcyqName', title:'检测仪器名称',align:'center'},
-                                {field:'jcyqDah', title:'档案号',align:'center'},
-                                {field:'jcyqXh', title:'型号',align:'center'},
-                                {field:'jcyqBh', title:'编号',align:'center'},
-                                {field:'jcyqJzTime', title:'校准时间',align:'center'},
+                                {field:'eqMc', title:'设备名称',align:'center'},
+                                {field:'eqDah', title:'设备档案号',align:'center'},
+                                {field:'eqSyks', title:'使用科室',align:'center'},
+                                {field:'eqJx', title:'设备机型',align:'center'},
+                                {field:'eqCfdd', title:'设备存放地点',align:'center'},
+                                {field:'eqCscs', title:'生产厂商',sort: true,align:'center'},
+                                {field:'eqQyrq', title:'启用日期',align:'center'},
+                                {field:'eqScbh', title:'出厂编号',align:'center'},
+                                {field:'eqCcdate', title:'出厂日期',align:'center'},
                                 {fixed: 'right', title:'操作',toolbar: '#barDemo',align:'center'}
                             ]]
                         });
@@ -177,7 +181,7 @@
                 maxmin:true,
                 btn:"确定",
                 yes:function(){
-                    location.href="./fixing_info.html";
+                    location.href="./fixing_manage.html";
                     layer.closeAll();
                 }
             });
