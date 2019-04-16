@@ -8,6 +8,10 @@
     <title>设备管理</title>
     <link rel="stylesheet" type="text/css" href="../../static/layui/css/layui.css"/>
     <link rel="stylesheet" type="text/css" href="../../static/css/admin.css"/>
+    <script src="../../static/js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <!--[if IE 8]>
+    <script type="text/javascript" src="../../static/js/jquery-1.11.3.min.js"></script>
+    <![endif]-->
     <script src="../../static/layui/layui.js"></script>
     <style>
         .item{
@@ -208,69 +212,69 @@
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 <script>
+    // 设备品名字段
+    function pmList(){
+        // 清空当前列表
+        $("#eqPm1").empty();
+        $("#eqPm2").empty();
+        // 添加默认选项
+        var op = '<option value=""></option>';
+        $("#eqPm1").append(op);
+        $("#eqPm2").append(op);
+        // 发出ajax请求，并处理结果
+        $.ajax({
+            url:"/eqpm/allEqPm",
+            method: "GET",
+            dataType: "JSON",
+            async:false,
+            "success":function(json){
+                // 遍历加载新列表项
+                var list = json.data;
+                for (var i = 0; i < list.length; i++) {
+                    console.log(list[i].eqPmId + " - " + list[i].eqPmName);
+                    op = '<option value="' + list[i].eqPmId + '">' + list[i].eqPmName + '</option>';
+                    $("#eqPm1").append(op);
+                    $("#eqPm2").append(op);
+                }
+            }
+        });
+    }
+    pmList();
+    // 科室字段
+    function ksList(){
+        // 清空当前列表
+        $("#eqKs1").empty();
+        $("#eqKs2").empty();
+        // 添加默认选项
+        var op = '<option value=""></option>';
+        $("#eqKs1").append(op);
+        $("#eqKs2").append(op);
+        // 发出ajax请求，并处理结果
+        $.ajax({
+            url:"/sbm/selectAll",
+            method: "GET",
+            dataType: "JSON",
+            async:false,
+            "success":function(json){
+                // 遍历加载新列表项
+                var list = json.data;
+                for (var i = 0; i < list.length; i++) {
+                    console.log(list[i].bmName + " - " + list[i].bmName);
+                    op = '<option value="' + list[i].bmName + '">' + list[i].bmName + '</option>';
+                    $("#eqKs1").append(op);
+                    $("#eqKs2").append(op);
+                }
+            }
+        });
+    }
+    ksList();
     layui.use(['layer','jquery','table','form'],function (){
         var layer = layui.layer
             ,   $ = layui.jquery
             ,   table = layui.table
             ,   form = layui.form;
         $(function(){
-            // 设备品名字段
-            function pmList(){
-                // 清空当前列表
-                $("#eqPm1").empty();
-                $("#eqPm2").empty();
-                // 添加默认选项
-                var op = '<option value=""></option>';
-                $("#eqPm1").append(op);
-                $("#eqPm2").append(op);
-                // 发出ajax请求，并处理结果
-                $.ajax({
-                    url:"/eqpm/allEqPm",
-                    method: "GET",
-                    dataType: "JSON",
-                    async:false,
-                    "success":function(json){
-                        // 遍历加载新列表项
-                        var list = json.data;
-                        for (var i = 0; i < list.length; i++) {
-                            // console.log(list[i].eqlyId + " - " + list[i].eqlyName);
-                            op = '<option value="' + list[i].eqlyName + '">' + list[i].eqlyName + '</option>';
-                            $("#eqPm1").append(op);
-                            $("#eqPm2").append(op);
-                        }
-                    }
-                });
-            }
-            pmList();
 
-            // 科室字段
-            function ksList(){
-                // 清空当前列表
-                $("#eqKs1").empty();
-                $("#eqKs2").empty();
-                // 添加默认选项
-                var op = '<option value=""></option>';
-                $("#eqKs1").append(op);
-                $("#eqKs2").append(op);
-                // 发出ajax请求，并处理结果
-                $.ajax({
-                    url:"/sbm/selectAll",
-                    method: "GET",
-                    dataType: "JSON",
-                    async:false,
-                    "success":function(json){
-                        // 遍历加载新列表项
-                        var list = json.data;
-                        for (var i = 0; i < list.length; i++) {
-                            // console.log(list[i].eqlyId + " - " + list[i].eqlyName);
-                            op = '<option value="' + list[i].eqlyName + '">' + list[i].eqlyName + '</option>';
-                            $("#eqKs1").append(op);
-                            $("#eqKs2").append(op);
-                        }
-                    }
-                });
-            }
-            ksList();
         });
         // 查询
         form.on("submit(search)",function(data){
@@ -451,12 +455,13 @@
                     }
                 });
                 $.ajax({
-                   url:"?eqId="+obj.data.eqId,
+                   url:"/zkeq/findEqById/"+obj.data.eqId,
                    method:"GET",
                    dataType:"JSON",
                    success:function(res){
                        if(res.data !== "" && res.data !== null){
                            $("#eqMc").val(res.data.eqMc);
+                           $("#eqPmId").val(res.data.eqPmName);
                            $("#eqDah").val(res.data.eqDah);
                            $("#eqSyks").val(res.data.eqSyks);
                            $("#eqJx").val(res.data.eqJx);
@@ -472,7 +477,7 @@
                 form.on("submit(saveUpdate)",function(data){
                     console.log(data.field);
                     $.ajax({
-                        url:"?eqId="+obj.data.eqId,
+                        url:"/zkeq/updateEqInfo1?eqId="+obj.data.eqId,
                         method:"POST",
                         data:data.field,
                         dataType:"JSON",

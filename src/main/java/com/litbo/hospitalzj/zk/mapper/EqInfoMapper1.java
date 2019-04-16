@@ -48,7 +48,7 @@ public interface EqInfoMapper1 {
 			"      eq_jx = #{eqJx,jdbcType=VARCHAR},\n" +
 			"	   eq_scbh=#{eqScbh},"+
 			"	   eq_qyrq=#{eqQyrq},"+
-			"      eq_cfdd = #{eqCfdd,jdbcType=VARCHAR},\n" +
+			"      eq_cfdd = #{eqCfdd,jdbcType=VARCHAR}\n" +
 			"    where eq_id = #{eqId,jdbcType=INTEGER}")
 	Integer updateInfo1(EqInfo eqinfo);
 

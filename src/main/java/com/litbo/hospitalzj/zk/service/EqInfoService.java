@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface EqInfoService {
 
-	Integer updateInfo1(EqInfo eqinfo);
+	void updateInfo1(EqInfo eqinfo);
 
 	void updateEqPm(@Param("eqPmId")Integer eqPmId,@Param("eqId") Integer eqId);
 

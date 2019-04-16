@@ -45,11 +45,9 @@ public class EqInfoController extends BaseController{
 	}
 
 	@RequestMapping("/findEqById/{eqId}")
-	public ResponseResult<List<EqInfo>> findEqById(@PathVariable String eqId){
+	public ResponseResult<EqInfo> findEqById(@PathVariable String eqId){
 		EqInfo eqInfo=eqInfoService.findEqById(eqId);
-		List<EqInfo> list=new ArrayList<EqInfo>();
-		list.add(eqInfo);
-		return new ResponseResult<List<EqInfo>>(SUCCESS,list);
+		return new ResponseResult<EqInfo>(SUCCESS,eqInfo);
 	}
 
 	@RequestMapping("/findEqsByState/{state}")
