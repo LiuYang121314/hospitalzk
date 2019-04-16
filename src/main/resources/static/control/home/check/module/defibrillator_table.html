@@ -166,58 +166,7 @@
             success:function(res){
                 console.log(res);
                 if(res.data != null && res.data != ""){
-                    $("#sfnlValue1").append(res.data.sfnlValue1);
-                    $("#sfnlWc1").append(res.data.sfnlWc1);
-                    $("#sfnlValue2").append(res.data.sfnlValue2);
-                    $("#sfnlWc2").append(res.data.sfnlWc2);
-                    $("#sfnlValue3").append(res.data.sfnlValue3);
-                    $("#sfnlWc3").append(res.data.sfnlWc3);
-                    $("#sfnlValue4").append(res.data.sfnlValue4);
-                    $("#sfnlWc4").append(res.data.sfnlWc4);
-                    $("#sfnlValue5").append(res.data.sfnlValue5);
-                    $("#sfnlWc5").append(res.data.sfnlWc5);
-                    $("#sfnlValue6").append(res.data.sfnlValue6);
-                    $("#sfnlWc6").append(res.data.sfnlWc6);
-                    $("#sfnlWc7").append(res.data.sfnlWc7);
-                    $("#sfnlValue71").append(res.data.sfnlValue71);
-                    $("#sfnlValue72").append(res.data.sfnlValue72);
-                    $("#sfnlValue73").append(res.data.sfnlValue73);
-                    $("#sfnlValue81").append(res.data.sfnlValue81);
-                    $("#sfnlValue82").append(res.data.sfnlValue82);
-                    $("#sfnlValue83").append(res.data.sfnlValue83);
-                    $("#cdsjValue").append(res.data.cdsjValue);
-                    $("#tbmsSj").append(res.data.tbmsSj);
-                    $("#xlszValue1").append(res.data.xlszValue1);
-                    $("#xlszValue2").append(res.data.xlszValue2);
-                    $("#xlszValue3").append(res.data.xlszValue3);
-                    $("#xlszValue4").append(res.data.xlszValue4);
-                    $("#xlszValue5").append(res.data.xlszValue5);
-                    // 单选
-                    if(res.data.nbfdResult == 1){
-                        $("#nbfdResult").append("<p style='color: green;'>符合</p>");
-                    }else{
-                        $("#nbfdResult").append("<p style='color: red;'>不符合</p>");
-                    }
-                    if(res.data.tbmsCfresult == 1){
-                        $("#tbmsCfresult").append("<p style='color: green;'>有同步触发功能</p>");
-                    }else{
-                        $("#tbmsCfresult").append("<p style='color: red;'>无同步触发功能</p>");
-                    }
-                    if(res.data.sgbjResult == 1){
-                        $("#sgbjResult").append("<p style='color: green;'>符合</p>");
-                    }else{
-                        $("#sgbjResult").append("<p style='color: red;'>不符合</p>");
-                    }
-                    if(res.data.bjxResult == 1){
-                        $("#bjxResult").append("<p style='color: green;'>符合</p>");
-                    }else{
-                        $("#bjxResult").append("<p style='color: red;'>不符合</p>");
-                    }
-                    if(res.data.jyResult == 1){
-                        $("#jyResult").append("<p style='color: green;'>符合</p>");
-                    }else{
-                        $("#jyResult").append("<p style='color: red;'>不符合</p>");
-                    }
+
                 }
             }
         })

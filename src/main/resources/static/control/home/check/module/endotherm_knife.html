@@ -150,35 +150,7 @@
             success:function(res){
                 console.log(res);
                 if(res.data != null && res.data != ""){
-                    $("#djdqValue1").append(res.data.djdqValue1);
-                    $("#djdqValue2").append(res.data.djdqValue2);
-                    $("#djdqValue3").append(res.data.djdqValue3);
-                    $("#djdqValue4").append(res.data.djdqValue4);
-                    $("#djdnValue1").append(res.data.djdnValue1);
-                    $("#djdnValue2").append(res.data.djdnValue2);
-                    $("#djdnValue3").append(res.data.djdnValue3);
-                    $("#djdnValue4").append(res.data.djdnValue4);
-                    $("#sjdnValue1").append(res.data.sjdnValue1);
-                    $("#sjdnValue2").append(res.data.sjdnValue2);
-                    $("#sjdnValue3").append(res.data.sjdnValue3);
-                    $("#sjdnValue4").append(res.data.sjdnValue4);
-                    $("#ssldDjdq").append(res.data.ssldDjdq);
-                    $("#ssldDjdn").append(res.data.ssldDjdn);
-                    $("#ssldSjdn").append(res.data.ssldSjdn);
-                    $("#zxldDjdq").append(res.data.zxldDjdq);
-                    $("#zxldDjdn").append(res.data.zxldDjdn);
-                    $("#zxldSjdn").append(res.data.zxldSjdn);
-                    // 单选框
-                    if(res.data.spare1 === "1"){
-                        $("#spare1").append("<p style='color: green;'>符合</p>");
-                    }else{
-                        $("#spare1").append("<p style='color: red;'>不符合</p>");
-                    }
-                    if(res.data.spare2 === "1"){
-                        $("#spare2").append("<p style='color: green;'>符合</p>");
-                    }else{
-                        $("#spare2").append("<p style='color: red;'>不符合</p>");
-                    }
+
                 }
             }
         })
