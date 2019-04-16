@@ -34,7 +34,7 @@
                     <button style="margin: 0;" class="layui-btn layui-btn-normal" lay-submit lay-filter="search">
                         <i class="layui-icon">&#xe615;</i>
                     </button>
-                    <a style="margin-left: 50px;" id="btn" class="layui-btn layui-btn-normal"><i class="layui-icon">&#xe608;</i>添加仪器</a>
+                    <a style="margin-left: 50px;" id="btn" class="layui-btn"><i class="layui-icon">&#xe608;</i>添加仪器</a>
                 </div>
             </div>
         </form>
@@ -82,7 +82,7 @@
                 </div>
                 <div class="layui-form-item btn">
                     <div class="layui-input-block">
-                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveAdd">确认添加</button>
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveAdd">添加</button>
                     </div>
                 </div>
             </from>
@@ -147,12 +147,12 @@
                                 }
                             },
                             cols:[[
-                                {field:'title', title:'仪器名称',align:'center'},
-                                {field:'title', title:'型号',align:'center'},
-                                {field:'title', title:'数量',align:'center',sort: true},
-                                {field:'title', title:'品牌',align:'center'},
-                                {field:'title', title:'科室',align:'center'},
-                                {fixed: 'right', title:'验收检测',toolbar: '#barDemo',align:'center'}
+                                {field:'jcyqName', title:'检测仪器名称',align:'center'},
+                                {field:'jcyqDah', title:'档案号',align:'center'},
+                                {field:'jcyqXh', title:'型号',align:'center'},
+                                {field:'jcyqBh', title:'编号',align:'center'},
+                                {field:'jcyqJzTime', title:'校准时间',align:'center'},
+                                {fixed: 'right', title:'操作',toolbar: '#barDemo',align:'center'}
                             ]]
                         });
                     }else if(res.state === 666){
@@ -206,12 +206,12 @@
             },
             page:true,
             cols:[[
-                {field:'title', title:'仪器名称',align:'center'},
-                {field:'title', title:'型号',align:'center'},
-                {field:'title', title:'数量',align:'center',sort: true},
-                {field:'title', title:'品牌',align:'center'},
-                {field:'title', title:'科室',align:'center'},
-                {fixed: 'right', title:'验收检测',toolbar: '#barDemo',align:'center'}
+            	{field:'jcyqName', title:'检测仪器名称',align:'center'},
+                {field:'jcyqDah', title:'档案号',align:'center'},
+                {field:'jcyqXh', title:'型号',align:'center'},
+                {field:'jcyqBh', title:'编号',align:'center'},
+                {field:'jcyqJzTime', title:'校准时间',align:'center'},
+                {fixed: 'right', title:'操作',toolbar: '#barDemo',align:'center'}
             ]]
         });
         // 添加新设备

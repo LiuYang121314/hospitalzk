@@ -83,7 +83,7 @@ public interface HxjMapper {
 
     //保存
     @Insert("insert into hxj (hxjid, jcyq_id, eq_id, \n" +
-            "      tester, auditor, shsj_time, \n" +
+            "      tester, auditor, shsj_time, shr_jcjl\n" +
             "      test_time, jcjl, jcsm, \n" +
             "      bhjdzk_test, bhjdzk_yx, bhjdzk_result, \n" +
             "      jykz_test, jykz_yx, jykz_result, \n" +
@@ -151,7 +151,7 @@ public interface HxjMapper {
             "      fztql, ajgn, bz, bz1\n" +
             "      )\n" +
             "    values (#{hxjid,jdbcType=INTEGER}, #{jcyqId,jdbcType=INTEGER}, #{eqId,jdbcType=INTEGER}, \n" +
-            "      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{shsjTime,jdbcType=TIMESTAMP}, \n" +
+            "      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{shsjTime,jdbcType=TIMESTAMP}, #{shrJcjl},\n" +
             "      #{testTime,jdbcType=TIMESTAMP}, #{jcjl,jdbcType=VARCHAR}, #{jcsm,jdbcType=VARCHAR}, \n" +
             "      #{bhjdzkTest,jdbcType=INTEGER}, #{bhjdzkYx,jdbcType=INTEGER}, #{bhjdzkResult,jdbcType=INTEGER}, \n" +
             "      #{jykzTest,jdbcType=INTEGER}, #{jykzYx,jdbcType=INTEGER}, #{jykzResult,jdbcType=INTEGER}, \n" +
@@ -301,9 +301,9 @@ public interface HxjMapper {
         "      spare3 = #{spare3,jdbcType=TINYINT},\n" +
         "      spare4 = #{spare4,jdbcType=TINYINT}\n" +
         "    where hxjid = #{hxjid,jdbcType=INTEGER}")
-void updateHxj(Hxj hxj);
+    void updateHxj(Hxj hxj);
     //根据电气检测设备id查询设备检测表
-    @Select("select  hxjid, jcyq_id, eq_id, tester, auditor, shsj_time, test_time, jcjl, jcsm, bhjdzk_test, \n" +
+    @Select("select  hxjid, jcyq_id, eq_id, tester, auditor, shsj_time,shr_jcjl, test_time, jcjl, jcsm, bhjdzk_test, \n" +
             "    bhjdzk_yx, bhjdzk_result, jykz_test, jykz_yx, jykz_result, ddld_z_z, ddld_z_f, ddld_z_yx, \n" +
             "    ddld_z_result, ddld_d_z1, ddld_d_z2, ddld_d_yx, ddld_d_result, wkld_z_z, wkld_z_f, \n" +
             "    wkld_z_yx, wkld_z_result, wkld_d_z1, wkld_d_z2, wkld_d_z3, wkld_d_z4, wkld_d_yx, \n" +

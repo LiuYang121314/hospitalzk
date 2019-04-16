@@ -70,10 +70,10 @@
             },
             parseData:function(res){
                 console.log(res);
-                if(res.data.jcyqName == "生命体征模拟器" || res.data.jcyqName == "注射泵检测仪" || res.data.jcyqName == "输液泵检测仪"){
-                    $("#xnJump").append("<a class='ayui-btn layui-btn-xs' lay-event='hands1'>查看数据</a>")
+                if(res.data.jcyqName == "生命体征模拟器" || res.data.jcyqName == "注射泵检测仪" || res.data[0].jcyqName == "输液泵检测仪"){
+                    $("#xnJump").append("<a class='layui-btn layui-btn-xs' lay-event='hands1'>查看数据</a>")
                 }else{
-                    $("#xnJump").append("<a class='ayui-btn layui-btn-xs' lay-event='hands2'>查看数据</a>")
+                    $("#xnJump").append("<a class='layui-btn layui-btn-xs' lay-event='hands2'>查看数据</a>")
                 }
                 return{
                     "status":200
@@ -147,14 +147,14 @@
                     });
                 }else if(obj.data.jcyqName == "注射泵检测仪"){
                     $.ajax({
-                        url:"",
+                        url:"/tableName/findTable?eqId="+ids+"&jcyqId="+obj.data.jcyqId,
                         method:"GET",
                         dataType:"JSON",
                         success:function(res){
                             if(res.data == 1){
-                                location.href="/admin/home/apply/man_life_table.html?id="+obj.data.jcyqId;
+                                location.href="/admin/home/apply/infusion_pump_child.html?id="+obj.data.jcyqId;
                             }else{
-                                location.href="/admin/home/apply/child_life_table.html?id="+obj.data.jcyqId;
+                                location.href="/admin/home/apply/infusion_pump_man.html?id="+obj.data.jcyqId;
                             }
                         },
                         error:function(data){
@@ -162,16 +162,16 @@
                             layer.msg("请稍后再试");
                         }
                     });
-                }else if(obj.data.jcyqName == "注射泵检测仪"){
+                }else if(obj.data.jcyqName == "输液泵检测仪"){
                     $.ajax({
-                        url:"",
+                        url:"/tableName/findTable?eqId="+ids+"&jcyqId="+obj.data.jcyqId,
                         method:"GET",
                         dataType:"JSON",
                         success:function(res){
                             if(res.data == 1){
-                                location.href="/admin/home/apply/man_life_table.html?id="+obj.data.jcyqId;
+                                location.href="/admin/home/apply/injection_pump_child.html?id="+obj.data.jcyqId;
                             }else{
-                                location.href="/admin/home/apply/child_life_table.html?id="+obj.data.jcyqId;
+                                location.href="/admin/home/apply/injection_pump_man.html?id="+obj.data.jcyqId;
                             }
                         },
                         error:function(data){
@@ -184,13 +184,13 @@
                 if(obj.data.jcyqName == "婴儿培养箱检测仪"){
                     location.href="/admin/home/apply/baby_table.html?id="+obj.data.jcyqId;
                 }else if(obj.data.jcyqName == "高频电刀检测仪"){
-                    location.href="/control/home/waiting/write_info/write_baby_info.html?id="+obj.data.jcyqId;
+                    location.href="/admin/home/apply/endotherm_knife.html?id="+obj.data.jcyqId;
                 }else if(obj.data.jcyqName == "呼吸机检测仪"){
-                    location.href="/control/home/waiting/write_info/write_baby_info.html?id="+obj.data.jcyqId;
+                    location.href="/admin/home/apply/breathing_machine_table.html?id="+obj.data.jcyqId;
                 }else if(obj.data.jcyqName == "双通道注射泵检测仪"){
-                    location.href="/control/home/waiting/write_info/write_baby_info.html?id="+obj.data.jcyqId;
-                }else if(obj.data.jcyqName == "除颤器检测仪"){
-                    location.href="/control/home/waiting/write_info/write_baby_info.html?id="+obj.data.jcyqId;
+                    location.href="/admin/home/apply/double_injection_pump.html?id="+obj.data.jcyqId;
+                }else if(obj.data.jcyqName == "除颤仪检测仪"){
+                    location.href="/admin/home/apply/defibrillator_table.html?id="+obj.data.jcyqId;
                 }
             }
         });

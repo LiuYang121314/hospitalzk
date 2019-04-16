@@ -155,8 +155,8 @@
     // 获取上个页面传递的类型
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
-    var thissjId = parseInt(sessionStorage['thissjId']);
-    var thisId = parseInt(sessionStorage['thisId']);
+    var thiseqId = parseInt(sessionStorage['thiseqId']);
+    var babyId = "";
     $(function(){
         $.ajax({
             url:"/gpdd/findByEqIdandJcyqIdLast1?eqId="+thiseqId+"&jcyqId="+ids,

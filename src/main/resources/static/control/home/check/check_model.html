@@ -21,6 +21,82 @@
         <fieldset class="layui-elem-field layui-field-title">
             <legend style="font-weight: bold;color: #000000;">检测仪器模板表</legend>
         </fieldset>
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th style="width: 50%;text-align: center;">检测仪器模板名称</th>
+                <th style="width: 50%;text-align: center;">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>气流分析仪</td>
+                <td>
+                	<a class="layui-btn">查看模板</a>
+                </td>
+            </tr>
+            <tr>
+                <td>生命体征模拟器</td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>电气安全分析仪</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>除颤起搏分析仪</td>
+                <td>
+                	<a class="layui-btn">查看模板</a>
+                </td>
+            </tr>
+            <tr>
+                <td>输液设备分析仪</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>注射器</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>高频电刀分析仪</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>婴儿培养箱分析仪</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend style="font-weight: bold;color: #000000;">检测仪器模板表</legend>
+        </fieldset>
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th style="width: 50%;text-align: center;">检测仪器模板名称</th>
+                <th style="width: 50%;text-align: center;">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
         <table class="layui-table" id="modelInfo" lay-filter="test"></table>
     </div>
 </div>
@@ -40,7 +116,7 @@
             ,   layer = layui.layer;
         table.render({
             elem:"#modelInfo",
-            url:"ss",
+            url:"/yy/findAll",
             method:"GET",
             toolbar: '#toolbarDemo',
             response:{
@@ -61,10 +137,6 @@
             },
             cols:[[
                 {field:'eqPm', title:'仪器名称',align:'center'},
-                // {field:'eqXh', title:'型号',align:'center'},
-                // {field:'eqGg', title:'数量',align:'center',sort: true},
-                // {field:'eqPrice', title:'品牌',align:'center'},
-                // {field:'eqJldwId', title:'科室',align:'center'},
                 {fixed: 'right', title:'操作',toolbar: '#barDemo',align:'center'}
             ]]
         });

@@ -18,7 +18,7 @@ public class Hxj {
     private Date shsjTime;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date testTime;
-
+    private String shrJcjl;
     private String jcjl;
 
     private String jcsm;
@@ -465,6 +465,14 @@ public class Hxj {
 
     public void setTestTime(Date testTime) {
         this.testTime = testTime;
+    }
+
+    public String getShrJcjl() {
+        return shrJcjl;
+    }
+
+    public void setShrJcjl(String shrJcjl) {
+        this.shrJcjl = shrJcjl;
     }
 
     public String getJcjl() {

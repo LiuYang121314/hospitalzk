@@ -133,14 +133,15 @@
     // 获取上个页面传递的类型
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
-    var thissjId = parseInt(sessionStorage['thissjId']);
-    var thisId = parseInt(sessionStorage['thisId']);
+    var thiseqId = parseInt(sessionStorage['thiseqId']);
+    var idsa = "";
     $(function(){
         $.ajax({
             url:"/syb/findByEqIdandJcyqIdLast1?eqId="+thiseqId+"&jcyqId="+ids,
             method:"GET",
             dataType:"JSON",
             success:function(res){
+            	idsa = res.data.id;
                 console.log(res);
                 if(res.data != null && res.data != ""){
                     $("#pjll1").append(res.data.pjll1);
@@ -227,7 +228,7 @@
         form.on("submit(subEnd)",function(data){
             console.log(data.field);
             $.ajax({
-                url:"/dqjc/updateShrJcjy?babyId="+babyId+"&jcyqId="+ids+"&eqId="+thiseqId+"&shrJcjl="+data.field.shrJcjl+"&state="+data.field.state,
+                url:"/syb/updateShrJcjyC?id="+idsa+"&jcyqId="+ids+"&eqId="+thiseqId+"&shrJcjl="+data.field.shrJcjl+"&state="+data.field.state,
                 method:"POST",
                 dataType:"JSON",
                 success:function(res){

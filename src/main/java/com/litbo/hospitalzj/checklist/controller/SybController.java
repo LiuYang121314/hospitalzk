@@ -82,7 +82,7 @@ public class SybController extends BaseController {
     }
 
     //修改幼儿数据表信息
-    @RequestMapping("/savechild")
+    @RequestMapping("/saveChild")
     public ResponseResult savechild(@RequestParam(value = "eqId") String eqId,
                                           @RequestParam(value = "jcyqId") String jcyqId,
                                           @RequestParam(value = "userEqId") Integer userEqId,
@@ -107,7 +107,7 @@ public class SybController extends BaseController {
         return new ResponseResult<SybC>(200, sybC);
     }
 
-    @RequestMapping("/saveman")
+    @RequestMapping("/saveMan")
     public ResponseResult saveMan(@RequestParam(value = "eqId") String eqId,
                                         @RequestParam(value = "jcyqId") String jcyqId,
                                         @RequestParam(value = "userEqId") Integer userEqId,

@@ -113,14 +113,15 @@ public class HxjController extends BaseController {
     }
     //修改审核人建议同时修改状态
     @RequestMapping("/updateShrJcjy")
-    public ResponseResult<Void> updateShrJcjy(@RequestParam("gpddid")Integer gpddid,
+    public ResponseResult<Void> updateShrJcjy(@RequestParam("hxjid")Integer hxjid,
                                                @RequestParam("jcyqId")Integer jcyqId,
                                                @RequestParam("eqId")Integer eqId,
                                                @RequestParam("shrJcjl")String shrJcjl,
-                                               @RequestParam("state")Integer state, HttpSession session){
+                                               @RequestParam("state")Integer state,
+                                              HttpSession session){
         String auditor=getUserNameFromSession(session);
         Integer yqEqId= yqEqService.findId(jcyqId,eqId);
-        hxjService.updateShrJcjy(gpddid,shrJcjl,auditor);
+        hxjService.updateShrJcjy(hxjid,shrJcjl,auditor);
         if(state.equals(1)){
             yqEqService.updateState(yqEqId,1);
         }else{

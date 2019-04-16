@@ -202,6 +202,6 @@ public interface CcyMapper {
   /*  @Update("update dqjc set state=#{state} where dqjcid=#{dqjcid}")
     void updateState(@Param("dqjcid")Integer dqjcid,@Param("state")Integer state);*/
     //修改审核人意见
-    @Update("update Ccy set shr_jcjl=#{shrJcjl},auditor=#{auditor},shsj_time=#{shsjTime} where ccyId=#{ccyId}")
+    @Update("update Ccy set shr_jcjl=#{shrJcjl},auditor=#{auditor},shsj_time=#{shsjTime} where ccy_id=#{ccyId}")
     void updateShrJcjy(@Param("ccyId")Integer ccyId, @Param("shrJcjl")String shrJcjl, @Param("auditor")String auditor, @Param("shsjTime") Date shsjTime);
 }
