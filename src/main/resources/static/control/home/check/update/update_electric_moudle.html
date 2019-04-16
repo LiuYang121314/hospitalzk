@@ -27,6 +27,9 @@
             margin-bottom: 30px;
             text-align: center;
         }
+        .layui-elem-field{
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -37,51 +40,84 @@
         </fieldset>
         <from class="layui-form layui-form-pane" action="">
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">111</label>
+                <label class="layui-form-label">电源电压</label>
                 <div class="layui-input-block">
-                    <input type="text" name="111" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="dydy" name="dydy" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">222</label>
+                <label class="layui-form-label">保护接地阻抗</label>
                 <div class="layui-input-block">
-                    <input type="text" name="222" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="jdzk" name="jdzk" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">333</label>
+                <label class="layui-form-label">绝缘阻抗</label>
                 <div class="layui-input-block">
-                    <input type="text" name="333" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="jyzk" name="jyzk" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">对地漏电流</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">正常状态</label>
+                <div class="layui-input-block">
+                    <input type="text" id="ddldlZc" name="ddldlZc" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">444</label>
+                <label class="layui-form-label">单一故障状态</label>
                 <div class="layui-input-block">
-                    <input type="text" name="444" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="ddldlDy" name="ddldlDy" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">外壳漏电流</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">正常状态</label>
+                <div class="layui-input-block">
+                    <input type="text" id="wkldlZc" name="wkldlZc" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">555</label>
+                <label class="layui-form-label">单一故障状态</label>
                 <div class="layui-input-block">
-                    <input type="text" name="555" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="wkldlDy" name="wkldlDy" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;"> B型 BF型 </legend>
+            </fieldset>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">患者漏电流</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">正常状态</label>
+                <div class="layui-input-block">
+                    <input type="text" id="hzldlZcBf" name="hzldlZcBf" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">666</label>
+                <label class="layui-form-label">单一故障状态</label>
                 <div class="layui-input-block">
-                    <input type="text" name="666" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="hzldlDyBf" name="hzldlDyBf" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">患者辅助漏电流</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">正常状态</label>
+                <div class="layui-input-block">
+                    <input type="text" id="hzfzldlZcBf" name="hzfzldlZcBf" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">777</label>
+                <label class="layui-form-label">单一故障状态</label>
                 <div class="layui-input-block">
-                    <input type="text" name="777" required  lay-verify="required" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">888</label>
-                <div class="layui-input-block">
-                    <input type="text" name="888" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="hzfzldlDyBf" name="hzfzldlDyBf" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item btn">
@@ -100,10 +136,36 @@
         var layer = layui.layer
             ,$ = layui.jquery
             ,form = layui.form;
+        // 获取数据
         $(function(){
-
+            $.ajax({
+                url:"",
+                method:"GET",
+                dataType:"JSON",
+                success:function (res) {
+                    if(res.data !== "" && res.data !== null){
+                        $("#dydy").val(res.data.dydy);
+                        $("#jdzk").val(res.data.jdzk);
+                        $("#jyzk").val(res.data.jyzk);
+                        $("#ddldlZc").val(res.data.ddldlZc);
+                        $("#ddldlDy").val(res.data.ddldlDy);
+                        $("#wkldlZc").val(res.data.wkldlZc);
+                        $("#wkldlDy").val(res.data.wkldlDy);
+                        $("#hzldlZcBf").val(res.data.hzldlZcBf);
+                        $("#hzldlDyBf").val(res.data.hzldlDyBf);
+                        $("#hzfzldlZcBf").val(res.data.hzfzldlZcBf);
+                        $("#hzfzldlDyBf").val(res.data.hzfzldlDyBf);
+                    }else{
+                        layer.msg("无数据");
+                    }
+                },
+                error:function(data){
+                    console.log(data);
+                    layer.msg("请稍后再试");
+                }
+            })
         });
-        // 保存
+        // 修改保存
         form.on("submit(saveUpdate)",function(data){
             console.log(data.field);
             $.ajax({
