@@ -14,12 +14,20 @@
     <![endif]-->
     <script src="../../../static/js/basic.js"></script>
     <script src="../../../static/layui/layui.js"></script>
+    <style>
+        td{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 <div class="layui-row">
     <div class="col-xs-12">
         <fieldset class="layui-elem-field layui-field-title">
-            <legend style="font-weight: bold;color: #000000;">检测仪器模板表</legend>
+            <legend style="font-weight: bold;color: #000000;text-align: center;">性能检测模板</legend>
+        </fieldset>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend style="color: red;">类型A</legend>
         </fieldset>
         <table class="layui-table">
             <thead>
@@ -32,48 +40,38 @@
             <tr>
                 <td>气流分析仪</td>
                 <td>
-                	<a class="layui-btn">查看模板</a>
+                	<a id="yqA" class="layui-btn">查看模板</a>
                 </td>
             </tr>
             <tr>
-                <td>生命体征模拟器</td>
+                <td>婴儿培养箱分析仪</td>
                 <td>
+                    <a id="yqB" class="layui-btn">查看模板</a>
                 </td>
-            </tr>
-            <tr>
-                <td>电气安全分析仪</td>
-                <td></td>
             </tr>
             <tr>
                 <td>除颤起搏分析仪</td>
                 <td>
-                	<a class="layui-btn">查看模板</a>
+                	<a id="yqC" class="layui-btn">查看模板</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>高频电刀分析仪</td>
+                <td>
+                    <a id="yqD" class="layui-btn">查看模板</a>
                 </td>
             </tr>
             <tr>
-                <td>输液设备分析仪</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>注射器</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>高频电刀分析仪</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>婴儿培养箱分析仪</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
+                <td>双通道注射泵分析仪</td>
+                <td>
+                    <a id="yqE" class="layui-btn">查看模板</a>
+                </td>
             </tr>
             </tbody>
         </table>
         <fieldset class="layui-elem-field layui-field-title">
-            <legend style="font-weight: bold;color: #000000;">检测仪器模板表</legend>
+            <legend style="color: red;">类型B</legend>
         </fieldset>
         <table class="layui-table">
             <thead>
@@ -84,76 +82,91 @@
             </thead>
             <tbody>
             <tr>
-                <td></td>
-                <td></td>
+                <td>生命体征模拟器</td>
+                <td>
+                    <a id="yqF1" class="layui-btn layui-btn-normal">成人模板</a>
+                    <a id="yqF2" class="layui-btn">新生儿模板</a>
+                </td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
+                <td>输液设备分析仪</td>
+                <td>
+                    <a id="yqG1" class="layui-btn layui-btn-normal">成人模板</a>
+                    <a id="yqG2" class="layui-btn">新生儿模板</a>
+                </td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
+                <td>注射设备分析仪</td>
+                <td>
+                    <a id="yqH1" class="layui-btn layui-btn-normal">成人模板</a>
+                    <a id="yqH2" class="layui-btn">新生儿模板</a>
+                </td>
             </tr>
             </tbody>
         </table>
-        <table class="layui-table" id="modelInfo" lay-filter="test"></table>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend style="font-weight: bold;color: #000000;text-align: center;">电气安全检测模板</legend>
+        </fieldset>
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th style="width: 50%;text-align: center;">检测仪器模板名称</th>
+                <th style="width: 50%;text-align: center;">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>电气安全分析仪</td>
+                <td>
+                    <a id="yqI" class="layui-btn">查看模板</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
-<script type="text/html" id="toolbarDemo">
-    <div class="layui-btn-container">
-    </div>
-</script>
-
-<script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs" lay-event="edit">查看</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">更新</a>
-</script>
 <script>
     layui.use(['table','jquery','layer'],function(){
         var table = layui.table
             ,   $ = layui.jquery
             ,   layer = layui.layer;
-        table.render({
-            elem:"#modelInfo",
-            url:"/yy/findAll",
-            method:"GET",
-            toolbar: '#toolbarDemo',
-            response:{
-                statusName: 'status' //规定数据状态的字段名称，默认：code
-                ,statusCode: 200 //规定成功的状态码，默认：0
-                ,msgName: 'hint' //规定状态信息的字段名称，默认：msg
-                ,countName: 'total' //规定数据总数的字段名称，默认：count
-                ,dataName: 'data' //规定数据列表的字段名称，默认：data
-            },
-            parseData:function(res){
-                console.log(res);
-                return{
-                    "status":200
-                    ,"msg":res.message
-                    ,"count":res.total
-                    ,"data":res.data
-                }
-            },
-            cols:[[
-                {field:'eqPm', title:'仪器名称',align:'center'},
-                {fixed: 'right', title:'操作',toolbar: '#barDemo',align:'center'}
-            ]]
+        $("#yqA").click(function(){
+           location.href = "/control/home/check/module/breathing_machine_table.html";
         });
-        //监听行工具事件
-        table.on('tool(test)', function(obj){
-            var data = obj.data;
-            //console.log(obj)
-            if(obj.event === 'del'){
-                layer.confirm('真的删除行么', function(index){
-                    obj.del();
-                    layer.close(index);
-                });
-            } else if(obj.event === 'edit'){
-                location.href="";
-            }
+        $("#yqB").click(function(){
+            location.href = "/control/home/check/module/baby_table.html";
         });
-    })
+        $("#yqC").click(function(){
+            location.href = "/control/home/check/module/defibrillator_table.html";
+        });
+        $("#yqD").click(function(){
+            location.href = "/control/home/check/module/endotherm_knife.html";
+        });
+        $("#yqE").click(function(){
+            location.href = "/control/home/check/module/double_injection_pump.html";
+        });
+        $("#yqF1").click(function(){
+            location.href = "/control/home/check/module/man_life_table.html";
+        });
+        $("#yqF2").click(function(){
+            location.href = "/control/home/check/module/child_life_table.html";
+        });
+        $("#yqG1").click(function(){
+            location.href = "/control/home/check/module/infusion_pump_man.html";
+        });
+        $("#yqG2").click(function(){
+            location.href = "/control/home/check/module/infusion_pump_child.html";
+        });
+        $("#yqH1").click(function(){
+            location.href = "/control/home/check/module/injection_pump_man.html";
+        });
+        $("#yqH2").click(function(){
+            location.href = "/control/home/check/module/injection_pump_child.html";
+        });
+        $("#yqI").click(function(){
+            location.href = "/control/home/check/module/electric_info.html";
+        });
+    });
 </script>
 </body>
 </html>
