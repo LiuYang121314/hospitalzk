@@ -41,12 +41,9 @@ public class EqInfoController extends BaseController{
 		return "deleteSuccess";
 	}
 
-	@RequestMapping("/findAllEq")
-	public List<EqInfo> findAll(){
-		return eqInfoService.findAll();
-	}
 
-	@RequestMapping("/findAll1Eq")
+
+	@RequestMapping("/findAllEq")
 	public ResponseResult<List<EqInfo>> findAll1(){
 		List<EqInfo> dataList=eqInfoService.findAll();
 		return new ResponseResult<List<EqInfo>>(SUCCESS,dataList);
