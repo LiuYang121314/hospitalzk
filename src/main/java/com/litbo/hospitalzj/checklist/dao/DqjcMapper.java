@@ -2,7 +2,6 @@ package com.litbo.hospitalzj.checklist.dao;
 
 import com.litbo.hospitalzj.checklist.domain.Dqjc;
 import com.litbo.hospitalzj.checklist.domain.DqjcTemplate;
-import com.litbo.hospitalzj.checklist.vo.DqjcUser;
 import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
@@ -17,13 +16,14 @@ import java.util.List;
 public interface DqjcMapper {
 	
    	//查询电气检测模板表
-	@Select("select dqjc_templateid, dydy, jdzk, jyzk, ddldl_zc, ddldl_dy, wkldl_zc, wkldl_dy, hzldl_zc_bf, hzldl_zc_cf, hzldl_dy_bf, hzldl_dy_cf,"
+	@Select("select dqjc_templateid, dydy1, dydy2,jdzk, jyzk, ddldl_zc, ddldl_dy, wkldl_zc, wkldl_dy, hzldl_zc_bf, hzldl_zc_cf, hzldl_dy_bf, hzldl_dy_cf,"
 			+ " hzfzldl_zc_bf, hzfzldl_zc_cf, hzfzldl_dy_bf, hzfzldl_dy_cf from dqjc_template order by dqjc_templateid desc limit 1")
 	public DqjcTemplate findTemplate();
 	//修改模板表数据
 	@Update(" update dqjc_template\n" +
-			"    set dydy = #{dydy,jdbcType=DOUBLE},\n" +
-			"      jdzk = #{jdzk,jdbcType=DOUBLE},\n" +
+			"    set dydy1 = #{dydy1},\n" +
+			"      dydy2=#{dydy2},"+
+			"      jdzk = #{jdzk},\n" +
 			"      jyzk = #{jyzk,jdbcType=VARCHAR},\n" +
 			"      ddldl_zc = #{ddldlZc,jdbcType=DOUBLE},\n" +
 			"      ddldl_dy = #{ddldlDy,jdbcType=DOUBLE},\n" +
@@ -38,9 +38,9 @@ public interface DqjcMapper {
 			"      hzfzldl_dy_bf = #{hzfzldlDyBf,jdbcType=DOUBLE},\n" +
 			"      hzfzldl_dy_cf = #{hzfzldlDyCf,jdbcType=DOUBLE}\n" +
 			"    where dqjc_templateid = #{dqjcTemplateid,jdbcType=INTEGER}")
-	public DqjcTemplate updateTemplate(DqjcTemplate dqjcTemplate);
+	public void updateTemplate(DqjcTemplate dqjcTemplate);
 	//插入模板表数据
-	@Insert(" insert into dqjc_template (dqjc_templateid, dydy, jdzk, \n" +
+	@Insert(" insert into dqjc_template (dqjc_templateid, dydy1,dydy2 jdzk, \n" +
 			"      jyzk, ddldl_zc, ddldl_dy, \n" +
 			"      wkldl_zc, wkldl_dy, hzldl_zc_bf, \n" +
 			"      hzldl_zc_cf, hzldl_dy_bf, hzldl_dy_cf, \n" +
@@ -57,7 +57,7 @@ public interface DqjcMapper {
 	//保存电气检测数据
 	@Insert("insert into dqjc (dqjcid, jcyq_id, eq_id, \n" +
 			"      tester, auditor,shsj_time, test_time, \n" +
-			"      shr_jcjl,jcjl, jcsm, dydy, dydy_value, \n" +
+			"      shr_jcjl,jcjl, jcsm, dydy1, dydy2,dydy_value, \n" +
 			"      dydy_result, jdzk, jdzk_value, \n" +
 			"      jdzk_result, jyzk, jyzk_value, \n" +
 			"      jyzk_result, ddldl_zc, ddldl_zc_zx_value, \n" +
@@ -81,7 +81,7 @@ public interface DqjcMapper {
 			"      spare5)\n" +
 			"    values (#{dqjcid,jdbcType=INTEGER}, #{jcyqId,jdbcType=INTEGER}, #{eqId,jdbcType=INTEGER}, \n" +
 			"      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR},#{shsjTime}, #{testTime,jdbcType=TIMESTAMP}, \n" +
-			"      #{shrJcjl,jdbcType=VARCHAR},#{jcjl,jdbcType=VARCHAR}, #{jcsm,jdbcType=VARCHAR}, #{dydy,jdbcType=DOUBLE}, #{dydyValue,jdbcType=DOUBLE}, \n" +
+			"      #{shrJcjl,jdbcType=VARCHAR},#{jcjl,jdbcType=VARCHAR}, #{jcsm,jdbcType=VARCHAR}, #{dydy1},#{dydy2}, #{dydyValue,jdbcType=DOUBLE}, \n" +
 			"      #{dydyResult,jdbcType=TINYINT}, #{jdzk,jdbcType=DOUBLE}, #{jdzkValue,jdbcType=DOUBLE}, \n" +
 			"      #{jdzkResult,jdbcType=TINYINT}, #{jyzk,jdbcType=DOUBLE}, #{jyzkValue,jdbcType=DOUBLE}, \n" +
 			"      #{jyzkResult,jdbcType=TINYINT}, #{ddldlZc,jdbcType=DOUBLE}, #{ddldlZcZxValue,jdbcType=DOUBLE}, \n" +
@@ -107,7 +107,7 @@ public interface DqjcMapper {
 	public void save(Dqjc dqjc);
 
 	//根据电气检测设备id查询设备检测表
-	@Select("select dqjcid, jcyq_id, eq_id, tester, auditor,shsj_time,test_time, jcjl, jcsm, dydy, dydy_value, "
+	@Select("select dqjcid, jcyq_id, eq_id, tester, auditor,shsj_time,test_time, jcjl, jcsm, dydy1, dydy2,dydy_value, "
 			+"dydy_result, jdzk, jdzk_value, jdzk_result, jyzk, jyzk_value, jyzk_result, ddldl_zc,            "
 			+"ddldl_zc_zx_value, ddldl_zc_fx_value, ddldl_zc_result, ddldl_dy, ddldl_dy_zxdl_value,           "
 			+"ddldl_dy_fxdl_value, ddldl_dy_result, wkldl_zc, wkldl_zc_zx_value, wkldl_zc_fx_value,           "

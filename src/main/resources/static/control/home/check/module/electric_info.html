@@ -148,7 +148,7 @@
     </div>
 </div>
 <script>
-    
+    var dqId = "";
     //Demo
     layui.use(['table','layer','jquery','form'],function(){
         var table = layui.table
@@ -162,15 +162,16 @@
                 dataType:"JSON",
                 success:function(res){
                     console.log(res);
+                    dqId = res.data.dqjcTemplateid;
                     if(res.data != null && res.data != ""){
-
+						
                     }
                 }
             })
         });
      // 修改
         $("#update").click(function(){
-            layer.msg("111");
+            location.href="/control/home/check/update/update_electric_moudle.html?id="+dqId;
         });
         // 返回
         $("#back").click(function () {

@@ -3,8 +3,9 @@ package com.litbo.hospitalzj.checklist.domain;
 public class DqjcTemplate {
     private Integer dqjcTemplateid;
 
-    private Double dydy;
-
+    private String dydy1;
+    
+    private String dydy2;
     private Double jdzk;
 
     private String jyzk;
@@ -41,15 +42,25 @@ public class DqjcTemplate {
         this.dqjcTemplateid = dqjcTemplateid;
     }
 
-    public Double getDydy() {
-        return dydy;
-    }
+    
 
-    public void setDydy(Double dydy) {
-        this.dydy = dydy;
-    }
+    public String getDydy1() {
+		return dydy1;
+	}
 
-    public Double getJdzk() {
+	public void setDydy1(String dydy1) {
+		this.dydy1 = dydy1;
+	}
+
+	public String getDydy2() {
+		return dydy2;
+	}
+
+	public void setDydy2(String dydy2) {
+		this.dydy2 = dydy2;
+	}
+
+	public Double getJdzk() {
         return jdzk;
     }
 
@@ -160,4 +171,14 @@ public class DqjcTemplate {
     public void setHzfzldlDyCf(Double hzfzldlDyCf) {
         this.hzfzldlDyCf = hzfzldlDyCf;
     }
+
+	@Override
+	public String toString() {
+		return "DqjcTemplate [dqjcTemplateid=" + dqjcTemplateid + ", dydy1=" + dydy1 + ", dydy2=" + dydy2 + ", jdzk="
+				+ jdzk + ", jyzk=" + jyzk + ", ddldlZc=" + ddldlZc + ", ddldlDy=" + ddldlDy + ", wkldlZc=" + wkldlZc
+				+ ", wkldlDy=" + wkldlDy + ", hzldlZcBf=" + hzldlZcBf + ", hzldlZcCf=" + hzldlZcCf + ", hzldlDyBf="
+				+ hzldlDyBf + ", hzldlDyCf=" + hzldlDyCf + ", hzfzldlZcBf=" + hzfzldlZcBf + ", hzfzldlZcCf="
+				+ hzfzldlZcCf + ", hzfzldlDyBf=" + hzfzldlDyBf + ", hzfzldlDyCf=" + hzfzldlDyCf + "]";
+	}
+    
 }

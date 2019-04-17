@@ -38,8 +38,8 @@ public class HxjController extends BaseController {
         return new ResponseResult<HxjTemplate>(200, hxjService.findTemplate());
     }
     //修改模板值
-    @RequestMapping("/update")
-    public ResponseResult<Void> update(HxjTemplate hxjTemplate){
+    @RequestMapping("/updateTemplate")
+    public ResponseResult<Void> updateTemplate(HxjTemplate hxjTemplate){
         hxjService.updateHxjTemplate(hxjTemplate);
         return new ResponseResult<Void>(200);
     }

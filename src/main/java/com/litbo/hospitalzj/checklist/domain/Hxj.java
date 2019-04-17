@@ -1,7 +1,5 @@
 package com.litbo.hospitalzj.checklist.domain;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.util.Date;
 
 public class Hxj {
@@ -14,11 +12,13 @@ public class Hxj {
     private String tester;
 
     private String auditor;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+
     private Date shsjTime;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private Date testTime;
+
     private String shrJcjl;
+
+    private Date testTime;
+
     private String jcjl;
 
     private String jcsm;
@@ -131,7 +131,9 @@ public class Hxj {
 
     private Integer cqz3Swc;
 
-    private Integer cqzZdwc;
+    private Integer cqzZdwc1;
+
+    private Integer cqzZdwc2;
 
     private Integer cqzResult;
 
@@ -195,7 +197,9 @@ public class Hxj {
 
     private Integer qztq3Swc;
 
-    private Integer qztqZdwc;
+    private Integer qztqZdwc1;
+
+    private Integer qztqZdwc2;
 
     private Integer qztqResult;
 
@@ -259,7 +263,9 @@ public class Hxj {
 
     private Integer xry3Swc;
 
-    private Integer xryZdwc;
+    private Integer xryZdwc1;
+
+    private Integer xryZdwc2;
 
     private Integer xryResult;
 
@@ -323,7 +329,9 @@ public class Hxj {
 
     private Integer xqf3Swc;
 
-    private Integer xqfZdwc;
+    private Integer xqfZdwc1;
+
+    private Integer xqfZdwc2;
 
     private Integer xqfResult;
 
@@ -387,7 +395,9 @@ public class Hxj {
 
     private Integer hqm3Swc;
 
-    private Integer hqmZdwc;
+    private Integer hqmZdwc1;
+
+    private Integer hqmZdwc2;
 
     private Integer hqmResult;
 
@@ -459,20 +469,20 @@ public class Hxj {
         this.shsjTime = shsjTime;
     }
 
+    public String getShrJcjl() {
+        return shrJcjl;
+    }
+
+    public void setShrJcjl(String shrJcjl) {
+        this.shrJcjl = shrJcjl == null ? null : shrJcjl.trim();
+    }
+
     public Date getTestTime() {
         return testTime;
     }
 
     public void setTestTime(Date testTime) {
         this.testTime = testTime;
-    }
-
-    public String getShrJcjl() {
-        return shrJcjl;
-    }
-
-    public void setShrJcjl(String shrJcjl) {
-        this.shrJcjl = shrJcjl;
     }
 
     public String getJcjl() {
@@ -923,12 +933,20 @@ public class Hxj {
         this.cqz3Swc = cqz3Swc;
     }
 
-    public Integer getCqzZdwc() {
-        return cqzZdwc;
+    public Integer getCqzZdwc1() {
+        return cqzZdwc1;
     }
 
-    public void setCqzZdwc(Integer cqzZdwc) {
-        this.cqzZdwc = cqzZdwc;
+    public void setCqzZdwc1(Integer cqzZdwc1) {
+        this.cqzZdwc1 = cqzZdwc1;
+    }
+
+    public Integer getCqzZdwc2() {
+        return cqzZdwc2;
+    }
+
+    public void setCqzZdwc2(Integer cqzZdwc2) {
+        this.cqzZdwc2 = cqzZdwc2;
     }
 
     public Integer getCqzResult() {
@@ -1179,12 +1197,20 @@ public class Hxj {
         this.qztq3Swc = qztq3Swc;
     }
 
-    public Integer getQztqZdwc() {
-        return qztqZdwc;
+    public Integer getQztqZdwc1() {
+        return qztqZdwc1;
     }
 
-    public void setQztqZdwc(Integer qztqZdwc) {
-        this.qztqZdwc = qztqZdwc;
+    public void setQztqZdwc1(Integer qztqZdwc1) {
+        this.qztqZdwc1 = qztqZdwc1;
+    }
+
+    public Integer getQztqZdwc2() {
+        return qztqZdwc2;
+    }
+
+    public void setQztqZdwc2(Integer qztqZdwc2) {
+        this.qztqZdwc2 = qztqZdwc2;
     }
 
     public Integer getQztqResult() {
@@ -1435,12 +1461,20 @@ public class Hxj {
         this.xry3Swc = xry3Swc;
     }
 
-    public Integer getXryZdwc() {
-        return xryZdwc;
+    public Integer getXryZdwc1() {
+        return xryZdwc1;
     }
 
-    public void setXryZdwc(Integer xryZdwc) {
-        this.xryZdwc = xryZdwc;
+    public void setXryZdwc1(Integer xryZdwc1) {
+        this.xryZdwc1 = xryZdwc1;
+    }
+
+    public Integer getXryZdwc2() {
+        return xryZdwc2;
+    }
+
+    public void setXryZdwc2(Integer xryZdwc2) {
+        this.xryZdwc2 = xryZdwc2;
     }
 
     public Integer getXryResult() {
@@ -1691,12 +1725,20 @@ public class Hxj {
         this.xqf3Swc = xqf3Swc;
     }
 
-    public Integer getXqfZdwc() {
-        return xqfZdwc;
+    public Integer getXqfZdwc1() {
+        return xqfZdwc1;
     }
 
-    public void setXqfZdwc(Integer xqfZdwc) {
-        this.xqfZdwc = xqfZdwc;
+    public void setXqfZdwc1(Integer xqfZdwc1) {
+        this.xqfZdwc1 = xqfZdwc1;
+    }
+
+    public Integer getXqfZdwc2() {
+        return xqfZdwc2;
+    }
+
+    public void setXqfZdwc2(Integer xqfZdwc2) {
+        this.xqfZdwc2 = xqfZdwc2;
     }
 
     public Integer getXqfResult() {
@@ -1947,12 +1989,20 @@ public class Hxj {
         this.hqm3Swc = hqm3Swc;
     }
 
-    public Integer getHqmZdwc() {
-        return hqmZdwc;
+    public Integer getHqmZdwc1() {
+        return hqmZdwc1;
     }
 
-    public void setHqmZdwc(Integer hqmZdwc) {
-        this.hqmZdwc = hqmZdwc;
+    public void setHqmZdwc1(Integer hqmZdwc1) {
+        this.hqmZdwc1 = hqmZdwc1;
+    }
+
+    public Integer getHqmZdwc2() {
+        return hqmZdwc2;
+    }
+
+    public void setHqmZdwc2(Integer hqmZdwc2) {
+        this.hqmZdwc2 = hqmZdwc2;
     }
 
     public Integer getHqmResult() {

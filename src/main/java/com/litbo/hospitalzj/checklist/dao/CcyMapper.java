@@ -17,41 +17,59 @@ public interface CcyMapper {
     public CcyTemplate findTemplateById(Integer ccYtemplateId);
     //修改模板表数据
     @Update("  update ccy_template\n" +
-            "    set sfnl_yxwc = #{sfnlYxwc,jdbcType=VARCHAR},\n" +
-            "      sfnl_test1 = #{sfnlTest1,jdbcType=VARCHAR},\n" +
-            "      sfnl_test2 = #{sfnlTest2,jdbcType=VARCHAR},\n" +
-            "      sfnl_test3 = #{sfnlTest3,jdbcType=VARCHAR},\n" +
-            "      sfnl_test4 = #{sfnlTest4,jdbcType=VARCHAR},\n" +
-            "      sfnl_test5 = #{sfnlTest5,jdbcType=VARCHAR},\n" +
-            "      sfnl_test6 = #{sfnlTest6,jdbcType=VARCHAR},\n" +
-            "      sfnl_test7 = #{sfnlTest7,jdbcType=VARCHAR},\n" +
-            "      sfnl_test8 = #{sfnlTest8,jdbcType=VARCHAR},\n" +
-            "      cdsj_test = #{cdsjTest,jdbcType=VARCHAR},\n" +
-            "      tbms_ycsj = #{tbmsYcsj,jdbcType=VARCHAR},\n" +
-            "      xlsz_test1 = #{xlszTest1,jdbcType=VARCHAR},\n" +
-            "      xlsz_test2 = #{xlszTest2,jdbcType=VARCHAR},\n" +
-            "      xlsz_test3 = #{xlszTest3,jdbcType =VARCHAR},\n" +
-            "      xlsz_test4 = #{xlszTest4,jdbcType=VARCHAR},\n" +
-            "      xlsz_test5 = #{xlszTest5,jdbcType=VARCHAR}\n" +
-            "    where ccy_template_id = #{ccyTemplateId,jdbcType=INTEGER}")
+            "    set ccy_template_id = #{record.ccyTemplateId,jdbcType=INTEGER},\n" +
+            "      sfnl_yxwc = #{record.sfnlYxwc,jdbcType=VARCHAR},\n" +
+            "      sfnl_test1 = #{record.sfnlTest1,jdbcType=VARCHAR},\n" +
+            "      sfnl_test2 = #{record.sfnlTest2,jdbcType=VARCHAR},\n" +
+            "      sfnl_test3 = #{record.sfnlTest3,jdbcType=VARCHAR},\n" +
+            "      sfnl_test4 = #{record.sfnlTest4,jdbcType=VARCHAR},\n" +
+            "      sfnl_test5 = #{record.sfnlTest5,jdbcType=VARCHAR},\n" +
+            "      sfnl_test6 = #{record.sfnlTest6,jdbcType=VARCHAR},\n" +
+            "      sfnl_test7 = #{record.sfnlTest7,jdbcType=VARCHAR},\n" +
+            "      sfnl_test8 = #{record.sfnlTest8,jdbcType=VARCHAR},\n" +
+            "      cdsj_test = #{record.cdsjTest,jdbcType=VARCHAR},\n" +
+            "      tbms_ycsj = #{record.tbmsYcsj,jdbcType=VARCHAR},\n" +
+            "      xlsz_test11 = #{record.xlszTest11,jdbcType=INTEGER},\n" +
+            "      xlsz_test12 = #{record.xlszTest12,jdbcType=INTEGER},\n" +
+            "      xlsz_test13 = #{record.xlszTest13,jdbcType=INTEGER},\n" +
+            "      xlsz_test21 = #{record.xlszTest21,jdbcType=INTEGER},\n" +
+            "      xlsz_test22 = #{record.xlszTest22,jdbcType=INTEGER},\n" +
+            "      xlsz_test23 = #{record.xlszTest23,jdbcType=INTEGER},\n" +
+            "      xlsz_test31 = #{record.xlszTest31,jdbcType=INTEGER},\n" +
+            "      xlsz_test32 = #{record.xlszTest32,jdbcType=INTEGER},\n" +
+            "      xlsz_test33 = #{record.xlszTest33,jdbcType=INTEGER},\n" +
+            "      xlsz_test41 = #{record.xlszTest41,jdbcType=INTEGER},\n" +
+            "      xlsz_test42 = #{record.xlszTest42,jdbcType=INTEGER},\n" +
+            "      xlsz_test43 = #{record.xlszTest43,jdbcType=INTEGER},\n" +
+            "      xlsz_test51 = #{record.xlszTest51,jdbcType=INTEGER},\n" +
+            "      xlsz_test52 = #{record.xlszTest52,jdbcType=INTEGER},\n" +
+            "      xlsz_test53 = #{record.xlszTest53,jdbcType=INTEGER}")
     public void updateTemplate(CcyTemplate ccyTemplate);
     //插入模板表数据
     @Insert(" insert into ccy_template (ccy_template_id, sfnl_yxwc, sfnl_test1, \n" +
             "      sfnl_test2, sfnl_test3, sfnl_test4, \n" +
             "      sfnl_test5, sfnl_test6, sfnl_test7, \n" +
             "      sfnl_test8, cdsj_test, tbms_ycsj, \n" +
-            "      xlsz_test1, xlsz_test2, xlsz_test3, \n" +
-            "      xlsz_test4, xlsz_test5)\n" +
+            "      xlsz_test11, xlsz_test12, xlsz_test13, \n" +
+            "      xlsz_test21, xlsz_test22, xlsz_test23, \n" +
+            "      xlsz_test31, xlsz_test32, xlsz_test33, \n" +
+            "      xlsz_test41, xlsz_test42, xlsz_test43, \n" +
+            "      xlsz_test51, xlsz_test52, xlsz_test53\n" +
+            "      )\n" +
             "    values (#{ccyTemplateId,jdbcType=INTEGER}, #{sfnlYxwc,jdbcType=VARCHAR}, #{sfnlTest1,jdbcType=VARCHAR}, \n" +
             "      #{sfnlTest2,jdbcType=VARCHAR}, #{sfnlTest3,jdbcType=VARCHAR}, #{sfnlTest4,jdbcType=VARCHAR}, \n" +
             "      #{sfnlTest5,jdbcType=VARCHAR}, #{sfnlTest6,jdbcType=VARCHAR}, #{sfnlTest7,jdbcType=VARCHAR}, \n" +
             "      #{sfnlTest8,jdbcType=VARCHAR}, #{cdsjTest,jdbcType=VARCHAR}, #{tbmsYcsj,jdbcType=VARCHAR}, \n" +
-            "      #{xlszTest1,jdbcType=VARCHAR}, #{xlszTest2,jdbcType=VARCHAR}, #{xlszTest3,jdbcType=VARCHAR}, \n" +
-            "      #{xlszTest4,jdbcType=VARCHAR}, #{xlszTest5,jdbcType=VARCHAR})")
+            "      #{xlszTest11,jdbcType=INTEGER}, #{xlszTest12,jdbcType=INTEGER}, #{xlszTest13,jdbcType=INTEGER}, \n" +
+            "      #{xlszTest21,jdbcType=INTEGER}, #{xlszTest22,jdbcType=INTEGER}, #{xlszTest23,jdbcType=INTEGER}, \n" +
+            "      #{xlszTest31,jdbcType=INTEGER}, #{xlszTest32,jdbcType=INTEGER}, #{xlszTest33,jdbcType=INTEGER}, \n" +
+            "      #{xlszTest41,jdbcType=INTEGER}, #{xlszTest42,jdbcType=INTEGER}, #{xlszTest43,jdbcType=INTEGER}, \n" +
+            "      #{xlszTest51,jdbcType=INTEGER}, #{xlszTest52,jdbcType=INTEGER}, #{xlszTest53,jdbcType=INTEGER}\n" +
+            "      )")
     void insertTemplate(CcyTemplate ccyTemplate);
 
     //保存除颤仪检测数据
-    @Insert(" insert into ccy (ccy_id, jcyq_id, eq_id, \n" +
+    @Insert("  insert into ccy (ccy_id, jcyq_id, eq_id, \n" +
             "      tester, auditor, test_time, \n" +
             "      shr_jcjl, shsj_time, jcjl, \n" +
             "      jcsm, sfnl_yxwc, sfnl_test1, \n" +
@@ -67,13 +85,17 @@ public interface CcyMapper {
             "      sfnl_result, cdsj_test, cdsj_value, \n" +
             "      cdsj_result, nbfd_result, tbms_cfresult, \n" +
             "      tbms_ycsj, tbms_sj, tbms_result, \n" +
-            "      xlsz_test1, xlsz_value1, xlsz_test2, \n" +
-            "      xlsz_value2, xlsz_test3, xlsz_value3, \n" +
-            "      xlsz_test4, xlsz_value4, xlsz_test5, \n" +
-            "      xlsz_value5, xlsz_result, sgbj_result, \n" +
-            "      bjx_result, jy_result)\n" +
+            "      xlsz_test11, xlsz_test12, xlsz_test13, \n" +
+            "      xlsz_value1, xlsz_test21, xlsz_test22, \n" +
+            "      xlsz_test23, xlsz_value2, xlsz_test31, \n" +
+            "      xlsz_test32, xlsz_test33, xlsz_value3, \n" +
+            "      xlsz_test41, xlsz_test42, xlsz_test43, \n" +
+            "      xlsz_value4, xlsz_test51, xlsz_test52, \n" +
+            "      xlsz_test53, xlsz_value5, xlsz_result, \n" +
+            "      sgbj_result, bjx_result, jy_result\n" +
+            "      )\n" +
             "    values (#{ccyId,jdbcType=INTEGER}, #{jcyqId,jdbcType=INTEGER}, #{eqId,jdbcType=INTEGER}, \n" +
-            "      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{testTime}, \n" +
+            "      #{tester,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{testTime,jdbcType=DATE}, \n" +
             "      #{shrJcjl,jdbcType=VARCHAR}, #{shsjTime,jdbcType=TIMESTAMP}, #{jcjl,jdbcType=VARCHAR}, \n" +
             "      #{jcsm,jdbcType=VARCHAR}, #{sfnlYxwc,jdbcType=VARCHAR}, #{sfnlTest1,jdbcType=VARCHAR}, \n" +
             "      #{sfnlValue1,jdbcType=VARCHAR}, #{sfnlWc1,jdbcType=VARCHAR}, #{sfnlTest2,jdbcType=VARCHAR}, \n" +
@@ -88,11 +110,15 @@ public interface CcyMapper {
             "      #{sfnlResult,jdbcType=VARCHAR}, #{cdsjTest,jdbcType=VARCHAR}, #{cdsjValue,jdbcType=VARCHAR}, \n" +
             "      #{cdsjResult,jdbcType=VARCHAR}, #{nbfdResult,jdbcType=VARCHAR}, #{tbmsCfresult,jdbcType=VARCHAR}, \n" +
             "      #{tbmsYcsj,jdbcType=VARCHAR}, #{tbmsSj,jdbcType=VARCHAR}, #{tbmsResult,jdbcType=VARCHAR}, \n" +
-            "      #{xlszTest1,jdbcType=VARCHAR}, #{xlszValue1,jdbcType=VARCHAR}, #{xlszTest2,jdbcType=VARCHAR}, \n" +
-            "      #{xlszValue2,jdbcType=VARCHAR}, #{xlszTest3,jdbcType=VARCHAR}, #{xlszValue3,jdbcType=VARCHAR}, \n" +
-            "      #{xlszTest4,jdbcType=VARCHAR}, #{xlszValue4,jdbcType=VARCHAR}, #{xlszTest5,jdbcType=VARCHAR}, \n" +
-            "      #{xlszValue5,jdbcType=VARCHAR}, #{xlszResult,jdbcType=VARCHAR}, #{sgbjResult,jdbcType=VARCHAR}, \n" +
-            "      #{bjxResult,jdbcType=VARCHAR}, #{jyResult,jdbcType=VARCHAR})")
+            "      #{xlszTest11,jdbcType=INTEGER}, #{xlszTest12,jdbcType=INTEGER}, #{xlszTest13,jdbcType=INTEGER}, \n" +
+            "      #{xlszValue1,jdbcType=VARCHAR}, #{xlszTest21,jdbcType=INTEGER}, #{xlszTest22,jdbcType=INTEGER}, \n" +
+            "      #{xlszTest23,jdbcType=INTEGER}, #{xlszValue2,jdbcType=VARCHAR}, #{xlszTest31,jdbcType=INTEGER}, \n" +
+            "      #{xlszTest32,jdbcType=INTEGER}, #{xlszTest33,jdbcType=INTEGER}, #{xlszValue3,jdbcType=VARCHAR}, \n" +
+            "      #{xlszTest41,jdbcType=INTEGER}, #{xlszTest42,jdbcType=INTEGER}, #{xlszTest43,jdbcType=INTEGER}, \n" +
+            "      #{xlszValue4,jdbcType=VARCHAR}, #{xlszTest51,jdbcType=INTEGER}, #{xlszTest52,jdbcType=INTEGER}, \n" +
+            "      #{xlszTest53,jdbcType=INTEGER}, #{xlszValue5,jdbcType=VARCHAR}, #{xlszResult,jdbcType=VARCHAR}, \n" +
+            "      #{sgbjResult,jdbcType=VARCHAR}, #{bjxResult,jdbcType=VARCHAR}, #{jyResult,jdbcType=VARCHAR}\n" +
+            "      )")
     @Options(useGeneratedKeys = true, keyProperty = "ccyId", keyColumn = "ccy_id")
     public void save(Ccy ccy);
     @Update("update ccy\n" +
@@ -100,7 +126,7 @@ public interface CcyMapper {
             "      eq_id = #{eqId,jdbcType=INTEGER},\n" +
             "      tester = #{tester,jdbcType=VARCHAR},\n" +
             "      auditor = #{auditor,jdbcType=VARCHAR},\n" +
-            "      test_time = #{testTime,jdbcType=TIMESTAMP},\n" +
+            "      test_time = #{testTime,jdbcType=DATE},\n" +
             "      shr_jcjl = #{shrJcjl,jdbcType=VARCHAR},\n" +
             "      shsj_time = #{shsjTime,jdbcType=TIMESTAMP},\n" +
             "      jcjl = #{jcjl,jdbcType=VARCHAR},\n" +
@@ -143,15 +169,25 @@ public interface CcyMapper {
             "      tbms_ycsj = #{tbmsYcsj,jdbcType=VARCHAR},\n" +
             "      tbms_sj = #{tbmsSj,jdbcType=VARCHAR},\n" +
             "      tbms_result = #{tbmsResult,jdbcType=VARCHAR},\n" +
-            "      xlsz_test1 = #{xlszTest1,jdbcType=VARCHAR},\n" +
+            "      xlsz_test11 = #{xlszTest11,jdbcType=INTEGER},\n" +
+            "      xlsz_test12 = #{xlszTest12,jdbcType=INTEGER},\n" +
+            "      xlsz_test13 = #{xlszTest13,jdbcType=INTEGER},\n" +
             "      xlsz_value1 = #{xlszValue1,jdbcType=VARCHAR},\n" +
-            "      xlsz_test2 = #{xlszTest2,jdbcType=VARCHAR},\n" +
+            "      xlsz_test21 = #{xlszTest21,jdbcType=INTEGER},\n" +
+            "      xlsz_test22 = #{xlszTest22,jdbcType=INTEGER},\n" +
+            "      xlsz_test23 = #{xlszTest23,jdbcType=INTEGER},\n" +
             "      xlsz_value2 = #{xlszValue2,jdbcType=VARCHAR},\n" +
-            "      xlsz_test3 = #{xlszTest3,jdbcType=VARCHAR},\n" +
+            "      xlsz_test31 = #{xlszTest31,jdbcType=INTEGER},\n" +
+            "      xlsz_test32 = #{xlszTest32,jdbcType=INTEGER},\n" +
+            "      xlsz_test33 = #{xlszTest33,jdbcType=INTEGER},\n" +
             "      xlsz_value3 = #{xlszValue3,jdbcType=VARCHAR},\n" +
-            "      xlsz_test4 = #{xlszTest4,jdbcType=VARCHAR},\n" +
+            "      xlsz_test41 = #{xlszTest41,jdbcType=INTEGER},\n" +
+            "      xlsz_test42 = #{xlszTest42,jdbcType=INTEGER},\n" +
+            "      xlsz_test43 = #{xlszTest43,jdbcType=INTEGER},\n" +
             "      xlsz_value4 = #{xlszValue4,jdbcType=VARCHAR},\n" +
-            "      xlsz_test5 = #{xlszTest5,jdbcType=VARCHAR},\n" +
+            "      xlsz_test51 = #{xlszTest51,jdbcType=INTEGER},\n" +
+            "      xlsz_test52 = #{xlszTest52,jdbcType=INTEGER},\n" +
+            "      xlsz_test53 = #{xlszTest53,jdbcType=INTEGER},\n" +
             "      xlsz_value5 = #{xlszValue5,jdbcType=VARCHAR},\n" +
             "      xlsz_result = #{xlszResult,jdbcType=VARCHAR},\n" +
             "      sgbj_result = #{sgbjResult,jdbcType=VARCHAR},\n" +
@@ -160,15 +196,16 @@ public interface CcyMapper {
             "    where ccy_id = #{ccyId,jdbcType=INTEGER}")
     void updateCcy(Ccy ccy);
     //根据设备id查询设备检测表
-    @Select("select ccy_id, jcyq_id, eq_id, tester, auditor, test_time, shr_jcjl, shsj_time, jcjl, jcsm, \n" +
+    @Select(" ccy_id, jcyq_id, eq_id, tester, auditor, test_time, shr_jcjl, shsj_time, jcjl, jcsm, \n" +
             "    sfnl_yxwc, sfnl_test1, sfnl_value1, sfnl_wc1, sfnl_test2, sfnl_value2, sfnl_wc2, \n" +
             "    sfnl_test3, sfnl_value3, sfnl_wc3, sfnl_test4, sfnl_value4, sfnl_wc4, sfnl_test5, \n" +
             "    sfnl_value5, sfnl_wc5, sfnl_test6, sfnl_value6, sfnl_wc6, sfnl_test7, sfnl_value71, \n" +
             "    sfnl_value72, sfnl_value73, sfnl_wc7, sfnl_test8, sfnl_value81, sfnl_value82, sfnl_value83, \n" +
             "    sfnl_wc8, sfnl_result, cdsj_test, cdsj_value, cdsj_result, nbfd_result, tbms_cfresult, \n" +
-            "    tbms_ycsj, tbms_sj, tbms_result, xlsz_test1, xlsz_value1, xlsz_test2, xlsz_value2, \n" +
-            "    xlsz_test3, xlsz_value3, xlsz_test4, xlsz_value4, xlsz_test5, xlsz_value5, xlsz_result, \n" +
-            "    sgbj_result, bjx_result, jy_result from ccy order by ccy_id desc limit 1 where eq_id = #{eqId}")
+            "    tbms_ycsj, tbms_sj, tbms_result, xlsz_test11, xlsz_test12, xlsz_test13, xlsz_value1, \n" +
+            "    xlsz_test21, xlsz_test22, xlsz_test23, xlsz_value2, xlsz_test31, xlsz_test32, xlsz_test33, \n" +
+            "    xlsz_value3, xlsz_test41, xlsz_test42, xlsz_test43, xlsz_value4, xlsz_test51, xlsz_test52, \n" +
+            "    xlsz_test53, xlsz_value5, xlsz_result, sgbj_result, bjx_result, jy_result from ccy order by ccy_id desc limit 1 where eq_id = #{eqId}")
     public Ccy findCcy(String eqId);
 
     //以id排序，查询最后一条记录
