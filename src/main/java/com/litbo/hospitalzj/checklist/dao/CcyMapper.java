@@ -17,33 +17,33 @@ public interface CcyMapper {
     public CcyTemplate findTemplateById(Integer ccYtemplateId);
     //修改模板表数据
     @Update("  update ccy_template\n" +
-            "    set ccy_template_id = #{record.ccyTemplateId,jdbcType=INTEGER},\n" +
-            "      sfnl_yxwc = #{record.sfnlYxwc,jdbcType=VARCHAR},\n" +
-            "      sfnl_test1 = #{record.sfnlTest1,jdbcType=VARCHAR},\n" +
-            "      sfnl_test2 = #{record.sfnlTest2,jdbcType=VARCHAR},\n" +
-            "      sfnl_test3 = #{record.sfnlTest3,jdbcType=VARCHAR},\n" +
-            "      sfnl_test4 = #{record.sfnlTest4,jdbcType=VARCHAR},\n" +
-            "      sfnl_test5 = #{record.sfnlTest5,jdbcType=VARCHAR},\n" +
-            "      sfnl_test6 = #{record.sfnlTest6,jdbcType=VARCHAR},\n" +
-            "      sfnl_test7 = #{record.sfnlTest7,jdbcType=VARCHAR},\n" +
-            "      sfnl_test8 = #{record.sfnlTest8,jdbcType=VARCHAR},\n" +
-            "      cdsj_test = #{record.cdsjTest,jdbcType=VARCHAR},\n" +
-            "      tbms_ycsj = #{record.tbmsYcsj,jdbcType=VARCHAR},\n" +
-            "      xlsz_test11 = #{record.xlszTest11,jdbcType=INTEGER},\n" +
-            "      xlsz_test12 = #{record.xlszTest12,jdbcType=INTEGER},\n" +
-            "      xlsz_test13 = #{record.xlszTest13,jdbcType=INTEGER},\n" +
-            "      xlsz_test21 = #{record.xlszTest21,jdbcType=INTEGER},\n" +
-            "      xlsz_test22 = #{record.xlszTest22,jdbcType=INTEGER},\n" +
-            "      xlsz_test23 = #{record.xlszTest23,jdbcType=INTEGER},\n" +
-            "      xlsz_test31 = #{record.xlszTest31,jdbcType=INTEGER},\n" +
-            "      xlsz_test32 = #{record.xlszTest32,jdbcType=INTEGER},\n" +
-            "      xlsz_test33 = #{record.xlszTest33,jdbcType=INTEGER},\n" +
-            "      xlsz_test41 = #{record.xlszTest41,jdbcType=INTEGER},\n" +
-            "      xlsz_test42 = #{record.xlszTest42,jdbcType=INTEGER},\n" +
-            "      xlsz_test43 = #{record.xlszTest43,jdbcType=INTEGER},\n" +
-            "      xlsz_test51 = #{record.xlszTest51,jdbcType=INTEGER},\n" +
-            "      xlsz_test52 = #{record.xlszTest52,jdbcType=INTEGER},\n" +
-            "      xlsz_test53 = #{record.xlszTest53,jdbcType=INTEGER}")
+            "    set ccy_template_id = #{ccyTemplateId,jdbcType=INTEGER},\n" +
+            "      sfnl_yxwc = #{sfnlYxwc,jdbcType=VARCHAR},\n" +
+            "      sfnl_test1 = #{sfnlTest1,jdbcType=VARCHAR},\n" +
+            "      sfnl_test2 = #{sfnlTest2,jdbcType=VARCHAR},\n" +
+            "      sfnl_test3 = #{sfnlTest3,jdbcType=VARCHAR},\n" +
+            "      sfnl_test4 = #{sfnlTest4,jdbcType=VARCHAR},\n" +
+            "      sfnl_test5 = #{sfnlTest5,jdbcType=VARCHAR},\n" +
+            "      sfnl_test6 = #{sfnlTest6,jdbcType=VARCHAR},\n" +
+            "      sfnl_test7 = #{sfnlTest7,jdbcType=VARCHAR},\n" +
+            "      sfnl_test8 = #{sfnlTest8,jdbcType=VARCHAR},\n" +
+            "      cdsj_test = #{cdsjTest,jdbcType=VARCHAR},\n" +
+            "      tbms_ycsj = #{tbmsYcsj,jdbcType=VARCHAR},\n" +
+            "      xlsz_test11 = #{xlszTest11,jdbcType=INTEGER},\n" +
+            "      xlsz_test12 = #{xlszTest12,jdbcType=INTEGER},\n" +
+            "      xlsz_test13 = #{xlszTest13,jdbcType=INTEGER},\n" +
+            "      xlsz_test21 = #{xlszTest21,jdbcType=INTEGER},\n" +
+            "      xlsz_test22 = #{xlszTest22,jdbcType=INTEGER},\n" +
+            "      xlsz_test23 = #{xlszTest23,jdbcType=INTEGER},\n" +
+            "      xlsz_test31 = #{xlszTest31,jdbcType=INTEGER},\n" +
+            "      xlsz_test32 = #{xlszTest32,jdbcType=INTEGER},\n" +
+            "      xlsz_test33 = #{xlszTest33,jdbcType=INTEGER},\n" +
+            "      xlsz_test41 = #{xlszTest41,jdbcType=INTEGER},\n" +
+            "      xlsz_test42 = #{xlszTest42,jdbcType=INTEGER},\n" +
+            "      xlsz_test43 = #{xlszTest43,jdbcType=INTEGER},\n" +
+            "      xlsz_test51 = #{xlszTest51,jdbcType=INTEGER},\n" +
+            "      xlsz_test52 = #{xlszTest52,jdbcType=INTEGER},\n" +
+            "      xlsz_test53 = #{xlszTest53,jdbcType=INTEGER}")
     public void updateTemplate(CcyTemplate ccyTemplate);
     //插入模板表数据
     @Insert(" insert into ccy_template (ccy_template_id, sfnl_yxwc, sfnl_test1, \n" +

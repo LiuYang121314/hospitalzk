@@ -47,6 +47,26 @@ public class GpddTemplate {
 
     private Integer sjgpldWc;
 
+    private Integer spare1;
+
+    private Integer spare2;
+
+    public Integer getSpare1() {
+        return spare1;
+    }
+
+    public void setSpare1(Integer spare1) {
+        this.spare1 = spare1;
+    }
+
+    public Integer getSpare2() {
+        return spare2;
+    }
+
+    public void setSpare2(Integer spare2) {
+        this.spare2 = spare2;
+    }
+
     public String getGpddTemplateId() {
         return gpddTemplateId;
     }
