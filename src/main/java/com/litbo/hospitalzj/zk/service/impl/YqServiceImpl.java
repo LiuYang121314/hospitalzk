@@ -41,6 +41,9 @@ public class YqServiceImpl implements YqService{
 
 	@Override
 	public void insert(Yq yq) {
+		if (yqMapper.findYqByDah(yq.getJcyqDah())!=null) {
+			throw new InsertException("您保存的仪器档案号已存在");
+		}
 		yqMapper.insert(yq);
 	}
 
