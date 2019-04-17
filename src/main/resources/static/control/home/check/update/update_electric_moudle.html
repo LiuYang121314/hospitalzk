@@ -171,6 +171,57 @@
                     <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveUpdate">保存</button>
                 </div>
             </div>
+
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;"> CF型 </legend>
+            </fieldset>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">患者漏电流</legend>
+            </fieldset>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">正常状态</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">正常状态</label>
+                <div class="layui-input-block">
+                    <input type="text" id="hzldlZcCf" name="hzldlZcCf" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">单一故障状态</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">单一故障状态</label>
+                <div class="layui-input-block">
+                    <input type="text" id="hzldlDyCf" name="hzldlDyCf" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">患者辅助漏电流</legend>
+            </fieldset>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">正常状态</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">正常状态</label>
+                <div class="layui-input-block">
+                    <input type="text" id="hzfzldlZcCf" name="hzfzldlZcCf" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">单一故障状态</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">单一故障状态</label>
+                <div class="layui-input-block">
+                    <input type="text" id="hzfzldlDyCf" name="hzfzldlDyCf" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item btn">
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveUpdate">保存</button>
+                </div>
+            </div>
         </from>
     </div>
 </div>
@@ -202,6 +253,10 @@
                         $("#hzldlDyBf").val(res.data.hzldlDyBf);
                         $("#hzfzldlZcBf").val(res.data.hzfzldlZcBf);
                         $("#hzfzldlDyBf").val(res.data.hzfzldlDyBf);
+                        $("#hzldlZcCf").val(res.data.hzldlZcCf);
+                        $("#hzldlDyCf").val(res.data.hzldlDyCf);
+                        $("#hzfzldlZcCf").val(res.data.hzfzldlZcCf);
+                        $("#hzfzldlDyCf").val(res.data.hzfzldlDyCf);
                     }else{
                         layer.msg("无数据");
                     }
