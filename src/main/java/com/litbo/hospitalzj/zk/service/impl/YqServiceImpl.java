@@ -25,8 +25,8 @@ public class YqServiceImpl implements YqService{
 	YqMapper yqMapper;
 
 	@Override
-	public List<Yq> findYqByYqName(String jcyqName) {
-		return yqMapper.findYqByYqName(jcyqName);
+	public List<Yq> findYqByYqNameLike(String jcyqName) {
+		return yqMapper.findYqByYqNameLike(jcyqName);
 	}
 
 	@Override

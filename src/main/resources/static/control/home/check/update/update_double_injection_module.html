@@ -158,7 +158,7 @@
             ,form = layui.form;
         $(function(){
             $.ajax({
-                url:"/syb/findChildTemplate",
+                url:"/zsb/findStZsTemplate",
                 method:"GET",
                 dataType:"JSON",
                 success:function (res) {
@@ -192,7 +192,7 @@
         form.on("submit(saveUpdate)",function(data){
             console.log(data.field);
             $.ajax({
-                url:"?tempId="+ids,
+                url:"/zsb/updateST?tempId="+ids,
                 method:"POST",
                 data:data.field,
                 dataType:"JSON",

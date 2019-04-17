@@ -34,9 +34,9 @@ public class YqController extends BaseController{
 	@Autowired
 	private YqJxjlService yqJxjlService;
 	//仪器模糊查询
-	@RequestMapping("/findYqByYqName")
-	public ResponseResult<List<Yq>> findYqByYqName(String jcyqName){
-		List<Yq> data=yqService.findYqByYqName(jcyqName);
+	@RequestMapping("/findYqByYqNameLike")
+	public ResponseResult<List<Yq>> findYqByYqNameLike(String jcyqName){
+		List<Yq> data=yqService.findYqByYqNameLike(jcyqName);
 		return new ResponseResult<List<Yq>>(SUCCESS,data);
 	}
 	//新增仪器

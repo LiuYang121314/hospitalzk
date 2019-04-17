@@ -17,7 +17,7 @@ public interface YqMapper {
 	List<Yq> findNotByUserId(String userId);
 
 	@Select("SELECT * FROM yq WHERE jcyq_name LIKE '%${jcyqName}%'")
-	List<Yq> findYqByYqName(@Param("jcyqName") String jcyqName);
+	List<Yq> findYqByYqNameLike(@Param("jcyqName") String jcyqName);
 
 	@Select("select * from yq")
 	List<Yq> findAll();
