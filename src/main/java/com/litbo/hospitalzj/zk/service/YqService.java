@@ -16,13 +16,11 @@ public interface YqService {
 
 	void insert(Yq yq);
 
-	void delete(String yqId);
+	void delete(Integer jcyqId);
 
 	List<Yq> findAll();
 
 	void update(Yq yq);
-
-	void deleteBatch(String[] yqId);
 
 	List<Yq> select(Integer eqId);
 	//根据档案号查询出设备

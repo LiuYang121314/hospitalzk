@@ -21,9 +21,6 @@ public interface YqMapper {
 
 	@Select("select * from yq")
 	List<Yq> findAll();
-
-	@Delete("delete from yq where jcyq_id=#{jcyqId}")
-	void delete(String yqId);
 	
 	@Update(
 	 "update yq "
@@ -38,9 +35,9 @@ public interface YqMapper {
       +"jcyq_cf = #{jcyqCf,jdbcType=VARCHAR},"
       +"jcyq_url = #{jcyqUrl,jdbcType=VARCHAR},"
       +"jcyq_jz_time = #{jcyqJzTime,jdbcType=TIMESTAMP},"
-      +"mb_id = #{mbId,jdbcType=INTEGER} "
+      +"mb_id = #{mbId,jdbcType=INTEGER}, "
+			 +"is_delete={#isDelete}"
       +"where jcyq_id = #{jcyqId,jdbcType=VARCHAR}")
-	
 	void update(Yq yq);
 
 	@Insert(
@@ -48,16 +45,22 @@ public interface YqMapper {
 	  +"jcyq_xzzq_time, jcyq_dah, jcyq_bh," 
 	  +"jcyq_cj_id, jcyq_qy_time, jcyq_ks_id," 
 	  +"jcyq_cf, jcyq_url, jcyq_jz_time," 
-	  +"mb_id)values (UUID(), #{jcyqName,jdbcType=VARCHAR}, #{jcyqXh,jdbcType=VARCHAR}," 
+	  +"mb_id,is_delete)values (UUID(), #{jcyqName,jdbcType=VARCHAR}, #{jcyqXh,jdbcType=VARCHAR},"
 	  +"#{jcyqXzzqTime,jdbcType=VARCHAR}, #{jcyqDah,jdbcType=VARCHAR}, #{jcyqBh,jdbcType=VARCHAR}," 
 	  +"#{jcyqCjId,jdbcType=INTEGER}, #{jcyqQyTime,jdbcType=TIMESTAMP}, #{jcyqKsId,jdbcType=INTEGER}," 
 	  +"#{jcyqCf,jdbcType=VARCHAR}, #{jcyqUrl,jdbcType=VARCHAR}, #{jcyqJzTime,jdbcType=TIMESTAMP}," 
-	  +"#{mbId,jdbcType=INTEGER})")
+	  +"#{mbId,jdbcType=INTEGER},#{isDelete})")
 	@Options(useGeneratedKeys = true, keyProperty = "jcyqId", keyColumn = "jcyq_id")
 	void insert(Yq yq);
 
 	@Select("select * from yq WHERE jcyq_id IN( SELECT jcyq_id FROM yq_eq WHERE eq_id=(SELECT eq_id FROM eq_info WHERE eq_dah=#{dah}))")
 	List<Yq> findByDah(String dah);
+
+	@Select("SELECT * FROM yq where jcyq_dah=#{jcyqDah}")
+	Yq findYqByDah(String jcyqDah);
+
+	@Update("update yq set is_delete=#{isDelete} where jcyq_id=#{jcyqId}")
+	int delete(Integer jcyqId);
 
 	@Select("SELECT yq.* from  yq_eq y left join yq on y.jcyq_id=yq.jcyq_id where eq_id=#{eqId}")
 	List<Yq> select(Integer eqId);

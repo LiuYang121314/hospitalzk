@@ -41,12 +41,15 @@ public class YqServiceImpl implements YqService{
 
 	@Override
 	public void insert(Yq yq) {
+		if (yqMapper.findYqByDah(yq.getJcyqDah())!=null) {
+			throw new InsertException("您保存的仪器档案号已存在");
+		}
 		yqMapper.insert(yq);
 	}
 
 	@Override
-	public void delete(String yqId) {
-		yqMapper.delete(yqId);
+	public void delete(Integer jcyqId) {
+		yqMapper.delete(jcyqId);
 	}
 
 	@Override
@@ -59,12 +62,6 @@ public class YqServiceImpl implements YqService{
 		yqMapper.update(yq);
 	}
 
-	@Override
-	public void deleteBatch(String[] yqId) {
-		for(int i=0;i<yqId.length;i++){
-			yqMapper.delete(yqId[i]);
-		}
-	}
 
 	@Override
 	public List<Yq> select(Integer eqId) {

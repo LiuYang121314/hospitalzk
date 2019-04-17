@@ -30,10 +30,6 @@ public class YqController extends BaseController{
 	@Autowired
 	private YqService yqService;
 	@Autowired
-	private UserEqService userEqService;
-	@Autowired
-	private UserPmService userPmService;
-	@Autowired
 	private NdjhService ndjhService;
 	@Autowired
 	private YqJxjlService yqJxjlService;
@@ -55,24 +51,12 @@ public class YqController extends BaseController{
 	}
 	
 	//删除仪器
-	@RequestMapping("/delete/{yqId}")
-	public ResponseResult<Void> delete(@PathVariable String yqId){
-		yqService.delete(yqId);
+	@RequestMapping("/delete/{jcyqId}")
+	public ResponseResult<Void> delete(@PathVariable Integer jcyqId){
+		yqService.delete(jcyqId);
 		return new ResponseResult<Void>(SUCCESS);
 	}
-	
-	
-	@RequestMapping("/deleteBatch")
-	public ResponseResult<Void> deleteBatch(String[] yqId){
-		yqService.deleteBatch(yqId);
-		
-		String[] yqId1={"8","9"};
-		for(int i=0;i<yqId.length;i++){
-			
-			yqService.delete(yqId[i]);
-		}
-		return new ResponseResult<Void>(SUCCESS);
-	}
+
 	
 	//查询所有仪器
 	@RequestMapping("/findAll")
@@ -83,10 +67,7 @@ public class YqController extends BaseController{
 	
 	//修改仪器
 	@RequestMapping("/update")
-	public ResponseResult<Void> update(String yqId){
-		Yq yq=new Yq();
-		yq.setJcyqId("5");
-		yq.setJcyqName("小刀dao");
+		public ResponseResult<Void> update(Yq yq){
 		yqService.update(yq);
 		return new ResponseResult<Void>(SUCCESS);
 	}
@@ -104,11 +85,6 @@ public class YqController extends BaseController{
 		return new ResponseResult<EqInfo>(SUCCESS,data);
 	}
 
-	/*@RequestMapping("/selectEqYq")
-	public ResponseResult<List<Yq>> selectEqYq(String eqDah){
-		List<Yq> data=yqService.selectEqYq(eqDah);
-		return new ResponseResult<List<Yq>>(SUCCESS,data);
-	}*/
 	//电器的数据
 	@RequestMapping("/selectEqYqByEqId")
 	public ResponseResult<List<Yq>> selectEqYqByEqId(@RequestParam("eqId") Integer eqId){

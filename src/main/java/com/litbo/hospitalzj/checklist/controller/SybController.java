@@ -56,13 +56,13 @@ public class SybController extends BaseController {
     //查询模板数据（成年人）
     @RequestMapping("/findManTemplate")
     public ResponseResult<SybCTemplate> findManTemplate(){
-        String template = "syb_c_template";
+        String template = "syb_m_template";
         return new ResponseResult<SybCTemplate>(200, sybService.findTemplate(template));
     }
     //查询模板数据（儿童 ）
     @RequestMapping("/findChildTemplate")
     public ResponseResult<SybCTemplate> findChildTemplate(){
-        String template = "syb_m_template";
+        String template = "syb_c_template";
         return new ResponseResult<SybCTemplate>(200, sybService.findTemplate(template));
     }
 
