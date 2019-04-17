@@ -64,12 +64,18 @@
             <div class="layui-form-item col-md-5">
                 <label class="layui-form-label">误差值</label>
                 <div class="layui-input-block">
-                    <input type="text" id="zsbjllz" name="zsbjllz" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="wc" name="wc" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <fieldset class="layui-elem-field layui-field-title">
                 <legend style="color: red;">阻塞报警检测测试流量：25ml/h</legend>
             </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">测试流量</label>
+                <div class="layui-input-block">
+                    <input type="text" id="zsbjllz" name="zsbjllz" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
             <fieldset class="layui-elem-field layui-field-title">
                 <legend style="color: #555555;">测试结果允许测量误差</legend>
             </fieldset>
@@ -110,6 +116,8 @@
                         //ids = res.data.;
                         $("#llcsd1").val(res.data.llcsd1);
                         $("#llcsd2").val(res.data.llcsd2);
+                        $("#wc").val(res.data.wc);
+                        $("#zsbjllz").val(res.data.zsbjllz);
                         $("#zsbjWc1").val(res.data.zsbjWc1);
                         $("#zsbjWc2").val(res.data.zsbjWc2);
                     }else{
