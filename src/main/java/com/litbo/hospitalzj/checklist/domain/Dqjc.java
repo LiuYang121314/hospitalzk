@@ -23,7 +23,9 @@ public class Dqjc {
 
     private String jcsm;
 
-    private Double dydy;
+    private String dydy1;
+    
+    private String dydy2;
 
     private Double dydyValue;
 
@@ -145,7 +147,23 @@ public class Dqjc {
 
     private String shrJcjl;
 
-    public Date getShsjTime() {
+    public String getDydy1() {
+		return dydy1;
+	}
+
+	public void setDydy1(String dydy1) {
+		this.dydy1 = dydy1;
+	}
+
+	public String getDydy2() {
+		return dydy2;
+	}
+
+	public void setDydy2(String dydy2) {
+		this.dydy2 = dydy2;
+	}
+
+	public Date getShsjTime() {
         return shsjTime;
     }
 
@@ -223,14 +241,6 @@ public class Dqjc {
 
     public void setJcsm(String jcsm) {
         this.jcsm = jcsm == null ? null : jcsm.trim();
-    }
-
-    public Double getDydy() {
-        return dydy;
-    }
-
-    public void setDydy(Double dydy) {
-        this.dydy = dydy;
     }
 
     public Double getDydyValue() {
