@@ -349,7 +349,7 @@
         form.on("submit(saveUpdate)",function(data){
             console.log(data.field);
             $.ajax({
-                url:"",
+                url:"?"+ids,
                 method:"POST",
                 data:data.field,
                 dataType:"JSON",
