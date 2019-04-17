@@ -29,33 +29,33 @@ public class ZsbServiceImpl implements ZsbService {
     }
 
     @Override
-    public int updateC(SybCTemplate sybCTemplate) {
-        return zsbMapper.updateC(sybCTemplate);
+    public void updateC(SybCTemplate sybCTemplate) {
+         zsbMapper.updateC(sybCTemplate);
     }
 
     @Override
-    public int updateM(SybCTemplate sybCTemplate) {
-        return zsbMapper.updateM(sybCTemplate);
+    public void updateM(SybCTemplate sybCTemplate) {
+         zsbMapper.updateM(sybCTemplate);
     }
 
     @Override
-    public int updateS(StzsMTemplate stzsMTemplate) {
-        return zsbMapper.updateS(stzsMTemplate);
+    public void updateS(StzsMTemplate stzsMTemplate) {
+        zsbMapper.updateS(stzsMTemplate);
     }
 
     @Override
-    public int insertChildTemplate(SybCTemplate template) {
-        return zsbMapper.insertChildTemplate(template);
+    public void insertChildTemplate(SybCTemplate template) {
+        zsbMapper.insertChildTemplate(template);
     }
 
     @Override
-    public int insertManTemplate(SybCTemplate template) {
-        return zsbMapper.insertManTemplate(template);
+    public void insertManTemplate(SybCTemplate template) {
+        zsbMapper.insertManTemplate(template);
     }
 
     @Override
-    public int insertStzsTemplate(StzsMTemplate template) {
-        return zsbMapper.insertStzsTemplate(template);
+    public void insertStzsTemplate(StzsMTemplate template) {
+        zsbMapper.insertStzsTemplate(template);
     }
 
     @Override

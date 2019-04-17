@@ -26,7 +26,7 @@ public interface YepyxMapper {
             "      cdbf_wc = #{cdbfWc,jdbcType=DOUBLE},\n" +
             "      sd_wc = #{sdWc,jdbcType=DOUBLE}\n" +
             "    where pyx_template_id = #{pyxTemplateId,jdbcType=INTEGER}")
-    public YepyxTemplate updateTemplate(YepyxTemplate yepyxTemplate);
+    public int updateTemplate(YepyxTemplate yepyxTemplate);
     //插入模板表数据
     @Insert(" insert into yepyx_template (pyx_template_id, wdpc_wc, jyx_wc, \n" +
             "      bdd_wc, wkpc_wc, ctl_wc, \n" +

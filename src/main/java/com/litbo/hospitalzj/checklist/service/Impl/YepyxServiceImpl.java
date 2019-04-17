@@ -24,8 +24,8 @@ public class YepyxServiceImpl implements YepyxService {
     }
     //修改模板表数据
     @Override
-    public YepyxTemplate updateTemplate(YepyxTemplate yepyxTemplate) {
-        return yepyxMapper.updateTemplate(yepyxTemplate);
+    public void updateTemplate(YepyxTemplate yepyxTemplate) {
+        yepyxMapper.updateTemplate(yepyxTemplate);
     }
     //插入模板表数据
     @Override
