@@ -14,12 +14,16 @@
     <![endif]-->
     <script src="../../../../static/layui/layui.js"></script>
     <style>
-        h2{
-            text-align: center;
-            margin-top: 30px;
+        .layui-elem-field{
+            width: 100%;
         }
-        td{
-            text-align: center;
+        .layui-input-block{
+            display: flex;
+            align-items: center;
+        }
+        b{
+            padding-left: 30px;
+            width: 60%;
         }
         .btn{
             width: 100%;
@@ -36,52 +40,49 @@
             <legend style="color: #000000;font-weight: bold;margin-bottom: 30px;">输液泵质量检测模板数据修改(新生儿)</legend>
         </fieldset>
         <from class="layui-form layui-form-pane" action="">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">流量检测</legend>
+            </fieldset>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">流量测试点</legend>
+            </fieldset>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">111</label>
+                <label class="layui-form-label">测试点1</label>
                 <div class="layui-input-block">
-                    <input type="text" name="111" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="llcsd1" name="llcsd1" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">222</label>
+                <label class="layui-form-label">测试点2</label>
                 <div class="layui-input-block">
-                    <input type="text" name="222" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="llcsd2" name="llcsd2" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">测试结果允许测量误差</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">误差值</label>
+                <div class="layui-input-block">
+                    <input type="text" id="zsbjllz" name="zsbjllz" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">阻塞报警检测测试流量：25ml/h</legend>
+            </fieldset>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">测试结果允许测量误差</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">测量误差1</label>
+                <div class="layui-input-block">
+                    <input type="text" id="zsbjWc1" name="zsbjWc1" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">333</label>
+                <label class="layui-form-label">测量误差2</label>
                 <div class="layui-input-block">
-                    <input type="text" name="333" required  lay-verify="required" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">444</label>
-                <div class="layui-input-block">
-                    <input type="text" name="444" required  lay-verify="required" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">555</label>
-                <div class="layui-input-block">
-                    <input type="text" name="555" required  lay-verify="required" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">666</label>
-                <div class="layui-input-block">
-                    <input type="text" name="666" required  lay-verify="required" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">777</label>
-                <div class="layui-input-block">
-                    <input type="text" name="777" required  lay-verify="required" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">888</label>
-                <div class="layui-input-block">
-                    <input type="text" name="888" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="zsbjWc2" name="zsbjWc2" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item btn">
@@ -93,21 +94,39 @@
     </div>
 </div>
 <script>
-    // 获取上个页面传递的类型
-    var type = window.location.search;
-    var ids = parseInt(type.split("=")[1]);
+
+    var ids = "";
     layui.use(['layer','jquery','form'],function(){
         var layer = layui.layer
             ,$ = layui.jquery
             ,form = layui.form;
         $(function(){
-
+            $.ajax({
+                url:"/gpdd/findTemplate",
+                method:"GET",
+                dataType:"JSON",
+                success:function (res) {
+                    if(res.data !== "" && res.data !== null){
+                        //ids = res.data.;
+                        $("#llcsd1").val(res.data.llcsd1);
+                        $("#llcsd2").val(res.data.llcsd2);
+                        $("#zsbjWc1").val(res.data.zsbjWc1);
+                        $("#zsbjWc2").val(res.data.zsbjWc2);
+                    }else{
+                        layer.msg("无数据");
+                    }
+                },
+                error:function(data){
+                    console.log(data);
+                    layer.msg("请稍后再试");
+                }
+            });
         });
         // 保存
         form.on("submit(saveUpdate)",function(data){
             console.log(data.field);
             $.ajax({
-                url:"",
+                url:""+ids,
                 method:"POST",
                 data:data.field,
                 dataType:"JSON",
