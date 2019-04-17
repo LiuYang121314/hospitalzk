@@ -38,7 +38,7 @@ public interface DqjcMapper {
 			"      hzfzldl_dy_bf = #{hzfzldlDyBf,jdbcType=DOUBLE},\n" +
 			"      hzfzldl_dy_cf = #{hzfzldlDyCf,jdbcType=DOUBLE}\n" +
 			"    where dqjc_templateid = #{dqjcTemplateid,jdbcType=INTEGER}")
-	public DqjcTemplate updateTemplate(DqjcTemplate dqjcTemplate);
+	public void updateTemplate(DqjcTemplate dqjcTemplate);
 	//插入模板表数据
 	@Insert(" insert into dqjc_template (dqjc_templateid, dydy1,dydy2 jdzk, \n" +
 			"      jyzk, ddldl_zc, ddldl_dy, \n" +

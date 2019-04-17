@@ -45,9 +45,9 @@ public class DqjcController extends BaseController {
      * @return
      */
     @RequestMapping("/findTemplate")
-    public ResponseResult<Dqjc> findTemplate(){
-        Dqjc dqjc = dqjcService.findTemplate();
-        return new ResponseResult<Dqjc>(200, dqjc);
+    public ResponseResult<DqjcTemplate> findTemplate(){
+    	DqjcTemplate dqjc = dqjcService.findTemplate();
+        return new ResponseResult<DqjcTemplate>(200, dqjc);
     }
     /**
      * 修改模板表数据
@@ -55,6 +55,7 @@ public class DqjcController extends BaseController {
      */
     @RequestMapping("/updateTemplate")
     public ResponseResult<Void> updateTemplate(DqjcTemplate dqjcTemplate){
+    	System.out.println(dqjcTemplate);
         dqjcService.updateTemplate(dqjcTemplate);
         return new ResponseResult<Void>(200);
     }

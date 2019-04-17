@@ -27,19 +27,17 @@ public class DqjcService {
 	@Autowired
 	private DqjcMapper dqjcMapper;
 	//修改模板表数据
-	public DqjcTemplate updateTemplate(DqjcTemplate dqjcTemplate){
-		return dqjcMapper.updateTemplate(dqjcTemplate);
+	public void updateTemplate(DqjcTemplate dqjcTemplate){
+		dqjcMapper.updateTemplate(dqjcTemplate);
 	}
 	//插入模板表数据
 	public void insertTemplate(DqjcTemplate dqjcTemplate){
 		dqjcMapper.insertTemplate(dqjcTemplate);
 	}
 	//根据表名查询电器检测模板表
-	public Dqjc findTemplate() {
+	public DqjcTemplate findTemplate() {
 		DqjcTemplate dqjcTemplate = dqjcMapper.findTemplate();
-		Dqjc dqjc = new Dqjc();
-		BeanUtils.copyProperties(dqjcTemplate, dqjc);
-		return dqjc;
+		return dqjcTemplate;
 	}
 
 	//保存带有检测数据的电器检测表

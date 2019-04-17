@@ -171,4 +171,14 @@ public class DqjcTemplate {
     public void setHzfzldlDyCf(Double hzfzldlDyCf) {
         this.hzfzldlDyCf = hzfzldlDyCf;
     }
+
+	@Override
+	public String toString() {
+		return "DqjcTemplate [dqjcTemplateid=" + dqjcTemplateid + ", dydy1=" + dydy1 + ", dydy2=" + dydy2 + ", jdzk="
+				+ jdzk + ", jyzk=" + jyzk + ", ddldlZc=" + ddldlZc + ", ddldlDy=" + ddldlDy + ", wkldlZc=" + wkldlZc
+				+ ", wkldlDy=" + wkldlDy + ", hzldlZcBf=" + hzldlZcBf + ", hzldlZcCf=" + hzldlZcCf + ", hzldlDyBf="
+				+ hzldlDyBf + ", hzldlDyCf=" + hzldlDyCf + ", hzfzldlZcBf=" + hzfzldlZcBf + ", hzfzldlZcCf="
+				+ hzfzldlZcCf + ", hzfzldlDyBf=" + hzfzldlDyBf + ", hzfzldlDyCf=" + hzfzldlDyCf + "]";
+	}
+    
 }

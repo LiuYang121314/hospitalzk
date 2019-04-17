@@ -14,18 +14,22 @@
     <![endif]-->
     <script src="../../../../static/layui/layui.js"></script>
     <style>
-        h2{
-            text-align: center;
-            margin-top: 30px;
-        }
-        td{
-            text-align: center;
-        }
         .btn{
             width: 100%;
             margin-top: 50px;
             margin-bottom: 30px;
             text-align: center;
+        }
+        .layui-elem-field{
+            width: 100%;
+        }
+        .layui-input-block{
+            display: flex;
+            align-items: center;
+        }
+        b{
+            padding-left: 30px;
+            width: 60%;
         }
     </style>
 </head>
@@ -36,52 +40,199 @@
             <legend style="color: #000000;font-weight: bold;margin-bottom: 30px;">呼吸机质量检测模板数据修改</legend>
         </fieldset>
         <from class="layui-form layui-form-pane" action="">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">潮气量Vt (VCV模式、f=20bpm、I:E=1:2、PEEP=2cmH2O、FiO2=40%)</legend>
+            </fieldset>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">呼吸机设定值 (ml)</legend>
+            </fieldset>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">111</label>
+                <label class="layui-form-label">设定值1</label>
                 <div class="layui-input-block">
-                    <input type="text" name="111" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="cqz1" name="cqz1" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">222</label>
+                <label class="layui-form-label">设定值2</label>
                 <div class="layui-input-block">
-                    <input type="text" name="222" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="cqz2" name="cqz2" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">333</label>
+                <label class="layui-form-label">设定值3</label>
                 <div class="layui-input-block">
-                    <input type="text" name="333" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="cqz3" name="cqz3" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">最大允差</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">cmH2O</label>
+                <div class="layui-input-block">
+                    <input type="text" id="cqzZdwc1" name="cqzZdwc1" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">444</label>
+                <label class="layui-form-label">设定值百分比</label>
                 <div class="layui-input-block">
-                    <input type="text" name="444" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="cqzZdwc2" name="cqzZdwc2" required placeholder="设定值百分比"  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">强制通气频率f (VCV模式、Vt=400ml、I:E=1:2、PEEP=2cmH2O、FiO2=40%)</legend>
+            </fieldset>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">呼吸机设定值 (ml)</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设定值1</label>
+                <div class="layui-input-block">
+                    <input type="text" id="qztq1" name="qztq1" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">555</label>
+                <label class="layui-form-label">设定值2</label>
                 <div class="layui-input-block">
-                    <input type="text" name="555" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="qztq2" name="qztq2" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">666</label>
+                <label class="layui-form-label">设定值3</label>
                 <div class="layui-input-block">
-                    <input type="text" name="666" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="qztq3" name="qztq3" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">最大允差</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">cmH2O</label>
+                <div class="layui-input-block">
+                    <input type="text" id="qztqZdwc1" name="qztqZdwc1" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">777</label>
+                <label class="layui-form-label">设定值百分比</label>
                 <div class="layui-input-block">
-                    <input type="text" name="777" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="qztqZdwc2" name="qztqZdwc2" required placeholder="设定值百分比"  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">吸入氧浓度FiO2 (VCV模式、Vt=400ml、f=15bpm、I:E=1:2、PEEP=2cmH2O)</legend>
+            </fieldset>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">呼吸机设定值 (ml)</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设定值1</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xry1" name="xry1" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">888</label>
+                <label class="layui-form-label">设定值2</label>
                 <div class="layui-input-block">
-                    <input type="text" name="888" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="xry2" name="xry2" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设定值3</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xry3" name="xry3" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">最大允差</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">cmH2O</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xryZdwc1" name="xryZdwc1" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设定值百分比</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xryZdwc2" name="xryZdwc2" required placeholder="设定值百分比"  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">吸气峰值压力 (PCV模式、f=15bpm、I:E=1:2、PEEP=0cmH2O、FiO2=40%)</legend>
+            </fieldset>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">呼吸机设定值 (ml)</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设定值1</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xqf1" name="xqf1" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设定值2</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xqf2" name="xqf2" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设定值3</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xqf3" name="xqf3" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">最大允差</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">cmH2O</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xqfZdwc1" name="xqfZdwc1" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设定值百分比</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xqfZdwc2" name="xqfZdwc2" required placeholder="设定值百分比"  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">呼气末正压PEEP (VCV模式、Vt=400ml、f=15bpm、I:E=1:2、FiO2=40%)</legend>
+            </fieldset>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">呼吸机设定值 (ml)</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设定值1</label>
+                <div class="layui-input-block">
+                    <input type="text" id="hqm1" name="hqm1" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设定值2</label>
+                <div class="layui-input-block">
+                    <input type="text" id="hqm2" name="hqm2" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设定值3</label>
+                <div class="layui-input-block">
+                    <input type="text" id="hqm3" name="hqm3" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">最大允差</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">cmH2O</label>
+                <div class="layui-input-block">
+                    <input type="text" id="hqmZdwc1" name="hqmZdwc1" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设定值百分比</label>
+                <div class="layui-input-block">
+                    <input type="text" id="hqmZdwc2" name="hqmZdwc2" required placeholder="设定值百分比"  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item btn">
@@ -94,20 +245,63 @@
 </div>
 <script>
     // 获取上个页面传递的类型
-    var type = window.location.search;
-    var ids = parseInt(type.split("=")[1]);
+    var ids = "";
     layui.use(['layer','jquery','form'],function(){
         var layer = layui.layer
             ,$ = layui.jquery
             ,form = layui.form;
         $(function(){
+            $.ajax({
+                url:"/hxj/findTemplate",
+                method:"GET",
+                dataType:"JSON",
+                success:function (res) {
+                    if(res.data !== "" && res.data !== null){
+                    	ids = res.data.hxjTemplateId;
+                        $("#cqz1").val(res.data.cqz1);
+                        $("#cqz2").val(res.data.cqz2);
+                        $("#cqz3").val(res.data.cqz3);
+                        $("#cqzZdwc1").val(res.data.cqzZdwc1);
+                        $("#cqzZdwc2").val(res.data.cqzZdwc2);
 
+                        $("#qztq1").val(res.data.qztq1);
+                        $("#qztq2").val(res.data.qztq2);
+                        $("#qztq3").val(res.data.qztq3);
+                        $("#qztqZdwc1").val(res.data.qztqZdwc1);
+                        $("#qztqZdwc2").val(res.data.qztqZdwc2);
+
+                        $("#xry1").val(res.data.xry1);
+                        $("#xry2").val(res.data.xry2);
+                        $("#xry3").val(res.data.xry3);
+                        $("#xryZdwc1").val(res.data.xryZdwc1);
+                        $("#xryZdwc2").val(res.data.xryZdwc2);
+
+                        $("#xqf1").val(res.data.xqf1);
+                        $("#xqf2").val(res.data.xqf2);
+                        $("#xqf3").val(res.data.xqf3);
+                        $("#xqfZdwc1").val(res.data.xqfZdwc1);
+                        $("#xqfZdwc2").val(res.data.xqfZdwc2);
+
+                        $("#hqm1").val(res.data.hqm1);
+                        $("#hqm2").val(res.data.hqm2);
+                        $("#hqm3").val(res.data.hqm3);
+                        $("#hqmZdwc1").val(res.data.hqmZdwc1);
+                        $("#hqmZdwc2").val(res.data.hqmZdwc2);
+                    }else{
+                        layer.msg("无数据");
+                    }
+                },
+                error:function(data){
+                    console.log(data);
+                    layer.msg("请稍后再试");
+                }
+            })
         });
         // 保存
         form.on("submit(saveUpdate)",function(data){
             console.log(data.field);
             $.ajax({
-                url:"",
+                url:"/hxj/updateTemplate?hxjTemplateId="+ids,
                 method:"POST",
                 data:data.field,
                 dataType:"JSON",
