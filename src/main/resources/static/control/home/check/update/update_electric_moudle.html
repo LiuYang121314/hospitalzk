@@ -14,13 +14,6 @@
     <![endif]-->
     <script src="../../../../static/layui/layui.js"></script>
     <style>
-        h2{
-            text-align: center;
-            margin-top: 30px;
-        }
-        td{
-            text-align: center;
-        }
         .btn{
             width: 100%;
             margin-top: 50px;
@@ -29,6 +22,14 @@
         }
         .layui-elem-field{
             width: 100%;
+        }
+        .layui-input-block{
+            display: flex;
+            align-items: center;
+        }
+        b{
+            padding-left: 30px;
+            width: 60%;
         }
     </style>
 </head>
@@ -64,19 +65,21 @@
             <fieldset class="layui-elem-field layui-field-title">
                 <legend style="color: red;">保护接地阻抗</legend>
             </fieldset>
-            <div class="layui-form-item col-md-3">
-                <label class="layui-form-label">标准值</label>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">最大值</label>
                 <div class="layui-input-block">
                     <input type="text" id="jdzk" placeholder="≤" name="jdzk" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <b id="tips1"></b>
                 </div>
             </div>
             <fieldset class="layui-elem-field layui-field-title">
                 <legend style="color: red;">绝缘阻抗</legend>
             </fieldset>
-            <div class="layui-form-item col-md-3">
-                <label class="layui-form-label">标准值</label>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">最小值</label>
                 <div class="layui-input-block">
                     <input type="text" id="jyzk" placeholder="≥" name="jyzk" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <b id="tips2"></b>
                 </div>
             </div>
             <fieldset class="layui-elem-field layui-field-title">
@@ -85,19 +88,21 @@
             <fieldset class="layui-elem-field layui-field-title">
                 <legend style="color: #555555;">正常状态</legend>
             </fieldset>
-            <div class="layui-form-item col-md-3">
+            <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">标准值</label>
                 <div class="layui-input-block">
                     <input type="text" id="ddldlZc" placeholder="≤" name="ddldlZc" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <b id="tips3"></b>
                 </div>
             </div>
             <fieldset class="layui-elem-field layui-field-title">
                 <legend style="color: #555555;">单一故障状态</legend>
             </fieldset>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">标准值</label>
                 <div class="layui-input-block">
                     <input type="text" id="ddldlDy" placeholder="≤" name="ddldlDy" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <b id="tips4"></b>
                 </div>
             </div>
             <fieldset class="layui-elem-field layui-field-title">
@@ -110,15 +115,17 @@
                 <label class="layui-form-label">正常状态</label>
                 <div class="layui-input-block">
                     <input type="text" id="wkldlZc" name="wkldlZc" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <b id="tips5"></b>
                 </div>
             </div>
             <fieldset class="layui-elem-field layui-field-title">
                 <legend style="color: #555555;">单一故障状态</legend>
             </fieldset>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">单一故障状态</label>
                 <div class="layui-input-block">
                     <input type="text" id="wkldlDy" name="wkldlDy" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <b id="tips6"></b>
                 </div>
             </div>
             <fieldset class="layui-elem-field layui-field-title">
@@ -130,19 +137,21 @@
             <fieldset class="layui-elem-field layui-field-title">
                 <legend style="color: #555555;">正常状态</legend>
             </fieldset>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">正常状态</label>
                 <div class="layui-input-block">
                     <input type="text" id="hzldlZcBf" name="hzldlZcBf" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <b id="tips7"></b>
                 </div>
             </div>
             <fieldset class="layui-elem-field layui-field-title">
                 <legend style="color: #555555;">单一故障状态</legend>
             </fieldset>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">单一故障状态</label>
                 <div class="layui-input-block">
                     <input type="text" id="hzldlDyBf" name="hzldlDyBf" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <b id="tips8"></b>
                 </div>
             </div>
             <fieldset class="layui-elem-field layui-field-title">
@@ -151,19 +160,70 @@
             <fieldset class="layui-elem-field layui-field-title">
                 <legend style="color: #555555;">正常状态</legend>
             </fieldset>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">正常状态</label>
                 <div class="layui-input-block">
                     <input type="text" id="hzfzldlZcBf" name="hzfzldlZcBf" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <b id="tips9"></b>
                 </div>
             </div>
             <fieldset class="layui-elem-field layui-field-title">
                 <legend style="color: #555555;">单一故障状态</legend>
             </fieldset>
-            <div class="layui-form-item col-md-5">
+            <div class="layui-form-item col-md-6">
                 <label class="layui-form-label">单一故障状态</label>
                 <div class="layui-input-block">
                     <input type="text" id="hzfzldlDyBf" name="hzfzldlDyBf" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <b id="tips10"></b>
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;"> CF型 </legend>
+            </fieldset>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">患者漏电流</legend>
+            </fieldset>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">正常状态</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">正常状态</label>
+                <div class="layui-input-block">
+                    <input type="text" id="hzldlZcCf" name="hzldlZcCf" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <b id="tips11"></b>
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">单一故障状态</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">单一故障状态</label>
+                <div class="layui-input-block">
+                    <input type="text" id="hzldlDyCf" name="hzldlDyCf" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <b id="tips12"></b>
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">患者辅助漏电流</legend>
+            </fieldset>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">正常状态</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">正常状态</label>
+                <div class="layui-input-block">
+                    <input type="text" id="hzfzldlZcCf" name="hzfzldlZcCf" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <b id="tips13"></b>
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">单一故障状态</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-6">
+                <label class="layui-form-label">单一故障状态</label>
+                <div class="layui-input-block">
+                    <input type="text" id="hzfzldlDyCf" name="hzfzldlDyCf" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <b id="tips14"></b>
                 </div>
             </div>
             <div class="layui-form-item btn">
@@ -235,6 +295,12 @@
             ,form = layui.form;
         // 获取数据
         $(function(){
+            $("#jdzk").focus(function (){
+                $("#tips1").text("小于等于此数值为合格");
+            });
+            $("#jyzk").focus(function (){
+                $("#tips2").text("大于等于此数值为合格");
+            });
             $.ajax({
                 url:"",
                 method:"GET",
