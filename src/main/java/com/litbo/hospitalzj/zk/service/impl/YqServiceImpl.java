@@ -6,6 +6,7 @@ import java.util.Calendar;
 
 import com.litbo.hospitalzj.supplier.service.exception.InsertException;
 import com.litbo.hospitalzj.supplier.service.exception.NotFoundException;
+import com.litbo.hospitalzj.supplier.service.exception.UpdateException;
 import javafx.scene.input.DataFormat;
 import org.apache.ibatis.annotations.Param;
 import org.quartz.*;
@@ -23,6 +24,11 @@ public class YqServiceImpl implements YqService{
 
 	@Autowired
 	YqMapper yqMapper;
+
+	@Override
+	public Yq findById(Integer jcyqId) {
+		return yqMapper.findById(jcyqId);
+	}
 
 	@Override
 	public List<Yq> findYqByYqNameLike(String jcyqName) {
@@ -59,6 +65,9 @@ public class YqServiceImpl implements YqService{
 
 	@Override
 	public void update(Yq yq) {
+		if (yqMapper.findYqByDah(yq.getJcyqDah())!=null) {
+			throw new UpdateException("您修改的仪器档案号已存在");
+		}
 		yqMapper.update(yq);
 	}
 

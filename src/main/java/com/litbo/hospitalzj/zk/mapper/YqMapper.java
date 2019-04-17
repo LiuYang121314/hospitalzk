@@ -19,8 +19,11 @@ public interface YqMapper {
 	@Select("SELECT * FROM yq WHERE jcyq_name LIKE '%${jcyqName}%'")
 	List<Yq> findYqByYqNameLike(@Param("jcyqName") String jcyqName);
 
-	@Select("select * from yq")
+	@Select("select * from yq where is_delete=0")
 	List<Yq> findAll();
+
+	@Select("select * from yq where jcyq_id=#{jcyqId}")
+	Yq findById(Integer jcyqId);
 	
 	@Update(
 	 "update yq "
@@ -59,8 +62,8 @@ public interface YqMapper {
 	@Select("SELECT * FROM yq where jcyq_dah=#{jcyqDah}")
 	Yq findYqByDah(String jcyqDah);
 
-	@Update("update yq set is_delete=#{isDelete} where jcyq_id=#{jcyqId}")
-	int delete(Integer jcyqId);
+	@Update("update yq set is_delete=1 where jcyq_id=#{jcyqId}")
+	int delete(@Param("jcyqId")Integer jcyqId);
 
 	@Select("SELECT yq.* from  yq_eq y left join yq on y.jcyq_id=yq.jcyq_id where eq_id=#{eqId}")
 	List<Yq> select(Integer eqId);
