@@ -14,18 +14,22 @@
     <![endif]-->
     <script src="../../../../static/layui/layui.js"></script>
     <style>
-        h2{
-            text-align: center;
-            margin-top: 30px;
-        }
-        td{
-            text-align: center;
-        }
         .btn{
             width: 100%;
             margin-top: 50px;
             margin-bottom: 30px;
             text-align: center;
+        }
+        .layui-elem-field{
+            width: 100%;
+        }
+        .layui-input-block{
+            display: flex;
+            align-items: center;
+        }
+        b{
+            padding-left: 30px;
+            width: 60%;
         }
     </style>
 </head>
@@ -36,52 +40,157 @@
             <legend style="color: #000000;font-weight: bold;margin-bottom: 30px;">除颤器质量检测模板数据修改</legend>
         </fieldset>
         <from class="layui-form layui-form-pane" action="">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">释放能量(J)允许误差 ±15%或±4J (取最大值)</legend>
+            </fieldset>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">标称值 —— <span class="sign">最小能量值</span></legend>
+            </fieldset>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">111</label>
+                <label class="layui-form-label">标称值1</label>
                 <div class="layui-input-block">
-                    <input type="text" name="111" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="sfnlTest2" name="sfnlTest2" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">222</label>
+                <label class="layui-form-label">标称值2</label>
                 <div class="layui-input-block">
-                    <input type="text" name="222" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="sfnlTest3" name="sfnlTest3" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">333</label>
+                <label class="layui-form-label">标称值3</label>
                 <div class="layui-input-block">
-                    <input type="text" name="333" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="sfnlTest7" name="sfnlTest4" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">标称值 —— <span class="sign">最大能量值</span></legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">标称值1</label>
+                <div class="layui-input-block">
+                    <input type="text" id="sfnlTest4" name="sfnlTest2" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">444</label>
+                <label class="layui-form-label">标称值2</label>
                 <div class="layui-input-block">
-                    <input type="text" name="444" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="sfnlTest5" name="sfnlTest3" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">555</label>
+                <label class="layui-form-label">标称值3</label>
                 <div class="layui-input-block">
-                    <input type="text" name="555" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="sfnlTest8" name="sfnlTest4" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">心率示值</legend>
+            </fieldset>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">设定值 —— <span class="sign">1</span></legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">标准值</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xlszTest11" name="xlszTest11" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">666</label>
+                <label class="layui-form-label">最小允许值</label>
                 <div class="layui-input-block">
-                    <input type="text" name="666" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="xlszTest12" name="xlszTest12" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">777</label>
+                <label class="layui-form-label">最大允许值</label>
                 <div class="layui-input-block">
-                    <input type="text" name="777" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="xlszTest13" name="xlszTest13" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">设定值 —— <span class="sign">2</span></legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">标准值</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xlszTest21" name="xlszTest21" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">888</label>
+                <label class="layui-form-label">最小允许值</label>
                 <div class="layui-input-block">
-                    <input type="text" name="888" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="xlszTest22" name="xlszTest22" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">最大允许值</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xlszTest23" name="xlszTest23" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">设定值 —— <span class="sign">3</span></legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">标准值</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xlszTest31" name="xlszTest31" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">最小允许值</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xlszTest32" name="xlszTest32" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">最大允许值</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xlszTest33" name="xlszTest33" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">设定值 —— <span class="sign">4</span></legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">标准值</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xlszTest41" name="xlszTest41" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">最小允许值</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xlszTest42" name="xlszTest42" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">最大允许值</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xlszTest43" name="xlszTest43" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #555555;">设定值 —— <span class="sign">5</span></legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">标准值</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xlszTest51" name="xlszTest51" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">最小允许值</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xlszTest52" name="xlszTest52" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">最大允许值</label>
+                <div class="layui-input-block">
+                    <input type="text" id="xlszTest53" name="xlszTest53" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item btn">
@@ -101,7 +210,42 @@
             ,$ = layui.jquery
             ,form = layui.form;
         $(function(){
-
+            $.ajax({
+                url:"",
+                method:"GET",
+                dataType:"JSON",
+                success:function (res) {
+                    if(res.data !== "" && res.data !== null){
+                        $("#sfnlTest2").val(res.data.sfnlTest2);
+                        $("#sfnlTest3").val(res.data.sfnlTest3);
+                        $("#sfnlTest7").val(res.data.sfnlTest7);
+                        $("#sfnlTest4").val(res.data.sfnlTest4);
+                        $("#sfnlTest5").val(res.data.sfnlTest5);
+                        $("#sfnlTest8").val(res.data.sfnlTest8);
+                        $("#xlszTest11").val(res.data.xlszTest11);
+                        $("#xlszTest12").val(res.data.xlszTest12);
+                        $("#xlszTest13").val(res.data.xlszTest13);
+                        $("#xlszTest21").val(res.data.xlszTest21);
+                        $("#xlszTest22").val(res.data.xlszTest22);
+                        $("#xlszTest23").val(res.data.xlszTest23);
+                        $("#xlszTest31").val(res.data.xlszTest31);
+                        $("#xlszTest32").val(res.data.xlszTest32);
+                        $("#xlszTest33").val(res.data.xlszTest33);
+                        $("#xlszTest41").val(res.data.xlszTest41);
+                        $("#xlszTest42").val(res.data.xlszTest42);
+                        $("#xlszTest43").val(res.data.xlszTest43);
+                        $("#xlszTest51").val(res.data.xlszTest51);
+                        $("#xlszTest52").val(res.data.xlszTest52);
+                        $("#xlszTest53").val(res.data.xlszTest53);
+                    }else{
+                        layer.msg("无数据");
+                    }
+                },
+                error:function(data){
+                    console.log(data);
+                    layer.msg("请稍后再试");
+                }
+            });
         });
         // 保存
         form.on("submit(saveUpdate)",function(data){
