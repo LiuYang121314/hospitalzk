@@ -28,6 +28,15 @@ public class Yq {
     private Date jcyqJzTime;
 
     private Integer mbId;
+    private Integer isDelete;
+
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
+    }
 
     public String getJcyqId() {
         return jcyqId;

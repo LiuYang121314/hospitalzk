@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.quartz.SchedulerException;
 
 public interface YqService {
+	Yq findById(Integer jcyqId);
 	List<Yq> findYqByYqNameLike(String jcyqName);
 
 	List<Yq> findByUserId(String userId);

@@ -49,22 +49,23 @@ public class YqController extends BaseController{
 		yqJxjlService.insert(data);
 		return new ResponseResult<Void>(SUCCESS);
 	}
-	
 	//删除仪器
 	@RequestMapping("/delete/{jcyqId}")
 	public ResponseResult<Void> delete(@PathVariable Integer jcyqId){
 		yqService.delete(jcyqId);
 		return new ResponseResult<Void>(SUCCESS);
 	}
-
-	
 	//查询所有仪器
 	@RequestMapping("/findAll")
 	public ResponseResult<List<Yq>> findAll(){
 		List<Yq> yqList=yqService.findAll();
 		return new ResponseResult<List<Yq>>(SUCCESS,yqList);
 	}
-	
+	@RequestMapping("/findById")
+	public ResponseResult<Yq> findById(Integer jcyqId){
+		Yq yqList=yqService.findById(jcyqId);
+		return new ResponseResult<Yq>(SUCCESS,yqList);
+	}
 	//修改仪器
 	@RequestMapping("/update")
 		public ResponseResult<Void> update(Yq yq){
@@ -128,19 +129,4 @@ public class YqController extends BaseController{
 		List<Yq> data=yqService.selectYqByEqId(eqId);
 		return new ResponseResult<List<Yq>>(SUCCESS,data);
 	}
-	/*@RequestMapping("/selectYqByEqId1")
-	public ResponseResult<List<Yq>> selectYqByEqId1(@RequestParam("eqId") Integer eqId){
-		List<Yq> data=yqService.selectYqByEqId(eqId);
-		return new ResponseResult<List<Yq>>(SUCCESS,data);
-	}*/
-	/*@RequestMapping("/selectYqByEqId")
-	public ResponseResult<List<Yq>> selectYqByEqId(@RequestParam("eqId") Integer eqId){
-		List<Yq> data=yqService.selectYqByEqId(eqId);
-		return new ResponseResult<List<Yq>>(SUCCESS,data);
-	}*/
-	/*@RequestMapping("/month")
-	public ResponseResult<Void> month(){
-		return new ResponseResult<Void>(SUCCESS);
-	}*/
-
 }
