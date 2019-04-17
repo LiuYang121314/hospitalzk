@@ -13,8 +13,8 @@ import java.util.List;
 @Mapper
 public interface SybMapper {
     //查询模板数据
-    @Select("select * from ${value} order by temp_id desc limit 1")
-    SybCTemplate findTemplate(String tableName);
+    @Select("select * from ${tableName} order by temp_id desc limit 1")
+    SybCTemplate findTemplate(@Param("tableName")String tableName);
     //修改模板表数据
     //幼儿
     @Update("update syb_c_template\n" +
