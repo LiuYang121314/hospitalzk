@@ -48,8 +48,8 @@ public class YqServiceImpl implements YqService{
 	}
 
 	@Override
-	public void delete(String yqId) {
-		yqMapper.delete(yqId);
+	public void delete(Integer jcyqId) {
+		yqMapper.delete(jcyqId);
 	}
 
 	@Override
@@ -62,12 +62,6 @@ public class YqServiceImpl implements YqService{
 		yqMapper.update(yq);
 	}
 
-	@Override
-	public void deleteBatch(String[] yqId) {
-		for(int i=0;i<yqId.length;i++){
-			yqMapper.delete(yqId[i]);
-		}
-	}
 
 	@Override
 	public List<Yq> select(Integer eqId) {
