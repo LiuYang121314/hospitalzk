@@ -14,18 +14,22 @@
     <![endif]-->
     <script src="../../../../static/layui/layui.js"></script>
     <style>
-        h2{
-            text-align: center;
-            margin-top: 30px;
-        }
-        td{
-            text-align: center;
-        }
         .btn{
             width: 100%;
             margin-top: 50px;
             margin-bottom: 30px;
             text-align: center;
+        }
+        .layui-elem-field{
+            width: 100%;
+        }
+        .layui-input-block{
+            display: flex;
+            align-items: center;
+        }
+        b{
+            padding-left: 30px;
+            width: 60%;
         }
     </style>
 </head>
@@ -36,52 +40,103 @@
             <legend style="color: #000000;font-weight: bold;margin-bottom: 30px;">婴儿培养箱质量检测模板数据修改</legend>
         </fieldset>
         <from class="layui-form layui-form-pane" action="">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">温度偏差</legend>
+            </fieldset>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">111</label>
+                <label class="layui-form-label">允许误差</label>
                 <div class="layui-input-block">
-                    <input type="text" name="111" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="wdpcWc" name="wdpcWc" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">均匀性</legend>
+            </fieldset>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">222</label>
+                <label class="layui-form-label">允许误差</label>
                 <div class="layui-input-block">
-                    <input type="text" name="222" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="jyxWc" name="jyxWc" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">波动度</legend>
+            </fieldset>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">333</label>
+                <label class="layui-form-label">允许误差</label>
                 <div class="layui-input-block">
-                    <input type="text" name="333" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="bddWc" name="bddWc" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">温控偏差</legend>
+            </fieldset>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">444</label>
+                <label class="layui-form-label">允许误差</label>
                 <div class="layui-input-block">
-                    <input type="text" name="444" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="wkpcWc" name="wkpcWc" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">超调量</legend>
+            </fieldset>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">555</label>
+                <label class="layui-form-label">允许误差</label>
                 <div class="layui-input-block">
-                    <input type="text" name="555" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="ctlWc" name="ctlWc" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">空气流速 (m/s)</legend>
+            </fieldset>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">666</label>
+                <label class="layui-form-label">允许误差</label>
                 <div class="layui-input-block">
-                    <input type="text" name="666" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="kqlsWc" name="kqlsWc" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">噪声（报警激活状态）</legend>
+            </fieldset>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">777</label>
+                <label class="layui-form-label">允许误差</label>
                 <div class="layui-input-block">
-                    <input type="text" name="777" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="zsbjWc" id="zsbjWc" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">噪声（正常状态）</legend>
+            </fieldset>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">888</label>
+                <label class="layui-form-label">允许误差</label>
                 <div class="layui-input-block">
-                    <input type="text" name="888" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="zszcWc" name="zszcWc" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">金属部分</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">允许误差</label>
+                <div class="layui-input-block">
+                    <input type="text" name="jsbfWc" id="jsbfWc" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">床垫部分</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">允许误差</label>
+                <div class="layui-input-block">
+                    <input type="text" name="cdbfWc" id="cdbfWc" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">湿度偏差</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">允许误差</label>
+                <div class="layui-input-block">
+                    <input type="text" id="sdWc" name="sdWc" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item btn">
@@ -93,15 +148,39 @@
     </div>
 </div>
 <script>
-    // 获取上个页面传递的类型
-    var type = window.location.search;
-    var ids = parseInt(type.split("=")[1]);
+    var ids = "";
     layui.use(['layer','jquery','form'],function(){
         var layer = layui.layer
             ,$ = layui.jquery
             ,form = layui.form;
         $(function(){
-
+            $.ajax({
+                url:"/gpdd/findTemplate",
+                method:"GET",
+                dataType:"JSON",
+                success:function (res) {
+                    if(res.data !== "" && res.data !== null){
+                        //ids = res.data.;
+                        $("#wdpcWc").val(res.data.wdpcWc);
+                        $("#jyxWc").val(res.data.jyxWc);
+                        $("#bddWc").val(res.data.bddWc);
+                        $("#wkpcWc").val(res.data.wkpcWc);
+                        $("#ctlWc").val(res.data.ctlWc);
+                        $("#kqlsWc").val(res.data.kqlsWc);
+                        $("#zsbjWc").val(res.data.zsbjWc);
+                        $("#zszcWc").val(res.data.zszcWc);
+                        $("#jsbfWc").val(res.data.jsbfWc);
+                        $("#cdbfWc").val(res.data.cdbfWc);
+                        $("#sdWc").val(res.data.sdWc);
+                    }else{
+                        layer.msg("无数据");
+                    }
+                },
+                error:function(data){
+                    console.log(data);
+                    layer.msg("请稍后再试");
+                }
+            });
         });
         // 保存
         form.on("submit(saveUpdate)",function(data){

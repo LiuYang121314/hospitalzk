@@ -212,7 +212,7 @@
                 url:"/ccy/findTemplate",
                 method:"GET",
                 dataType:"JSON",
-                success:function (res) {
+                success:function(res){
                     if(res.data !== "" && res.data !== null){
                         ids = res.data.ccyTemplateId;
                         $("#sfnlTest2").val(res.data.sfnlTest2);
