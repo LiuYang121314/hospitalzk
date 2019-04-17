@@ -14,18 +14,22 @@
     <![endif]-->
     <script src="../../../../static/layui/layui.js"></script>
     <style>
-        h2{
-            text-align: center;
-            margin-top: 30px;
-        }
-        td{
-            text-align: center;
-        }
         .btn{
             width: 100%;
             margin-top: 50px;
             margin-bottom: 30px;
             text-align: center;
+        }
+        .layui-elem-field{
+            width: 100%;
+        }
+        .layui-input-block{
+            display: flex;
+            align-items: center;
+        }
+        b{
+            padding-left: 30px;
+            width: 60%;
         }
     </style>
 </head>
@@ -36,52 +40,125 @@
             <legend style="color: #000000;font-weight: bold;margin-bottom: 30px;">高频电刀质量检测模板数据修改</legend>
         </fieldset>
         <from class="layui-form layui-form-pane" action="">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">单极电切</legend>
+            </fieldset>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">111</label>
+                <label class="layui-form-label">设定功率1</label>
                 <div class="layui-input-block">
-                    <input type="text" name="111" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="djdqTest1" name="djdqTest1" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">222</label>
+                <label class="layui-form-label">设定功率2</label>
                 <div class="layui-input-block">
-                    <input type="text" name="222" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="djdqTest2" name="djdqTest2" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">333</label>
+                <label class="layui-form-label">设定功率3</label>
                 <div class="layui-input-block">
-                    <input type="text" name="333" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="djdqTest3" name="djdqTest3" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">444</label>
+                <label class="layui-form-label">设定功率4</label>
                 <div class="layui-input-block">
-                    <input type="text" name="444" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="djdqTest4" name="djdqTest4" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">555</label>
+                <label class="layui-form-label">允许误差</label>
                 <div class="layui-input-block">
-                    <input type="text" name="555" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="djdqWc" name="djdqWc" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">单极电凝</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设定功率1</label>
+                <div class="layui-input-block">
+                    <input type="text" id="djdnTest1" name="djdnTest1" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">666</label>
+                <label class="layui-form-label">设定功率2</label>
                 <div class="layui-input-block">
-                    <input type="text" name="666" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="djdnTest2" name="djdnTest2" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">777</label>
+                <label class="layui-form-label">设定功率3</label>
                 <div class="layui-input-block">
-                    <input type="text" name="777" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="djdnTest3" name="djdnTest3" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
-                <label class="layui-form-label">888</label>
+                <label class="layui-form-label">设定功率4</label>
                 <div class="layui-input-block">
-                    <input type="text" name="888" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" id="djdnTest4" name="djdnTest4" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">允许误差</label>
+                <div class="layui-input-block">
+                    <input type="text" id="djdnWc" name="djdnWc" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">双极电凝</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设定功率1</label>
+                <div class="layui-input-block">
+                    <input type="text" id="sjdnTest1" name="sjdnTest1" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设定功率2</label>
+                <div class="layui-input-block">
+                    <input type="text" id="sjdnTest2" name="sjdnTest2" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设定功率3</label>
+                <div class="layui-input-block">
+                    <input type="text" id="sjdnTest3" name="sjdnTest3" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">设定功率4</label>
+                <div class="layui-input-block">
+                    <input type="text" id="sjdnTest4" name="sjdnTest4" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">允许误差</label>
+                <div class="layui-input-block">
+                    <input type="text" id="sjdnWc" name="sjdnWc" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">单极模式</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">最大值</label>
+                <div class="layui-input-block">
+                    <input type="text" id="djgpldWc" name="djgpldWc" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: red;">双极模式</legend>
+            </fieldset>
+            <div class="layui-form-item col-md-5">
+                <label class="layui-form-label">最大值</label>
+                <div class="layui-input-block">
+                    <input type="text" id="sjgpldWc" name="sjgpldWc" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item btn">
@@ -93,15 +170,47 @@
     </div>
 </div>
 <script>
-    // 获取上个页面传递的类型
-    var type = window.location.search;
-    var ids = parseInt(type.split("=")[1]);
+    var ids = "";
     layui.use(['layer','jquery','form'],function(){
         var layer = layui.layer
             ,$ = layui.jquery
             ,form = layui.form;
         $(function(){
+            $.ajax({
+                url:"",
+                method:"GET",
+                dataType:"JSON",
+                success:function (res) {
+                    if(res.data !== "" && res.data !== null){
+                        $("#djdqTest1").val(res.data.djdqTest1);
+                        $("#djdqTest2").val(res.data.djdqTest2);
+                        $("#djdqTest3").val(res.data.djdqTest3);
+                        $("#djdqTest4").val(res.data.djdqTest4);
+                        $("#djdqWc").val(res.data.djdqWc);
 
+                        $("#djdnTest1").val(res.data.djdnTest1);
+                        $("#djdnTest2").val(res.data.djdnTest2);
+                        $("#djdnTest3").val(res.data.djdnTest3);
+                        $("#djdnTest4").val(res.data.djdnTest4);
+                        $("#djdnWc").val(res.data.djdnWc);
+
+                        $("#sjdnTest1").val(res.data.sjdnTest1);
+                        $("#sjdnTest2").val(res.data.sjdnTest2);
+                        $("#sjdnTest3").val(res.data.sjdnTest3);
+                        $("#sjdnTest4").val(res.data.sjdnTest4);
+                        $("#sjdnWc").val(res.data.sjdnWc);
+
+                        $("#djgpldWc").val(res.data.djgpldWc);
+                        $("#djgpldWc").val(res.data.djgpldWc);
+                    }else{
+                        layer.msg("无数据");
+                    }
+                },
+                error:function(data){
+                    console.log(data);
+                    layer.msg("请稍后再试");
+                }
+            })
         });
         // 保存
         form.on("submit(saveUpdate)",function(data){
