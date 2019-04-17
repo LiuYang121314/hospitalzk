@@ -27,18 +27,18 @@ public interface ZsbService {
     StzsMTemplate findStZsTemplate();
     //修改模板表数据
     //幼儿
-    int updateC(SybCTemplate sybCTemplate);
+    void updateC(SybCTemplate sybCTemplate);
     //成人
-    int updateM(SybCTemplate sybCTemplate);
+    void updateM(SybCTemplate sybCTemplate);
     //双通道
-    int updateS(StzsMTemplate stzsMTemplate);
+    void updateS(StzsMTemplate stzsMTemplate);
     //插入模板表数据
     //幼儿
-    int insertChildTemplate(SybCTemplate template);
+    void insertChildTemplate(SybCTemplate template);
     //成人
-    int insertManTemplate(SybCTemplate template);
+    void insertManTemplate(SybCTemplate template);
     //双通道
-    int insertStzsTemplate(StzsMTemplate template);
+    void insertStzsTemplate(StzsMTemplate template);
     //保存信息
     //输液泵检测信息录入（幼儿）
     void saveChild(SybC sybC);

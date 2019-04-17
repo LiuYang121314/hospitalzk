@@ -49,8 +49,8 @@ public class CcyController extends BaseController {
      * @return
      */
     @RequestMapping("/findTemplateById")
-    public ResponseResult<CcyTemplate> findTemplateById(Integer ccYtemplateId){
-        CcyTemplate dqjc = ccyService.findTemplateById(ccYtemplateId);
+    public ResponseResult<CcyTemplate> findTemplateById(Integer ccyTemplateId){
+        CcyTemplate dqjc = ccyService.findTemplateById(ccyTemplateId);
         return new ResponseResult<CcyTemplate>(200, dqjc);
     }
     /**

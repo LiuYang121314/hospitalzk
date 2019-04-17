@@ -12,7 +12,7 @@ public interface YepyxService {
     //查询婴儿培养箱检测模板表
     public YepyxTemplate findTemplate();
     //修改模板表数据
-    public YepyxTemplate updateTemplate(YepyxTemplate yepyxTemplate);
+    public void updateTemplate(YepyxTemplate yepyxTemplate);
     //插入模板表数据
     void insertTemplate(YepyxTemplate yepyxTemplate);
 
