@@ -108,12 +108,12 @@
             ,form = layui.form;
         $(function(){
             $.ajax({
-                url:"/gpdd/findTemplate",
+                url:"/syb/findManTemplate",
                 method:"GET",
                 dataType:"JSON",
                 success:function (res) {
                     if(res.data !== "" && res.data !== null){
-                        //ids = res.data.;
+                        ids = res.data.tempId;
                         $("#llcsd1").val(res.data.llcsd1);
                         $("#llcsd2").val(res.data.llcsd2);
                         $("#wc").val(res.data.wc);
@@ -134,7 +134,7 @@
         form.on("submit(saveUpdate)",function(data){
             console.log(data.field);
             $.ajax({
-                url:""+ids,
+                url:"/syb/updateM?tempId="+ids,
                 method:"POST",
                 data:data.field,
                 dataType:"JSON",
