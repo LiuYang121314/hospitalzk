@@ -174,7 +174,7 @@
             $("#sheng").empty();
             // 发出ajax请求，并处理结果
             $.ajax({
-                url:"",
+                url:"/district/list/86",
                 method:"POST",
                 dataType:"JSON",
                 success:function(res){
@@ -200,7 +200,7 @@
             }
             // 发出ajax请求，并处理结果
             $.ajax({
-                url:""+code,
+                url:"/district/list/"+code,
                 method:"POST",
                 dataType:"JSON",
                 success:function(res){
@@ -226,7 +226,7 @@
             }
             // 发出ajax请求，并处理结果
             $.ajax({
-                url:""+code,
+                url:"/district/list/"+code,
                 method:"POST",
                 dataType:"JSON",
                 success:function(res){
@@ -290,57 +290,6 @@
                 });
                 return false;
             });
-            // var uploadInst = upload.render({
-            //     elem: '#ylqx'
-            //     ,url: '/supplier/uploadOne'
-            //     ,before: function(obj){
-            //         //预读本地文件示例，不支持ie8
-            //         obj.preview(function(index, file, result){
-            //             $('#ylqximg').attr('src', result);
-            //         });
-            //     }
-            //     ,done: function(res){
-            //         if(res.state === 200){
-            //             layer.msg("上传成功");
-            //             upload.render({
-            //                 elem: '#yyzz'
-            //                 ,url: '/supplier/uploadTwo'
-            //                 ,before: function(obj){
-            //                     //预读本地文件示例，不支持ie8
-            //                     obj.preview(function(index, file, result){
-            //                         $('#yyzzimg').attr('src', result); //图片链接（base64）
-            //                     });
-            //                 }
-            //                 ,done: function(res){
-            //                     if(res.state === 200){
-            //                         layer.msg("上传成功");
-            //
-            //                     }else{
-            //                         layer.msg("上传失败");
-            //                     }
-            //                 }
-            //                 ,error: function(){
-            //                     //演示失败状态，并实现重传
-            //                     var demoText = $('#yyzztry');
-            //                     demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-            //                     demoText.find('.demo-reload').on('click', function(){
-            //                         uploadInst.upload();
-            //                     });
-            //                 }
-            //             })
-            //         }else{
-            //             layer.msg("上传失败");
-            //         }
-            //     }
-            //     ,error: function(){
-            //         //演示失败状态，并实现重传
-            //         var demoText = $('#ylqxtry');
-            //         demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-            //         demoText.find('.demo-reload').on('click', function(){
-            //             uploadInst.upload();
-            //         });
-            //     }
-            // });
         });
     </script>
 </body>
