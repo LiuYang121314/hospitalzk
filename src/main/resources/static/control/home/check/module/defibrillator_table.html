@@ -138,7 +138,7 @@
             </tr>
         </table>
         <div class="col-xs-12 btn">
-            <a id="back" class="layui-btn">返回</a>
+            <a id="back" class="layui-btn layui-btn-primary">返回</a>
             <a id="update" class="layui-btn layui-btn-normal">修改</a>
         </div>
     </div>
@@ -157,7 +157,7 @@
                 dataType:"JSON",
                 success:function(res){
                     console.log(res);
-                    if(res.data != null && res.data != ""){
+                    if(res.data !== null && res.data !== ""){
 
                     }
                 }
