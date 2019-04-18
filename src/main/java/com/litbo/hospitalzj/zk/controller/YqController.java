@@ -1,5 +1,6 @@
 package com.litbo.hospitalzj.zk.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import com.litbo.hospitalzj.quality.mapper.UserPmMapper;
@@ -33,6 +34,21 @@ public class YqController extends BaseController{
 	private NdjhService ndjhService;
 	@Autowired
 	private YqJxjlService yqJxjlService;
+    @RequestMapping("/jz")
+    public ResponseResult<List<Yq>> jz(){
+        List<Yq> data= yqService.jz();
+        return new ResponseResult<List<Yq>>(SUCCESS,data);
+    }
+    @RequestMapping("/jzNum")
+    public ResponseResult<Integer> jzNum(){
+        Integer data= yqService.jzNum();
+        return new ResponseResult<Integer>(SUCCESS,data);
+    }
+	@RequestMapping("/jzTime")
+	public ResponseResult<Void> jzNum(Integer jcyqId){
+		yqService.JzTime(jcyqId,new Date());
+		return new ResponseResult<Void>(SUCCESS);
+	}
 	//仪器模糊查询
 	@RequestMapping("/findYqByYqNameLike")
 	public ResponseResult<List<Yq>> findYqByYqNameLike(String jcyqName){
@@ -45,6 +61,8 @@ public class YqController extends BaseController{
 		yq.setIsDelete(0);
 		yqService.insert(yq);
 		YqJxjl data=new YqJxjl();
+		data.setYqName(yq.getJcyqName());
+		data.setYqDah(yq.getJcyqDah());
 		data.setYqId(Integer.valueOf(yq.getJcyqId()));
 		data.setYqJxtime(yq.getJcyqQyTime());
 		yqJxjlService.insert(data);

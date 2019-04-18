@@ -20,7 +20,7 @@ public class Yq {
     private String jcyqBh;
 
     private Integer jcyqCjId;
-
+    @DateTimeFormat(pattern ="yyyy-MM-dd HH:mm")
     private Date jcyqQyTime;
 
     private Integer jcyqKsId;

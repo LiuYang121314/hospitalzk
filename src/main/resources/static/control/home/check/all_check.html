@@ -75,9 +75,15 @@
                     </div>
                 </div>
                 <div class="layui-form-item" style="width: 50%;margin: 30px auto;">
+                    <label class="layui-form-label">仪器启用时间</label>
+                    <div class="layui-input-block">
+                        <input id="date1" type="text" name="jcyqQyTime" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="width: 50%;margin: 30px auto;">
                     <label class="layui-form-label">校准时间</label>
                     <div class="layui-input-block">
-                        <input id="date1" type="text" name="jcyqJzTime" required  lay-verify="required" autocomplete="off" class="layui-input">
+                        <input id="date11" type="text" name="jcyqJzTime" required  lay-verify="required" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item btn">
@@ -117,9 +123,15 @@
                     </div>
                 </div>
                 <div class="layui-form-item" style="width: 50%;margin: 30px auto;">
+                    <label class="layui-form-label">仪器启用时间</label>
+                    <div class="layui-input-block">
+                        <input id="date2" type="text" name="jcyqQyTime" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="width: 50%;margin: 30px auto;">
                     <label class="layui-form-label">校准时间</label>
                     <div class="layui-input-block">
-                        <input id="date2" type="text" name="jcyqJzTime" required  lay-verify="required" autocomplete="off" class="layui-input">
+                        <input id="date22" type="text" name="jcyqJzTime" required  lay-verify="required" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item btn">
@@ -152,6 +164,14 @@
         });
         laydate.render({
             elem:"#date2",
+            type:"datetime"
+        });
+        laydate.render({
+            elem:"#date11",
+            type:"datetime"
+        });
+        laydate.render({
+            elem:"#date22",
             type:"datetime"
         });
         // 查询
@@ -202,6 +222,7 @@
                                 {field:'jcyqDah', title:'档案号',align:'center'},
                                 {field:'jcyqXh', title:'型号',align:'center'},
                                 {field:'jcyqBh', title:'编号',align:'center'},
+                                {field:'jcyqQyTime', title:'仪器启用时间',align:'center'},
                                 {field:'jcyqJzTime', title:'校准时间',align:'center'},
                                 {fixed: 'right', title:'操作',toolbar: '#barDemo',align:'center'}
                             ]]
@@ -261,6 +282,7 @@
                 {field:'jcyqDah', title:'档案号',align:'center'},
                 {field:'jcyqXh', title:'型号',align:'center'},
                 {field:'jcyqBh', title:'编号',align:'center'},
+                {field:'jcyqQyTime', title:'仪器启用时间',align:'center'},
                 {field:'jcyqJzTime', title:'校准时间',align:'center'},
                 {fixed: 'right', title:'操作',toolbar: '#barDemo',align:'center'}
             ]]
@@ -322,7 +344,8 @@
                             $("#jcyqDah").val(res.data.jcyqDah);
                             $("#jcyqXh").val(res.data.jcyqXh);
                             $("#jcyqBh").val(res.data.jcyqBh);
-                            $("#date2").val(res.data.jcyqJzTime);
+                            $("#date2").val(res.data.jcyqQyTime);
+                            $("#date22").val(res.data.jcyqJzTime);
                         }else{
                             layer.msg("无数据");
                         }

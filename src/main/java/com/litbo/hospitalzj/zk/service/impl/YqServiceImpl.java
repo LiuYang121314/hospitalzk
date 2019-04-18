@@ -7,6 +7,7 @@ import java.util.Calendar;
 import com.litbo.hospitalzj.supplier.service.exception.InsertException;
 import com.litbo.hospitalzj.supplier.service.exception.NotFoundException;
 import com.litbo.hospitalzj.supplier.service.exception.UpdateException;
+import com.litbo.hospitalzj.zk.domian.YqJxjl;
 import javafx.scene.input.DataFormat;
 import org.apache.ibatis.annotations.Param;
 import org.quartz.*;
@@ -24,6 +25,45 @@ public class YqServiceImpl implements YqService{
 
 	@Autowired
 	YqMapper yqMapper;
+
+	@Override
+	public List<Yq> jz() {
+		List<Yq> data=yqMapper.findAll();
+		List<Yq> yqIn=new ArrayList<Yq>();
+		Date now =new Date();
+		for(Yq yq:data){
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(yq.getJcyqJzTime());
+			calendar.add(Calendar.MONTH, 10);
+			Date time=calendar.getTime();
+			if(now.after(time)){
+				yqIn.add(yq);
+			}
+		}
+		return  yqIn;
+	}
+
+	@Override
+	public Integer jzNum() {
+		List<Yq> data=yqMapper.findAll();
+		List<Yq> yqIn=new ArrayList<Yq>();
+		Date now =new Date();
+		for(Yq yq:data){
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(yq.getJcyqJzTime());
+			calendar.add(Calendar.MONTH, 10);
+			Date time=calendar.getTime();
+			if(now.after(time)){
+				yqIn.add(yq);
+			}
+		}
+		return yqIn.size();
+	}
+
+	@Override
+	public void JzTime(Integer jcyqId, Date jcyqJzTime) {
+		yqMapper.JzTime(jcyqId,jcyqJzTime);
+	}
 
 	@Override
 	public Yq findById(Integer jcyqId) {
@@ -65,9 +105,6 @@ public class YqServiceImpl implements YqService{
 
 	@Override
 	public void update(Yq yq) {
-		if (yqMapper.findYqByDah(yq.getJcyqDah())!=null) {
-			throw new UpdateException("您修改的仪器档案号已存在");
-		}
 		yqMapper.update(yq);
 	}
 

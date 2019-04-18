@@ -7,12 +7,33 @@ public class YqJxjl {
 
     private Integer yqId;
 
+    private String yqName;
+
+    private String yqDah;
+
     private Date yqJxtime;
 
     private String yqJxr;
 
     private String yqJxbg;
+
     private Integer state;
+
+    public String getYqName() {
+        return yqName;
+    }
+
+    public void setYqName(String yqName) {
+        this.yqName = yqName;
+    }
+
+    public String getYqDah() {
+        return yqDah;
+    }
+
+    public void setYqDah(String yqDah) {
+        this.yqDah = yqDah;
+    }
 
     public Integer getState() {
         return state;

@@ -1,11 +1,13 @@
 package com.litbo.hospitalzj.zk.mapper;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.*;
 
 import com.litbo.hospitalzj.zk.domian.EqInfo;
 import com.litbo.hospitalzj.zk.domian.Yq;
+import org.apache.shiro.dao.DataAccessException;
 
 @Mapper
 public interface YqMapper {
@@ -41,6 +43,10 @@ public interface YqMapper {
 			"    where jcyq_id = #{jcyqId,jdbcType=INTEGER}")
 	void update(Yq yq);
 
+	@Update("update yq " +
+			"set jcyq_jz_time = #{jcyqJzTime,jdbcType=TIMESTAMP}" +
+			" where jcyq_id = #{jcyqId,jdbcType=INTEGER}")
+	void JzTime(@Param("jcyqId") Integer jcyqId, @Param("jcyqJzTime")Date jcyqJzTime);
 	@Insert("insert into yq (jcyq_id, jcyq_name, jcyq_xh, \n" +
 			"      jcyq_xzzq_time, jcyq_dah, jcyq_bh, \n" +
 			"      jcyq_cj_id, jcyq_qy_time, jcyq_ks_id, \n" +

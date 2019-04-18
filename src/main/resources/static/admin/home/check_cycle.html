@@ -33,7 +33,7 @@
         table.render({
             elem:"#cycleInfo"
             ,cellMinWidth: 120
-            ,url:""
+            ,url:"/yq/jz"
             ,method:"GET"
             ,response: {
                 statusName: 'status' //规定数据状态的字段名称，默认：code
@@ -57,6 +57,7 @@
                 {field:'jcyqDah', title:'档案号',align:'center'},
                 {field:'jcyqXh', title:'型号',align:'center'},
                 {field:'jcyqBh', title:'编号',align:'center'},
+                {field:'jcyqQyTime', title:'仪器启用时间',align:'center'},
                 {field:'jcyqJzTime', title:'校准时间',align:'center'},
                 {fixed: 'right', title:'操作',minWidth:"130", toolbar: '#barDemo',align:'center'}
             ]]
@@ -68,7 +69,7 @@
             if(obj.event === 'hands'){
                 // 校准
                 $.ajax({
-                    url:"?jcyqId="+obj.data.jcyqId,
+                    url:"/yq/jzTime?jcyqId="+obj.data.jcyqId,
                     method:"POST",
                     dataType:"JSON",
                     success:function(res){

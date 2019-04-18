@@ -1,13 +1,18 @@
 package com.litbo.hospitalzj.zk.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.litbo.hospitalzj.zk.domian.EqInfo;
 import com.litbo.hospitalzj.zk.domian.Yq;
+import com.litbo.hospitalzj.zk.domian.YqJxjl;
 import org.apache.ibatis.annotations.Param;
 import org.quartz.SchedulerException;
 
 public interface YqService {
+	List<Yq> jz();
+	Integer jzNum();
+	void JzTime(@Param("jcyqId") Integer jcyqId, @Param("jcyqJzTime") Date jcyqJzTime);
 	Yq findById(Integer jcyqId);
 	List<Yq> findYqByYqNameLike(String jcyqName);
 
