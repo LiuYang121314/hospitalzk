@@ -78,7 +78,7 @@
         form.on("submit(search)",function (data) {
             console.log(data.field);
             $.ajax({
-                url:"//?eqytName="+data.field.eqytName,
+                url:"/eqyt/findEqYtLike?eqytName="+data.field.eqytName,
                 method:"POST",
                 dataType:"JSON",
                 success:function(res){
@@ -99,7 +99,7 @@
                         table.render({
                             elem:"#searchInfo"
                             ,cellMinWidth: 80
-                            ,url:"//?eqytName="+data.field.eqytName
+                            ,url:"/eqyt/findEqYtLike?eqytName="+data.field.eqytName
                             ,method:"GET"
                             ,response: {
                                 statusName: 'status' //规定数据状态的字段名称，默认：code
@@ -153,7 +153,7 @@
         table.render({
             elem:"#pmDic"
             ,cellMinWidth: 80
-            ,url:"//all"
+            ,url:"/eqyt/all"
             ,method:"GET"
             ,response: {
                 statusName: 'status' //规定数据状态的字段名称，默认：code
@@ -181,7 +181,7 @@
         form.on("submit(create)",function(data){
             console.log(data.field);
             $.ajax({
-                url:"/eqpm/insert",
+                url:"/eqyt/insert",
                 method:"POST",
                 data:data.field,
                 dataType:"JSON",
@@ -214,7 +214,7 @@
                     obj.del();
                     // layer.close(index);
                     $.ajax({
-                        url:"//delete?eqytId="+obj.data.eqytId,
+                        url:"/eqyt/delete?eqytId="+obj.data.eqytId,
                         success:function(res){
                             if(res.state === 200){
                                 layer.msg("删除成功");

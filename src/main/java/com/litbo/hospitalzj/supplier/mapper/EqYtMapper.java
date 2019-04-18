@@ -35,6 +35,6 @@ public interface EqYtMapper {
 			"    where eqyt_id = #{eqytId,jdbcType=VARCHAR}"))
 	Integer update(EqYt eqYt);
 	//模糊查询
-	@Select("SELECT * FROM eq_sbyt WHERE eqyt_name LIKE '%${eqytName}%' where is_delete=0")
+	@Select("SELECT * FROM eq_sbyt WHERE eqyt_name LIKE '%${eqytName}%' and is_delete=0")
 	List<EqYt> findEqYtLike(@Param("eqytName")String eqytName);
 }
