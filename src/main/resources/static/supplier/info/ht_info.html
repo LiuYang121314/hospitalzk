@@ -229,6 +229,7 @@
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
     sessionStorage["htId"] = ids;
+    var email = "";
     // 随机四位验证码
     var code;
     function createCode(){
@@ -257,7 +258,8 @@
                 method:"GET",
                 dataType:"JSON",
                 success:function(res){
-                    if(res.data != "" && res.data != ""){
+                    if(res.data !== "" && res.data !== null){
+                        email = res.data.email;
                         $("#htGhsn").append(res.data.htGhsn);
                         $("#htGhslxr").append(res.data.htGhslxr);
                         $("#htGhsdh").append(res.data.htGhsdh);
@@ -490,32 +492,47 @@
             }
         });
         $("#uploadInfo").click(function(){
-            layer.msg("111");
-            layer.open({
-                type:1,
-                title:"验证码信息",
-                content:$("#codeBody"),
-                area:["300px","400px"],
-                maxmin:true,
-                btn:["确认"],
-                yes:function(){
-                    $.ajax({
-                        url:"/htInfo/updateYzm?htId="+ids,
-                        method:"POST",
-                        data:{"htYzm":code},
-                        dataType:"JSON",
-                        success:function(res){
-                            location.href = "/supplier/home/schedule.html";
-                        },
-                        error:function(data){
-                            layer.msg("服务器错误");
-                            console.log(data);
-                        }
-                    });
-                    layer.closeAll();
+            $.ajax({
+                url:"?email="+email,
+                method:"POST",
+                dataType:"JSON",
+                success:function(res){
+                    if(res.state === 200){
+                        layer.msg("验证码已发送至您的邮箱，请注意查收");
+                    }else{
+                        layer.msg("发送失败");
+                    }
+                },
+                error:function(data){
+                    console.log(data);
+                    layer.msg("请稍后再试");
                 }
-            });
-        })
+            })
+            // layer.open({
+            //     type:1,
+            //     title:"验证码信息",
+            //     content:$("#codeBody"),
+            //     area:["300px","400px"],
+            //     maxmin:true,
+            //     btn:["确认"],
+            //     yes:function(){
+            //         $.ajax({
+            //             url:"/htInfo/updateYzm?htId="+ids,
+            //             method:"POST",
+            //             data:{"htYzm":code},
+            //             dataType:"JSON",
+            //             success:function(res){
+            //                 location.href = "/supplier/home/schedule.html";
+            //             },
+            //             error:function(data){
+            //                 layer.msg("服务器错误");
+            //                 console.log(data);
+            //             }
+            //         });
+            //         layer.closeAll();
+            //     }
+            // });
+        });
     });
 </script>
 </body>
