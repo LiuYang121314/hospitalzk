@@ -33,7 +33,7 @@ public interface JgLxMapper {
 			"    where jg_id = #{jgId,jdbcType=INTEGER}")
 	Integer update(JgLx jgLx);
 	//模糊查询
-	@Select("SELECT * FROM jg_lx WHERE jg_lxmc LIKE '%${jgLx}%' or qy_lx_code LIKE '%${jgLx}%'")
+	@Select("SELECT * FROM jg_lx WHERE jg_lxmc LIKE '%${jgLx}%'")
 	List<JgLx> findByJgLxNameLike(@Param("jgLx") String jgLx);
 	@Delete("delete from jg_lx where jg_id = #{jgId}")
 	int delete(Integer jgId);

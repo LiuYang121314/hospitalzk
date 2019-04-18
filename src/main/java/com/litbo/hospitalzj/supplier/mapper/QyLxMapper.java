@@ -34,7 +34,7 @@ public interface QyLxMapper {
 			"    where qy_lxid = #{qyLxid,jdbcType=INTEGER}")
 	Integer update(QyLx qyLx);
 	//模糊查询
-	@Select("SELECT * FROM qy_lx WHERE qy_lxcm LIKE '%${qyLx}%' or qy_lx_code LIKE '%${qyLx}%'")
+	@Select("SELECT * FROM qy_lx WHERE qy_lxcm LIKE '%${qyLx}%'")
 	List<QyLx> findByQyLxNameLike(@Param("qyLx") String qyLx);
 	@Delete("delete from qy_lx where qy_lxid = #{qyLxid}")
 	int delete(Integer qyLxid);
