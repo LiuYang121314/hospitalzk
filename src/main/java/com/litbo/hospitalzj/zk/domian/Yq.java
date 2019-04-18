@@ -2,6 +2,10 @@ package com.litbo.hospitalzj.zk.domian;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Yq {
     private String jcyqId;
 
@@ -24,7 +28,8 @@ public class Yq {
     private String jcyqCf;
 
     private String jcyqUrl;
-
+    
+    @DateTimeFormat(pattern ="yyyy-MM-dd HH:mm")
     private Date jcyqJzTime;
 
     private Integer mbId;

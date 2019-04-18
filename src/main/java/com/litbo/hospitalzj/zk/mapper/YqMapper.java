@@ -25,34 +25,32 @@ public interface YqMapper {
 	@Select("select * from yq where jcyq_id=#{jcyqId}")
 	Yq findById(Integer jcyqId);
 	
-	@Update(
-	 "update yq "
-      +"set jcyq_name = #{jcyqName,jdbcType=VARCHAR},"
-      +"jcyq_xh = #{jcyqXh,jdbcType=VARCHAR},"
-      +"jcyq_xzzq_time = #{jcyqXzzqTime,jdbcType=VARCHAR},"
-      +"jcyq_dah = #{jcyqDah,jdbcType=VARCHAR},"
-      +"jcyq_bh = #{jcyqBh,jdbcType=VARCHAR},"
-      +"jcyq_cj_id = #{jcyqCjId,jdbcType=INTEGER},"
-      +"jcyq_qy_time = #{jcyqQyTime,jdbcType=TIMESTAMP},"
-      +"jcyq_ks_id = #{jcyqKsId,jdbcType=INTEGER},"
-      +"jcyq_cf = #{jcyqCf,jdbcType=VARCHAR},"
-      +"jcyq_url = #{jcyqUrl,jdbcType=VARCHAR},"
-      +"jcyq_jz_time = #{jcyqJzTime,jdbcType=TIMESTAMP},"
-      +"mb_id = #{mbId,jdbcType=INTEGER}, "
-			 +"is_delete={#isDelete}"
-      +"where jcyq_id = #{jcyqId,jdbcType=VARCHAR}")
+	@Update(" update yq\n" +
+			"    set jcyq_name = #{jcyqName,jdbcType=VARCHAR},\n" +
+			"      jcyq_xh = #{jcyqXh,jdbcType=VARCHAR},\n" +
+			"      jcyq_xzzq_time = #{jcyqXzzqTime,jdbcType=VARCHAR},\n" +
+			"      jcyq_dah = #{jcyqDah,jdbcType=VARCHAR},\n" +
+			"      jcyq_bh = #{jcyqBh,jdbcType=VARCHAR},\n" +
+			"      jcyq_cj_id = #{jcyqCjId,jdbcType=INTEGER},\n" +
+			"      jcyq_qy_time = #{jcyqQyTime,jdbcType=TIMESTAMP},\n" +
+			"      jcyq_ks_id = #{jcyqKsId,jdbcType=INTEGER},\n" +
+			"      jcyq_cf = #{jcyqCf,jdbcType=VARCHAR},\n" +
+			"      jcyq_url = #{jcyqUrl,jdbcType=VARCHAR},\n" +
+			"      jcyq_jz_time = #{jcyqJzTime,jdbcType=TIMESTAMP},\n" +
+			"      mb_id = #{mbId,jdbcType=INTEGER}" +
+			"    where jcyq_id = #{jcyqId,jdbcType=INTEGER}")
 	void update(Yq yq);
 
-	@Insert(
-	  "insert into yq (jcyq_id, jcyq_name, jcyq_xh," 
-	  +"jcyq_xzzq_time, jcyq_dah, jcyq_bh," 
-	  +"jcyq_cj_id, jcyq_qy_time, jcyq_ks_id," 
-	  +"jcyq_cf, jcyq_url, jcyq_jz_time," 
-	  +"mb_id,is_delete)values (UUID(), #{jcyqName,jdbcType=VARCHAR}, #{jcyqXh,jdbcType=VARCHAR},"
-	  +"#{jcyqXzzqTime,jdbcType=VARCHAR}, #{jcyqDah,jdbcType=VARCHAR}, #{jcyqBh,jdbcType=VARCHAR}," 
-	  +"#{jcyqCjId,jdbcType=INTEGER}, #{jcyqQyTime,jdbcType=TIMESTAMP}, #{jcyqKsId,jdbcType=INTEGER}," 
-	  +"#{jcyqCf,jdbcType=VARCHAR}, #{jcyqUrl,jdbcType=VARCHAR}, #{jcyqJzTime,jdbcType=TIMESTAMP}," 
-	  +"#{mbId,jdbcType=INTEGER},#{isDelete})")
+	@Insert("insert into yq (jcyq_id, jcyq_name, jcyq_xh, \n" +
+			"      jcyq_xzzq_time, jcyq_dah, jcyq_bh, \n" +
+			"      jcyq_cj_id, jcyq_qy_time, jcyq_ks_id, \n" +
+			"      jcyq_cf, jcyq_url, jcyq_jz_time, \n" +
+			"      mb_id, is_delete)\n" +
+			"    values (#{jcyqId,jdbcType=INTEGER}, #{jcyqName,jdbcType=VARCHAR}, #{jcyqXh,jdbcType=VARCHAR}, \n" +
+			"      #{jcyqXzzqTime,jdbcType=VARCHAR}, #{jcyqDah,jdbcType=VARCHAR}, #{jcyqBh,jdbcType=VARCHAR}, \n" +
+			"      #{jcyqCjId,jdbcType=INTEGER}, #{jcyqQyTime,jdbcType=TIMESTAMP}, #{jcyqKsId,jdbcType=INTEGER}, \n" +
+			"      #{jcyqCf,jdbcType=VARCHAR}, #{jcyqUrl,jdbcType=VARCHAR}, #{jcyqJzTime,jdbcType=TIMESTAMP}, \n" +
+			"      #{mbId,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER})")
 	@Options(useGeneratedKeys = true, keyProperty = "jcyqId", keyColumn = "jcyq_id")
 	void insert(Yq yq);
 
