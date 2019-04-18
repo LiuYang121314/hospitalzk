@@ -48,19 +48,25 @@
                 <div class="layui-form-item col-md-4">
                     <label class="layui-form-label">所在省份</label>
                     <div class="layui-input-block">
-                        <input type="text" name="suSf" class="layui-input" autocomplete="off">
+                        <select id="sheng" name="suSf" lay-verify="" lay-search>
+                            <option value=""></option>
+                        </select>
                     </div>
                 </div>
                 <div class="layui-form-item col-md-4">
                     <label class="layui-form-label">所在城市</label>
                     <div class="layui-input-block">
-                        <input type="text" name="suCs" class="layui-input" autocomplete="off">
+                        <select id="shi" name="suCs" lay-verify="" lay-search>
+                            <option value=""></option>
+                        </select>
                     </div>
                 </div>
                 <div class="layui-form-item col-md-4">
                     <label class="layui-form-label">所在区县</label>
                     <div class="layui-input-block">
-                        <input type="text" name="suXq" class="layui-input" autocomplete="off">
+                        <select id="qu" name="suXq" lay-verify="" lay-search>
+                            <option value=""></option>
+                        </select>
                     </div>
                 </div>
                 <div class="layui-form-item col-md-4">
@@ -162,7 +168,97 @@
         </div>
     </div>
     <script>
-        //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+        // 加载省的列表
+        function getProvinceList(){
+            // 清空当前列表
+            $("#sheng").empty();
+            // 发出ajax请求，并处理结果
+            $.ajax({
+                url:"",
+                method:"POST",
+                dataType:"JSON",
+                success:function(res){
+                    // 遍历加载新列表项
+                    var list = res.data;
+                    for (var i = 0; i < list.length; i++) {
+                        console.log(list[i].code + " - " + list[i].name);
+                        op = '<option value="' + list[i].code + '">' + list[i].name + '</option>';
+                        $("#sheng").append(op);
+                    }
+                }
+            });
+        }
+        // 加载市的列表
+        function getCityList(){
+            // 清空当前列表
+            $("#shi").empty();
+            // 获取所选择的省
+            var code = $("#sheng").val();
+            // 判断省的代号的值
+            if (code === 0) {
+                return;
+            }
+            // 发出ajax请求，并处理结果
+            $.ajax({
+                url:""+code,
+                method:"POST",
+                dataType:"JSON",
+                success:function(res){
+                    // 遍历加载新列表项
+                    var list = res.data;
+                    for (var i = 0; i < list.length; i++) {
+                        console.log(list[i].code + " - " + list[i].name);
+                        op = '<option value="' + list[i].code + '">' + list[i].name + '</option>';
+                        $("#shi").append(op);
+                    }
+                }
+            });
+        }
+        // 加载区的列表
+        function getAreaList(){
+            // 清空当前列表
+            $("#qu").empty();
+            // 获取所选择的市
+            var code = $("#shi").val();
+            // 判断市的代号的值
+            if (code === 0) {
+                return;
+            }
+            // 发出ajax请求，并处理结果
+            $.ajax({
+                url:""+code,
+                method:"POST",
+                dataType:"JSON",
+                success:function(res){
+                    // 遍历加载新列表项
+                    var list = res.data;
+                    for (var i = 0; i < list.length; i++){
+                        console.log(list[i].code + " - " + list[i].name);
+                        op = '<option value="' + list[i].code + '">' + list[i].name + '</option>';
+                        $("#qu").append(op);
+                    }
+                }
+            });
+        }
+        $(function(){
+            // 加载省的列表
+            getProvinceList();
+            // 为省的列表绑定change事件
+            $("#sheng").change(function(){
+                // 加载市的列表
+                getCityList();
+                // 清空区列表
+                $("#qu").empty();
+                // 添加默认选项
+                var op = '<option value="0">--- 请选择 ---</option>';
+                $("#qu").append(op);
+            });
+            // 为市的列表绑定change事件
+            $("#shi").change(function(){
+                // 加载区的列表
+                getAreaList();
+            });
+        });
         layui.use(['jquery','layer','form','upload'],function(){
             var layer = layui.layer
             ,   upload = layui.upload
