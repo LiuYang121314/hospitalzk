@@ -327,7 +327,7 @@
             ,form = layui.form;
         $(function(){
             $.ajax({
-                url:"/suinfo/"+ids,
+                url:"/suinfo/findSuById?suId="+ids,
                 method:"GET",
                 dataType:"JSON",
                 success:function(res){

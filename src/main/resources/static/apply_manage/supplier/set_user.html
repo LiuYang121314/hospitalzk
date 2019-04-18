@@ -37,13 +37,13 @@
             <div class="layui-form-item col-md-5">
                 <label class="layui-form-label">企业名称</label>
                 <div class="layui-input-block">
-                    <input id="suName" type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input id="suName" type="text" name="suName" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item col-md-5">
                 <label class="layui-form-label">密码</label>
                 <div class="layui-input-block">
-                    <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="password" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -70,7 +70,7 @@
         });
         form.on('submit(setUp)', function(data){
             $.ajax({
-                url:"?suId"+ids,
+                url:"/suinfo/mail?suId="+ids+"&email="+email+"&suMc="+suName+"&password="+data.field.password,
                 method:"POST",
                 dataType:"JSON",
                 async:false,

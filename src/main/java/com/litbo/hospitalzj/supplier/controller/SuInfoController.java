@@ -45,6 +45,11 @@ public class SuInfoController extends BaseController {
         SuInfoAndZzInfo data=suInfoService.findSuById(suId);
         return new ResponseResult<SuInfoAndZzInfo>(SUCCESS,data);
     }
+    @RequestMapping("/findSuById")
+    public ResponseResult<SuInfoAndZzInfo> findSuById(Integer suId) {
+        SuInfoAndZzInfo data=suInfoService.findSuById(suId);
+        return new ResponseResult<SuInfoAndZzInfo>(SUCCESS,data);
+    }
     @RequestMapping("/insert")
     public ResponseResult<Integer> insert(SuInfo suInfo) {
         suInfo.setIsDelete(0);
