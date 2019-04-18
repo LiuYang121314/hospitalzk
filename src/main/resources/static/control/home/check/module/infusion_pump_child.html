@@ -45,8 +45,8 @@
             </tr>
             <tr>
                 <td colspan="3">平均流量</td>
-                <td id="pjll1" colspan="3">&nbsp;</td>
-                <td id="pjll2" colspan="3">&nbsp;</td>
+                <td colspan="3">&nbsp;</td>
+                <td colspan="3">&nbsp;</td>
                 <td>符合    不符合</td>
             </tr>
             <tr>
@@ -69,26 +69,26 @@
                 <td rowspan="2">符合  不符合</td>
             </tr>
             <tr>
-                <td id="bjszH">&nbsp;</td>
-                <td id="bjszM">&nbsp;</td>
-                <td id="bjszL">&nbsp;</td>
-                <td id="bjsjH">&nbsp;</td>
-                <td id="bjsjM">&nbsp;</td>
-                <td id="bjsjL">&nbsp;</td>
-                <td id="bjylH">&nbsp;</td>
-                <td id="bjylM">&nbsp;</td>
-                <td id="bjylL">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
                 <td rowspan="3">报警系统检测</td>
                 <td colspan="3">堵塞</td>
-                <td id="zs" colspan="3">符合  不符合  不适用</td>
+                <td colspan="3">符合  不符合  不适用</td>
                 <td colspan="3">即将空瓶</td>
                 <td id="jjkp">符合  不符合  不适用</td>
             </tr>
             <tr>
                 <td colspan="3">输液管路安装不妥</td>
-                <td id="sygbt" colspan="3">符合  不符合  不适用</td>
+                <td colspan="3">符合  不符合  不适用</td>
                 <td colspan="3">气泡报警</td>
                 <td id="qpbj">符合  不符合  不适用</td>
             </tr>
@@ -100,7 +100,7 @@
             </tr>
         </table>
         <div class="col-xs-12 btn">
-            <a id="back" class="layui-btn">返回</a>
+            <a id="back" class="layui-btn layui-btn-primary">返回</a>
             <a id="update" class="layui-btn layui-btn-normal">修改</a>
         </div>
     </div>
@@ -119,7 +119,7 @@
                 dataType:"JSON",
                 success:function(res){
                     console.log(res);
-                    if(res.data != null && res.data != ""){
+                    if(res.data !== null && res.data !== ""){
 
                     }
                 }
