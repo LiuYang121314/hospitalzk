@@ -42,6 +42,7 @@ public class YqController extends BaseController{
 	//新增仪器
 	@RequestMapping("/insert")
 	public ResponseResult<Void> insert(Yq yq){
+		yq.setIsDelete(0);
 		yqService.insert(yq);
 		YqJxjl data=new YqJxjl();
 		data.setYqId(Integer.valueOf(yq.getJcyqId()));
@@ -69,6 +70,7 @@ public class YqController extends BaseController{
 	//修改仪器
 	@RequestMapping("/update")
 		public ResponseResult<Void> update(Yq yq){
+		
 		yqService.update(yq);
 		return new ResponseResult<Void>(SUCCESS);
 	}
