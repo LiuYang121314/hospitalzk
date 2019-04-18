@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>设备经费来源字典</title>
+    <link rel="stylesheet" type="text/css" href="../../../static/layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../static/css/admin.css"/>
+    <script src="../../../static/layui/layui.js"></script>
+    <style>
+        .item{
+            display: flex;
+            align-items: center;
+        }
+        .btn{
+            margin-top: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-row">
+    <div class="col-xs-12">
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend style="color: #000000;font-size: 22px;text-align: center;">设备经费来源字典</legend>
+        </fieldset>
+        <form style="display: flex;justify-content: center;" class="layui-form" action="">
+            <div class="layui-form-item col-xs-12 col-md-7 list">
+                <div class="layui-input-block item">
+                    <input style="margin-left: -100px;" type="text" name="eqjfName" required  lay-verify="required" placeholder="请输入要查询的设备品名" autocomplete="off" class="layui-input">
+                    <button style="margin: 0;" class="layui-btn layui-btn-normal" lay-submit lay-filter="search">
+                        <i class="layui-icon">&#xe615;</i>
+                    </button>
+                    <a style="margin-left: 50px;" id="btn" class="layui-btn layui-btn-normal"><i class="layui-icon">&#xe608;</i>添加字典</a>
+                </div>
+            </div>
+        </form>
+        <div id="searchAll" style="display: none;">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend style="color: #000000;font-size: 22px;text-align: center;">查询结果</legend>
+            </fieldset>
+            <table class="layui-hide" id="searchInfo" lay-filter="handle"></table>
+        </div>
+        <table class="layui-hide" id="pmDic" lay-filter="handle"></table>
+        <div id="create" style="display: none;">
+            <from class="layui-form layui-form-pane" action="">
+                <fieldset class="layui-elem-field layui-field-title">
+                    <legend style="color: #000000;font-weight: bold;text-align: center;">添加字典</legend>
+                </fieldset>
+                <div class="layui-form-item" style="width: 50%;margin: 0 auto;">
+                    <label class="layui-form-label">字典名</label>
+                    <div style="display: flex;" class="layui-input-block">
+                        <input type="text" name="eqjfName" required  lay-verify="required" placeholder="请输入要添加的字典名" autocomplete="off" class="layui-input">
+                        <button style="margin: 0;margin-left: 30px;" class="layui-btn" lay-submit lay-filter="create"><i class="layui-icon">&#xe608;</i>添加</button>
+                    </div>
+                </div>
+            </from>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+    </div>
+</script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script>
+    layui.use(['layer','jquery','table','form'],function (){
+        var layer = layui.layer
+            ,   $ = layui.jquery
+            ,   table = layui.table
+            ,   form = layui.form;
+        // 查询
+        form.on("submit(search)",function (data) {
+            console.log(data.field);
+            $.ajax({
+                url:"/eqjfName/selectByEqPmNameLike?eqPmName="+data.field.eqjfName,
+                method:"POST",
+                dataType:"JSON",
+                success:function(res){
+                    if(res.state === 200){
+                        layer.open({
+                            type:1,
+                            content:$("#searchAll"),
+                            area:["90%","90%"],
+                            maxmin:true,
+                            // btn:"确定",
+                            // yes:function(){
+                            //     location.href="./dic_pm.html";
+                            //     layer.closeAll();
+                            // }
+                        });
+                        layer.msg("查询成功");
+                        // 查询数据
+                        table.render({
+                            elem:"#searchInfo"
+                            ,cellMinWidth: 80
+                            ,url:"/eqjfName/selectByEqPmNameLike?eqPmName="+data.field.eqjfName
+                            ,method:"GET"
+                            ,response: {
+                                statusName: 'status' //规定数据状态的字段名称，默认：code
+                                ,statusCode: 200 //规定成功的状态码，默认：0
+                                ,msgName: 'hint' //规定状态信息的字段名称，默认：msg
+                                ,countName: 'total' //规定数据总数的字段名称，默认：count
+                                ,dataName: 'data' //规定数据列表的字段名称，默认：data
+                            }
+                            ,parseData:function(res){
+                                console.log(res);
+                                return{
+                                    "status":200
+                                    ,"msg":res.message
+                                    ,"count":res.total
+                                    ,"data":res.data
+                                }
+                            },
+                            cols:[[
+                                {field:'eqjfName', title:'设备经费来源名称',align:'center'},
+                                {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
+                            ]]
+                        });
+                    }else if(res.state === 704){
+                        layer.msg("该设备品名不存在");
+                    }else{
+                        layer.msg("查询失败");
+                    }
+                },
+                error:function(data){
+                    console.log(data);
+                    layer.msg("请稍后再试");
+                }
+            });
+            return false;
+        });
+        // 添加按钮
+        $("#btn").click(function(){
+            layer.open({
+                type:1,
+                content:$("#create"),
+                area:["90%","90%"],
+                maxmin:true,
+                btn:"确定",
+                // yes:function(){
+                //     location.href="./dic_pm.html";
+                //     layer.closeAll();
+                // }
+            });
+        });
+        // 所有数据
+        table.render({
+            elem:"#pmDic"
+            ,cellMinWidth: 80
+            ,url:"/eqjf/all"
+            ,method:"GET"
+            ,response: {
+                statusName: 'status' //规定数据状态的字段名称，默认：code
+                ,statusCode: 200 //规定成功的状态码，默认：0
+                ,msgName: 'hint' //规定状态信息的字段名称，默认：msg
+                ,countName: 'total' //规定数据总数的字段名称，默认：count
+                ,dataName: 'data' //规定数据列表的字段名称，默认：data
+            }
+            ,parseData:function(res){
+                console.log(res);
+                return{
+                    "status":200
+                    ,"msg":res.message
+                    ,"count":res.total
+                    ,"data":res.data
+                }
+            },
+            page:true,
+            cols:[[
+                {field:'eqjfName', title:'设备经费来源名称',align:'center'},
+                {fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center'}
+            ]]
+        });
+        // 添加新字典
+        form.on("submit(create)",function(data){
+            console.log(data.field);
+            $.ajax({
+                url:"/eqjfName/insert",
+                method:"POST",
+                data:data.field,
+                dataType:"JSON",
+                success:function (res){
+                    if(res.state === 200){
+                        layer.msg("创建成功");
+                        setTimeout(function(){
+                            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                            parent.layer.close(index); //再执行关闭
+                            window.parent.location.reload();//刷新父页面
+                        },1000);
+                    }else if(res.state === 500){
+                        layer.msg("该序列号或字段已重复，请重新插入");
+                    }else{
+                        layer.msg("创建失败");
+                    }
+                },
+                error:function(data){
+                    console.log(data);
+                    layer.msg("请稍后再试");
+                }
+            })
+        });
+        //监听行工具事件
+        table.on('tool(handle)', function(obj){
+            var data = obj.data;
+            //console.log(obj)
+            if(obj.event === 'del'){
+                layer.confirm('确定删除此条数据么', function(index){
+                    obj.del();
+                    // layer.close(index);
+                    $.ajax({
+                        url:"/eqjfName/delete?eqPmId="+obj.data.eqjfId,
+                        success:function(res){
+                            if(res.state === 200){
+                                layer.msg("删除成功");
+                                setTimeout(function(){
+                                    var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                                    parent.layer.close(index); //再执行关闭
+                                    window.parent.location.reload();//刷新父页面
+                                },1000);
+                            }else{
+                                layer.msg("删除失败");
+                            }
+                        },
+                        error:function(data){
+                            layer.msg("删除失败,请稍后再试");
+                            console.log(data);
+                        }
+                    })
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>
