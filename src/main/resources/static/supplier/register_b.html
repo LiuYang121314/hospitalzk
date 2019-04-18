@@ -83,7 +83,9 @@
             <div class="layui-form-item col-md-4">
                 <label class="layui-form-label">企业类型</label>
                 <div class="layui-input-block">
-                    <input type="text" name="zzQylx" class="layui-input" autocomplete="off">
+                    <select id="zzQylx" name="zzQylx" lay-verify="" lay-search>
+                        <option value=""></option>
+                    </select>
                 </div>
             </div>
             <div class="layui-form-item col-md-4">
@@ -205,7 +207,9 @@
             <div class="layui-form-item col-md-4">
                 <label class="layui-form-label"><span style="color: red;">*</span>机构类型</label>
                 <div class="layui-input-block">
-                    <input type="text" name="zzZzlx" class="layui-input" autocomplete="off" lay-verify="required">
+                    <select id="zzZzlx" name="zzZzlx" lay-verify="" lay-search>
+                        <option value=""></option>
+                    </select>
                 </div>
             </div>
             <div class="layui-form-item col-md-4">
@@ -285,6 +289,58 @@
     </div>
 </div>
 <script>
+    $(function(){
+        // 企业类型字典
+        function qylxList(){
+            // 清空当前列表
+            $("#zzQylx").empty();
+            // 添加默认选项
+            var op = '<option value=""></option>';
+            $("#zzQylx").append(op);
+            // 发出ajax请求，并处理结果
+            $.ajax({
+                url:"/qylx/all",
+                method: "GET",
+                dataType: "JSON",
+                async:false,
+                "success":function(json){
+                    // 遍历加载新列表项
+                    var list = json.data;
+                    for (var i = 0; i < list.length; i++) {
+                        // console.log(list[i].eqlyId + " - " + list[i].eqlyName);
+                        op = '<option value="' + list[i].qyLxcm + '">' + list[i].qyLxcm + '</option>';
+                        $("#zzQylx").append(op);
+                    }
+                }
+            });
+        }
+        qylxList();
+        // 机构类型字典
+        function jglxList(){
+            // 清空当前列表
+            $("#zzZzlx").empty();
+            // 添加默认选项
+            var op = '<option value=""></option>';
+            $("#zzZzlx").append(op);
+            // 发出ajax请求，并处理结果
+            $.ajax({
+                url:"/jglx/all",
+                method: "GET",
+                dataType: "JSON",
+                async:false,
+                "success":function(json){
+                    // 遍历加载新列表项
+                    var list = json.data;
+                    for (var i = 0; i < list.length; i++) {
+                        // console.log(list[i].eqlyId + " - " + list[i].eqlyName);
+                        op = '<option value="' + list[i].jgLxmc + '">' + list[i].jgLxmc + '</option>';
+                        $("#zzZzlx").append(op);
+                    }
+                }
+            });
+        }
+        jglxList();
+    });
     // 获取上个页面传递的类型
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
