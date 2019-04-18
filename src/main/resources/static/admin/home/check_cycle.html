@@ -21,6 +21,7 @@
 </div>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="hands">校准</a>
+    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="dekl">删除</a>
 </script>
 <script>
     //Demo
@@ -85,7 +86,28 @@
                         console.log(data);
                         layer.msg("请稍后再试");
                     }
-                })
+                });
+            }else if(obj.event === "del"){
+                // 删除
+                $.ajax({
+                    url:"?jcyqId="+obj.data.jcyqId,
+                    method:"POST",
+                    dataType:"JSON",
+                    success:function(res){
+                        if(res.state === 200){
+                            layer.msg("删除成功");
+                            setTimeout(function(){
+                                location.reload();
+                            },1000);
+                        }else{
+                            layer.msg("删除失败");
+                        }
+                    },
+                    error:function(data){
+                        console.log(data);
+                        layer.msg("请稍后再试");
+                    }
+                });
             }
         });
     });
