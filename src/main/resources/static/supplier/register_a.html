@@ -180,7 +180,7 @@
                 success:function(res){
                     // 遍历加载新列表项
                     var list = res.data;
-                    for (var i = 0; i < list.length; i++) {
+                    for (var i = 0; i < list.length; i++){
                         console.log(list[i].code + " - " + list[i].name);
                         op = '<option value="' + list[i].code + '">' + list[i].name + '</option>';
                         $("#sheng").append(op);
@@ -206,7 +206,7 @@
                 success:function(res){
                     // 遍历加载新列表项
                     var list = res.data;
-                    for (var i = 0; i < list.length; i++) {
+                    for (var i = 0; i < list.length; i++){
                         console.log(list[i].code + " - " + list[i].name);
                         op = '<option value="' + list[i].code + '">' + list[i].name + '</option>';
                         $("#shi").append(op);
@@ -221,7 +221,7 @@
             // 获取所选择的市
             var code = $("#shi").val();
             // 判断市的代号的值
-            if (code === 0) {
+            if(code === 0){
                 return;
             }
             // 发出ajax请求，并处理结果
