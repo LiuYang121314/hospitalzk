@@ -26,10 +26,9 @@
             align-items: center;
             flex-wrap: wrap;
         }
-        .btn{
-            width: 100%;
-            margin-top: 50px;
-            text-align: center;
+        .item{
+            display: flex;
+            align-items: center;
         }
     </style>
 </head>
@@ -37,21 +36,18 @@
 <div class="layui-row">
     <div class="col-xs-12">
     	<fieldset class="layui-elem-field layui-field-title">
-            <legend style="color: #000000;font-weight: bold">设备检测</legend>
+            <legend style="color: #000000;font-weight: bold;text-align: center;">设备检测</legend>
         </fieldset>
-    	<form class="layui-form basicInfo" action="">
-    		<div class="layui-form-item col-md-4">
-			    <label class="layui-form-label">档案号</label>
-			    <div class="layui-input-block">
-			      <input type="text" name="dah" required  lay-verify="required" placeholder="请输入档案号" autocomplete="off" class="layui-input">
-			    </div>
-			 </div>
-			 <div class="layui-form-item col-md-4">
-			    <div class="layui-input-block">
-			      <button class="layui-btn" lay-submit lay-filter="searchSub">查询</button>
-			    </div>
-			  </div>
-    	</form>   
+        <form style="display: flex;justify-content: center;" class="layui-form" action="">
+            <div class="layui-form-item col-xs-12 col-md-4 list">
+                <div class="layui-input-block item">
+                    <input style="margin-left: -100px;" type="text" name="dah" required  lay-verify="required" placeholder="请输入档案号" autocomplete="off" class="layui-input">
+                    <button style="margin: 0;" class="layui-btn layui-btn-normal" lay-submit lay-filter="searchSub">
+                        <i class="layui-icon">&#xe615;</i>查询
+                    </button>
+                </div>
+            </div>
+        </form>
         <fieldset class="layui-elem-field layui-field-title">
             <legend style="color: red;">被检设备基础信息</legend>
         </fieldset>
@@ -95,7 +91,7 @@
                         // 设备信息
                         table.render({
                             elem:"#fixInfo",
-                            cellMinWidth:130,
+                            cellMinWidth:150,
                             toolbar: '#toolbarDemo',
                             url:"/yq/selectEqInfo?eqDah="+data.field.dah+"&ndjhId="+ndjhId,
                             method:"GET",
