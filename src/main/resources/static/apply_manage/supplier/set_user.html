@@ -31,16 +31,16 @@
 <div class="layui-row">
     <div class="col-xs-12">
         <fieldset class="layui-elem-field layui-field-title">
-            <legend style="font-size: 26px;color: #0C0C0C;text-align: center;">设置供应商登录密码</legend>
+            <legend style="font-size: 26px;color: #0C0C0C;">设置供应商登录密码</legend>
         </fieldset>
-        <form class="layui-form" action="">
-            <div class="layui-form-item">
+        <form class="layui-form layui-form-pane" action="">
+            <div class="layui-form-item col-md-5">
                 <label class="layui-form-label">企业名称</label>
                 <div class="layui-input-block">
                     <input id="suName" type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input">
                 </div>
             </div>
-            <div class="layui-form-item">
+            <div class="layui-form-item col-md-5">
                 <label class="layui-form-label">密码</label>
                 <div class="layui-input-block">
                     <input type="text" name="title" required  lay-verify="required" autocomplete="off" class="layui-input">
@@ -48,7 +48,7 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit lay-filter="setUp">立即提交</button>
+                    <button class="layui-btn" lay-submit lay-filter="setUp">保存</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
@@ -60,6 +60,7 @@
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
     var suName = sessionStorage["suName"];
+    var email = sessionStorage['suEmail'];
     layui.use(['jquery','layer','form'],function(){
         var $ = layui.jquery
             ,layer = layui.layer
@@ -75,7 +76,7 @@
                 async:false,
                 success:function(res){
                     if(res.state === 200){
-                        layer.msg("提交成功，用户名密码将以短信方式发送给该企业");
+                        layer.msg("保存成功，用户名密码将以短信方式发送给该企业");
                         setTimeout(function(){
                             location.href="/apply_manage/home/supplier_check.html";
                         },1000);

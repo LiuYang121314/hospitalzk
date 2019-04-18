@@ -334,6 +334,7 @@
                     if(res.data != "" && res.data != null){
                         // 企业信息
                         sessionStorage["suName"] = res.data.suMc;
+                        sessionStorage['suEmail'] = res.data.suEmail;
                         $("#suMc").append(res.data.suMc);
                         $("#suSf").append(res.data.suSf);
                         $("#suCs").append(res.data.suCs);
@@ -427,6 +428,9 @@
                 success:function(res){
                     if(res.state === 200){
                         layer.msg("注册申请驳回成功");
+                        setTimeout(function(){
+                           location.href="/apply_manage/home/supplier_check.html";
+                        },1000);
                     }else{
                         layer.msg("失败");
                     }
