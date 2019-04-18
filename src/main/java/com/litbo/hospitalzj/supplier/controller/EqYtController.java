@@ -57,8 +57,8 @@ public class EqYtController extends BaseController{
 		return new ResponseResult<EqYt>(SUCCESS,data);
 	}
 	@RequestMapping("/findEqYtLike")
-	public ResponseResult<List<EqYt>> findEqYtLike(String eqYtName) {
-		List<EqYt> data=eqYtService.findEqYtLike(eqYtName);
+	public ResponseResult<List<EqYt>> findEqYtLike(String eqytName) {
+		List<EqYt> data=eqYtService.findEqYtLike(eqytName);
 		return new ResponseResult<List<EqYt>>(SUCCESS,data);
 	}
 }

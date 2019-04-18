@@ -78,7 +78,7 @@
         form.on("submit(search)",function (data) {
             console.log(data.field);
             $.ajax({
-                url:"/eqjfName/selectByEqPmNameLike?eqPmName="+data.field.eqjfName,
+                url:"/eqjf/findEqJflyLike?eqjfName="+data.field.eqjfName,
                 method:"POST",
                 dataType:"JSON",
                 success:function(res){
@@ -99,7 +99,7 @@
                         table.render({
                             elem:"#searchInfo"
                             ,cellMinWidth: 80
-                            ,url:"/eqjfName/selectByEqPmNameLike?eqPmName="+data.field.eqjfName
+                            ,url:"/eqjf/findEqJflyLike?eqjfName="+data.field.eqjfName
                             ,method:"GET"
                             ,response: {
                                 statusName: 'status' //规定数据状态的字段名称，默认：code
@@ -181,7 +181,7 @@
         form.on("submit(create)",function(data){
             console.log(data.field);
             $.ajax({
-                url:"/eqjfName/insert",
+                url:"/eqjf/insert",
                 method:"POST",
                 data:data.field,
                 dataType:"JSON",
@@ -214,7 +214,7 @@
                     obj.del();
                     // layer.close(index);
                     $.ajax({
-                        url:"/eqjfName/delete?eqPmId="+obj.data.eqjfId,
+                        url:"/eqjf/delete?eqjfId="+obj.data.eqjfId,
                         success:function(res){
                             if(res.state === 200){
                                 layer.msg("删除成功");

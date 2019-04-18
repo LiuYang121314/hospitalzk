@@ -46,7 +46,7 @@ public class SBmServiceImpl implements SBmService {
 		if(data!=null){
 			throw new InsertException("该项部门已存在");
 		}
-		sBmMapper.insert(data);
+		sBmMapper.insert(sBm);
 	}
 
 	@Override

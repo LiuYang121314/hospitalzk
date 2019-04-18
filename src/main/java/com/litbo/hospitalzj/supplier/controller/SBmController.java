@@ -38,6 +38,7 @@ public class SBmController extends BaseController {
 	}
 	@RequestMapping("/insert")
 	public ResponseResult<Void> insert(SBm sBm) {
+		System.out.println("11111111111"+sBm.getBmName());
 		sBmService.insert(sBm);
 		return new ResponseResult<Void>(SUCCESS);
 	}
@@ -47,8 +48,8 @@ public class SBmController extends BaseController {
 		return new ResponseResult<Void>(SUCCESS);
 	}
 	@RequestMapping("/findByBmNameLike")
-	public ResponseResult<List<SBm>> findByBmNameLike(String bmname) {
-		List<SBm> data=sBmService.findByBmNameLike(bmname);
+	public ResponseResult<List<SBm>> findByBmNameLike(String bmName) {
+		List<SBm> data=sBmService.findByBmNameLike(bmName);
 		return new ResponseResult<List<SBm>>(SUCCESS,data);
 	}
 }

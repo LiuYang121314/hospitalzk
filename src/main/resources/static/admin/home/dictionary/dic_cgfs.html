@@ -78,7 +78,7 @@
         form.on("submit(search)",function (data) {
             console.log(data.field);
             $.ajax({
-                url:"/eqcg/?eqcgName="+data.field.eqcgName,
+                url:"/eqcg/findByEqcgNameLike?eqcgName="+data.field.eqcgName,
                 method:"POST",
                 dataType:"JSON",
                 success:function(res){
@@ -99,7 +99,7 @@
                         table.render({
                             elem:"#searchInfo"
                             ,cellMinWidth: 80
-                            ,url:"/eqcg/?eqcgName="+data.field.eqcgName
+                            ,url:"/eqcg/findByEqcgNameLike?eqcgName="+data.field.eqcgName
                             ,method:"GET"
                             ,response: {
                                 statusName: 'status' //规定数据状态的字段名称，默认：code

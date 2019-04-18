@@ -17,7 +17,7 @@ public interface EqLyMapper {
 	@Select("SELECT eqly_id eqlyId, eqly_name eqlyName FROM eq_ly WHERE eqly_id=#{eqlyId}")
 	EqLy findById(@Param("eqlyId") Integer eqlyId);
 
-	@Select("SELECT eqly_id eqlyId, eqly_name eqlyName FROM eq_ly WHERE eqly_name=#{eqlyName} where is_delete=0")
+	@Select("SELECT eqly_id eqlyId, eqly_name eqlyName FROM eq_ly WHERE eqly_name=#{eqlyName} and is_delete=0")
 	EqLy findByName(@Param("eqlyName") String eqlyName);
 
 	@Select("SELECT eqly_id eqlyId, eqly_name eqlyName FROM eq_ly where is_delete=0" )
@@ -39,6 +39,6 @@ public interface EqLyMapper {
 			"    where eqly_id = #{eqlyId,jdbcType=VARCHAR}"))
 	Integer update(EqLy eqLy);
 	//模糊查询
-	@Select("SELECT * FROM eq_ly WHERE eqly_name LIKE '%${eqlyName}%' where is_delete=0")
+	@Select("SELECT * FROM eq_ly WHERE eqly_name LIKE '%${eqlyName}%' and is_delete=0")
 	List<EqLy> findEqLyLike(@Param("eqlyName")String eqlyName);
 }
