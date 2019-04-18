@@ -33,8 +33,9 @@ public class EqInfoController extends BaseController{
 	}
 
 	@RequestMapping("/findAllEq")
-	public ResponseResult<List<EqInfo>> findAll1(){
-		List<EqInfo> dataList=eqInfoService.findAll();
+	public ResponseResult<List<EqInfo>> findAll1(@RequestParam("page") Integer offset,
+												 @RequestParam("limit") Integer count){
+		List<EqInfo> dataList=eqInfoService.findAll(offset, count);
 		return new ResponseResult<List<EqInfo>>(SUCCESS,dataList);
 	}
 

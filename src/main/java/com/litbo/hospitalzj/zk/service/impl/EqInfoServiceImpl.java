@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.litbo.hospitalzj.sf.entity.User;
 import com.litbo.hospitalzj.zk.vo.EqAndUname;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,9 +40,9 @@ public class EqInfoServiceImpl implements EqInfoService {
 	}
 
 	@Override
-	public List<EqInfo> findAll() {
-	
-		return eqInfoMapper.findAll();
+	public List<EqInfo> findAll(@Param("offset") Integer offset,
+								@Param("count") Integer count) {
+		return eqInfoMapper.findAll(offset, count);
 	}
 
 	@Override

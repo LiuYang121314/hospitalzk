@@ -58,8 +58,10 @@ public interface EqInfoMapper1 {
 	@Delete("delete from EqInfo_template where dc_templateid = #{dcTemplateId}")
 	void delete(String id);
 
-	@Select("select * from eq_info e left join eq_pm p on e.eq_pm_id=p.eq_pm_id ")
-	List<EqInfo> findAll();
+	@Select("select * from eq_info e left join eq_pm p on e.eq_pm_id=p.eq_pm_id " +
+			"ORDER BY eq_id DESC LIMIT #{offset}, #{count} ")
+	List<EqInfo> findAll(@Param("offset") Integer offset,
+						 @Param("count") Integer count);
 
 	@Select("SELECT * FROM eq_info WHERE eq_id IN(SELECT eq_id FROM yq_eq WHERE jcyq_id=#{jcyqId})")
 	List<EqInfo> findByJcyqId(String jcyqId);

@@ -493,7 +493,7 @@
         });
         $("#uploadInfo").click(function(){
             $.ajax({
-                url:"?email="+email,
+                url:"/htInfo/updateYzm?htId="+ids+"&email="+email,
                 method:"POST",
                 dataType:"JSON",
                 success:function(res){

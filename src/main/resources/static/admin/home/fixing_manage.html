@@ -382,9 +382,10 @@
                     ,"data":res.data
                 }
             },
-            page:true,
-            limit:10,
-            cols:[[
+            page: true  //开启分页
+            ,limits: [10,20,50]  //每页条数的选择项，默认：[10,20,30,40,50,60,70,80,90]。
+            ,limit: 10 //每页默认显示的数量
+            ,cols:[[
                 {field:'eqMc', title:'设备名称',align:'center'},
                 {field:'eqDah', title:'设备档案号',align:'center'},
                 {field:'eqPmName', title:'设备品名名称',align:'center'},

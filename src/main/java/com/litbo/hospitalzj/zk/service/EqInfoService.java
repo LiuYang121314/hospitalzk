@@ -10,14 +10,13 @@ import com.litbo.hospitalzj.zk.vo.EqToYqs;
 import org.apache.ibatis.annotations.Param;
 
 public interface EqInfoService {
-
+	List<EqInfo> findAll(@Param("offset") Integer offset,
+						 @Param("count") Integer count);
 	void updateInfo1(EqInfo eqinfo);
 
 	void updateEqPm(@Param("eqPmId")Integer eqPmId,@Param("eqId") Integer eqId);
 
 	public void insert(EqInfo dt);
-
-	public List<EqInfo> findAll();
 
 	public void delete(String id);
 
