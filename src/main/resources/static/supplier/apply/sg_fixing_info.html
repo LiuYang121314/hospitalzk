@@ -70,10 +70,7 @@
                 <label class="layui-form-label"><span style="color: red;">*</span>使用科室</label>
                 <div class="layui-input-block">
                     <select id="eqSyks" name="eqSyks" lay-verify="" lay-search>
-                        <option value="">请选择</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option value=""></option>
                     </select>
                 </div>
             </div>
@@ -82,9 +79,6 @@
                 <div class="layui-input-block">
                     <select id="eqYt" name="eqYt" lay-verify="required">
                         <option value=""></option>
-                        <option value="0">1</option>
-                        <option value="1">2</option>
-                        <option value="2">3</option>
                     </select>
                 </div>
             </div>
@@ -166,9 +160,9 @@
                     <input type="text" name="eqShLxrdh" class="layui-input" autocomplete="off" lay-verify="required">
                 </div>
             </div>
-            <div class="layui-form-item">
+            <div class="layui-form-item col-md-5">
                 <label class="layui-form-label">设备类别</label>
-                <div class="layui-input-block">
+                <div class="layui-input-block" style="border: 1px solid #CCCCCC;">
                     <input type="radio" name="eqShLb" value="计量设备" title="计量设备">
                     <input type="radio" name="eqShLb" value="发射设备" title="发射设备">
                     <input type="radio" name="eqShLb" value="无" title="无">
@@ -188,37 +182,6 @@
     var type = window.location.search;
     var ids = parseInt(type.split("=")[1]);
     $(function () {
-        // 设备品名字典数据
-        function sbpmList(){
-            // 清空当前列表
-            $("#eqPmId").empty();
-            // 添加默认选项
-            var op = '<option value=""></option>';
-            $("#eqPmId").append(op);
-            // 发出ajax请求，并处理结果
-            $.ajax({
-                url:"/eqpm/allEqPm",
-                method: "GET",
-                dataType: "JSON",
-                async:false,
-                "success": function(json) {
-                    // 遍历加载新列表项
-                    var list = json.data;
-                    console.log(list);
-                    for (var i = 0; i < list.length; i++) {
-                        console.log(list[i].eqPmId + " - " + list[i].eqPmName);
-                        op = '<option value="' + list[i].eqPmName + '">' + list[i].eqPmName + '</option>';
-                        $("#eqPmId").append(op);
-                        // <select>
-                        // 		<option value="1">第1项</option>
-                        // 		<option value="2">第2项</option>
-                        // 		<option value="3">第3项</option>
-                        // </select>
-                    }
-                }
-            });
-        }
-        sbpmList();
         // 使用科室字典数据
         function syksList(){
             // 清空当前列表
@@ -253,10 +216,10 @@
         // 设备用途字典
         function sbytList(){
             // 清空当前列表
-            $("#htSbyt").empty();
+            $("#eqYt").empty();
             // 添加默认选项
             var op = '<option value=""></option>';
-            $("#htSbyt").append(op);
+            $("#eqYt").append(op);
             // 发出ajax请求，并处理结果
             $.ajax({
                 url:"/eqyt/allEqYt",
@@ -270,7 +233,7 @@
                     for (var i = 0; i < list.length; i++) {
                         console.log(list[i].eqytId + " - " + list[i].eqytName);
                         op = '<option value="' + list[i].eqytName + '">' + list[i].eqytName + '</option>';
-                        $("#htSbyt").append(op);
+                        $("#eqYt").append(op);
                     }
                 }
             });

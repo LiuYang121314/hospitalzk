@@ -92,7 +92,7 @@
                 <a href="javascript:void(0);" data-url="./home/fixing_manage.html" data-id="52" data-text="设备管理"><i class="layui-icon layui-icon-engine"></i>设备管理</a>
             </li>
             <li class="layui-nav-item" shiro:haspermission="" name="a">
-                <a href="javascript:void(0);" data-url="./home/check_cycle.html" data-id="53" data-text="检测仪器校准提醒"><i class="layui-icon layui-icon-engine"></i>检测仪器校准提醒</a>
+                <a href="javascript:void(0);" data-url="./home/check_cycle.html" data-id="53" data-text="检测仪器校准提醒"><i class="layui-icon layui-icon-engine"></i>检测仪器校准提醒<span id="cycleNum" class="layui-badge"></span></a>
             </li>
         </ul>
     </div>
@@ -215,6 +215,22 @@
             }
         },
         error:function(){
+            layer.msg("请稍后再试");
+        }
+    });
+ 	// 检测仪器校准数量
+    $.ajax({
+        url:"/yq/jzNum",
+        method:"GET",
+        dataType:"JSON",
+        success:function(res){
+            if(res.data != null && res.data != ""){
+                $("#cycleNum").append(res.data);
+            }else{
+                $("#cycleNum").css("display","none");
+            }
+        },
+        error:function () {
             layer.msg("请稍后再试");
         }
     });

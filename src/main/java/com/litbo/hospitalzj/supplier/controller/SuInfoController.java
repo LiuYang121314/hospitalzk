@@ -53,6 +53,7 @@ public class SuInfoController extends BaseController {
     @RequestMapping("/insert")
     public ResponseResult<Integer> insert(SuInfo suInfo) {
         suInfo.setIsDelete(0);
+        suInfo.setState(0);
         suInfoService.insert(suInfo);
         return new ResponseResult<Integer>(SUCCESS, suInfo.getSuId());
     }
