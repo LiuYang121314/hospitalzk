@@ -46,8 +46,8 @@
             </tr>
             <tr>
                 <td colspan="3">平均流量</td>
-                <td colspan="3">&nbsp;</td>
-                <td colspan="3">&nbsp;</td>
+                <td id="pjll11" colspan="3">&nbsp;</td>
+                <td id="pjll21" colspan="3">&nbsp;</td>
                 <td>符合    不符合</td>
             </tr>
             <tr>
@@ -70,32 +70,32 @@
                 <td rowspan="2">符合  不符合</td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td id="bjszH1">&nbsp;</td>
+                <td id="bjszM1">&nbsp;</td>
+                <td id="bjszL1">&nbsp;</td>
+                <td id="bjsjH1">&nbsp;</td>
+                <td id="bjsjM1">&nbsp;</td>
+                <td id="bjsjL1">&nbsp;</td>
+                <td id="bjylH1">&nbsp;</td>
+                <td id="bjylM1">&nbsp;</td>
+                <td id="bjylL1">&nbsp;</td>
             </tr>
             <tr>
                 <td rowspan="3">报警系统检测</td>
                 <td colspan="3">堵塞</td>
-                <td colspan="3">符合  不符合  不适用</td>
+                <td id="zs1" colspan="3">符合  不符合  不适用</td>
                 <td colspan="3">即将空瓶</td>
-                <td>符合  不符合  不适用</td>
+                <td id="jjkp1">符合  不符合  不适用</td>
             </tr>
             <tr>
                 <td colspan="3">输液管路安装不妥</td>
-                <td colspan="3">符合  不符合  不适用</td>
-                <td colspan="3">气泡报警</td>
-                <td>符合  不符合  不适用</td>
+                <td id="sygbt1" colspan="3">符合  不符合  不适用</td>
+                <td colspan="3">电源线脱开</td>
+                <td id="dyxtk1">符合  不符合  不适用</td>
             </tr>
             <tr>
-                <td colspan="3">电源线脱开</td>
-                <td colspan="3">符合  不符合  不适用</td>
+                <td colspan="3">开门报警</td>
+                <td id="kmbj1" colspan="3">符合  不符合  不适用</td>
                 <td colspan="3"></td>
                 <td></td>
             </tr>
@@ -109,8 +109,8 @@
             </tr>
             <tr>
                 <td colspan="3">平均流量</td>
-                <td colspan="3">&nbsp;</td>
-                <td colspan="3">&nbsp;</td>
+                <td id="pjll22" colspan="3">&nbsp;</td>
+                <td id="pjll12" colspan="3">&nbsp;</td>
                 <td>符合    不符合</td>
             </tr>
             <tr>
@@ -133,32 +133,32 @@
                 <td rowspan="2">符合  不符合</td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td id="bjszH2">&nbsp;</td>
+                <td id="bjszM2">&nbsp;</td>
+                <td id="bjszL2">&nbsp;</td>
+                <td id="bjsjH2">&nbsp;</td>
+                <td id="bjsjM2">&nbsp;</td>
+                <td id="bjsjL2">&nbsp;</td>
+                <td id="bjylH2">&nbsp;</td>
+                <td id="bjylM2">&nbsp;</td>
+                <td id="bjylL2">&nbsp;</td>
             </tr>
             <tr>
                 <td rowspan="3">报警系统检测</td>
                 <td colspan="3">堵塞</td>
-                <td colspan="3">符合  不符合  不适用</td>
+                <td id="zs2" colspan="3">符合  不符合  不适用</td>
                 <td colspan="3">即将空瓶</td>
-                <td>符合  不符合  不适用</td>
+                <td id="jjkp2">符合  不符合  不适用</td>
             </tr>
             <tr>
                 <td colspan="3">输液管路安装不妥</td>
-                <td colspan="3">符合  不符合  不适用</td>
-                <td colspan="3">气泡报警</td>
-                <td>符合  不符合  不适用</td>
+                <td id="sygbt2" colspan="3">符合  不符合  不适用</td>
+                <td colspan="3">电源线脱开</td>
+                <td id="dyxtk2">符合  不符合  不适用</td>
             </tr>
             <tr>
-                <td colspan="3">电源线脱开</td>
-                <td colspan="3">符合  不符合  不适用</td>
+                <td colspan="3">开门报警</td>
+                <td id="kmbj2" colspan="3">符合  不符合  不适用</td>
                 <td colspan="3"></td>
                 <td></td>
             </tr>
@@ -191,8 +191,94 @@
             dataType:"JSON",
             success:function(res){
                 console.log(res);
-                if(res.data != null && res.data != ""){
+                if(res.data !== null && res.data !== ""){
+                    // 通道一
+                    $("#pjll11").append(res.data.pjll11);
+                    $("#pjll21").append(res.data.pjll21);
 
+                    $("#bjszH1").append(res.data.bjszH1);
+                    $("#bjszM1").append(res.data.bjszM1);
+                    $("#bjszL1").append(res.data.bjszL1);
+                    $("#bjsjH1").append(res.data.bjsjH1);
+                    $("#bjsjM1").append(res.data.bjsjM1);
+                    $("#bjsjL1").append(res.data.bjsjL1);
+                    $("#bjylH1").append(res.data.bjylH1);
+                    $("#bjylM1").append(res.data.bjylM1);
+                    $("#bjylL1").append(res.data.bjylL1);
+
+                    if(res.data.zs1 === "1"){
+                        $("#zs1").append("<p style='color: green;'>符合</p>");
+                    }else{
+                        $("#zs1").append("<p style='color: red;'>不符合</p>");
+                    }
+
+                    if(res.data.sygbt1 === "1"){
+                        $("#sygbt1").append("<p style='color: green;'>符合</p>");
+                    }else{
+                        $("#sygbt1").append("<p style='color: red;'>不符合</p>");
+                    }
+
+                    if(res.data.dyxtk1 === "1"){
+                        $("#dyxtk1").append("<p style='color: green;'>符合</p>");
+                    }else{
+                        $("#dyxtk1").append("<p style='color: red;'>不符合</p>");
+                    }
+
+                    if(res.data.jjkp1 === "1"){
+                        $("#jjkp1").append("<p style='color: green;'>符合</p>");
+                    }else{
+                        $("#jjkp1").append("<p style='color: red;'>不符合</p>");
+                    }
+
+                    if(res.data.kmbj1 === "1"){
+                        $("#kmbj1").append("<p style='color: green;'>符合</p>");
+                    }else{
+                        $("#kmbj1").append("<p style='color: red;'>不符合</p>");
+                    }
+
+                    // 通道二
+                    $("#pjll22").append(res.data.pjll22);
+                    $("#pjll12").append(res.data.pjll12);
+
+                    $("#bjszH2").append(res.data.bjszH2);
+                    $("#bjszM2").append(res.data.bjszM2);
+                    $("#bjszL2").append(res.data.bjszL2);
+                    $("#bjsjH2").append(res.data.bjsjH2);
+                    $("#bjsjM2").append(res.data.bjsjM2);
+                    $("#bjsjL2").append(res.data.bjsjL2);
+                    $("#bjylH2").append(res.data.bjylH2);
+                    $("#bjylM2").append(res.data.bjylM2);
+                    $("#bjylL2").append(res.data.bjylL2);
+
+                    if(res.data.zs2 === "1"){
+                        $("#zs2").append("<p style='color: green;'>符合</p>");
+                    }else{
+                        $("#zs2").append("<p style='color: red;'>不符合</p>");
+                    }
+
+                    if(res.data.sygbt2 === "1"){
+                        $("#sygbt2").append("<p style='color: green;'>符合</p>");
+                    }else{
+                        $("#sygbt2").append("<p style='color: red;'>不符合</p>");
+                    }
+
+                    if(res.data.dyxtk2 === "1"){
+                        $("#dyxtk2").append("<p style='color: green;'>符合</p>");
+                    }else{
+                        $("#dyxtk2").append("<p style='color: red;'>不符合</p>");
+                    }
+
+                    if(res.data.jjkp2 === "1"){
+                        $("#jjkp2").append("<p style='color: green;'>符合</p>");
+                    }else{
+                        $("#jjkp2").append("<p style='color: red;'>不符合</p>");
+                    }
+
+                    if(res.data.kmbj2 === "1"){
+                        $("#kmbj2").append("<p style='color: green;'>符合</p>");
+                    }else{
+                        $("#kmbj2").append("<p style='color: red;'>不符合</p>");
+                    }
                 }
             }
         })
