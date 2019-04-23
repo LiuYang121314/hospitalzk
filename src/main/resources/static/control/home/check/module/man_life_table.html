@@ -176,10 +176,33 @@
                 success:function(res){
                     console.log(res);
                     if(res.data != null && res.data != ""){
-
+                        $("#xlTest1").append(res.data.xlTest1);
+                        $("#xlTest2").append(res.data.xlTest2);
+                        $("#xlTest3").append(res.data.xlTest3);
+                        $("#xlTest4").append(res.data.xlTest4);
+                        $("#xlTest5").append(res.data.xlTest5);
+                        $("#xlWc").append("允许误差： ± "+res.data.xlWc);
+                        $("#hxlTest1").append(res.data.hxlTest1);
+                        $("#hxlTest2").append(res.data.hxlTest2);
+                        $("#hxlTest3").append(res.data.hxlTest3);
+                        $("#hxlTest4").append(res.data.hxlTest4);
+                        $("#hxlTest5").append(res.data.hxlTest5);
+                        $("#hxlWc").append("允许误差： ±"+res.data.hxlWc);
+                        $("#wcxyHTest1").append(res.data.wcxyHTest1+"/"+res.data.wcxyLTest1+"("+res.data.wcxyMTest1+")");
+                        $("#wcxyHTest2").append(res.data.wcxyHTest2+"/"+res.data.wcxyLTest2+"("+res.data.wcxyMTest2+")");
+                        $("#wcxyHTest3").append(res.data.wcxyHTest3+"/"+res.data.wcxyLTest3+"("+res.data.wcxyMTest3+")");
+                        $("#wcxyHTest4").append(res.data.wcxyHTest4+"/"+res.data.wcxyLTest4+"("+res.data.wcxyMTest4+")");
+                        $("#wcxyHTest5").append(res.data.wcxyHTest5+"/"+res.data.wcxyLTest5+"("+res.data.wcxyMTest5+")");
+                        $("#wcxyWc").append("重复性误差:(3次收缩压/舒张压最大值与最小值之差) ≤ "+res.data.wcxyWc);
+                        $("#xybhdTest1").append(res.data.xybhdTest1);
+                        $("#xybhdTest2").append(res.data.xybhdTest2);
+                        $("#xybhdTest3").append(res.data.xybhdTest3);
+                        $("#xybhdTest4").append(res.data.xybhdTest4);
+                        $("#xybhdTest5").append(res.data.xybhdTest5);
+                        $("#xybhdWc").append("允许误差： ± "+res.data.xybhdWc);
                     }
                 }
-            })
+            });
         });
      	// 修改
         $("#update").click(function(){
