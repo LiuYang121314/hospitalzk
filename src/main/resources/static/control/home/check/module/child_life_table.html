@@ -37,14 +37,14 @@
         </fieldset>
         <table class="layui-table">
             <tr>
-                <th rowspan="2" scope="row">心率(次/min)</th>
-                <td>测试点</td>
-                <td id="xlTest1">30</td>
-                <td id="xlTest2">60</td>
-                <td id="xlTest3">100</td>
-                <td id="xlTest4">120</td>
-                <td id="xlTest5">180</td>
-                <td id="xlWc"> 允许误差： ± 5% </td>
+                <th style="width: 8%;" rowspan="2" scope="row">心率(次/min)</th>
+                <td style="width: 8%;">测试点</td>
+                <td style="width: 8%;" id="xlTest1">30</td>
+                <td style="width: 8%;" id="xlTest2">60</td>
+                <td style="width: 8%;" id="xlTest3">100</td>
+                <td style="width: 8%;" id="xlTest4">120</td>
+                <td style="width: 8%;" id="xlTest5">180</td>
+                <td style="width: 8%;" id="xlWc"> 允许误差： ± 5% </td>
             </tr>
             <tr>
                 <td>实测值</td>
@@ -175,7 +175,7 @@
                 dataType:"JSON",
                 success:function(res){
                     console.log(res);
-                    if(res.data != null && res.data != ""){
+                    if(res.data !== null && res.data !== ""){
 
                     }
                 }
