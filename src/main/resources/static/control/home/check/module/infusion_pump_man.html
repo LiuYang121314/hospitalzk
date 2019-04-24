@@ -120,7 +120,11 @@
                 success:function(res){
                     console.log(res);
                     if(res.data !== null && res.data !== ""){
-
+                        $("#llcsd1").append(res.data.llcsd1+"ml/h");
+                        $("#llcsd2").append(res.data.llcsd2+"ml/h");
+                        $("#wc").append("测试结果：允许测量误差±"+res.data.wc+"%");
+                        $("#zsbjllz").append("测试流量："+res.data.zsbjllz+"ml/h");
+                        $("#zsbjWc1").append("测试结果允许测量误差：±"+res.data.zsbjWc1+"%或者±"+res.data.zsbjWc2+"mmHg");
                     }
                 }
             })
