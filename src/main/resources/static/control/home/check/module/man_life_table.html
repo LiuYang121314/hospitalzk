@@ -200,6 +200,8 @@
                         $("#xybhdTest4").append(res.data.xybhdTest4);
                         $("#xybhdTest5").append(res.data.xybhdTest5);
                         $("#xybhdWc").append("允许误差： ± "+res.data.xybhdWc);
+                    }else{
+                        layer.msg("无数据");
                     }
                 }
             });
