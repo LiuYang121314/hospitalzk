@@ -184,7 +184,16 @@
                 success:function(res){
                     console.log(res);
                     if(res.data != null && res.data != ""){
-
+                        $("#llcsd11").append(res.data.llcsd11+"ml/h");
+                        $("#llcsd21").append(res.data.llcsd21+"ml/h");
+                        $("#wc1").append("测试结果：允许测量误差±"+res.data.wc1+"%");
+                        $("#zsbjcsz1").append("测试流量："+res.data.zsbjcsz1+"ml/h");
+                        $("#zsbjWc11").append("测试结果允许测量误差：±"+res.data.zsbjWc11+"%或者±"+res.data.zsbjWc12+"mmHg");
+                        $("#llcsd12").append(res.data.llcsd12+"ml/h");
+                        $("#llcsd22").append(res.data.llcsd22+"ml/h");
+                        $("#wc2").append("测试结果：允许测量误差±"+res.data.wc2+"%");
+                        $("#zsbjllz2").append("测试流量："+res.data.zsbjllz2+"ml/h");
+                        $("#zsbjWc12").append("测试结果允许测量误差：±"+res.data.zsbjWc12+"%或者±"+res.data.zsbjWc22+"mmHg");
                     }
                 }
             });
