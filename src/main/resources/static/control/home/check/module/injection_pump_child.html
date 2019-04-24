@@ -125,6 +125,8 @@
                         $("#wc").append("测试结果：允许测量误差±"+res.data.wc+"%");
                         $("#zsbjllz").append("测试流量："+res.data.zsbjllz+"ml/h");
                         $("#zsbjWc1").append("测试结果允许测量误差：±"+res.data.zsbjWc1+"%或者±"+res.data.zsbjWc2+"mmHg");
+                    }else{
+                        layer.msg("无数据");
                     }
                 }
             })

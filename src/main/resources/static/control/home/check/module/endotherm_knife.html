@@ -159,6 +159,8 @@
                         $("#sjdnWc").append("允许误差：±"+res.data.sjdnWc+"%");
                         $("#djgpldWc").append("允许误差 ≤"+res.data.djgpldWc+"mA");
                         $("#sjgpldWc").append("允许误差 ≤"+res.data.sjgpldWc+"mA");
+                    }else{
+                        layer.msg("无数据");
                     }
                 }
             })
