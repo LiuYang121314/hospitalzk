@@ -37,7 +37,7 @@
         </fieldset>
         <table class="layui-table">
             <tr>
-                <td id="sfnlYxwc" rowspan="6">释放能量(J)允许误差 ±15%或±4J (取最大值)</td>
+                <td rowspan="6">释放能量(J)允许误差 ±15%或±4J (取最大值)</td>
                 <td>标称值</td>
                 <td colspan="3">测量值</td>
                 <td>误差</td>
@@ -108,11 +108,11 @@
             <tr>
                 <td rowspan="2">心率示值</td>
                 <td colspan="2">设定值</td>
-                <td id="xlszTest1" colspan="2">30(28～32)</td>
-                <td id="xlszTest2">60(57～63)</td>
-                <td id="xlszTest3">100(95～105)</td>
-                <td id="xlszTest4"colspan="2">120(114～126)</td>
-                <td id="xlszTest5"colspan="2">180(171～189)</td>
+                <td id="xlszTest11" colspan="2">30(28～32)</td>
+                <td id="xlszTest21">60(57～63)</td>
+                <td id="xlszTest31">100(95～105)</td>
+                <td id="xlszTest41"colspan="2">120(114～126)</td>
+                <td id="xlszTest51"colspan="2">180(171～189)</td>
                 <td>测试结果</td>
             </tr>
             <tr>
@@ -158,6 +158,16 @@
                 success:function(res){
                     console.log(res);
                     if(res.data !== null && res.data !== ""){
+                        $("#sfnlTest4").append(res.data.sfnlTest4);
+                        $("#sfnlTest2").append(res.data.sfnlTest2);
+                        $("#sfnlTest3").append(res.data.sfnlTest3);
+                        $("#sfnlTest7").append(res.data.sfnlTest7);
+                        $("#sfnlTest8").append(res.data.sfnlTest8);
+                        $("#xlszTest11").append(res.data.xlszTest11+"("+res.data.xlszTest12+"/"+res.data.xlszTest13+")");
+                        $("#xlszTest21").append(res.data.xlszTest21+"("+res.data.xlszTest22+"/"+res.data.xlszTest23+")");
+                        $("#xlszTest31").append(res.data.xlszTest31+"("+res.data.xlszTest32+"/"+res.data.xlszTest33+")");
+                        $("#xlszTest41").append(res.data.xlszTest41+"("+res.data.xlszTest42+"/"+res.data.xlszTest43+")");
+                        $("#xlszTest51").append(res.data.xlszTest51+"("+res.data.xlszTest52+"/"+res.data.xlszTest53+")");
 
                     }
                 }
