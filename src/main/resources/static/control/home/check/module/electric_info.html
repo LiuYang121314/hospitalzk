@@ -164,7 +164,21 @@
                     console.log(res);
                     dqId = res.data.dqjcTemplateid;
                     if(res.data !== null && res.data !== ""){
-						
+						$("#dydy1").append("("+res.data.dydy1+"±"+res.data.dydy2+")");
+						$("#jdzk").append("≤"+res.data.jdzk+"mΩ");
+						$("#jyzk").append("≥"+res.data.jyzk+"MΩ");
+						$("#ddldlZc").append("≤"+res.data.ddldlZc+"µA");
+						$("#ddldlDy").append("≤"+res.data.ddldlDy+"µA");
+                        $("#wkldlZc").append("≤"+res.data.wkldlZc+"µA");
+                        $("#wkldlDy").append("≤"+res.data.wkldlDy+"µA");
+                        $("#hzldlZcBf").append("≤"+res.data.hzldlZcBf+"µA");
+                        $("#hzldlZcCf").append("≤"+res.data.hzldlZcCf+"µA");
+                        $("#hzldlDyBf").append("≤"+res.data.hzldlDyBf+"µA");
+                        $("#hzldlDyCf").append("≤"+res.data.hzldlDyCf+"µA");
+                        $("#hzfzldlZcBf").append("≤"+res.data.hzfzldlZcBf+"µA");
+                        $("#hzfzldlZcCf").append("≤"+res.data.hzfzldlZcCf+"µA");
+                        $("#hzfzldlDyBf").append("≤"+res.data.hzfzldlDyBf+"µA");
+                        $("#hzfzldlDyCf").append("≤"+res.data.hzfzldlDyCf+"µA");
                     }
                 }
             })
