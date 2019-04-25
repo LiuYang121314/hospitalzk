@@ -60,7 +60,7 @@
                         <a href="javascript:void(0);" data-url="./home/waiting/news_test.html" data-id="32" data-text="新设备验收检测"><i class="layui-icon layui-icon-circle-dot"></i>新设备验收检测<span id="newsNum" class="layui-badge"></span></a>
                     </dd>
                     <dd>
-                        <a href="javascript:void(0);" data-url="./home/waiting/breakdown.html" data-id="33" data-text="故障设备维修检测"><i class="layui-icon layui-icon-circle-dot"></i>故障设备维修检测</a>
+                        <a href="javascript:void(0);" data-url="./home/waiting/breakdown.html" data-id="33" data-text="故障设备维修检测"><i class="layui-icon layui-icon-circle-dot"></i>故障设备维修检测<span id="brokenNum" class="layui-badge"></span></a>
                     </dd>
                 </dl>
             </li>
@@ -194,6 +194,22 @@
                 $("#noPass").append(res.data);
             }else{
                 $("#noPass").css("display","none");
+            }
+        },
+        error:function () {
+            alert("服务器故障")
+        }
+    });
+    // 分配的故障设备数量
+    $.ajax({
+        url:"/eqInfo/findByUserIdWxEqInfoCount",
+        method:"GET",
+        dataType:"JSON",
+        success:function(res){
+            if(res.data != null && res.data != ""){
+                $("#brokenNum").append(res.data);
+            }else{
+                $("#brokenNum").css("display","none");
             }
         },
         error:function () {
