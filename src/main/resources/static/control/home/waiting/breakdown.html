@@ -44,11 +44,11 @@
         var element = layui.element
             ,   table = layui.table
             ,   $ = layui.jquery;
-        // 故障设备信息
+        // 负责检测故障设备信息
         table.render({
             elem:"#noHandle",
             cellMinWidth:120,
-            url:"",
+            url:"/eqInfo/findByUserIdWxEqInfo",
             method:"GET",
             toolbar:"#toolbarDemo",
             response: {
