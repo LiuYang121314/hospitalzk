@@ -198,7 +198,7 @@
                         // 查询数据
                         table.render({
                             elem:"#searchInfo"
-                            ,cellMinWidth: 80
+                            ,cellMinWidth: 100
                             ,url:"/yq/findYqByYqNameLike?jcyqName="+data.field.jcEqName
                             ,method:"GET"
                             ,response: {
@@ -224,7 +224,7 @@
                                 {field:'jcyqBh', title:'编号',align:'center'},
                                 {field:'jcyqQyTime', title:'仪器启用时间',align:'center'},
                                 {field:'jcyqJzTime', title:'校准时间',align:'center'},
-                                {fixed: 'right', title:'操作',toolbar: '#barDemo',align:'center'}
+                                {fixed: 'right', title:'操作',toolbar: '#barDemo'}
                             ]]
                         });
                     }else if(res.state === 666){
