@@ -70,6 +70,47 @@ public class EqInfoController extends BaseController{
 		return new ResponseResult<EqInfo>(SUCCESS,data);
 	}
 	/*
+	 * 维修设备模块
+	 */
+	//查询维修设备信息
+	@RequestMapping("/findWxEqInfo")
+	public ResponseResult<List<EqInfo>> findWxEqInfo(){
+		List<EqInfo> data=eqinfoService.findWXEqInfo();
+		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
+	}
+	//已分配维修设备
+	@RequestMapping("/eqInfoWxYfp")
+	public ResponseResult<List<EqInfo>> eqInfoWxYfp() {
+		List<EqInfo> data=eqinfoService.eqInfoYfp(3);
+		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
+	}
+	//未分配维修设备
+	@RequestMapping("/eqInfoWxWfp")
+	public ResponseResult<List<EqInfo>> eqInfoWxWfp() {
+		List<EqInfo> data=eqinfoService.eqInfoWfp(3);
+		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
+	}
+	//未分配设备数量
+	@RequestMapping("/countWxWfp")
+	public ResponseResult<Integer> countWxWfp() {
+		Integer data=eqinfoService.countWfp(3);
+		return new ResponseResult<Integer>(SUCCESS,data);
+	}
+	//查询已分配到人的设备
+	@RequestMapping("/findByUserIdWxEqInfo")
+	public ResponseResult<List<EqInfo>> findByUserIdWxEqInfo(HttpSession session) {
+		String userId=getUserIdFromSession(session);
+		List<EqInfo> data=eqinfoService.findByUserIdEqInfo(3,userId);
+		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
+	}
+	//查询已分配到人的设备数量
+	@RequestMapping("/findByUserIdWxEqInfoCount")
+	public ResponseResult<Integer> findByUserIdWxEqInfoCount(HttpSession session) {
+		String userId=getUserIdFromSession(session);
+		Integer data=eqinfoService.findByUserIdEqInfoCount(3,userId);  
+		return new ResponseResult<Integer>(SUCCESS,data);
+	}
+	/*
 	 *新设备模块
 	 */
 	//全部新设备信息

@@ -48,6 +48,7 @@ public interface EqInfoService {
     //查询用户已分配的新设备信息
 	List<EqInfo> findNewJcEqByUserId(String userId);
 
+	
 	public List<EqAndUname> findJcEqsByUserIdAndState(String userId, String state);
 
 	public List<EqInfo> findShEqsByUserIdAndState(String userId, String state);

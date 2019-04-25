@@ -128,6 +128,18 @@ public interface EqInfoMapper {
 	EqInfo selectByEqId(Integer eqId);
 	@Delete("delete from eq_info where eq_id=#{eqId}")
 	Integer delete(Integer eqId);
+	/**
+	 * 维修设备模块
+	 * @return
+	 */
+	//查询维修设备
+	@Select("select * from eq_info where eq_state=3")
+	List<EqInfo> findWXEqInfo();
+	
+	/**
+	 * 新设备模块
+	 * @return
+	 */
 	//全部新设备信息
 	@Select("select * from eq_info where eq_dah='' and eq_state=0")
 	List<EqInfo> newEqInfo();

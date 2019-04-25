@@ -142,5 +142,10 @@ public class EqInfoServiceImpl implements EqInfoService {
 			throw new EqInfoIsNullException("设备信息为空，需要请添加");
 		}
 		return data;
-	};
+	}
+	@Override
+	public List<EqInfo> findWXEqInfo() {
+		return eqInfoMapper.findWXEqInfo();
+	}
+
 }

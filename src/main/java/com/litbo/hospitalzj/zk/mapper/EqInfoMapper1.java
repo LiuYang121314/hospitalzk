@@ -102,8 +102,11 @@ public interface EqInfoMapper1 {
 			"where u.user_id=#{userId} and u.state='待检测'")
 	List<EqInfo> findEqInfo(@Param("userId")String userId);
 
+	//查询新设备
 	@Select("select * from eq_info where eq_state=1")
 	List<EqInfo> findNewEqInfo();
+	
+	
 	@Select("SELECT * FROM eq_info, s_user, (SELECT user_eq.jc_eqid AS A,user_eq.shr_id AS B " +
 			"FROM user_eq WHERE " +
 			"user_eq.user_id =#{userId} AND user_eq.state=#{state}) AS midle WHERE midle.A = eq_info.eq_id " +

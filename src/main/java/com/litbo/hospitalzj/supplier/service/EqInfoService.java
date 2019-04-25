@@ -32,6 +32,16 @@ public interface EqInfoService {
 	List<EqInfo> eqInfoYfp(Integer eqState);
 
 	List<EqInfo> eqInfoWfp(Integer eqState);
+	/**
+	 * 旧设备模块
+	 * @return
+	 */
+	//查询维修设备信息
+	List<EqInfo> findWXEqInfo();
+	/**
+	 * 查询新设备模块
+	 * @return
+	 */
 	//未分配的设备数量
 	Integer countWfp(Integer eqState);
 	//查询已分配到人的设备

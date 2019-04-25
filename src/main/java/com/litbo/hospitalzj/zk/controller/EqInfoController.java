@@ -62,12 +62,14 @@ public class EqInfoController extends BaseController{
 		List<Yq> yqList=eqInfoService.findYqsById(eqId);
 		return new ResponseResult<List<Yq>>(SUCCESS,yqList);
 	}
-
+	//查询新设备信息
 	@RequestMapping("/findNewEqId")
 	public ResponseResult<List<EqInfo>> findNewEqid(){
 		List<EqInfo> data=eqInfoService.findNewEqInfo();
 		return new ResponseResult<List<EqInfo>>(SUCCESS,data);
 	}
+	
+	
 	@RequestMapping("/findByDah")
 	public ResponseResult<EqInfo> findByDah(String dah){
 		EqInfo data=eqInfoService.findByDah(dah);
