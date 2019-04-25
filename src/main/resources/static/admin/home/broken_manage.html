@@ -38,11 +38,11 @@
             ,   $ = layui.jquery
             ,   table = layui.table
             ,   form = layui.form;
-        // 故障设备信息
+        // 未分配故障设备信息
         table.render({
             elem:"#noInfo"
             ,cellMinWidth: 120
-            ,url:""
+            ,url:"/eqInfo/findWxEqInfo"
             ,method:"GET"
             ,response: {
                 statusName: 'status' //规定数据状态的字段名称，默认：code
