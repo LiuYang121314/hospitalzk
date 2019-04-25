@@ -40,11 +40,11 @@
                 <td colspan="12" style="color: red;background-color: #eaeaea;font-size: 16px;">潮气量Vt (VCV模式、f=20bpm、I:E=1:2、PEEP=2cmH2O、FiO2=40%)</td>
             </tr>
             <tr>
-                <td rowspan="2">呼吸机设定值 （ml）</td>
+                <td rowspan="2">呼吸机设定值 (ml)</td>
                 <td colspan="3">呼吸机监测值</td>
-                <td rowspan="2">平均值 （呼吸机监测值）</td>
+                <td rowspan="2">平均值 (呼吸机监测值)</td>
                 <td colspan="3">测试仪测量值</td>
-                <td rowspan="2">平均值 （测试仪测量值）</td>
+                <td rowspan="2">平均值 (测试仪测量值)</td>
                 <td rowspan="2">示值误差</td>
                 <td rowspan="2">最大允差</td>
                 <td rowspan="2">符合情况</td>
@@ -404,6 +404,8 @@
                         $("#hqmZdwc1").append("±"+res.data.hqmZdwc1+"cmH2O 或设定值的±"+res.data.hqmZdwc2+"% （两者取绝对值大者）");
                         $("#hqm2").append(res.data.hqm2);
                         $("#hqm3").append(res.data.hqm3);
+                    }else{
+                        layer.msg("无数据");
                     }
                 }
             });

@@ -20,17 +20,6 @@
             margin-top: 20px;
             color: red;
         }
-        .basicInfo{
-            width: 100%;
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .btn{
-            width: 100%;
-            margin-top: 50px;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -173,8 +162,6 @@
             }
         });
         table.on('tool(handle2)',function(obj){
-            var data = obj.data;
-            //console.log(obj)
             if(obj.event === "hands"){
             	location.href="/control/home/waiting/write_info/write_electric_info.html?id="+obj.data.jcyqId;
             }

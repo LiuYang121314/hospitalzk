@@ -18,6 +18,11 @@
         td{
             text-align: center;
         }
+        td:nth-child(1),
+        td:nth-child(3),
+        td:nth-child(5){
+            background-color: #fafafa;
+        }
         .manage legend{
             font-size: 24px;
             color: #000000;
@@ -35,62 +40,38 @@
             <legend>购置审批单详细信息</legend>
         </fieldset>
         <table class="layui-table">
-            <thead>
             <tr>
-                <th style="width: 50%;text-align: center;">字段名称</th>
-                <th style="width: 50%;text-align: center;">数据</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>供应商</td>
-                <td id="htGhsn"></td>
+                <td style="width: 16%;"><span style="color: red;">*供应商</span></td>
+                <td id="htGhsn" style="width: 16%;">&nbsp;</td>
+                <td style="width: 16%;"><span style="color: red;">*供方联系人</span></td>
+                <td id="htGhslxr" style="width: 16%;">&nbsp;</td>
+                <td style="width: 16%;"><span style="color: red;">*供方联系电话</span></td>
+                <td id="htGhsdh" style="width: 16%;">&nbsp;</td>
             </tr>
             <tr>
-                <td>供方联系人</td>
-                <td id="htGhslxr"></td>
-            </tr>
-            <tr>
-                <td>供方联系电话</td>
-                <td id="htGhsdh"></td>
-            </tr>
-            <tr>
-                <td>购置审批单编号</td>
-                <td id="htGzspd"></td>
-            </tr>
-            <tr>
-                <td>合同总金额</td>
-                <td id="htZje"></td>
-            </tr>
-            <tr>
+                <td><span style="color: red;">*购置审批单编号</span></td>
+                <td id="htGzspd">&nbsp;</td>
+                <td><span style="color: red;">*合同总金额</span></td>
+                <td id="htZje">&nbsp;</td>
                 <td>合同签约期</td>
-                <td id="htQytime"></td>
+                <td id="htQytime">&nbsp;</td>
             </tr>
             <tr>
                 <td>合同到货期</td>
-                <td id="htDhtime"></td>
-            </tr>
-            <tr>
+                <td id="htDhtime">&nbsp;</td>
                 <td>备注</td>
-                <td id="htBz"></td>
+                <td id="htBz">&nbsp;</td>
+                <td><span style="color: red;">*来源</span></td>
+                <td id="htLy">&nbsp;</td>
             </tr>
             <tr>
-                <td>来源</td>
-                <td id="htLy"></td>
+                <td><span style="color: red;">*采购方式</span></td>
+                <td id="htCgfs">&nbsp;</td>
+                <td><span style="color: red;">*申购类别</span></td>
+                <td id="htSglb">&nbsp;</td>
+                <td><span style="color: red;">*经费来源</span></td>
+                <td id="htJfly">&nbsp;</td>
             </tr>
-            <tr>
-                <td>采购方式</td>
-                <td id="htCgfs"></td>
-            </tr>
-            <tr>
-                <td>申购类别</td>
-                <td id="htSglb"></td>
-            </tr>
-            <tr>
-                <td>经费来源</td>
-                <td id="htJfly"></td>
-            </tr>
-            </tbody>
         </table>
         <fieldset class="layui-elem-field layui-field-title">
             <legend>设备信息</legend>
@@ -155,7 +136,7 @@
                 <div class="layui-form-item col-md-5">
                     <label class="layui-form-label">联系电话</label>
                     <div class="layui-input-block">
-                        <input type="text" name="htYsyDh" required  lay-verify="required" placeholder="预约验收时间" autocomplete="off" class="layui-input">
+                        <input type="text" name="htYsyDh" required  lay-verify="required" placeholder="预约联系电话" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item layui-form-text col-md-8">

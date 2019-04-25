@@ -23,6 +23,11 @@
         td{
             text-align: center;
         }
+        td:nth-child(1),
+        td:nth-child(3),
+        td:nth-child(5){
+            background-color: #fafafa;
+        }
         .btn{
             margin-top: 40px;
             margin-bottom: 30px;
@@ -41,249 +46,165 @@
             <legend style="text-align: center;">企业信息</legend>
         </fieldset>
         <table class="layui-table">
-            <thead>
             <tr>
-                <th style="width: 50%;text-align: center;">名称</th>
-                <th style="width: 50%;text-align: center;">内容</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><span style="color: red;">*企业名称</span></td>
-                <td id="suMc"></td>
-            </tr>
-            <tr>
-                <td>所在省份</td>
-                <td id="suSf"></td>
-            </tr>
-            <tr>
-                <td>所在城市</td>
-                <td id="suCs"></td>
+                <td style="width: 16%;"><span style="color: red;">*企业名称</span></td>
+                <td id="suMc" style="width: 16%;">&nbsp;</td>
+                <td style="width: 16%;">所在省份</td>
+                <td id="suSf" style="width: 16%;">&nbsp;</td>
+                <td style="width: 16%;">所在城市</td>
+                <td id="suCs" style="width: 16%;">&nbsp;</td>
             </tr>
             <tr>
                 <td>所在区县</td>
-                <td id="suXq"></td>
-            </tr>
-            <tr>
+                <td id="suXq">&nbsp;</td>
                 <td><span style="color: red;">*企业法人</span></td>
-                <td id="suFr"></td>
-            </tr>
-            <tr>
+                <td id="suFr">&nbsp;</td>
                 <td>企业登记人</td>
-                <td id="suDjr"></td>
+                <td id="suDjr">&nbsp;</td>
             </tr>
             <tr>
                 <td>企业负责人</td>
-                <td id="suFzr"></td>
-            </tr>
-            <tr>
+                <td id="suFzr">&nbsp;</td>
                 <td><span style="color: red;">*开户银行</span></td>
-                <td id="suKhyh"></td>
-            </tr>
-            <tr>
+                <td id="suKhyh">&nbsp;</td>
                 <td><span style="color: red;">*开户银行账号</span></td>
-                <td id="suKhyhzh"></td>
+                <td id="suKhyhzh">&nbsp;</td>
             </tr>
             <tr>
                 <td><span style="color: red;">*公司地址</span></td>
-                <td id="suGsdz"></td>
-            </tr>
-            <tr>
+                <td id="suGsdz">&nbsp;</td>
                 <td><span style="color: red;">*联系人姓名</span></td>
-                <td id="suLxrxm"></td>
-            </tr>
-            <tr>
+                <td id="suLxrxm">&nbsp;</td>
                 <td><span style="color: red;">*联系电话</span></td>
-                <td id="suLxrdh"></td>
+                <td id="suLxrdh">&nbsp;</td>
             </tr>
             <tr>
                 <td>部门</td>
-                <td id="suLxrbm"></td>
-            </tr>
-            <tr>
+                <td id="suLxrbm">&nbsp;</td>
                 <td><span style="color: red;">*公司电话</span></td>
-                <td id="suDh"></td>
-            </tr>
-            <tr>
+                <td id="suDh">&nbsp;</td>
                 <td><span style="color: red;">*公司邮编</span></td>
-                <td id="suYb"></td>
+                <td id="suYb">&nbsp;</td>
             </tr>
             <tr>
                 <td><span style="color: red;">*公司邮箱</span></td>
-                <td id="suEmail"></td>
-            </tr>
-            <tr>
+                <td id="suEmail">&nbsp;</td>
                 <td>公司传真</td>
-                <td id="suCz"></td>
-            </tr>
-            <tr>
+                <td id="suCz">&nbsp;</td>
                 <td>公司网址</td>
-                <td id="suWz"></td>
+                <td id="suWz">&nbsp;</td>
             </tr>
             <tr>
                 <td>备注</td>
-                <td id="bz"></td>
+                <td id="bz">&nbsp;</td>
+                <td></td>
+                <td>&nbsp;</td>
+                <td></td>
+                <td>&nbsp;</td>
             </tr>
-            </tbody>
         </table>
         <fieldset class="layui-elem-field layui-field-title">
             <legend style="text-align: center;">营业执照信息</legend>
         </fieldset>
         <table class="layui-table">
-            <thead>
             <tr>
-                <th style="width: 50%;text-align: center;">名称</th>
-                <th style="width: 50%;text-align: center;">内容</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><span style="color: red;">*[正本]注册号</span></td>
-                <td id="zzYyzch"></td>
-            </tr>
-            <tr>
-                <td>证照编号</td>
-                <td id="zzYyzzbh"></td>
-            </tr>
-            <tr>
-                <td>成立日期</td>
-                <td id="zzYyclrq"></td>
+                <td style="width: 16%;"><span style="color: red;">*[正本]注册号</span></td>
+                <td style="width: 16%;" id="zzYyzch">&nbsp;</td>
+                <td style="width: 16%;">证照编号</td>
+                <td style="width: 16%;" id="zzYyzzbh">&nbsp;</td>
+                <td style="width: 16%;">成立日期</td>
+                <td style="width: 16%;" id="zzYyclrq">&nbsp;</td>
             </tr>
             <tr>
                 <td>法定代表人</td>
-                <td id="zzYyfdr"></td>
-            </tr>
-            <tr>
+                <td id="zzYyfdr">&nbsp;</td>
                 <td>注册资金</td>
-                <td id="zzYyzczj"></td>
-            </tr>
-            <tr>
+                <td id="zzYyzczj">&nbsp;</td>
                 <td>企业类型</td>
-                <td id="zzQylx"></td>
+                <td id="zzQylx">&nbsp;</td>
             </tr>
             <tr>
                 <td><span style="color: red;">*生效日期</span></td>
-                <td id="zzYysxrq"></td>
-            </tr>
-            <tr>
+                <td id="zzYysxrq">&nbsp;</td>
                 <td><span style="color: red;">*截止日期</span></td>
-                <td id="zzYyjzrq"></td>
-            </tr>
-            <tr>
+                <td id="zzYyjzrq">&nbsp;</td>
                 <td>是否长期有限</td>
-                <td id="zzYyyx"></td>
+                <td id="zzYyyx">&nbsp;</td>
             </tr>
             <tr>
                 <td>质量管理人</td>
-                <td id="zzZlglr"></td>
-            </tr>
-            <tr>
+                <td id="zzZlglr">&nbsp;</td>
                 <td>住所</td>
-                <td id="zzZlglrdz"></td>
-            </tr>
-            <tr>
+                <td id="zzZlglrdz">&nbsp;</td>
                 <td>生产地址</td>
-                <td id="zzYyscdz"></td>
+                <td id="zzYyscdz">&nbsp;</td>
             </tr>
             <tr>
                 <td>仓库地址</td>
-                <td id="zzCkdz"></td>
-            </tr>
-            <tr>
+                <td id="zzCkdz">&nbsp;</td>
                 <td>经营范围</td>
-                <td id="zzYyjyfw"></td>
-            </tr>
-            <tr>
+                <td id="zzYyjyfw">&nbsp;</td>
                 <td>备注</td>
-                <td id="zzYybz"></td>
+                <td id="zzYybz">&nbsp;</td>
             </tr>
-            </tbody>
         </table>
         <fieldset class="layui-elem-field layui-field-title">
             <legend style="text-align: center;">经营许可证信息</legend>
         </fieldset>
         <table class="layui-table">
-            <thead>
             <tr>
-                <th style="width: 50%;text-align: center;">名称</th>
-                <th style="width: 50%;text-align: center;">内容</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><span style="color: red;">*证号</span></td>
-                <td id="zzJyzh"></td>
-            </tr>
-            <tr>
-                <td>企业负责人</td>
-                <td id="zzJyqyfzr"></td>
-            </tr>
-            <tr>
-                <td>法定代表人</td>
-                <td id="zzJyfddbr"></td>
+                <td style="width: 16%;"><span style="color: red;">*证号</span></td>
+                <td style="width: 16%;" id="zzJyzh">&nbsp;</td>
+                <td style="width: 16%;">企业负责人</td>
+                <td style="width: 16%;" id="zzJyqyfzr">&nbsp;</td>
+                <td style="width: 16%;">法定代表人</td>
+                <td style="width: 16%;" id="zzJyfddbr">&nbsp;</td>
             </tr>
             <tr>
                 <td><span style="color: red;">*生效日期</span></td>
-                <td id="zzJysxrq"></td>
-            </tr>
-            <tr>
+                <td id="zzJysxrq">&nbsp;</td>
                 <td><span style="color: red;">*截止日期</span></td>
-                <td id="zzJyjzrq"></td>
-            </tr>
-            <tr>
+                <td id="zzJyjzrq">&nbsp;</td>
                 <td>是否长期有限</td>
-                <td id="zzJyyx"></td>
+                <td id="zzJyyx">&nbsp;</td>
             </tr>
             <tr>
                 <td>注册地址</td>
-                <td id="zzJyzcdz"></td>
-            </tr>
-            <tr>
+                <td id="zzJyzcdz">&nbsp;</td>
                 <td>备注</td>
-                <td id="zzJybz"></td>
+                <td id="zzJybz">&nbsp;</td>
+                <td></td>
+                <td>&nbsp;</td>
             </tr>
-            </tbody>
         </table>
         <fieldset class="layui-elem-field layui-field-title">
             <legend style="text-align: center;">组织机构代码证信息</legend>
         </fieldset>
         <table class="layui-table">
-            <thead>
             <tr>
-                <th style="width: 50%;text-align: center;">名称</th>
-                <th style="width: 50%;text-align: center;">内容</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><span style="color: red;">*代码</span></td>
-                <td id="zzZzdm"></td>
-            </tr>
-            <tr>
-                <td><span style="color: red;">*机构类型</span></td>
-                <td id="zzZzlx"></td>
-            </tr>
-            <tr>
-                <td><span style="color: red;">*生效日期</span></td>
-                <td id="zzZzsxrq"></td>
+                <td style="width: 16%;"><span style="color: red;">*代码</span></td>
+                <td style="width: 16%;" id="zzZzdm">&nbsp;</td>
+                <td style="width: 16%;"><span style="color: red;">*机构类型</span></td>
+                <td style="width: 16%;" id="zzZzlx">&nbsp;</td>
+                <td style="width: 16%;"><span style="color: red;">*生效日期</span></td>
+                <td style="width: 16%;" id="zzZzsxrq">&nbsp;</td>
             </tr>
             <tr>
                 <td><span style="color: red;">*截止日期</span></td>
-                <td id="zzZzjzrq"></td>
-            </tr>
-            <tr>
+                <td id="zzZzjzrq">&nbsp;</td>
                 <td>是否长期有限</td>
-                <td id="zzZzyx"></td>
-            </tr>
-            <tr>
+                <td id="zzZzyx">&nbsp;</td>
                 <td>机构地址</td>
-                <td id="zzZzdz"></td>
+                <td id="zzZzdz">&nbsp;</td>
             </tr>
             <tr>
                 <td>备注</td>
-                <td id="zzZzbz"></td>
+                <td id="zzZzbz">&nbsp;</td>
+                <td></td>
+                <td>&nbsp;</td>
+                <td></td>
+                <td>&nbsp;</td>
             </tr>
-            </tbody>
         </table>
         <fieldset class="layui-elem-field layui-field-title">
             <legend style="text-align: center;">上传文件信息</legend>

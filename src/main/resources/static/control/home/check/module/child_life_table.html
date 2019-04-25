@@ -21,6 +21,9 @@
         td p{
             font-weight: bold;
         }
+        td{
+            text-align: center;
+        }
         .btn{
             width: 100%;
             margin-top: 50px;
@@ -37,14 +40,14 @@
         </fieldset>
         <table class="layui-table">
             <tr>
-                <th rowspan="2" scope="row">心率(次/min)</th>
-                <td>测试点</td>
-                <td id="xlTest1">30</td>
-                <td id="xlTest2">60</td>
-                <td id="xlTest3">100</td>
-                <td id="xlTest4">120</td>
-                <td id="xlTest5">180</td>
-                <td id="xlWc"> 允许误差： ± 5% </td>
+                <th style="width: 8%;" rowspan="2" scope="row">心率(次/min)</th>
+                <td style="width: 8%;">测试点</td>
+                <td style="width: 8%;" id="xlTest1">30</td>
+                <td style="width: 8%;" id="xlTest2">60</td>
+                <td style="width: 8%;" id="xlTest3">100</td>
+                <td style="width: 8%;" id="xlTest4">120</td>
+                <td style="width: 8%;" id="xlTest5">180</td>
+                <td style="width: 8%;" id="xlWc"> 允许误差： ± 5% </td>
             </tr>
             <tr>
                 <td>实测值</td>
@@ -77,12 +80,12 @@
             <tr>
                 <th rowspan="4" scope="row">无创血压(mmHg)</th>
                 <td>测试点</td>
-                <td id="wcxyHtest1">75/45(55)</td>
-                <td id="wcxyHtest2">100/65(77)</td>
-                <td id="wcxyHtest3">120/80(93)</td>
-                <td id="wcxyHtest4">150/100(117)</td>
-                <td id="wcxyHtest5">180/120(140)</td>
-                <td id="wcxyWc" rowspan="1">1.重复性误差：（3次收缩压/舒张压最大值与最小值之差） ≤ 8.5mmHg </td>
+                <td id="wcxyHTest1">75/45(55)</td>
+                <td id="wcxyHTest2">100/65(77)</td>
+                <td id="wcxyHTest3">120/80(93)</td>
+                <td id="wcxyHTest4">150/100(117)</td>
+                <td id="wcxyHTest5">180/120(140)</td>
+                <td id="wcxyWc" rowspan="1">重复性误差：（3次收缩压/舒张压最大值与最小值之差） ≤ 8.5mmHg </td>
             </tr>
             <tr>
                 <td>实测值1</td>
@@ -129,8 +132,7 @@
                 <td></td>
             </tr>
             <tr>
-                <th id="wcxyjtSd" rowspan="2" scope="row"><p>无创血压静态示值(mmHg)</p>
-                    <p>设定值150mmHg</p></th>
+                <th id="wcxyjtSd" rowspan="2" scope="row">无创血压静态示值(mmHg) 设定值150mmHg</th>
                 <td>模拟器测量值</td>
                 <td id="wcxyjtMnq">&nbsp;</td>
                 <td id="wcxyjtWc">允许误差： ± 4mmHg</td>
@@ -175,11 +177,36 @@
                 dataType:"JSON",
                 success:function(res){
                     console.log(res);
-                    if(res.data != null && res.data != ""){
-
+                    if(res.data !== null && res.data !== ""){
+                        $("#xlTest1").append(res.data.xlTest1);
+                        $("#xlTest2").append(res.data.xlTest2);
+                        $("#xlTest3").append(res.data.xlTest3);
+                        $("#xlTest4").append(res.data.xlTest4);
+                        $("#xlTest5").append(res.data.xlTest5);
+                        $("#xlWc").append("允许误差： ± "+res.data.xlWc);
+                        $("#hxlTest1").append(res.data.hxlTest1);
+                        $("#hxlTest2").append(res.data.hxlTest2);
+                        $("#hxlTest3").append(res.data.hxlTest3);
+                        $("#hxlTest4").append(res.data.hxlTest4);
+                        $("#hxlTest5").append(res.data.hxlTest5);
+                        $("#hxlWc").append("允许误差： ±"+res.data.hxlWc);
+                        $("#wcxyHTest1").append(res.data.wcxyHTest1+"/"+res.data.wcxyLTest1+"("+res.data.wcxyMTest1+")");
+                        $("#wcxyHTest2").append(res.data.wcxyHTest2+"/"+res.data.wcxyLTest2+"("+res.data.wcxyMTest2+")");
+                        $("#wcxyHTest3").append(res.data.wcxyHTest3+"/"+res.data.wcxyLTest3+"("+res.data.wcxyMTest3+")");
+                        $("#wcxyHTest4").append(res.data.wcxyHTest4+"/"+res.data.wcxyLTest4+"("+res.data.wcxyMTest4+")");
+                        $("#wcxyHTest5").append(res.data.wcxyHTest5+"/"+res.data.wcxyLTest5+"("+res.data.wcxyMTest5+")");
+                        $("#wcxyWc").append("重复性误差:(3次收缩压/舒张压最大值与最小值之差) ≤ "+res.data.wcxyWc);
+                        $("#xybhdTest1").append(res.data.xybhdTest1);
+                        $("#xybhdTest2").append(res.data.xybhdTest2);
+                        $("#xybhdTest3").append(res.data.xybhdTest3);
+                        $("#xybhdTest4").append(res.data.xybhdTest4);
+                        $("#xybhdTest5").append(res.data.xybhdTest5);
+                        $("#xybhdWc").append("允许误差： ± "+res.data.xybhdWc);
+                    }else{
+                        layer.msg("无数据");
                     }
                 }
-            })
+            });
         });
      	// 修改
         $("#update").click(function(){

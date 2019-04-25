@@ -142,7 +142,25 @@
                 success:function(res){
                     console.log(res);
                     if(res.data !== null && res.data !== ""){
-
+                        $("#djdqTest1").append(res.data.djdqTest1);
+                        $("#djdqTest2").append(res.data.djdqTest2);
+                        $("#djdqTest3").append(res.data.djdqTest3);
+                        $("#djdqTest4").append(res.data.djdqTest4);
+                        $("#djdqWc").append("允许误差：±"+res.data.djdqWc+"%");
+                        $("#djdnTest1").append(res.data.djdnTest1);
+                        $("#djdnTest2").append(res.data.djdnTest2);
+                        $("#djdnTest3").append(res.data.djdnTest3);
+                        $("#djdnTest4").append(res.data.djdnTest4);
+                        $("#djdnWc").append("允许误差：±"+res.data.djdnWc+"%");
+                        $("#sjdnTest1").append(res.data.sjdnTest1);
+                        $("#sjdnTest2").append(res.data.sjdnTest2);
+                        $("#sjdnTest3").append(res.data.sjdnTest3);
+                        $("#sjdnTest4").append(res.data.sjdnTest4);
+                        $("#sjdnWc").append("允许误差：±"+res.data.sjdnWc+"%");
+                        $("#djgpldWc").append("允许误差 ≤"+res.data.djgpldWc+"mA");
+                        $("#sjgpldWc").append("允许误差 ≤"+res.data.sjgpldWc+"mA");
+                    }else{
+                        layer.msg("无数据");
                     }
                 }
             })
