@@ -124,6 +124,9 @@
                         <i class="fas fa-ellipsis-v"></i>
                     </div>
                     <ul class="cts2">
+                        <li style="margin-top: 6px;">
+                            <a id="exit" class="layui-btn layui-btn-radius layui-btn-danger">退出</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="layui-tab-content">
@@ -148,8 +151,31 @@
 <script src="../static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
 <script src="../static/js/main.js" type="text/javascript" charset="utf-8"></script>
 <script>
-    layui.use('element',function(){
+    layui.use(['element','layer','jquery'],function(){
         var element = layui.element
+            ,layer = layui.layer
+            ,$ = layui.jquery;
+        $("#exit").click(function(){
+            $.ajax({
+                url:"/user/logout",
+                method:"POST",
+                dataType:"JSON",
+                success:function(res){
+                    if(res.state === 200){
+                        layer.msg("退出成功");
+                        setTimeout(function(){
+                            location.href="/userlogin.html";
+                        },1000);
+                    }else{
+                        layer.msg("退出失败");
+                    }
+                },
+                error:function(data){
+                    console.log(data);
+                    layer.msg("请稍后再试");
+                }
+            })
+        });
     });
 
     window.onload = function(){
