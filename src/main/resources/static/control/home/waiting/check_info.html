@@ -75,7 +75,7 @@
             },
             parseData:function(res){
                 console.log(res);
-                if(res.data[0].jcyqName == "生命体征模拟器" || res.data[0].jcyqName == "注射泵检测仪" || res.data[0].jcyqName == "输液泵检测仪"){
+                if(res.data[0].jcyqName == "生命体征模拟器" || res.data[0].jcyqName == "注射设备分析仪" || res.data[0].jcyqName == "输液设备分析仪"){
                     $("#xnJump").append("<a class='layui-btn layui-btn-xs layui-btn-normal' lay-event='man'>成人</a><a class='layui-btn layui-btn-xs' lay-event='child'>新生儿</a>")
                 }else{
                     $("#xnJump").append("<a class='layui-btn layui-btn-xs layui-btn-normal' lay-event='writeInfo'>录入数据</a>")
