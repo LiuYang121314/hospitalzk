@@ -132,31 +132,31 @@
             var data = obj.data;
             //console.log(obj)
             if(obj.event === "man"){
-                if(obj.data.jcyqName == "生命体征模拟器"){
+                if(obj.data[0].jcyqName == "生命体征模拟器"){
                     location.href="/control/home/waiting/write_info/write_life_man.html?id="+obj.data.jcyqId;
-                }else if(obj.data.jcyqName == "注射设备分析仪"){
+                }else if(obj.data[0].jcyqName == "注射设备分析仪"){
                     location.href="/control/home/waiting/write_info/write_injection_man.html?id="+obj.data.jcyqId;
-                }else if(obj.data.jcyqName == "输液设备分析仪"){
+                }else if(obj.data[0].jcyqName == "输液设备分析仪"){
                     location.href="/control/home/waiting/write_info/write_infusion_man.html?id="+obj.data.jcyqId;
                 }
             }else if(obj.event === "child"){
-                if(obj.data.jcyqName == "生命体征模拟器"){
+                if(obj.data[0].jcyqName == "生命体征模拟器"){
                     location.href="/control/home/waiting/write_info/write_life_child.html?id="+obj.data.jcyqId;
-                }else if(obj.data.jcyqName == "注射设备分析仪"){
+                }else if(obj.data[0].jcyqName == "注射设备分析仪"){
                     location.href="/control/home/waiting/write_info/write_injection_child.html?id="+obj.data.jcyqId;
-                }else if(obj.data.jcyqName == "输液设备分析仪"){
+                }else if(obj.data[0].jcyqName == "输液设备分析仪"){
                     location.href="/control/home/waiting/write_info/write_infusion_child.html?id="+obj.data.jcyqId;
                 }
             }else if(obj.event === "writeInfo"){
-                if(obj.data.jcyqName == "婴儿培养箱分析仪"){
+                if(obj.data[0].jcyqName == "婴儿培养箱分析仪"){
                     location.href="/control/home/waiting/write_info/write_baby_info.html?id="+obj.data.jcyqId;
-                }else if(obj.data.jcyqName == "高频电刀分析仪"){
+                }else if(obj.data[0].jcyqName == "高频电刀分析仪"){
                     location.href="/control/home/waiting/write_endotherm_knife_info.html?id="+obj.data.jcyqId;
-                }else if(obj.data.jcyqName == "气流分析仪"){
+                }else if(obj.data[0].jcyqName == "气流分析仪"){
                     location.href="/control/home/waiting/write_info/write_breath_info.html?id="+obj.data.jcyqId;
-                }else if(obj.data.jcyqName == "双通道注射设备分析仪"){
+                }else if(obj.data[0].jcyqName == "双通道注射设备分析仪"){
                     location.href="/control/home/waiting/write_double_injection_info.html?id="+obj.data.jcyqId;
-                }else if(obj.data.jcyqName == "除颤起搏分析仪"){
+                }else if(obj.data[0].jcyqName == "除颤起搏分析仪"){
                     location.href="/control/home/waiting/write_info/write_defibrillator_info.html?id="+obj.data.jcyqId;
                 }
             }
